@@ -1,0 +1,79 @@
+{
+    "Entities": [
+        {
+            "clientOnly": 0,
+            "created": "2016-08-24T21:56:32Z",
+            "dimensions": {
+                "x": 15.301691055297852,
+                "y": 21.083597183227539,
+                "z": 16.107257843017578
+            },
+            "id": "{865669f3-4a72-4a84-9439-8ea985b9bde7}",
+            "modelURL": "https://raw.githubusercontent.com/judasshuffle/ass/6ccf639d840fe83411e45123a8a9bf05b3a753de/photiz/newhouse23.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "queryAACube": {
+                "scale": 61.256950378417969,
+                "x": -30.628475189208984,
+                "y": -30.628475189208984,
+                "z": -30.628475189208984
+            },
+            "registrationPoint": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 255,
+                "red": 0
+            },
+            "created": "2016-08-24T21:56:32Z",
+            "dimensions": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "id": "{c2a20cb8-bef5-4c33-80cb-a3c6d48fda3c}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": -0.17320507764816284,
+                "y": -0.17320507764816284,
+                "z": -0.17320507764816284
+            },
+            "type": "Sphere"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "id": "{c2a20cb8-bef5-4c33-80cb-a3c6d48fda3d}",
+            "created": "2016-08-24T21:56:32Z",
+            "dimensions": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "position": {
+                "x": 15.301691055297852,
+                "y": 0,
+                "z": 16.107257843017578
+            },
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": -0.17320507764816284,
+                "y": -0.17320507764816284,
+                "z": -0.17320507764816284
+            },
+            "type": "Sphere"
+        }
+    ],
+    "Version": 62
+}

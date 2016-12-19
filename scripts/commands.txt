@@ -1,0 +1,7 @@
+load playa.json
+go /-17.2049,-7.96772,-19.4153
+wait 60
+load dev-demo.json
+go /542.972,495.283,509.351
+wait 60
+loop 100

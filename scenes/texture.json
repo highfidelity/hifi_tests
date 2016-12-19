@@ -1,0 +1,21 @@
+{
+    "Entities": [
+        {
+            "dimensions": {
+                "x": 2,
+                "y": 1,
+                "z": 0.1
+            },
+            "id": "{b7ef32b4-35a2-412f-b52e-d97f7c39b48a}",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": -2
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"http:\/\/s3.amazonaws.com\/hifi-public\/scripts\/tests\/textureStress.fs\",\"channels\":[\"http:\/\/s3.amazonaws.com\/hifi-public\/scripts\/tests\/cube_texture.png\",\"https:\/\/hifi-public.s3.amazonaws.com\/austin\/assets\/images\/skybox\/starmap_8k.jpg\"]}}"
+        }
+    ],
+    "Version": 62
+}

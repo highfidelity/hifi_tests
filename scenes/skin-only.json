@@ -1,0 +1,53 @@
+{
+    "Entities": [
+        {
+            "clientOnly": 0,
+            "created": "2016-07-20T16:55:42Z",
+            "dimensions": {
+                "x": 1.8726794719696045,
+                "y": 1.8238378763198853,
+                "z": 0.37235507369041443
+            },
+            "id": "{69650cf4-9247-443b-95e6-3e73a7561b20}",
+            "modelURL": "https://hifi-public.s3.amazonaws.com/sam/models/skinRenderingTest/matthew/matthew.fst",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 2.92523193359375,
+                "y": 1.9019775390625,
+                "z": 5.07345581054688
+            },
+            "rotation": {
+                "w": 0.96814769506454468,
+                "x": 0,
+                "y": -0.2503800094127655,
+                "z": 0
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-07-20T16:55:42Z",
+            "dimensions": {
+                "x": 1.644758939743042,
+                "y": 1.6623791456222534,
+                "z": 0.34723153710365295
+            },
+            "id": "{bd5fcf9e-d512-43dc-b321-de99ae26520e}",
+            "modelURL": "https://hifi-public.s3.amazonaws.com/sam/models/skinRenderingTest/priscilla/priscilla.fst",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 0.96951293945312,
+                "y": 1.82196044921875,
+                "z": 5.149658203125
+            },
+            "rotation": {
+                "w": 0.95757132768630981,
+                "x": 0,
+                "y": 0.28819626569747925,
+                "z": 0
+            },
+            "type": "Model"
+        }
+    ],
+    "Version": 62
+}

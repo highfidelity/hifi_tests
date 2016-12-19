@@ -1,0 +1,886 @@
+{
+    "Entities": 
+    [
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/ozan/dev/anim/standard_anims_160127/kneel.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/ozan/dev/avatars/camera_man/pod/_latest/camera_man_pod/camera_man_pod.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Avatars/production/simple_robot/simple_robot.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/e76946cc-c272-4adf-9bb6-02cde0a4b57d-v1/DefaultStylizedFemale.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Avatars/production/priscilla/priscilla/priscilla.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/d029ae8d-2905-4eb7-ba46-4bd1b8cb9d73-v1/Will.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Avatars/production/matthew/shirt/matthew/matthew.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/1592e15e-c822-41aa-b314-4ef261e5d843-v1/builder-grid.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Hangar.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Grid.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Rotating-sign.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Glo-Block-beacon-glow.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Teleport-Pad.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/james/gametable-dev/assets/table/table.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Glo-Block-g.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Glo-Block-beacon.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/james/gametable-dev/assets/buttons/button-next.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://hifi-content.s3.amazonaws.com/james/gametable-dev/assets/dice/dice.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Glo-wall.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Portal-Sign-Featured-2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_1purple.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_1white.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_3white.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_2pink.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Glo-Block-r.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_3pink.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hatpurple.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_2purple.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hatwhite.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_1pink.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/halloween/witch hats/hat_2white.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jimi/snail/snail_Dance2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jimi/snail/snail_Dance2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-production.s3.amazonaws.com/tutorials/pictureFrame/finalFrame.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/james/gametable-dev/assets/buttons/button-reset.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3.amazonaws.com/hifi-public/tony/tablet.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Torch.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Hangar-End.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://hifi-content.s3.amazonaws.com/ozan/dev/avatars/morph/F_PartyGirl/F_PartyGirl/F_PartyGirl.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/ozan/dev/anim/standard_anims_160127/kneel.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/wall_corbent.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/sandmound.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/ozan/dev/avatars/invisible_avatar/invisible_avatar/invisible_avatar.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/Junkyard/hifiHenge_final.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-production.s3.amazonaws.com/tutorials/pingPongGun/Pingpong-Gun-New.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/9aaf5358-9c66-4dcf-9565-e1b0a9ec500d-v1/assets/HookGun.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/barrel_redopen.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/dumptruckj.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/barrel_greenopen.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_weekend.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/barrel_plasticblue.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/sofastack.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Dirt-Skid.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://hifi-content.s3.amazonaws.com/alan/dev/Terrain-3p.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_scaffold_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_metalPlate_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_noao.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/wall_corshort.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/tireclosed.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://hifi-content.s3.amazonaws.com/alan/dev/Terrain-8e.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Playa/crate_noao.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/bumpercar_porange.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonsigns_2/speedys_sign.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/longvent.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_champagne_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_red.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonSigns/rosedales.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/carstack.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_cabover_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_lemondrop.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonsigns_2/Chesters_sign.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_shasta_white_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_funkyTrailer_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/treehouse_2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Terrain-7b.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_jazmin.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/wall_corshort2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonSigns/austinsatomiceats.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonSigns/langton_circuscasino.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_green.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/ArticulatedCrane/crane_bottom_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonSigns/citronblue.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonsigns_2/penny.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/car1.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/hookshotTruss_nobase_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/ArticulatedCrane/crane_top_VR_2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/wall_corblue.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/ufoseat.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonsigns_2/hifi_circularsign.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_yellow.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/st_shasta_green_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/treehouse.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/walking_guy3.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/bumpercar_rocket.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/lump1.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/TheStacks/Exports/schoolBus_reimportedIndexed.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/tire4.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/tireopen.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/tire5.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/tire_knobby.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/eric/models/Launch-Button.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/wall_cardboard.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/lump2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/chairs/fancyThrone.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-public.s3.amazonaws.com/Hackathon/LP2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/ampytheadur/Amphitheater_HiFI.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/ferriswheel.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/barrel_redclosed.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/lump4.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/New-Moon.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/hookshot/zeppelin_hookshot_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/RustyGiantRobot2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Models/neonsigns_2/burgerdrome.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_penny.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/production/parkBots/Cicero Idle 8.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples Content/production/paddleball/tballPole_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Cyclone-4.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/Junkyard/puebloTextured.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/seth/production/NBody/moon.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples Content/production/Balloon/redBalloon.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-public.s3.amazonaws.com/Hackathon/speaker.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/dieFi/bloody-cargo-container.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/elBoppo/elBoppo3_VR.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/875bcd3b-7b7d-45a1-a429-c0c6eefad95d-v1/fly.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/875bcd3b-7b7d-45a1-a429-c0c6eefad95d-v1/idle.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3.amazonaws.com/hifi-public/marketplace/hificontent/ozan/PalmTree.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/875bcd3b-7b7d-45a1-a429-c0c6eefad95d-v1/sit_idle_talk_inplace.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/875bcd3b-7b7d-45a1-a429-c0c6eefad95d-v1/sit_idle_inplace.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/875bcd3b-7b7d-45a1-a429-c0c6eefad95d-v1/sit_down.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/875bcd3b-7b7d-45a1-a429-c0c6eefad95d-v1/talk.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-public.s3.amazonaws.com/Hackathon/record player2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/dieFi/cargo-container.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Rocks-Dolmien.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-public.s3.amazonaws.com/Hackathon/boy1.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonsigns_2/lillys_signx.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples Content/production/avatarAccessories/plunger/plunger2.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/trashbin.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-public.s3.amazonaws.com/Hackathon/lava_lamp3.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/lump3.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_blue.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Junkyard/Playa/billboard_stuckeys_512_2b.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/production/parkBots/Cicero Idle 8.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Models/neonsigns_2/candy_mountain.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/vent4.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/DomainContent/Junkyard/Playa/crate_lightblue.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-public.s3.amazonaws.com/viveController/ViveController.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Torch.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Hangar.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "http://mpassets.highfidelity.com/1592e15e-c822-41aa-b314-4ef261e5d843-v1/builder-grid.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/scripts/system/assets/models/teleport-destination.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/scripts/system/assets/models/teleport-cancel.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/meshes/being_of_light/being_of_light.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/hydra_pose_open_right.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/hydra_pose_closed_right.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/hydra_pose_open_left.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/hydra_pose_closed_left.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/idle.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/talk.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/walk_short_fwd.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/walk_fwd.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/run_fwd.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/idle_to_walk.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/walk_short_bwd.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/walk_bwd.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/jump_land.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/jump_standing_land.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/jump_in_air.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/jump_standing_apex.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/jump_takeoff.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/jump_standing_takeoff.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/fly.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/side_step_right.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/side_step_short_right.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/side_step_left.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/side_step_short_left.fbx",
+            "type": "Model"
+        },
+
+        {
+            "modelURL": "file:///C:/Users/bdavis/Git/hifi/interface/resources/avatar/animations/turn_left.fbx",
+            "type": "Model"
+        }
+    ],
+
+    "Version": 62
+}

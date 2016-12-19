@@ -1,0 +1,52 @@
+{
+    "Entities": [
+          {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-07-08T23:48:55Z",
+            "dimensions": {
+                "x": 30000,
+                "y": 30000,
+                "z": 30000
+            },
+            "id": "{24613b62-1156-49ae-aa8d-d161e7259b16}",
+            "keyLight": {
+                "ambientIntensity": 0,
+                "color": {
+                    "blue": 219,
+                    "green": 112,
+                    "red": 210
+                },
+                "direction": {
+                    "x": 0,
+                    "y": -0.1736481785774231,
+                    "z": 0.98480772972106934
+                },
+                "intensity": 0.30000001192092896
+            },
+            "locked": 1,
+            "marketplaceID": "62ea6ec4-86ac-4dd9-9c87-86de0c280ebd",
+            "name": "Day/Night Cycle",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -25980.76171875,
+                "y": -25980.76171875,
+                "z": -25980.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/CloudyDay1.jpg"
+            },
+            "type": "Zone",
+            "userData": "{\n    \"ProceduralEntity\": {\n        \"version\":2,\n        \"shaderUrl\": \"https://hifi-public.s3.amazonaws.com/austin/shaders/skybox/omgSkybox.fs\",\n        \"channels\":[\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/starmap_8k.jpg\",\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/celestial_grid.jpg\",\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/constellation_figures.jpg\",\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/constellation_boundaries.jpg\"\n        ],\n        \"uniforms\": {\n            \"rotationSpeed\":0.0003,\n            \"uDayColor\": [0.9, 0.7, 0.7 ],\n            \"constellationLevel\": 0.1,\n            \"constellationBoundaryLevel\": 0.01,\n            \"gridLevel\": 0.1\n        }\n    }\n}"
+        }
+    ],
+    "Version": 62
+}

@@ -1,0 +1,3 @@
+load models.json
+wait 5
+loop 100

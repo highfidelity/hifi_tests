@@ -1,0 +1,3417 @@
+{
+    "Entities": [
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-public.s3.amazonaws.com/james/bubblewand/models/wand/collisionHull.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.05000000074505806,
+                "y": 0.25,
+                "z": 0.05000000074505806
+            },
+            "dynamic": 1,
+            "id": "{02e532b7-3ecf-40a5-a286-0ca4535a2a5c}",
+            "modelURL": "http://hifi-public.s3.amazonaws.com/james/bubblewand/models/wand/wand.fbx",
+            "name": "Bubble Wand",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -112.19581604003906,
+                "y": -13.107190132141113,
+                "z": -197.06954956054688
+            },
+            "queryAACube": {
+                "scale": 0.25980761647224426,
+                "x": -112.32572174072266,
+                "y": -13.237093925476074,
+                "z": -197.19944763183594
+            },
+            "rotation": {
+                "w": 0.36824595928192139,
+                "x": 0.28377199172973633,
+                "y": 0.85137712955474854,
+                "z": -0.24278628826141357
+            },
+            "script": "https://hifi-metaverse.s3-us-west-1.amazonaws.com/marketplace/contents/ea44dfdb-77fd-42a7-a91e-99646245c4fa/wand.js",
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/plunger%20gun/Plunger%20Gun_phys.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.21993917226791382,
+                "y": 0.43911099433898926,
+                "z": 0.522483229637146
+            },
+            "id": "{bff11487-77cf-4535-baf6-a8d38bf12c2c}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/plunger%20gun/Plunger%20Gun.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -109.17474365234375,
+                "y": -19.02752685546875,
+                "z": -202.82334899902344
+            },
+            "queryAACube": {
+                "scale": 0.71706372499465942,
+                "x": -109.53327178955078,
+                "y": -19.386058807373047,
+                "z": -203.181884765625
+            },
+            "rotation": {
+                "w": 0.67476916313171387,
+                "x": -0.60973525047302246,
+                "y": -0.33900970220565796,
+                "z": -0.24089419841766357
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Pirate_Stool/Pirate_Stool_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 2555,
+            "dimensions": {
+                "x": 0.29813963174819946,
+                "y": 0.50580716133117676,
+                "z": 0.28920835256576538
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{8abca422-ca42-4a2c-89af-0850fdce9b59}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Pirate_Stool/Pirate_Stool.fbx",
+            "name": "Pirate Stool",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -116.54190063476562,
+                "y": -15.59379768371582,
+                "z": -176.5150146484375
+            },
+            "queryAACube": {
+                "scale": 0.65449953079223633,
+                "x": -116.86914825439453,
+                "y": -15.921047210693359,
+                "z": -176.84226989746094
+            },
+            "rotation": {
+                "w": 0.69988560676574707,
+                "x": 0.67119860649108887,
+                "y": -0.17296099662780762,
+                "z": 0.17247271537780762
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Pirate_Stool/Pirate_Stool_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 2555,
+            "dimensions": {
+                "x": 0.29813963174819946,
+                "y": 0.50580716133117676,
+                "z": 0.28920835256576538
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{ef7df8b7-a629-400a-9433-2f0fcb4820df}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Pirate_Stool/Pirate_Stool.fbx",
+            "name": "Pirate Stool",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -115.64344787597656,
+                "y": -15.593827247619629,
+                "z": -176.55047607421875
+            },
+            "queryAACube": {
+                "scale": 0.65449953079223633,
+                "x": -115.97069549560547,
+                "y": -15.921076774597168,
+                "z": -176.87773132324219
+            },
+            "rotation": {
+                "w": 0.60885024070739746,
+                "x": 0.58178067207336426,
+                "y": -0.38609904050827026,
+                "z": 0.37651634216308594
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{ef225407-de10-485b-8cd1-136a91a65ea1}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-08-18T23:26:16Z",
+            "damping": 9.9999997473787516e-06,
+            "dimensions": {
+                "x": 0.30000001192092896,
+                "y": 0.30000001192092896,
+                "z": 0.30000001192092896
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{9e3c273f-1377-4e68-adbf-519e7616a47d}",
+            "modelURL": "http://s3.amazonaws.com/hifi-public/models/content/basketball2.fbx",
+            "name": "Hifi-Basketball",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -118,
+                "y": -7.4000000953674316,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 0.51961523294448853,
+                "x": -118.25981140136719,
+                "y": -7.6598076820373535,
+                "z": -175.25981140136719
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"invertSolidWhileHeld\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-08-18T23:26:16Z",
+            "damping": 9.9999997473787516e-06,
+            "dimensions": {
+                "x": 0.30000001192092896,
+                "y": 0.30000001192092896,
+                "z": 0.30000001192092896
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{bbb165fa-8958-48fc-9749-a2b4ddd391e3}",
+            "modelURL": "http://s3.amazonaws.com/hifi-public/models/content/basketball2.fbx",
+            "name": "Hifi-Basketball",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -118,
+                "y": -7.4000000953674316,
+                "z": -175.60000610351562
+            },
+            "queryAACube": {
+                "scale": 0.51961523294448853,
+                "x": -118.25981140136719,
+                "y": -7.6598076820373535,
+                "z": -175.85981750488281
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"invertSolidWhileHeld\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-08-18T23:26:16Z",
+            "damping": 9.9999997473787516e-06,
+            "dimensions": {
+                "x": 0.30000001192092896,
+                "y": 0.30000001192092896,
+                "z": 0.30000001192092896
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{149e4d3d-105a-4b4d-a396-aad27961a413}",
+            "modelURL": "http://s3.amazonaws.com/hifi-public/models/content/basketball2.fbx",
+            "name": "Hifi-Basketball",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -118,
+                "y": -7.4000000953674316,
+                "z": -175.30000305175781
+            },
+            "queryAACube": {
+                "scale": 0.51961523294448853,
+                "x": -118.25981140136719,
+                "y": -7.6598076820373535,
+                "z": -175.559814453125
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"invertSolidWhileHeld\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-08-18T23:26:16Z",
+            "damping": 9.9999997473787516e-06,
+            "dimensions": {
+                "x": 0.30000001192092896,
+                "y": 0.30000001192092896,
+                "z": 0.30000001192092896
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{a5e7e039-f381-46f7-840a-8c656760e293}",
+            "modelURL": "http://s3.amazonaws.com/hifi-public/models/content/basketball2.fbx",
+            "name": "Hifi-Basketball",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -118,
+                "y": -7.4000000953674316,
+                "z": -174.69999694824219
+            },
+            "queryAACube": {
+                "scale": 0.51961523294448853,
+                "x": -118.25981140136719,
+                "y": -7.6598076820373535,
+                "z": -174.95980834960938
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"invertSolidWhileHeld\":true}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Capn_Tarquin/Capn_Tarquin_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.62537693977355957,
+                "y": 1.9411319494247437,
+                "z": 0.62537676095962524
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -1,
+                "z": 0
+            },
+            "id": "{97eb83eb-9e40-4542-96e5-07668bb1c6b1}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Capn_Tarquin/Capn_Tarquin.fbx",
+            "name": "Capn Tarquin the Parrot",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -107.69969177246094,
+                "y": -14.500408172607422,
+                "z": -181.32485961914062
+            },
+            "queryAACube": {
+                "scale": 2.1331164836883545,
+                "x": -108.76625061035156,
+                "y": -15.56696605682373,
+                "z": -182.39141845703125
+            },
+            "rotation": {
+                "w": 0.59566640853881836,
+                "x": 0.71590757369995117,
+                "y": 0.23396658897399902,
+                "z": -0.27916377782821655
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Cushion_02/Cushion_02_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.88428568840026855,
+                "y": 0.27461737394332886,
+                "z": 0.91206479072570801
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{1376b241-21d7-4fbe-a48c-bd2d8116049c}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Cushion_02/Cushion_02.fbx",
+            "name": "Cushion - Blue",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -112.66841888427734,
+                "y": -15.589448928833008,
+                "z": -186.11712646484375
+            },
+            "queryAACube": {
+                "scale": 1.2997069358825684,
+                "x": -113.31827545166016,
+                "y": -16.239301681518555,
+                "z": -186.76698303222656
+            },
+            "rotation": {
+                "w": -0.33925384283065796,
+                "x": 1.52587890625e-05,
+                "y": 0.94070339202880859,
+                "z": -4.57763671875e-05
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{a1e32eb0-7d2e-45ad-b12a-c398e48b54d9}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-1,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/HmjWallPoster/hmjWallPoster_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 1.7129319906234741,
+                "y": 1.0987215042114258,
+                "z": 0.19009311497211456
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{60e53713-eee9-4cff-9603-07088048ceca}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/HmjWallPoster/hmjWallPoster.fbx",
+            "name": "HMJ Wall Poster - FUBAR",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -110.25939178466797,
+                "y": -15.729095458984375,
+                "z": -180.25904846191406
+            },
+            "queryAACube": {
+                "scale": 2.0438835620880127,
+                "x": -111.28133392333984,
+                "y": -16.75103759765625,
+                "z": -181.28099060058594
+            },
+            "rotation": {
+                "w": 0.19453728199005127,
+                "x": 0.15089643001556396,
+                "y": 0.71969175338745117,
+                "z": -0.64913403987884521
+            },
+            "shapeType": "compound",
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/HelipadOrnament/HelipadOrnament_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.99986892938613892,
+                "y": 0.42685398459434509,
+                "z": 0.99891805648803711
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{4bcd7fd0-3213-41ac-9ac9-8c92f82600b3}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/HelipadOrnament/HelipadOrnament.fbx",
+            "name": "Helicopter Ornament",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -126.30860137939453,
+                "y": -15.518516540527344,
+                "z": -171.06533813476562
+            },
+            "queryAACube": {
+                "scale": 1.4764076471328735,
+                "x": -127.04680633544922,
+                "y": -16.256719589233398,
+                "z": -171.80354309082031
+            },
+            "rotation": {
+                "w": 0.91284048557281494,
+                "x": -4.57763671875e-05,
+                "y": -0.40828567743301392,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Ninja_House/Ninja_House_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 10000,
+            "dimensions": {
+                "x": 1.9652872085571289,
+                "y": 1.1769087314605713,
+                "z": 1.6354845762252808
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{b718eaee-06c8-48a9-bf27-07f5dea08216}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Ninja_House/Ninja_House.fbx",
+            "name": "Ninja House",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -108.56024169921875,
+                "y": -15.115614891052246,
+                "z": -183.03933715820312
+            },
+            "queryAACube": {
+                "scale": 2.8146541118621826,
+                "x": -109.96756744384766,
+                "y": -16.522941589355469,
+                "z": -184.44667053222656
+            },
+            "rotation": {
+                "w": 0.36101317405700684,
+                "x": -1.52587890625e-05,
+                "y": 0.93255507946014404,
+                "z": -4.57763671875e-05
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Cat/Zombie_Cat_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.54110056161880493,
+                "y": 0.60029470920562744,
+                "z": 0.66112518310546875
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{73c177ad-c837-4e2e-8f1f-594d44387345}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Cat/Zombie_Cat.fbx",
+            "name": "Zombie Cat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -116.99690246582031,
+                "y": -15.657655715942383,
+                "z": -175.79444885253906
+            },
+            "queryAACube": {
+                "scale": 1.0441408157348633,
+                "x": -117.51897430419922,
+                "y": -16.179725646972656,
+                "z": -176.31651306152344
+            },
+            "rotation": {
+                "w": -0.12431526184082031,
+                "x": 0.37441062927246094,
+                "y": 0.29719996452331543,
+                "z": 0.86947429180145264
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{ef225407-de10-485b-8cd1-136a91a65ea1}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Cat/Zombie_Cat_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.54110056161880493,
+                "y": 0.60029470920562744,
+                "z": 0.66112518310546875
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{dbbc3dd8-1bdc-49f4-b955-fb5e410b1fb2}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Cat/Zombie_Cat.fbx",
+            "name": "Zombie Cat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -117.52704620361328,
+                "y": -15.65778923034668,
+                "z": -180.69068908691406
+            },
+            "queryAACube": {
+                "scale": 1.0441408157348633,
+                "x": -118.04911804199219,
+                "y": -16.179859161376953,
+                "z": -181.21275329589844
+            },
+            "rotation": {
+                "w": -0.29027235507965088,
+                "x": 0.85717558860778809,
+                "y": 0.13978791236877441,
+                "z": 0.40181577205657959
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{ef225407-de10-485b-8cd1-136a91a65ea1}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "angularDamping": 1,
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Cannon/Cannon_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 10000,
+            "dimensions": {
+                "x": 0.78654056787490845,
+                "y": 1.1751012802124023,
+                "z": 1.6460081338882446
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{aa9635bf-15cd-40b3-91b1-e886bcd90e26}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Cannon/Cannon.fbx",
+            "name": "Cannon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -108.84513092041016,
+                "y": -15.147151947021484,
+                "z": -181.53457641601562
+            },
+            "queryAACube": {
+                "scale": 2.1699888706207275,
+                "x": -109.93012237548828,
+                "y": -16.232147216796875,
+                "z": -182.61956787109375
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": -0.37880522012710571,
+                "x": 0.0010528564453125,
+                "y": 0.92541384696960449,
+                "z": -0.0098726153373718262
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Candles/Candles_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.45686683058738708,
+                "y": 0.78361332416534424,
+                "z": 0.39097186923027039
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{baeda398-3dbb-4b17-b3c0-0986de0c20f8}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Candles/Candles.fbx",
+            "name": "Candleabra",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -113.15276336669922,
+                "y": -15.564628601074219,
+                "z": -176.76864624023438
+            },
+            "queryAACube": {
+                "scale": 0.98774296045303345,
+                "x": -113.64663696289062,
+                "y": -16.058500289916992,
+                "z": -177.26251220703125
+            },
+            "rotation": {
+                "w": 0.58760964870452881,
+                "x": 0.463034987449646,
+                "y": -0.51995116472244263,
+                "z": 0.41216146945953369
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Candles/Candles_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.45686683058738708,
+                "y": 0.78361332416534424,
+                "z": 0.39097186923027039
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{00aebe91-4061-44a9-8c10-be15a47c4667}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Candles/Candles.fbx",
+            "name": "Candleabra",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -112.3487548828125,
+                "y": -15.565011978149414,
+                "z": -188.51524353027344
+            },
+            "queryAACube": {
+                "scale": 0.98774296045303345,
+                "x": -112.84262847900391,
+                "y": -16.058883666992188,
+                "z": -189.00910949707031
+            },
+            "rotation": {
+                "w": 0.17210650444030762,
+                "x": 0.13783478736877441,
+                "y": 0.76543831825256348,
+                "z": -0.60451668500900269
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Cat/Zombie_Cat_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.54110056161880493,
+                "y": 0.60029470920562744,
+                "z": 0.66112518310546875
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{48ec2d14-2a62-4914-863f-4ff522e49627}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Cat/Zombie_Cat.fbx",
+            "name": "Zombie Cat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -118.31918334960938,
+                "y": -15.657741546630859,
+                "z": -179.89291381835938
+            },
+            "queryAACube": {
+                "scale": 1.0441408157348633,
+                "x": -118.84125518798828,
+                "y": -16.179811477661133,
+                "z": -180.41497802734375
+            },
+            "rotation": {
+                "w": 0.19298088550567627,
+                "x": -0.55925840139389038,
+                "y": 0.25786221027374268,
+                "z": 0.76382088661193848
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{ef225407-de10-485b-8cd1-136a91a65ea1}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/DirectorsChair/DirectorsChair_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 5000,
+            "dimensions": {
+                "x": 0.56219786405563354,
+                "y": 1.2364716529846191,
+                "z": 0.53345763683319092
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{4204d39f-4b3c-4647-a9d8-5afc95a8fa8d}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/DirectorsChair/DirectorsChair.fbx",
+            "name": "Director's Chair",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -117.91110992431641,
+                "y": -15.440801620483398,
+                "z": -189.1505126953125
+            },
+            "queryAACube": {
+                "scale": 1.4592825174331665,
+                "x": -118.64075469970703,
+                "y": -16.170442581176758,
+                "z": -189.88015747070312
+            },
+            "rotation": {
+                "w": 0.67797362804412842,
+                "x": 0.65548181533813477,
+                "y": -0.0095063447952270508,
+                "z": 0.33250939846038818
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Fizzy_Pop/Fizzy_Pop_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.1394726037979126,
+                "y": 0.49765011668205261,
+                "z": 0.13870064914226532
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{24c7d2e1-a694-49bf-a4bd-38d27a0bf20c}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Fizzy_Pop/Fizzy_Pop.fbx",
+            "name": "Fizzy Pop Champage Bottle",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -119.59751892089844,
+                "y": -16.043304443359375,
+                "z": -184.1781005859375
+            },
+            "queryAACube": {
+                "scale": 0.53511321544647217,
+                "x": -119.86507415771484,
+                "y": -16.310861587524414,
+                "z": -184.44566345214844
+            },
+            "rotation": {
+                "w": -0.59737545251846313,
+                "x": -0.7149614691734314,
+                "y": -0.18113982677459717,
+                "z": -0.31502252817153931
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Lamp/Lamp_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.21931673586368561,
+                "y": 0.36596068739891052,
+                "z": 0.21931672096252441
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{e069b808-9554-46d3-871f-fede19e2714b}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Lamp/Lamp.fbx",
+            "name": "Lamp - Square with Tiger Print",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -111.18610382080078,
+                "y": -15.932043075561523,
+                "z": -170.02560424804688
+            },
+            "queryAACube": {
+                "scale": 0.47971543669700623,
+                "x": -111.42596435546875,
+                "y": -16.171901702880859,
+                "z": -170.26545715332031
+            },
+            "rotation": {
+                "w": 0.70238804817199707,
+                "x": -0.70247960090637207,
+                "y": -0.081223785877227783,
+                "z": -0.081284821033477783
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Cake_02/Cake_02_simplified_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 1.0430057048797607,
+                "y": 1.0058897733688354,
+                "z": 1.0372923612594604
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{8b5a56a1-3a78-4665-9c61-7a506f000816}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Cake_02/Cake_02.fbx",
+            "name": "Cake - Red and White",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -126.59700775146484,
+                "y": -15.472923278808594,
+                "z": -183.66435241699219
+            },
+            "queryAACube": {
+                "scale": 1.7820354700088501,
+                "x": -127.48802185058594,
+                "y": -16.363941192626953,
+                "z": -184.55537414550781
+            },
+            "rotation": {
+                "w": 0.14604413509368896,
+                "x": -0.29317158460617065,
+                "y": 0.5102158784866333,
+                "z": 0.79522395133972168
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Lounge_Chair/Lounge_Chair_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 10000,
+            "dimensions": {
+                "x": 0.78166836500167847,
+                "y": 0.93130970001220703,
+                "z": 0.76779270172119141
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{92a5172c-c5c9-4e78-8b17-9a84c136560f}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Lounge_Chair/Lounge_Chair.fbx",
+            "name": "Lounge Chair - Purple Velvet",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -111.48152160644531,
+                "y": -15.345088958740234,
+                "z": -180.70231628417969
+            },
+            "queryAACube": {
+                "scale": 1.4380017518997192,
+                "x": -112.20052337646484,
+                "y": -16.064090728759766,
+                "z": -181.42131042480469
+            },
+            "rotation": {
+                "w": 0.70360875129699707,
+                "x": -0.70373082160949707,
+                "y": 0.069626927375793457,
+                "z": 0.069626927375793457
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Metal_Chair/Metal_Chair_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 5000,
+            "dimensions": {
+                "x": 0.49315732717514038,
+                "y": 1.2017810344696045,
+                "z": 0.51772975921630859
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{724ccbb5-a59e-489d-a16e-19e67f21e567}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Metal_Chair/Metal_Chair.fbx",
+            "name": "Metal Chair with Red Cushions",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -114.53990173339844,
+                "y": -15.477832794189453,
+                "z": -178.70552062988281
+            },
+            "queryAACube": {
+                "scale": 1.398401141166687,
+                "x": -115.23910522460938,
+                "y": -16.177032470703125,
+                "z": -179.40472412109375
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 0.59304189682006836,
+                "x": -0.31712824106216431,
+                "y": -0.36546885967254639,
+                "z": 0.64351868629455566
+            },
+            "shapeType": "compound",
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Rabbit/Zombie_Rabbit_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 1.0221434831619263,
+                "y": 0.92613029479980469,
+                "z": 0.53914475440979004
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{2e9c95f9-0900-4f8e-9e15-d5af468c2c3c}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Zombie_Rabbit/Zombie_Rabbit.fbx",
+            "name": "Zombie Rabbit",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -113.9989013671875,
+                "y": -15.508282661437988,
+                "z": -191.40029907226562
+            },
+            "queryAACube": {
+                "scale": 1.4809360504150391,
+                "x": -114.73937225341797,
+                "y": -16.248750686645508,
+                "z": -192.14076232910156
+            },
+            "rotation": {
+                "w": -0.057267129421234131,
+                "x": -0.25929653644561768,
+                "y": -0.61449611186981201,
+                "z": 0.74291598796844482
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{ef225407-de10-485b-8cd1-136a91a65ea1}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Ninja_House/Ninja_House_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 10000,
+            "dimensions": {
+                "x": 1.9652872085571289,
+                "y": 1.1769087314605713,
+                "z": 1.6354845762252808
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{34523975-fe90-46e9-808d-8e2b286bba3e}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Ninja_House/Ninja_House.fbx",
+            "name": "Ninja House",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -127.58204650878906,
+                "y": -15.115005493164062,
+                "z": -182.093017578125
+            },
+            "queryAACube": {
+                "scale": 2.8146541118621826,
+                "x": -128.9893798828125,
+                "y": -16.522333145141602,
+                "z": -183.50035095214844
+            },
+            "rotation": {
+                "w": 0.94854652881622314,
+                "x": -1.52587890625e-05,
+                "y": 0.31654846668243408,
+                "z": -4.57763671875e-05
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{ef225407-de10-485b-8cd1-136a91a65ea1}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/HelipadOrnament/HelipadOrnament_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.99986892938613892,
+                "y": 0.42685398459434509,
+                "z": 0.99891805648803711
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{37c9589c-3b46-482c-aae4-8549c348e149}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/HelipadOrnament/HelipadOrnament.fbx",
+            "name": "Helicopter Ornament",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -128.07060241699219,
+                "y": -15.518838882446289,
+                "z": -183.43025207519531
+            },
+            "queryAACube": {
+                "scale": 1.4764076471328735,
+                "x": -128.80880737304688,
+                "y": -16.257041931152344,
+                "z": -184.16845703125
+            },
+            "rotation": {
+                "w": -0.2528572678565979,
+                "x": 1.52587890625e-05,
+                "y": 0.9674983024597168,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"activated\":true,\"avatarId\":\"{a1e32eb0-7d2e-45ad-b12a-c398e48b54d9}\",\"refCount\":1,\"gravity\":{\"x\":0,\"y\":-9,\"z\":0},\"ignoreForCollisions\":0,\"dynamic\":1}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Hammock_02/Hammock_02_phy.obj",
+            "created": "2016-05-05T05:42:07Z",
+            "density": 10000,
+            "dimensions": {
+                "x": 2.1039376258850098,
+                "y": 2.3628287315368652,
+                "z": 1.4198901653289795
+            },
+            "dynamic": 1,
+            "friction": 0.99000000953674316,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{e252db5c-c71b-4895-82f9-5a1485a1aa88}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/dev/SonyAssets/Hammock_02/Hammock_02.fbx",
+            "name": "Hammock Chair - White",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 31.153045654296875,
+                "y": -15.462608337402344,
+                "z": -236.77093505859375
+            },
+            "queryAACube": {
+                "scale": 3.4677951335906982,
+                "x": 29.419147491455078,
+                "y": -17.196506500244141,
+                "z": -238.50483703613281
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": -0.49715417623519897,
+                "x": 0.61318373680114746,
+                "y": 0.14052033424377441,
+                "z": -0.59758907556533813
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "angularDamping": 0.5,
+            "clientOnly": 0,
+            "collisionless": 1,
+            "color": {
+                "blue": 20,
+                "green": 190,
+                "red": 255
+            },
+            "created": "2015-08-17T16:26:43Z",
+            "dimensions": {
+                "x": 20,
+                "y": 10,
+                "z": 20
+            },
+            "id": "{1fb08e92-fa5f-4136-aeed-7b3bb884c9e7}",
+            "ignoreForCollisions": 1,
+            "name": "test",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 900,
+                "y": 985.33447265625,
+                "z": 795
+            },
+            "queryAACube": {
+                "scale": 30,
+                "x": 885,
+                "y": 970.33447265625,
+                "z": 780
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "(function(){ var yes = {}; var no = {};     function change(entityID) {     yes = Overlays.addOverlay(\"text\", {     x: 242,     y: 370,     width: 64,     height: 64,     backgroundColor: { red: 0, green: 0, blue: 0},     color: { red: 255, green: 255, blue: 0},     font: {size: 25},     topMargin: 8,     name: \"adrian\",     visible: true,     text: \" Yes\" });      }     this.enterEntity = function(entityID) {         print(\"enterEntity(\"+entityID+\")\");         print(GlobalServices.username);         change(entityID);     };     this.leaveEntity = function(entityID) {         print(\"leaveEntity(\"+entityID+\")\");         Entities.editEntity(entityID, { angularDamping: 0.5});         Entities.editEntity(entityID, { color: { red: 255, green: 190, blue: 20} });        var life = Overlays.getOverlayAtPoint({x:242,y:370});                  print(JSON.stringify(life));           print(JSON.stringify(yes));                Overlays.deleteOverlay(yes);     }; })",
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-08-17T14:26:34Z",
+            "dimensions": {
+                "x": 180,
+                "y": 4.0000238418579102,
+                "z": 199.99998474121094
+            },
+            "id": "{0f77e85a-64d0-47af-a8f6-a0397ebd6026}",
+            "modelURL": "http://lets3d.com/hifi/earth/game/smallGrid.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 880,
+                "y": 988,
+                "z": 825
+            },
+            "queryAACube": {
+                "scale": 269.10220336914062,
+                "x": 745.44891357421875,
+                "y": 853.44891357421875,
+                "z": 690.44891357421875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "currentFrame": 1,
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2016-08-12T11:14:37Z",
+            "dimensions": {
+                "x": 103.75200653076172,
+                "y": 0.23999999463558197,
+                "z": 100
+            },
+            "id": "{58f45d07-14c7-4276-bbc4-f1ee323ae8bf}",
+            "lastEditedBy": "{7503c1c0-5fac-44d0-984c-b3c997471863}",
+            "modelURL": "http://lets3d.com/hifi/earth/terrains/grass47.5_50.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 9928.8759765625,
+                "y": 991.55999755859375,
+                "z": 9973
+            },
+            "queryAACube": {
+                "scale": 144.09904479980469,
+                "x": 9856.826171875,
+                "y": 919.510498046875,
+                "z": 9900.9501953125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-07-07T17:57:36Z",
+            "dimensions": {
+                "x": 122.78147888183594,
+                "y": 37.670963287353516,
+                "z": 157.93385314941406
+            },
+            "id": "{d44cce93-c3a9-4933-82c7-5c14ed3de391}",
+            "modelURL": "http://lets3d.com/hifi/earth/buildings/stadium.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 9922.4873046875,
+                "y": 1010.3148193359375,
+                "z": 9890.2158203125
+            },
+            "queryAACube": {
+                "scale": 203.56201171875,
+                "x": 9820.7060546875,
+                "y": 908.5338134765625,
+                "z": 9788.4345703125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-08-12T14:33:25Z",
+            "dimensions": {
+                "x": 52.416015625,
+                "y": 0.10000565648078918,
+                "z": 52.164054870605469
+            },
+            "id": "{2b40d71a-cb3f-4edc-9b04-95c0b85458d0}",
+            "locked": 1,
+            "modelURL": "http://lets3d.com/hifi/earth/terrains/pathGrass25252.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10005.265625,
+                "y": 991.65106201171875,
+                "z": 9950.7109375
+            },
+            "queryAACube": {
+                "scale": 73.949554443359375,
+                "x": 9968.291015625,
+                "y": 954.67626953125,
+                "z": 9913.736328125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-05-07T06:37:37Z",
+            "dimensions": {
+                "x": 50,
+                "y": 1,
+                "z": 47.5
+            },
+            "id": "{9afee872-b208-429a-8be2-9ffaeb8538b7}",
+            "modelURL": "http://lets3d.com/hifi/earth/terrains/grass47.5_50.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10004.69921875,
+                "y": 991.135009765625,
+                "z": 9998.7001953125
+            },
+            "queryAACube": {
+                "scale": 68.972824096679688,
+                "x": 9970.212890625,
+                "y": 956.64862060546875,
+                "z": 9964.2138671875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2016-07-26T05:18:40Z",
+            "dimensions": {
+                "x": 99.684707641601562,
+                "y": 0.10000565648078918,
+                "z": 51.227645874023438
+            },
+            "id": "{cce3b77e-fd0e-484e-8054-83c485017810}",
+            "modelURL": "http://lets3d.com/hifi/earth/terrains/grass47.5_50.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10006.0703125,
+                "y": 991.598876953125,
+                "z": 9875.201171875
+            },
+            "queryAACube": {
+                "scale": 112.07730865478516,
+                "x": 9950.03125,
+                "y": 935.56024169921875,
+                "z": 9819.162109375
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -1.52587890625e-05,
+                "y": 0.70708787441253662,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-05-11T07:15:22Z",
+            "dimensions": {
+                "x": 98.427734375,
+                "y": 0.10000000149011612,
+                "z": 5
+            },
+            "id": "{0aee5c05-f5a9-47ac-a530-db819ae76b5b}",
+            "modelURL": "http://lets3d.com/hifi/earth/earthRoad.fbx",
+            "name": "road",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10028.623046875,
+                "y": 991.70001220703125,
+                "z": 9873.60546875
+            },
+            "queryAACube": {
+                "scale": 98.554695129394531,
+                "x": 9979.345703125,
+                "y": 942.42266845703125,
+                "z": 9824.328125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-09-07T09:58:22Z",
+            "dimensions": {
+                "x": 500,
+                "y": 100,
+                "z": 500
+            },
+            "id": "{8ce3046e-4e33-4e15-99f8-1843724da35a}",
+            "locked": 1,
+            "modelURL": "http://lets3d.com/hifi/testObjects/grassHills3.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 9640,
+                "y": 999,
+                "z": 9575
+            },
+            "queryAACube": {
+                "scale": 714.142822265625,
+                "x": 9282.9287109375,
+                "y": 641.9285888671875,
+                "z": 9217.9287109375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-09-07T10:33:19Z",
+            "dimensions": {
+                "x": 510,
+                "y": 27.57666015625,
+                "z": 500
+            },
+            "id": "{9ccbee16-733b-4b55-83b2-fd5b467564c6}",
+            "locked": 1,
+            "modelURL": "http://lets3d.com/hifi/testObjects/grassHills3.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10128.330078125,
+                "y": 994,
+                "z": 9575.0078125
+            },
+            "queryAACube": {
+                "scale": 714.74505615234375,
+                "x": 9770.9580078125,
+                "y": 636.62744140625,
+                "z": 9217.6357421875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-05-11T11:50:37Z",
+            "density": 1011,
+            "dimensions": {
+                "x": 500,
+                "y": 0.50005960464477539,
+                "z": 499.99996948242188
+            },
+            "id": "{b9b43c0c-f8ff-495e-819c-b70283369c79}",
+            "modelURL": "http://lets3d.com/hifi/earth/groundGridblend2.fbx",
+            "name": "new Main Map",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10130,
+                "y": 969.4747314453125,
+                "z": 10325
+            },
+            "queryAACube": {
+                "scale": 1118.0340576171875,
+                "x": 9570.9833984375,
+                "y": 410.45770263671875,
+                "z": 9765.9833984375
+            },
+            "registrationPoint": {
+                "x": 1,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 0.70702672004699707,
+                "x": -1.52587890625e-05,
+                "y": -0.70720988512039185,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "textures": "http://www.mahachakra.com/pics/mahachakra.jpg",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-09-07T09:56:11Z",
+            "dimensions": {
+                "x": 500,
+                "y": 100,
+                "z": 500
+            },
+            "id": "{3c54fbd5-dbf9-4f1b-82c4-db2fd4a9891a}",
+            "locked": 1,
+            "modelURL": "http://lets3d.com/hifi/testObjects/grassHills3.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 9630,
+                "y": 998,
+                "z": 10075
+            },
+            "queryAACube": {
+                "scale": 714.142822265625,
+                "x": 9272.9287109375,
+                "y": 640.9285888671875,
+                "z": 9717.9287109375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-25T11:09:11Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{43cf2af5-80d7-4288-8649-690ae93f5566}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-23T02:32:14Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{f46781ad-1c15-4ef3-a7e4-2c7839ce4d5e}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-01T06:48:39Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{ca5af16d-79b2-43e9-ba44-1cef707e3b76}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-08-16T07:06:12Z",
+            "dimensions": {
+                "x": 10000,
+                "y": 10000,
+                "z": 10000
+            },
+            "id": "{a4c625e4-05d5-4209-a01a-2ae9f05cac5b}",
+            "lastEditedBy": "{ba0b2339-a0fd-4c95-8faf-01060ad03a89}",
+            "name": "Earth Sky",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 10127.8662109375,
+                "y": 1042.696044921875,
+                "z": 10077.5400390625
+            },
+            "queryAACube": {
+                "scale": 17320.5078125,
+                "x": 1467.6123046875,
+                "y": -7617.5576171875,
+                "z": 1417.2861328125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "stage": {
+                "sunModelEnabled": 1
+            },
+            "type": "Zone",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"http://lets3d.com/hifi/scripts/seascape_clouds.fs\"}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-08-14T04:03:29Z",
+            "dimensions": {
+                "x": 5238.02587890625,
+                "y": 376.96182250976562,
+                "z": 7375.2607421875
+            },
+            "id": "{41c0cb9b-09c1-4694-881f-f67685db5fb9}",
+            "locked": 1,
+            "modelURL": "http://lets3d.com/hifi/earth/terrains/mount.blend1MyMod.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 13038.2978515625,
+                "y": 1138.3768310546875,
+                "z": 6914.85595703125
+            },
+            "queryAACube": {
+                "scale": 9053.9208984375,
+                "x": 8511.337890625,
+                "y": -3388.58349609375,
+                "z": 2387.8955078125
+            },
+            "rotation": {
+                "w": 0.70702672004699707,
+                "x": -1.52587890625e-05,
+                "y": -0.70720988512039185,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-10T03:59:06Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{a3d1ff3b-cc96-4737-baad-10f652a14a83}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-23T14:20:01Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{6ba65dab-9f6d-40d1-9e39-789774742c4e}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-02-06T10:30:27Z",
+            "dimensions": {
+                "x": 30000,
+                "y": 30000,
+                "z": 30000
+            },
+            "id": "{15b7b041-581b-47cf-afd5-bd187f20944d}",
+            "keyLight": {
+                "color": {
+                    "blue": 0,
+                    "green": 255,
+                    "red": 255
+                }
+            },
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -10120,
+                "y": -10008,
+                "z": -10175
+            },
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -36100.76171875,
+                "y": -35988.76171875,
+                "z": -36155.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "type": "Zone"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-11T04:18:22Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{e6755db0-f9ff-4d97-a727-5757387ff84a}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-23T02:32:14Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{6273f885-5b1f-4b6f-980e-6a50bd593d62}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-23T14:59:20Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{b85222d4-8698-4b4c-b303-2dcb74910644}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T11:38:25Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{7b85f109-e6e4-4336-9086-674bad68d5fe}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T19:54:18Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{6c4855b2-1a26-49f6-abb5-865f20050e78}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T19:54:18Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{976ed456-afcd-4c8f-8b36-e669723395ad}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-25T11:28:50Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{a95f6ba6-a8c3-4c1e-b7e2-9e3f7b5cc1e2}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-11T04:18:22Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{6fad890e-987d-47c5-953b-d7a984f18a36}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-10T03:59:06Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{fa965798-9661-456b-948c-d61d5d05c7dd}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-04T16:43:51Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{cf977b3a-8454-4e43-a409-e19ba9a55ca2}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-25T11:09:11Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{2b21ed0e-e1be-4fa3-ab60-60059db27797}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T11:44:58Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{da910d24-5b4e-4e26-92cc-6ced519e9b3a}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-02-06T10:08:36Z",
+            "dimensions": {
+                "x": 30000,
+                "y": 30000,
+                "z": 30000
+            },
+            "id": "{051d9a64-5886-4b8b-95aa-dd5a0413679b}",
+            "keyLight": {
+                "color": {
+                    "blue": 0,
+                    "green": 255,
+                    "red": 255
+                }
+            },
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -10120,
+                "y": -10008,
+                "z": -10175
+            },
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -36100.76171875,
+                "y": -35988.76171875,
+                "z": -36155.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "type": "Zone"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T11:44:58Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{6b5b54ef-5ecb-4b25-9e3b-ce2f55d35096}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-05-05T05:42:07Z",
+            "dimensions": {
+                "x": 0.079999998211860657,
+                "y": 0.20999999344348907,
+                "z": 0.4699999988079071
+            },
+            "dynamic": 1,
+            "id": "{16134993-200b-4106-ae40-20f08bf73d16}",
+            "modelURL": "http://hifi-public.s3.amazonaws.com/models/ping_pong_gun/ping_pong_gun.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -138.7950439453125,
+                "y": 0.11440753936767578,
+                "z": -182.77227783203125
+            },
+            "queryAACube": {
+                "scale": 0.52096062898635864,
+                "x": -139.05552673339844,
+                "y": -0.14607277512550354,
+                "z": -183.03276062011719
+            },
+            "rotation": {
+                "w": 0.11158919334411621,
+                "x": -0.47020673751831055,
+                "y": 0.80138862133026123,
+                "z": 0.35246813297271729
+            },
+            "script": "https://hifi-metaverse.s3-us-west-1.amazonaws.com/marketplace/contents/c3158b59-cb85-4e48-830f-087cefef439b/pingPongGun.js",
+            "shapeType": "box",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T11:53:42Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{d0b146f8-e7b4-4656-ba2d-7a7cba6cc904}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-04-12T15:58:26Z",
+            "dimensions": {
+                "x": 30000,
+                "y": 30000,
+                "z": 30000
+            },
+            "id": "{8219d033-94e2-47d4-bc67-44c5a71dc2ba}",
+            "marketplaceID": "2c012f6e-9592-4cea-aa14-e83d4ecf6c5b",
+            "name": "Fullmoon Skybox Zone",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 1470.8828125,
+                "y": -8,
+                "z": 4168.9052734375
+            },
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -24509.87890625,
+                "y": -25988.76171875,
+                "z": -21811.85546875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/FullMoon1024Compressed.jpg"
+            },
+            "stage": {
+                "hour": 20.5,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-25T11:28:50Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{6605aad2-6b41-4eb4-9c13-ce8e2a3b1173}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T11:53:42Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{8865349a-9036-4e05-9f46-0c64e512cab9}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-26T03:36:35Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{bffac954-c087-40bf-a2a5-9c63788af109}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-01T06:55:12Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{38638b93-509e-4728-a350-2adb9f9e3be1}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-23T14:20:01Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{af3e4c5d-3a60-4342-9f51-bd7038e898f2}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-03T11:38:25Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{a5afb3fe-36d5-41c7-83ca-2337f7552d23}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-23T14:59:20Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{e10a3848-b2f8-44e3-9e53-87b609a49bed}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-12-26T03:36:35Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{a99c63b6-ffe9-4f8e-90d2-50af1fcc05a3}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-01T06:48:39Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{2a3113de-063c-4c10-8ce4-abee3dcadcdd}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-04T16:43:51Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{1ce7226b-afe5-406a-8528-a7cfc3b2e182}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-01-01T06:55:12Z",
+            "dimensions": {
+                "x": 39.600002288818359,
+                "y": 39.600002288818359,
+                "z": 39.600002288818359
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070763111114502,
+                "x": -0.70713728666305542,
+                "y": -1.5258539860951714e-05,
+                "z": -1.5258539860951714e-05
+            },
+            "emitRadiusStart": 0.5,
+            "emitRate": 50,
+            "id": "{f264875c-8b57-414e-b591-6769b19e05dc}",
+            "maxParticles": 2000,
+            "name": "Particle Beam",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.014999999664723873,
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 68.589218139648438,
+                "x": -154.29461669921875,
+                "y": -42.294609069824219,
+                "z": -209.29461669921875
+            },
+            "radiusFinish": 0.014999999664723873,
+            "radiusSpread": 0.004999999888241291,
+            "radiusStart": 0.014999999664723873,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-content.s3.amazonaws.com/alan/dev/textures/grabsprite-3.png",
+            "type": "ParticleEffect",
+            "visible": 0
+        }
+    ],
+    "Version": 65
+}

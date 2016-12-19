@@ -1,0 +1,119 @@
+{
+    "Entities": [
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-09-09T01:54:48Z",
+            "dimensions": {
+                "x": 0.8502543568611145,
+                "y": 2.1107170581817627,
+                "z": 0.74018919467926025
+            },
+            "id": "{7eb261ba-dc8a-40d9-b744-00cc44abc522}",
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/DomainContent/Demo/Models/Joust2.fbx",
+            "name": "Joust",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 540.72003173828125,
+                "y": 495.16049194335938,
+                "z": 504.28347778320312
+            },
+            "queryAACube": {
+                "scale": 2.3928933143615723,
+                "x": 539.5235595703125,
+                "y": 493.96405029296875,
+                "z": 503.0870361328125
+            },
+            "rotation": {
+                "w": 0.90991067886352539,
+                "x": -1.52587890625e-05,
+                "y": -0.41481649875640869,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "type": "Model"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-04-06T18:35:54Z",
+            "dimensions": {
+                "x": 5.7215843200683594,
+                "y": 10.16851806640625,
+                "z": 31.919906616210938
+            },
+            "id": "{cfbb2917-e1ab-4028-b0b8-fc85a26e52c1}",
+            "keyLight": {
+                "ambientURL": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/ThickCloudsWater2.jpg"
+            },
+            "locked": 1,
+            "name": "Reverb Zone",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 541.81951904296875,
+                "y": 495.79135131835938,
+                "z": 507.89395141601562
+            },
+            "queryAACube": {
+                "scale": 33.985523223876953,
+                "x": 524.8267822265625,
+                "y": 478.798583984375,
+                "z": 490.90118408203125
+            },
+            "rotation": {
+                "w": 0.55556571483612061,
+                "x": -1.52587890625e-05,
+                "y": 0.83144879341125488,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://rawgit.com/ericrius1/hifi/roomAudio/examples/example/audio/smallRoom.js",
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/ThickCloudsWater2.jpg"
+            },
+            "type": "Zone"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-03-02T19:50:48Z",
+            "dimensions": {
+                "x": 30000,
+                "y": 30000,
+                "z": 30000
+            },
+            "id": "{d82202f9-cf95-4141-b42c-729f3c55a0a6}",
+            "keyLight": {
+                "ambientURL": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/ThickCloudsWater2.jpg"
+            },
+            "marketplaceID": "bf4d7415-93ca-43a0-a187-35fbb158bef9",
+            "name": "Thick Clouds Skybox Zone",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -25980.76171875,
+                "y": -25980.76171875,
+                "z": -25980.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/ThickCloudsWater2.jpg"
+            },
+            "stage": {
+                "latitude": 37.779998779296875,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone"
+        }
+    ],
+    "Version": 62
+}

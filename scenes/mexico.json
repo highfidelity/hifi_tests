@@ -1,0 +1,5011 @@
+{
+    "Entities": [
+        {
+            "clientOnly": 0,
+            "collidesWith": "dynamic,otherAvatar,",
+            "collisionMask": 18,
+            "collisionless": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon_phys.obj",
+            "created": "2016-11-02T23:35:45Z",
+            "density": 100,
+            "description": "A happy red balloon",
+            "dimensions": {
+                "x": 0.30743220448493958,
+                "y": 0.40930506587028503,
+                "z": 0.30704551935195923
+            },
+            "id": "{b2870d5f-e592-40b7-838a-40fe37c45e6d}",
+            "ignoreForCollisions": 1,
+            "marketplaceID": "82fc43ae-c33e-4eb2-b05e-dfb3d34c159e",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon.fbx",
+            "name": "Red balloon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -120.4052734375,
+                "y": -7.2741751670837402,
+                "z": -174.68721008300781
+            },
+            "queryAACube": {
+                "scale": 0.59692728519439697,
+                "x": -120.7037353515625,
+                "y": -7.572638988494873,
+                "z": -174.98567199707031
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": -0.48171204328536987,
+                "x": -0.81277179718017578,
+                "y": -0.12504768371582031,
+                "z": 0.30284583568572998
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabKey\":{\"refCount\":1,\"heartBeat\":1478199408962,\"gravity\":{\"x\":0,\"y\":-0.25,\"z\":0},\"collidesWith\":\"static,dynamic,kinematic,myAvatar,otherAvatar,\",\"collisionless\":0,\"dynamic\":1,\"parentID\":\"{00000000-0000-0000-0000-000000000000}\",\"parentJointIndex\":65535}}"
+        },
+        {
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,otherAvatar,",
+            "collisionMask": 19,
+            "collisionsWillMove": 1,
+            "created": "2016-11-02T21:46:32Z",
+            "dimensions": {
+                "x": 0.40000000596046448,
+                "y": 0.40000000596046448,
+                "z": 0.40000000596046448
+            },
+            "dynamic": 1,
+            "id": "{df940108-641c-4598-ac95-785d4f05b573}",
+            "marketplaceID": "6632b2ee-8a52-4545-a4fa-a59477b039f5",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/marblecollection/Plus.fbx",
+            "name": "Balls & Marbles - Switzerland",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -62.504257202148438,
+                "y": 49.430355072021484,
+                "z": -117.81648254394531
+            },
+            "queryAACube": {
+                "scale": 0.69282031059265137,
+                "x": -62.850666046142578,
+                "y": 49.083946228027344,
+                "z": -118.16289520263672
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 0.92336916923522949,
+                "x": 0.14067292213439941,
+                "y": 0.19557487964630127,
+                "z": 0.29881739616394043
+            },
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon_phys.obj",
+            "created": "2016-11-14T04:04:30Z",
+            "density": 100,
+            "description": "A happy red balloon",
+            "dimensions": {
+                "x": 3.0716848373413086,
+                "y": 2.5132520198822021,
+                "z": 1.8069887161254883
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -0.25,
+                "z": 0
+            },
+            "id": "{0049a001-c181-489d-96af-0eb84eed0770}",
+            "marketplaceID": "82fc43ae-c33e-4eb2-b05e-dfb3d34c159e",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon.fbx",
+            "name": "Red balloon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 345.2720947265625,
+                "y": -61.859024047851562,
+                "z": 337.31451416015625
+            },
+            "queryAACube": {
+                "scale": 4.3608360290527344,
+                "x": 343.0916748046875,
+                "y": -64.039443969726562,
+                "z": 335.13409423828125
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": -0.40086978673934937,
+                "x": -0.23506522178649902,
+                "y": -0.43291372060775757,
+                "z": 0.77239644527435303
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-20T17:18:34Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.0010000000474974513
+            },
+            "id": "{2eb11446-793a-433d-9f0a-b846d3475556}",
+            "locked": 1,
+            "name": "Point Light Base",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 310.85958862304688,
+                "y": 495.59185791015625,
+                "z": 315.28036499023438
+            },
+            "queryAACube": {
+                "scale": 0.28284448385238647,
+                "x": 310.71817016601562,
+                "y": 495.450439453125,
+                "z": 315.13894653320312
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0K8kC+U3T0vHsiAtPSNQBrIAAUB64qegAAAAQH9m4kAAAABAfqnTQAAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-03T23:20:04Z",
+            "description": "Drum Set Cymbal 2",
+            "dimensions": {
+                "x": 0.51723790168762207,
+                "y": 0.14577460289001465,
+                "z": 0.52338039875030518
+            },
+            "dynamic": 1,
+            "id": "{08105ee8-bd99-4e92-904a-6d65e802f3b0}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/cymbal2-head.fbx",
+            "name": "RX7-CRASH",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 310.16598510742188,
+                "y": 494.4302978515625,
+                "z": 315.6141357421875
+            },
+            "queryAACube": {
+                "scale": 0.75014150142669678,
+                "x": 309.79092407226562,
+                "y": 494.05523681640625,
+                "z": 315.23907470703125
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -0.0035553574562072754,
+                "y": -0.0005645751953125,
+                "z": -0.0027008652687072754
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collisionless": 1,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-11-03T19:06:40Z",
+            "description": "Drum Box",
+            "dimensions": {
+                "x": 0.91828072071075439,
+                "y": 2.5950355529785156,
+                "z": 1.5061792135238647
+            },
+            "id": "{b7cc460e-155d-45d0-a1e7-331e6615ae19}",
+            "ignoreForCollisions": 1,
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 309.31417846679688,
+                "y": 494.140625,
+                "z": 315.02664184570312
+            },
+            "queryAACube": {
+                "scale": 3.1378376483917236,
+                "x": 307.74526977539062,
+                "y": 492.57171630859375,
+                "z": 313.45773315429688
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/drumEntityScript.js",
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-20T17:20:45Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{8c23bcc6-88b7-4f38-a66e-3c4099d746e6}",
+            "locked": 1,
+            "name": "Point Light Base",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 315.31939697265625,
+                "y": 495.37005615234375,
+                "z": 308.05294799804688
+            },
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": 315.14617919921875,
+                "y": 495.19683837890625,
+                "z": 307.87973022460938
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-15T19:04:08Z",
+            "dimensions": {
+                "x": 0.40518903732299805,
+                "y": 0.29253196716308594,
+                "z": 0.49172863364219666
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{573b5c88-90af-4c75-bfac-eff56b6209c3}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "modelURL": "http://mpassets.highfidelity.com/a1deca2c-2c78-48e5-bebc-468919cb0408-v1/madhat2.fbx",
+            "name": "Party Hats - Purple Top Hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 313.2633056640625,
+                "y": 491.9490966796875,
+                "z": 306.45407104492188
+            },
+            "queryAACube": {
+                "scale": 0.70110636949539185,
+                "x": 312.91275024414062,
+                "y": 491.59854125976562,
+                "z": 306.103515625
+            },
+            "rotation": {
+                "w": -0.39980161190032959,
+                "x": -0.0060273408889770508,
+                "y": 0.91656363010406494,
+                "z": -0.0062714815139770508
+            },
+            "shapeType": "simple-hull",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-15T19:04:08Z",
+            "dimensions": {
+                "x": 0.60928690433502197,
+                "y": 0.27780798077583313,
+                "z": 0.31983721256256104
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{20c80eca-822a-497e-a9cf-3d874009d5ec}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "modelURL": "http://mpassets.highfidelity.com/a1deca2c-2c78-48e5-bebc-468919cb0408-v1/pirateHat.fbx",
+            "name": "Party Hats - Buccaneer",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 312.20614624023438,
+                "y": 491.9456787109375,
+                "z": 308.29165649414062
+            },
+            "queryAACube": {
+                "scale": 0.74209409952163696,
+                "x": 311.83511352539062,
+                "y": 491.57464599609375,
+                "z": 307.92062377929688
+            },
+            "rotation": {
+                "w": -0.44609749317169189,
+                "x": 0.049668073654174805,
+                "y": 0.88748002052307129,
+                "z": 0.10447847843170166
+            },
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "accelerationSpread": {
+                "x": 5,
+                "y": 0,
+                "z": 5
+            },
+            "clientOnly": 0,
+            "created": "2016-11-15T18:24:49Z",
+            "dimensions": {
+                "x": 6.0500001907348633,
+                "y": 6.0500001907348633,
+                "z": 6.0500001907348633
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": -1,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.7070915699005127,
+                "x": -0.70712202787399292,
+                "y": -1.5258869098033756e-05,
+                "z": -1.5258869098033756e-05
+            },
+            "emitRate": 100,
+            "emitSpeed": 1,
+            "id": "{bafe04dd-5ac2-4d3a-87dd-0ffb7dfaacbf}",
+            "lastEditedBy": "{4d3d4728-897f-4e3d-80c6-a7b0d5c54f3d}",
+            "lifespan": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 304.82293701171875,
+                "y": 494.3968505859375,
+                "z": 313.59750366210938
+            },
+            "queryAACube": {
+                "scale": 10.478907585144043,
+                "x": 299.58349609375,
+                "y": 489.15740966796875,
+                "z": 308.35806274414062
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "textures": "https://hifi-public.s3.amazonaws.com/alan/Particles/Particle-Sprite-Smoke-1.png",
+            "type": "ParticleEffect"
+        },
+        {
+            "backgroundColor": {
+                "blue": 64,
+                "green": 64,
+                "red": 64
+            },
+            "clientOnly": 0,
+            "created": "2016-11-15T17:49:52Z",
+            "dimensions": {
+                "x": 0.64999997615814209,
+                "y": 0.30000001192092896,
+                "z": 0.0099999997764825821
+            },
+            "id": "{a4674467-f012-4aa5-baae-5dcefed7073a}",
+            "lastEditedBy": "{4d3d4728-897f-4e3d-80c6-a7b0d5c54f3d}",
+            "lineHeight": 0.059999998658895493,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 303.67437744140625,
+                "y": 495.005126953125,
+                "z": 317.14205932617188
+            },
+            "queryAACube": {
+                "scale": 0.71596086025238037,
+                "x": 303.31640625,
+                "y": 494.64715576171875,
+                "z": 316.78408813476562
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "text": "some text",
+            "type": "Text"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 189,
+                "green": 115,
+                "red": 189
+            },
+            "created": "2016-11-15T17:38:57Z",
+            "dimensions": {
+                "x": 0.51361292600631714,
+                "y": 0.41655731201171875,
+                "z": 0.90822148323059082
+            },
+            "id": "{63ae7f50-c6f1-4c95-9435-8d02bd370271}",
+            "lastEditedBy": "{4d3d4728-897f-4e3d-80c6-a7b0d5c54f3d}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 303.51016235351562,
+                "y": 493.85494995117188,
+                "z": 315.95440673828125
+            },
+            "queryAACube": {
+                "scale": 1.1234698295593262,
+                "x": 302.94842529296875,
+                "y": 493.293212890625,
+                "z": 315.39266967773438
+            },
+            "rotation": {
+                "w": 0.66259253025054932,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": 0.74892807006835938
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0P+Eza4umEjbhI0F0HwmL68AAUB6eejAAAAAQH9swuAAAABAfuLbAAAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:01:29Z",
+            "description": "Drum Set T4",
+            "dimensions": {
+                "x": 0.7999345064163208,
+                "y": 0.37546050548553467,
+                "z": 0.82227444648742676
+            },
+            "dynamic": 1,
+            "id": "{f0b2876b-3c75-4bc9-b5e2-cb38a52d5262}",
+            "lastEditedBy": "{214875d0-2bc1-4f25-be22-89a7c3491b55}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/cymbal4-head.fbx",
+            "name": "RIDE01",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 303.6192626953125,
+                "y": 494.79754638671875,
+                "z": 319.17852783203125
+            },
+            "queryAACube": {
+                "scale": 1.2070629596710205,
+                "x": 303.01571655273438,
+                "y": 494.19400024414062,
+                "z": 318.57498168945312
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -0.0009613037109375,
+                "y": 0.0037689208984375,
+                "z": -0.0018463134765625
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T00:16:59Z",
+            "dimensions": {
+                "x": 3.1209921836853027,
+                "y": 0.045339658856391907,
+                "z": 4.6579294204711914
+            },
+            "id": "{a80b3ad4-3f3f-4b00-ac67-17280dd27cb9}",
+            "locked": 1,
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/jazmin/dev/events/DotD/props/skullrug_1.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 304.29318237304688,
+                "y": 499.64828491210938,
+                "z": 307.59979248046875
+            },
+            "queryAACube": {
+                "scale": 5.6070451736450195,
+                "x": 301.48965454101562,
+                "y": 496.84475708007812,
+                "z": 304.7962646484375
+            },
+            "rotation": {
+                "w": 0.49999237060546875,
+                "x": 0.49999237060546875,
+                "y": 0.49999237060546875,
+                "z": -0.50002288818359375
+            },
+            "shapeType": "simple-hull",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 150,
+                "green": 150,
+                "red": 150
+            },
+            "created": "2016-11-15T18:22:38Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 1.823028564453125,
+                "y": 1.823028564453125,
+                "z": 1.823028564453125
+            },
+            "id": "{3c58cb52-ec87-44ff-bc90-af8924dd21e3}",
+            "lastEditedBy": "{4d3d4728-897f-4e3d-80c6-a7b0d5c54f3d}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 305.10595703125,
+                "y": 495.00506591796875,
+                "z": 317.09759521484375
+            },
+            "queryAACube": {
+                "scale": 3.1575782299041748,
+                "x": 303.52716064453125,
+                "y": 493.42626953125,
+                "z": 315.518798828125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T17:47:45Z",
+            "dimensions": {
+                "x": 3.9140815734863281,
+                "y": 3.9502677917480469,
+                "z": 2.6983816623687744
+            },
+            "id": "{37476aad-bb82-4e62-987a-10fe1ce8c86a}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/skulls/skullbaby.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 313.48751831054688,
+                "y": 493.55703735351562,
+                "z": 306.49072265625
+            },
+            "queryAACube": {
+                "scale": 6.1810932159423828,
+                "x": 310.39697265625,
+                "y": 490.46649169921875,
+                "z": 303.40017700195312
+            },
+            "rotation": {
+                "w": 0.92385745048522949,
+                "x": -1.52587890625e-05,
+                "y": 0.38268101215362549,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "backgroundColor": {
+                "blue": 64,
+                "green": 64,
+                "red": 64
+            },
+            "clientOnly": 0,
+            "created": "2016-11-15T17:49:52Z",
+            "dimensions": {
+                "x": 0.64999997615814209,
+                "y": 0.30000001192092896,
+                "z": 0.0099999997764825821
+            },
+            "id": "{731c0d3d-3318-4ffa-b4d3-9bb55ad9b2ce}",
+            "lastEditedBy": "{4d3d4728-897f-4e3d-80c6-a7b0d5c54f3d}",
+            "lineHeight": 0.059999998658895493,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 305.54830932617188,
+                "y": 495.005126953125,
+                "z": 322.38943481445312
+            },
+            "queryAACube": {
+                "scale": 0.71596086025238037,
+                "x": 305.19033813476562,
+                "y": 494.64715576171875,
+                "z": 322.03146362304688
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "text": "some text",
+            "type": "Text"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T00:14:48Z",
+            "dimensions": {
+                "x": 3.1209921836853027,
+                "y": 0.045339658856391907,
+                "z": 4.6579294204711914
+            },
+            "id": "{e3c6c003-177b-4763-9cce-1989fd101b96}",
+            "locked": 1,
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/jazmin/dev/events/DotD/props/skullrug_1.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 304.44219970703125,
+                "y": 499.64828491210938,
+                "z": 331.453369140625
+            },
+            "queryAACube": {
+                "scale": 5.6070451736450195,
+                "x": 301.638671875,
+                "y": 496.84475708007812,
+                "z": 328.64984130859375
+            },
+            "rotation": {
+                "w": 0.49999237060546875,
+                "x": 0.49999237060546875,
+                "y": 0.49999237060546875,
+                "z": -0.50002288818359375
+            },
+            "shapeType": "simple-hull",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 207,
+                "green": 182,
+                "red": 196
+            },
+            "created": "2016-10-16T02:52:53Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 5.535369873046875,
+                "y": 5.535369873046875,
+                "z": 5.535369873046875
+            },
+            "falloffRadius": 0.5,
+            "id": "{32f61251-d53f-4df0-8f35-e28a15638a89}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "musicalityFloorCornerLeft",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 329.63766479492188,
+                "y": 492.4844970703125,
+                "z": 305.45074462890625
+            },
+            "queryAACube": {
+                "scale": 9.5875415802001953,
+                "x": 324.84390258789062,
+                "y": 487.69073486328125,
+                "z": 300.656982421875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T00:19:10Z",
+            "dimensions": {
+                "x": 0.28443890810012817,
+                "y": 0.0035149408504366875,
+                "z": 0.31933391094207764
+            },
+            "id": "{29d4db85-d562-4ffe-a5fd-4c916f3b0a46}",
+            "locked": 1,
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/jazmin/dev/events/DotD/props/skeleton_guitarist_decoration.fbx",
+            "name": "altar_pic",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.38665771484375,
+                "y": 492.02371215820312,
+                "z": 290.63177490234375
+            },
+            "queryAACube": {
+                "scale": 0.42765873670578003,
+                "x": 380.17282104492188,
+                "y": 491.80987548828125,
+                "z": 290.41793823242188
+            },
+            "rotation": {
+                "w": 0.77007710933685303,
+                "x": 0.62365150451660156,
+                "y": 0.09886324405670166,
+                "z": -0.090928494930267334
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T22:40:55Z",
+            "cutoff": 82.754753112792969,
+            "dimensions": {
+                "x": 2.8539741039276123,
+                "y": 2.8539741039276123,
+                "z": 2.8539741039276123
+            },
+            "exponent": 3,
+            "falloffRadius": 3,
+            "id": "{b0d1fff8-5cd6-4809-94c6-41e72882fca8}",
+            "intensity": 6,
+            "locked": 1,
+            "name": "light-altar",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.60971069335938,
+                "y": 492.29544067382812,
+                "z": 291.6287841796875
+            },
+            "queryAACube": {
+                "scale": 4.9432282447814941,
+                "x": 378.13809204101562,
+                "y": 489.82382202148438,
+                "z": 289.15716552734375
+            },
+            "rotation": {
+                "w": 0.56273746490478516,
+                "x": -0.82662701606750488,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T20:58:15Z",
+            "description": "Specify URL to your 48K 16bit PCM wav file & volume (0-1) in userData below",
+            "dimensions": {
+                "x": 0.64472943544387817,
+                "y": 0.64385020732879639,
+                "z": 0.26574596762657166
+            },
+            "id": "{c5d98e30-2fc4-402c-9f9f-8c6267939918}",
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/speakerGizmo.fbx",
+            "name": "audio_altar",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.67660522460938,
+                "y": 494.49087524414062,
+                "z": 292.284912109375
+            },
+            "queryAACube": {
+                "scale": 0.94912594556808472,
+                "x": 380.20205688476562,
+                "y": 494.01632690429688,
+                "z": 291.81036376953125
+            },
+            "rotation": {
+                "w": 0.87762260437011719,
+                "x": 0.4764629602432251,
+                "y": 0.045822858810424805,
+                "z": 0.024917960166931152
+            },
+            "script": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/soundLoopEmitter.js",
+            "type": "Model",
+            "userData": "{\"soundURL\":\"https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/audio/Juan_Rodrguez_song.wav\",\"soundVolume\":0.3,\"refreshInterval\":100}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T23:55:09Z",
+            "dimensions": {
+                "x": 1.0464078187942505,
+                "y": 0.10708501189947128,
+                "z": 0.36248260736465454
+            },
+            "id": "{c8aa5075-8129-44bb-88fc-5f31e5854746}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jimi/dayoftheDead/mariachiguitar.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.46096801757812,
+                "y": 491.6851806640625,
+                "z": 291.278076171875
+            },
+            "queryAACube": {
+                "scale": 1.1125781536102295,
+                "x": 379.90469360351562,
+                "y": 491.12890625,
+                "z": 290.7218017578125
+            },
+            "rotation": {
+                "w": 0.72185850143432617,
+                "x": 0.58754861354827881,
+                "y": -0.30061799287796021,
+                "z": -0.2081788182258606
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T22:56:13Z",
+            "cutoff": 82.754753112792969,
+            "dimensions": {
+                "x": 2.8539741039276123,
+                "y": 2.8539741039276123,
+                "z": 2.8539741039276123
+            },
+            "exponent": 3,
+            "falloffRadius": 3,
+            "id": "{46a9d260-d736-4b88-9282-8dcaafdaa5aa}",
+            "intensity": 6,
+            "locked": 1,
+            "name": "light-altar",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 376.521484375,
+                "y": 492.41110229492188,
+                "z": 292.60394287109375
+            },
+            "queryAACube": {
+                "scale": 4.9432282447814941,
+                "x": 374.04986572265625,
+                "y": 489.93948364257812,
+                "z": 290.13232421875
+            },
+            "rotation": {
+                "w": 0.56273746490478516,
+                "x": -0.82662701606750488,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/sombrero/Sombrero_phys.obj",
+            "created": "2016-10-17T20:49:28Z",
+            "dimensions": {
+                "x": 0.60982096195220947,
+                "y": 0.17225122451782227,
+                "z": 0.6000741720199585
+            },
+            "gravity": {
+                "x": 0,
+                "y": -7,
+                "z": 0
+            },
+            "id": "{a46e3f21-b8fc-4d96-a48c-7a0904062ff8}",
+            "locked": 1,
+            "marketplaceID": "1ebe893a-a20c-4925-96f3-407a45b1f745",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/Sombrero_1_dotd.fbx",
+            "name": "Sombrero - Yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 373.51397705078125,
+                "y": 490.57366943359375,
+                "z": 314.60635375976562
+            },
+            "queryAACube": {
+                "scale": 0.87272047996520996,
+                "x": 373.07760620117188,
+                "y": 490.13729858398438,
+                "z": 314.16998291015625
+            },
+            "rotation": {
+                "w": 0.78060579299926758,
+                "x": -0.096055567264556885,
+                "y": 0.61739528179168701,
+                "z": 0.014450311660766602
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":0.9,\"translation\":{\"x\":0,\"y\":0,\"z\":-0.1},\"rotation\":{\"x\":-27}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/sombrero/Sombrero_phys.obj",
+            "created": "2016-10-17T20:42:54Z",
+            "dimensions": {
+                "x": 0.60982096195220947,
+                "y": 0.17225122451782227,
+                "z": 0.6000741720199585
+            },
+            "gravity": {
+                "x": 0,
+                "y": -7,
+                "z": 0
+            },
+            "id": "{490166e1-a9af-4fdd-b1b4-16f7488769ff}",
+            "locked": 1,
+            "marketplaceID": "1ebe893a-a20c-4925-96f3-407a45b1f745",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/sombrero/Sombrero1.fbx",
+            "name": "Sombrero - Yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 373.49273681640625,
+                "y": 490.68490600585938,
+                "z": 314.58645629882812
+            },
+            "queryAACube": {
+                "scale": 0.87272047996520996,
+                "x": 373.05636596679688,
+                "y": 490.24853515625,
+                "z": 314.15008544921875
+            },
+            "rotation": {
+                "w": 0.0085602998733520508,
+                "x": 0.0010833740234375,
+                "y": 0.99969482421875,
+                "z": -0.022079825401306152
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":0.9,\"translation\":{\"x\":0,\"y\":0,\"z\":-0.1},\"rotation\":{\"x\":-27}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:48:39Z",
+            "dimensions": {
+                "x": 0.93514776229858398,
+                "y": 0.29036706686019897,
+                "z": 0.88118636608123779
+            },
+            "id": "{71d8f287-e522-4d8e-aa20-287e5a723f33}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat_dotd.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 372.834228515625,
+                "y": 490.70709228515625,
+                "z": 314.795166015625
+            },
+            "queryAACube": {
+                "scale": 1.3173093795776367,
+                "x": 372.17556762695312,
+                "y": 490.04843139648438,
+                "z": 314.13650512695312
+            },
+            "rotation": {
+                "w": 0.9807736873626709,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -0.19514763355255127
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "static-mesh",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":1,\"translation\":{\"x\":0,\"y\":-0.06,\"z\":-0.07},\"rotation\":{\"x\":-33}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/sombrero/Sombrero_phys.obj",
+            "created": "2016-10-18T22:53:35Z",
+            "dimensions": {
+                "x": 0.48570969700813293,
+                "y": 0.13719451427459717,
+                "z": 0.47794657945632935
+            },
+            "gravity": {
+                "x": 0,
+                "y": -7,
+                "z": 0
+            },
+            "id": "{550944cd-88b2-444d-bc59-abc7fc2a2dd3}",
+            "locked": 1,
+            "marketplaceID": "1ebe893a-a20c-4925-96f3-407a45b1f745",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/Sombrero_dotd.fbx",
+            "name": "Sombrero - Yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 374.03390502929688,
+                "y": 490.5537109375,
+                "z": 314.40878295898438
+            },
+            "queryAACube": {
+                "scale": 0.69510370492935181,
+                "x": 373.68634033203125,
+                "y": 490.20614624023438,
+                "z": 314.06121826171875
+            },
+            "rotation": {
+                "w": 0.33406579494476318,
+                "x": -0.031998157501220703,
+                "y": 0.93972682952880859,
+                "z": -0.065384924411773682
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":0.9,\"translation\":{\"x\":0,\"y\":0,\"z\":-0.1},\"rotation\":{\"x\":-27}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:40:43Z",
+            "dimensions": {
+                "x": 0.89765506982803345,
+                "y": 0.19701443612575531,
+                "z": 0.89797884225845337
+            },
+            "id": "{cf5ab5ca-3364-456c-8519-27bf656b72c7}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/mal_Hat_dotd.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 374.06036376953125,
+                "y": 490.68222045898438,
+                "z": 313.732421875
+            },
+            "queryAACube": {
+                "scale": 1.2848989963531494,
+                "x": 373.41790771484375,
+                "y": 490.03976440429688,
+                "z": 313.0899658203125
+            },
+            "rotation": {
+                "w": 0.55556571483612061,
+                "x": -4.57763671875e-05,
+                "y": 0.83144879341125488,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "static-mesh",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":1,\"translation\":{\"x\":0,\"y\":-0.01,\"z\":-0.11},\"rotation\":{\"x\":-33}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/sombrero/Sombrero_phys.obj",
+            "created": "2016-10-17T20:42:54Z",
+            "dimensions": {
+                "x": 0.48570969700813293,
+                "y": 0.13719451427459717,
+                "z": 0.47794657945632935
+            },
+            "gravity": {
+                "x": 0,
+                "y": -7,
+                "z": 0
+            },
+            "id": "{f31b1362-7135-40e1-b964-80508f3b32e7}",
+            "locked": 1,
+            "marketplaceID": "1ebe893a-a20c-4925-96f3-407a45b1f745",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/Sombrero_dotd.fbx",
+            "name": "Sombrero - Yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 374.03390502929688,
+                "y": 490.68478393554688,
+                "z": 314.40878295898438
+            },
+            "queryAACube": {
+                "scale": 0.69510370492935181,
+                "x": 373.68634033203125,
+                "y": 490.33721923828125,
+                "z": 314.06121826171875
+            },
+            "rotation": {
+                "w": 0.36266112327575684,
+                "x": 0.16700994968414307,
+                "y": 0.91589224338531494,
+                "z": -0.041153609752655029
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":0.9,\"translation\":{\"x\":0,\"y\":0,\"z\":-0.1},\"rotation\":{\"x\":-27}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:40:43Z",
+            "dimensions": {
+                "x": 0.89765506982803345,
+                "y": 0.19701443612575531,
+                "z": 0.89797884225845337
+            },
+            "id": "{7f32cc75-9c47-4391-9d7b-ea6b77d37b32}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/mal_Hat_dotd.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 374.02700805664062,
+                "y": 490.55120849609375,
+                "z": 313.71682739257812
+            },
+            "queryAACube": {
+                "scale": 1.2848989963531494,
+                "x": 373.38455200195312,
+                "y": 489.90875244140625,
+                "z": 313.07437133789062
+            },
+            "rotation": {
+                "w": 0.55452811717987061,
+                "x": -0.05098038911819458,
+                "y": 0.82989239692687988,
+                "z": -0.034042894840240479
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "static-mesh",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":1,\"translation\":{\"x\":0,\"y\":-0.01,\"z\":-0.11},\"rotation\":{\"x\":-33}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:42:54Z",
+            "dimensions": {
+                "x": 0.89765506982803345,
+                "y": 0.19701443612575531,
+                "z": 0.89797884225845337
+            },
+            "id": "{e18d4674-3d76-4bd3-8260-e720ea3eb15c}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/mal_Hat_dotd.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 374.07223510742188,
+                "y": 490.80355834960938,
+                "z": 313.7359619140625
+            },
+            "queryAACube": {
+                "scale": 1.2848989963531494,
+                "x": 373.42977905273438,
+                "y": 490.16110229492188,
+                "z": 313.093505859375
+            },
+            "rotation": {
+                "w": 0.55504691600799561,
+                "x": 0.036240220069885254,
+                "y": 0.83065533638000488,
+                "z": 0.024216055870056152
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "static-mesh",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":1,\"translation\":{\"x\":0,\"y\":-0.01,\"z\":-0.11},\"rotation\":{\"x\":-33}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:50:50Z",
+            "dimensions": {
+                "x": 0.93514776229858398,
+                "y": 0.29036706686019897,
+                "z": 0.88118636608123779
+            },
+            "id": "{2c457e4a-ded2-495e-ae38-bf196759e2d9}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat_dotd.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 372.61337280273438,
+                "y": 490.58087158203125,
+                "z": 314.91812133789062
+            },
+            "queryAACube": {
+                "scale": 1.3173093795776367,
+                "x": 371.9547119140625,
+                "y": 489.92221069335938,
+                "z": 314.25946044921875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "static-mesh",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"HeadTop_End\",\"scale\":1,\"translation\":{\"x\":0,\"y\":-0.06,\"z\":-0.07},\"rotation\":{\"x\":-33}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:56:13Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 10.94638729095459,
+                "y": 10.94638729095459,
+                "z": 10.94638729095459
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{55cbfcde-3289-4a44-8b51-cbf8b03f5ccc}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "light-bridge",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 363.19528198242188,
+                "y": 492.51815795898438,
+                "z": 303.2791748046875
+            },
+            "queryAACube": {
+                "scale": 18.959699630737305,
+                "x": 353.71542358398438,
+                "y": 483.03829956054688,
+                "z": 293.79931640625
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:19:05Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 9.4808111190795898,
+                "y": 9.4808111190795898,
+                "z": 9.4808111190795898
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{1703bbd9-e56d-4b73-a984-eb6d40761242}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "Lamp-Large-tree4",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 368.63430786132812,
+                "y": 493.08877563476562,
+                "z": 309.9342041015625
+            },
+            "queryAACube": {
+                "scale": 16.421247482299805,
+                "x": 360.42367553710938,
+                "y": 484.87814331054688,
+                "z": 301.72357177734375
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 42,
+                "green": 61,
+                "red": 235
+            },
+            "created": "2016-10-28T22:51:51Z",
+            "dimensions": {
+                "x": 4.2561159133911133,
+                "y": 0.61226195096969604,
+                "z": 5.8354015350341797
+            },
+            "id": "{e83c234e-d8e4-43b2-95cb-e6f52f539ea9}",
+            "locked": 1,
+            "name": "platform3",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 355.59555053710938,
+                "y": 491.115966796875,
+                "z": 310.73110961914062
+            },
+            "queryAACube": {
+                "scale": 7.248537540435791,
+                "x": 351.97128295898438,
+                "y": 487.49169921875,
+                "z": 307.10684204101562
+            },
+            "rotation": {
+                "w": 0.999755859375,
+                "x": -1.52587890625e-05,
+                "y": 0.021805167198181152,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 207,
+                "green": 182,
+                "red": 196
+            },
+            "created": "2016-10-16T02:48:30Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 6.71826171875,
+                "y": 6.71826171875,
+                "z": 6.71826171875
+            },
+            "falloffRadius": 0.5,
+            "id": "{2de19231-e41b-429c-837e-8e1a615ccd7f}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "musicalityFloorCornerRight",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 329.37469482421875,
+                "y": 492.260986328125,
+                "z": 333.66842651367188
+            },
+            "queryAACube": {
+                "scale": 11.636370658874512,
+                "x": 323.5565185546875,
+                "y": 486.44281005859375,
+                "z": 327.85025024414062
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T00:12:37Z",
+            "dimensions": {
+                "x": 1.37890625,
+                "y": 0.72984391450881958,
+                "z": 2.35097336769104
+            },
+            "id": "{0f1495db-46ab-45c8-867a-8a4e1e4bade7}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/ozan/dev/sets/bitGem/cemetary/coffinDeep.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 377.7952880859375,
+                "y": 491.24801635742188,
+                "z": 350.01361083984375
+            },
+            "queryAACube": {
+                "scale": 2.8215475082397461,
+                "x": 376.384521484375,
+                "y": 489.83724975585938,
+                "z": 348.60284423828125
+            },
+            "rotation": {
+                "w": 0.94259560108184814,
+                "x": -1.52587890625e-05,
+                "y": -0.33394366502761841,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-17T08:31:05Z",
+            "dimensions": {
+                "x": 0.0010000000474974513,
+                "y": 0.20000000298023224,
+                "z": 0.0010000000474974513
+            },
+            "id": "{e919764b-b20e-419b-9273-2fcbd59294ac}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.06268310546875,
+                "y": 497.23294067382812,
+                "z": 322.285888671875
+            },
+            "queryAACube": {
+                "scale": 0.20000499486923218,
+                "x": 379.96267700195312,
+                "y": 497.1329345703125,
+                "z": 322.18588256835938
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:56:13Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 9.4808111190795898,
+                "y": 9.4808111190795898,
+                "z": 9.4808111190795898
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{9e17fa3b-5734-41f8-9b7d-4150d27c4709}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "Lamp-Large-tree3",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 368.08346557617188,
+                "y": 493.08877563476562,
+                "z": 328.77432250976562
+            },
+            "queryAACube": {
+                "scale": 16.421247482299805,
+                "x": 359.87283325195312,
+                "y": 484.87814331054688,
+                "z": 320.56369018554688
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:56:13Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 13.606648445129395,
+                "y": 13.606648445129395,
+                "z": 13.606648445129395
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{c7c1ef4d-410a-44f0-a72a-749f6d842ba0}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "light-bridge",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 365.10443115234375,
+                "y": 493.08877563476562,
+                "z": 336.4541015625
+            },
+            "queryAACube": {
+                "scale": 23.567407608032227,
+                "x": 353.32073974609375,
+                "y": 481.30508422851562,
+                "z": 324.67041015625
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 42,
+                "green": 180,
+                "red": 235
+            },
+            "created": "2016-10-28T23:07:08Z",
+            "dimensions": {
+                "x": 4.2561159133911133,
+                "y": 0.61226195096969604,
+                "z": 5.8354015350341797
+            },
+            "id": "{415b3566-4c1f-4b76-90c4-96e125d45a22}",
+            "locked": 1,
+            "name": "platform2",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 354.78439331054688,
+                "y": 491.115966796875,
+                "z": 328.2271728515625
+            },
+            "queryAACube": {
+                "scale": 7.248537540435791,
+                "x": 351.16012573242188,
+                "y": 487.49169921875,
+                "z": 324.6029052734375
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -1.52587890625e-05,
+                "y": 0.0043488740921020508,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0IAHOOomUUEPrUGiIphlY/oAAUB6g+DAAAAAQH9lwUAAAABAfu+f4AAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:03:40Z",
+            "description": "Drum Set B1",
+            "dimensions": {
+                "x": 0.52639341354370117,
+                "y": 0.36949896812438965,
+                "z": 0.54592406749725342
+            },
+            "dynamic": 1,
+            "id": "{f73e3ba4-10e0-4715-ad93-d55be0e89682}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/drum1-head.fbx",
+            "name": "SNARE01",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 304.24224853515625,
+                "y": 494.35977172851562,
+                "z": 319.97665405273438
+            },
+            "queryAACube": {
+                "scale": 0.84359508752822876,
+                "x": 303.82046508789062,
+                "y": 493.93798828125,
+                "z": 319.55487060546875
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": 0.0033111572265625,
+                "y": 0.0006256103515625,
+                "z": 0.0023956298828125
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 207,
+                "green": 182,
+                "red": 196
+            },
+            "created": "2016-10-16T02:59:26Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 17.989105224609375,
+                "y": 17.989105224609375,
+                "z": 17.989105224609375
+            },
+            "falloffRadius": 10,
+            "id": "{dfcf9975-b0c1-41f7-bf94-176c9b218623}",
+            "locked": 1,
+            "name": "musicalityFloorCenter",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 320.10873413085938,
+                "y": 493.096923828125,
+                "z": 320.61611938476562
+            },
+            "queryAACube": {
+                "scale": 31.158044815063477,
+                "x": 304.52972412109375,
+                "y": 477.51791381835938,
+                "z": 305.037109375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-30T19:34:27Z",
+            "description": "Specify URL to your 48K 16bit PCM wav file & volume (0-1) in userData below",
+            "dimensions": {
+                "x": 0.64472943544387817,
+                "y": 0.64385020732879639,
+                "z": 0.26574596762657166
+            },
+            "id": "{a8cae081-ec54-4b85-aefb-4d6d5a250b45}",
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/speakerGizmo.fbx",
+            "name": "audio_gazebo",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 354.30947875976562,
+                "y": 494.68795776367188,
+                "z": 319.90435791015625
+            },
+            "queryAACube": {
+                "scale": 0.94912594556808472,
+                "x": 353.83493041992188,
+                "y": 494.21340942382812,
+                "z": 319.4298095703125
+            },
+            "rotation": {
+                "w": 0.31697571277618408,
+                "x": -1.52587890625e-05,
+                "y": -0.94842451810836792,
+                "z": -1.52587890625e-05
+            },
+            "script": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/soundLoopEmitter.js",
+            "type": "Model",
+            "userData": "{\"soundURL\":\"https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/audio/lenguaverde_song.wav\",\"soundVolume\":0.35,\"refreshInterval\":100}",
+            "visible": 0
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0Bxz09pxuEMgu4Aiob1W+OYAAUB6h+WAAAAAQH9wzIAAAABAfu/HAAAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:03:40Z",
+            "description": "Drum Set Cymbal 2",
+            "dimensions": {
+                "x": 0.51723790168762207,
+                "y": 0.14577460289001465,
+                "z": 0.52338039875030518
+            },
+            "dynamic": 1,
+            "id": "{4efe4962-cd1f-4303-bc88-a34257524cc5}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/cymbal2-head.fbx",
+            "name": "RX7-CRASH",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 304.493408203125,
+                "y": 495.05001831054688,
+                "z": 319.9862060546875
+            },
+            "queryAACube": {
+                "scale": 0.75014150142669678,
+                "x": 304.11834716796875,
+                "y": 494.67495727539062,
+                "z": 319.61114501953125
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -0.0029755234718322754,
+                "y": -0.0020905137062072754,
+                "z": -0.0024872422218322754
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-11-04T15:54:02Z",
+            "dimensions": {
+                "x": 3.0204930305480957,
+                "y": 0.11426353454589844,
+                "z": 9.3051471710205078
+            },
+            "id": "{9b868a69-bb36-48a5-9499-716ff1e49871}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 337.03802490234375,
+                "y": 491.0511474609375,
+                "z": 319.72055053710938
+            },
+            "queryAACube": {
+                "scale": 9.7837724685668945,
+                "x": 332.14614868164062,
+                "y": 486.15927124023438,
+                "z": 314.82867431640625
+            },
+            "rotation": {
+                "w": 0.9855344295501709,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -0.16939038038253784
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T20:38:35Z",
+            "dimensions": {
+                "x": 3.1105926036834717,
+                "y": 0.045188583433628082,
+                "z": 4.6424083709716797
+            },
+            "id": "{048eec5e-502f-47fe-aa57-4c54a55cbe2c}",
+            "locked": 1,
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/jazmin/dev/events/DotD/props/skeleton_guitarist_decoration.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 303.28604125976562,
+                "y": 500.25701904296875,
+                "z": 319.60623168945312
+            },
+            "queryAACube": {
+                "scale": 5.5883612632751465,
+                "x": 300.49185180664062,
+                "y": 497.46282958984375,
+                "z": 316.81204223632812
+            },
+            "rotation": {
+                "w": 0.49999237060546875,
+                "x": 0.49999237060546875,
+                "y": 0.49999237060546875,
+                "z": -0.50002288818359375
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-30T02:16:48Z",
+            "description": "Specify URL to your 48K 16bit PCM wav file & volume (0-1) in userData below",
+            "dimensions": {
+                "x": 1.2985901832580566,
+                "y": 1.2968193292617798,
+                "z": 0.53525567054748535
+            },
+            "id": "{6010820c-c41d-44ea-84f5-73f4dc07a936}",
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/speakerGizmo.fbx",
+            "name": "audio_fountain",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.51580810546875,
+                "y": 491.288818359375,
+                "z": 319.6651611328125
+            },
+            "queryAACube": {
+                "scale": 1.9116944074630737,
+                "x": 379.55996704101562,
+                "y": 490.33297729492188,
+                "z": 318.70932006835938
+            },
+            "rotation": {
+                "w": 0.55693900585174561,
+                "x": -0.41399252414703369,
+                "y": -0.42928206920623779,
+                "z": 0.57799649238586426
+            },
+            "script": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/soundLoopEmitter.js",
+            "type": "Model",
+            "userData": "{\"soundURL\":\"https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/audio/taurindb_song.wav\",\"soundVolume\":0.35,\"refreshInterval\":100}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:01:29Z",
+            "description": "Drum Set Cymbal 2",
+            "dimensions": {
+                "x": 0.51723790168762207,
+                "y": 0.14577460289001465,
+                "z": 0.52338039875030518
+            },
+            "dynamic": 1,
+            "id": "{db24d42e-da78-416c-8c19-861b1011632f}",
+            "lastEditedBy": "{214875d0-2bc1-4f25-be22-89a7c3491b55}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/cymbal2-head.fbx",
+            "name": "RX7-CRASH",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 305.47341918945312,
+                "y": 495.05557250976562,
+                "z": 319.643798828125
+            },
+            "queryAACube": {
+                "scale": 0.75014150142669678,
+                "x": 305.09835815429688,
+                "y": 494.68051147460938,
+                "z": 319.26873779296875
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -0.0011749267578125,
+                "y": 0.0012664794921875,
+                "z": 0.0039826631546020508
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{}",
+            "visible": 0
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0JHlSRKs+kF+gKaVNM2NiQYAAUB6fpUAAAAAQH9x/0AAAABAfuleAAAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:01:29Z",
+            "description": "Drum Set T3",
+            "dimensions": {
+                "x": 0.65370982885360718,
+                "y": 0.31387364864349365,
+                "z": 0.690590500831604
+            },
+            "dynamic": 1,
+            "id": "{42265b88-c795-46e8-9e2a-dcaf7c392ae6}",
+            "lastEditedBy": "{214875d0-2bc1-4f25-be22-89a7c3491b55}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/cymbal3-head.fbx",
+            "name": "RX17-CRASH",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 303.911376953125,
+                "y": 495.12481689453125,
+                "z": 319.58544921875
+            },
+            "queryAACube": {
+                "scale": 1.0013833045959473,
+                "x": 303.41067504882812,
+                "y": 494.62411499023438,
+                "z": 319.08474731445312
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-11-04T15:58:24Z",
+            "dimensions": {
+                "x": 3.8705112934112549,
+                "y": 0.11426353454589844,
+                "z": 4.6035175323486328
+            },
+            "id": "{4ef98fdb-2361-4484-a97b-5614bfeea716}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 360.70980834960938,
+                "y": 489.9520263671875,
+                "z": 319.31729125976562
+            },
+            "queryAACube": {
+                "scale": 6.0155038833618164,
+                "x": 357.70205688476562,
+                "y": 486.94427490234375,
+                "z": 316.30953979492188
+            },
+            "rotation": {
+                "w": 0.9855344295501709,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -0.16939038038253784
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collisionless": 1,
+            "created": "2016-11-14T22:03:40Z",
+            "description": "Drum Set Base",
+            "dimensions": {
+                "x": 3.0173230171203613,
+                "y": 1.8752377033233643,
+                "z": 1.8151965141296387
+            },
+            "id": "{e6d2ca24-929a-476b-baa1-23616bee107a}",
+            "ignoreForCollisions": 1,
+            "lastEditedBy": "{4d3d4728-897f-4e3d-80c6-a7b0d5c54f3d}",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/drums.fbx",
+            "name": "Drum Set",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 305.60910034179688,
+                "y": 494.32711791992188,
+                "z": 320.10751342773438
+            },
+            "queryAACube": {
+                "scale": 3.9894478321075439,
+                "x": 303.6143798828125,
+                "y": 492.3323974609375,
+                "z": 318.11279296875
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -4.57763671875e-05,
+                "y": 0.70708787441253662,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "collisionless": 1,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-11-14T22:01:29Z",
+            "description": "Drum Box",
+            "dimensions": {
+                "x": 0.91828072071075439,
+                "y": 2.5950355529785156,
+                "z": 1.5061792135238647
+            },
+            "id": "{e91571b9-67e3-46cd-841c-3dbb28349e75}",
+            "ignoreForCollisions": 1,
+            "lastEditedBy": "{214875d0-2bc1-4f25-be22-89a7c3491b55}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 304.71066284179688,
+                "y": 494.70663452148438,
+                "z": 319.31680297851562
+            },
+            "queryAACube": {
+                "scale": 3.1378376483917236,
+                "x": 303.14175415039062,
+                "y": 493.13772583007812,
+                "z": 317.74789428710938
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/drumEntityScript.js",
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 42,
+                "green": 180,
+                "red": 235
+            },
+            "created": "2016-10-28T22:49:40Z",
+            "dimensions": {
+                "x": 1.4397834539413452,
+                "y": 0.58700275421142578,
+                "z": 3.9077768325805664
+            },
+            "id": "{593f644f-eb0e-4406-824a-14a08c1bf6f8}",
+            "locked": 1,
+            "name": "platform2",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 361.24481201171875,
+                "y": 489.39291381835938,
+                "z": 319.30389404296875
+            },
+            "queryAACube": {
+                "scale": 4.205742359161377,
+                "x": 359.14193725585938,
+                "y": 487.2900390625,
+                "z": 317.20101928710938
+            },
+            "rotation": {
+                "w": 0.9855344295501709,
+                "x": 0.0007171630859375,
+                "y": 0.0042878389358520508,
+                "z": -0.16942089796066284
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0G/4IGu4e0unv0LvwgHgn18AAUB6ajqgAAAAQH9srEAAAABAfuhUoAAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:03:40Z",
+            "description": "Drum Set T4",
+            "dimensions": {
+                "x": 0.7999345064163208,
+                "y": 0.37546050548553467,
+                "z": 0.82227444648742676
+            },
+            "dynamic": 1,
+            "id": "{01d380f2-39e4-43c4-ac91-5fdd3798acf1}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/cymbal4-head.fbx",
+            "name": "RIDE01",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 302.63919067382812,
+                "y": 494.7919921875,
+                "z": 319.52078247070312
+            },
+            "queryAACube": {
+                "scale": 1.2070629596710205,
+                "x": 302.03564453125,
+                "y": 494.18844604492188,
+                "z": 318.917236328125
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -0.0013885498046875,
+                "y": 0.0034637451171875,
+                "z": -0.0017242431640625
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "actionData": "AAAAAQAAAGoH0CarDdNWfE7/kU99BuU/9pIAAUB6bw6AAAAAQH9jOcAAAABAfups4AAAAD+5mZmgAAAAAb7wAAAAAAAAvvAAAAAAAAC+8AAAAAAAAD/wAAAAAAAAP7mZmaAAAAABAAAAAAAAAAD/////",
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-11-14T22:03:40Z",
+            "description": "Drum Set B4",
+            "dimensions": {
+                "x": 0.64289271831512451,
+                "y": 0.58302426338195801,
+                "z": 0.6204296350479126
+            },
+            "dynamic": 1,
+            "id": "{757734b2-9819-4cc6-ba9f-1dc6476513db}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "modelURL": "https://hifi-content.s3.amazonaws.com/lincoln/drum/drum4-head.fbx",
+            "name": "TOM3",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 302.941162109375,
+                "y": 494.20147705078125,
+                "z": 319.65170288085938
+            },
+            "queryAACube": {
+                "scale": 1.0668463706970215,
+                "x": 302.40774536132812,
+                "y": 493.66806030273438,
+                "z": 319.1182861328125
+            },
+            "rotation": {
+                "w": 0.999969482421875,
+                "x": -0.0019073486328125,
+                "y": -0.0010833740234375,
+                "z": 0.0036773681640625
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/lincoln/ballSpring.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T00:23:33Z",
+            "dimensions": {
+                "x": 3.1211967468261719,
+                "y": 0.045342624187469482,
+                "z": 4.658233642578125
+            },
+            "id": "{aa80e81e-f7e1-419a-8ce5-c583643c7863}",
+            "locked": 1,
+            "modelURL": "https://s3-us-west-1.amazonaws.com/hifi-content/jazmin/dev/events/DotD/props/skullrug_2.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 354.25030517578125,
+                "y": 490.68438720703125,
+                "z": 319.39987182617188
+            },
+            "queryAACube": {
+                "scale": 5.6074118614196777,
+                "x": 351.44659423828125,
+                "y": 487.88067626953125,
+                "z": 316.59616088867188
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -1.52587890625e-05,
+                "y": 0.70708787441253662,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "collisionless": 1,
+            "created": "2016-10-27T23:38:07Z",
+            "description": "Specify URL to your 48K 16bit PCM wav file & volume (0-1) in userData below",
+            "dimensions": {
+                "x": 11.087821960449219,
+                "y": 11.072701454162598,
+                "z": 4.5702023506164551
+            },
+            "id": "{c0f8cf24-807c-4d37-8b87-5be6dfbc03bf}",
+            "ignoreForCollisions": 1,
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/speakerGizmo.fbx",
+            "name": "cricket_audio",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 371.034912109375,
+                "y": 469.96173095703125,
+                "z": 407.498779296875
+            },
+            "queryAACube": {
+                "scale": 16.322723388671875,
+                "x": 362.87353515625,
+                "y": 461.80035400390625,
+                "z": 399.33740234375
+            },
+            "rotation": {
+                "w": -0.70711833238601685,
+                "x": -1.52587890625e-05,
+                "y": -0.70711833238601685,
+                "z": -4.57763671875e-05
+            },
+            "script": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/soundLoopEmitter.js",
+            "type": "Model",
+            "userData": "{\"soundURL\":\"http://mpassets.highfidelity.com/456b622c-caba-4c6e-80b3-3c015439cee7-v1/Mod_CCBY_253664__cliftonmcarlson__night-ambience-w-crickets.wav\",\"soundVolume\":0,\"refreshInterval\":100}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon_phys.obj",
+            "created": "2016-11-02T20:10:25Z",
+            "density": 100,
+            "description": "A happy red balloon",
+            "dimensions": {
+                "x": 0.30743220448493958,
+                "y": 0.40930506587028503,
+                "z": 0.30704551935195923
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -0.25,
+                "z": 0
+            },
+            "id": "{f3c6e7fe-147c-452b-9e4c-33c4223df5bf}",
+            "marketplaceID": "82fc43ae-c33e-4eb2-b05e-dfb3d34c159e",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon.fbx",
+            "name": "Red balloon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 395.6221923828125,
+                "y": 434.18096923828125,
+                "z": 312.2764892578125
+            },
+            "queryAACube": {
+                "scale": 0.59692728519439697,
+                "x": 395.32373046875,
+                "y": 433.88250732421875,
+                "z": 311.97802734375
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 0.96209657192230225,
+                "x": -0.16331732273101807,
+                "y": 0.20372319221496582,
+                "z": 0.078477144241333008
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon_phys.obj",
+            "created": "2016-11-02T20:10:25Z",
+            "density": 100,
+            "description": "A happy red balloon",
+            "dimensions": {
+                "x": 0.30743220448493958,
+                "y": 0.40930506587028503,
+                "z": 0.30704551935195923
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -0.25,
+                "z": 0
+            },
+            "id": "{2d2ca2a0-f53e-4a92-ad06-eb0e924a91f5}",
+            "marketplaceID": "82fc43ae-c33e-4eb2-b05e-dfb3d34c159e",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/Examples%20Content/production/Balloon/redBalloon.fbx",
+            "name": "Red balloon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 388.34121704101562,
+                "y": 407.03759765625,
+                "z": 330.90377807617188
+            },
+            "queryAACube": {
+                "scale": 0.59692728519439697,
+                "x": 388.04275512695312,
+                "y": 406.7391357421875,
+                "z": 330.60531616210938
+            },
+            "restitution": 0.99000000953674316,
+            "rotation": {
+                "w": 0.035721421241760254,
+                "x": -0.23424124717712402,
+                "y": -0.2231326699256897,
+                "z": 0.94552528858184814
+            },
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:15:52Z",
+            "dimensions": {
+                "x": 0.70613569021224976,
+                "y": 0.89480334520339966,
+                "z": 0.15200304985046387
+            },
+            "id": "{55e4e9a3-9c5c-4295-8d21-cf14348c531f}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/masks/mask_purple.fbx",
+            "name": "mask_purple",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 387.13302612304688,
+                "y": 490.59896850585938,
+                "z": 313.02194213867188
+            },
+            "queryAACube": {
+                "scale": 1.1499589681625366,
+                "x": 386.55804443359375,
+                "y": 490.02398681640625,
+                "z": 312.44696044921875
+            },
+            "rotation": {
+                "w": 0.56054019927978516,
+                "x": -0.47887390851974487,
+                "y": -0.51375603675842285,
+                "z": -0.43880367279052734
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"Head\",\"scale\":0.3,\"translation\":{\"x\":0,\"y\":0.07,\"z\":0.12}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:15:52Z",
+            "dimensions": {
+                "x": 0.43979799747467041,
+                "y": 0.55730468034744263,
+                "z": 0.094671085476875305
+            },
+            "id": "{67e6642f-2fee-4e41-8c24-3c297b1ed502}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/masks/mask_purple.fbx",
+            "name": "mask_purple",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 387.01199340820312,
+                "y": 490.70852661132812,
+                "z": 313.17236328125
+            },
+            "queryAACube": {
+                "scale": 0.71622163057327271,
+                "x": 386.65386962890625,
+                "y": 490.35040283203125,
+                "z": 312.81423950195312
+            },
+            "rotation": {
+                "w": 0.82281219959259033,
+                "x": -0.51424431800842285,
+                "y": -0.15880066156387329,
+                "z": -0.18266576528549194
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"Head\",\"scale\":0.3,\"translation\":{\"x\":0,\"y\":0.07,\"z\":0.12}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:33:21Z",
+            "dimensions": {
+                "x": 0.43979799747467041,
+                "y": 0.55730468034744263,
+                "z": 0.094671085476875305
+            },
+            "id": "{9243cde6-6a06-4536-8092-aa73b12b5d4b}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/masks/mask_yellow.fbx",
+            "name": "mask_yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 387.42111206054688,
+                "y": 490.66024780273438,
+                "z": 313.7039794921875
+            },
+            "queryAACube": {
+                "scale": 0.71622163057327271,
+                "x": 387.06298828125,
+                "y": 490.3021240234375,
+                "z": 313.34585571289062
+            },
+            "rotation": {
+                "w": 0.78460359573364258,
+                "x": -0.43514150381088257,
+                "y": -0.37105363607406616,
+                "z": -0.2394903302192688
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "scriptTimestamp": 1477702648194,
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"Head\",\"scale\":0.3,\"translation\":{\"x\":0,\"y\":0.07,\"z\":0.12}},\"grabbableKey\":{\"wantsTrigger\":true,\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:40:43Z",
+            "dimensions": {
+                "x": 0.6707872748374939,
+                "y": 0.20828209817409515,
+                "z": 0.63208049535751343
+            },
+            "id": "{bcfce888-184d-40c4-8180-039e999df17a}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat.fbx",
+            "name": "fem_hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 389.733642578125,
+                "y": 490.46212768554688,
+                "z": 313.29925537109375
+            },
+            "queryAACube": {
+                "scale": 0.94491416215896606,
+                "x": 389.26119995117188,
+                "y": 489.98968505859375,
+                "z": 312.82681274414062
+            },
+            "rotation": {
+                "w": 0.78655683994293213,
+                "x": 0.42024874687194824,
+                "y": -0.29478901624679565,
+                "z": 0.34312963485717773
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:42:54Z",
+            "dimensions": {
+                "x": 0.76937121152877808,
+                "y": 0.2388928085565567,
+                "z": 0.72497588396072388
+            },
+            "id": "{2e01bbd5-5093-4f0c-8aac-c80f6f9d4335}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat.fbx",
+            "name": "fem_hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 390.13546752929688,
+                "y": 490.88235473632812,
+                "z": 312.58108520507812
+            },
+            "queryAACube": {
+                "scale": 1.0837858915328979,
+                "x": 389.59356689453125,
+                "y": 490.3404541015625,
+                "z": 312.0391845703125
+            },
+            "rotation": {
+                "w": 0.74450290203094482,
+                "x": -0.21925687789916992,
+                "y": -0.63051807880401611,
+                "z": 0.011520504951477051
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-26T00:35:42Z",
+            "dimensions": {
+                "x": 0.76937121152877808,
+                "y": 0.2388928085565567,
+                "z": 0.72497588396072388
+            },
+            "id": "{fe329cb3-5eb6-44d5-bef1-74063a3cf8bc}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat.fbx",
+            "name": "fem_hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 390.13677978515625,
+                "y": 490.8077392578125,
+                "z": 312.65316772460938
+            },
+            "queryAACube": {
+                "scale": 1.0837858915328979,
+                "x": 389.59487915039062,
+                "y": 490.26583862304688,
+                "z": 312.11126708984375
+            },
+            "rotation": {
+                "w": 0.9722895622253418,
+                "x": -0.073136508464813232,
+                "y": -0.2214236855506897,
+                "z": 0.015701532363891602
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/hatAttachEntity.js?1",
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:40:43Z",
+            "dimensions": {
+                "x": 0.76937121152877808,
+                "y": 0.2388928085565567,
+                "z": 0.72497588396072388
+            },
+            "id": "{0edf91e3-ecaa-4183-acf2-c707ccd4b9f2}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat.fbx",
+            "name": "fem_hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 390.0859375,
+                "y": 490.65280151367188,
+                "z": 312.71615600585938
+            },
+            "queryAACube": {
+                "scale": 1.0837858915328979,
+                "x": 389.54403686523438,
+                "y": 490.11090087890625,
+                "z": 312.17425537109375
+            },
+            "rotation": {
+                "w": 0.46630048751831055,
+                "x": -0.053177714347839355,
+                "y": -0.87737852334976196,
+                "z": 0.09983980655670166
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:42:05Z",
+            "dimensions": {
+                "x": 0.70613569021224976,
+                "y": 0.89480334520339966,
+                "z": 0.15200304985046387
+            },
+            "id": "{57553083-3bb9-4927-9ea8-172b311e600c}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/masks/mask_blue.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 387.95343017578125,
+                "y": 490.55068969726562,
+                "z": 314.33837890625
+            },
+            "queryAACube": {
+                "scale": 1.1499589681625366,
+                "x": 387.37844848632812,
+                "y": 489.9757080078125,
+                "z": 313.76339721679688
+            },
+            "rotation": {
+                "w": 0.56054019927978516,
+                "x": -0.47887390851974487,
+                "y": -0.51375603675842285,
+                "z": -0.43880367279052734
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"Head\",\"scale\":0.3,\"translation\":{\"x\":0,\"y\":0.07,\"z\":0.12}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:42:05Z",
+            "dimensions": {
+                "x": 0.43979799747467041,
+                "y": 0.55730468034744263,
+                "z": 0.094671085476875305
+            },
+            "id": "{33ddc316-f180-4b3b-9a02-2ff86f53e4b2}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/masks/mask_blue.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 387.8323974609375,
+                "y": 490.66024780273438,
+                "z": 314.48880004882812
+            },
+            "queryAACube": {
+                "scale": 0.71622163057327271,
+                "x": 387.47427368164062,
+                "y": 490.3021240234375,
+                "z": 314.13067626953125
+            },
+            "rotation": {
+                "w": 0.82281219959259033,
+                "x": -0.51424431800842285,
+                "y": -0.15880066156387329,
+                "z": -0.18266576528549194
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"Head\",\"scale\":0.3,\"translation\":{\"x\":0,\"y\":0.07,\"z\":0.12}},\"grabbableKey\":{\"wantsTrigger\":true,\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:33:21Z",
+            "dimensions": {
+                "x": 0.70613569021224976,
+                "y": 0.89480334520339966,
+                "z": 0.15200304985046387
+            },
+            "id": "{b058a7b2-59d8-41a5-b90f-6b7787ad45b7}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/masks/mask_yellow.fbx",
+            "name": "mask_yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 387.89505004882812,
+                "y": 490.55068969726562,
+                "z": 313.34344482421875
+            },
+            "queryAACube": {
+                "scale": 1.1499589681625366,
+                "x": 387.320068359375,
+                "y": 489.9757080078125,
+                "z": 312.76846313476562
+            },
+            "rotation": {
+                "w": 0.56054019927978516,
+                "x": -0.47887390851974487,
+                "y": -0.51375603675842285,
+                "z": -0.43880367279052734
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/attachEntity.js",
+            "shapeType": "simple-hull",
+            "type": "Model",
+            "userData": "{\"attachment\":{\"jointName\":\"Head\",\"scale\":0.3,\"translation\":{\"x\":0,\"y\":0.07,\"z\":0.12}},\"grabbableKey\":{\"grabbable\":false,\"wantsTrigger\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-26T00:35:42Z",
+            "dimensions": {
+                "x": 0.76937121152877808,
+                "y": 0.2388928085565567,
+                "z": 0.72497588396072388
+            },
+            "id": "{23ba2c4f-eb5d-40b5-a8e4-bb492626848d}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat.fbx",
+            "name": "fem_hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 389.31246948242188,
+                "y": 490.8077392578125,
+                "z": 312.42147827148438
+            },
+            "queryAACube": {
+                "scale": 1.0837858915328979,
+                "x": 388.77056884765625,
+                "y": 490.26583862304688,
+                "z": 311.87957763671875
+            },
+            "rotation": {
+                "w": 0.9722895622253418,
+                "x": -0.073136508464813232,
+                "y": -0.2214236855506897,
+                "z": 0.015701532363891602
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/hatAttachEntity.js?1",
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T20:40:43Z",
+            "dimensions": {
+                "x": 0.76937121152877808,
+                "y": 0.2388928085565567,
+                "z": 0.72497588396072388
+            },
+            "id": "{66a840be-ea90-4c9f-a7d6-3b80dd8209b3}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/props/hats/fem_Hat.fbx",
+            "name": "fem_hat",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 390.19818115234375,
+                "y": 490.8077392578125,
+                "z": 312.41693115234375
+            },
+            "queryAACube": {
+                "scale": 1.0837858915328979,
+                "x": 389.65628051757812,
+                "y": 490.26583862304688,
+                "z": 311.87503051757812
+            },
+            "rotation": {
+                "w": 0.9722895622253418,
+                "x": -0.073136508464813232,
+                "y": -0.2214236855506897,
+                "z": 0.015701532363891602
+            },
+            "script": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/scripts/hatAttachEntity.js?1",
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:19:05Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 9.4808111190795898,
+                "y": 9.4808111190795898,
+                "z": 9.4808111190795898
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{f6638177-9fb3-4443-97ea-e0d47e11eccf}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "Lamp-Large-tree1",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 392.4278564453125,
+                "y": 493.08877563476562,
+                "z": 309.40292358398438
+            },
+            "queryAACube": {
+                "scale": 16.421247482299805,
+                "x": 384.21722412109375,
+                "y": 484.87814331054688,
+                "z": 301.19229125976562
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:56:13Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 10.94638729095459,
+                "y": 10.94638729095459,
+                "z": 10.94638729095459
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{be9dcd14-70f4-4f7e-948d-8d130b4ac691}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "light-bridge",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 397.60748291015625,
+                "y": 492.51815795898438,
+                "z": 303.34130859375
+            },
+            "queryAACube": {
+                "scale": 18.959699630737305,
+                "x": 388.12762451171875,
+                "y": 483.03829956054688,
+                "z": 293.8614501953125
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-29T00:25:47Z",
+            "description": "Specify URL to your 48K 16bit PCM wav file & volume (0-1) in userData below",
+            "dimensions": {
+                "x": 0.64472943544387817,
+                "y": 0.64385020732879639,
+                "z": 0.26574596762657166
+            },
+            "id": "{00c6f7a2-68e6-4e2e-9097-67c132282008}",
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/speakerGizmo.fbx",
+            "name": "bowling_music",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 420.41204833984375,
+                "y": 492.43258666992188,
+                "z": 319.05361938476562
+            },
+            "queryAACube": {
+                "scale": 0.94912594556808472,
+                "x": 419.9375,
+                "y": 491.95803833007812,
+                "z": 318.57907104492188
+            },
+            "rotation": {
+                "w": 0.62920582294464111,
+                "x": -4.57763671875e-05,
+                "y": -0.7772182822227478,
+                "z": -1.52587890625e-05
+            },
+            "script": "http://hifi-content.s3.amazonaws.com/caitlyn/production/soundEmitter/soundLoopEmitter.js",
+            "type": "Model",
+            "userData": "{\"soundURL\":\"https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/audio/Conjunto_Medrano_song.wav\",\"soundVolume\":0.2,\"refreshInterval\":100}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "compoundShapeURL": "http://mpassets.highfidelity.com/df227a80-069b-4d01-9aec-d016fbc1fbe3-v1/models/flaregun_physics.obj",
+            "created": "2016-10-17T23:37:40Z",
+            "dimensions": {
+                "x": 0.039599999785423279,
+                "y": 0.2024800032377243,
+                "z": 0.30496001243591309
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -9,
+                "z": 0
+            },
+            "id": "{7a50969a-f4c5-4f3b-b50e-50ec6059f313}",
+            "locked": 1,
+            "modelURL": "http://mpassets.highfidelity.com/df227a80-069b-4d01-9aec-d016fbc1fbe3-v1/models/flaregun.fbx",
+            "name": "Flaregun",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 386.12771606445312,
+                "y": 490.68023681640625,
+                "z": 344.51934814453125
+            },
+            "queryAACube": {
+                "scale": 0.36819413304328918,
+                "x": 385.94363403320312,
+                "y": 490.49615478515625,
+                "z": 344.33526611328125
+            },
+            "rotation": {
+                "w": 0.92855727672576904,
+                "x": -0.2390936017036438,
+                "y": 0.16972613334655762,
+                "z": 0.22761881351470947
+            },
+            "script": "http://mpassets.highfidelity.com/df227a80-069b-4d01-9aec-d016fbc1fbe3-v1/scripts/flaregun.js?v2",
+            "shapeType": "compound",
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"invertSolidWhileHeld\":true},\"wearable\":{\"joints\":{\"RightHand\":[{\"x\":0.02,\"y\":0.16,\"z\":0.04},{\"x\":0.5,\"y\":0.5,\"z\":-0.5,\"w\":0.5}],\"LeftHand\":[{\"x\":-0.02,\"y\":0.16,\"z\":0.04},{\"x\":0.5,\"y\":-0.5,\"z\":0.5,\"w\":0.5}]}}}"
+        },
+        {
+            "age": 494.50543212890625,
+            "ageAsText": "0 hours 8 minutes 14 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 4000,
+            "dimensions": {
+                "x": 0.20499999821186066,
+                "y": 0.20499999821186066,
+                "z": 0.20499999821186066
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{5b05df26-af29-4dda-8140-46f13ccc1ef2}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 412.77764892578125,
+                "y": 490.84954833984375,
+                "z": 321.58303833007812
+            },
+            "queryAACube": {
+                "scale": 0.35507041215896606,
+                "x": 412.60012817382812,
+                "y": 490.67202758789062,
+                "z": 321.405517578125
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": 0.66952013969421387,
+                "x": -0.47042036056518555,
+                "y": -0.0001373291015625,
+                "z": -0.57482260465621948
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "textures": "{\"file4\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/bowlingball_Base_Color_yellow.png\",\"file5\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx/../../../../Downloads/bowlingball.fbm/bowlingball_Roughness.png\"}",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "age": 462.84005737304688,
+            "ageAsText": "0 hours 7 minutes 42 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 5000,
+            "dimensions": {
+                "x": 0.24500000476837158,
+                "y": 0.24500000476837158,
+                "z": 0.24500000476837158
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{5e905590-1e0b-4ad1-9ff7-13b28e9dd316}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Salmon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 414.97747802734375,
+                "y": 490.8695068359375,
+                "z": 322.49478149414062
+            },
+            "queryAACube": {
+                "scale": 0.42435246706008911,
+                "x": 414.76528930664062,
+                "y": 490.65731811523438,
+                "z": 322.2825927734375
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": 0.98022425174713135,
+                "x": 0.084000945091247559,
+                "y": 0.17409014701843262,
+                "z": -0.042252242565155029
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "age": 496.50677490234375,
+            "ageAsText": "0 hours 8 minutes 16 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 5000,
+            "dimensions": {
+                "x": 0.24500000476837158,
+                "y": 0.24500000476837158,
+                "z": 0.24500000476837158
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{73ff4d7d-9022-4719-814a-5027da0d98e7}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Salmon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 413.5189208984375,
+                "y": 490.86962890625,
+                "z": 325.054443359375
+            },
+            "queryAACube": {
+                "scale": 0.42435246706008911,
+                "x": 413.30673217773438,
+                "y": 490.65744018554688,
+                "z": 324.84225463867188
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": -0.048020124435424805,
+                "x": 0.21693754196166992,
+                "y": -0.28844130039215088,
+                "z": 0.93136489391326904
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "age": 476.74993896484375,
+            "ageAsText": "0 hours 7 minutes 56 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 6000,
+            "dimensions": {
+                "x": 0.26499998569488525,
+                "y": 0.26499998569488525,
+                "z": 0.26499998569488525
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{8c29ff87-391f-48f4-827e-7b1982ceacbd}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Purple",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 414.62799072265625,
+                "y": 490.87957763671875,
+                "z": 325.04421997070312
+            },
+            "queryAACube": {
+                "scale": 0.45899343490600586,
+                "x": 414.39849853515625,
+                "y": 490.65008544921875,
+                "z": 324.81472778320312
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": 0.16307318210601807,
+                "x": 0.27754640579223633,
+                "y": -0.014969110488891602,
+                "z": 0.94662392139434814
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "textures": "{\"file4\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/bowlingball_Base_Color_purple.png\",\"file5\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx/../../../../Downloads/bowlingball.fbm/bowlingball_Roughness.png\"}",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-28T22:19:05Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 9.4808111190795898,
+                "y": 9.4808111190795898,
+                "z": 9.4808111190795898
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{d2568072-2a1e-4ef5-87f0-822ec5644d97}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "Lamp-Large-tree2",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 392.3961181640625,
+                "y": 493.08877563476562,
+                "z": 329.3162841796875
+            },
+            "queryAACube": {
+                "scale": 16.421247482299805,
+                "x": 384.18548583984375,
+                "y": 484.87814331054688,
+                "z": 321.10565185546875
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "collisionsWillMove": 1,
+            "created": "2016-10-17T23:33:18Z",
+            "dimensions": {
+                "x": 0.12551034986972809,
+                "y": 0.72733104228973389,
+                "z": 0.1254412978887558
+            },
+            "dynamic": 1,
+            "gravity": {
+                "x": 0,
+                "y": -4,
+                "z": 0
+            },
+            "id": "{1b80208b-1f2b-45ca-8707-b21d98e1955a}",
+            "locked": 1,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/alan/dev/Torch.fbx",
+            "name": "Torch",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 385.80194091796875,
+                "y": 490.711181640625,
+                "z": 353.04632568359375
+            },
+            "queryAACube": {
+                "scale": 0.74866467714309692,
+                "x": 385.4276123046875,
+                "y": 490.33685302734375,
+                "z": 352.6719970703125
+            },
+            "rotation": {
+                "w": 0.0062104463577270508,
+                "x": 0.70714890956878662,
+                "y": -0.70702677965164185,
+                "z": -0.0055695176124572754
+            },
+            "shapeType": "box",
+            "type": "Model",
+            "userData": "{}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-18T00:01:42Z",
+            "dimensions": {
+                "x": 1.37890625,
+                "y": 0.72984391450881958,
+                "z": 2.35097336769104
+            },
+            "id": "{7a2a145e-c9a1-4332-a6f3-4dfb781a0fd9}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/ozan/dev/sets/bitGem/cemetary/coffinDeep.fbx?1",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 388.17721557617188,
+                "y": 491.81842041015625,
+                "z": 356.10614013671875
+            },
+            "queryAACube": {
+                "scale": 2.8215475082397461,
+                "x": 386.76644897460938,
+                "y": 490.40765380859375,
+                "z": 354.69537353515625
+            },
+            "rotation": {
+                "w": 0.80627143383026123,
+                "x": -0.58614480495452881,
+                "y": -0.071519017219543457,
+                "z": 0.035660386085510254
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 145,
+                "green": 0,
+                "red": 94
+            },
+            "created": "2016-10-15T01:25:53Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 3.7912490367889404,
+                "y": 3.7912490367889404,
+                "z": 3.7912490367889404
+            },
+            "falloffRadius": 0.40000000596046448,
+            "id": "{40ee1640-00e1-4d46-95a9-f2754c81068b}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "light-cemetary",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 388.98403930664062,
+                "y": 492.21417236328125,
+                "z": 356.0361328125
+            },
+            "queryAACube": {
+                "scale": 6.5666360855102539,
+                "x": 385.70071411132812,
+                "y": 488.93084716796875,
+                "z": 352.7528076171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "age": 442.71066284179688,
+            "ageAsText": "0 hours 7 minutes 22 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 4000,
+            "dimensions": {
+                "x": 0.20499999821186066,
+                "y": 0.20499999821186066,
+                "z": 0.20499999821186066
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{46f7c90a-6fd3-4c04-a7bb-8f9050b62aac}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Yellow",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 418.2147216796875,
+                "y": 491.39364624023438,
+                "z": 321.32034301757812
+            },
+            "queryAACube": {
+                "scale": 0.35507041215896606,
+                "x": 418.03720092773438,
+                "y": 491.21612548828125,
+                "z": 321.142822265625
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": -0.34200048446655273,
+                "x": 0.84509038925170898,
+                "y": 0.25807583332061768,
+                "z": -0.31975281238555908
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "textures": "{\"file4\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/bowlingball_Base_Color_yellow.png\",\"file5\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx/../../../../Downloads/bowlingball.fbm/bowlingball_Roughness.png\"}",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "age": 432.81591796875,
+            "ageAsText": "0 hours 7 minutes 12 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 5000,
+            "dimensions": {
+                "x": 0.24500000476837158,
+                "y": 0.24500000476837158,
+                "z": 0.24500000476837158
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{12b7ccbf-4b62-42bb-be7c-3926d4b4c89b}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Salmon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 418.357177734375,
+                "y": 491.41827392578125,
+                "z": 321.15338134765625
+            },
+            "queryAACube": {
+                "scale": 0.42435246706008911,
+                "x": 418.14498901367188,
+                "y": 491.20608520507812,
+                "z": 320.94119262695312
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": 0.68841075897216797,
+                "x": -0.014663934707641602,
+                "y": 0.18849468231201172,
+                "z": -0.70025181770324707
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "age": 444.70623779296875,
+            "ageAsText": "0 hours 7 minutes 24 seconds",
+            "angularDamping": 0.30000001192092896,
+            "clientOnly": 0,
+            "collidesWith": "static,dynamic,kinematic,",
+            "collisionMask": 7,
+            "collisionsWillMove": 1,
+            "created": "2016-11-16T02:56:00Z",
+            "damping": 0.0099999997764825821,
+            "density": 6000,
+            "dimensions": {
+                "x": 0.26499998569488525,
+                "y": 0.26499998569488525,
+                "z": 0.26499998569488525
+            },
+            "dynamic": 1,
+            "friction": 0.10000000149011612,
+            "gravity": {
+                "x": 0,
+                "y": -9.8000001907348633,
+                "z": 0
+            },
+            "id": "{aee5836c-f88a-40b1-a886-9eeafdf9b6b2}",
+            "lastEditedBy": "{a2345c68-4d8b-495e-98d0-37b4c3a38974}",
+            "lifetime": 3600,
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx",
+            "name": "Bowling ball - Purple",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 418.018798828125,
+                "y": 491.42599487304688,
+                "z": 321.33694458007812
+            },
+            "queryAACube": {
+                "scale": 0.45899343490600586,
+                "x": 417.789306640625,
+                "y": 491.19650268554688,
+                "z": 321.10745239257812
+            },
+            "restitution": 0.20000000298023224,
+            "rotation": {
+                "w": 0.79662775993347168,
+                "x": -0.10881209373474121,
+                "y": 0.27797365188598633,
+                "z": 0.5255664587020874
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/bowlingBallEntity.js",
+            "shapeType": "sphere",
+            "textures": "{\"file4\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/bowlingball_Base_Color_purple.png\",\"file5\":\"http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/ball_salmon.fbx/../../../../Downloads/bowlingball.fbm/bowlingball_Roughness.png\"}",
+            "type": "Model",
+            "userData": "{\"isBowlingBall\":true,\"bowlingAlley\":\"{7d642a8c-6c93-4071-aefd-0e6b21f55054}\",\"grabbableKey\":{\"grabbable\":true}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:13:41Z",
+            "dimensions": {
+                "x": 5.9503684043884277,
+                "y": 7.4806985855102539,
+                "z": 5.9503684043884277
+            },
+            "id": "{d31babc2-2965-419d-98f6-687542a8e345}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jimi/dayoftheDead/skull.fbx",
+            "name": "bowling_skull",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 410.0042724609375,
+                "y": 495.19247436523438,
+                "z": 319.10568237304688
+            },
+            "queryAACube": {
+                "scale": 11.25942325592041,
+                "x": 404.37457275390625,
+                "y": 489.56277465820312,
+                "z": 313.47598266601562
+            },
+            "rotation": {
+                "w": 0.67528796195983887,
+                "x": 0.18721294403076172,
+                "y": -0.68749523162841797,
+                "z": 0.19047832489013672
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T23:28:59Z",
+            "dimensions": {
+                "x": 3.9443917274475098,
+                "y": 3.9443917274475098,
+                "z": 3.9443917274475098
+            },
+            "id": "{18119226-465d-42f2-bcd3-c3bde5292f74}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jimi/dayoftheDead/skull.fbx",
+            "name": "bowling_skull",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 436.58831787109375,
+                "y": 493.48709106445312,
+                "z": 319.44244384765625
+            },
+            "queryAACube": {
+                "scale": 6.8318867683410645,
+                "x": 433.17236328125,
+                "y": 490.07113647460938,
+                "z": 316.0264892578125
+            },
+            "rotation": {
+                "w": 0.67528796195983887,
+                "x": 0.18721294403076172,
+                "y": -0.68749523162841797,
+                "z": 0.19047832489013672
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 20,
+                "green": 113,
+                "red": 245
+            },
+            "created": "2016-10-15T01:23:42Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 9.6771888732910156,
+                "y": 9.6771888732910156,
+                "z": 9.6771888732910156
+            },
+            "falloffRadius": 1,
+            "id": "{37bfdd83-0862-4168-a201-78c6d67d9d7f}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "light-bowling",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 430.7574462890625,
+                "y": 495.56381225585938,
+                "z": 319.06756591796875
+            },
+            "queryAACube": {
+                "scale": 16.761383056640625,
+                "x": 422.37677001953125,
+                "y": 487.18310546875,
+                "z": 310.6868896484375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-10T01:37:32Z",
+            "dimensions": {
+                "x": 5.1854000091552734,
+                "y": 2.2392001152038574,
+                "z": 22.056499481201172
+            },
+            "friction": 0.0099999988451600075,
+            "id": "{7d642a8c-6c93-4071-aefd-0e6b21f55054}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/bowlingAlleyNew21.fbx?v3",
+            "name": "Bowling System - Bowling Lane. Return & Backboard",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 426.72900390625,
+                "y": 491.70654296875,
+                "z": 319.28887939453125
+            },
+            "queryAACube": {
+                "scale": 22.768213272094727,
+                "x": 415.34490966796875,
+                "y": 480.32244873046875,
+                "z": 307.90478515625
+            },
+            "restitution": 0,
+            "rotation": {
+                "w": 0.70464634895324707,
+                "x": 1.52587890625e-05,
+                "y": -0.70955979824066162,
+                "z": -7.62939453125e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 20,
+                "green": 219,
+                "red": 245
+            },
+            "created": "2016-10-15T01:23:42Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 13.218830108642578,
+                "y": 13.218830108642578,
+                "z": 13.218830108642578
+            },
+            "falloffRadius": 0.80000001192092896,
+            "id": "{bd830d83-f393-4343-b42e-f70b90fa6e15}",
+            "intensity": 40,
+            "locked": 1,
+            "name": "light-sandvillage",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 409.0372314453125,
+                "y": 494.80001831054688,
+                "z": 319.16082763671875
+            },
+            "queryAACube": {
+                "scale": 22.895685195922852,
+                "x": 397.58938598632812,
+                "y": 483.3521728515625,
+                "z": 307.71298217773438
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "accelerationSpread": {
+                "x": 0.5,
+                "y": 0,
+                "z": 0.80000001192092896
+            },
+            "alpha": 0.14000000059604645,
+            "alphaFinish": 0.14000000059604645,
+            "alphaStart": 0.14000000059604645,
+            "azimuthFinish": 0,
+            "azimuthStart": -3,
+            "clientOnly": 0,
+            "created": "2016-10-30T19:27:54Z",
+            "dimensions": {
+                "x": 1.6670498847961426,
+                "y": 1.6670498847961426,
+                "z": 1.6670498847961426
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "emitRate": 68,
+            "emitSpeed": 0.010999999940395355,
+            "id": "{81999651-e266-412c-b25d-0db2c6c190fc}",
+            "lifespan": 0.34999999403953552,
+            "locked": 1,
+            "maxParticles": 1620,
+            "name": "torch_particle_fire",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{1b80208b-1f2b-45ca-8707-b21d98e1955a}",
+            "particleRadius": 0.10000000149011612,
+            "position": {
+                "x": 0.74165964126586914,
+                "y": 6.485079288482666,
+                "z": 20.277698516845703
+            },
+            "queryAACube": {
+                "scale": 2.8874151706695557,
+                "x": 497.53628540039062,
+                "y": 496.5062255859375,
+                "z": 506.43582153320312
+            },
+            "radiusFinish": 0.10000000149011612,
+            "radiusSpread": 41,
+            "radiusStart": 0.10000000149011612,
+            "rotation": {
+                "w": 0.038345932960510254,
+                "x": 0.64904248714447021,
+                "y": 0.039230942726135254,
+                "z": -0.75878536701202393
+            },
+            "speedSpread": 2,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Fireball.jpg",
+            "type": "ParticleEffect"
+        },
+        {
+            "accelerationSpread": {
+                "x": 0.5,
+                "y": 0,
+                "z": 0.80000001192092896
+            },
+            "alpha": 0.14000000059604645,
+            "alphaFinish": 0.14000000059604645,
+            "alphaStart": 0.14000000059604645,
+            "azimuthFinish": 0,
+            "azimuthStart": -3,
+            "clientOnly": 0,
+            "created": "2016-10-17T23:33:18Z",
+            "dimensions": {
+                "x": 1.6670498847961426,
+                "y": 1.6670498847961426,
+                "z": 1.6670498847961426
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "emitRate": 68,
+            "emitSpeed": 0.010999999940395355,
+            "id": "{60b1a6b6-3d41-4927-adfe-c5eef971daf4}",
+            "lifespan": 0.34999999403953552,
+            "locked": 1,
+            "maxParticles": 1620,
+            "name": "torch_particle_fire",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{1b80208b-1f2b-45ca-8707-b21d98e1955a}",
+            "particleRadius": 0.10000000149011612,
+            "position": {
+                "x": 0.67227983474731445,
+                "y": 3.4550819396972656,
+                "z": 20.419017791748047
+            },
+            "queryAACube": {
+                "scale": 2.8874151706695557,
+                "x": 500.56353759765625,
+                "y": 496.57601928710938,
+                "z": 506.24395751953125
+            },
+            "radiusFinish": 0.10000000149011612,
+            "radiusSpread": 41,
+            "radiusStart": 0.10000000149011612,
+            "rotation": {
+                "w": 0.038345932960510254,
+                "x": 0.64904248714447021,
+                "y": 0.039230942726135254,
+                "z": -0.75878536701202393
+            },
+            "speedSpread": 2,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Fireball.jpg",
+            "type": "ParticleEffect"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 245,
+                "green": 20,
+                "red": 140
+            },
+            "created": "2016-10-15T00:59:40Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 6.691497802734375,
+                "y": 6.691497802734375,
+                "z": 6.691497802734375
+            },
+            "falloffRadius": 0.69999998807907104,
+            "id": "{14350467-835c-46ea-a2d1-33a0bb7bda6c}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "light-cemetary",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.37277221679688,
+                "y": 495.2330322265625,
+                "z": 364.69036865234375
+            },
+            "queryAACube": {
+                "scale": 11.590014457702637,
+                "x": 374.5777587890625,
+                "y": 489.43801879882812,
+                "z": 358.89535522460938
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 132,
+                "green": 20,
+                "red": 245
+            },
+            "created": "2016-10-15T01:21:31Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 5.20635986328125,
+                "y": 5.20635986328125,
+                "z": 5.20635986328125
+            },
+            "falloffRadius": 0.40000000596046448,
+            "id": "{248b2e9d-6abf-4cc7-ae75-f7f904ca37c7}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "light-cemetary",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.14422607421875,
+                "y": 498.34939575195312,
+                "z": 366.365234375
+            },
+            "queryAACube": {
+                "scale": 9.0176792144775391,
+                "x": 375.6353759765625,
+                "y": 493.84054565429688,
+                "z": 361.85638427734375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-02T03:22:24Z",
+            "dimensions": {
+                "x": 4.0607481002807617,
+                "y": 0.20000000298023224,
+                "z": 8.5331602096557617
+            },
+            "id": "{75aa92cd-f85b-4e57-b9f4-0e1d484d27c2}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 383.232666015625,
+                "y": 492.56613159179688,
+                "z": 302.84130859375
+            },
+            "queryAACube": {
+                "scale": 9.4522218704223633,
+                "x": 378.50656127929688,
+                "y": 487.84002685546875,
+                "z": 298.11520385742188
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 245,
+                "green": 135,
+                "red": 0
+            },
+            "created": "2016-10-18T00:16:59Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 6.816802978515625,
+                "y": 6.816802978515625,
+                "z": 6.816802978515625
+            },
+            "falloffRadius": 0.40000000596046448,
+            "id": "{29aaaeee-dbb3-41c5-8035-b0e870778bb0}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "light-cemetary",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.40402221679688,
+                "y": 493.00308227539062,
+                "z": 353.503662109375
+            },
+            "queryAACube": {
+                "scale": 11.807048797607422,
+                "x": 374.50048828125,
+                "y": 487.09954833984375,
+                "z": 347.60012817382812
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-18T00:47:34Z",
+            "dimensions": {
+                "x": 6.3580808639526367,
+                "y": 0.066668704152107239,
+                "z": 2.9453613758087158
+            },
+            "id": "{9a7afd5b-ae10-4373-bbfe-7decab060fa0}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 385.89773559570312,
+                "y": 490.924072265625,
+                "z": 354.46258544921875
+            },
+            "queryAACube": {
+                "scale": 7.0074810981750488,
+                "x": 382.39398193359375,
+                "y": 487.42031860351562,
+                "z": 350.95883178710938
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 255,
+                "green": 165,
+                "red": 56
+            },
+            "created": "2016-10-15T01:41:11Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 11.505584716796875,
+                "y": 11.505584716796875,
+                "z": 11.505584716796875
+            },
+            "falloffRadius": 1.3999999761581421,
+            "id": "{bcb86e14-04e2-4ea7-acda-8e68baf64ee9}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "light-cemetary",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.13528442382812,
+                "y": 496.3056640625,
+                "z": 343.08843994140625
+            },
+            "queryAACube": {
+                "scale": 19.928256988525391,
+                "x": 370.171142578125,
+                "y": 486.34152221679688,
+                "z": 333.12429809570312
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-20T18:08:49Z",
+            "cutoff": 82.754753112792969,
+            "dimensions": {
+                "x": 2.8539741039276123,
+                "y": 2.8539741039276123,
+                "z": 2.8539741039276123
+            },
+            "exponent": 3,
+            "falloffRadius": 3,
+            "id": "{ff4e7445-a78a-455d-a9b9-64b6d6c10e49}",
+            "intensity": 6,
+            "locked": 1,
+            "name": "light-altar",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 384.10540771484375,
+                "y": 492.41110229492188,
+                "z": 292.62158203125
+            },
+            "queryAACube": {
+                "scale": 4.9432282447814941,
+                "x": 381.6337890625,
+                "y": 489.93948364257812,
+                "z": 290.14996337890625
+            },
+            "rotation": {
+                "w": 0.56273746490478516,
+                "x": -0.82662701606750488,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "accelerationSpread": {
+                "x": 0.5,
+                "y": 0,
+                "z": 0.80000001192092896
+            },
+            "alpha": 0.14000000059604645,
+            "alphaFinish": 0.14000000059604645,
+            "alphaStart": 0.14000000059604645,
+            "azimuthFinish": 0,
+            "azimuthStart": -3,
+            "clientOnly": 0,
+            "created": "2016-10-31T17:31:44Z",
+            "dimensions": {
+                "x": 1.6670498847961426,
+                "y": 1.6670498847961426,
+                "z": 1.6670498847961426
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "emitRate": 68,
+            "emitSpeed": 0.010999999940395355,
+            "id": "{c868bd85-34b9-4032-8f3b-c546237b860b}",
+            "lifespan": 0.34999999403953552,
+            "locked": 1,
+            "maxParticles": 1620,
+            "name": "torch_particle_fire",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{1b80208b-1f2b-45ca-8707-b21d98e1955a}",
+            "particleRadius": 0.10000000149011612,
+            "position": {
+                "x": -0.9509124755859375,
+                "y": 7.406984806060791,
+                "z": 10.248912811279297
+            },
+            "queryAACube": {
+                "scale": 2.8874151706695557,
+                "x": 496.78128051757812,
+                "y": 498.207763671875,
+                "z": 516.477294921875
+            },
+            "radiusFinish": 0.10000000149011612,
+            "radiusSpread": 41,
+            "radiusStart": 0.10000000149011612,
+            "rotation": {
+                "w": 0.038345932960510254,
+                "x": 0.64904248714447021,
+                "y": 0.039230942726135254,
+                "z": -0.75878536701202393
+            },
+            "speedSpread": 2,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Fireball.jpg",
+            "type": "ParticleEffect"
+        },
+        {
+            "accelerationSpread": {
+                "x": 0.5,
+                "y": 0,
+                "z": 0.80000001192092896
+            },
+            "alpha": 0.14000000059604645,
+            "alphaFinish": 0.14000000059604645,
+            "alphaStart": 0.14000000059604645,
+            "azimuthFinish": 0,
+            "azimuthStart": -3,
+            "clientOnly": 0,
+            "created": "2016-10-31T17:31:44Z",
+            "dimensions": {
+                "x": 1.6670498847961426,
+                "y": 1.6670498847961426,
+                "z": 1.6670498847961426
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "emitRate": 68,
+            "emitSpeed": 0.010999999940395355,
+            "id": "{e858969d-5d26-4974-9992-922a6ea1cf65}",
+            "lifespan": 0.34999999403953552,
+            "locked": 1,
+            "maxParticles": 1620,
+            "name": "torch_particle_fire",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{1b80208b-1f2b-45ca-8707-b21d98e1955a}",
+            "particleRadius": 0.10000000149011612,
+            "position": {
+                "x": -0.9798591136932373,
+                "y": 2.7175016403198242,
+                "z": 10.364334106445312
+            },
+            "queryAACube": {
+                "scale": 2.8874151706695557,
+                "x": 501.46826171875,
+                "y": 498.23745727539062,
+                "z": 516.28375244140625
+            },
+            "radiusFinish": 0.10000000149011612,
+            "radiusSpread": 41,
+            "radiusStart": 0.10000000149011612,
+            "rotation": {
+                "w": 0.038345932960510254,
+                "x": 0.64904248714447021,
+                "y": 0.039230942726135254,
+                "z": -0.75878536701202393
+            },
+            "speedSpread": 2,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Fireball.jpg",
+            "type": "ParticleEffect"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-10T01:37:32Z",
+            "dimensions": {
+                "x": 0.40000000596046448,
+                "y": 0.40000000596046448,
+                "z": 0.40000000596046448
+            },
+            "id": "{7d6550fb-1f8c-4c7e-b6c9-5d928a3404cc}",
+            "lastEditedBy": "{5260bed5-40ba-4f12-a7f0-4c4febc0c1ad}",
+            "name": "Bowling System - Reset Button",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{ad548b29-75c6-4cb5-9da5-704e9dfb75a8}",
+            "position": {
+                "x": -0.063687585294246674,
+                "y": 0.34448474645614624,
+                "z": -0.066567353904247284
+            },
+            "queryAACube": {
+                "scale": 2.0784609317779541,
+                "x": 539.0513916015625,
+                "y": 498.8193359375,
+                "z": 494.29946899414062
+            },
+            "rotation": {
+                "w": -0.36058592796325684,
+                "x": 0.13054096698760986,
+                "y": 0.91445791721343994,
+                "z": -0.12932020425796509
+            },
+            "script": "http://mpassets.highfidelity.com/f01af088-7410-40e2-a331-310e9a0d068e-v1/pinSetterEntity.js",
+            "type": "Sphere",
+            "userData": "{\"grabbableKey\":{\"wantsTrigger\":true}}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-10T01:37:32Z",
+            "dimensions": {
+                "x": 0.30139255523681641,
+                "y": 1.0142379999160767,
+                "z": 0.38446325063705444
+            },
+            "id": "{ad548b29-75c6-4cb5-9da5-704e9dfb75a8}",
+            "modelURL": "http://hifi-content.s3.amazonaws.com/caitlyn/production/bowlingAlley/pingsetterConsole.fbx?333",
+            "name": "Bowling System - Reset Console",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{7d642a8c-6c93-4071-aefd-0e6b21f55054}",
+            "position": {
+                "x": 1.1020526885986328,
+                "y": -0.36201184988021851,
+                "z": 6.5395307540893555
+            },
+            "queryAACube": {
+                "scale": 3.40771484375,
+                "x": 538.5125732421875,
+                "y": 497.7979736328125,
+                "z": 493.77188110351562
+            },
+            "rotation": {
+                "w": -0.40679025650024414,
+                "x": 7.62939453125e-05,
+                "y": -0.91354238986968994,
+                "z": -7.62939453125e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-10T01:37:32Z",
+            "dimensions": {
+                "x": 2.0666627883911133,
+                "y": 0.17314453423023224,
+                "z": 2.3021240234375
+            },
+            "id": "{8a10ee05-64fc-4d3a-a610-dfc5112c275c}",
+            "name": "Bowling System - Ball Return Collider",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{7d642a8c-6c93-4071-aefd-0e6b21f55054}",
+            "position": {
+                "x": 0.17394733428955078,
+                "y": -0.9617883563041687,
+                "z": -9.6033906936645508
+            },
+            "queryAACube": {
+                "scale": 9.2955703735351562,
+                "x": 551.64141845703125,
+                "y": 494.26568603515625,
+                "z": 488.70834350585938
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": 4.57763671875e-05,
+                "y": -0.70714884996414185,
+                "z": 1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "angularDamping": 0,
+            "angularVelocity": {
+                "x": 0.52153491973876953,
+                "y": 0.52153491973876953,
+                "z": 0.52153491973876953
+            },
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-20T17:18:34Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{25d212f1-93de-43d1-a39a-dbb144eb6e6b}",
+            "locked": 1,
+            "name": "Point Light 2",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{2eb11446-793a-433d-9f0a-b846d3475556}",
+            "position": {
+                "x": -1.8254470825195312,
+                "y": -0.01349186897277832,
+                "z": 1.9352264404296875
+            },
+            "queryAACube": {
+                "scale": 25.98077392578125,
+                "x": 418.95565795898438,
+                "y": 490.48287963867188,
+                "z": 474.64126586914062
+            },
+            "rotation": {
+                "w": 0.64959245920181274,
+                "x": -0.32323694229125977,
+                "y": 0.44122335314750671,
+                "z": 0.52808094024658203
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 56,
+                "green": 139,
+                "red": 255
+            },
+            "created": "2016-10-28T22:14:42Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 26.382656097412109,
+                "y": 26.382656097412109,
+                "z": 26.382656097412109
+            },
+            "falloffRadius": 2.2999999523162842,
+            "id": "{3540efd7-b2b4-458d-b1e2-854e9d6b3261}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "plaza_light",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 379.0042724609375,
+                "y": 495.01602172851562,
+                "z": 319.1956787109375
+            },
+            "queryAACube": {
+                "scale": 45.696102142333984,
+                "x": 356.15621948242188,
+                "y": 472.16796875,
+                "z": 296.34762573242188
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 56,
+                "green": 139,
+                "red": 255
+            },
+            "created": "2016-10-28T22:36:33Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 21.2406005859375,
+                "y": 21.2406005859375,
+                "z": 21.2406005859375
+            },
+            "falloffRadius": 2.2999999523162842,
+            "id": "{ba8a59a1-9069-413b-abab-2516a3e22ae1}",
+            "intensity": 55,
+            "locked": 1,
+            "name": "Lamp-Large-gazebo",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 354.1134033203125,
+                "y": 496.82888793945312,
+                "z": 319.80609130859375
+            },
+            "queryAACube": {
+                "scale": 36.789798736572266,
+                "x": 335.718505859375,
+                "y": 478.43399047851562,
+                "z": 301.41119384765625
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "collisionless": 1,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-28T22:12:31Z",
+            "dimensions": {
+                "x": 182.38706970214844,
+                "y": 20.766059875488281,
+                "z": 140.08345031738281
+            },
+            "id": "{5c0c71e1-d336-429a-992d-4cf4f4252df8}",
+            "ignoreForCollisions": 1,
+            "locked": 1,
+            "name": "trackadood",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 377.243408203125,
+                "y": 490.77197265625,
+                "z": 314.28326416015625
+            },
+            "queryAACube": {
+                "scale": 230.91047668457031,
+                "x": 261.78817749023438,
+                "y": 375.31674194335938,
+                "z": 198.82803344726562
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://gist.githubusercontent.com/cozza13/fcc5f5b27e7f8b0cc99451542e316760/raw/6670cd854b3e7304248bb9654c8b1a98af4f7b21/trackadood.js",
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-17T23:52:58Z",
+            "dimensions": {
+                "x": 24.24998664855957,
+                "y": 11.22911548614502,
+                "z": 51.537208557128906
+            },
+            "id": "{2168bf91-0cd3-45fc-ba96-7148989ffad4}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/ozan/dev/sets/bitGem/cemetary/cemetaryNoCoffin.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.46871948242188,
+                "y": 492.95120239257812,
+                "z": 351.8233642578125
+            },
+            "queryAACube": {
+                "scale": 58.053756713867188,
+                "x": 351.44183349609375,
+                "y": 463.92431640625,
+                "z": 322.79647827148438
+            },
+            "rotation": {
+                "w": -1.52587890625e-05,
+                "x": -1.52587890625e-05,
+                "y": -1,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "alpha": 0.80000001192092896,
+            "alphaFinish": 0.80000001192092896,
+            "alphaStart": 0.80000001192092896,
+            "azimuthStart": -2.0999999046325684,
+            "clientOnly": 0,
+            "color": {
+                "blue": 210,
+                "green": 239,
+                "red": 255
+            },
+            "colorFinish": {
+                "blue": 210,
+                "green": 239,
+                "red": 255
+            },
+            "colorStart": {
+                "blue": 210,
+                "green": 239,
+                "red": 255
+            },
+            "created": "2016-10-17T22:51:48Z",
+            "dimensions": {
+                "x": 39.119297027587891,
+                "y": 39.119297027587891,
+                "z": 39.119297027587891
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0.020000001415610313,
+                "z": 0
+            },
+            "emitDimensions": {
+                "x": 34.200000762939453,
+                "y": 0.89999997615814209,
+                "z": 12.199999809265137
+            },
+            "emitOrientation": {
+                "w": 0.023941129446029663,
+                "x": -0.9574471116065979,
+                "y": -1.5258618077496067e-05,
+                "z": -0.28761410713195801
+            },
+            "emitRate": 6,
+            "emitSpeed": 0.048000000417232513,
+            "id": "{1fccad60-80cf-4bd5-855d-6ad3458fa008}",
+            "lastEditedBy": "{5260bed5-40ba-4f12-a7f0-4c4febc0c1ad}",
+            "lifespan": 70,
+            "locked": 1,
+            "maxParticles": 6960,
+            "name": "floating_Lanterns",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.32100000977516174,
+            "polarFinish": 2.4000000953674316,
+            "position": {
+                "x": 346.95907592773438,
+                "y": 489.14712524414062,
+                "z": 338.50396728515625
+            },
+            "queryAACube": {
+                "scale": 67.756614685058594,
+                "x": 313.08078002929688,
+                "y": 455.26882934570312,
+                "z": 304.62567138671875
+            },
+            "radiusFinish": 0.32100000977516174,
+            "radiusSpread": 10,
+            "radiusStart": 0.32100000977516174,
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "speedSpread": 0.0099999997764825821,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Baloon-Lamp-c.png",
+            "type": "ParticleEffect"
+        },
+        {
+            "angularDamping": 0.39350000023841858,
+            "clientOnly": 0,
+            "color": {
+                "blue": 255,
+                "green": 0,
+                "red": 0
+            },
+            "created": "2016-10-20T17:18:34Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 5,
+                "y": 5,
+                "z": 5
+            },
+            "id": "{ac997f85-205e-4421-891f-152edbc153b6}",
+            "intensity": 1000,
+            "locked": 1,
+            "name": "blue spinning point light",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{25d212f1-93de-43d1-a39a-dbb144eb6e6b}",
+            "position": {
+                "x": 0.079816699028015137,
+                "y": -0.5950930118560791,
+                "z": -1.6664853096008301
+            },
+            "queryAACube": {
+                "scale": 25.980762481689453,
+                "x": 412.29449462890625,
+                "y": 489.98828125,
+                "z": 483.48614501953125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "angularDamping": 0,
+            "angularVelocity": {
+                "x": 0.52359879016876221,
+                "y": 0.52359879016876221,
+                "z": 0.52359879016876221
+            },
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-20T17:20:45Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{afa29442-df3c-47bc-9aaf-6a042d381222}",
+            "locked": 1,
+            "name": "Point Light 1",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{8c23bcc6-88b7-4f38-a66e-3c4099d746e6}",
+            "position": {
+                "x": 0.17990791797637939,
+                "y": -0.081724889576435089,
+                "z": 1.1411358118057251
+            },
+            "queryAACube": {
+                "scale": 25.98077392578125,
+                "x": 423.075439453125,
+                "y": 486.155517578125,
+                "z": 470.16082763671875
+            },
+            "rotation": {
+                "w": 0.31427934765815735,
+                "x": -0.46792575716972351,
+                "y": -0.40379711985588074,
+                "z": -0.72057056427001953
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-10T01:37:32Z",
+            "dimensions": {
+                "x": 13.496384620666504,
+                "y": 0.20000000298023224,
+                "z": 2.5999999046325684
+            },
+            "id": "{a2b9bab8-5c62-4124-95c1-7b375e354b81}",
+            "name": "Bowling System - Floor Collision Detection",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{7d642a8c-6c93-4071-aefd-0e6b21f55054}",
+            "position": {
+                "x": 0.18703213334083557,
+                "y": -0.93969839811325073,
+                "z": -0.65286052227020264
+            },
+            "queryAACube": {
+                "scale": 41.237987518310547,
+                "x": 528.906982421875,
+                "y": 477.40518188476562,
+                "z": 470.53091430664062
+            },
+            "rotation": {
+                "w": 0.70702672004699707,
+                "x": -0.0031281113624572754,
+                "y": -0.70714884996414185,
+                "z": 0.0030364990234375
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 202,
+                "green": 222,
+                "red": 104
+            },
+            "created": "2016-10-16T02:02:38Z",
+            "cutoff": 90,
+            "description": "musicalityStageCenter",
+            "dimensions": {
+                "x": 31.777570724487305,
+                "y": 31.777570724487305,
+                "z": 31.777570724487305
+            },
+            "falloffRadius": 0.30000001192092896,
+            "id": "{8e0f35b4-9f08-4d9b-a29c-567f47df9a95}",
+            "intensity": 50,
+            "locked": 1,
+            "name": "musicalityStageCenter",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 291.63677978515625,
+                "y": 495.06625366210938,
+                "z": 313.74322509765625
+            },
+            "queryAACube": {
+                "scale": 55.040367126464844,
+                "x": 264.11660766601562,
+                "y": 467.54608154296875,
+                "z": 286.22305297851562
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-28T20:29:51Z",
+            "dimensions": {
+                "x": 58.264354705810547,
+                "y": 31.363321304321289,
+                "z": 74.410316467285156
+            },
+            "id": "{4abd356e-f747-41be-957c-c8af323b1884}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/production/Dotd/sets/zinaparo_plaza_10282.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 380.505615234375,
+                "y": 497.06716918945312,
+                "z": 311.32281494140625
+            },
+            "queryAACube": {
+                "scale": 99.575538635253906,
+                "x": 330.71783447265625,
+                "y": 447.27938842773438,
+                "z": 261.5350341796875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "alpha": 0.80000001192092896,
+            "alphaFinish": 0.80000001192092896,
+            "alphaStart": 0.80000001192092896,
+            "azimuthStart": -2.0999999046325684,
+            "clientOnly": 0,
+            "color": {
+                "blue": 210,
+                "green": 239,
+                "red": 255
+            },
+            "colorFinish": {
+                "blue": 210,
+                "green": 239,
+                "red": 255
+            },
+            "colorStart": {
+                "blue": 210,
+                "green": 239,
+                "red": 255
+            },
+            "created": "2016-10-17T22:47:25Z",
+            "dimensions": {
+                "x": 39.892330169677734,
+                "y": 39.892330169677734,
+                "z": 39.892330169677734
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0.020000001415610313,
+                "z": 0
+            },
+            "emitDimensions": {
+                "x": 34.200000762939453,
+                "y": 0.89999997615814209,
+                "z": 12.199999809265137
+            },
+            "emitOrientation": {
+                "w": 0.023941129446029663,
+                "x": -0.9574471116065979,
+                "y": -1.5258618077496067e-05,
+                "z": -0.28761410713195801
+            },
+            "emitRate": 6,
+            "emitSpeed": 0.048000000417232513,
+            "id": "{4867e083-6b42-4c1a-adbc-04a60f21dba9}",
+            "lifespan": 81,
+            "locked": 1,
+            "maxParticles": 6960,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "particleRadius": 0.32100000977516174,
+            "polarFinish": 2.4000000953674316,
+            "position": {
+                "x": 348.85601806640625,
+                "y": 492.65985107421875,
+                "z": 288.41165161132812
+            },
+            "queryAACube": {
+                "scale": 69.095542907714844,
+                "x": 314.30825805664062,
+                "y": 458.11209106445312,
+                "z": 253.86387634277344
+            },
+            "radiusFinish": 0.32100000977516174,
+            "radiusSpread": 10,
+            "radiusStart": 0.32100000977516174,
+            "rotation": {
+                "w": 0.55547416210174561,
+                "x": -1.52587890625e-05,
+                "y": -0.83154040575027466,
+                "z": -1.52587890625e-05
+            },
+            "speedSpread": 0.0099999997764825821,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Baloon-Lamp-c.png",
+            "type": "ParticleEffect"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-14T21:41:49Z",
+            "dimensions": {
+                "x": 35.5667724609375,
+                "y": 22.386011123657227,
+                "z": 59.270298004150391
+            },
+            "id": "{2b003750-d3ee-437b-8f9a-fd86517ca8c8}",
+            "lastEditedBy": "{214875d0-2bc1-4f25-be22-89a7c3491b55}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/production/Dotd/sets/dotd_stage_area_3.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 331.368896484375,
+                "y": 496.3917236328125,
+                "z": 319.5469970703125
+            },
+            "queryAACube": {
+                "scale": 72.657394409179688,
+                "x": 295.04019165039062,
+                "y": 460.06301879882812,
+                "z": 283.21829223632812
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -4.57763671875e-05,
+                "y": 0.70708787441253662,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "angularDamping": 0.39350000023841858,
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-10-20T17:20:45Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 5,
+                "y": 5,
+                "z": 5
+            },
+            "id": "{c8138e18-9da3-4d8c-a3c8-5ee88a597fd5}",
+            "intensity": 1000,
+            "locked": 1,
+            "name": "spinning red point light",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{afa29442-df3c-47bc-9aaf-6a042d381222}",
+            "position": {
+                "x": -1.1079220771789551,
+                "y": -0.65248608589172363,
+                "z": -0.81861937046051025
+            },
+            "queryAACube": {
+                "scale": 25.980762481689453,
+                "x": 423.075439453125,
+                "y": 486.155517578125,
+                "z": 470.16082763671875
+            },
+            "rotation": {
+                "w": -0.29671168327331543,
+                "x": -0.29472798109054565,
+                "y": 0.65416955947875977,
+                "z": 0.63018238544464111
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "collisionless": 1,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-11-14T21:19:58Z",
+            "dimensions": {
+                "x": 182.38706970214844,
+                "y": 20.766059875488281,
+                "z": 140.08345031738281
+            },
+            "id": "{9b11c2bc-3e50-481a-b5c7-fdac2ecb0dde}",
+            "ignoreForCollisions": 1,
+            "lastEditedBy": "{562429a7-a134-4ecb-9e7a-32040f7fa3f0}",
+            "locked": 1,
+            "name": "trackadood",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 377.243408203125,
+                "y": 490.77197265625,
+                "z": 314.28326416015625
+            },
+            "queryAACube": {
+                "scale": 230.91047668457031,
+                "x": 261.78817749023438,
+                "y": 375.31674194335938,
+                "z": 198.82803344726562
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "script": "https://gist.githubusercontent.com/cozza13/fcc5f5b27e7f8b0cc99451542e316760/raw/6670cd854b3e7304248bb9654c8b1a98af4f7b21/trackadood.js",
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-11-10T01:37:32Z",
+            "dimensions": {
+                "x": 17.083925247192383,
+                "y": 0.035937502980232239,
+                "z": 1.5644011497497559
+            },
+            "id": "{0ec9f91f-cdc0-4537-bf2b-b96ab2ce7e65}",
+            "name": "Bowling System - Floor Collision Detection",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{7d642a8c-6c93-4071-aefd-0e6b21f55054}",
+            "position": {
+                "x": 0.15687870979309082,
+                "y": -0.71165794134140015,
+                "z": -1.4558422565460205
+            },
+            "queryAACube": {
+                "scale": 51.466323852539062,
+                "x": 523.29510498046875,
+                "y": 472.51898193359375,
+                "z": 464.78558349609375
+            },
+            "rotation": {
+                "w": 0.70705735683441162,
+                "x": 4.57763671875e-05,
+                "y": -0.70717936754226685,
+                "z": 1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-10-15T22:15:26Z",
+            "dimensions": {
+                "x": 62.499977111816406,
+                "y": 18.254520416259766,
+                "z": 49.499988555908203
+            },
+            "id": "{a5e7ec2a-59c0-417f-a89b-5ca5ac9d1d16}",
+            "locked": 1,
+            "modelURL": "https://hifi-content.s3.amazonaws.com/jazmin/dev/events/DotD/sets/desert_buildings/sandvillage.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 427.23193359375,
+                "y": 491.62368774414062,
+                "z": 314.43820190429688
+            },
+            "queryAACube": {
+                "scale": 81.790733337402344,
+                "x": 386.33657836914062,
+                "y": 450.72833251953125,
+                "z": 273.5428466796875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 161,
+                "green": 247,
+                "red": 255
+            },
+            "created": "2016-10-15T01:04:03Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 10.496989250183105,
+                "y": 10.496989250183105,
+                "z": 10.496989250183105
+            },
+            "exponent": 1,
+            "falloffRadius": 5,
+            "id": "{cc254b3a-cb72-4e97-85c3-0416a762bc26}",
+            "intensity": 10,
+            "locked": 1,
+            "name": "light-bridge",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 397.16845703125,
+                "y": 491.64675903320312,
+                "z": 334.73675537109375
+            },
+            "queryAACube": {
+                "scale": 33707.34375,
+                "x": -16338.6650390625,
+                "y": -16357.04296875,
+                "z": -16342.6220703125
+            },
+            "rotation": {
+                "w": 0.70708787441253662,
+                "x": -0.70714884996414185,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-10-01T21:30:42Z",
+            "dimensions": {
+                "x": 1000,
+                "y": 1000,
+                "z": 1000
+            },
+            "id": "{028b7821-6cb5-4037-96b5-d8579f361ac5}",
+            "keyLight": {
+                "ambientIntensity": 0.60000002384185791,
+                "color": {
+                    "blue": 217,
+                    "green": 180,
+                    "red": 152
+                },
+                "intensity": 0.40000000596046448
+            },
+            "locked": 1,
+            "name": "DoD zone",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 379.58657836914062,
+                "y": 497.05145263671875,
+                "z": 427.59686279296875
+            },
+            "queryAACube": {
+                "scale": 1732.05078125,
+                "x": -486.43881225585938,
+                "y": -368.97393798828125,
+                "z": -438.42852783203125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "http://hifi-content.s3.amazonaws.com/alan/dev/SKY-DOD-Fan-art-v1.jpg?11"
+            },
+            "stage": {
+                "day": 90,
+                "hour": 16
+            },
+            "type": "Zone"
+        }
+    ],
+    "Version": 65
+}

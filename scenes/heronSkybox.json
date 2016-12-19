@@ -1,0 +1,52 @@
+{
+    "Entities": [
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-05-10T13:58:13Z",
+            "dimensions": {
+                "x": 4096,
+                "y": 4096,
+                "z": 4096
+            },
+            "id": "{a3873439-222a-4741-bd5b-a0b4d2983077}",
+            "keyLight": {
+                "ambientIntensity": 0.80000001192092896,
+                "intensity": 0.30000001192092896
+            },
+            "locked": 1,
+            "name": "HeronSky",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -25980.76171875,
+                "y": -25980.76171875,
+                "z": -25980.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://o2t.info/assets/model/sunset.jpg"
+            },
+            "stage": {
+                "day": 180,
+                "hour": 11,
+                "latitude": 28,
+                "longitude": -82,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone"
+        }
+    ],
+    "Version": 64
+}

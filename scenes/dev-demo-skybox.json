@@ -1,0 +1,43 @@
+{
+    "Entities": [
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-03-02T19:50:48Z",
+            "dimensions": {
+                "x": 30000,
+                "y": 30000,
+                "z": 30000
+            },
+            "id": "{d82202f9-cf95-4141-b42c-729f3c55a0a6}",
+            "keyLight": {
+                "ambientURL": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/ThickCloudsWater2.jpg"
+            },
+            "marketplaceID": "bf4d7415-93ca-43a0-a187-35fbb158bef9",
+            "name": "Thick Clouds Skybox Zone",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -25980.76171875,
+                "y": -25980.76171875,
+                "z": -25980.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/ThickCloudsWater2.jpg"
+            },
+            "stage": {
+                "latitude": 37.779998779296875,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone"
+        }
+    ],
+    "Version": 62
+}

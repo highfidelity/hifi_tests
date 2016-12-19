@@ -1,0 +1,118 @@
+{
+    "Entities": [
+        {
+            "clientOnly": 0,
+            "created": "2016-04-04T18:06:06Z",
+            "dimensions": {
+                "x": 511.99993896484375,
+                "y": 31.999988555908203,
+                "z": 511.9998779296875
+            },
+            "id": "{21de79da-5ad2-47dd-937d-5a966476ba67}",
+            "locked": 1,
+            "modelURL": "https://o2t.info/assets/model/skyisland.fbx",
+            "name": "SkyIsland-old.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -120,
+                "y": -13.149999618530273,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 724.78399658203125,
+                "x": -482.39199829101562,
+                "y": -375.5419921875,
+                "z": -537.3919677734375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-05-10T13:58:13Z",
+            "dimensions": {
+                "x": 4096,
+                "y": 4096,
+                "z": 4096
+            },
+            "id": "{a3873439-222a-4741-bd5b-a0b4d2983077}",
+            "keyLight": {
+                "ambientIntensity": 0.80000001192092896,
+                "intensity": 0.30000001192092896
+            },
+            "locked": 1,
+            "name": "HeronSky",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -120,
+                "y": -8,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 51961.5234375,
+                "x": -25980.76171875,
+                "y": -25980.76171875,
+                "z": -25980.76171875
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://o2t.info/assets/model/sunset.jpg"
+            },
+            "stage": {
+                "day": 180,
+                "hour": 11,
+                "latitude": 28,
+                "longitude": -82,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-05-25T17:17:41Z",
+            "dimensions": {
+                "x": 139.95318603515625,
+                "y": 135.6209716796875,
+                "z": 139.95317077636719
+            },
+            "id": "{7c929cae-5984-4d45-a344-276685dbed67}",
+            "locked": 1,
+            "modelURL": "atp:/tower7.fbx",
+            "name": "tower7.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": -120,
+                "y": 26.700000762939453,
+                "z": -175
+            },
+            "queryAACube": {
+                "scale": 239.93089294433594,
+                "x": -239.9654541015625,
+                "y": -93.26544189453125,
+                "z": -294.9654541015625
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        }
+    ],
+    "Version": 64
+}

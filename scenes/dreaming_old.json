@@ -1,0 +1,1775 @@
+{
+    "Entities": [
+        {
+            "clientOnly": 0,
+            "created": "2016-05-27T17:32:11Z",
+            "dimensions": {
+                "x": 1.6000000238418579,
+                "y": 0.89999997615814209,
+                "z": 0.0099999997764825821
+            },
+            "id": "{c934ebff-7abe-4446-bc6f-a2054d183917}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 505.93917846679688,
+                "y": 513.34619140625,
+                "z": 509.29977416992188
+            },
+            "queryAACube": {
+                "scale": 1.8357832431793213,
+                "x": 505.02130126953125,
+                "y": 512.42828369140625,
+                "z": 508.38189697265625
+            },
+            "rotation": {
+                "w": 0.87881278991699219,
+                "x": -1.52587890625e-05,
+                "y": 0.4771343469619751,
+                "z": -1.52587890625e-05
+            },
+            "sourceUrl": "https://highfidelity.com/",
+            "type": "Web",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-05-27T21:47:47Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{ba4aad83-ee6f-48f8-a5e7-e8e19982f5dc}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 510.75576782226562,
+                "y": 512.60638427734375,
+                "z": 508.42715454101562
+            },
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": 510.58255004882812,
+                "y": 512.43316650390625,
+                "z": 508.25393676757812
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Hexagon",
+            "type": "Shape"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 97,
+                "green": 11,
+                "red": 0
+            },
+            "created": "2016-05-23T06:34:02Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{3981469c-750d-4c19-af70-2bf4ec49c0a8}",
+            "name": "OmniTest_Magballs",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 516.99945068359375,
+                "y": 512.57000732421875,
+                "z": 512.90283203125
+            },
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": 516.82623291015625,
+                "y": 512.39678955078125,
+                "z": 512.7296142578125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Tetrahedron",
+            "type": "Shape",
+            "userData": "{\"OmniTool\":{\"script\":\"../toybox/magBalls.js\"},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 128,
+                "red": 21
+            },
+            "created": "2015-06-03T21:27:02Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{ce99caba-8884-4d40-8869-0b13b084dc25}",
+            "name": "OmniTest1",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 516.7557373046875,
+                "y": 512.45001220703125,
+                "z": 513.09625244140625
+            },
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": 516.58251953125,
+                "y": 512.27679443359375,
+                "z": 512.92303466796875
+            },
+            "rotation": {
+                "w": 0.96124207973480225,
+                "x": -1.52587890625e-05,
+                "y": -4.57763671875e-05,
+                "z": 0.27559316158294678
+            },
+            "script": "https://s3.amazonaws.com/hifi-public/scripts/toybox/cat/cat.js",
+            "scriptTimestamp": 1445963269320,
+            "shape": "Icosahedron",
+            "type": "Shape",
+            "userData": "{\"OmniTool\":{\"script\":\"test.js\"},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2015-09-06T06:37:47Z",
+            "dimensions": {
+                "x": 1.6000000238418579,
+                "y": 0.0099999997764825821,
+                "z": 0.89999997615814209
+            },
+            "id": "{b2408038-1240-4327-9c01-c050f1819734}",
+            "locked": 1,
+            "name": "StarNest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 515.42889404296875,
+                "y": 513.5,
+                "z": 517.6112060546875
+            },
+            "queryAACube": {
+                "scale": 1.8357832431793213,
+                "x": 514.510986328125,
+                "y": 512.58209228515625,
+                "z": 516.69329833984375
+            },
+            "rotation": {
+                "w": 0.18297088146209717,
+                "x": 0.18297088146209717,
+                "y": -0.68303960561752319,
+                "z": 0.68297851085662842
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\n    \"ProceduralEntity\": {\n        \"shaderUrl\": \"https://s3.amazonaws.com/DreamingContent/shaders/starNest.fs\"\n    }\n}",
+            "visible": 0
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2015-09-08T17:19:15Z",
+            "dimensions": {
+                "x": 100,
+                "y": 20,
+                "z": 100
+            },
+            "id": "{04e19a35-3c84-48b6-900e-56e3174eb0e0}",
+            "locked": 1,
+            "marketplaceID": "145bdab4-ac21-4955-9a0d-c0c5af0534c8",
+            "name": "Green Grid Skybox",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 413.78546142578125,
+                "y": 510,
+                "z": 752.25555419921875
+            },
+            "queryAACube": {
+                "scale": 142.82856750488281,
+                "x": 342.37118530273438,
+                "y": 438.58572387695312,
+                "z": 680.84124755859375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "color": {
+                    "blue": 255,
+                    "green": 255,
+                    "red": 255
+                },
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/CloudyDay1.jpg"
+            },
+            "stage": {
+                "automaticHourDay": 1,
+                "hour": 20.5
+            },
+            "type": "Zone",
+            "userData": "{\n    \"ProceduralEntity\": {\n\t\t\"version\":2,\n\t\t\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/tissue.fs\",\n\t\t\"channels\":[\n\t\t\t\"https://www.shadertoy.com/presets/tex07.jpg\",\n\t\t\t\"https://www.shadertoy.com/presets/tex15.png\"\n\t\t]\n\t}\n}"
+        },
+        {
+            "clientOnly": 0,
+            "collidesWith": "",
+            "collisionMask": 0,
+            "collisionless": 1,
+            "created": "2015-12-30T05:57:01Z",
+            "dimensions": {
+                "x": 0.5,
+                "y": 50,
+                "z": 0.5
+            },
+            "id": "{76f5084b-54ec-4980-a1b7-aa3fca96ed61}",
+            "ignoreForCollisions": 1,
+            "locked": 1,
+            "name": "TimerRotorOuter",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{f8d4983a-2732-4fa2-8cf3-5ee4005a3f8e}",
+            "position": {
+                "x": -0.00055105367209762335,
+                "y": 5.20001220703125,
+                "z": -0.00029171706410124898
+            },
+            "queryAACube": {
+                "scale": 150.01499938964844,
+                "x": 436.99249267578125,
+                "y": 439.99249267578125,
+                "z": 436.99249267578125
+            },
+            "rotation": {
+                "w": 0.25874722003936768,
+                "x": 4.57763671875e-05,
+                "y": -0.96597236394882202,
+                "z": 1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/timeRotor.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-06-03T21:27:02Z",
+            "dimensions": {
+                "x": 0.75,
+                "y": 0.44999998807907104,
+                "z": 0.0099999997764825821
+            },
+            "id": "{826c8364-0cf1-431f-9da7-1003f7ab0902}",
+            "lineHeight": 0.035000000149011612,
+            "name": "Screen",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 516.96832275390625,
+                "y": 512.52001953125,
+                "z": 511.85626220703125
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 516.46832275390625,
+                "y": 512.02001953125,
+                "z": 511.35626220703125
+            },
+            "rotation": {
+                "w": 0.70437169075012207,
+                "x": -0.061814308166503906,
+                "y": -0.70443272590637207,
+                "z": -0.061814308166503906
+            },
+            "text": "# bin/LLLSDLaserControl - ok 1",
+            "textColor": {
+                "blue": 245,
+                "green": 245,
+                "red": 245
+            },
+            "type": "Text",
+            "userData": "{\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-03-07T07:23:55Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 4,
+                "y": 4,
+                "z": 4
+            },
+            "id": "{c40dcba2-7b5f-4549-a1ff-54e08a8e1c64}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 515,
+                "y": 512.91241455078125,
+                "z": 504
+            },
+            "queryAACube": {
+                "scale": 20.784608840942383,
+                "x": 500.2384033203125,
+                "y": 502.52011108398438,
+                "z": 499.60769653320312
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.36363637447357178,
+                "y": 0.36363637447357178,
+                "z": 0.36363637447357178
+            },
+            "id": "{15655228-37ea-4769-89d7-ec28e6dbcc61}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.7272727272727273}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "animation": {
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "created": "2015-12-30T21:14:31Z",
+            "dimensions": {
+                "x": 2.1211481094360352,
+                "y": 0.55050677061080933,
+                "z": 0.11999999731779099
+            },
+            "id": "{baaa0d14-4000-4d38-a839-9e1f1b198673}",
+            "modelURL": "atp:743eaae8aa1d9e6d9af5dd1b4e19418dd81e2a41f0e98c9ec1ecf3f6276358f9.obj#textmesh:Austin",
+            "name": "austin",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 507.41000366210938,
+                "y": 514.6300048828125,
+                "z": 516.8499755859375
+            },
+            "queryAACube": {
+                "scale": 6.5841131210327148,
+                "x": 503.37274169921875,
+                "y": 511.33795166015625,
+                "z": 513.7467041015625
+            },
+            "rotation": {
+                "w": 0.25880825519561768,
+                "x": -1.52587890625e-05,
+                "y": 0.9659113883972168,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-04-12T18:02:57Z",
+            "dimensions": {
+                "x": 41.810371398925781,
+                "y": 8.0954132080078125,
+                "z": 34.291416168212891
+            },
+            "id": "{408944a5-d4c6-4e84-b9fd-e85b475f4186}",
+            "modelURL": "https://s3.amazonaws.com/DreamingContent/assets/models/Crawler.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 560.31097412109375,
+                "y": 513.81036376953125,
+                "z": 483.36996459960938
+            },
+            "queryAACube": {
+                "scale": 54.676723480224609,
+                "x": 532.97259521484375,
+                "y": 486.47201538085938,
+                "z": 456.0316162109375
+            },
+            "rotation": {
+                "w": 0.83144879341125488,
+                "x": -1.52587890625e-05,
+                "y": -0.55562674999237061,
+                "z": -1.52587890625e-05
+            },
+            "type": "Model",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2015-10-05T20:20:53Z",
+            "dimensions": {
+                "x": 2.5,
+                "y": 0.10000000149011612,
+                "z": 1.2999999523162842
+            },
+            "id": "{8c953db3-aa95-4d4e-a3a1-feb208bf3c37}",
+            "locked": 1,
+            "name": "ConsoleCollider",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{f8d4983a-2732-4fa2-8cf3-5ee4005a3f8e}",
+            "position": {
+                "x": -2.1195617591729388e-05,
+                "y": 0.20001220703125,
+                "z": -1.1220543456147425e-05
+            },
+            "queryAACube": {
+                "scale": 8.4587230682373047,
+                "x": 507.7706298828125,
+                "y": 507.7706298828125,
+                "z": 507.7706298828125
+            },
+            "rotation": {
+                "w": 0.70705735683441162,
+                "x": 1.52587890625e-05,
+                "y": -0.70714884996414185,
+                "z": 1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collidesWith": "",
+            "collisionMask": 0,
+            "collisionless": 1,
+            "created": "2015-12-29T18:09:13Z",
+            "dimensions": {
+                "x": 0.40000000596046448,
+                "y": 13.5,
+                "z": 0.40000000596046448
+            },
+            "id": "{3bcdb615-c80d-4d21-a324-27c88ec963f2}",
+            "ignoreForCollisions": 1,
+            "locked": 1,
+            "name": "TimerRotorInner",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{76f5084b-54ec-4980-a1b7-aa3fca96ed61}",
+            "position": {
+                "x": -1.6796226191218011e-05,
+                "y": 1,
+                "z": 4.8396370402770117e-05
+            },
+            "queryAACube": {
+                "scale": 40.535537719726562,
+                "x": 491.73223876953125,
+                "y": 497.73223876953125,
+                "z": 491.73223876953125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": 1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "scriptTimestamp": 1456471419223,
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/timeRotorInner.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 74,
+                "green": 74,
+                "red": 74
+            },
+            "created": "2015-06-03T07:30:22Z",
+            "dimensions": {
+                "x": 16,
+                "y": 0.0099999997764825821,
+                "z": 16
+            },
+            "id": "{81c9f553-dc03-4bcd-9351-71b7d12fb113}",
+            "name": "Floor",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512.0572509765625,
+                "y": 511,
+                "z": 512.00030517578125
+            },
+            "queryAACube": {
+                "scale": 150.0150146484375,
+                "x": 436.99249267578125,
+                "y": 439.99249267578125,
+                "z": 436.99249267578125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -4.57763671875e-05,
+                "y": -4.57763671875e-05,
+                "z": -4.57763671875e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\n    \"ProceduralEntity\": {\n        \"shaderUrl\": \"https://s3.amazonaws.com/DreamingContent/shaders/hex2.fs\"\n    }\n}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2016-04-30T17:36:14Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{5378eae8-7c0d-4891-b0a8-64ee90205ddc}",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512.24627685546875,
+                "y": 511.96676635742188,
+                "z": 511.72021484375
+            },
+            "queryAACube": {
+                "scale": 0.34641015529632568,
+                "x": 512.07305908203125,
+                "y": 511.79354858398438,
+                "z": 511.5469970703125
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.22727273404598236,
+                "y": 0.22727273404598236,
+                "z": 0.22727273404598236
+            },
+            "id": "{76eb854b-01fb-4c87-b37e-ad741eb0f25d}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.4545454545454546}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 128
+            },
+            "created": "2015-06-03T21:27:02Z",
+            "dimensions": {
+                "x": 0.20000000298023224,
+                "y": 0.20000000298023224,
+                "z": 0.20000000298023224
+            },
+            "id": "{180c887d-b9dd-43cc-96b4-336753cfb0dc}",
+            "name": "OmniTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 516.6197509765625,
+                "y": 512.30889892578125,
+                "z": 512.96392822265625
+            },
+            "queryAACube": {
+                "scale": 1.0392304658889771,
+                "x": 516.1802978515625,
+                "y": 511.78927612304688,
+                "z": 512.38037109375
+            },
+            "rotation": {
+                "w": 0.85262835025787354,
+                "x": -0.24455636739730835,
+                "y": 0.44383919239044189,
+                "z": 0.12724494934082031
+            },
+            "shape": "Dodecahedron",
+            "type": "Shape",
+            "userData": "{\"OmniTool\":{\"script\":\"../toys/proceduralEdit.js\"},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2016-02-23T20:37:38Z",
+            "dimensions": {
+                "x": 20,
+                "y": 20,
+                "z": 20
+            },
+            "id": "{eda818f4-ae76-47cf-b6c3-d2ad781d8d1f}",
+            "name": "omgskybox",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 511.9085693359375,
+                "y": 512,
+                "z": 511.88861083984375
+            },
+            "queryAACube": {
+                "scale": 51.961524963378906,
+                "x": 486.01925659179688,
+                "y": 486.01925659179688,
+                "z": 486.01925659179688
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://s3.amazonaws.com/DreamingContent/assets/images/empty.png"
+            },
+            "stage": {
+                "day": 0,
+                "hour": 22,
+                "latitude": 0,
+                "longitude": 0
+            },
+            "type": "Zone",
+            "userData": "{\n    \"ProceduralEntity\": {\n        \"version\":2,\n        \"shaderUrl\": \"https://s3.amazonaws.com/DreamingContent/shaders/skybox/gasGiant.fs\",\n        \"channels\":[\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/starmap_8k.jpg\",\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/celestial_grid.jpg\",\n            \"https://hifi-public.s3.amazonaws.com/austin/assets/images/skybox/constellation_figures.jpg\",\n            \"https://www.shadertoy.com/presets/tex09.jpg\"\n        ],\n        \"uniforms\": {\n            \"rotationSpeed\":0.01,\n            \"uDayColor\": [0.9, 0.7, 0.7 ],\n            \"constellationLevel\": 0.04,\n            \"constellationBoundaryLevel\": 0.0,\n            \"gridLevel\": 0.02\n        }\n    }\n}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 0
+            },
+            "created": "2015-09-06T06:33:25Z",
+            "dimensions": {
+                "x": 1.6000000238418579,
+                "y": 0.0099999997764825821,
+                "z": 1.6000000238418579
+            },
+            "id": "{f5d6059f-8ae1-468b-a3d2-8bc3eb961c58}",
+            "locked": 1,
+            "name": "Block",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 517,
+                "y": 514,
+                "z": 512
+            },
+            "queryAACube": {
+                "scale": 2.2627637386322021,
+                "x": 515.86859130859375,
+                "y": 512.86859130859375,
+                "z": 510.86862182617188
+            },
+            "rotation": {
+                "w": 0.49999237060546875,
+                "x": 0.49999237060546875,
+                "y": 0.49999237060546875,
+                "z": -0.50002288818359375
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\n    \"ProceduralEntity\": {\n        \"shaderUrl\": \"https://s3.amazonaws.com/DreamingContent/shaders/clock2.fs\"\n    }\n}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "id": "{2490abe1-d474-43bb-a7ac-026f4cf5ba85}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.31818181276321411,
+                "y": 0.31818181276321411,
+                "z": 0.31818181276321411
+            },
+            "id": "{6507070d-56fe-4952-aaa6-fc2e9b3445ff}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.6363636363636364}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2015-10-07T19:18:56Z",
+            "id": "{5773ff69-a672-42a9-b75f-3bd376e5da09}",
+            "marketplaceID": "145bdab4-ac21-4955-9a0d-c0c5af0534c8",
+            "name": "TheGrid",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512,
+                "z": 512
+            },
+            "queryAACube": {
+                "scale": 184.90267944335938,
+                "x": 460.03848266601562,
+                "y": 360.03848266601562,
+                "z": 460.03848266601562
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "scriptTimestamp": 1455865833738,
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/CloudyDay1.jpg"
+            },
+            "stage": {
+                "hour": 20.5,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone",
+            "userData": "{\n    \"ProceduralEntity\": {\n        \"shaderUrl\": \"https://s3.amazonaws.com/Oculus/shadertoys/relentlessSkybox3.fs\",\n\"uniforms\":{ \"iColorPower\": [ 9.0, 0.25, 0.3 ]}\n    }\n}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-03-07T17:44:19Z",
+            "dimensions": {
+                "x": 0.66857695579528809,
+                "y": 0.44223690032958984,
+                "z": 0.74900913238525391
+            },
+            "id": "{a1a179af-7775-4a3b-8efe-7a5f7f459863}",
+            "modelURL": "https://s3.amazonaws.com/DreamingContent/assets/models/horus-falcon/sculpt.fbx",
+            "name": "Falcon",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 514.6566162109375,
+                "y": 512.353515625,
+                "z": 517.078125
+            },
+            "queryAACube": {
+                "scale": 3.2912383079528809,
+                "x": 512.8021240234375,
+                "y": 511.43124389648438,
+                "z": 515.34442138671875
+            },
+            "rotation": {
+                "w": 0.42330050468444824,
+                "x": 0.44670784473419189,
+                "y": -0.57729458808898926,
+                "z": 0.5366445779800415
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.45454546809196472,
+                "y": 0.45454546809196472,
+                "z": 0.45454546809196472
+            },
+            "id": "{c3be742a-a90c-4e3a-a461-afc3c20dd8a9}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.9090909090909091}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-03-07T17:59:37Z",
+            "dimensions": {
+                "x": 0.81865894794464111,
+                "y": 0.81203103065490723,
+                "z": 1.7748533487319946
+            },
+            "id": "{f80ea021-c743-48a1-ae24-f063f3ca0be1}",
+            "modelURL": "https://s3.amazonaws.com/DreamingContent/assets/models/satyr/satyr-exported.fbx",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 506.33139038085938,
+                "y": 511.84930419921875,
+                "z": 515.8662109375
+            },
+            "queryAACube": {
+                "scale": 6.3495922088623047,
+                "x": 504.4256591796875,
+                "y": 508.67453002929688,
+                "z": 510.748779296875
+            },
+            "rotation": {
+                "w": 0.10121309757232666,
+                "x": 0.14732587337493896,
+                "y": -0.72585642337799072,
+                "z": 0.66424047946929932
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-10-02T20:08:58Z",
+            "dimensions": {
+                "x": 5,
+                "y": 2.5,
+                "z": 0.0099999997764825821
+            },
+            "id": "{bb331c6d-02be-4858-acdc-2009648096a0}",
+            "name": "Poster",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 510.98764038085938,
+                "y": 512.5999755859375,
+                "z": 518.964111328125
+            },
+            "queryAACube": {
+                "scale": 10.307768821716309,
+                "x": 505.83377075195312,
+                "y": 507.44610595703125,
+                "z": 513.81024169921875
+            },
+            "registrationPoint": {
+                "x": 0,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 0.25880825519561768,
+                "x": -1.52587890625e-05,
+                "y": 0.9659113883972168,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/image.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1},\"channels\":[\"https://s3.amazonaws.com/DreamingContent/images/12th.jpg\",\"https://s3.amazonaws.com/DreamingContent/images/11th.jpg\",\"https://s3.amazonaws.com/DreamingContent/images/10th.jpg\",\"https://s3.amazonaws.com/DreamingContent/images/timey-wimey.jpg\"]},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2015-10-05T20:20:53Z",
+            "dimensions": {
+                "x": 2.5,
+                "y": 0.10000000149011612,
+                "z": 1.2999999523162842
+            },
+            "id": "{d0022be5-422d-44df-9b0a-685b79b5e78f}",
+            "locked": 1,
+            "name": "ConsoleCollider",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{f8d4983a-2732-4fa2-8cf3-5ee4005a3f8e}",
+            "position": {
+                "x": -2.1195617591729388e-05,
+                "y": 0.20001220703125,
+                "z": -1.1220543456147425e-05
+            },
+            "queryAACube": {
+                "scale": 8.4587230682373047,
+                "x": 507.7706298828125,
+                "y": 507.7706298828125,
+                "z": 507.7706298828125
+            },
+            "rotation": {
+                "w": 0.25874722003936768,
+                "x": 4.57763671875e-05,
+                "y": -0.96597236394882202,
+                "z": 1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-03-07T03:19:15Z",
+            "dimensions": {
+                "x": 2.1184873580932617,
+                "y": 4.0185027122497559,
+                "z": 1.9864020347595215
+            },
+            "id": "{3ab17bb3-a142-4347-9a2c-57a97bbc9e2d}",
+            "modelURL": "https://s3.amazonaws.com/DreamingContent/assets/models/arhan-of-hinayana/Arhan.FBX",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 517.233642578125,
+                "y": 512.6893310546875,
+                "z": 508.74325561523438
+            },
+            "queryAACube": {
+                "scale": 4.958038330078125,
+                "x": 514.754638671875,
+                "y": 510.2103271484375,
+                "z": 506.26422119140625
+            },
+            "rotation": {
+                "w": -0.76888686418533325,
+                "x": -1.52587890625e-05,
+                "y": 0.63936829566955566,
+                "z": 1.52587890625e-05
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.40909090638160706,
+                "y": 0.40909090638160706,
+                "z": 0.40909090638160706
+            },
+            "id": "{0b4a9557-9a96-4178-b6e9-d9de87c8a201}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.8181818181818181}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-07-20T16:55:42Z",
+            "dimensions": {
+                "x": 1.8726794719696045,
+                "y": 1.8238378763198853,
+                "z": 0.37235507369041443
+            },
+            "id": "{69650cf4-9247-443b-95e6-3e73a7561b20}",
+            "modelURL": "https://hifi-public.s3.amazonaws.com/sam/models/skinRenderingTest/matthew/matthew.fst",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512.92523193359375,
+                "y": 511.9019775390625,
+                "z": 505.07345581054688
+            },
+            "queryAACube": {
+                "scale": 2.6404471397399902,
+                "x": 511.60501098632812,
+                "y": 510.58175659179688,
+                "z": 503.75323486328125
+            },
+            "rotation": {
+                "w": 0.96814769506454468,
+                "x": 0,
+                "y": -0.2503800094127655,
+                "z": 0
+            },
+            "type": "Model"
+        },
+        {
+            "animation": {
+                "currentFrame": 2.5897609916553522e-38,
+                "loop": 0
+            },
+            "clientOnly": 0,
+            "collisionless": 1,
+            "created": "2015-10-05T20:16:31Z",
+            "dimensions": {
+                "x": 2.2235705852508545,
+                "y": 0.55738914012908936,
+                "z": 1.9499173164367676
+            },
+            "id": "{f8d4983a-2732-4fa2-8cf3-5ee4005a3f8e}",
+            "ignoreForCollisions": 1,
+            "modelURL": "https://s3.amazonaws.com/DreamingContent/assets/models/tardis/console.fbx",
+            "name": "Console",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{81c9f553-dc03-4bcd-9351-71b7d12fb113}",
+            "position": {
+                "x": -0.05732424184679985,
+                "y": 0.79998254776000977,
+                "z": -0.00022669011377729475
+            },
+            "queryAACube": {
+                "scale": 150.0150146484375,
+                "x": 436.99249267578125,
+                "y": 439.99249267578125,
+                "z": 436.99249267578125
+            },
+            "registrationPoint": {
+                "x": 0.5,
+                "y": 0,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 0.25874722003936768,
+                "x": -7.62939453125e-05,
+                "y": 0.9659419059753418,
+                "z": 1.52587890625e-05
+            },
+            "type": "Model",
+            "userData": "{\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2016-07-20T16:55:42Z",
+            "dimensions": {
+                "x": 1.644758939743042,
+                "y": 1.6623791456222534,
+                "z": 0.34723153710365295
+            },
+            "id": "{bd5fcf9e-d512-43dc-b321-de99ae26520e}",
+            "modelURL": "https://hifi-public.s3.amazonaws.com/sam/models/skinRenderingTest/priscilla/priscilla.fst",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 510.96951293945312,
+                "y": 511.82196044921875,
+                "z": 505.149658203125
+            },
+            "queryAACube": {
+                "scale": 2.3641715049743652,
+                "x": 509.78741455078125,
+                "y": 510.63986206054688,
+                "z": 503.96755981445312
+            },
+            "rotation": {
+                "w": 0.95757132768630981,
+                "x": 0,
+                "y": 0.28819626569747925,
+                "z": 0
+            },
+            "type": "Model"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 56,
+                "green": 56,
+                "red": 56
+            },
+            "created": "2015-09-09T23:47:42Z",
+            "dimensions": {
+                "x": 7.6500000953674316,
+                "y": 3.2000000476837158,
+                "z": 0.0099999997764825821
+            },
+            "id": "{882191ba-1cee-4c6e-9a47-4914578b37f2}",
+            "locked": 1,
+            "name": "Wall",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{81c9f553-dc03-4bcd-9351-71b7d12fb113}",
+            "position": {
+                "x": 0.00069583038566634059,
+                "y": -0.00069576670648530126,
+                "z": 7.5999755859375
+            },
+            "queryAACube": {
+                "scale": 49.75390625,
+                "x": 487.123046875,
+                "y": 486.123046875,
+                "z": 494.7230224609375
+            },
+            "registrationPoint": {
+                "x": 0,
+                "y": 0,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 0.25874722003936768,
+                "x": -7.62939453125e-05,
+                "y": 0.9659419059753418,
+                "z": 1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "clientOnly": 0,
+            "created": "2015-09-13T19:10:53Z",
+            "dimensions": {
+                "x": 0.80000001192092896,
+                "y": 0.80000001192092896,
+                "z": 0.80000001192092896
+            },
+            "id": "{9367748a-ce02-409b-b5c1-96a905d0e596}",
+            "locked": 1,
+            "name": "QuorraOuter",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1.3856406211853027,
+                "x": 511.30718994140625,
+                "y": 511.80718994140625,
+                "z": 517.30718994140625
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quorra3.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1}},\"grabbableKey\":{\"grabbable\":false}}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 36,
+                "green": 36,
+                "red": 36
+            },
+            "created": "2015-09-09T19:03:43Z",
+            "dimensions": {
+                "x": 0.80000001192092896,
+                "y": 0.0099999997764825821,
+                "z": 1.5
+            },
+            "id": "{80a31df8-194e-4506-8960-b95fbf3c94b7}",
+            "name": "Desk",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 516.75,
+                "y": 512.20001220703125,
+                "z": 512
+            },
+            "queryAACube": {
+                "scale": 1.7001175880432129,
+                "x": 515.89996337890625,
+                "y": 511.34994506835938,
+                "z": 511.14993286132812
+            },
+            "registrationPoint": {
+                "x": 0.5,
+                "y": 1,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.090909093618392944,
+                "y": 0.090909093618392944,
+                "z": 0.090909093618392944
+            },
+            "id": "{ee922bba-27b5-460c-a524-204c2266710f}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.18181818181818177}},\"grabbableKey\":{\"grabbable\":false}}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 0
+            },
+            "created": "2015-09-06T06:20:18Z",
+            "dimensions": {
+                "x": 1.6000000238418579,
+                "y": 0.89999997615814209,
+                "z": 0.0099999997764825821
+            },
+            "id": "{58da301f-05a2-4928-93e1-20090cf4caaf}",
+            "name": "Volcanic",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 517.46075439453125,
+                "y": 511.96356201171875,
+                "z": 516.43988037109375
+            },
+            "queryAACube": {
+                "scale": 1.8357832431793213,
+                "x": 516.5428466796875,
+                "y": 511.04568481445312,
+                "z": 515.52197265625
+            },
+            "rotation": {
+                "w": 0.25862514972686768,
+                "x": -1.52587890625e-05,
+                "y": -0.96597236394882202,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/volcanic.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1},\"channels\":[\"https://s3.amazonaws.com/Oculus/shadertoys/tex16.png\",\"https://s3.amazonaws.com/Oculus/shadertoys/tex06.jpg\",\"https://s3.amazonaws.com/Oculus/shadertoys/tex09.jpg\"]},\"grabbableKey\":{\"grabbable\":false}}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "collidesWith": "",
+            "collisionMask": 0,
+            "collisionless": 1,
+            "color": {
+                "blue": 237,
+                "green": 82,
+                "red": 21
+            },
+            "created": "2016-02-18T21:38:35Z",
+            "cutoff": 90,
+            "dimensions": {
+                "x": 7.250028133392334,
+                "y": 7.250028133392334,
+                "z": 7.250028133392334
+            },
+            "id": "{94f46c38-7b4d-4321-8859-911c9325a791}",
+            "ignoreForCollisions": 1,
+            "isSpotlight": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 514.01153564453125,
+                "z": 512
+            },
+            "queryAACube": {
+                "scale": 20.784608840942383,
+                "x": 501.60769653320312,
+                "y": 502.61001586914062,
+                "z": 500.32650756835938
+            },
+            "rotation": {
+                "w": 0.70687413215637207,
+                "x": -0.70736247301101685,
+                "y": -4.57763671875e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Light"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.18181818723678589,
+                "y": 0.18181818723678589,
+                "z": 0.18181818723678589
+            },
+            "id": "{210ea7ac-4f31-4dfe-af6b-ce8e329a7cb2}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.36363636363636365}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 0
+            },
+            "created": "2015-10-02T20:11:09Z",
+            "dimensions": {
+                "x": 1.6000000238418579,
+                "y": 0.0099999997764825821,
+                "z": 0.89999997615814209
+            },
+            "id": "{7e3e0e5e-0a58-4326-ab25-b1a74b787cea}",
+            "name": "Topologica",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 517.46002197265625,
+                "y": 513.5,
+                "z": 516.44000244140625
+            },
+            "queryAACube": {
+                "scale": 5.507349967956543,
+                "x": 514.70635986328125,
+                "y": 510.74630737304688,
+                "z": 513.68634033203125
+            },
+            "rotation": {
+                "w": 0.18272674083709717,
+                "x": 0.18272674083709717,
+                "y": -0.68310064077377319,
+                "z": 0.68303954601287842
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{\"ProceduralEntity\":{\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/topologica.fs\"},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "backgroundMode": "skybox",
+            "clientOnly": 0,
+            "created": "2015-10-07T19:38:36Z",
+            "dimensions": {
+                "x": 64,
+                "y": 16,
+                "z": 64
+            },
+            "id": "{2110a29d-e2bc-4de0-987e-4a54f0a9ec08}",
+            "marketplaceID": "145bdab4-ac21-4955-9a0d-c0c5af0534c8",
+            "name": "Time Vortex",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 510.1199951171875,
+                "y": 573.47998046875,
+                "z": 511.07998657226562
+            },
+            "queryAACube": {
+                "scale": 91.913002014160156,
+                "x": 464.16348266601562,
+                "y": 527.52349853515625,
+                "z": 465.12347412109375
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "box",
+            "skybox": {
+                "url": "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/CloudyDay1.jpg"
+            },
+            "stage": {
+                "hour": 20.5,
+                "sunModelEnabled": 1
+            },
+            "type": "Zone",
+            "userData": "{\n    \"ProceduralEntity\": {\n\t\t\"version\":2,\n\t\t\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/tissue.fs\",\n\t\t\"channels\":[\n\t\t\t\"https://www.shadertoy.com/presets/tex07.jpg\",\n\t\t\t\"https://www.shadertoy.com/presets/tex15.png\"\n\t\t]\n\t}\n}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 0
+            },
+            "created": "2015-10-02T20:04:35Z",
+            "dimensions": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "id": "{eef81ef7-d5c2-42a1-800e-519df0b45031}",
+            "name": "GeodesicTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 506.50564575195312,
+                "y": 511.80487060546875,
+                "z": 509.03475952148438
+            },
+            "queryAACube": {
+                "scale": 1.7320507764816284,
+                "x": 505.63961791992188,
+                "y": 510.9388427734375,
+                "z": 508.16873168945312
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity.save\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/DreamingContent/shaders/quorra3.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":1},\"channels\":[\"https://s3.amazonaws.com/DreamingContent/shaders/geo1.png\",\"https://s3.amazonaws.com/DreamingContent/shaders/geo2.png\",\"https://s3.amazonaws.com/DreamingContent/shaders/geo3.png\",\"https://s3.amazonaws.com/DreamingContent/shaders/geo4.png\"]},\"grabbableKey\":{\"grabbable\":false}}",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.13636364042758942,
+                "y": 0.13636364042758942,
+                "z": 0.13636364042758942
+            },
+            "id": "{36f3d859-9b45-4032-ac75-bdebc99c2782}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.2727272727272727}},\"grabbableKey\":{\"grabbable\":false}}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 56,
+                "green": 56,
+                "red": 56
+            },
+            "created": "2015-09-09T23:54:15Z",
+            "dimensions": {
+                "x": 7.6500000953674316,
+                "y": 3.2000000476837158,
+                "z": 0.0099999997764825821
+            },
+            "id": "{5eb9ce22-4bdd-4172-981d-3b57d3e3f30b}",
+            "locked": 1,
+            "name": "Wall",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{81c9f553-dc03-4bcd-9351-71b7d12fb113}",
+            "position": {
+                "x": 0.00069583038566634059,
+                "y": -0.00069576670648530126,
+                "z": 7.5999755859375
+            },
+            "queryAACube": {
+                "scale": 49.75390625,
+                "x": 487.123046875,
+                "y": 486.123046875,
+                "z": 494.7230224609375
+            },
+            "registrationPoint": {
+                "x": 1,
+                "y": 0,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 0.25868618488311768,
+                "x": 1.52587890625e-05,
+                "y": -0.96597236394882202,
+                "z": -7.62939453125e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "userData": "{}"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 0,
+                "red": 255
+            },
+            "created": "2015-10-05T20:23:04Z",
+            "dimensions": {
+                "x": 2.5,
+                "y": 0.10000000149011612,
+                "z": 1.2999999523162842
+            },
+            "id": "{e1fbb5e4-5b77-4262-8a7e-6d99312124d1}",
+            "locked": 1,
+            "name": "ConsoleCollider",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "parentID": "{f8d4983a-2732-4fa2-8cf3-5ee4005a3f8e}",
+            "position": {
+                "x": -2.1195617591729388e-05,
+                "y": 0.20001220703125,
+                "z": -1.1220543456147425e-05
+            },
+            "queryAACube": {
+                "scale": 8.4587230682373047,
+                "x": 507.7706298828125,
+                "y": 507.7706298828125,
+                "z": 507.7706298828125
+            },
+            "rotation": {
+                "w": 0.9659113883972168,
+                "x": -1.52587890625e-05,
+                "y": -0.25889980792999268,
+                "z": 1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box",
+            "visible": 0
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 140,
+                "green": 136,
+                "red": 140
+            },
+            "created": "2016-03-07T19:07:20Z",
+            "dimensions": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "id": "{9587705b-2dd0-45cf-81cc-3fb17977bb0d}",
+            "locked": 1,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 514.60845947265625,
+                "y": 511,
+                "z": 517.15216064453125
+            },
+            "queryAACube": {
+                "scale": 7.3484697341918945,
+                "x": 510.37362670898438,
+                "y": 507.32577514648438,
+                "z": 512.843994140625
+            },
+            "registrationPoint": {
+                "x": 0.5,
+                "y": 0,
+                "z": 0.5
+            },
+            "rotation": {
+                "w": 0.9659113883972168,
+                "x": -1.52587890625e-05,
+                "y": 0.25880825519561768,
+                "z": -1.52587890625e-05
+            },
+            "shape": "Cube",
+            "type": "Box"
+        },
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 220,
+                "green": 220,
+                "red": 220
+            },
+            "created": "2015-09-10T00:03:00Z",
+            "dimensions": {
+                "x": 0.27272728085517883,
+                "y": 0.27272728085517883,
+                "z": 0.27272728085517883
+            },
+            "id": "{54ede1aa-0f07-4d74-9ff0-5f2ac5952dc9}",
+            "name": "QuoraTest",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "position": {
+                "x": 512,
+                "y": 512.5,
+                "z": 518
+            },
+            "queryAACube": {
+                "scale": 1,
+                "x": 511.5,
+                "y": 512,
+                "z": 517.5
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "type": "Sphere",
+            "userData": "{\"ProceduralEntity\":{\"version\":2,\"shaderUrl\":\"https://s3.amazonaws.com/Oculus/shadertoys/quora2.fs\",\"uniforms\":{\"iSpeed\":1,\"iShell\":0.5454545454545454}},\"grabbableKey\":{\"grabbable\":false}}"
+        }
+    ],
+    "Version": 62
+}
