@@ -1,0 +1,1405 @@
+{
+  "Entities": [
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/830988dc-619a-4e88-96e1-a19fa0aaa30f-v1/M_UrbEnf.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/534d42f8-ec13-4145-929f-5c8facac2fb7-v1/F_LegFig.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/cf0eb1be-9ec7-4756-8eaf-ac8f3ec09eba-v1/F_ClaDef.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/0c954ba0-4d87-4353-b65e-c45509f85658-v1/priscilla.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/cb20212c-36f2-4d41-bdad-132361ca6ff4-v1/M_TreTee.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/47c8d706-d486-4c2d-afcc-70d4e1e25117-v1/M_RetSpaSuit.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/13277c09-892f-4a5e-b9a5-8994a37d68bf-v1/F_WasWar.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/775a8fb3-cfe7-494d-b603-a0a2d6910e55-v1/F_VinCov.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/cb20212c-36f2-4d41-bdad-132361ca6ff4-v1/M_TreTee.fst", 
+      "position": {
+        "x": -10, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/e863348f-a777-4f36-86e6-af6e65ffa161-v1/F_BloSam.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d8da10b6-25c1-40e2-9a66-369316c722d7-v1/F_AniSuit.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/8872ae86-a763-4db3-8373-d27514c1481e-v1/M_VinAvi.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/ede82c38-c66e-4f67-9e0b-0bb0782db18f-v1/M_WesOut.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/ad774d79-13f1-46e2-87c9-de49a261b264-v1/F_GunSli.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/dc55803b-9215-47dd-9408-eb835dac4082-v1/F_ParGir.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/0c954ba0-4d87-4353-b65e-c45509f85658-v1/priscilla.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/548d0792-0bac-4933-bbfc-57d71912d77e-v1/M_OutMer.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/67d7c7aa-c300-4d03-85f4-86480130eaa5-v1/F_StarCrew.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": -8, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/5acbaefa-5455-49a2-8d40-89d12aa393ca-v1/M_KniWol.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/04c9a1e9-0390-4a7f-b6c6-5f135c19e3fb-v1/F_ArmTro.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/b4502145-15eb-4023-b7d6-a81c5cbf6abf-v1/F_FitTra.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/ad774d79-13f1-46e2-87c9-de49a261b264-v1/F_GunSli.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/f3fbb9f4-e159-49ed-ac32-03af9056b17e-v1/matthew.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/883ac86f-dd29-4676-8bda-7dd52fb6465f-v1/M_WasWan.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/ab466729-31da-4b4c-a33c-366f7c1d38e5-v1/M_MMAFig.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/04c9a1e9-0390-4a7f-b6c6-5f135c19e3fb-v1/F_ArmTro.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/c48928ac-7657-41f4-bbdc-9b47385736ab-v1/M_SpaMar.fst", 
+      "position": {
+        "x": -6, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/883ac86f-dd29-4676-8bda-7dd52fb6465f-v1/M_WasWan.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/72e083ee-194d-4113-9c61-0591d8257493-v1/skeleton_Rigged.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/883ac86f-dd29-4676-8bda-7dd52fb6465f-v1/M_WasWan.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/13277c09-892f-4a5e-b9a5-8994a37d68bf-v1/F_WasWar.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/1b7e1e7c-6c0b-4f20-9cd0-1d5ccedae620-v1/bb64e937acf86447f6829767e958073c.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/830988dc-619a-4e88-96e1-a19fa0aaa30f-v1/M_UrbEnf.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/0c2c264b-2fd2-46a4-bf80-de681881f66b-v1/F_MotRac.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d807a7d2-5122-4436-a6f9-3173c94d1c49-v1/M_SuaGen.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/e863348f-a777-4f36-86e6-af6e65ffa161-v1/F_BloSam.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/c48928ac-7657-41f4-bbdc-9b47385736ab-v1/M_SpaMar.fst", 
+      "position": {
+        "x": -4, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d807a7d2-5122-4436-a6f9-3173c94d1c49-v1/M_SuaGen.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/534d42f8-ec13-4145-929f-5c8facac2fb7-v1/F_LegFig.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/2cad3894-8ab3-4ba5-a723-0234f93fbd6a-v1/M_BowBea.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/caa61e5d-5629-4165-81d8-6a7eb55e942d-v1/F_DeaSur.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/96c747ab-f71b-44ee-8eb9-d19fc9593dda-v1/F_CatBur.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/5acbaefa-5455-49a2-8d40-89d12aa393ca-v1/M_KniWol.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/c90d755d-0456-48fd-b98c-09c4d85cd481-v1/M_MouOff.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/883ac86f-dd29-4676-8bda-7dd52fb6465f-v1/M_WasWan.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/72e083ee-194d-4113-9c61-0591d8257493-v1/skeleton_Rigged.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/534d42f8-ec13-4145-929f-5c8facac2fb7-v1/F_LegFig.fst", 
+      "position": {
+        "x": -2, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/cb20212c-36f2-4d41-bdad-132361ca6ff4-v1/M_TreTee.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/ab466729-31da-4b4c-a33c-366f7c1d38e5-v1/M_MMAFig.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/dc55803b-9215-47dd-9408-eb835dac4082-v1/F_ParGir.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/775a8fb3-cfe7-494d-b603-a0a2d6910e55-v1/F_VinCov.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/13277c09-892f-4a5e-b9a5-8994a37d68bf-v1/F_WasWar.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/faf505f1-4fd1-4ed2-8909-816af246c48f-v1/M_VicGen.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/2cad3894-8ab3-4ba5-a723-0234f93fbd6a-v1/M_BowBea.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/8872ae86-a763-4db3-8373-d27514c1481e-v1/M_VinAvi.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/caa61e5d-5629-4165-81d8-6a7eb55e942d-v1/F_DeaSur.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d807a7d2-5122-4436-a6f9-3173c94d1c49-v1/M_SuaGen.fst", 
+      "position": {
+        "x": 0, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/367a5b60-8a92-4d56-a152-a00f3086f02b-v1/M_Espio.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/faf505f1-4fd1-4ed2-8909-816af246c48f-v1/M_VicGen.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/c90d755d-0456-48fd-b98c-09c4d85cd481-v1/M_MouOff.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/775a8fb3-cfe7-494d-b603-a0a2d6910e55-v1/F_VinCov.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/04c9a1e9-0390-4a7f-b6c6-5f135c19e3fb-v1/F_ArmTro.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/2d384111-0f0e-42e2-b800-66bfcab4aefb-v1/F_VooQue.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/367a5b60-8a92-4d56-a152-a00f3086f02b-v1/M_Espio.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/04c9a1e9-0390-4a7f-b6c6-5f135c19e3fb-v1/F_ArmTro.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/72e083ee-194d-4113-9c61-0591d8257493-v1/skeleton_Rigged.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/fd4fa45a-9d2a-463e-a484-f9d1b3bba724-v1/M_BeaWar.fst", 
+      "position": {
+        "x": 2, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/b4502145-15eb-4023-b7d6-a81c5cbf6abf-v1/F_FitTra.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/534d42f8-ec13-4145-929f-5c8facac2fb7-v1/F_LegFig.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/5acbaefa-5455-49a2-8d40-89d12aa393ca-v1/M_KniWol.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/2cad3894-8ab3-4ba5-a723-0234f93fbd6a-v1/M_BowBea.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/0c2c264b-2fd2-46a4-bf80-de681881f66b-v1/F_MotRac.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/b4502145-15eb-4023-b7d6-a81c5cbf6abf-v1/F_FitTra.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": 4, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/830988dc-619a-4e88-96e1-a19fa0aaa30f-v1/M_UrbEnf.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d293ef06-c659-467a-9288-c3cbaff0372a-v1/arya_avatar.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/eba0d8f8-aa72-4a6b-ab64-4d3fd4695b20-v1/F_VogHei.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/cb20212c-36f2-4d41-bdad-132361ca6ff4-v1/M_TreTee.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/c2ed3b9a-b3a9-4424-9fd2-8a798209f32b-v1/M_PerTra.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/548d0792-0bac-4933-bbfc-57d71912d77e-v1/M_OutMer.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/caa61e5d-5629-4165-81d8-6a7eb55e942d-v1/F_DeaSur.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d8da10b6-25c1-40e2-9a66-369316c722d7-v1/F_AniSuit.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/0c2c264b-2fd2-46a4-bf80-de681881f66b-v1/F_MotRac.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/faf249d5-12a8-48e2-a08e-fb0c33087011-v1/F_Ranger.fst", 
+      "position": {
+        "x": 6, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/c90d755d-0456-48fd-b98c-09c4d85cd481-v1/M_MouOff.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -4
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/faf249d5-12a8-48e2-a08e-fb0c33087011-v1/F_Ranger.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -6
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/883ac86f-dd29-4676-8bda-7dd52fb6465f-v1/M_WasWan.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -8
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/ad774d79-13f1-46e2-87c9-de49a261b264-v1/F_GunSli.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -10
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/2cad3894-8ab3-4ba5-a723-0234f93fbd6a-v1/M_BowBea.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -12
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/548d0792-0bac-4933-bbfc-57d71912d77e-v1/M_OutMer.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -14
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/aaa1b0a8-3e1b-492a-9aee-600e5dc907db-v1/F_RetSciSuit.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -16
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/0a1d44bf-a988-4199-b29e-a532ab85a2e8-v1/M_StaShi.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -18
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/8872ae86-a763-4db3-8373-d27514c1481e-v1/M_VinAvi.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -20
+      }, 
+      "type": "Model"
+    }, 
+    {
+      "dimensions": {
+        "x": 2, 
+        "y": 2, 
+        "z": 0.5
+      }, 
+      "modelURL": "http://mpassets.highfidelity.com/d807a7d2-5122-4436-a6f9-3173c94d1c49-v1/M_SuaGen.fst", 
+      "position": {
+        "x": 8, 
+        "y": 0, 
+        "z": -22
+      }, 
+      "type": "Model"
+    }
+  ], 
+  "Version": 62
+}
