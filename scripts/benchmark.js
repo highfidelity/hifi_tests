@@ -38,6 +38,7 @@ TestScript.locationLoader = function (url, position, orientation) {
     return function () {
         print("QQQ going to URL " + url);
         Window.location = url;
+        Test.wait(5 * 1000);
         if (!Test.waitForConnection()) {
             return false;
         }
@@ -47,7 +48,7 @@ TestScript.locationLoader = function (url, position, orientation) {
         if (orientation) {
             MyAvatar.orientation = orientation;
         }
-        Test.wait(10 * 1000);
+        Test.waitIdle();
         return true;
     };
 };
