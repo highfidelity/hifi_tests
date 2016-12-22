@@ -44,6 +44,10 @@ function TraceLoader(handler) {
 
 	}
 
+	function FileURLHandler(e) {
+		var fileurl = $id("fileurl")
+		Output( fileurl.value )
+	}
 
 	// output file information
 	function ParseFile(file) {
@@ -72,10 +76,16 @@ function TraceLoader(handler) {
 	function Init(handler) {
 
 		var fileselect = $id("fileselect"),
-			filedrag = $id("filedrag")
+			filedrag = $id("filedrag"),
+			fileurlgo = $id("fileurlgo")
+
+
 
 		// file select
 		fileselect.addEventListener("change", FileSelectHandler, false);
+
+		// url refresh
+		fileurlgo.addEventListener("click", FileURLHandler, false);
 
 		// is XHR2 available?
 		var xhr = new XMLHttpRequest();
@@ -87,6 +97,8 @@ function TraceLoader(handler) {
 			filedrag.addEventListener("drop", FileSelectHandler, false);
 			filedrag.style.display = "block";
 		}
+
+
 
 		self.handler = handler
 	}
