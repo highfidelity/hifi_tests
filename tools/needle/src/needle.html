@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8" />
+<title>NEEDLE</title>
+<link rel="stylesheet" type="text/css" media="all" href="style.css" />
+</head>
+
+<body>
+<h1>NEEDLE Hifi Trace Dashboard</h1>
+
+
+<style> a
+
+.axis--x path {
+  display: none;
+}
+line
+. {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+
+
+</style>
+
+<div>
+  <label for="fileselect">Files to upload:</label>
+  <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+  <div id="filedrag">or drop trace file here</div>
+</div>
+
+<div id="messages">
+<p>Status Messages</p>
+</div>
+
+<svg class="chart" width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+</script>
+
+<script src="draw-trace.js"></script>
+<script src="tell-trace.js"></script>
+<script src="load-trace.js"></script>
+
+<script>
+
+TraceLoader(function(trace) {
+  
+  var metrics = trace.metLib
+    .category("trace.simulation.avatar")
+    .metrics("NumAvatarsPerSec")
+
+  var chart = new MetricsChart(g, metrics);
+})
+
+
+//d3.json("https://hifi-public.s3.amazonaws.com/sam/temp/testScriptTrace2.json", function(error, root) {
+//  if (error) throw error;
+/*  var trace = new Trace(data);
+
+  var metrics = trace.metLib
+    .category("trace.simulation.avatar")
+    .metrics("NumAvatarsPerSec")
+
+  var chart = new MetricsChart(g, metrics);
+};*/
+
+</script>
+</body>
