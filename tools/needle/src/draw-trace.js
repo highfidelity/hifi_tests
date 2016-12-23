@@ -1,12 +1,12 @@
 
 
-function MetricsChart(g, metrics) {
+function MetricsChart(g, metrics, min) {
 
 var x = d3.scaleLinear()
     .rangeRound([0, width]).domain(metrics.timeDomain);
 
 var y = d3.scaleLinear()
-    .rangeRound([height, 0]).domain(metrics.valueDomain());
+    .rangeRound([height, 0]).domain(metrics.valueDomain(min));
 
 
 var line = d3.line()
@@ -32,10 +32,18 @@ var line = d3.line()
       .text(metrics.name + " " + metrics.samples.length + " samples");
 
   g.append("path")
-    //  .datum(data)
       .attr("class", "line")
       .attr("fill", "none")
-      .attr("stroke", "blue")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", "1.5px")
       .attr("d", line(data));
+
+  g.append("line")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", "1.5px")
+      .attr("x1", 0)
+      .attr("y1", y(metrics.getAverage()))
+      .attr("x2", width)
+      .attr("y2", y(metrics.getAverage()))
  
 }

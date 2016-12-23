@@ -27,10 +27,8 @@ function TraceLoader(handler) {
 		e.target.className = (e.type == "dragover" ? "hover" : "");
 	}
 
-
 	// file selection
 	function FileSelectHandler(e) {
-
 		// cancel event and hover styling
 		FileDragHover(e);
 
@@ -41,7 +39,6 @@ function TraceLoader(handler) {
 		for (var i = 0, f; f = files[i]; i++) {
 			ParseFile(f);
 		}
-
 	}
 
 	function FileURLHandler(e) {
@@ -59,16 +56,26 @@ function TraceLoader(handler) {
 			"</strong> bytes</p>"
 		);
 
+		if (file.type.indexOf("application/x-gzip") == 0) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				var zipped = new Uint8Array(e.target.result)
+				var unzipped  = pako.inflate(zipped, { to: 'string' });
+				
+				var data = JSON.parse(unzipped)
+			  	var trace = new Trace(data);
+				self.handler(trace);	
+			}
+			reader.readAsArrayBuffer(file);
+		} else {
 			var reader = new FileReader();
 			reader.onload = function(e) {
 				var data = JSON.parse(e.target.result)
-			  var trace = new Trace(data);
-
+			  	var trace = new Trace(data);
 				self.handler(trace);
-
 			}
 			reader.readAsText(file);
-
+		}
 	}
 
 
@@ -76,16 +83,14 @@ function TraceLoader(handler) {
 	function Init(handler) {
 
 		var fileselect = $id("fileselect"),
-			filedrag = $id("filedrag"),
-			fileurlgo = $id("fileurlgo")
-
-
+			filedrag = $id("filedrag")
+			//,fileurlgo = $id("fileurlgo")
 
 		// file select
 		fileselect.addEventListener("change", FileSelectHandler, false);
 
 		// url refresh
-		fileurlgo.addEventListener("click", FileURLHandler, false);
+		//fileurlgo.addEventListener("click", FileURLHandler, false);
 
 		// is XHR2 available?
 		var xhr = new XMLHttpRequest();
@@ -98,15 +103,11 @@ function TraceLoader(handler) {
 			filedrag.style.display = "block";
 		}
 
-
-
 		self.handler = handler
 	}
 
-		// call initialization file
-		if (window.File && window.FileList && window.FileReader) {
-			Init(this.handler);
-		}
-
-
+	// call initialization file
+	if (window.File && window.FileList && window.FileReader) {
+		Init(this.handler);
+	}
 }
