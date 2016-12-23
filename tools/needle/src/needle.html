@@ -56,11 +56,16 @@ var svg = d3.select("svg"),
 
 TraceLoader(function(trace) {
   
-  var metrics = trace.metLib
+  var avatarsMetrics = trace.metLib
     .category("trace.simulation.avatar")
     .metrics("NumAvatarsPerSec")
 
-  var chart = new MetricsChart(g, metrics);
+  var jointsMetrics = trace.metLib
+    .category("trace.simulation.avatar")
+    .metrics("NumJointsPerSec")
+
+  var chart = new MetricsChart(g, avatarsMetrics);
+  var chart = new MetricsChart(g, jointsMetrics);
 })
 
 
