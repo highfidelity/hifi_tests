@@ -10,6 +10,8 @@ function getValue(args, name) {
     return +args.nv_payload;
   } else if (args.fps !== undefined) {
     return +args.fps;
+  } else if (args.v !== undefined) {
+    return +args.v;
   } else if (args[name] !== undefined) {
     return +args[name];
   }
@@ -26,6 +28,9 @@ function Metrics(name) {
 
   this.valDomain = [null, null]; 
   this.numInvalids = 0;
+
+  this.type = "C"
+  this.lastBeginTs = -1;
 }
 
 
@@ -40,6 +45,16 @@ Metrics.prototype.valueDomain = function (includeVal) {
 
 Metrics.prototype.samples = function () {
   return this.samples;
+}
+
+Metrics.prototype.filterTime = function (ts) {
+  if (ts > this.timeDomain[1]) {
+    this.timeDomain[1] = ts;
+    if (this.timeDomain[0] < 0) {
+      this.timeDomain[0] = ts;
+    }
+  }
+  return ts
 }
 
 Metrics.prototype.filterVal = function (val) {
@@ -80,9 +95,62 @@ Metrics.prototype.addSample = function (ts, args) {
   }
 }
 
+Metrics.prototype.addSampleBegin = function (ts) { 
+  if (this.lastBeginTs >= 0) {
+    // skip
+    this.numInvalids++;
+    return;
+  } else if (ts > this.timeDomain[1]) {
+    this.timeDomain[1] = ts;
+    if (this.timeDomain[0] < 0) {
+      this.timeDomain[0] = ts;
+    }
+    this.lastBeginTs = ts
+
+  } else if (ts > this.timeDomain[0]) {
+    this.numInvalids++;
+    return;
+  }
+}
+
+Metrics.prototype.addSampleEnd = function (ts) { 
+  if (this.lastBeginTs < 0) {
+    // skip
+    this.numInvalids++;
+    return;
+  } else if (ts > this.timeDomain[1]) {
+    this.timeDomain[1] = ts;
+    if (this.timeDomain[0] < 0) {
+      this.timeDomain[0] = ts;
+    }
+
+    this.samples.push(this.newSample(ts, { v: (ts - this.lastBeginTs)/1000}))
+  
+    this.type = "D"
+    this.lastBeginTs = -1
+
+  } else if (ts > this.timeDomain[0]) {
+    this.numInvalids++;
+    return;
+  }
+}
+
 Metrics.prototype.getAverage = function () {
   return this.sumValues / this.samples.length;
 }
+
+Metrics.prototype.getType = function () {
+  return this.type;
+}
+
+Metrics.prototype.getTimingMetrics = function () {
+  if (this.type == "D") {
+      return {m: this.name, t: this.sumValues}
+  } else {
+      return null
+  }
+}
+
 
 function MetricsCategory(catName) {
   this.name = catName;
@@ -103,9 +171,29 @@ MetricsCategory.prototype.addMetrics = function(metName) {
   return met;
 }
 
+MetricsCategory.prototype.listMetrics = function () {
+  var list = ""
+  for ( metName in this.metricsMap) {
+    list += this.metricsMap[metName].name + "\r"
+  }
+  return list;
+}
+
+MetricsCategory.prototype.getTimingMetrics = function () {
+  var list = {n: this.name, m: [] }
+  for ( metName in this.metricsMap) {
+    var m = this.metricsMap[metName].getTimingMetrics()
+    if (m !== null) { 
+      list.m.push(m)
+    }
+  }
+  return list;
+}
+
 // A library of the metrics sorted by categories
 function MetricsLib() {
   this.catMap = new Object();
+  this.timeDomain = [-1, -1]
 }
 
 
@@ -122,10 +210,44 @@ MetricsLib.prototype.addCat = function(catName) {
   return cat;
 }
 
-MetricsLib.prototype.addSample = function (ts, cat, name, args) {
-  this.addCat(cat).addMetrics(name).addSample(ts, args);
+MetricsLib.prototype.filterTime = function (ts) {
+  if (ts > this.timeDomain[1]) {
+    this.timeDomain[1] = ts;
+    if (this.timeDomain[0] < 0) {
+      this.timeDomain[0] = ts;
+    }
+  }
+  return ts
 }
 
+MetricsLib.prototype.addSample = function (ts, cat, name, ph, args) {
+  if (ph == "C") {
+    this.addCat(cat).addMetrics(name).addSample(ts, args);
+  } else if (ph == "B") {
+    this.addCat(cat).addMetrics(name).addSampleBegin(ts);
+  } else if (ph == "E") {
+    this.addCat(cat).addMetrics(name).addSampleEnd(ts);
+  }
+
+  this.filterTime(ts);
+}
+
+MetricsLib.prototype.listMetrics = function () {
+  var list = ""
+  for ( catName in this.catMap) {
+    list += this.catMap[catName].name + "\r"
+    list += "\t" + this.catMap[catName].listMetrics() + "\r"
+  }
+  return list;
+}
+
+MetricsLib.prototype.getTimingMetrics = function () {
+  var list = []
+ for ( catName in this.catMap) {
+    list.push(this.catMap[catName].getTimingMetrics())
+  }
+  return list;
+}
 
 // Trace root class
 function Trace(database) {
@@ -139,7 +261,7 @@ function Trace(database) {
 
 Trace.prototype.parseEvent = function (event) {
   if (event.cat && event.ts) {
-    this.metLib.addSample(event.ts, event.cat, event.name, event.args);
+    this.metLib.addSample(event.ts, event.cat, event.name, event.ph, event.args);
   }
 }
 
@@ -149,4 +271,10 @@ Trace.prototype.parseDatabase = function (database) {
   }, this);
 }
 
+Trace.prototype.listMetrics = function () {
+  return this.metLib.listMetrics();
+}
 
+Trace.prototype.getTimingMetrics = function () {
+  return this.metLib.getTimingMetrics();
+}
