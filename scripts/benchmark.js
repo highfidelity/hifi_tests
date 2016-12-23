@@ -125,6 +125,7 @@ var AVATAR_TRACING_RULES = "" +
     "trace.*=false\n" +
     "trace.app=true\n" +
     "trace.simulation.animation=true\n" +
+    "trace.simulation.avatar.*=true\n" +
     "";
 
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));

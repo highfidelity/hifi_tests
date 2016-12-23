@@ -3,10 +3,10 @@
 function MetricsChart(g, metrics) {
 
 var x = d3.scaleLinear()
-    .rangeRound([0, width]);
+    .rangeRound([0, width]).domain(metrics.timeDomain);
 
 var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+    .rangeRound([height, 0]).domain(metrics.valueDomain());
 
 
 var line = d3.line()
@@ -14,14 +14,6 @@ var line = d3.line()
     .y(function(d) { return y(d.v); });
 
   var data = metrics.samples
-
-  x.domain(metrics.timeDomain);
-  y.domain(metrics.valueDomain());
-
-
-  var tx = x(data[7].ts);
-
-  var ty = y(data[8].v);
 
   g.append("g")
       .attr("class", "axis axis--x")
@@ -40,8 +32,10 @@ var line = d3.line()
       .text(metrics.name + " " + metrics.samples.length + " samples");
 
   g.append("path")
-      .datum(data)
+    //  .datum(data)
       .attr("class", "line")
-      .attr("d", line);
+      .attr("fill", "none")
+      .attr("stroke", "blue")
+      .attr("d", line(data));
  
 }
