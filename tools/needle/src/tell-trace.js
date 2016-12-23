@@ -20,6 +20,7 @@ function Metrics(name) {
   this.name = name;
   this.average = 0.0;
   this.samples = [];
+  this.sumValues = 0.0;
 
   this.timeDomain = [-1, -1];
 
@@ -52,6 +53,9 @@ Metrics.prototype.filterVal = function (val) {
       this.valDomain[0] = val;
     }
   }
+
+  this.sumValues += val;
+
   return val;
 }
 
@@ -74,6 +78,10 @@ Metrics.prototype.addSample = function (ts, args) {
     var index = this.samples.findIndexOf(function(s) { return s.ts > ts; } );
     this.samples.splice(index, 1, this.newSample(ts, args));
   }
+}
+
+Metrics.prototype.getAverage = function () {
+  return this.sumValues / this.samples.length;
 }
 
 function MetricsCategory(catName) {
