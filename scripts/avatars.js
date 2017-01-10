@@ -16,7 +16,6 @@ var AVATAR_TRACING_RULES = "" +
     "trace.*=false\n" +
     "trace.app=true\n" +
     "trace.simulation.animation=true\n" +
-    "trace.simulation.avatar.*=true\n" +
     "";
 
 AVATAR_TRACING_RULES = DEFAULT_TRACING_RULES;
@@ -24,23 +23,21 @@ AVATAR_TRACING_RULES = DEFAULT_TRACING_RULES;
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
-    name: "avatars",
+    name: "dev-chris-1",
     loader: TestScript.locationLoader("dev-chris.highfidelity.io",
-							true,
-							{ x: -22.3544, y: 2.86071, z: 0.221353 },
-							{ x: 0, y: -0.793851, z: 0, w: 0.608112 }),
+                           { x: -22.3544, y: 2.86071, z: 0.221353 },
+                           { x: 0, y: -0.793851, z: 0, w: 0.608112 }),
     tracingRules: AVATAR_TRACING_RULES,
     duration: 5
 });
-testScript.addTest({
-    name: "avatars",
-    loader: TestScript.locationLoader("dev-chris.highfidelity.io",
-							true,
-							{ x: 43.3435, y: -0.944245, z: 11.0739 },
-							{ x: 0, y: 0.705829, z: 0, w: 0.708382 }),
-    tracingRules: AVATAR_TRACING_RULES,
-    duration: 5
-});
+//testScript.addTest({
+//    name: "dev-chris-2",
+//    loader: TestScript.locationLoader("dev-chris.highfidelity.io",
+//                           { x: 43.3435, y: -0.944245, z: 11.0739 },
+//                           { x: 0, y: 0.705829, z: 0, w: 0.708382 }),
+//    tracingRules: AVATAR_TRACING_RULES,
+//    duration: 10
+//});
 //testScript.addTest({
 //    name: "avatars-100",
 //    loader: TestScript.sceneLoader("staticAvatars100"),
