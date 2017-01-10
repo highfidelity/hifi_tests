@@ -97,7 +97,6 @@ TestScript.prototype = {
 			this.currentTest.traceActions();
 		}
         Script.setTimeout(function () {
-            print("QQQ ending test " + that.testName);
             that.endTest();
         }, durationSeconds * 1000);
     },

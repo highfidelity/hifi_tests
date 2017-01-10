@@ -11,20 +11,32 @@
 'use strict';
 
 Script.include("./BenchmarkLib.js");
-print("QQQ foo");
+Script.include("/~/system/libraries/WebTablet.js");
 
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
+
 var testScript = new TestScript();
+var webTablet;
 testScript.addTest({
     name: "marketplace",
-    loader: TestScript.locationLoader("hifi://dev-welcome", false),
+    duration: 20,
+    loader: TestScript.locationLoader("hifi://dev-welcome", true),
 	traceActions: function() {
 		Script.setTimeout(function () {
-            print("QQQ loading WebUI " + that.testName);
-        }, durationSeconds * 1000);
-
+			Test.startTraceEvent("tabletLoad");
+			webTablet = new WebTablet("https://metaverse.highfidelity.com/marketplace", null, null, true);
+        }, 10 * 1000);
+		Script.setTimeout(function () {
+			Test.endTraceEvent("tabletLoad");
+        }, 11 * 1000);
+		Script.setTimeout(function () {
+			Test.startTraceEvent("tabletUnload");
+			webTablet.destroy();
+        }, 15 * 1000);
+		Script.setTimeout(function () {
+			Test.endTraceEvent("tabletUnload");
+			webTablet.destroy();
+        }, 16 * 1000);
 	},
-    tracingRules: DEFAULT_TRACING_RULES,
-    duration: 20
 });
 testScript.runTests();
