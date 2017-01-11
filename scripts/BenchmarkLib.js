@@ -40,11 +40,11 @@ TestScript.locationLoader = function (url, waitIdle, position, orientation) {
         if (orientation) {
             MyAvatar.orientation = orientation;
         }
-		print("QQQ waitIdle is " + waitIdle);
-		if (waitIdle) {
-			print("QQQ waiting for idle");
-			Test.waitIdle();
-		}
+        print("QQQ waitIdle is " + waitIdle);
+        if (waitIdle) {
+            print("QQQ waiting for idle");
+            Test.waitIdle();
+        }
         return true;
     };
 };
@@ -61,11 +61,11 @@ TestScript.sceneLoader = function (scene, waitIdle, position, orientation) {
         if (orientation) {
             MyAvatar.orientation = orientation;
         }
-		print("QQQ waitIdle is " + waitIdle);
-		if (waitIdle) {
-			print("QQQ waiting for idle");
-			Test.waitIdle();
-		}
+        print("QQQ waitIdle is " + waitIdle);
+        if (waitIdle) {
+            print("QQQ waiting for idle");
+            Test.waitIdle();
+        }
         return true;
     };
 };
@@ -84,24 +84,28 @@ TestScript.prototype = {
             this.nextTest();
             return;
         }
-		print("QQQ running loader ");
-		if (!this.loader()) {
+        print("QQQ running loader ");
+        if (!this.loader()) {
             print("QQQ invalid loader");
             this.nextTest();
             return;
-		}
-		print("QQQ loader complete, beginning trace: " + that.testName);
+        }
+        print("QQQ loader complete, beginning trace: " + that.testName);
         Test.startTracing(this.currentTest.tracingRules || DEFAULT_TRACING_RULES);
-		if (this.currentTest.traceActions) {
-			print("QQQ Trace started, executing trace actions: " + that.testName);
-			this.currentTest.traceActions();
-		}
+        if (this.currentTest.traceActions) {
+            print("QQQ Trace started, executing trace actions: " + that.testName);
+            this.currentTest.traceActions();
+        }
         Script.setTimeout(function () {
             that.endTest();
         }, durationSeconds * 1000);
     },
     endTest: function () {
         print("QQQ ending test " + this.testName);
+        if (this.currentTest.traceCompletion) {
+            print("QQQ Trace finishing, executing trace completion : " + this.testName);
+            this.currentTest.traceCompletion()
+        }
         Test.stopTracing(this.traceFile);
         this.nextTest();
     },
