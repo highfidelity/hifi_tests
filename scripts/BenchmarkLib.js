@@ -30,7 +30,7 @@ TestScript.locationLoader = function (url, waitIdle, position, orientation) {
     return function () {
         print("QQQ going to URL " + url);
         Window.location = url;
-        Test.wait(1 * 1000);
+        Test.wait(3 * 1000);
         if (!Test.waitForConnection()) {
             return false;
         }
@@ -40,7 +40,6 @@ TestScript.locationLoader = function (url, waitIdle, position, orientation) {
         if (orientation) {
             MyAvatar.orientation = orientation;
         }
-        print("QQQ waitIdle is " + waitIdle);
         if (waitIdle) {
             print("QQQ waiting for idle");
             Test.waitIdle();
@@ -54,14 +53,13 @@ TestScript.sceneLoader = function (scene, waitIdle, position, orientation) {
         if (!Test.loadTestScene(scene)) {
             return false;
         }
-        Test.wait(1 * 1000);
+        Test.wait(3 * 1000);
         if (position) {
             MyAvatar.position = position;
         }
         if (orientation) {
             MyAvatar.orientation = orientation;
         }
-        print("QQQ waitIdle is " + waitIdle);
         if (waitIdle) {
             print("QQQ waiting for idle");
             Test.waitIdle();
@@ -79,13 +77,7 @@ TestScript.prototype = {
         var that = this, durationSeconds;
         durationSeconds = this.currentTest.duration || 10;
         this.traceFile = "traces/trace_" + this.testName + "_" + this.dateString + ".json.gz";
-        if (!this.loader) {
-            print("QQQ invalid loader");
-            this.nextTest();
-            return;
-        }
-        print("QQQ running loader ");
-        if (!this.loader()) {
+        if (!this.loader || !this.loader()) {
             print("QQQ invalid loader");
             this.nextTest();
             return;
@@ -124,5 +116,3 @@ TestScript.prototype = {
         this.nextTest();
     }
 };
-
-print("QQQ bar");
