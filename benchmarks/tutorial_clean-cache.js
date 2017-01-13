@@ -10,12 +10,16 @@
 
 'use strict';
 
+
+Menu.triggerOption("Reload Content (Clears all caches)");
+
+        
 Script.include("./BenchmarkLib.js");
 
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
-    name: "tutorial",
+    name: "tutorial_cleancache",
     loader: TestScript.locationLoader("localhost/28.676,0.374122,-0.722701/0,0.68873,0,0.725018", false),
     duration: 20
 });
