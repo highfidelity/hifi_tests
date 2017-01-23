@@ -32,7 +32,7 @@ function stopTrace() {
     }
     traceActive = false;
     button.writeProperty("buttonState", 0);
-    // Test.stopTracing(TRACE_NAME);
+    Test.stopTracing("traces/" + TRACE_NAME + ".json.gz");
 }
 
 function startTrace() {
