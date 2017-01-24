@@ -21,9 +21,16 @@ Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
     name: "50Avatars",
-    loader: TestScript.locationLoader("hifi://dev-chris2.highfidelity.io/-11.2322,3.0,42/0,-0.48175,0,0.87631", 1),
+    loader: TestScript.locationLoader("hifi://dev-chris2.highfidelity.io/115.3,0.1,31.4/0,0.737,0, 0.676", 1),
     tracingRules: AVATAR_TRACING_RULES,
-    duration: 15
+    traceActions: TestScript.locationSteps([ {dt:0, pos:{x:115.3, y:0.1, z:31.4}, yaw:95},
+    										 {dt:5, yaw:130},
+    										 {dt:5, pos:{x:113.0, y:1.8, z:48.1}, yaw:31},
+    										 {dt:5, yaw:90},
+    										 {dt:5, yaw:50},
+    										 {dt:5, pos:{x:99.9, y:0.0, z:22.2}, yaw:179}
+    									   ]),
+    duration: 30
 });
 
 
