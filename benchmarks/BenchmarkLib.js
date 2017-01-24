@@ -19,6 +19,28 @@ function formatDate(date) {
     return date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2) + "_" + pad(date.getHours(), 2) + pad(date.getMinutes(), 2);
 }
 
+function parseOrientation(orientation, defaultValue) {
+    if ((orientation.x !== undefined) || (orientation.y !== undefined) || (orientation.z !== undefined) || (orientation.w !== undefined)) {
+        return orientation
+    } else if ((orientation.yaw !== undefined) || (orientation.pitch !== undefined) || (orientation.roll !== undefined)) {
+        var y = 0.0
+        var p = 0.0
+        var r = 0.0
+        if (orientation.pitch !== undefined) {
+            p = orientation.pitch
+        }
+        if (orientation.yaw !== undefined) {
+            y = orientation.yaw
+        }
+        if (orientation.roll !== undefined) {
+            r = orientation.roll
+        }
+        return Quat.fromPitchYawRollDegrees(p, y, r)
+    }
+
+    return defaultValue
+}
+
 TestScript = function (properties) {
     properties = properties || {};
     this.dateString = formatDate();
@@ -47,6 +69,36 @@ TestScript.locationLoader = function (url, waitIdle, position, orientation) {
         return true;
     };
 };
+
+TestScript.locationSteps = function(steps) {
+    return function () {
+        print("TEST locationSteps : " + JSON.stringify(steps))
+        var len = steps.length;
+        var i = 0
+        for (; i < len; i++) {
+            var step = steps[i]
+            var dt = 0.0
+            if (step.dt !== undefined) {
+                dt = step.dt
+                var nextPos = MyAvatar.position
+                if (step.pos !== undefined) {
+                    nextPos = step.pos;
+                }
+
+                var nextOri = MyAvatar.orientation
+                if (step.ori !== undefined) {
+                    nextOri = parseOrientation(step.ori, MyAvatar.orientation)
+                }
+
+
+                Test.wait(dt * 1000.0)
+                MyAvatar.position = nextPos
+                MyAvatar.orientation = nextOri
+            }
+        }
+
+    }
+}
 
 TestScript.sceneLoader = function (scene, waitIdle, position, orientation) {
     return function () {
@@ -84,13 +136,16 @@ TestScript.prototype = {
         }
         print("QQQ loader complete, beginning trace: " + that.testName);
         Test.startTracing(this.currentTest.tracingRules || DEFAULT_TRACING_RULES);
+        
+        // Schedule the end
+        Script.setTimeout(function () {
+            that.endTest();
+        }, durationSeconds * 1000);
+
         if (this.currentTest.traceActions) {
             print("QQQ Trace started, executing trace actions: " + that.testName);
             this.currentTest.traceActions();
         }
-        Script.setTimeout(function () {
-            that.endTest();
-        }, durationSeconds * 1000);
     },
     endTest: function () {
         print("QQQ ending test " + this.testName);
