@@ -19,6 +19,28 @@ function formatDate(date) {
     return date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2) + "_" + pad(date.getHours(), 2) + pad(date.getMinutes(), 2);
 }
 
+function parseOrientation(orientation, defaultValue) {
+    if ((orientation.x !== undefined) || (orientation.y !== undefined) || (orientation.z !== undefined) || (orientation.w !== undefined)) {
+        return orientation
+    } else if ((orientation.yaw !== undefined) || (orientation.pitch !== undefined) || (orientation.roll !== undefined)) {
+        var y = 0.0
+        var p = 0.0
+        var r = 0.0
+        if (orientation.pitch !== undefined) {
+            p = orientation.pitch
+        }
+        if (orientation.yaw !== undefined) {
+            y = orientation.yaw
+        }
+        if (orientation.roll !== undefined) {
+            r = orientation.roll
+        }
+        return Quat.fromPitchYawRollDegrees(p, y, r)
+    }
+
+    return defaultValue
+}
+
 TestScript = function (properties) {
     properties = properties || {};
     this.dateString = formatDate();
@@ -65,9 +87,7 @@ TestScript.locationSteps = function(steps) {
 
                 var nextOri = MyAvatar.orientation
                 if (step.ori !== undefined) {
-                    nextOri = step.ori;
-                } else if (step.yaw !== undefined) {
-                    nextOri = Quat.fromPitchYawRollDegrees(0.0, step.yaw, 0.0);
+                    nextOri = parseOrientation(step.ori, MyAvatar.orientation)
                 }
 
 
