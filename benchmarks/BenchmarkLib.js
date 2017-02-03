@@ -159,15 +159,26 @@ TestScript.prototype = {
     nextTest: function () {
         print("QQQ next test");
         if (0 === this.tests.length) {
-            print("QQQ no more tests... exiting");
-            Test.quit();
+            if (this.quitWhenDone) {
+                print("QQQ no more tests... exiting");
+                Test.quit();
+            } else {
+                print("QQQ no more tests... keep running");
+                return;
+            }
         }
         this.currentTest = this.tests.shift();
         this.testName = this.currentTest.name;
         this.loader = this.currentTest.loader;
         this.executeTest();
     },
-    runTests: function () {
+    runTests: function (doNotQuitAtTheEnd) {
+        if (doNotQuitAtTheEnd !== undefined) {
+            this.quitWhenDone = !doNotQuitAtTheEnd;
+        } else {
+            this.quitWhenDone = true;
+        }
+
         this.nextTest();
     }
 };
