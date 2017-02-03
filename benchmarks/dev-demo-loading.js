@@ -25,10 +25,10 @@ testScript.addTest({
     tracingRules: AVATAR_TRACING_RULES,
     traceActions: TestScript.locationSteps([ {dt:1, pos:{x:86.3, y:0.0, z:30.3}, ori:{yaw:-127}}
     									   ]),
-    duration: 25
+    duration: 20
 });
 
 
 
-testScript.runTests();
+testScript.runTests(true);
 
