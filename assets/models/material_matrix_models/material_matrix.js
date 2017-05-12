@@ -61,9 +61,6 @@ var TEST_CASES = [
   {name:"hifi_metallicM_albedoV_ao",  a:4, b:0},
   {name:"hifi_metallicM_albedoM_ao",  a:4, b:1},
 
-  {name:"hifi_metallicM_albedoV_ao",  a:4, b:0},
-  {name:"hifi_metallicM_albedoM_ao",  a:4, b:1},  
-
   {name:"hifi_roughnessV00_albedoV_ao",  a:5, b:0},
   {name:"hifi_roughnessV25_albedoV_ao",  a:5, b:1},
   {name:"hifi_roughnessV50_albedoV_ao",  a:5, b:2},
