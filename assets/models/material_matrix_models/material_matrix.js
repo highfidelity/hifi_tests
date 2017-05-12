@@ -61,6 +61,28 @@ var TEST_CASES = [
   {name:"hifi_metallicM_albedoV_ao",  a:4, b:0},
   {name:"hifi_metallicM_albedoM_ao",  a:4, b:1},
 
+  {name:"hifi_metallicM_albedoV_ao",  a:4, b:0},
+  {name:"hifi_metallicM_albedoM_ao",  a:4, b:1},  
+
+  {name:"hifi_roughnessV00_albedoV_ao",  a:5, b:0},
+  {name:"hifi_roughnessV25_albedoV_ao",  a:5, b:1},
+  {name:"hifi_roughnessV50_albedoV_ao",  a:5, b:2},
+  {name:"hifi_roughnessV75_albedoV_ao",  a:5, b:3},
+  {name:"hifi_roughnessV100_albedoV_ao",  a:5, b:4},
+
+  {name:"hifi_roughnessV00_metallicV_albedoV_ao",  a:6, b:0},
+  {name:"hifi_roughnessV25_metallicV_albedoV_ao",  a:6, b:1},
+  {name:"hifi_roughnessV50_metallicV_albedoV_ao",  a:6, b:2},
+  {name:"hifi_roughnessV75_metallicV_albedoV_ao",  a:6, b:3},
+  {name:"hifi_roughnessV100_metallicV_albedoV_ao",  a:6, b:4},
+
+  {name:"hifi_roughnessM_albedoV_ao",  a:7, b:0},
+  {name:"hifi_roughnessM_metallicV_albedoV_ao",  a:7, b:1},
+
+  {name:"hifi_normalM_albedoV_ao",  a:8, b:0},
+  {name:"hifi_normalM_metallicV_albedoV_ao",  a:8, b:2},
+
+  {name:"hifi_opacityV_albedoM_ao",  a:9, b:0}
 ];
 
 
