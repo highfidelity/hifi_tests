@@ -15,8 +15,8 @@ Script.include("./BenchmarkLib.js");
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
-    name: "tutorial",
-    loader: TestScript.locationLoader("localhost/0.9, 0.5, -4.6/0,0.68873,0,0.725018", false),
+    name: "tutorial_walkthrough_remote",
+    loader: TestScript.locationLoader("10.0.0.41/-3.6, 0.5, -3.6/0.0, 0.9996957778930664,0,-0.024665091186761856", false),
     duration: 20
 });
 testScript.runTests();
