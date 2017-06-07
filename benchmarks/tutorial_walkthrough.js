@@ -12,26 +12,11 @@
 
 Script.include("./BenchmarkLib.js");
 
-// Disable textures
-Render.getConfig("LightingModel").enableMaterialTexturing = false
-
-var AVATAR_TRACING_RULES = "" + 
-    "trace.*=true\n" +
-    "*.detail=true\n" +
-    "";
-
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
-    name: "50Avatars-noTextures",
-    loader: TestScript.locationLoader("hifi://dev-chris2.highfidelity.io/115.3,0.1,31.4/0,0.737,0, 0.676", 0),
-    tracingRules: AVATAR_TRACING_RULES,
-    traceActions: TestScript.locationSteps([ {dt:1, pos:{x:99.9, y:2.0, z:22.2}, ori:{yaw:179}}
-    									   ]),
-    duration: 15
+    name: "tutorial_walkthrough",
+    loader: TestScript.locationLoader("localhost/-3.6, 0.5, -3.6/0.0, 0.9996957778930664,0,-0.024665091186761856", false),
+    duration: 20
 });
-
-
-
 testScript.runTests();
-

@@ -16,7 +16,7 @@ Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
     name: "tutorial",
-    loader: TestScript.locationLoader("sport/28.676,0.374122,-0.722701/0,0.68873,0,0.725018", false),
+    loader: TestScript.locationLoader("localhost/0.9, 0.5, -4.6/0,0.68873,0,0.725018", false),
     duration: 20
 });
 testScript.runTests();
