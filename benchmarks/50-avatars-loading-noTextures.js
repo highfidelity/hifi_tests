@@ -26,9 +26,9 @@ testScript.addTest({
     name: "50Avatars-noTextures",
     loader: TestScript.locationLoader("hifi://dev-chris2.highfidelity.io/115.3,0.1,31.4/0,0.737,0, 0.676", 0),
     tracingRules: AVATAR_TRACING_RULES,
-    traceActions: TestScript.locationSteps([ {dt:1, pos:{x:99.9, y:0.0, z:22.2}, ori:{yaw:179}}
+    traceActions: TestScript.locationSteps([ {dt:1, pos:{x:99.9, y:2.0, z:22.2}, ori:{yaw:179}}
     									   ]),
-    duration: 25
+    duration: 15
 });
 
 
