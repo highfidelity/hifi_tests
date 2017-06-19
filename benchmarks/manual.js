@@ -19,11 +19,12 @@ var TRACE_NAME = "trace-{DATE}_{TIME}";
 var TRACE_DURATION = 20;
 
 var traceActive = false;
-var button = Toolbars.getToolbar(TRACE_TOOLBAR).addButton({
-    objectName: "toggleTrace",
-    imageURL: TRACE_ICON,
-    alpha: 0.9,
-    visible: true
+var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
+var button = tablet.addButton({
+    icon: TRACE_ICON,
+    activeIcon: TRACE_ICON,
+    text: "toggleTrace",
+    sortOrder: 1
 });
 
 function stopTrace() {
@@ -31,7 +32,7 @@ function stopTrace() {
         return;
     }
     traceActive = false;
-    button.writeProperty("buttonState", 0);
+    button.editProperties({isActive: traceActive});
     Test.stopTracing("traces/" + TRACE_NAME + ".json.gz");
 }
 
@@ -61,7 +62,7 @@ function startTrace() {
 
     TRACE_DURATION = newTraceDuration; 
     traceActive = true;
-    button.writeProperty("buttonState", 1);
+    button.editProperties({isActive: traceActive});
     print("QQQ starting trace " + TRACE_NAME + " for " + TRACE_DURATION + " seconds");
     Test.startTracing(DEFAULT_TRACING_RULES);
     if (TRACE_DURATION > 0) {
@@ -79,8 +80,10 @@ function traceToggle() {
     }
 }
 
-button.clicked.connect(function () {
-    Script.setTimeout(traceToggle, 100);
-});
+function onClicked() {
+    traceToggle();
+}
+
+button.clicked.connect(onClicked);
 
 print("QQQ trace script! done init");
