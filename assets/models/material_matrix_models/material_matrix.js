@@ -79,7 +79,10 @@ var TEST_CASES = [
   {name:"hifi_normalM_albedoV_ao",  a:8, b:0},
   {name:"hifi_normalM_metallicV_albedoV_ao",  a:8, b:2},
 
-  {name:"hifi_opacityV_albedoM_ao",  a:9, b:0}
+  {name:"hifi_emissiveV_albedoV_ao",  a:9, b:0},
+  {name:"hifi_emissiveM_albedoV_ao",  a:9, b:1},
+
+  {name:"hifi_opacityV_albedoM_ao",  a:10, b:0}
 ];
 
 
