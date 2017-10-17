@@ -1,4 +1,4 @@
-Entity Shape Edit
+Entity Shape Create
 
 ## Create Shape Entity
  run: [script](./create.js)
