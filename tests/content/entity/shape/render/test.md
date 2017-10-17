@@ -1,6 +1,6 @@
-Entity Shape Physics
+Entity Shape Render
 
-## Create Shape Entity
+## Render Shape Entity
  run script: "./entity-shape-create.js"
 
  
