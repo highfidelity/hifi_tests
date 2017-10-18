@@ -12,7 +12,7 @@ As of now (October 2017) we are focusing on building a concrete database of the 
 
 ## Folder Organization
 A single Test Case lives in ONE folder with a mandatory file called test.md
-The names of the files in the Test Case folder are simple an generic.
+The names of the files in the Test Case folder are simple and generic.
 The full path name of the test case folder (including its parent folders) is representative of the actual feature or aspect tested.
 All the names and folders are lowercase.
 The organization of the hierarchy is hopefully logical and simple to navigate. We will probably have to iterate on this tree organization to find a good naming scheme.
@@ -33,7 +33,7 @@ The initial hierarchy of folders is organized by the various types and sub types
    - avatar/...
    - ...
 
-THe name of the test case are representative of the single feature or aspect tested in the test case. 
+The name of the test case are representative of the single feature or aspect tested in the test case. 
 For example:
 - create
 - edit
