@@ -17,4 +17,7 @@ properties = Entities.getEntityProperties(sphere);
 print("Sphere added :" + sphere);
 print(JSON.stringify(properties));
 
-
+// clean up after test
+Script.scriptEnding.connect(function () {
+  Entities.deleteEntity(sphere)
+});
