@@ -44,7 +44,34 @@ For example:
 - the test.md file reference the script file and the expected result(s)
 - the script file is stored in the test case folder and runs wihtout any user interaction required.
 - the result is either a print out in the log out or and actuall snapshot of the rendering (also stored in the test case folder).
-
 For example: [Entity Shape Create](./content/entity/shape/create)
+
+### Script Guidelines
+- Make the script automated as much as possible without any user input required at best
+- If user input is required to make test progress step by step use a simple Key event connected to the 'space" key:
+   ```
+   var _step = 0;
+   Controller.keyPressEvent.connect(function(event){
+       if (event.key == 32) {
+          step++;
+          executeStep(_step);
+       }   
+   });
+   function executeStep(step) { ... }
+   ```
+- Every entitiy created during the test must be deleted at the end of the script for cleanup
+  - collect the entites created in a local array and delete them all on exit
+    ```
+    var createdEntities = [];
+    ...
+
+    // clean up after test
+    Script.scriptEnding.connect(function () {
+        for (var i = 0; i < createdEntities.length; i++) {
+            Entities.deleteEntity(createdEntities[i]);
+        }
+    }); 
+    ```
+  - use the "lifetime" properties when creating the entity (60 seconds for example) as a safety net
 
 ## TO BE CONTINUED
