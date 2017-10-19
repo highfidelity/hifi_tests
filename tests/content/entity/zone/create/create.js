@@ -25,4 +25,7 @@ properties = Entities.getEntityProperties(zone);
 print("Zone added :" + zone);
 print(JSON.stringify(properties));
 
-
+// clean up after test
+Script.scriptEnding.connect(function () {
+  Entities.deleteEntity(zone)
+});
