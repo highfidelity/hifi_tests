@@ -1,0 +1,9 @@
+Entities.deleteEntity(terrain);
+Entities.deleteEntity(marker1);
+Entities.deleteEntity(marker2);
+Entities.deleteEntity(marker3);
+Entities.deleteEntity(marker4);
+Entities.deleteEntity(zone1);
+Entities.deleteEntity(zone2);
+Entities.deleteEntity(zone3);
+Entities.deleteEntity(zone4);
