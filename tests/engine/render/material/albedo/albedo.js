@@ -1,5 +1,5 @@
 // Test material matrix
-Script.include("../matrix.js")
+Script.include("../matrix.js?raw=true")
 
 // List here all the entries of the Material Matrix tested in this test
 var TEST_CASES = [
