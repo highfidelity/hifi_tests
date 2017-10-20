@@ -1,7 +1,7 @@
 # Engine Render Material Matrix Albedo
 
 ### Preconditions
-
+In an empty region of a domain with editing rights
 ### Steps
 
 #### Step 1

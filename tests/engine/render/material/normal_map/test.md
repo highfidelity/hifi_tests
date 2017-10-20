@@ -1,7 +1,7 @@
 # Engine Render Material Matrix Normal Map
 
 ### Preconditions
-
+In an empty region of a domain with editing rights
 ### Steps
 
 #### Step 1
