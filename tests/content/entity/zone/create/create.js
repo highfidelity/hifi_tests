@@ -10,7 +10,8 @@ var dim = { x: 5.0, y: 5.0, z: 5.0};
 
 // Define zone properties
 var properties = {
-  type: "Zone",
+  lifetime: 60,  
+  type: "Zone",  
   name: "test create zone",
   position: pos,
   dimensions: dim,
