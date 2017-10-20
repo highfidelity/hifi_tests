@@ -8,7 +8,8 @@ pos = Vec3.sum(pos, Vec3.multiply(0.7, Quat.getUp(MyAvatar.orientation)));
 // Define sphere properties
 var properties = {
   type: "Sphere",
-  position: pos
+  position: pos,
+  lifetime: 60
 };
 
 // Add the sphere and check its properties
