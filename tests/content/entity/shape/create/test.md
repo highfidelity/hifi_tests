@@ -1,6 +1,6 @@
 # Entity Shape Create
 ### Preconditions
-In an empty region of a domain with editing rights
+Interface is running, logged in an empty region of a domain with editing rights
 
 ### Steps
 
