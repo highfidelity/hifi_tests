@@ -1,7 +1,16 @@
 // Test material matrix
 
-//(function() {
-// Rest of this script below is common to all the scripts
+// To use this script, include it, and define an array of test cases "testCases" and call "addCases(testCases)",
+// the script will create a grid of test models in front of the Avatar as described in the test cases.
+// A test case of the testCases array is specified with the "name" of the model file and its location 
+// in the grid from "a" and "b":
+// var TEST_CASES = [
+//    {name:"hifi_emissiveV_albedoV_ao",  a:0, b:0},
+//    {name:"hifi_emissiveM_albedoV_ao",  a:0, b:1},  
+//];
+// 
+// The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
+
 var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
@@ -57,27 +66,4 @@ addCases = function (testCases) {
     return addCasesAt(root, orientation, testCases);
 }
 
-/*
-
-// Pick a position in front of the avatar
-var orientation = MyAvatar.orientation;
-orientation = Quat.safeEulerAngles(orientation);
-orientation.x = 0;
-orientation = Quat.fromVec3Degrees(orientation);
-var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
-root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
-
-
-// Add the Cases
-var createdEntities = addCases(root, orientation, TEST_CASES)
-
-// clean up after test
-Script.scriptEnding.connect(function () {
-    for (var i = 0; i < createdEntities.length; i++) {
-        Entities.deleteEntity(createdEntities[i]);
-    }
-});
-*/
-
-//}());
 
