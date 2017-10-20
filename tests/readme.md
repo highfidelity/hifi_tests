@@ -73,5 +73,6 @@ For example: [Entity Shape Create](./content/entity/shape/create)
     }); 
     ```
   - use the "lifetime" properties when creating the entity (60 seconds for example) as a safety net
+- When including shared scripts or resources stored in github, add '?raw=true' at the end of the URL to get the raw version.
 
 ## TO BE CONTINUED
