@@ -5,6 +5,8 @@ Interface is running, logged in the 'Welcome' or 'Dev-Welcome' domain at the ini
 
 ### Steps
 
+During all steps, rendering should be stable in time. The steps can be run manually or by executing the [outline.js script](./outline.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) in which case each step is played in sequence by pressing the [SPACE] key.
+
 #### Step 1
 - Run the 'debugOutline.js' script located in the 'hifi/scripts/developer/utilities/render' folder.
 - Expected: ![](./init.jpg)
@@ -37,5 +39,36 @@ Interface is running, logged in the 'Welcome' or 'Dev-Welcome' domain at the ini
 - Disable the 'Glow' checkbox.
 - Expected: ![](./fillwithoutglow.jpg)
 
+#### Step 9
+- Click on the 'Outl.1' tab to add selections to the second outline group.
+- Disable 'Add selection'
+- Enable 'Hover select'
+- Hover the mouse over your avatar.
+- Expected, the new outline should render on top of the previous one: ![](./outline2.jpg)
+
+#### Step 10
+- Quickly move mouse over the 'Hover select' checkbox so as not to loose the selection and disable 'Hover select'.
+- Enable 'Glow'
+- Set 'Width' to 5
+- Set 'Intensity' to 0.5
+- Set color 'Red', 'Green' and 'Blue' to respectively 1, 0 and 0
+- Set 'Unoccluded' fill opacity to 0.65
+- Expected: ![](./redoutline2.jpg)
+
+#### Step 11
+- Click on the 'Outl.2' tab to add selections to the third outline group.
+- Disable 'Add selection'
+- Enable 'Hover select'
+- Hover over the base of the tree at the top left of the screen.
+- Expected: the new outline should render over the first two![](./outline3.jpg)
+
+#### Step 12
+- Turn view 180° and hover over the white wall at the back.
+- Expected: ![](./outline3-180.jpg)
+
+#### Step 13
+- Set 'Unoccluded' fill to 1 and 'Occluded' fill to 0.25
+- Hover over the white wall at the back.
+- Expected: ![](./outline3-fill.jpg)
 
  
