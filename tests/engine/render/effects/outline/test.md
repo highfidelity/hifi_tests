@@ -1,7 +1,7 @@
 # Engine Render Outline Effect
 
 ### Preconditions
-Interface is running, logged in the 'Welcome' or 'Dev-Welcome' domain at the initial position with avatar in third person view.
+Interface is running, logged in the 'Dev-Welcome' domain at the initial position with avatar in third person view.
 
 ### Steps
 
