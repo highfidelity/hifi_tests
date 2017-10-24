@@ -27,7 +27,7 @@ function addTestBackdrop(name, position, orientation) {
     
     var cellDim = Vec3.multiply(unit, MODEL_DIMS);
     
-    var under = Vec3.sum(position, Vec3.multiply(-2 * unit, Quat.getUp(orientation)))
+    var under = Vec3.sum(position, Vec3.multiply(-1.5 * unit, Quat.getUp(orientation)))
     var far = Vec3.sum(position, Vec3.multiply(5 * unit, Quat.getForward(orientation)))
 
     var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(orientation)),
@@ -70,10 +70,10 @@ function addTestBackdrop(name, position, orientation) {
         },
 
         hazeMode:"disabled",
-        
+
         backgroundMode:"skybox",
         skybox:{
-            color: {"red":255,"green":255,"blue":255},a
+            color: {"red":255,"green":255,"blue":255}
         }
     }));
 
