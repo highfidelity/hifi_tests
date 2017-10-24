@@ -20,7 +20,7 @@ Good - Sub-shapes
 Exact - All polygons (non-dynamic only)
 
 You should see something like this:
-![](./models-visual.png)
+![](./models-visuals.png)
 #### Step 3
 - Enable this menu option: **Developer --> Physics --> Draw Collision Shapes**.
 - Expected : You should see something like this:
