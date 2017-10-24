@@ -19,7 +19,7 @@ var MODEL_SPIN = 0.0;
 var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 60;
-var BACKDROP_SIZE = 12;
+var BACKDROP_SIZE = 16;
 
 function addTestBackdrop(name, position, orientation) {
     var backdrop = [];
@@ -65,15 +65,20 @@ function addTestBackdrop(name, position, orientation) {
   
         keyLight:{
             color: {"red":255,"green":255,"blue":255},
-            direction: lightDir,
-            intensity: 1.0
+            direction: {
+                "x": 0.037007175385951996,
+                "y": -0.7071067690849304,
+                "z": -0.7061376571655273
+            },
+            intensity: 0.8
         },
 
         hazeMode:"disabled",
 
         backgroundMode:"skybox",
         skybox:{
-            color: {"red":255,"green":255,"blue":255}
+            color: {"red":255,"green":255,"blue":255},
+            url: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx"
         }
     }));
 
@@ -99,10 +104,13 @@ function addTestModel(name, position, orientation) {
 function addTestCase(test, origin, orientation) {    
     var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
 
-    var axisA = Vec3.normalize(Vec3.sum(Quat.getUp(orientation), Quat.getForward(orientation)));
+    var axisA = Quat.getForward(orientation);
+    var axisB = Quat.getRight(orientation);
+    var axisC = Quat.getUp(orientation);
 
     var center = Vec3.sum(origin, Vec3.multiply(test.a * unit, axisA));
-    center = Vec3.sum(center, Vec3.multiply(test.b * unit, Quat.getRight(orientation)));
+    center = Vec3.sum(center, Vec3.multiply(test.b * unit, axisB));
+    center = Vec3.sum(center, Vec3.multiply(test.c * unit, axisC));
 
     return addTestModel(test.name, center, orientation);
 }
@@ -119,6 +127,7 @@ function addCasesAt(origin, orientation, testCases) {
 }
   
 addCases = function (testCases) {
+    MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
     orientation.x = 0;
