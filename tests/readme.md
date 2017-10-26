@@ -39,8 +39,14 @@ We identify different types of test used for different purpose
 ## Folder Organization
 A single Test Case lives in ONE folder with a mandatory file called test.md or story.md
 The names of the files in the Test Case folder are simple and generic.
+
 The full path name of the test case folder (including its parent folders) is representative of the actual feature or aspect tested.
-All the names and folders are lowercase.
+All the files and folders of the path names are:
+- lowercase (even acronyms)
+- singular ('entity', not 'entities')
+- represent a scope of nesting to avoid repetition ('zone', not 'zone_entity')
+- if several word are required, they are separated by '_' ('normal_map', not 'normalMap')
+
 The organization of the hierarchy is hopefully logical and simple to navigate. We will probably have to iterate on this tree organization to find a good naming scheme.
 
 The initial hierarchy of folders is organized by the various types and sub types of content:
