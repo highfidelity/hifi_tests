@@ -18,3 +18,7 @@ The steps can be run manually or by executing the [shadows.js script](./shadows.
 #### Step 3
 - In the 'Create' window, select the 'Zone' entity in the 'List' tab. Switch to the 'Properties' tab and check the 'Visible' checkbox. In the 'Key Light' section in that same tab, set the 'Light Altitude' to 10 and 'Light Azimuth' to 30
 - Expected: ![](./newlightpos.jpg)
+
+#### Step 4
+- Turn view 180°
+- Expected: ![](./behind.jpg)

@@ -1,5 +1,20 @@
+function findCurrentZone() {
+    var foundEntitiesArray = Entities.findEntities(MyAvatar.position, 2.0);
+    //print(foundEntitiesArray.length);
+    var zone = null;
+
+    foundEntitiesArray.forEach(function(foundID){
+        var properties = Entities.getEntityProperties(foundID);
+        if (properties.type == "Zone") {
+            zone = foundID;
+        } 
+    });
+    return zone;
+}
+
+
 var step = 0;
-var zoneId = "{8e527b08-020b-4bea-9dce-94b224f236c6}";
+var zoneId = findCurrentZone();
 var zoneProperties = Entities.getEntityProperties(zoneId);
 var initialZoneProperties = {
     "visible": zoneProperties.visible,
@@ -30,9 +45,18 @@ var steps = [
         };
         Entities.editEntity(zoneId, zoneProperties);
     },
+    // Step 4
+    function() {
+        Entities.editEntity(zoneId, initialZoneProperties)
+        MyAvatar.goToLocation(
+            {x:4.91982, y:0.271947, z:-54.7686},
+            true,
+            Quat.angleAxis(180, {x: 0, y: 1, z: 0}),
+            true
+        );
+    },
     // End
     function () {
-        Entities.editEntity(zoneId, initialZoneProperties)
     }
 ];
 
