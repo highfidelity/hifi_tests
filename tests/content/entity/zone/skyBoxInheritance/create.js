@@ -26,21 +26,28 @@ var zone4Dimensions = { x:  6.0, y: 10.0, z: 20.0};
 // Create zones
 var zone1properties = {
     type: "Zone",
-    name: "zone 1",
+    name: "zone red",
     position: zone1Position,
     dimensions: zone1Dimensions,
     keyLight:{"color": {"red":200,"green":0,"blue":0}},
+    intensity: 1.0,
+    ambientIntensity: 0.0,
     backgroundMode:"skybox",
-    skybox:{"color":{"red":200,"green":0,"blue":0}}
+    skybox:{
+        color: {"red":255,"green":255,"blue":255},
+        url: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx"
+    }
 };
 var zone1 = Entities.addEntity(zone1properties);
 
 var zone2properties = {
     type: "Zone",
-    name: "zone 2",
+    name: "zone yellow",
     position: zone2Position,
     dimensions: zone2Dimensions,
     keyLight:{"color": {"red":150,"green":150,"blue":0}},
+    intensity: 1.0,
+    ambientIntensity: 0.0,
     backgroundMode:"skybox",
     skybox:{"color":{"red":150,"green":150,"blue":0}}
 };
@@ -48,28 +55,34 @@ var zone2 = Entities.addEntity(zone2properties);
 
 var zone3properties = {
     type: "Zone",
-    name: "zone 3",
+    name: "zone green",
     position: zone3Position,
     dimensions: zone3Dimensions,
     keyLight:{"color": {"red":0,"green":200,"blue":0}},
+    intensity: 1.0,
+    ambientIntensity: 0.0,
     backgroundMode:"skybox",
-    skybox:{"color":{"red":0,"green":200,"blue":0}}
+    skybox:{
+        color: {"red":255,"green":255,"blue":255},
+        url: "https://hifi-public.s3.amazonaws.com/images/SkyboxTextures/CloudyDay1.jpg"
+    }
 };
 var zone3 = Entities.addEntity(zone3properties);
 
 var zone4properties = {
     type: "Zone",
-    name: "zone 4",
+    name: "zone blue",
     position: zone4Position,
     dimensions: zone4Dimensions,
     keyLight:{"color": {"red":0,"green":0,"blue":200}},
+    intensity: 1.0,
+    ambientIntensity: 0.0,
     backgroundMode:"skybox",
     skybox:{"color":{"red":0,"green":0,"blue":200}}
 };
 var zone4 = Entities.addEntity(zone4properties);
 
 // Show zone positions on the ground
-
 var marker1Dimensions = { x: 20.0, y: 0.01, z: 40.0};
 var marker2Dimensions = { x: 30.0, y: 0.01, z: 20.0};
 var marker3Dimensions = { x: 10.0, y: 0.01, z: 30.0};
@@ -114,6 +127,7 @@ var marker4properties = {
     visible: true
 };
 var marker4 = Entities.addEntity(marker4properties);
+
 
 // Position avatar
 MyAvatar.position  = {x: 0.0, y: 0.0, z: -20.0};

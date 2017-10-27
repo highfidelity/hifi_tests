@@ -26,50 +26,61 @@ var zone4Dimensions = { x:  6.0, y: 10.0, z: 20.0};
 // Create zones
 var zone1properties = {
     type: "Zone",
-    name: "zone 1",
+    name: "zone red",
     position: zone1Position,
     dimensions: zone1Dimensions,
     keyLight:{"color": {"red":200,"green":0,"blue":0}},
-    backgroundMode:"skybox",
+    intensity: 1.0,
+    ambientIntensity: 0.0,
+    backgroundMode:"nothing",
+    keyLightMode:"enabled",
     skybox:{"color":{"red":200,"green":0,"blue":0}}
 };
 var zone1 = Entities.addEntity(zone1properties);
 
 var zone2properties = {
     type: "Zone",
-    name: "zone 2",
+    name: "zone yellow",
     position: zone2Position,
     dimensions: zone2Dimensions,
     keyLight:{"color": {"red":150,"green":150,"blue":0}},
-    backgroundMode:"skybox",
+    intensity: 1.0,
+    ambientIntensity: 0.0,
+    backgroundMode:"nothing",
+    keyLightMode:"enabled",
     skybox:{"color":{"red":150,"green":150,"blue":0}}
 };
 var zone2 = Entities.addEntity(zone2properties);
 
 var zone3properties = {
     type: "Zone",
-    name: "zone 3",
+    name: "zone green",
     position: zone3Position,
     dimensions: zone3Dimensions,
     keyLight:{"color": {"red":0,"green":200,"blue":0}},
-    backgroundMode:"skybox",
+    intensity: 1.0,
+    ambientIntensity: 0.0,
+    backgroundMode:"nothing",
+    keyLightMode:"enabled",
     skybox:{"color":{"red":0,"green":200,"blue":0}}
 };
 var zone3 = Entities.addEntity(zone3properties);
 
 var zone4properties = {
     type: "Zone",
-    name: "zone 4",
+    name: "zone blue",
     position: zone4Position,
     dimensions: zone4Dimensions,
     keyLight:{"color": {"red":0,"green":0,"blue":200}},
-    backgroundMode:"skybox",
+    intensity: 1.0,
+    ambientIntensity: 0.0,
+    backgroundMode:"nothing",
+    keyLightMode:"enabled",
     skybox:{"color":{"red":0,"green":0,"blue":200}}
 };
 var zone4 = Entities.addEntity(zone4properties);
 
 // Show zone positions on the ground
-
 var marker1Dimensions = { x: 20.0, y: 0.01, z: 40.0};
 var marker2Dimensions = { x: 30.0, y: 0.01, z: 20.0};
 var marker3Dimensions = { x: 10.0, y: 0.01, z: 30.0};
@@ -115,6 +126,17 @@ var marker4properties = {
 };
 var marker4 = Entities.addEntity(marker4properties);
 
+// Add white square in centre to show keylight colour
+var squareProperties = {
+    type: "Box",
+    name: "square",
+    position: { x:0.0, y:0.05, z:0.0 },
+    dimensions: { x:4.0, y:0.01, z:4.0 },
+    "color": {"red":255,"green":255,"blue":255},
+    visible: true
+};
+var square = Entities.addEntity(squareProperties);
+
 // Position avatar
 MyAvatar.position  = {x: 0.0, y: 0.0, z: -20.0};
 MyAvatar.orientation = {x: 0.0, y: 1.0, z: 0.0, w: 0.0};
@@ -130,6 +152,7 @@ Script.scriptEnding.connect(
         Entities.deleteEntity(zone2);
         Entities.deleteEntity(zone3);
         Entities.deleteEntity(zone4);
+        Entities.deleteEntity(square);
         
         Render.getConfig("RenderMainView.DrawZoneStack").enabled = false;
         Render.getConfig("RenderMainView.DrawZones").enabled = false;

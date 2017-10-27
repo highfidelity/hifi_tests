@@ -1,4 +1,4 @@
-# Entity Zone Create
+# Entity Zone Inheritance
 ## General
 This test will build the following zone hierarchy:
 

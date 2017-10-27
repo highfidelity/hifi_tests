@@ -1,10 +1,14 @@
-# Entity Zone Create
+# Entity Zone Inheritance
 ## General
 This test will build the following zone hierarchy:
 
 ![](./hierarchy.png) 
 
-The tests consist of setting zone component parameters and moving through the zones.
+The tests consist of stepping through the zones.  They are setup as follows:
+* Red - Sunny blue sky with some clouds
+* Green - Winter sky with lots of clouds (think Seattle)
+* Yellow - yellow background
+* Blue - Blue background
 
 ## Preconditions
 Run interface and delete all content
@@ -21,19 +25,19 @@ Run interface and delete all content
 This part consists of stepping through 8 positions and verifying the colour of the keylight.  This can be seen by moving back from the avatar and observing its head.
 
 1. Run [script URL](./A.js?raw=true)
-   * Keylight is red  
+   * A bright blue sky with some clouds is visible
 1. Run [script URL](./B.js?raw=true)
-   * Keylight is green  
+   * A miserable grey sky is visible.
 1. Run [script URL](./C.js?raw=true)
-   * Keylight is blue  
+   * The sky is solid blue
 1. Run [script URL](./D.js?raw=true)
-   * Keylight is blue  
+   * The sky remains solid blue
 1. Run [script URL](./E.js?raw=true)
-   * Keylight is green  
+   * A miserable grey sky is visible.
 1. Run [script URL](./F.js?raw=true)
-   * Keylight is yellow  
+   * The sky is solid yellow
 1. Run [script URL](./G.js?raw=true)
-   * Keylight is yellow  
+   * The sky remains solid yellow 
 1. Run [script URL](./H.js?raw=true)
-   * Keylight is red  
+   * A bright blue sky with some clouds is visible 
 
