@@ -1,11 +1,11 @@
 # Engine Render Shadows
 
 ### Preconditions
-Interface is running, logged in the 'Dev-Welcome' domain at the initial position with avatar in first person view.
+Interface is running, logged in an empty domain with editing rights and with shadows enabled (after enabling Developer menus in Settings, go to Developer/Graphics).
 
 ### Steps
 
-The steps can be run manually or by executing the [shadows.js script](./shadows.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) in which case each step is played in sequence by pressing the [SPACE] key.
+The test is performed by executing the [shadows.js script](./shadows.js?raw=true) (from menu/Edit/Open and Run scripts From URL...). Each step is played in sequence by pressing the [SPACE] key.
 
 #### Step 1
 - With the avatar at the domain's initial position, looking back towards the back of the hangar.
