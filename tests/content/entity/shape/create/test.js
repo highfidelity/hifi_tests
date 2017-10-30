@@ -1,4 +1,4 @@
-// tests/content/shape/create.js
+// tests/content/shape/create/test.js
 
 // connect cleanup()
 var entityIds = [];
