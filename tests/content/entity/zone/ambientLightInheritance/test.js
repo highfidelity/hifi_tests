@@ -1,3 +1,5 @@
+Script.include("setup.js?raw=true")
+
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
@@ -11,10 +13,10 @@ var BACKDROP_SIZE = 16;
 var Z_OFFSET = 3.0;
 
 // Add the test Cases
-MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+MyAvatar.orientation = avatarOriginOrientation;
 
-var objectOrientation = MyAvatar.orientation;
-var objectPosition = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.7, z: MyAvatar.position.z - 3.0};
+var objectOrientation = avatarOriginOrientation;
+var objectPosition = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.7, z: avatarOriginPosition.z - 3.0};
 
 var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
 
