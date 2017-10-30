@@ -31,6 +31,7 @@ if (true) {
         shape: "Cube",
         name: "",
         position: worldPosition,
+        rotation: MyAvatar.orientation,
         dimensions: { x: width, y: thickness, z: width },
         lifetime: LIFETIME,
         color: floorColor
