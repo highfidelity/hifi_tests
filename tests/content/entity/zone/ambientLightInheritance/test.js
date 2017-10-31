@@ -10,8 +10,6 @@ var UNIT = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
 var CELL_DIM = Vec3.multiply(UNIT, MODEL_DIMS);
 var BACKDROP_SIZE = 16;
 
-var Z_OFFSET = 3.0;
-
 // Add the test Cases
 MyAvatar.orientation = avatarOriginOrientation;
 
@@ -20,7 +18,7 @@ var objectPosition = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.7
 
 var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
 
-var objectProperties = {
+objectProperties = {
   type: "Model",
   modelURL: MODEL_DIR_URL + objectName + MODEL_NAME_SUFFIX,
   name: objectName,
