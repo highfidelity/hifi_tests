@@ -1,27 +1,27 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
-
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
+
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
 var MODEL_SCALE = 0.75;
 var UNIT = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
-var CELL_DIM = Vec3.multiply(UNIT, MODEL_DIMS);
 
 // We are looking towards negative Z
 var OBJ_DX = 0.0;
-var OBJ_DY = 0.7;
-var OBJ_DZ = -2.5;
+var OBJ_DY = 0.65;
+var OBJ_DZ = -2.0;
 
+// Look down Z axis and get present position
 var avatarLookDownZaxis = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-var avatarOriginPosition = MyAvatar.position;
-
 MyAvatar.orientation = avatarLookDownZaxis;
 
+var avatarOriginPosition = MyAvatar.position;
+
+// Place object relatively to the avatar (object will always be placed in the same relative position
 var objectOrientation = avatarLookDownZaxis;
 var objectPosition = {x: avatarOriginPosition.x + OBJ_DX, y: avatarOriginPosition.y + OBJ_DY, z: avatarOriginPosition.z  + OBJ_DZ};
 
 var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
-
 var objectProperties = {
   type: "Model",
   modelURL: MODEL_DIR_URL + objectName + MODEL_NAME_SUFFIX,
@@ -29,11 +29,10 @@ var objectProperties = {
   position: objectPosition,    
   rotation: objectOrientation,    
   dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
-  angularVelocity:{"x":0.0, "y":0.1, "z":0.05},
-  angularDamping:0.0,
 };
 var object = Entities.addEntity(objectProperties);
 
+// Setup 3 zones
 var zone1Dimensions = { x: 10.0, y: 10.0, z: 40.0};
 var zone2Dimensions = { x:  8.0, y: 10.0, z: 20.0};
 var zone3Dimensions = { x:  4.0, y: 10.0, z: 30.0};
@@ -116,7 +115,7 @@ var zone3properties = {
 };
 var zone3 = Entities.addEntity(zone3properties);
 
-// Show zone positions on the ground
+// Show zone positions with rectangles
 var marker1Dimensions = { x: 10.0, y: 0.01, z: 40.0};
 var marker2Dimensions = { x:  8.0, y: 0.01, z: 20.0};
 var marker3Dimensions = { x:  4.0, y: 0.01, z: 30.0};
@@ -151,6 +150,13 @@ var marker3properties = {
 };
 var marker3 = Entities.addEntity(marker3properties);
 
+// Setup snapshots
+//    resolvePath(".") returns a string that looks like <path to High Fidelity resource folder> + "file:/" + <current folder>
+//    We need the current folder
+var combinedPath = Script.resolvePath(".");
+var path = combinedPath.substring(combinedPath.indexOf(":") + 4);
+Snapshot.setSnapshotsLocation(path);
+
 var STEP_TIME = 2000;
 var step = 1;
 Script.setTimeout(
@@ -162,6 +168,8 @@ Script.setTimeout(
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
     Entities.editEntity(object, newProperty);  
+    
+    Window.takeSnapshot();
   }, 
     
   step * STEP_TIME
@@ -177,6 +185,8 @@ Script.setTimeout(
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
     Entities.editEntity(object, newProperty);  
+    
+    Window.takeSnapshot();
   }, 
     
   step * STEP_TIME
@@ -191,6 +201,8 @@ Script.setTimeout(
     var newProperty = { 
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
+    
+    Window.takeSnapshot();
     Entities.editEntity(object, newProperty);  
   }, 
     
@@ -206,6 +218,8 @@ Script.setTimeout(
     var newProperty = { 
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
+    
+    Window.takeSnapshot();
     Entities.editEntity(object, newProperty);  
   }, 
     
