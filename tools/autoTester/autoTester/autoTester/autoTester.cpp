@@ -26,4 +26,5 @@ void autoTester::on_closeButton_clicked()
 
 void autoTester::on_createTestButton_clicked()
 {
+    test.createTest();
 }
