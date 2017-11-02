@@ -1,7 +1,7 @@
 # Engine Render Outline Effect
 
 ### Preconditions
-Interface is running, logged in an empty region of a domain with editing rights and with avatar in third person view. This test should be performed in Desktop and in HMD mode.
+Interface is running, logged in an empty domain with editing rights and with avatar in third person view. This test should be performed in Desktop and in HMD mode.
 
 ### Steps
 
