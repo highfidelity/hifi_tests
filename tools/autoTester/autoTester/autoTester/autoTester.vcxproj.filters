@@ -45,6 +45,9 @@
     <ClCompile Include="GeneratedFiles\qrc_autoTester.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="autoTester.h">
@@ -60,6 +63,9 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_autoTester.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
