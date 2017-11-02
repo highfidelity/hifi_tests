@@ -12,13 +12,17 @@ var OBJ_DY = 0.65;
 var OBJ_DZ = -2.0;
 
 // Look down Z axis and get present position
-var avatarLookDownZaxis = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-MyAvatar.orientation = avatarLookDownZaxis;
+MyAvatar.bodyYaw = 0.0;
+MyAvatar.bodyPitch = 0.0;
+MyAvatar.bodyRoll = 0.0;
+MyAvatar.headYaw = 0.0;
+MyAvatar.headPitch = 0.0;
+MyAvatar.headRoll = 0.0;
 
 var avatarOriginPosition = MyAvatar.position;
 
 // Place object relatively to the avatar (object will always be placed in the same relative position
-var objectOrientation = avatarLookDownZaxis;
+var objectOrientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 var objectPosition = {x: avatarOriginPosition.x + OBJ_DX, y: avatarOriginPosition.y + OBJ_DY, z: avatarOriginPosition.z  + OBJ_DZ};
 
 var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
@@ -161,7 +165,15 @@ var STEP_TIME = 2000;
 var step = 1;
 Script.setTimeout(
   function() {
-    MyAvatar.orientation = avatarLookDownZaxis;
+    // just give user time to move mouse out of window
+  }, 
+    
+  step * STEP_TIME
+);
+
+step +=1;
+Script.setTimeout(
+  function() {
     MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 7.5};
     
     var newProperty = { 
@@ -178,7 +190,6 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
-    MyAvatar.orientation = avatarLookDownZaxis;
     MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 12.5};
     
     var newProperty = { 
@@ -195,7 +206,6 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
-    MyAvatar.orientation = avatarLookDownZaxis;
     MyAvatar.position  = {x: avatarOriginPosition.x + 3.0, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 17.5};
     
     var newProperty = { 
@@ -212,7 +222,6 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
-    MyAvatar.orientation = avatarLookDownZaxis;
     MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 17.5};
     
     var newProperty = { 
