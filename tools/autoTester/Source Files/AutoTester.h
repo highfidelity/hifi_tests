@@ -16,12 +16,12 @@
 #include "ui_autoTester.h"
 #include "Test.h"
 
-class autoTester : public QMainWindow
+class AutoTester : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    autoTester(QWidget *parent = Q_NULLPTR);
+    AutoTester(QWidget *parent = Q_NULLPTR);
 
 private slots:
     void on_runTestButton_clicked();
@@ -29,7 +29,7 @@ private slots:
     void on_closeButton_clicked();
 
 private:
-    Ui::autoTesterClass ui;
+    Ui::AutoTesterClass ui;
 
     Test test;
 };
