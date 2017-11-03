@@ -154,6 +154,16 @@ var marker3properties = {
 };
 var marker3 = Entities.addEntity(marker3properties);
 
+function deleteEntities() {
+    Entities.deleteEntity(object);
+    Entities.deleteEntity(zone1);
+    Entities.deleteEntity(zone2);
+    Entities.deleteEntity(zone3);
+    Entities.deleteEntity(marker1);
+    Entities.deleteEntity(marker2);
+    Entities.deleteEntity(marker3);
+}
+
 // Setup snapshots
 //    resolvePath(".") returns a string that looks like <path to High Fidelity resource folder> + "file:/" + <current folder>
 //    We need the current folder
@@ -165,7 +175,7 @@ var STEP_TIME = 2000;
 var step = 1;
 Script.setTimeout(
   function() {
-    // just give user time to move mouse out of window
+    // Give user time to move mouse cursor out of window
   }, 
     
   step * STEP_TIME
@@ -174,6 +184,8 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
+    Window.takeSnapshot();
+
     MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 7.5};
     
     var newProperty = { 
@@ -181,7 +193,6 @@ Script.setTimeout(
     };
     Entities.editEntity(object, newProperty);  
     
-    Window.takeSnapshot();
   }, 
     
   step * STEP_TIME
@@ -190,14 +201,14 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
+    Window.takeSnapshot();
+
     MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 12.5};
     
     var newProperty = { 
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
     Entities.editEntity(object, newProperty);  
-    
-    Window.takeSnapshot();
   }, 
     
   step * STEP_TIME
@@ -206,13 +217,13 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
+    Window.takeSnapshot();
+
     MyAvatar.position  = {x: avatarOriginPosition.x + 3.0, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 17.5};
     
     var newProperty = { 
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
-    
-    Window.takeSnapshot();
     Entities.editEntity(object, newProperty);  
   }, 
     
@@ -222,30 +233,27 @@ Script.setTimeout(
 step +=1;
 Script.setTimeout(
   function() {
+    Window.takeSnapshot();
+
     MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 17.5};
     
     var newProperty = { 
       position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
     };
-    
-    Window.takeSnapshot();
     Entities.editEntity(object, newProperty);  
   }, 
     
   step * STEP_TIME
 )
-
+  
 // clean up after test
 step +=1;
 Script.setTimeout(
   function () {
-    Entities.deleteEntity(object);
-    Entities.deleteEntity(zone1);
-    Entities.deleteEntity(zone2);
-    Entities.deleteEntity(zone3);
-    Entities.deleteEntity(marker1);
-    Entities.deleteEntity(marker2);
-    Entities.deleteEntity(marker3);
+    Window.takeSnapshot();
+
+    deleteEntities;
+    Script.stop();
   },
   
   step * STEP_TIME
@@ -253,14 +261,7 @@ Script.setTimeout(
 
 Script.scriptEnding.connect(
     function () {
-        Entities.deleteEntity(object);
-        Entities.deleteEntity(zone1);
-        Entities.deleteEntity(zone2);
-
-        Entities.deleteEntity(zone3);
-        Entities.deleteEntity(marker1);
-        Entities.deleteEntity(marker2);
-        Entities.deleteEntity(marker3);
+        deleteEntities();
     }
 );
 
