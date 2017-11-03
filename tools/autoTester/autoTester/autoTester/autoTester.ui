@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>117</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>300</y>
+      <x>20</x>
+      <y>210</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="createTestButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>20</x>
+      <y>160</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -40,13 +40,26 @@
      <string>Create Test</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="runTestButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Run Test</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>117</width>
      <height>21</height>
     </rect>
    </property>

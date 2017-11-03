@@ -171,6 +171,8 @@ var combinedPath = Script.resolvePath(".");
 var path = combinedPath.substring(combinedPath.indexOf(":") + 4);
 Snapshot.setSnapshotsLocation(path);
 
+// Note that the image for the current step is snapped at the beginning of the next step.
+// This is because it may take a while for the image to stabilize.
 var STEP_TIME = 2000;
 var step = 1;
 Script.setTimeout(

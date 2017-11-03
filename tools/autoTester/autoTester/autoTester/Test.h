@@ -12,9 +12,23 @@
 #ifndef hifi_test_h
 #define hifi_test_h
 
+#include <QFileDialog>
+
 class Test {
 public: 
+    Test();
+
+    void runTest();
     void createTest();
+
+    void createListOfJPEGimagesInDirectory();
+
+private:
+    QString pathToImageDirectory;
+    QDir imageDirectory;
+    QStringList sortedImageFilenames;
+
+    QRegularExpression snapshotFilenameFormat;
 };
 
 #endif // hifi_test_h

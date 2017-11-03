@@ -21,6 +21,11 @@ void autoTester::on_closeButton_clicked()
     exit(0);
 }
 
+void autoTester::on_runTestButton_clicked()
+{
+    test.runTest();
+}
+
 void autoTester::on_createTestButton_clicked()
 {
     test.createTest();

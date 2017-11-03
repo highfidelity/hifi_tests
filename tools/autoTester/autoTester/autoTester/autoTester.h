@@ -23,9 +23,10 @@ class autoTester : public QMainWindow
 public:
     autoTester(QWidget *parent = Q_NULLPTR);
 
-    private slots:
-    void on_closeButton_clicked();
+private slots:
+    void on_runTestButton_clicked();
     void on_createTestButton_clicked();
+    void on_closeButton_clicked();
 
 private:
     Ui::autoTesterClass ui;
