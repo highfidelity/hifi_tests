@@ -14,9 +14,6 @@ autoTester::autoTester(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-
-    connect(ui.closeButton, SIGNAL(clicked()), this, SLOT(on_closeButton_clicked()));
-    connect(ui.createTestButton, SIGNAL(clicked()), this, SLOT(on_createTestButton_clicked()));
 }
 
 void autoTester::on_closeButton_clicked()
