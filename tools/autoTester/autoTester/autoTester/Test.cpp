@@ -25,7 +25,7 @@ void Test::createTest() {
     // Rename files sequentially, as ExpectedResult_1.jpeg, ExpectedResult_2.jpg and so on
     for (int i = 1; i <= imageFileNames.length(); ++i) {
         QString currentFileName = pathToDir + "/" + imageFileNames[i - 1];
-        QString newFileName = "ExpectedResult_" + QString::number(i) + ".jpg";
+        QString newFileName = "ExpectedImage_" + QString::number(i) + ".jpg";
 
         dir.rename(currentFileName, newFileName);
     }
