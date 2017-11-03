@@ -30,10 +30,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="GeneratedFiles\qrc_autoTester.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\autoTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="autoTester.cpp">
+    <ClCompile Include="Source Files\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_autoTester.cpp">
@@ -42,29 +48,23 @@
     <ClCompile Include="GeneratedFiles\Release\moc_autoTester.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_autoTester.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="autoTester.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="autoTester.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="autoTester.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Source Files\autoTester.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_autoTester.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
+    <ClInclude Include="Source Files\Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
