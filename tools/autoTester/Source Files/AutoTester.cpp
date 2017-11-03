@@ -8,25 +8,25 @@
 //  Distributed under the Apache License, Version 2.0.
 //  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
 //
-#include "autoTester.h"
+#include "AutoTester.h"
 
-autoTester::autoTester(QWidget *parent)
+AutoTester::AutoTester(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
 }
 
-void autoTester::on_closeButton_clicked()
+void AutoTester::on_closeButton_clicked()
 {
     exit(0);
 }
 
-void autoTester::on_runTestButton_clicked()
+void AutoTester::on_runTestButton_clicked()
 {
     test.runTest();
 }
 
-void autoTester::on_createTestButton_clicked()
+void AutoTester::on_createTestButton_clicked()
 {
     test.createTest();
 }
