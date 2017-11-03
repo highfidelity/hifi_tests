@@ -13,6 +13,8 @@
 #define hifi_test_h
 
 #include <QFileDialog>
+#include <QMessagebox>
+#include <QRegularExpression>
 
 class Test {
 public: 
@@ -27,6 +29,8 @@ public:
     bool isInExpectedImageFilenameFormat(QString filename);
 
 private:
+    QMessageBox messageBox;
+
     QString pathToImageDirectory;
     QDir imageDirectory;
     QStringList sortedImageFilenames;

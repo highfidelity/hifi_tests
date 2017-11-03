@@ -8,9 +8,6 @@
 //  Distributed under the Apache License, Version 2.0.
 //  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
 //
-#include <QMessagebox>
-#include <QRegularExpression>
-
 #include "Test.h"
 
 Test::Test() {
@@ -32,6 +29,16 @@ void Test::runTest() {
             resultImages << currentFilename;
         }
     }
+
+    // The number of images in each list should be identical
+    if (expectedImages.length() != resultImages.length()) {
+        messageBox.critical(0, 
+            "Test failed", 
+            "Found " + QString::number(resultImages.length()) + " images in directory" + 
+            "\nExpected to find " + QString::number(expectedImages.length()) + " images");
+
+        exit(-1);
+    }
 }
     
 void Test::createTest() {
@@ -44,7 +51,6 @@ void Test::createTest() {
         QString fullCurrentFilename = pathToImageDirectory + "/" + currentFilename;
         if (isInExpectedImageFilenameFormat(currentFilename)) {
             if (!QFile::remove(fullCurrentFilename)) {
-                QMessageBox messageBox;
                 messageBox.critical(0, "Error", "Could not delete existing file: " + currentFilename + "\nTest creation aborted");
                 exit(-1);
             }
