@@ -67,7 +67,8 @@
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)ImageMagick\*.* $(OutDir)</Command>
+      <Command>copy $(ProjectDir)ImageMagick\*.*   $(OutDir)
+$(QTDIR)bin\windeployqt.exe             $(OutDir)$(ProjectName).exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
