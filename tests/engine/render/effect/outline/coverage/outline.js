@@ -1,6 +1,7 @@
 var _step = 0;
 var createdEntities = [];
 var outlineConfig = Render.getConfig("RenderMainView.OutlineEffect0");
+var debugConfig = Render.getConfig("RenderMainView.OutlineDebug");
 
 print("Running Outline Test - press <SPACE> to go to next steps");
 Selection.clearSelectedItemsList("contextOverlayHighlightList");
@@ -272,33 +273,43 @@ var steps = [
     },
     // Step 4
     function() {
-        outlineConfig["width"] = 4;
+        debugConfig.viewMask = true;
     },
     // Step 5
     function() {
-        outlineConfig["glow"] = true;
+        debugConfig.viewMask = false;
+        outlineConfig["width"] = 4;
     },
     // Step 6
+    function() {
+        outlineConfig["glow"] = true;
+    },
+    // Step 7
     function() {
         outlineConfig["colorR"] = 0;
         outlineConfig["colorG"] = 1;
         outlineConfig["colorB"] = 0.5;
     },
-    // Step 7
+    // Step 8
     function() {
         outlineConfig["unoccludedFillOpacity"] = 0.1;
         outlineConfig["occludedFillOpacity"] = 0.5;
     },
-    // Step 8
+    // Step 9
     function() {
+        debugConfig.viewMask = true;
+    },
+    // Step 10
+    function() {
+        debugConfig.viewMask = false;
         outlineConfig["glow"] = false;
     },
-    // Step 9
+    // Step 11
     function() {
         outlineConfig = Render.getConfig("RenderMainView.OutlineEffect1");
         Selection.addToSelectedItemsList("contextOverlayHighlightList1", "avatar", MyAvatar.sessionUUID)
     },
-    // Step 10
+    // Step 12
     function() {
         outlineConfig["glow"] = true;
         outlineConfig["width"] = 5;
@@ -308,13 +319,13 @@ var steps = [
         outlineConfig["colorB"] = 0;
         outlineConfig["unoccludedFillOpacity"] = 0.65;        
     },
-    // Step 11
+    // Step 13
     function() {
         outlineConfig = Render.getConfig("RenderMainView.OutlineEffect2");
         Selection.addToSelectedItemsList("contextOverlayHighlightList2", "entity", terrain)
         Selection.addToSelectedItemsList("contextOverlayHighlightList2", "entity", greenPaint)
     },
-    // Step 12
+    // Step 14
     function() {
         outlineConfig["unoccludedFillOpacity"] = 1.0;        
         outlineConfig["occludedFillOpacity"] = 0.25;        
