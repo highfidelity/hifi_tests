@@ -1,5 +1,5 @@
 //
-//  test.h
+//  Test.h
 //  zone/ambientLightInheritence
 //
 //  Created by Nissim Hadar on 2 Nov 2017.
@@ -21,7 +21,10 @@ public:
     void runTest();
     void createTest();
 
-    void createListOfJPEGimagesInDirectory();
+    void createListOfAllJPEGimagesInDirectory();
+
+    bool isInSnapshotFilenameFormat(QString filename);
+    bool isInExpectedImageFilenameFormat(QString filename);
 
 private:
     QString pathToImageDirectory;
@@ -29,6 +32,7 @@ private:
     QStringList sortedImageFilenames;
 
     QRegularExpression snapshotFilenameFormat;
+    QRegularExpression expectedImageFilenameFormat;
 };
 
 #endif // hifi_test_h
