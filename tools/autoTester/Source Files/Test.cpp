@@ -8,7 +8,26 @@
 //  Distributed under the Apache License, Version 2.0.
 //  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
 //
+// Images are compared using the ImagMagick command line tool magick.exe
+// A number of comparison metrics are available, including:
+//      AE      Absolute error                  count of the number of different pixels (0=equal)
+//
+//      PAE     Peak Absolute error             of any one pixel
+//
+//      PSNR    Peak Signal to Noise Ratio      The ratio of mean square difference to the maximum mean square
+//                                              that can exist between any two images, expressed as a decibel value.
+//                                              The higher the PSNR the closer the closer the images are, with
+//                                              a maximum difference occurring at 1.  A PSNR of 20 means
+//                                              differences are 1 / 100 of maximum.
+//
+//      MAE     Mean Absolute Error             average channel error distance
+//
+//      MSE     Mean Squared Error              averaged squared error distance
+//
+//      RMSE    squareRoot Mean Error           sqrt(MSE)
+//
 #include "Test.h"
+#include <QTextStream>
 
 Test::Test() {
     snapshotFilenameFormat = QRegularExpression("\\d\\d\\d\\d-\\d\\d-\\d\\d_\\d\\d-\\d\\d-\\d\\d.jpg");
@@ -23,10 +42,11 @@ void Test::runTest() {
     QStringList expectedImages;
     QStringList resultImages;
     foreach(QString currentFilename, sortedImageFilenames) {
+        QString fullCurrentFilename = pathToImageDirectory + "/" + currentFilename;
         if (isInExpectedImageFilenameFormat(currentFilename)) {
-            expectedImages << currentFilename;
+            expectedImages << fullCurrentFilename;
         } else if (isInSnapshotFilenameFormat(currentFilename)) {
-            resultImages << currentFilename;
+            resultImages << fullCurrentFilename;
         }
     }
 
@@ -38,6 +58,35 @@ void Test::runTest() {
             "\nExpected to find " + QString::number(expectedImages.length()) + " images");
 
         exit(-1);
+    }
+
+    // Now loop over both lists and compare each pair of images
+    const float THRESHOLD{ 10.0f };
+    bool success{ false };
+    for (int i = 0; i < expectedImages.length(); ++i) {
+        QString diffFilename = "hifi_autoTest_diff.txt";
+        QString command = "magick.exe compare -metric MAE " + expectedImages[i] + " " + resultImages[i] + " null: 2>" + diffFilename;
+        system(command.toStdString().c_str());
+
+        QFile file(diffFilename);
+        if (!file.open(QIODevice::ReadOnly)) {
+            messageBox.critical(0, "error", file.errorString());
+        }
+        QTextStream in(&file);
+        QString line = in.readLine();
+        QStringList tokens = line.split(' ');
+        float difference = tokens[0].toFloat();
+        if (difference > THRESHOLD) {
+            messageBox.critical(0, "Mismatch",
+                "Images:\n\n" + expectedImages[i] + "\n\nand\n\n" + resultImages[i] + "\n\ndiffer");
+            success = false;
+        }
+    }
+
+    if (success) {
+        messageBox.information(0, "Success", "All images are as expected");
+    } else {
+        messageBox.information(0, "Failure", "One or more images are not as expected");
     }
 }
     
