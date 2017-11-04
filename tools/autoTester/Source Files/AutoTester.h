@@ -29,7 +29,7 @@ private slots:
     void on_closeButton_clicked();
 
 private:
-    Ui::autoTesterClass ui;
+    Ui::AutoTesterClass ui;
 
     Test test;
 };
