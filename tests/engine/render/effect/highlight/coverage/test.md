@@ -44,7 +44,16 @@ During all steps, rendering should be stable in time. Rune the [outline.js scrip
 - Expected: ![](./step9.jpg)
 
 #### Step 13
-- Expected: the new outline should render over the first two![](./step10.jpg)
+- Expected: the new outline should render over the first two![](./step10-bis.jpg)
 
 #### Step 14
+- Expected: the new outline should render over the first two![](./step10.jpg)
+
+#### Step 15
 - Expected: ![](./step11.jpg)
+
+#### Step 16
+- Expected: ![](./step12.jpg)
+
+#### Step 17
+- Expected: ![](./step13.jpg)

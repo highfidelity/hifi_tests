@@ -47,7 +47,11 @@ var greenPaint = Entities.addEntity({
         red: 10
     },
     position: {x:1.25, y:-0.5, z:1},
-    dimensions: {x:500, y:500, z:500},
+    dimensions: {
+        "x": 1,
+        "y": 2.1,
+        "z": 0.1
+    },
     linePoints: [
         {
             "x": 0,
@@ -322,14 +326,26 @@ var steps = [
     },
     // Step 13
     function() {
-        highlightConfig["selectionName"] = "highlightList2"
-        Selection.addToSelectedItemsList("highlightList2", "entity", terrain)
-        Selection.addToSelectedItemsList("highlightList2", "entity", greenPaint)
+        highlightConfig["selectionName"] = "highlightList2";
+        Selection.addToSelectedItemsList("highlightList2", "entity", greenPaint);
     },
     // Step 14
     function() {
+        Selection.addToSelectedItemsList("highlightList2", "entity", terrain);
+    },
+    // Step 15
+    function() {
         highlightConfig["unoccludedFillOpacity"] = 1.0;        
         highlightConfig["occludedFillOpacity"] = 0.25;        
+    },
+    // Step 16
+    function() {
+        Selection.clearSelectedItemsList("contextOverlayHighlightList");
+    },
+    // Step 17
+    function() {
+        Selection.clearSelectedItemsList("highlightList1");
+        Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", hifi);
     },
     // End
     function () {
