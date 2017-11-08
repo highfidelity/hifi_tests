@@ -1,11 +1,11 @@
-# Engine Render Outline Effect
+# Engine Render Highlight Effect
 
 ### Preconditions
 Interface is running, logged in an empty domain with editing rights and with avatar in third person view. This test should be performed in Desktop and in HMD mode.
 
 ### Steps
 
-During all steps, rendering should be stable in time. Rune the [outline.js script](./outline.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) and play each step in sequence by pressing the [SPACE] key.
+During all steps, rendering should be stable in time. Rune the [highlight.js script](./highlight.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) and play each step in sequence by pressing the [SPACE] key.
 
 #### Step 1
 - Expected: ![](./init.jpg)
