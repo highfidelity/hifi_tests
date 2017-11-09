@@ -22,7 +22,7 @@
 //
 //      MAE     Mean Absolute Error             average channel error distance
 //
-//      MSE     Mean Squared Error              averaged squared error distance
+//      MSE     Mean Squared Error              average squared error distance
 //
 //      RMSE    squareRoot Mean Error           sqrt(MSE)
 //
@@ -32,6 +32,8 @@
 Test::Test() {
     snapshotFilenameFormat = QRegularExpression("\\d\\d\\d\\d-\\d\\d-\\d\\d_\\d\\d-\\d\\d-\\d\\d.jpg");
     expectedImageFilenameFormat = QRegularExpression("ExpectedImage_\\d+.jpg");
+
+    mismatchWindow.setModal(true);
 }
 
 void Test::runTest() {
@@ -62,7 +64,7 @@ void Test::runTest() {
 
     // Now loop over both lists and compare each pair of images
     const float THRESHOLD{ 10.0f };
-    bool success{ false };
+    bool success{ true };
     for (int i = 0; i < expectedImages.length(); ++i) {
         QString diffFilename = "hifi_autoTest_diff.txt";
         QString command = "magick.exe compare -metric MAE " + expectedImages[i] + " " + resultImages[i] + " null: 2>" + diffFilename;
@@ -77,6 +79,8 @@ void Test::runTest() {
         QStringList tokens = line.split(' ');
         float difference = tokens[0].toFloat();
         if (difference > THRESHOLD) {
+            mismatchWindow.exec();
+
             messageBox.critical(0, "Mismatch",
                 "Images:\n\n" + expectedImages[i] + "\n\nand\n\n" + resultImages[i] + "\n\ndiffer");
             success = false;

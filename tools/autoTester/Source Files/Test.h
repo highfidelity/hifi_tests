@@ -16,6 +16,8 @@
 #include <QMessagebox>
 #include <QRegularExpression>
 
+#include <MismatchWindow.h>
+
 class Test {
 public: 
     Test();
@@ -37,6 +39,8 @@ private:
 
     QRegularExpression snapshotFilenameFormat;
     QRegularExpression expectedImageFilenameFormat;
+
+    MismatchWindow mismatchWindow;
 };
 
 #endif // hifi_test_h

@@ -48,6 +48,15 @@
     <ClCompile Include="Source Files\AutoTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MismatchWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MismatchWindow.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Forms\MismatchWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="autoTester.ui">
@@ -59,6 +68,12 @@
     <CustomBuild Include="Source Files\AutoTester.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Forms\MismatchWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Forms\MismatchWindow.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_autoTester.h">
@@ -66,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="Source Files\Test.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MismatchWindow.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
