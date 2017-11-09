@@ -11,8 +11,8 @@ public:
     MismatchWindow(QWidget *parent = Q_NULLPTR);
     ~MismatchWindow();
 
-    void setExpectedImagePath(QString path) { _expectedImagePath = path; }
-    void setResultImagePath(QString path) { _resultImagePath = path; }
+    void setExpectedImagePath(QString path);
+    void setResultImagePath(QString path);
 
 private:
     QString _expectedImagePath;

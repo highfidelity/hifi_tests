@@ -79,10 +79,11 @@ void Test::runTest() {
         QStringList tokens = line.split(' ');
         float difference = tokens[0].toFloat();
         if (difference > THRESHOLD) {
+            mismatchWindow.setExpectedImagePath(expectedImages[i]);
+            mismatchWindow.setResultImagePath(resultImages[i]);
+
             mismatchWindow.exec();
 
-            messageBox.critical(0, "Mismatch",
-                "Images:\n\n" + expectedImages[i] + "\n\nand\n\n" + resultImages[i] + "\n\ndiffer");
             success = false;
         }
     }
