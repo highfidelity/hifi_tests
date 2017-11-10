@@ -77,8 +77,9 @@ void Test::runTest() {
         QTextStream in(&file);
         QString line = in.readLine();
         QStringList tokens = line.split(' ');
-        float difference = tokens[0].toFloat();
-        if (difference > THRESHOLD) {
+        float error = tokens[0].toFloat();
+        if (error > THRESHOLD) {
+            mismatchWindow.setError(error);
             mismatchWindow.setPathAndExpectedImage(expectedImages[i]);
             mismatchWindow.setResultImage(resultImages[i]);
 

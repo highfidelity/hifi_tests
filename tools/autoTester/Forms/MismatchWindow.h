@@ -9,8 +9,8 @@ class MismatchWindow : public QDialog, public Ui::MismatchWindow
 
 public:
     MismatchWindow(QWidget *parent = Q_NULLPTR);
-    ~MismatchWindow();
 
+    void setError(float error);
     void setPathAndExpectedImage(QString path);
     void setResultImage(QString path);
 };

@@ -7,25 +7,25 @@ MismatchWindow::MismatchWindow(QWidget *parent)
 {
     setupUi(this);
 
-    expectedImageLabel->setScaledContents(true);
-    resultImageLabel->setScaledContents(true);
+    expectedImage->setScaledContents(true);
+    resultImage->setScaledContents(true);
 }
 
-MismatchWindow::~MismatchWindow()
+void MismatchWindow::setError(float error)
 {
+    errorLabel->setText("Error: " + QString::number((int)error));
 }
+
 void MismatchWindow::setPathAndExpectedImage(QString path) {
-    expectedTextLabel->setText(QFileInfo(path.toStdString().c_str()).fileName());
+    expectedFilename->setText(QFileInfo(path.toStdString().c_str()).fileName());
 
-    QPixmap pixMap(path);
-    expectedImageLabel->setPixmap(pixMap);
+    expectedImage->setPixmap(QPixmap(path));
 
-    imagePath->setText(path.left(path.lastIndexOf("/")));
+    imagePath->setText("Path to test: " + path.left(path.lastIndexOf("/")));
  }
 
 void MismatchWindow::setResultImage(QString path) {
-    resultTextLabel->setText(QFileInfo(path.toStdString().c_str()).fileName());
+    resultFilename->setText(QFileInfo(path.toStdString().c_str()).fileName());
 
-    QPixmap pixMap(path);
-    resultImageLabel->setPixmap(pixMap);
+    resultImage->setPixmap(QPixmap(path));
 }
