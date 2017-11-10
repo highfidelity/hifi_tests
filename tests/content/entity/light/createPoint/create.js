@@ -1,5 +1,5 @@
 // Enabled draw zone bounding box and stack to visualize the stack of zone components
-Render.getConfig("RenderMainView.DrawZoneStack").enabled = true
+//Render.getConfig("RenderMainView.DrawZoneStack").enabled = true
 
 // Test material matrix
 Script.include("../stage.js?raw=true")
@@ -7,7 +7,7 @@ Script.include("../stage.js?raw=true")
 // Add the test Cases
 var createdEntities = setupStage()
 
-var posOri = getStagePosOriAt({a:4, b:0, c:1})
+var posOri = getStagePosOriAt(6, 0, 0)
 
 
 // Define zone properties
@@ -21,10 +21,9 @@ var properties = {
   type: "Light",
   isSpotlight: false,
   color: { red: 255, green: 255, blue: 255 },
-  exponent: 1,
   intensity: 1.0,
-  falloffRadius: 5.0,
-  dimensions: { x: 8.0, y: 8.0, z: 8.0 }, 
+  falloffRadius: 3.0,
+  dimensions: { x: 8.0, y: 8.0, z: 3.0 }, 
 };
 
 // Add the sphere and check its properties

@@ -1,57 +1,77 @@
 // Test content light stage
 
 // This script generate a stage made of a dark zone with no lighting, haze or skybox
-
-var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
-var MODEL_SCALE = 0.75;
-var MODEL_SPIN = 0.0;
-var ROOT_Y_OFFSET = -0.1;
-var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 120;
+
 var BACKDROP_SIZE = 16;
+var BACKDROP_HALFSIZE = 8;
+var BACKDROP_MIN_C = -2;
 
-function addTestBackdrop(name, position, orientation) {
+var ROOT_Z_OFFSET = -3;
+var ROOT_Y_OFFSET = -0.1;
+
+var TILE_UNIT = 1.0;
+var TILE_DIM = { x: TILE_UNIT, y: TILE_UNIT, z: TILE_UNIT};
+
+var GRID_TILE_OFFSET = Vec3.multiply(0.5, TILE_DIM);
+
+
+function getTileColor(a, b, c) {
+    var offset = (Math.abs(a) + ((Math.abs(b) + (Math.abs(c) % 2)) %  2)) % 2;
+    var intensity = (1 - offset) * 128 + offset * 255;
+    return { red: intensity, green: intensity, blue: intensity };
+}
+
+function addTile(a, b, c) {
+    var center = Vec3.sum(stageTileRoot, Vec3.multiply(a, stageAxisA));
+    center = Vec3.sum(center, Vec3.multiply(b, stageAxisB));
+    center = Vec3.sum(center, Vec3.multiply(c, stageAxisC));                                           
+
+    return (Entities.addEntity({
+        type: "Shape",
+        shape: "Cube",
+        name: "Backdrop",
+        color: getTileColor(a, b, c),
+        position: center,    
+        rotation: stageOrientation,    
+        dimensions: TILE_DIM,
+        lifetime: LIFETIME,
+        
+    }));
+}
+
+function addBackdropGrid(backdrop) {
+    for (i = BACKDROP_HALFSIZE; i > -BACKDROP_HALFSIZE; i--) {
+        for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
+            backdrop.push(addTile(backdrop, i, j, BACKDROP_MIN_C));
+        }
+    }
+
+    for (i = -1; i < BACKDROP_HALFSIZE; i++) {
+         for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
+            backdrop.push(addTile(backdrop, BACKDROP_HALFSIZE, j, i));
+        }
+    }
+}
+
+function addTestBackdrop(name) {
     var backdrop = [];
-    var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
     
-    var cellDim = Vec3.multiply(unit, MODEL_DIMS);
-    
-    var under = Vec3.sum(position, Vec3.multiply(-1.5 * unit, Quat.getUp(orientation)))
-    var far = Vec3.sum(position, Vec3.multiply(5 * unit, Quat.getForward(orientation)))
+    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(stageOrientation)),
+                                           Vec3.multiply(-1, Quat.getRight(stageOrientation))))
 
-    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(orientation)),
-                                           Vec3.multiply(-1, Quat.getRight(orientation))))
+    addBackdropGrid(backdrop);
 
-    backdrop.push(Entities.addEntity({
-        type: "Shape",
-        shape: "Cube",
-        name: "Backdrop",
-        position: under,    
-        rotation: orientation,    
-        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y , z: BACKDROP_SIZE *cellDim.z},
-        lifetime: LIFETIME,
-        locked: true
-    }));
-
- 
-    backdrop.push(Entities.addEntity({
-        type: "Shape",
-        shape: "Cube",
-        name: "Backdrop",
-        position: far,    
-        rotation: orientation,    
-        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y * BACKDROP_SIZE , z: cellDim.z},
-        lifetime: LIFETIME,
-        locked: true
-    }));
+    var zoneDim = Vec3.multiply(BACKDROP_SIZE, TILE_DIM);
+    var under = getStagePosOriAt(0, 0, 0).pos;
 
     backdrop.push(Entities.addEntity({
         type: "Zone",
         name: "Backdrop zone",
   
         position: under,    
-        rotation: orientation,    
-        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y * BACKDROP_SIZE , z: cellDim.z* BACKDROP_SIZE},
+        rotation: stageOrientation,    
+        dimensions: zoneDim,
         lifetime: LIFETIME,
         locked: true,
   
@@ -69,9 +89,14 @@ function addTestBackdrop(name, position, orientation) {
 
     return backdrop;
 }
- 
+
+// Stage position and orientation initialised at setup
 stageOrientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 stageRoot = {"x":0.0,"y":0.0,"z":0.0};
+stageTileRoot = {"x":0.0,"y":0.0,"z":0.0};
+stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
+stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
+stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 
 setupStage = function () {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
@@ -79,25 +104,23 @@ setupStage = function () {
     orientation = Quat.safeEulerAngles(orientation);
     orientation.x = 0;
     orientation = Quat.fromVec3Degrees(orientation);
-    var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
-    root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
     stageOrientation = orientation;
-    stageRoot = root;
+    stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
+    stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
+    stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));   
 
-    return addTestBackdrop("Light_stage_backdrop", root, orientation);
+    stageRoot = Vec3.sum(MyAvatar.position, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
+    stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
+
+    return addTestBackdrop("Light_stage_backdrop");
 }
 
-getStagePosOriAt = function (abc) {    
-    var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
-
-    var axisA = Quat.getForward(stageOrientation);
-    var axisB = Quat.getRight(stageOrientation);
-    var axisC = Quat.getUp(stageOrientation);
-
-    var center = Vec3.sum(stageRoot, Vec3.multiply(abc.a * unit, axisA));
-    center = Vec3.sum(center, Vec3.multiply(abc.b * unit, axisB));
-    center = Vec3.sum(center, Vec3.multiply(abc.c * unit, axisC));
+getStagePosOriAt = function (a, b, c) {    
+    var center = Vec3.sum(stageRoot, Vec3.multiply(a, stageAxisA));
+    center = Vec3.sum(center, Vec3.multiply(b, stageAxisB));
+    center = Vec3.sum(center, Vec3.multiply(c, stageAxisC));                                           
 
     return { "pos": center, "ori": stageOrientation};
 }
