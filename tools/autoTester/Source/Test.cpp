@@ -31,8 +31,7 @@
 #include <QTextStream>
 
 Test::Test() {
-    snapshotFilenamePrefixFormat = QRegularExpression("hifi-snap-by-");
-    snapshotFilenameSuffixFormat = QRegularExpression("-on-\\d\\d\\d\\d-\\d\\d-\\d\\d_\\d\\d-\\d\\d-\\d\\d.jpg");
+    snapshotFilenameFormat = QRegularExpression("hifi-snap-by-.+-on-\\d\\d\\d\\d-\\d\\d-\\d\\d_\\d\\d-\\d\\d-\\d\\d.jpg");
 
     expectedImageFilenameFormat = QRegularExpression("ExpectedImage_\\d+.jpg");
 
@@ -154,12 +153,7 @@ void Test::createListOfAllJPEGimagesInDirectory() {
 }
 
 bool Test::isInSnapshotFilenameFormat(QString filename) {
-    // Snapshot filename format is hifi-snap-by-<username>-on-yyyy-MM-dd_hh-mm-ss.jpg
-    // The filename is checked for adherence to this format for robustness.
-    QString leftPart = filename.left(QString("hifi-snap-by-").length());
-    QString rightPart = filename.right(QString("-on-yyyy-MM-dd_hh-mm-ss.jpg").length());
-
-    return (snapshotFilenamePrefixFormat.match(leftPart).hasMatch() && snapshotFilenameSuffixFormat.match(rightPart).hasMatch());
+    return (snapshotFilenameFormat.match(filename).hasMatch());
 }
 
 bool Test::isInExpectedImageFilenameFormat(QString filename) {
