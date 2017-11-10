@@ -14,6 +14,7 @@ The test will produce a number of snapshots in the directory.
 One way to produce the snapshots is as follows.  
 
 ```
+// test.js
 // Set snapshot path to current directory
 var combinedPath = Script.resolvePath(".");
 var path = combinedPath.substring(combinedPath.indexOf(":") + 4);
