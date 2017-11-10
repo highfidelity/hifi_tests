@@ -93,7 +93,7 @@
     <string>image path</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="passButton">
+  <widget class="QPushButton" name="passTestButton">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -106,7 +106,7 @@
     <string>Pass</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="failButton">
+  <widget class="QPushButton" name="failTestButton">
    <property name="geometry">
     <rect>
      <x>330</x>

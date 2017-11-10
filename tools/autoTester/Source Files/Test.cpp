@@ -1,6 +1,5 @@
 //
 //  Test.cpp
-//  zone/ambientLightInheritence
 //
 //  Created by Nissim Hadar on 2 Nov 2017.
 //  Copyright 2013 High Fidelity, Inc.
@@ -27,6 +26,8 @@
 //      RMSE    squareRoot Mean Error           sqrt(MSE)
 //
 #include "Test.h"
+
+#include <assert.h>
 #include <QTextStream>
 
 Test::Test() {
@@ -63,9 +64,11 @@ void Test::runTest() {
     }
 
     // Now loop over both lists and compare each pair of images
+    // Quit loop if user has aborted due to a failed test.
     const float THRESHOLD{ 10.0f };
     bool success{ true };
-    for (int i = 0; i < expectedImages.length(); ++i) {
+    bool keepOn{ true };
+    for (int i = 0; keepOn && i < expectedImages.length(); ++i) {
         QString diffFilename = "hifi_autoTest_diff.txt";
         QString command = "magick.exe compare -metric MAE " + expectedImages[i] + " " + resultImages[i] + " null: 2>" + diffFilename;
         system(command.toStdString().c_str());
@@ -74,18 +77,32 @@ void Test::runTest() {
         if (!file.open(QIODevice::ReadOnly)) {
             messageBox.critical(0, "error", file.errorString());
         }
+
+        // First value on line is the comparison result
         QTextStream in(&file);
         QString line = in.readLine();
         QStringList tokens = line.split(' ');
         float error = tokens[0].toFloat();
+
         if (error > THRESHOLD) {
             mismatchWindow.setError(error);
             mismatchWindow.setPathAndExpectedImage(expectedImages[i]);
             mismatchWindow.setResultImage(resultImages[i]);
-
             mismatchWindow.exec();
-
-            success = false;
+            
+            switch (mismatchWindow.getUserResponse()) {
+                case USER_RESPONSE_PASS:
+                    break;
+                case USE_RESPONSE_FAIL:
+                    success = false;
+                    break;
+                case USER_RESPONSE_ABORT:
+                    keepOn = false;
+                    success = false;
+                    break;
+                default:
+                    assert(false);
+            }
         }
     }
 
