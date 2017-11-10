@@ -37,7 +37,8 @@ private:
     QDir imageDirectory;
     QStringList sortedImageFilenames;
 
-    QRegularExpression snapshotFilenameFormat;
+    QRegularExpression snapshotFilenamePrefixFormat;
+    QRegularExpression snapshotFilenameSuffixFormat;
     QRegularExpression expectedImageFilenameFormat;
 
     MismatchWindow mismatchWindow;
