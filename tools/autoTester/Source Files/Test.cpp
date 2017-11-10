@@ -79,8 +79,8 @@ void Test::runTest() {
         QStringList tokens = line.split(' ');
         float difference = tokens[0].toFloat();
         if (difference > THRESHOLD) {
-            mismatchWindow.setExpectedImagePath(expectedImages[i]);
-            mismatchWindow.setResultImagePath(resultImages[i]);
+            mismatchWindow.setPathAndExpectedImage(expectedImages[i]);
+            mismatchWindow.setResultImage(resultImages[i]);
 
             mismatchWindow.exec();
 

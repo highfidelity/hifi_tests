@@ -17,26 +17,65 @@
    <property name="geometry">
     <rect>
      <x>560</x>
-     <y>80</y>
+     <y>170</y>
      <width>400</width>
      <height>300</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>expected image</string>
    </property>
   </widget>
   <widget class="QLabel" name="resultImageLabel">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>80</y>
+     <y>170</y>
      <width>400</width>
      <height>300</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>result image</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="resultTextLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>90</y>
+     <width>400</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>result image filename</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="expectedTextLabel">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>90</y>
+     <width>400</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>expected image filename</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="imagePath">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>400</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>image path</string>
    </property>
   </widget>
  </widget>

@@ -1,5 +1,7 @@
 #include "MismatchWindow.h"
 
+#include <QFileInfo>
+
 MismatchWindow::MismatchWindow(QWidget *parent)
     : QDialog(parent)
 {
@@ -12,16 +14,18 @@ MismatchWindow::MismatchWindow(QWidget *parent)
 MismatchWindow::~MismatchWindow()
 {
 }
-void MismatchWindow::setExpectedImagePath(QString path) {
-    _expectedImagePath = path; 
+void MismatchWindow::setPathAndExpectedImage(QString path) {
+    expectedTextLabel->setText(QFileInfo(path.toStdString().c_str()).fileName());
 
-    QPixmap pixMap(_expectedImagePath);
+    QPixmap pixMap(path);
     expectedImageLabel->setPixmap(pixMap);
+
+    imagePath->setText(path.left(path.lastIndexOf("/")));
  }
 
-void MismatchWindow::setResultImagePath(QString path) {
-    _resultImagePath = path; 
+void MismatchWindow::setResultImage(QString path) {
+    resultTextLabel->setText(QFileInfo(path.toStdString().c_str()).fileName());
 
-    QPixmap pixMap(_resultImagePath);
+    QPixmap pixMap(path);
     resultImageLabel->setPixmap(pixMap);
 }
