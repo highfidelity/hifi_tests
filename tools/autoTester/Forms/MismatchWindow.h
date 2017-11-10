@@ -13,12 +13,7 @@
 #include <QDialog>
 #include "ui_MismatchWindow.h"
 
-enum UserResponse {
-    USER_RESPONSE_INVALID,
-    USER_RESPONSE_PASS,
-    USE_RESPONSE_FAIL,
-    USER_RESPONSE_ABORT
-};
+#include "../Source/common.h"
 
 class MismatchWindow : public QDialog, public Ui::MismatchWindow
 {
@@ -27,9 +22,7 @@ class MismatchWindow : public QDialog, public Ui::MismatchWindow
 public:
     MismatchWindow(QWidget *parent = Q_NULLPTR);
 
-    void setError(float error);
-    void setPathAndExpectedImage(QString path);
-    void setResultImage(QString path);
+    void setTestFailure(TestFailure testFailure);
 
     UserResponse getUserResponse() { return _userResponse; }
 

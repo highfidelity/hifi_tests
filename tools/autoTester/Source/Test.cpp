@@ -85,11 +85,15 @@ void Test::runTest() {
         float error = tokens[0].toFloat();
 
         if (error > THRESHOLD) {
-            mismatchWindow.setError(error);
-            mismatchWindow.setPathAndExpectedImage(expectedImages[i]);
-            mismatchWindow.setResultImage(resultImages[i]);
-            mismatchWindow.exec();
+            mismatchWindow.setTestFailure(TestFailure{
+                error,                                                          // value of the error (float)
+                expectedImages[i].left(expectedImages[i].lastIndexOf("/") + 1), // path to the test (including trailing /
+                QFileInfo(expectedImages[i].toStdString().c_str()).fileName(),  // filename of expected image
+                QFileInfo(resultImages[i].toStdString().c_str()).fileName()     // filename of result image
+            });
             
+            mismatchWindow.exec();
+
             switch (mismatchWindow.getUserResponse()) {
                 case USER_RESPONSE_PASS:
                     break;

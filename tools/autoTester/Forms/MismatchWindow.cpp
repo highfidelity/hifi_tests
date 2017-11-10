@@ -20,36 +20,32 @@ MismatchWindow::MismatchWindow(QWidget *parent)
     resultImage->setScaledContents(true);
 }
 
-void MismatchWindow::setError(float error)
-{
-    errorLabel->setText("Error: " + QString::number((int)error));
-}
+void MismatchWindow::setTestFailure(TestFailure testFailure) {
+    errorLabel->setText("Error: " + QString::number((int)testFailure._error));
 
-void MismatchWindow::setPathAndExpectedImage(QString path) {
-    expectedFilename->setText(QFileInfo(path.toStdString().c_str()).fileName());
+    imagePath->setText("Path to test: " + testFailure._pathname);
 
-    expectedImage->setPixmap(QPixmap(path));
+    expectedFilename->setText(testFailure._expectedImageFilename);
+    expectedImage->setPixmap(QPixmap(testFailure._pathname + testFailure._expectedImageFilename));
 
-    imagePath->setText("Path to test: " + path.left(path.lastIndexOf("/")));
- }
-
-void MismatchWindow::setResultImage(QString path) {
-    resultFilename->setText(QFileInfo(path.toStdString().c_str()).fileName());
-
-    resultImage->setPixmap(QPixmap(path));
+    resultFilename->setText(testFailure._resultImageFilename);
+    resultImage->setPixmap(QPixmap(testFailure._pathname + testFailure._resultImageFilename));
 }
 
 void MismatchWindow::on_passTestButton_clicked()
 {
     _userResponse = USER_RESPONSE_PASS;
+    close();
 }
 
 void MismatchWindow::on_failTestButton_clicked()
 {
     _userResponse = USE_RESPONSE_FAIL;
+    close();
 }
 
 void MismatchWindow::on_abortTestsButton_clicked()
 {
     _userResponse = USER_RESPONSE_ABORT;
+    close();
 }
