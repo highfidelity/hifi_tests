@@ -1,12 +1,12 @@
 var _step = 0;
 var createdEntities = [];
-var outlineConfig = Render.getConfig("RenderMainView.OutlineEffect0");
-var debugConfig = Render.getConfig("RenderMainView.OutlineDebug");
+var highlightConfig = Render.getConfig("UpdateScene.HighlightStageSetup");
+var debugConfig = Render.getConfig("RenderMainView.HighlightDebug");
 
-print("Running Outline Test - press <SPACE> to go to next steps");
+print("Running Highlight Test - press <SPACE> to go to next steps");
 Selection.clearSelectedItemsList("contextOverlayHighlightList");
-Selection.clearSelectedItemsList("contextOverlayHighlightList1");
-Selection.clearSelectedItemsList("contextOverlayHighlightList2");
+Selection.clearSelectedItemsList("highlightList1");
+Selection.clearSelectedItemsList("highlightList2");
 MyAvatar.goToLocation(
     {x:0, y:0, z:0},
     true,
@@ -14,9 +14,9 @@ MyAvatar.goToLocation(
     true
 );
 
-resetConfig(Render.getConfig("RenderMainView.OutlineEffect0"));
-resetConfig(Render.getConfig("RenderMainView.OutlineEffect1"));
-resetConfig(Render.getConfig("RenderMainView.OutlineEffect2"));
+resetConfig("contextOverlayHighlightList");
+resetConfig("highlightList1");
+resetConfig("highlightList2");
 
 // all objects will have a finite lifetime
 var LIFETIME = 300; // 5 min
@@ -47,7 +47,11 @@ var greenPaint = Entities.addEntity({
         red: 10
     },
     position: {x:1.25, y:-0.5, z:1},
-    dimensions: {x:500, y:500, z:500},
+    dimensions: {
+        "x": 1,
+        "y": 2.1,
+        "z": 0.1
+    },
     linePoints: [
         {
             "x": 0,
@@ -264,6 +268,7 @@ createdEntities.push(terrain);
 var steps = [
     // Step 2
     function() {
+        highlightConfig["selectionName"] = "contextOverlayHighlightList"        
         Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", blueBox)
     },
     // Step 3
@@ -278,22 +283,22 @@ var steps = [
     // Step 5
     function() {
         debugConfig.viewMask = false;
-        outlineConfig["width"] = 4;
+        highlightConfig["outlineWidth"] = 4;
     },
     // Step 6
     function() {
-        outlineConfig["glow"] = true;
+        highlightConfig["isOutlineSmooth"] = true;
     },
     // Step 7
     function() {
-        outlineConfig["colorR"] = 0;
-        outlineConfig["colorG"] = 1;
-        outlineConfig["colorB"] = 0.5;
+        highlightConfig["colorR"] = 0;
+        highlightConfig["colorG"] = 1;
+        highlightConfig["colorB"] = 0.5;
     },
     // Step 8
     function() {
-        outlineConfig["unoccludedFillOpacity"] = 0.1;
-        outlineConfig["occludedFillOpacity"] = 0.5;
+        highlightConfig["unoccludedFillOpacity"] = 0.1;
+        highlightConfig["occludedFillOpacity"] = 0.5;
     },
     // Step 9
     function() {
@@ -302,59 +307,72 @@ var steps = [
     // Step 10
     function() {
         debugConfig.viewMask = false;
-        outlineConfig["glow"] = false;
+        highlightConfig["isOutlineSmooth"] = false;
     },
     // Step 11
     function() {
-        outlineConfig = Render.getConfig("RenderMainView.OutlineEffect1");
-        Selection.addToSelectedItemsList("contextOverlayHighlightList1", "avatar", MyAvatar.sessionUUID)
+        highlightConfig["selectionName"] = "highlightList1"
+        Selection.addToSelectedItemsList("highlightList1", "avatar", MyAvatar.sessionUUID)
     },
     // Step 12
     function() {
-        outlineConfig["glow"] = true;
-        outlineConfig["width"] = 5;
-        outlineConfig["intensity"] = 0.5;
-        outlineConfig["colorR"] = 1;
-        outlineConfig["colorG"] = 0;
-        outlineConfig["colorB"] = 0;
-        outlineConfig["unoccludedFillOpacity"] = 0.65;        
+        highlightConfig["isOutlineSmooth"] = true;
+        highlightConfig["outlineWidth"] = 5;
+        highlightConfig["outlineIntensity"] = 0.5;
+        highlightConfig["colorR"] = 1;
+        highlightConfig["colorG"] = 0;
+        highlightConfig["colorB"] = 0;
+        highlightConfig["unoccludedFillOpacity"] = 0.65;        
     },
     // Step 13
     function() {
-        outlineConfig = Render.getConfig("RenderMainView.OutlineEffect2");
-        Selection.addToSelectedItemsList("contextOverlayHighlightList2", "entity", terrain)
-        Selection.addToSelectedItemsList("contextOverlayHighlightList2", "entity", greenPaint)
+        highlightConfig["selectionName"] = "highlightList2";
+        Selection.addToSelectedItemsList("highlightList2", "entity", greenPaint);
     },
     // Step 14
     function() {
-        outlineConfig["unoccludedFillOpacity"] = 1.0;        
-        outlineConfig["occludedFillOpacity"] = 0.25;        
+        Selection.addToSelectedItemsList("highlightList2", "entity", terrain);
+    },
+    // Step 15
+    function() {
+        highlightConfig["unoccludedFillOpacity"] = 1.0;        
+        highlightConfig["occludedFillOpacity"] = 0.25;        
+    },
+    // Step 16
+    function() {
+        Selection.clearSelectedItemsList("contextOverlayHighlightList");
+    },
+    // Step 17
+    function() {
+        Selection.clearSelectedItemsList("highlightList1");
+        Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", hifi);
     },
     // End
     function () {
         Selection.clearSelectedItemsList("contextOverlayHighlightList");
-        Selection.clearSelectedItemsList("contextOverlayHighlightList1");
-        Selection.clearSelectedItemsList("contextOverlayHighlightList2");
-        resetConfig(Render.getConfig("RenderMainView.OutlineEffect0"));
-        resetConfig(Render.getConfig("RenderMainView.OutlineEffect1"));
-        resetConfig(Render.getConfig("RenderMainView.OutlineEffect2"));
+        Selection.clearSelectedItemsList("highlightList1");
+        Selection.clearSelectedItemsList("highlightList2");
+        resetConfig("contextOverlayHighlightList");
+        resetConfig("highlightList1");
+        resetConfig("highlightList2");
     }
 ];
 
-function resetConfig(config) {
-    config["width"] = 2;
-    config["glow"] = false;
-    config["intensity"] = 0.9;
-    config["colorR"] = 1;
-    config["colorG"] = 0.7;
-    config["colorB"] = 0.2;
-    config["unoccludedFillOpacity"] = 0.0;
-    config["occludedFillOpacity"] = 0.0;
+function resetConfig(selectionName) {
+    highlightConfig["selectionName"] = selectionName
+    highlightConfig["outlineWidth"] = 2;
+    highlightConfig["isOutlineSmooth"] = false;
+    highlightConfig["outlineIntensity"] = 0.9;
+    highlightConfig["colorR"] = 1;
+    highlightConfig["colorG"] = 0.7;
+    highlightConfig["colorB"] = 0.2;
+    highlightConfig["unoccludedFillOpacity"] = 0.0;
+    highlightConfig["occludedFillOpacity"] = 0.0;
 }
 
 Controller.keyPressEvent.connect(function(event){
     if (event.key == 32) {
-        print("Playing Outline Test - _step "+(_step+2));
+        print("Playing Highlight Test - _step "+(_step+2));
         steps[_step]();
         _step++;
         _step = Math.min(_step, steps.length-1);
@@ -366,7 +384,7 @@ Script.scriptEnding.connect(function () {
     for (var i = 0; i < createdEntities.length; i++) {
         Entities.deleteEntity(createdEntities[i]);
     }
-    resetConfig(Render.getConfig("RenderMainView.OutlineEffect0"));
-    resetConfig(Render.getConfig("RenderMainView.OutlineEffect1"));
-    resetConfig(Render.getConfig("RenderMainView.OutlineEffect2"));
+    resetConfig("contextOverlayHighlightList");
+    resetConfig("highlightList1");
+    resetConfig("highlightList2");
 });
