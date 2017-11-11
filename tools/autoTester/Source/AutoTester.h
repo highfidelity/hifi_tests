@@ -24,7 +24,7 @@ public:
     AutoTester(QWidget *parent = Q_NULLPTR);
 
 private slots:
-    void on_runTestButton_clicked();
+    void on_evaluateTestsButton_clicked();
     void on_createTestButton_clicked();
     void on_closeButton_clicked();
 

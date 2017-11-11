@@ -22,7 +22,7 @@ class Test {
 public: 
     Test();
 
-    void runTest();
+    void evaluateTests();
     void createTest();
 
     void createListOfAllJPEGimagesInDirectory();

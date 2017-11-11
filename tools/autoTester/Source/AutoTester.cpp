@@ -21,9 +21,9 @@ void AutoTester::on_closeButton_clicked()
     exit(0);
 }
 
-void AutoTester::on_runTestButton_clicked()
+void AutoTester::on_evaluateTestsButton_clicked()
 {
-    test.runTest();
+    test.evaluateTests();
 }
 
 void AutoTester::on_createTestButton_clicked()

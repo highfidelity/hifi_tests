@@ -11,6 +11,8 @@
 // A number of comparison metrics are available, including:
 //      AE      Absolute error                  count of the number of different pixels (0=equal)
 //
+//      DSSIM   Stuctural dissimilarity index
+//
 //      PAE     Peak Absolute error             of any one pixel
 //
 //      PSNR    Peak Signal to Noise Ratio      The ratio of mean square difference to the maximum mean square
@@ -38,7 +40,7 @@ Test::Test() {
     mismatchWindow.setModal(true);
 }
 
-void Test::runTest() {
+void Test::evaluateTests() {
     createListOfAllJPEGimagesInDirectory();
 
     // Separate images into two lists.  The first is the expected images, the second is the test results
