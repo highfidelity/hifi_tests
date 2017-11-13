@@ -30,7 +30,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\qrc_autoTester.cpp">
+    <ClCompile Include="GeneratedFiles\qrc_AutoTester.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="Source Files\main.cpp">
@@ -59,10 +59,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="autoTester.ui">
+    <CustomBuild Include="AutoTester.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="autoTester.qrc">
+    <CustomBuild Include="AutoTester.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Source Files\AutoTester.h">
@@ -76,7 +76,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_autoTester.h">
+    <ClInclude Include="GeneratedFiles\ui_AutoTester.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Source Files\Test.h">

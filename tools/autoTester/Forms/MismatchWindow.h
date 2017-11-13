@@ -35,5 +35,4 @@ private:
     UserResponse _userResponse{ USER_RESPONSE_INVALID };
 };
 
-
 #endif // hifi_MismatchWindow_h

@@ -76,7 +76,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="autoTester.qrc"/>
+  <include location="AutoTester.qrc"/>
  </resources>
  <connections/>
 </ui>
