@@ -43,33 +43,28 @@ function addTile(a, b, c) {
 function addBackdropGrid(backdrop) {
     for (i = BACKDROP_HALFSIZE; i > -BACKDROP_HALFSIZE; i--) {
         for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
-            backdrop.push(addTile(backdrop, i, j, BACKDROP_MIN_C));
+            backdrop.push(addTile(i, j, BACKDROP_MIN_C));
         }
     }
 
     for (i = -1; i < BACKDROP_HALFSIZE; i++) {
          for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
-            backdrop.push(addTile(backdrop, BACKDROP_HALFSIZE, j, i));
+            backdrop.push(addTile(BACKDROP_HALFSIZE, j, i));
         }
     }
 }
 
-function addTestBackdrop(name) {
-    var backdrop = [];
-    
-    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(stageOrientation)),
-                                           Vec3.multiply(-1, Quat.getRight(stageOrientation))))
-
-    addBackdropGrid(backdrop);
-
+function addZone(a, b, c) {
     var zoneDim = Vec3.multiply(BACKDROP_SIZE, TILE_DIM);
-    var under = getStagePosOriAt(0, 0, 0).pos;
+    var center = getStagePosOriAt(0, 0, 0).pos;
+    
+    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(stageOrientation)), Vec3.multiply(-1, Quat.getRight(stageOrientation))))
 
-    backdrop.push(Entities.addEntity({
+    return (Entities.addEntity({
         type: "Zone",
         name: "Backdrop zone",
   
-        position: under,    
+        position: center,    
         rotation: stageOrientation,    
         dimensions: zoneDim,
         lifetime: LIFETIME,
@@ -77,6 +72,8 @@ function addTestBackdrop(name) {
   
         keyLight:{
             intensity: 0.0,
+            direction: lightDir,
+
             ambientIntensity: 0.0
         },
 
@@ -86,6 +83,13 @@ function addTestBackdrop(name) {
             color: {"red":0,"green":0,"blue":0},
         }
     }));
+}
+
+function addTestBackdrop(name) {
+    var backdrop = [];
+
+    addBackdropGrid(backdrop);
+    backdrop.push(addZone(0,0,0));
 
     return backdrop;
 }
