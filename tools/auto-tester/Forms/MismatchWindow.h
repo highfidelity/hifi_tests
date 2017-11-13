@@ -10,7 +10,6 @@
 #ifndef hifi_MismatchWindow_h
 #define hifi_MismatchWindow_h
 
-#include <QDialog>
 #include "ui_MismatchWindow.h"
 
 #include "../Source/common.h"
