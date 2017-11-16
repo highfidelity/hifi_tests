@@ -1,7 +1,7 @@
 Script.include("../laserPointerUtils.js?raw=true");
 
 var lasers = [];
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.0, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_ENTITIES,
@@ -9,7 +9,7 @@ lasers.push(LaserPointers.createLaserPointer({
     faceAvatar: true,
     enabled: true
 }));
-LaserPointers.setRenderState(lasers[0], "one");
+Pointers.setRenderState(lasers[0], "one");
 
 var entities = [];
 var properties = {
@@ -39,7 +39,7 @@ Controller.keyPressEvent.connect(function(event){
 
 function cleanup() {
     for (i = 0; i < lasers.length; i++) {
-        LaserPointers.removeLaserPointer(lasers[i]);
+        Pointers.removePointer(lasers[i]);
     }
     for (i = 0; i < entities.length; i++) {
         Entities.deleteEntity(entities[i]);

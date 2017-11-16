@@ -1,7 +1,7 @@
 Script.include("../laserPointerUtils.js?raw=true");
 
 var lasers = [];
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.0, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_ENTITIES,
@@ -9,7 +9,7 @@ lasers.push(LaserPointers.createLaserPointer({
     defaultRenderStates: defaultRenderStates,
     enabled: true
 }));
-LaserPointers.setRenderState(lasers[0], "one");
+Pointers.setRenderState(lasers[0], "one");
 
 var entities = [];
 var overlays = [];
@@ -47,11 +47,11 @@ var index = 0;
 Controller.keyPressEvent.connect(function(event){
     if (event.text === "SPACE") {
         if (index == 0) {
-            LaserPointers.setLockEndUUID(lasers[0], entities[0], false);
+            Pointers.setLockEndUUID(lasers[0], entities[0], false);
         } else if (index == 1) {
-            LaserPointers.setLockEndUUID(lasers[0], overlays[0], true);
+            Pointers.setLockEndUUID(lasers[0], overlays[0], true);
         } else {
-            LaserPointers.setLockEndUUID(lasers[0], null, false);
+            Pointers.setLockEndUUID(lasers[0], null, false);
         }
         index = (index+1) % 3;
     }
@@ -59,7 +59,7 @@ Controller.keyPressEvent.connect(function(event){
 
 function cleanup() {
     for (i = 0; i < lasers.length; i++) {
-        LaserPointers.removeLaserPointer(lasers[i]);
+        Pointers.removePointer(lasers[i]);
     }
     for (i = 0; i < entities.length; i++) {
         Entities.deleteEntity(entities[i]);

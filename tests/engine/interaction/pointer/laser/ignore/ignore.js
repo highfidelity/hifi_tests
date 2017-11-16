@@ -1,7 +1,7 @@
 Script.include("../laserPointerUtils.js?raw=true");
 
 var lasers = [];
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.0, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
@@ -9,7 +9,7 @@ lasers.push(LaserPointers.createLaserPointer({
     defaultRenderStates: defaultRenderStates,
     enabled: true
 }));
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.0, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
@@ -18,8 +18,8 @@ lasers.push(LaserPointers.createLaserPointer({
     enabled: true
 }));
 
-LaserPointers.setRenderState(lasers[0], "one");
-LaserPointers.setRenderState(lasers[1], "one");
+Pointers.setRenderState(lasers[0], "one");
+Pointers.setRenderState(lasers[1], "one");
 
 var entities = [];
 var overlays = [];
@@ -60,11 +60,11 @@ Controller.keyPressEvent.connect(function(event){
             } else {
                 ignore.push(overlays[index]);
             }
-            LaserPointers.setIgnoreItems(lasers[0], ignore);
+            Pointers.setIgnoreItems(lasers[0], ignore);
         } else if (ignore.length > 0) {
             ignore.splice(-1, 1);
         }
-        LaserPointers.setIgnoreItems(lasers[1], ignore);
+        Pointers.setIgnoreItems(lasers[1], ignore);
 
         if (!even) {
             index++;
@@ -73,8 +73,8 @@ Controller.keyPressEvent.connect(function(event){
             index = 0;
             event = true;
             ignore = [];
-            LaserPointers.setIgnoreItems(lasers[0], ignore);
-            LaserPointers.setIgnoreItems(lasers[1], ignore);
+            Pointers.setIgnoreItems(lasers[0], ignore);
+            Pointers.setIgnoreItems(lasers[1], ignore);
         }
         even = !even;
     }
@@ -82,7 +82,7 @@ Controller.keyPressEvent.connect(function(event){
 
 function cleanup() {
     for (i = 0; i < lasers.length; i++) {
-        LaserPointers.removeLaserPointer(lasers[i]);
+        Pointers.removePointer(lasers[i]);
     }
     for (i = 0; i < entities.length; i++) {
         Entities.deleteEntity(entities[i]);
