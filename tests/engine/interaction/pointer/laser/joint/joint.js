@@ -1,7 +1,7 @@
 Script.include("../laserPointerUtils.js?raw=true");
 
 var lasers = [];
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     joint: "_CAMERA_RELATIVE_CONTROLLER_RIGHTHAND",
     posOffset: {x: 0, y: 0, z: 0.1},
     //dirOffset: {x: 0, y: 0, z: 1.0},
@@ -10,7 +10,7 @@ lasers.push(LaserPointers.createLaserPointer({
     defaultRenderStates: [{name: "one", path: path1, end: end1, distance: DEFAULT_DISTANCE}],
     enabled: true
 }));
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     joint: "_CAMERA_RELATIVE_CONTROLLER_RIGHTHAND",
     posOffset: {x: 0.1, y: 0, z: 0},
     //dirOffset: {x: 1.0, y: 0, z: 0},
@@ -19,7 +19,7 @@ lasers.push(LaserPointers.createLaserPointer({
     defaultRenderStates: [{name: "one", path: path1, end: end1, distance: DEFAULT_DISTANCE}],
     enabled: true
 }));
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     joint: "_CAMERA_RELATIVE_CONTROLLER_RIGHTHAND",
     posOffset: {x: 0, y: 0, z: -0.1},
     //dirOffset: {x: 0, y: 0, z: -1.0},
@@ -28,7 +28,7 @@ lasers.push(LaserPointers.createLaserPointer({
     defaultRenderStates: [{name: "one", path: path1, end: end1, distance: DEFAULT_DISTANCE}],
     enabled: true
 }));
-lasers.push(LaserPointers.createLaserPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     joint: "_CAMERA_RELATIVE_CONTROLLER_RIGHTHAND",
     posOffset: {x: -0.1, y: 0, z: 0},
     //dirOffset: {x: -1.0, y: 0, z: 0},
@@ -38,7 +38,7 @@ lasers.push(LaserPointers.createLaserPointer({
     enabled: true
 }));
 for (i = 0; i < lasers.length; i++) {
-    LaserPointers.setRenderState(lasers[i], "one");
+    Pointers.setRenderState(lasers[i], "one");
 }
 
 var entities = [];
@@ -64,7 +64,7 @@ print("Running LaserPointer joint test");
 
 function cleanup() {
     for (i = 0; i < lasers.length; i++) {
-        LaserPointers.removeLaserPointer(lasers[i]);
+        Pointers.removePointer(lasers[i]);
     }
     for (i = 0; i < entities.length; i++) {
         Entities.deleteEntity(entities[i]);
