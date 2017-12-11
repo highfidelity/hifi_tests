@@ -3,9 +3,6 @@ var createdEntities = [];
 var createdOverlays = [];
 
 print("Running Highlight Test - press <SPACE> to go to next steps");
-//Selection.clearSelectedItemsList("TestHifi1");
-//Selection.clearSelectedItemsList("highlightList1");
-//Selection.clearSelectedItemsList("highlightList2");
 MyAvatar.goToLocation(
     {x:0, y:0, z:0},
     true,
@@ -260,13 +257,8 @@ var overlayProperties = {
     name: "overlayModel",
     position: {x:2, y:0, z:3},
     dimensions: {x:2, y:2, z:2},
-    grabbable: true,
-   // parentID: tableID,
-  //  localPosition: {x: spawnX, y: spawnY, z: spawnZ},
-   // localRotation: Quat.fromVec3Degrees(OVERLAY_ROTATIONAL_OFFSET),
-    // clone dimensions so we can alter it without messing up the original entities dimensions
-  //  dimensions: entityProperties.dimensions
-};
+    grabbable: true
+}
 var overlayModel = Overlays.addOverlay("model", overlayProperties);
 
 createdOverlays.push(overlayModel);
