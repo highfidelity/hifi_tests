@@ -1,5 +1,6 @@
 var _step = 0;
 var createdEntities = [];
+var createdOverlays = [];
 
 print("Running Highlight Test - press <SPACE> to go to next steps");
 //Selection.clearSelectedItemsList("TestHifi1");
@@ -255,10 +256,10 @@ var terrain = Entities.addEntity(       {
 
 
 var overlayProperties = {
-    url: "http://content.highfidelity.com/baked/avatar_island/Cowboy-hat/baked/Cowboy-hat.baked.fbx?2",
+    url: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
     name: "overlayModel",
     position: {x:2, y:0, z:3},
-    dimensions: {x:1, y:1, z:1},
+    dimensions: {x:2, y:2, z:2},
     grabbable: true,
    // parentID: tableID,
   //  localPosition: {x: spawnX, y: spawnY, z: spawnZ},
@@ -267,6 +268,8 @@ var overlayProperties = {
   //  dimensions: entityProperties.dimensions
 };
 var overlayModel = Overlays.addOverlay("model", overlayProperties);
+
+createdOverlays.push(overlayModel);
 
 createdEntities.push(blueBox);
 createdEntities.push(redSphere);
@@ -283,10 +286,10 @@ var steps = [
             fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
             fillOccludedColor: { red: 128, green: 255, blue: 0 },
 
-            outlineUnoccludedOpacity: 0.7,
-            outlineOccludedOpacity: 1.0,
-            fillUnoccludedOpacity: 0.8,
-            fillOccludedOpacity: 0.5,
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.2,
+            fillOccludedAlpha: 0.2,
             
             outlineWidth: 5,
             isOutlineSmooth: true
@@ -306,10 +309,10 @@ var steps = [
             fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
             fillOccludedColor: { red: 128, green: 255, blue: 0 },
 
-            outlineUnoccludedOpacity: 0.7,
-            outlineOccludedOpacity: 1.0,
-            fillUnoccludedOpacity: 0.0,
-            fillOccludedOpacity: 0.0,
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.0,
+            fillOccludedAlpha: 0.0,
             
             outlineWidth: 10,
             isOutlineSmooth: false
@@ -319,9 +322,28 @@ var steps = [
     },
     // Step 4
    function() {
-        Selection.addToSelectedItemsList("TestHifi2", "overlay", overlayModel)
+        var style = {        
+            outlineUnoccludedColor: { red: 128, green: 255, blue: 128 },
+            outlineOccludedColor: { red: 250, green: 128, blue: 250 },
+            fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
+            fillOccludedColor: { red: 128, green: 255, blue: 128 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.2,
+            fillOccludedAlpha: 0.0,
+            
+            outlineWidth: 2,
+            isOutlineSmooth: false
+        }
+        Selection.enableListHighlight("TestHifi3", style)
+        Selection.addToSelectedItemsList("TestHifi3", "overlay", overlayModel)
     },
     // Step 5
+    function() {
+        Selection.addToSelectedItemsList("TestHifi3", "entity", terrain)
+    },
+    // Step 6
     function() {
         var style = {        
             outlineUnoccludedColor: { red: 128, green: 255, blue: 250 },
@@ -329,10 +351,10 @@ var steps = [
             fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
             fillOccludedColor: { red: 128, green: 255, blue: 0 },
 
-            outlineUnoccludedOpacity: 0.0,
-            outlineOccludedOpacity: 0.0,
-            fillUnoccludedOpacity: 0.6,
-            fillOccludedOpacity: 0.8,
+            outlineUnoccludedAlpha: 0.0,
+            outlineOccludedAlpha: 0.0,
+            fillUnoccludedAlpha: 0.6,
+            fillOccludedAlpha: 0.8,
             
             outlineWidth: 10,
             isOutlineSmooth: false
@@ -340,11 +362,11 @@ var steps = [
         Selection.enableListHighlight("TestHifi2", style)
     },
 
-    // Step 6
+    // Step 7
     function () {
         Selection.disableListHighlight("TestHifi2");
     },
-    // Step 7
+    // Step 8
     function() {
         var style = {        
             outlineUnoccludedColor: { red: 250, green: 255, blue: 0 },
@@ -352,10 +374,10 @@ var steps = [
             fillUnoccludedColor: { red: 128, green: 255, blue: 250 },
             fillOccludedColor: { red: 250, green: 25, blue: 250 },
 
-            outlineUnoccludedOpacity: 0.0,
-            outlineOccludedOpacity: 0.0,
-            fillUnoccludedOpacity: 0.6,
-            fillOccludedOpacity: 0.8,
+            outlineUnoccludedAlpha: 0.0,
+            outlineOccludedAlpha: 0.0,
+            fillUnoccludedAlpha: 0.6,
+            fillOccludedAlpha: 0.8,
             
             outlineWidth: 5,
             isOutlineSmooth: true
@@ -366,6 +388,7 @@ var steps = [
     function () {
         Selection.disableListHighlight("TestHifi1");
         Selection.disableListHighlight("TestHifi2");
+        Selection.disableListHighlight("TestHifi3");
     },
 
 ];
@@ -381,10 +404,18 @@ Controller.keyPressEvent.connect(function(event){
  
  // clean up after test
 Script.scriptEnding.connect(function () {
+ 
+    Selection.disableListHighlight("TestHifi1");
+    Selection.disableListHighlight("TestHifi2"); 
+    Selection.disableListHighlight("TestHifi3"); 
+    
     for (var i = 0; i < createdEntities.length; i++) {
         Entities.deleteEntity(createdEntities[i]);
     }
 
-    Selection.disableListHighlight("TestHifi1");
-    Selection.disableListHighlight("TestHifi2"); 
+    for (var i = 0; i < createdOverlays.length; i++) {
+        Overlays.deleteOverlay(createdOverlays[i]);
+    }
+
+
 });
