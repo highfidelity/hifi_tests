@@ -1,22 +1,14 @@
 var _step = 0;
 var createdEntities = [];
-var highlightConfig = Render.getConfig("UpdateScene.HighlightStageSetup");
-var debugConfig = Render.getConfig("RenderMainView.HighlightDebug");
+var createdOverlays = [];
 
 print("Running Highlight Test - press <SPACE> to go to next steps");
-Selection.clearSelectedItemsList("contextOverlayHighlightList");
-Selection.clearSelectedItemsList("highlightList1");
-Selection.clearSelectedItemsList("highlightList2");
 MyAvatar.goToLocation(
     {x:0, y:0, z:0},
     true,
     Quat.angleAxis(0, {x: 0, y: 1, z: 0}),
     true
 );
-
-resetConfig("contextOverlayHighlightList");
-resetConfig("highlightList1");
-resetConfig("highlightList2");
 
 // all objects will have a finite lifetime
 var LIFETIME = 300; // 5 min
@@ -259,6 +251,18 @@ var terrain = Entities.addEntity(       {
     zTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg"
 });
 
+
+var overlayProperties = {
+    url: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
+    name: "overlayModel",
+    position: {x:2, y:0, z:3},
+    dimensions: {x:2, y:2, z:2},
+    grabbable: true
+}
+var overlayModel = Overlays.addOverlay("model", overlayProperties);
+
+createdOverlays.push(overlayModel);
+
 createdEntities.push(blueBox);
 createdEntities.push(redSphere);
 createdEntities.push(greenPaint);
@@ -266,114 +270,162 @@ createdEntities.push(hifi);
 createdEntities.push(terrain);
 
 var steps = [
+    // Step 1
+    function() {
+        var style = {        
+            outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
+            outlineOccludedColor: { red: 0, green: 255, blue: 250 },
+            fillUnoccludedColor: { red: 255, green: 0, blue: 0 },
+            fillOccludedColor: { red: 255, green: 0, blue: 0 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.0,
+            fillOccludedAlpha: 0.0,
+            
+            outlineWidth: 2,
+            isOutlineSmooth: true
+        }
+        Selection.enableListHighlight("TestHifi1", style)
+        Selection.addToSelectedItemsList("TestHifi1", "entity", blueBox)
+    },
     // Step 2
     function() {
-        highlightConfig["selectionName"] = "contextOverlayHighlightList"        
-        Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", blueBox)
+         Selection.addToSelectedItemsList("TestHifi1", "entity", hifi)
     },
     // Step 3
     function() {
-        Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", redSphere)
-        Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", hifi)
+        var style = {        
+            outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
+            outlineOccludedColor: { red: 0, green: 255, blue: 250 },
+            fillUnoccludedColor: { red: 255, green: 0, blue: 0 },
+            fillOccludedColor: { red: 255, green: 0, blue: 0 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.0,
+            fillOccludedAlpha: 0.5,
+            
+            outlineWidth: 2,
+            isOutlineSmooth: true
+        }
+        Selection.enableListHighlight("TestHifi1", style)
     },
     // Step 4
     function() {
-        debugConfig.viewMask = true;
+        var style = {        
+            outlineUnoccludedColor: { red: 255, green: 0, blue: 0 },
+            outlineOccludedColor: { red: 0, green: 0, blue: 250 },
+            fillUnoccludedColor: { red: 0, green: 255, blue: 0 },
+            fillOccludedColor: { red: 0, green: 255, blue: 125 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.5,
+            fillOccludedAlpha: 0.3,
+            
+            outlineWidth: 5,
+            isOutlineSmooth: false
+        }
+        Selection.enableListHighlight("TestHifi2", style)
+        Selection.addToSelectedItemsList("TestHifi2", "entity", redSphere)
     },
     // Step 5
     function() {
-        debugConfig.viewMask = false;
-        highlightConfig["outlineWidth"] = 4;
+        var style = {        
+            outlineUnoccludedColor: { red: 0, green: 244, blue: 255 },
+            outlineOccludedColor: { red: 244, green: 255, blue: 250 },
+            fillUnoccludedColor: { red: 0, green: 255, blue: 255 },
+            fillOccludedColor: { red: 0, green: 255, blue: 125 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.5,
+            fillOccludedAlpha: 0.3,
+            
+            outlineWidth: 5,
+            isOutlineSmooth: false
+        }
+        Selection.enableListHighlight("TestHifi4", style)
+        Selection.addToSelectedItemsList("TestHifi4", "avatar", MyAvatar.sessionUUID)
     },
     // Step 6
-    function() {
-        highlightConfig["isOutlineSmooth"] = true;
+   function() {
+        var style = {        
+            outlineUnoccludedColor: { red: 0, green: 255, blue: 0 },
+            outlineOccludedColor: { red: 250, green: 0, blue: 0 },
+            fillUnoccludedColor: { red: 128, green: 0, blue: 255 },
+            fillOccludedColor: { red: 180, green: 255, blue: 85 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.4,
+            fillOccludedAlpha: 0.4,
+            
+            outlineWidth: 2,
+            isOutlineSmooth: false
+        }
+        Selection.enableListHighlight("TestHifi3", style)
+        Selection.addToSelectedItemsList("TestHifi3", "overlay", overlayModel)
     },
     // Step 7
     function() {
-        highlightConfig["colorR"] = 0;
-        highlightConfig["colorG"] = 1;
-        highlightConfig["colorB"] = 0.5;
+        Selection.addToSelectedItemsList("TestHifi3", "entity", terrain)
     },
     // Step 8
     function() {
-        highlightConfig["unoccludedFillOpacity"] = 0.1;
-        highlightConfig["occludedFillOpacity"] = 0.5;
+        var style = {        
+            outlineUnoccludedColor: { red: 128, green: 255, blue: 250 },
+            outlineOccludedColor: { red: 250, green: 25, blue: 250 },
+            fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
+            fillOccludedColor: { red: 128, green: 255, blue: 0 },
+
+            outlineUnoccludedAlpha: 0.0,
+            outlineOccludedAlpha: 0.0,
+            fillUnoccludedAlpha: 0.6,
+            fillOccludedAlpha: 0.8,
+            
+            outlineWidth: 10,
+            isOutlineSmooth: false
+        }
+        Selection.enableListHighlight("TestHifi2", style)
     },
+
     // Step 9
-    function() {
-        debugConfig.viewMask = true;
+    function () {
+        Selection.disableListHighlight("TestHifi2");
     },
     // Step 10
     function() {
-        debugConfig.viewMask = false;
-        highlightConfig["isOutlineSmooth"] = false;
+        var style = {        
+            outlineUnoccludedColor: { red: 250, green: 255, blue: 0 },
+            outlineOccludedColor: { red: 128, green: 255, blue: 0 },
+            fillUnoccludedColor: { red: 128, green: 255, blue: 250 },
+            fillOccludedColor: { red: 250, green: 25, blue: 250 },
+
+            outlineUnoccludedAlpha: 0.0,
+            outlineOccludedAlpha: 0.0,
+            fillUnoccludedAlpha: 0.6,
+            fillOccludedAlpha: 0.8,
+            
+            outlineWidth: 5,
+            isOutlineSmooth: true
+        }
+        Selection.enableListHighlight("TestHifi2", style)
     },
     // Step 11
-    function() {
-        highlightConfig["selectionName"] = "highlightList1"
-        Selection.addToSelectedItemsList("highlightList1", "avatar", MyAvatar.sessionUUID)
-    },
-    // Step 12
-    function() {
-        highlightConfig["isOutlineSmooth"] = true;
-        highlightConfig["outlineWidth"] = 5;
-        highlightConfig["outlineIntensity"] = 0.5;
-        highlightConfig["colorR"] = 1;
-        highlightConfig["colorG"] = 0;
-        highlightConfig["colorB"] = 0;
-        highlightConfig["unoccludedFillOpacity"] = 0.65;        
-    },
-    // Step 13
-    function() {
-        highlightConfig["selectionName"] = "highlightList2";
-        Selection.addToSelectedItemsList("highlightList2", "entity", greenPaint);
-    },
-    // Step 14
-    function() {
-        Selection.addToSelectedItemsList("highlightList2", "entity", terrain);
-    },
-    // Step 15
-    function() {
-        highlightConfig["unoccludedFillOpacity"] = 1.0;        
-        highlightConfig["occludedFillOpacity"] = 0.25;        
-    },
-    // Step 16
-    function() {
-        Selection.clearSelectedItemsList("contextOverlayHighlightList");
-    },
-    // Step 17
-    function() {
-        Selection.clearSelectedItemsList("highlightList1");
-        Selection.addToSelectedItemsList("contextOverlayHighlightList", "entity", hifi);
-    },
-    // End
     function () {
-        Selection.clearSelectedItemsList("contextOverlayHighlightList");
-        Selection.clearSelectedItemsList("highlightList1");
-        Selection.clearSelectedItemsList("highlightList2");
-        resetConfig("contextOverlayHighlightList");
-        resetConfig("highlightList1");
-        resetConfig("highlightList2");
-    }
-];
+        Selection.disableListHighlight("TestHifi1");
+        Selection.disableListHighlight("TestHifi2");
+        Selection.disableListHighlight("TestHifi3");
+    },
 
-function resetConfig(selectionName) {
-    highlightConfig["selectionName"] = selectionName
-    highlightConfig["outlineWidth"] = 2;
-    highlightConfig["isOutlineSmooth"] = false;
-    highlightConfig["outlineIntensity"] = 0.9;
-    highlightConfig["colorR"] = 1;
-    highlightConfig["colorG"] = 0.7;
-    highlightConfig["colorB"] = 0.2;
-    highlightConfig["unoccludedFillOpacity"] = 0.0;
-    highlightConfig["occludedFillOpacity"] = 0.0;
-}
+];
 
 Controller.keyPressEvent.connect(function(event){
     if (event.key == 32) {
         print("Playing Highlight Test - _step "+(_step+2));
-        steps[_step]();
+        steps[_step](); 
         _step++;
         _step = Math.min(_step, steps.length-1);
     }
@@ -381,10 +433,19 @@ Controller.keyPressEvent.connect(function(event){
  
  // clean up after test
 Script.scriptEnding.connect(function () {
+ 
+    Selection.disableListHighlight("TestHifi1");
+    Selection.disableListHighlight("TestHifi2"); 
+    Selection.disableListHighlight("TestHifi3"); 
+    Selection.disableListHighlight("TestHifi4"); 
+    
     for (var i = 0; i < createdEntities.length; i++) {
         Entities.deleteEntity(createdEntities[i]);
     }
-    resetConfig("contextOverlayHighlightList");
-    resetConfig("highlightList1");
-    resetConfig("highlightList2");
+
+    for (var i = 0; i < createdOverlays.length; i++) {
+        Overlays.deleteOverlay(createdOverlays[i]);
+    }
+
+
 });
