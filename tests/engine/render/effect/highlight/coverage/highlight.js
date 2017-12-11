@@ -283,15 +283,15 @@ var steps = [
         var style = {        
             outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
             outlineOccludedColor: { red: 0, green: 255, blue: 250 },
-            fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
-            fillOccludedColor: { red: 128, green: 255, blue: 0 },
+            fillUnoccludedColor: { red: 255, green: 0, blue: 0 },
+            fillOccludedColor: { red: 255, green: 0, blue: 0 },
 
             outlineUnoccludedAlpha: 0.7,
             outlineOccludedAlpha: 1.0,
-            fillUnoccludedAlpha: 0.2,
-            fillOccludedAlpha: 0.2,
+            fillUnoccludedAlpha: 0.0,
+            fillOccludedAlpha: 0.0,
             
-            outlineWidth: 5,
+            outlineWidth: 2,
             isOutlineSmooth: true
         }
         Selection.enableListHighlight("TestHifi1", style)
@@ -304,34 +304,71 @@ var steps = [
     // Step 3
     function() {
         var style = {        
-            outlineUnoccludedColor: { red: 128, green: 255, blue: 250 },
-            outlineOccludedColor: { red: 250, green: 25, blue: 250 },
-            fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
-            fillOccludedColor: { red: 128, green: 255, blue: 0 },
+            outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
+            outlineOccludedColor: { red: 0, green: 255, blue: 250 },
+            fillUnoccludedColor: { red: 255, green: 0, blue: 0 },
+            fillOccludedColor: { red: 255, green: 0, blue: 0 },
 
             outlineUnoccludedAlpha: 0.7,
             outlineOccludedAlpha: 1.0,
             fillUnoccludedAlpha: 0.0,
-            fillOccludedAlpha: 0.0,
+            fillOccludedAlpha: 0.5,
             
-            outlineWidth: 10,
+            outlineWidth: 2,
+            isOutlineSmooth: true
+        }
+        Selection.enableListHighlight("TestHifi1", style)
+    },
+    // Step 4
+    function() {
+        var style = {        
+            outlineUnoccludedColor: { red: 255, green: 0, blue: 0 },
+            outlineOccludedColor: { red: 0, green: 0, blue: 250 },
+            fillUnoccludedColor: { red: 0, green: 255, blue: 0 },
+            fillOccludedColor: { red: 0, green: 255, blue: 125 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.5,
+            fillOccludedAlpha: 0.3,
+            
+            outlineWidth: 5,
             isOutlineSmooth: false
         }
         Selection.enableListHighlight("TestHifi2", style)
         Selection.addToSelectedItemsList("TestHifi2", "entity", redSphere)
     },
-    // Step 4
-   function() {
+    // Step 5
+    function() {
         var style = {        
-            outlineUnoccludedColor: { red: 128, green: 255, blue: 128 },
-            outlineOccludedColor: { red: 250, green: 128, blue: 250 },
-            fillUnoccludedColor: { red: 250, green: 255, blue: 0 },
-            fillOccludedColor: { red: 128, green: 255, blue: 128 },
+            outlineUnoccludedColor: { red: 0, green: 244, blue: 255 },
+            outlineOccludedColor: { red: 244, green: 255, blue: 250 },
+            fillUnoccludedColor: { red: 0, green: 255, blue: 255 },
+            fillOccludedColor: { red: 0, green: 255, blue: 125 },
 
             outlineUnoccludedAlpha: 0.7,
             outlineOccludedAlpha: 1.0,
-            fillUnoccludedAlpha: 0.2,
-            fillOccludedAlpha: 0.0,
+            fillUnoccludedAlpha: 0.5,
+            fillOccludedAlpha: 0.3,
+            
+            outlineWidth: 5,
+            isOutlineSmooth: false
+        }
+        Selection.enableListHighlight("TestHifi4", style)
+        Selection.addToSelectedItemsList("TestHifi4", "avatar", MyAvatar.sessionUUID)
+    },
+    // Step 6
+   function() {
+        var style = {        
+            outlineUnoccludedColor: { red: 0, green: 255, blue: 0 },
+            outlineOccludedColor: { red: 250, green: 0, blue: 0 },
+            fillUnoccludedColor: { red: 128, green: 0, blue: 255 },
+            fillOccludedColor: { red: 180, green: 255, blue: 85 },
+
+            outlineUnoccludedAlpha: 0.7,
+            outlineOccludedAlpha: 1.0,
+            fillUnoccludedAlpha: 0.4,
+            fillOccludedAlpha: 0.4,
             
             outlineWidth: 2,
             isOutlineSmooth: false
@@ -339,11 +376,11 @@ var steps = [
         Selection.enableListHighlight("TestHifi3", style)
         Selection.addToSelectedItemsList("TestHifi3", "overlay", overlayModel)
     },
-    // Step 5
+    // Step 7
     function() {
         Selection.addToSelectedItemsList("TestHifi3", "entity", terrain)
     },
-    // Step 6
+    // Step 8
     function() {
         var style = {        
             outlineUnoccludedColor: { red: 128, green: 255, blue: 250 },
@@ -362,11 +399,11 @@ var steps = [
         Selection.enableListHighlight("TestHifi2", style)
     },
 
-    // Step 7
+    // Step 9
     function () {
         Selection.disableListHighlight("TestHifi2");
     },
-    // Step 8
+    // Step 10
     function() {
         var style = {        
             outlineUnoccludedColor: { red: 250, green: 255, blue: 0 },
@@ -384,7 +421,7 @@ var steps = [
         }
         Selection.enableListHighlight("TestHifi2", style)
     },
-    // Step 8
+    // Step 11
     function () {
         Selection.disableListHighlight("TestHifi1");
         Selection.disableListHighlight("TestHifi2");
@@ -408,6 +445,7 @@ Script.scriptEnding.connect(function () {
     Selection.disableListHighlight("TestHifi1");
     Selection.disableListHighlight("TestHifi2"); 
     Selection.disableListHighlight("TestHifi3"); 
+    Selection.disableListHighlight("TestHifi4"); 
     
     for (var i = 0; i < createdEntities.length; i++) {
         Entities.deleteEntity(createdEntities[i]);
