@@ -18,7 +18,7 @@ var MODEL_SCALE = 0.75;
 var MODEL_SPIN = 0.0;
 var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
-var LIFETIME = 60;
+var LIFETIME = 360;
 var BACKDROP_SIZE = 16;
 
 function addTestBackdrop(name, position, orientation) {
@@ -27,11 +27,15 @@ function addTestBackdrop(name, position, orientation) {
     
     var cellDim = Vec3.multiply(unit, MODEL_DIMS);
     
-    var under = Vec3.sum(position, Vec3.multiply(-1.5 * unit, Quat.getUp(orientation)))
-    var far = Vec3.sum(position, Vec3.multiply(5 * unit, Quat.getForward(orientation)))
+    var up = Quat.getUp(orientation)
+    var right = Quat.getRight(orientation)
+    var forward = Quat.getForward(orientation)
+    var far = Vec3.sum(position, Vec3.multiply(5 * unit, forward))
+    var under = Vec3.sum(position, Vec3.multiply(-1.5 * unit, up))
+    var under_left_near = Vec3.sum(Vec3.multiply(-5 * unit, forward), Vec3.sum(under, Vec3.multiply(-2.0 * unit, right)))
 
-    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(orientation)),
-                                           Vec3.multiply(-1, Quat.getRight(orientation))))
+    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, up),
+                                           Vec3.multiply(-1, right)))
 
     backdrop.push(Entities.addEntity({
         type: "Shape",
@@ -64,6 +68,7 @@ function addTestBackdrop(name, position, orientation) {
         lifetime: LIFETIME,
   
         keyLight:{
+            ambientIntensity: 1,
             color: {"red":255,"green":255,"blue":255},
             direction: {
                 "x": 0.037007175385951996,
@@ -80,6 +85,38 @@ function addTestBackdrop(name, position, orientation) {
             color: {"red":255,"green":255,"blue":255},
             url: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx"
         }
+    }));
+
+    backdrop.push(Entities.addEntity({
+        type: "Light",
+        name: "Point Light",
+  
+        position: under,    
+        rotation: orientation,    
+        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y * BACKDROP_SIZE , z: cellDim.z* BACKDROP_SIZE},
+        lifetime: LIFETIME,
+  
+        color: {"red":100,"green":120,"blue":255},
+        intensity: 2.0,
+        falloffRadius: 5.0,
+        isSpotlight: false
+    }));
+
+    backdrop.push(Entities.addEntity({
+        type: "Light",
+        name: "Spot Light",
+  
+        position: under_left_near,    
+        rotation: orientation,    
+        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y * BACKDROP_SIZE , z: cellDim.z* BACKDROP_SIZE},
+        lifetime: LIFETIME,
+  
+        color: {"red":255,"green":200,"blue":200},
+        intensity: 5.0,
+        falloffRadius: 15.0,
+        isSpotlight: true,
+        cutoff: 60.0,
+        exponent: 10.0
     }));
 
     return backdrop;
