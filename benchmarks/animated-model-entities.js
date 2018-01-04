@@ -73,9 +73,9 @@ var testScript = new TestScript();
 testScript.addTest({
     name: "100 animated models",
     loader: TestScript.locationLoader("localhost",
-							true,
-							{ x: 0, y: 0, z: 0 },
-							{ x: 0, y: 0, z: 0, w: 1 }),
+                            true,
+                            { x: 0, y: 0, z: 0 },
+                            { x: 0, y: 0, z: 0, w: 1 }),
     tracingRules: DEFAULT_TRACING_RULES,
     traceActions: function () {
         Test.startTraceEvent("spawningEntities");
@@ -90,9 +90,9 @@ testScript.addTest({
 testScript.addTest({
     name: "1000 animated models",
     loader: TestScript.locationLoader("localhost",
-							true,
-							{ x: 0, y: 0, z: 0 },
-							{ x: 0, y: 0, z: 0, w: 1 }),
+                            true,
+                            { x: 0, y: 0, z: 0 },
+                            { x: 0, y: 0, z: 0, w: 1 }),
     tracingRules: DEFAULT_TRACING_RULES,
     traceActions: function () {
         Test.startTraceEvent("spawningEntities");
