@@ -2,7 +2,7 @@
 Render.getConfig("RenderMainView.DrawZoneStack").enabled = false
 
 // Test material matrix
-Script.include("../../stage.js?raw=true")
+Script.include("../../../../utils/test_stage.js?raw=true")
 
 // Add the test Cases
 var createdEntities = setupStage()
