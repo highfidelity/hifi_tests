@@ -11,6 +11,9 @@
 // 
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
+// Test material matrix
+Script.include("../../../utils/test_stage.js?raw=true")
+
 var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
@@ -21,8 +24,10 @@ var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 60;
 var BACKDROP_SIZE = 16;
 
-function addTestBackdrop(name, position, orientation) {
-    var backdrop = [];
+function addTestBackdropLocal(name, position, orientation) {
+    
+    var backdrop = setupStage()
+  //  var backdrop = [];
     var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
     
     var cellDim = Vec3.multiply(unit, MODEL_DIMS);
@@ -122,7 +127,7 @@ function addCasesAt(origin, orientation, testCases) {
         models.push(addTestCase(testCases[i], origin, orientation));
     }  
 
-    var backdrop = addTestBackdrop("Material_matrix_backdrop", origin, orientation);
+    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation);
     return models.concat(backdrop);
 }
   
