@@ -1,4 +1,4 @@
-// Test content light stage
+// Test content stage
 
 // This script generate a stage made of a dark zone with no lighting, haze or skybox
 var LIFETIME = 120;
