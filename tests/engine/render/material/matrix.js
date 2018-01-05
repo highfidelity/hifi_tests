@@ -26,7 +26,6 @@ var LIFETIME = 120;
 function addTestBackdropLocal(name, position, orientation) {
     
     var backdrop = setupStage(true, true)
-
     return backdrop;
 }
 

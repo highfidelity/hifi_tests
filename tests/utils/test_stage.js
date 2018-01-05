@@ -77,7 +77,6 @@ function addZone(hasKeyLight, hasAmbient) {
                 "z": -0.7061376571655273
             },
             ambientIntensity: 0.5 * hasAmbient,
-            //ambientURL: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx",
             ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
