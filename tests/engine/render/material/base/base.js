@@ -3,8 +3,8 @@ Script.include("../matrix.js?raw=true")
 
 // List here all the entries of the Material Matrix tested in this test
 var TEST_CASES = [
-    {name:"hifi",     a:1, b:0, c:-0.5},
-    {name:"hifi-ao",  a:1, b:0, c:0.5},
+    {name:"hifi",     a:0, b:0, c:-0.5},
+    {name:"hifi-ao",  a:0, b:0, c:0.5},
 ];
 
 // Add the test Cases

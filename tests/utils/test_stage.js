@@ -54,7 +54,7 @@ function addBackdropGrid(backdrop) {
     }
 }
 
-function addZone(a, b, c) {
+function addZone(hasKeyLight, hasAmbient) {
     var zoneDim = Vec3.multiply(BACKDROP_SIZE, TILE_DIM);
     var center = getStagePosOriAt(0, 0, 0).pos;
     
@@ -68,28 +68,31 @@ function addZone(a, b, c) {
         rotation: stageOrientation,    
         dimensions: zoneDim,
         lifetime: LIFETIME,
-        locked: true,
   
         keyLight:{
-            intensity: 0.0,
-            direction: lightDir,
-
-            ambientIntensity: 0.0
+            intensity: 0.8 * hasKeyLight,
+            direction: {
+                "x": 0.037007175385951996,
+                "y": -0.7071067690849304,
+                "z": -0.7061376571655273
+            },
+            ambientIntensity: 0.5 * hasAmbient,
+            ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
         hazeMode:"disabled",
         backgroundMode:"skybox",
         skybox:{
-            color: {"red":0,"green":0,"blue":0},
+            color: {"red":2,"green":2,"blue":2}, // Dark grey background
         }
     }));
 }
 
-function addTestBackdrop(name) {
+function addTestBackdrop(name, hasKeyLight, hasAmbient) {
     var backdrop = [];
 
     addBackdropGrid(backdrop);
-    backdrop.push(addZone(0,0,0));
+    backdrop.push(addZone(hasKeyLight,hasAmbient));
 
     return backdrop;
 }
@@ -102,7 +105,7 @@ stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
 stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
 stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 
-setupStage = function () {
+setupStage = function (hasKeyLight, hasAmbient) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -118,7 +121,7 @@ setupStage = function () {
     stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
     stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
 
-    return addTestBackdrop("Light_stage_backdrop");
+    return addTestBackdrop("Light_stage_backdrop", hasKeyLight, hasAmbient);
 }
 
 getStagePosOriAt = function (a, b, c) {    

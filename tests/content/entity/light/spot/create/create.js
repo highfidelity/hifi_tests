@@ -5,7 +5,7 @@ Render.getConfig("RenderMainView.DrawZoneStack").enabled = false
 Script.include("../../../../../utils/test_stage.js?raw=true")
 
 // Add the test Cases
-var createdEntities = setupStage()
+var createdEntities = setupStage(false, false)
 
 var posOri = getStagePosOriAt(6.9, 0, 4)
 var lightOri = Quat.multiply(Quat.fromPitchYawRollDegrees(-90, 0, 0), posOri.ori);
