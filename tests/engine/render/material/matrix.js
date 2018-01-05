@@ -21,71 +21,11 @@ var MODEL_SCALE = 0.75;
 var MODEL_SPIN = 0.0;
 var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
-var LIFETIME = 60;
-var BACKDROP_SIZE = 16;
+var LIFETIME = 120;
 
 function addTestBackdropLocal(name, position, orientation) {
     
-    var backdrop = setupStage()
-  //  var backdrop = [];
-    var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
-    
-    var cellDim = Vec3.multiply(unit, MODEL_DIMS);
-    
-    var under = Vec3.sum(position, Vec3.multiply(-1.5 * unit, Quat.getUp(orientation)))
-    var far = Vec3.sum(position, Vec3.multiply(5 * unit, Quat.getForward(orientation)))
-
-    var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(orientation)),
-                                           Vec3.multiply(-1, Quat.getRight(orientation))))
-
-    backdrop.push(Entities.addEntity({
-        type: "Shape",
-        shape: "Cube",
-        name: "Backdrop",
-        position: under,    
-        rotation: orientation,    
-        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y , z: BACKDROP_SIZE *cellDim.z},
-        lifetime: LIFETIME,
-    }));
-
- 
-    backdrop.push(Entities.addEntity({
-        type: "Shape",
-        shape: "Cube",
-        name: "Backdrop",
-        position: far,    
-        rotation: orientation,    
-        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y * BACKDROP_SIZE , z: cellDim.z},
-        lifetime: LIFETIME,
-    }));
-
-    backdrop.push(Entities.addEntity({
-        type: "Zone",
-        name: "Backdrop zone",
-  
-        position: under,    
-        rotation: orientation,    
-        dimensions: {x: cellDim.x * BACKDROP_SIZE, y:cellDim.y * BACKDROP_SIZE , z: cellDim.z* BACKDROP_SIZE},
-        lifetime: LIFETIME,
-  
-        keyLight:{
-            color: {"red":255,"green":255,"blue":255},
-            direction: {
-                "x": 0.037007175385951996,
-                "y": -0.7071067690849304,
-                "z": -0.7061376571655273
-            },
-            intensity: 0.8
-        },
-
-        hazeMode:"disabled",
-
-        backgroundMode:"skybox",
-        skybox:{
-            color: {"red":255,"green":255,"blue":255},
-            url: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx"
-        }
-    }));
+    var backdrop = setupStage(true, true)
 
     return backdrop;
 }
@@ -107,27 +47,19 @@ function addTestModel(name, position, orientation) {
 }
 
 function addTestCase(test, origin, orientation) {    
-    var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
 
-    var axisA = Quat.getForward(orientation);
-    var axisB = Quat.getRight(orientation);
-    var axisC = Quat.getUp(orientation);
-
-    var center = Vec3.sum(origin, Vec3.multiply(test.a * unit, axisA));
-    center = Vec3.sum(center, Vec3.multiply(test.b * unit, axisB));
-    center = Vec3.sum(center, Vec3.multiply(test.c * unit, axisC));
-
+    var center = getStagePosOriAt(test.a, test.b, test.c).pos;
     return addTestModel(test.name, center, orientation);
 }
 
 
 function addCasesAt(origin, orientation, testCases) {
+    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation);
+    
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
         models.push(addTestCase(testCases[i], origin, orientation));
     }  
-
-    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation);
     return models.concat(backdrop);
 }
   

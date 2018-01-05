@@ -71,10 +71,14 @@ function addZone(hasKeyLight, hasAmbient) {
   
         keyLight:{
             intensity: 0.8 * hasKeyLight,
-            direction: lightDir,
-
+            direction: {
+                "x": 0.037007175385951996,
+                "y": -0.7071067690849304,
+                "z": -0.7061376571655273
+            },
             ambientIntensity: 0.5 * hasAmbient,
-            ambientURL: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx",
+            //ambientURL: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx",
+            ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
         hazeMode:"disabled",

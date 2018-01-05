@@ -5,7 +5,7 @@
 Script.include("../../../../../utils/test_stage.js?raw=true")
 
 // Add the test Cases
-var createdEntities = setupStage(false, true)
+var createdEntities = setupStage(false, false)
 
 var posOri = getStagePosOriAt(6, 0, 0)
 
