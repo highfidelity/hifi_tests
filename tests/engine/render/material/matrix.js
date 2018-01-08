@@ -11,6 +11,9 @@
 // 
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
+// Test material matrix
+Script.include("../../../utils/test_stage.js?raw=true")
+
 var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
@@ -18,13 +21,16 @@ var MODEL_SCALE = 0.75;
 var MODEL_SPIN = 0.0;
 var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
+<<<<<<< HEAD
 var LIFETIME = 360;
 var BACKDROP_SIZE = 16;
+=======
+var LIFETIME = 120;
+>>>>>>> a69673cf1a63cbdf69b0012022b7977868441bf2
 
-function addTestBackdrop(name, position, orientation) {
-    var backdrop = [];
-    var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
+function addTestBackdropLocal(name, position, orientation) {
     
+<<<<<<< HEAD
     var cellDim = Vec3.multiply(unit, MODEL_DIMS);
     
     var up = Quat.getUp(orientation)
@@ -86,6 +92,9 @@ function addTestBackdrop(name, position, orientation) {
             url: "http://hifi-content.s3.amazonaws.com/DomainContent/baked/island/Sky_Day-Sun-Mid-photo.ktx"
         }
     }));
+=======
+    var backdrop = setupStage(true, true)
+>>>>>>> a69673cf1a63cbdf69b0012022b7977868441bf2
 
     backdrop.push(Entities.addEntity({
         type: "Light",
@@ -139,27 +148,19 @@ function addTestModel(name, position, orientation) {
 }
 
 function addTestCase(test, origin, orientation) {    
-    var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
 
-    var axisA = Quat.getForward(orientation);
-    var axisB = Quat.getRight(orientation);
-    var axisC = Quat.getUp(orientation);
-
-    var center = Vec3.sum(origin, Vec3.multiply(test.a * unit, axisA));
-    center = Vec3.sum(center, Vec3.multiply(test.b * unit, axisB));
-    center = Vec3.sum(center, Vec3.multiply(test.c * unit, axisC));
-
+    var center = getStagePosOriAt(test.a, test.b, test.c).pos;
     return addTestModel(test.name, center, orientation);
 }
 
 
 function addCasesAt(origin, orientation, testCases) {
+    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation);
+    
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
         models.push(addTestCase(testCases[i], origin, orientation));
     }  
-
-    var backdrop = addTestBackdrop("Material_matrix_backdrop", origin, orientation);
     return models.concat(backdrop);
 }
   
