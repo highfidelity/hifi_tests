@@ -8,7 +8,7 @@ var TEST_CASES = [
 ];
 
 // Add the test Cases
-var createdEntities = addCases(TEST_CASES)
+var createdEntities = addCases(TEST_CASES);
 
 // clean up after test
 Script.scriptEnding.connect(function () {
