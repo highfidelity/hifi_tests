@@ -96,11 +96,12 @@ module.exports.test = function (testType) {
 };
 ```
 ## Using the auto-tester
-The auto-tester provides the following 4 functions:
+The auto-tester provides the following 5 functions:
 1. Evaluate a single test
 2. Evaluate tests recursively
 3. Create a recursive test script
 4. Create a test case
+5. Delete old snapshots
 
 ![](./autoTesterUI.png)
 
