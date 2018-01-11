@@ -5,6 +5,7 @@ test.test("auto");
 var testTimer = Script.setInterval(
     function() {
         if (test.complete) {
+            Window.alert("Tests have been completed");
             Script.stop();
         }
     },

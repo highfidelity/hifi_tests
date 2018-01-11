@@ -4,7 +4,7 @@ module.exports.test = function (testType) {
     var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/NissimHadar/tests/";
     var SUFFIX = "?raw=true";
     var autoTester = Script.require(TESTS_URL + "utils/autoTester.js" + SUFFIX);
-    var spectatorCameraConfig = autoTester.setupSnapshots(Script.resolvePath("."));
+    var spectatorCameraConfig = autoTester.setupTests(Script.resolvePath("."));
 
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
@@ -44,5 +44,5 @@ module.exports.test = function (testType) {
         }
     ]
     
-    var result = autoTester.createTest(testType, steps);
+    var result = autoTester.runTests(testType, steps);
 };

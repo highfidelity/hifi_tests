@@ -1,4 +1,4 @@
-module.exports.setupSnapshots = function (combinedPath) {
+module.exports.setupTests = function (combinedPath) {
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
     
@@ -40,7 +40,7 @@ var addStep = function (stepFunction, step) {
 }
 
 // Steps is an array of functions; each function being a test step
-module.exports.createTest = function (testType, steps) {
+module.exports.runTests = function (testType, steps) {
     if (testType  == "auto") {
         for (var i = 0; i < steps.length; ++i) {
             addStep(steps[i], i);
@@ -53,6 +53,10 @@ module.exports.createTest = function (testType, steps) {
                     print("Running step " + (i + 1));
                     steps[i++]();
                     i = Math.min(i, steps.length - 1);
+                    
+                    if (i == steps.length - 1) {
+                        Window.alert("Tests have been completed");
+                    }
                 }
             }
         );
