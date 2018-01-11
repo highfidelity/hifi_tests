@@ -17,43 +17,29 @@ During all steps, rendering should be stable in time. Rune the [highlight.js scr
 - Expected: ![](./step2.jpg)
 
 #### Step 4
-- Expected: ![](./step2mask.jpg)
-
-#### Step 5
 - Expected: ![](./step3.jpg)
 
-#### Step 6
+#### Step 5
 - Expected: ![](./step4.jpg)
 
-#### Step 7
+#### Step 6
 - Expected: ![](./step5.jpg)
 
-#### Step 8
+#### Step 7
 - Expected: ![](./step6.jpg)
 
-#### Step 9
-- Expected: ![](./step6mask.jpg)
-
-#### Step 10
+#### Step 8
 - Expected: ![](./step7.jpg)
 
-#### Step 11
+#### Step 9
 - Expected: ![](./step8.jpg)
 
-#### Step 12
+#### Step 10
 - Expected: ![](./step9.jpg)
 
-#### Step 13
-- Expected: the new outline should render over the first two![](./step10-bis.jpg)
+#### Step 11
+- Expected: ![](./step10.jpg)
 
-#### Step 14
-- Expected: the new outline should render over the first two![](./step10.jpg)
-
-#### Step 15
+#### Step 12
 - Expected: ![](./step11.jpg)
 
-#### Step 16
-- Expected: ![](./step12.jpg)
-
-#### Step 17
-- Expected: ![](./step13.jpg)
