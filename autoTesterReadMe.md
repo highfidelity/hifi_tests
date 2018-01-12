@@ -107,6 +107,13 @@ The auto-tester provides the following 5 functions:
 
 Each of the 4 functions asks the user to select a folder.
 
+## Evaluation - general
+A checkbox is provided for de-selecting interactive mode.  If this checkbox ix selected then each error will be displayed to the user; otherwise, the evaluation will procede till completion.  In both cases, all errors are logged to file.
+For each failed test, a zipped folder is created within the test folder, named *TestResults*.  This folder contains a folder for each failed test named *Failure_n*, numbered sequentially.  Each folder contains 4 files:
+1. Expected Image
+2. Actual Image
+3. Difference Image
+4. TestResults - a text file providing details of the test folder, the original image names, and the size of the mismatch.
 ### Evaluate Test
 Evaluating a test is performed after running a **test.js** script to create new snapshots.  After selecting the folder, the images are compared in lexical order.  If the similarity between any image pair does not pass a fixed threshold, the image pair is displayed and the user can select to accept the difference, fail this specific test case, or abort testing.
 ![](./autoTesterMismatchExample.png)
@@ -167,3 +174,5 @@ Script.scriptEnding.connect(
 ```
 ### Create a Test Case
 A test case is created after running the test script.  Running the script produces a series of snapshots, named **hifi-snap-by-**_user name_**-on-YYYY-MM-DD_HH-MM-SS.jpg**.  This function simply renames these files to **ExpectedImage_1.jpg**, **ExpectedImage_2.jpg** and so on.  These files can be added to version control as they are a fixed asset of the test.
+### Delete old snapshots
+This button recursively deletes all snapshots created for testign (not the Expected Images).
