@@ -69,6 +69,7 @@ function addZone(hasKeyLight, hasAmbient) {
         dimensions: zoneDim,
         lifetime: LIFETIME,
   
+        keyLightMode: "enabled",
         keyLight:{
             intensity: 0.8 * hasKeyLight,
             direction: {
@@ -82,6 +83,7 @@ function addZone(hasKeyLight, hasAmbient) {
 
         hazeMode:"disabled",
         backgroundMode:"skybox",
+        skyboxMode: "enabled",
         skybox:{
             color: {"red":2,"green":2,"blue":2}, // Dark grey background
         }

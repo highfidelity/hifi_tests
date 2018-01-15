@@ -2,6 +2,7 @@
 Script.include("../matrix.js?raw=true")
 
 // List here all the entries of the Material Matrix tested in this test
+
 var TEST_CASES = [
     {name:"hifi_opacityV_NormalM_albedoM_ao",  a:0, b:-1, c:-0.5},
     {name:"hifi_opacityM_NormalM_albedoM_ao",  a:0, b:0, c:-0.5},
@@ -11,13 +12,13 @@ var TEST_CASES = [
 ];
 /*
 var TEST_CASES = [
-    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:-1, c:-0.5},
-    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:0, c:-0.5},
-    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:1, c:-0.5},
+    {name:"hifi_roughnessV50_metallicV_albedoV_ao",  a:0, b:-1, c:-0.5},
+    {name:"hifi_roughnessV50_metallicV_albedoV_ao",  a:0, b:0, c:-0.5},
+    {name:"hifi_roughnessV50_metallicV_albedoV_ao",  a:0, b:1, c:-0.5},
   
-    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:-1, c:0.5},
-];
-*/
+    {name:"hifi_roughnessV50_metallicV_albedoV_ao",  a:0, b:-1, c:0.5},
+];*/
+
 // Add the test Cases
 var createdEntities = addCases(TEST_CASES, false, true)
 
