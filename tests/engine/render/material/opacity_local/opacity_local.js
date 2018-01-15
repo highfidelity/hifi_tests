@@ -9,9 +9,17 @@ var TEST_CASES = [
   
     {name:"hifi_opacityV_albedoM_ao",  a:0, b:-1, c:0.5},
 ];
-
+/*
+var TEST_CASES = [
+    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:-1, c:-0.5},
+    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:0, c:-0.5},
+    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:1, c:-0.5},
+  
+    {name:"hifi_roughnessV50_albedoV_ao",  a:0, b:-1, c:0.5},
+];
+*/
 // Add the test Cases
-var createdEntities = addCases(TEST_CASES, true, false)
+var createdEntities = addCases(TEST_CASES, false, true)
 
 // clean up after test
 Script.scriptEnding.connect(function () {

@@ -23,9 +23,9 @@ var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 120;
 
-function addTestBackdropLocal(name, position, orientation) {
+function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {
     
-    var backdrop = setupStage(true, true)
+    var backdrop = setupStage(hasZone, hasZone, hasLocalLights)
 
     return backdrop;
 }
@@ -53,8 +53,8 @@ function addTestCase(test, origin, orientation) {
 }
 
 
-function addCasesAt(origin, orientation, testCases) {
-    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation);
+function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights) {
+    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation, hasZone, hasLocalLights);
     
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
@@ -63,7 +63,7 @@ function addCasesAt(origin, orientation, testCases) {
     return models.concat(backdrop);
 }
   
-addCases = function (testCases) {
+addCases = function (testCases, hasZone, hasLocalLights) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -72,7 +72,7 @@ addCases = function (testCases) {
     var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
     root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
-    return addCasesAt(root, orientation, testCases);
+    return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights);
 }
 
 
