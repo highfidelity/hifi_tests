@@ -70,6 +70,9 @@ function addZone(hasKeyLight, hasAmbient) {
         lifetime: LIFETIME,
   
         keyLightMode: "enabled",
+        skyboxMode: "enabled",
+        ambientLightMode: "enabled",
+
         keyLight:{
             intensity: 0.8 * hasKeyLight,
             direction: {
@@ -77,13 +80,14 @@ function addZone(hasKeyLight, hasAmbient) {
                 "y": -0.7071067690849304,
                 "z": -0.7061376571655273
             },
+        },
+        ambientLight: {
             ambientIntensity: 0.5 * hasAmbient,
             ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
         hazeMode:"disabled",
         backgroundMode:"skybox",
-        skyboxMode: "enabled",
         skybox:{
             color: {"red":2,"green":2,"blue":2}, // Dark grey background
         }
