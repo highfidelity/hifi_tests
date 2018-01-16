@@ -110,7 +110,7 @@ function addPointLight(pos, color, intensity) {
         "color": color,
         "intensity": intensity,
 
-        falloffRadius: 1.0
+        falloffRadius: 0.1
     }));
 }
 
@@ -148,15 +148,15 @@ function addTestBackdrop(name, hasKeyLight, hasAmbient, hasLocalLights) {
         var basePosition = Vec3.sum(stageRoot, Vec3.multiply(1.5, stageAxisC));
         var orientation = Quat.lookAtSimple(basePosition, stageRoot);
         var position = Vec3.sum(stageRoot, Vec3.multiply(-0.5, stageAxisA));
-        backdrop.push( addPointLight(position, {red:255,green:255,blue:255}, 1.0) );
+        backdrop.push( addPointLight(position, {red:255,green:255,blue:255}, 15.0) );
      
         position = Vec3.sum(basePosition, Vec3.multiply(1.5, stageAxisB));
-        backdrop.push( addSpotLight(position, orientation, {red:255,green:5,blue:5}, 1.5) );
+        backdrop.push( addSpotLight(position, orientation, {red:255,green:5,blue:5}, 2.5) );
 
-        backdrop.push( addSpotLight(basePosition, orientation, {red:5,green:255,blue:5}, 1.5) );
+        backdrop.push( addSpotLight(basePosition, orientation, {red:5,green:255,blue:5}, 2.5) );
 
         position = Vec3.sum(basePosition, Vec3.multiply(-1.5, stageAxisB));
-        backdrop.push( addSpotLight(position, orientation, {red:5,green:5,blue:255}, 1.5) );
+        backdrop.push( addSpotLight(position, orientation, {red:5,green:5,blue:255}, 2.5) );
     }
 
     return backdrop;
