@@ -82,7 +82,7 @@ function addZone(hasKeyLight, hasAmbient) {
             },
         },
         ambientLight: {
-            ambientIntensity: 0.5 * hasAmbient,
+            ambientIntensity: 1.0 * hasAmbient,
             ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
