@@ -1,4 +1,4 @@
-var test = Script.require("./test.js");
+var test = Script.require("./test.js?raw=true");
 test.test("auto");
 
 // Check every second if the test is complete
