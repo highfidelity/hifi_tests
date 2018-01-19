@@ -1,9 +1,7 @@
 module.exports.complete = false;
 
 module.exports.test = function (testType) {
-    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/firstTest/tests/";
-    var SUFFIX = "?raw=true";
-    var autoTester = Script.require(TESTS_URL + "utils/autoTester.js" + SUFFIX);
+    var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
     var spectatorCameraConfig = autoTester.setupTests(Script.resolvePath("."));
 
     // Create the zone centered at the avatar position
