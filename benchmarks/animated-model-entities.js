@@ -8,6 +8,9 @@
 
 Script.include("./BenchmarkLib.js");
 
+var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/geometry/avatars/";
+var MODEL_NAME_SUFFIX = ".fbx?raw=true";
+
 var spawnPoint = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(1.0, Quat.getFront(MyAvatar.orientation))), {x: 0, y: 0.5, z: 0});
 
 var entityProps = [
@@ -15,11 +18,11 @@ var entityProps = [
         position: Vec3.sum(spawnPoint, Vec3.multiply(0.5, Quat.getRight(MyAvatar.orientation))),
         rotation: MyAvatar.orientation,
         dimensions: {x: 1.5601, y: 1.8097, z: 0.6777},
-        modelURL: "https://hifi-public.s3.amazonaws.com/cozza13/apartment/claire/Claire.fbx",
+        modelURL: MODEL_DIR_URL + "claire/Claire.fbx" + MODEL_NAME_SUFFIX,
         name: "Claire",
         type: "Model",
         animation: {
-            url: "https://hifi-public.s3.amazonaws.com/cozza13/apartment/claire/Claire@t-pose_47.fbx",
+            url: MODEL_DIR_URL + "claire/Claire@t-pose_47.fbx" + MODEL_NAME_SUFFIX,
             running: true,
             fps: 30,
             firstFrame: 0,
@@ -31,11 +34,11 @@ var entityProps = [
         position: Vec3.sum(spawnPoint, Vec3.multiply(-0.5, Quat.getRight(MyAvatar.orientation))),
         rotation: MyAvatar.orientation,
         dimensions: {x: 1.9245, y: 2.0101, z: 0.7254},
-        modelURL: "https://hifi-public.s3.amazonaws.com/cozza13/apartment/kaya/Kaya.fbx",
+        modelURL: MODEL_DIR_URL + "kaya/Kaya.fbx" + MODEL_NAME_SUFFIX,
         name: "Kaya",
         type: "Model",
         animation: {
-            url: "https://hifi-public.s3.amazonaws.com/cozza13/apartment/kaya/Kaya%40t-pose_46.fbx",
+            url: MODEL_DIR_URL + "kaya/Kaya%40t-pose_46.fbx" + MODEL_NAME_SUFFIX,
             running: true,
             fps: 30,
             firstFrame: 0,
