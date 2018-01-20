@@ -69,6 +69,10 @@ function addZone(hasKeyLight, hasAmbient) {
         dimensions: zoneDim,
         lifetime: LIFETIME,
   
+        keyLightMode: "enabled",
+        skyboxMode: "enabled",
+        ambientLightMode: "enabled",
+
         keyLight:{
             intensity: 0.8 * hasKeyLight,
             direction: {
@@ -76,7 +80,13 @@ function addZone(hasKeyLight, hasAmbient) {
                 "y": -0.7071067690849304,
                 "z": -0.7061376571655273
             },
+<<<<<<< HEAD
             ambientIntensity: 0.5 * hasAmbient,
+=======
+        },
+        ambientLight: {
+            ambientIntensity: 1.0 * hasAmbient,
+>>>>>>> e9bf8634ad158c9585668c49f2883c93ba82985a
             ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
