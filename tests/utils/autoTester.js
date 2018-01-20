@@ -39,6 +39,41 @@ var addStep = function (stepFunction, step) {
     ++step;
 }
 
+var runOneStep = function (stepFunction, stepIndex) {
+    Window.takeSecondaryCameraSnapshot();
+    print("Running step " + (stepIndex + 1));
+    stepFunction();
+}
+
+var currentSteps = [];
+var currentStepIndex = 0;
+
+var runNextStep = function () {
+    if (currentStepIndex < steps.length) {
+        runOneStep(steps[currentStepIndex], currentStepIndex);
+        currentStepIndex++;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var stepsOver
+
+var onKeyPressEvent = function (event) {
+    if (event.key == 32) {
+        if (!runNextStep()) {
+            Controller.keyPressEvent.disconnect(onKeyPressEvent);
+            Window.alert("Tests have been completed");
+            Script.stop();
+//                        if (test.complete) {
+//                            Window.alert("Tests have been completed");
+//                        }
+                     
+        }
+    }
+}
+
 // Steps is an array of functions; each function being a test step
 module.exports.runTests = function (testType, steps) {
     if (testType  == "auto") {
@@ -47,18 +82,46 @@ module.exports.runTests = function (testType, steps) {
         }
     } else {
         var i = 0;
-        Controller.keyPressEvent.connect(
-            function(event){
+        Controller.keyPressEvent.connect( function(event){
                 if (event.key == 32) {
-                    print("Running step " + (i + 1));
-                    steps[i++]();
+                    runOneStep(steps[i], i);
+                    i++;
+
                     i = Math.min(i, steps.length - 1);
                     
                     if (i == steps.length - 1) {
+                        Controller.keyPressEvent.disconnect();
                         Window.alert("Tests have been completed");
+                        Script.stop();
+//                        if (test.complete) {
+//                            Window.alert("Tests have been completed");
+//                        }
+                    
                     }
                 }
             }
         );
     }
 }
+
+var runningManual = true;
+
+
+module.exports.runManual = function () {
+    return runningManual;
+}
+
+module.exports.enableAuto = function () {
+    runningManual = false;
+}
+
+module.exports.perform = function (testmain) {
+   if(runningManual) {     
+        print("Begin manual test:");        
+        testmain("stepbystep");
+     //   Window.alert("Test Over");
+   }
+  // Window.alert("Test would run auto");
+   
+}
+
