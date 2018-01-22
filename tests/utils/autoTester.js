@@ -39,72 +39,96 @@ var addStep = function (stepFunction, step) {
     ++step;
 }
 
-var runOneStep = function (stepFunction, stepIndex) {
-    Window.takeSecondaryCameraSnapshot();
-    print("Running step " + (stepIndex + 1));
-    stepFunction();
-}
-
 var currentSteps = [];
 var currentStepIndex = 0;
 
+var runOneStep = function (stepFunction, stepIndex) {
+    print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length));
+    stepFunction();
+
+    print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
+    Window.takeSecondaryCameraSnapshot();
+}
+
 var runNextStep = function () {
-    if (currentStepIndex < steps.length) {
-        runOneStep(steps[currentStepIndex], currentStepIndex);
+    // Run next step and increment only if there is one more
+    if (currentStepIndex < currentSteps.length) {
+        runOneStep(currentSteps[currentStepIndex], currentStepIndex);
         currentStepIndex++;
-        return true;
-    } else {
-        return false;
+    }
+    
+    // Return true to go on or false if done
+    return (currentStepIndex < currentSteps.length)
+}
+
+var testOver = function() {
+    if (runningManual) {
+        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
+        Window.alert("Test have been completed");
+    }
+    print("Test over");            
+    Script.stop();
+}
+
+var onRunAuto = function() {
+   
+    // run the step...
+    if (!runNextStep()) {
+        testOver();       
+    }
+
+    // and call itself after next timer
+    var STEP_TIME = 2000;   
+    Script.setTimeout(
+        function () {
+            onRunAuto();
+        },
+        STEP_TIME
+    );
+}
+
+var onKeyPressEventNextStep = function (event) {
+    if (event.key == 32) {
+        if (!runNextStep()) {
+            testOver();       
+        }
     }
 }
 
-var stepsOver
-
-var onKeyPressEvent = function (event) {
-    if (event.key == 32) {
-        if (!runNextStep()) {
-            Controller.keyPressEvent.disconnect(onKeyPressEvent);
-            Window.alert("Tests have been completed");
-            Script.stop();
-//                        if (test.complete) {
-//                            Window.alert("Tests have been completed");
-//                        }
-                     
+var onRunStepByStep = function() {
+    var messageBox;
+    var closeButton = 0x00200000;
+    function onMessageBoxClosed(id, button) {
+        if (id === messageBox) {
+            if (button === closeButton) {
+                if (!runNextStep()) {
+                    testOver();       
+                }
+                Controller.keyPressEvent.connect( onKeyPressEventNextStep );
+            }
         }
     }
+    Window.messageBoxClosed.connect(onMessageBoxClosed);
+
+    messageBox = Window.openMessageBox(
+        "Ready to run test", 
+        currentSteps.length + " steps\nPress [SPACE] for next steps",
+        closeButton , closeButton);
 }
 
 // Steps is an array of functions; each function being a test step
 module.exports.runTests = function (testType, steps) {
-    if (testType  == "auto") {
-        for (var i = 0; i < steps.length; ++i) {
-            addStep(steps[i], i);
-        }
-    } else {
-        var i = 0;
-        Controller.keyPressEvent.connect( function(event){
-                if (event.key == 32) {
-                    runOneStep(steps[i], i);
-                    i++;
+    currentSteps = steps;
+    currentStepIndex = 0;
 
-                    i = Math.min(i, steps.length - 1);
-                    
-                    if (i == steps.length - 1) {
-                        Controller.keyPressEvent.disconnect();
-                        Window.alert("Tests have been completed");
-                        Script.stop();
-//                        if (test.complete) {
-//                            Window.alert("Tests have been completed");
-//                        }
-                    
-                    }
-                }
-            }
-        );
+    if (testType  == "auto") {
+        onRunAuto();
+    } else { 
+        onRunStepByStep();       
     }
 }
 
-var runningManual = true;
+var runningManual = false;
 
 
 module.exports.runManual = function () {
@@ -116,12 +140,12 @@ module.exports.enableAuto = function () {
 }
 
 module.exports.perform = function (testmain) {
-   if(runningManual) {     
+    if (runningManual) {     
         print("Begin manual test:");        
         testmain("stepbystep");
-     //   Window.alert("Test Over");
-   }
-  // Window.alert("Test would run auto");
-   
+    } else {
+        print("Begin auto test:");        
+        testmain("auto");
+    }  
 }
 
