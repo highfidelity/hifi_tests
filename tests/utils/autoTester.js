@@ -1,15 +1,26 @@
 
-
 var currentTestName = "";
 var currentTestRunning = false;
 var currentSteps = [];
 var currentStepIndex = 0;
 
+TestCase = function (name, path, func) {
+    this.name = name;
+    this.path = path;
+    this.func = func;
+}
 
-module.exports.setupTest = function (combinedPath) {
+var currentTestCase = null;
+
+module.exports.setupTest = function () {
+    if (currentTestCase === null) {
+        return;
+    }
+
     // Clear the test case steps
     currentSteps = [];
     currentStepIndex = 0;
+    currentTestName = currentTestCase.name;
 
     print("Setup test" + currentTestName);        
     
@@ -26,7 +37,7 @@ module.exports.setupTest = function (combinedPath) {
     
     // resolvePath(".") returns a string that looks like "file:/" + <current folder>
     // We need the current folder
-    var path = combinedPath.substring(combinedPath.indexOf(":") + 4);
+    var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
     Snapshot.setSnapshotsLocation(path);
 
     var spectatorCameraConfig = Render.getConfig("SecondaryCamera");
@@ -74,7 +85,8 @@ var testOver = function() {
     currentStepIndex = 0;
     currentTestName = "";      
     currentTestRunning = false;    
-
+    currentTestCase = null;
+   // maybe not...
     Script.stop();
 }
 
@@ -169,16 +181,17 @@ module.exports.enableAuto = function () {
 }
 
 
-module.exports.perform = function (testName, testmain) {
+module.exports.perform = function (testName, testPath, testMain) {
     currentTestRunning = true;
-    currentTestName = testName;
-
+    
+    currentTestCase = new TestCase(testName, testPath, testMain);
+    
     if (runningManual) {     
         print("Begin manual test:" + testName);        
-        testmain("stepbystep");
+        currentTestCase.func("stepbystep");
     } else {
         print("Begin auto test:" + testName);        
-        testmain("auto");
+        currentTestCase.func("auto");
     }
 }
 

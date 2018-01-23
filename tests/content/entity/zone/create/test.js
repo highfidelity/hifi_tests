@@ -1,8 +1,8 @@
 //var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
 var autoTester = Script.require("../../../../utils/autoTester.js" );
 
-test = function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(Script.resolvePath("."));
+autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
+    var spectatorCameraConfig = autoTester.setupTest();
 
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
@@ -37,6 +37,4 @@ test = function(testType) {
     });
     
     var result = autoTester.runTest(testType);
-};
-
-autoTester.perform("Zone create", test);
+});

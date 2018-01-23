@@ -1,10 +1,10 @@
 //var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
 var autoTester = Script.require("../../../../../utils/autoTester.js" );
 
-test = function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(Script.resolvePath("."), "Point light");
-// Enabled draw zone bounding box and stack to visualize the stack of zone components
-//Render.getConfig("RenderMainView.DrawZoneStack").enabled = true
+autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
+    var spectatorCameraConfig = autoTester.setupTest();
+    // Enabled draw zone bounding box and stack to visualize the stack of zone components
+    //Render.getConfig("RenderMainView.DrawZoneStack").enabled = true
 
     // Test material matrix
     Script.include("../../../../../utils/test_stage.js?raw=true")
@@ -51,13 +51,11 @@ test = function(testType) {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
-        //Entities.deleteEntity(zone);
     });
     
     var result = autoTester.runTest(testType);
-};
+});
 
-autoTester.perform("Point light", test);
 // clean up after test
 /*Script.scriptEnding.connect(function () {
     for (var i = 0; i < createdEntities.length; i++) {
