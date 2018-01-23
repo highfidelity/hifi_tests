@@ -22,7 +22,7 @@ This function runs the tests in either of 2 modes:
 ```
 git clone https://github.com/NissimHadar/hifi_tests.git
 ```
-* Double click **setup.bat** to download and install autotester (Note: do not select setup.ps1 by mistake). When prompted, select folder to install autoTester (the default is usually OK).
+* Double click **setup.bat** (located in tools/autoTester) to download and install autotester (Note: do not select setup.ps1 by mistake). When prompted, select folder to install autoTester (the default is usually OK).
 * ![](./setup_7z.png)
 
 The executable is located in the **autoTester/Release** folder, and is named **autoTester.exe**.
