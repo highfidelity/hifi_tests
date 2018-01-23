@@ -153,10 +153,10 @@ module.exports.runTest = function (testType) {
         // Do nothing for now
     }
     
-    // Note that currentSteps needs to be cloned before being pushed on the array
     // This array is always used, for non-recursive tests there will be exactly one element.
-    testCases.push(JSON.parse(JSON.stringify(currentSteps)));
+    testCases.push(currentSteps);
     
+    // For next test
     currentSteps = [];
     currentStepIndex = 0;
 }
