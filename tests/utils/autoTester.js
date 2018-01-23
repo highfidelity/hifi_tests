@@ -1,4 +1,18 @@
-module.exports.setupTests = function (combinedPath) {
+
+
+var currentTestName = "";
+var currentTestRunning = false;
+var currentSteps = [];
+var currentStepIndex = 0;
+
+
+module.exports.setupTest = function (combinedPath) {
+    // Clear the test case steps
+    currentSteps = [];
+    currentStepIndex = 0;
+
+    print("Setup test" + currentTestName);        
+    
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
     
@@ -25,29 +39,16 @@ module.exports.setupTests = function (combinedPath) {
     return spectatorCameraConfig;
 }
 
-var addStep = function (stepFunction, step) {
-    var STEP_TIME = 2000;
-    
-    Script.setTimeout(
-        function () {
-            Window.takeSecondaryCameraSnapshot();
-            stepFunction();
-        },
-        step * STEP_TIME
-    );
-    
-    ++step;
-}
+var runOneStep = function (stepFunctor, stepIndex) {
+    print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+    if (stepFunctor.func !== undefined) {
+        stepFunctor.func();
+    }
 
-var currentSteps = [];
-var currentStepIndex = 0;
-
-var runOneStep = function (stepFunction, stepIndex) {
-    print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length));
-    stepFunction();
-
-    print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
-    Window.takeSecondaryCameraSnapshot();
+    if (stepFunctor.snap !== undefined && stepFunctor.snap) {
+        print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
+        Window.takeSecondaryCameraSnapshot();
+    }
 }
 
 var runNextStep = function () {
@@ -64,9 +65,16 @@ var runNextStep = function () {
 var testOver = function() {
     if (runningManual) {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.alert("Test have been completed");
+        Window.alert("Test " + currentTestName + " have been completed");
     }
-    print("Test over");            
+    //Window.message("Test " + currentTestName + " over");
+    print("Test over " + currentTestName); 
+    
+    currentSteps = [];
+    currentStepIndex = 0;
+    currentTestName = "";      
+    currentTestRunning = false;    
+
     Script.stop();
 }
 
@@ -111,16 +119,23 @@ var onRunStepByStep = function() {
     Window.messageBoxClosed.connect(onMessageBoxClosed);
 
     messageBox = Window.openMessageBox(
-        "Ready to run test", 
+        "Ready to run test " + currentTestName, 
         currentSteps.length + " steps\nPress [SPACE] for next steps",
         closeButton , closeButton);
+/*
+    Window.message(
+            "Ready to run test " + currentTestName + "\n"
+         + currentSteps.length + " steps\n" 
+         + "Press [SPACE] for next steps");
+
+    if (!runNextStep()) {
+        testOver();       
+    }
+    Controller.keyPressEvent.connect( onKeyPressEventNextStep );*/
 }
 
 // Steps is an array of functions; each function being a test step
-module.exports.runTests = function (testType, steps) {
-    currentSteps = steps;
-    currentStepIndex = 0;
-
+module.exports.runTest = function (testType) {
     if (testType  == "auto") {
         onRunAuto();
     } else { 
@@ -128,8 +143,22 @@ module.exports.runTests = function (testType, steps) {
     }
 }
 
-var runningManual = false;
+// Add Steps to the test case
+var doAddStep = function (name, stepFunction, snapshot) {
+    currentSteps.push({"index": currentSteps.length, "name": name, "func": stepFunction, "snap": snapshot })
+}
 
+// Add Steps to the test case
+module.exports.addStep = function (name, stepFunction, snapshot) {
+    doAddStep(name, stepFunction, snapshot);
+}
+
+module.exports.addStepSnapshot = function (name, stepFunction) {
+    doAddStep(name, stepFunction, true);
+}
+
+
+var runningManual = true;
 
 module.exports.runManual = function () {
     return runningManual;
@@ -139,13 +168,20 @@ module.exports.enableAuto = function () {
     runningManual = false;
 }
 
-module.exports.perform = function (testmain) {
+
+module.exports.perform = function (testName, testmain) {
+    currentTestRunning = true;
+    currentTestName = testName;
+
     if (runningManual) {     
-        print("Begin manual test:");        
+        print("Begin manual test:" + testName);        
         testmain("stepbystep");
     } else {
-        print("Begin auto test:");        
+        print("Begin auto test:" + testName);        
         testmain("auto");
-    }  
+    }
 }
 
+module.exports.testRunning = function () {
+    return currentTestRunning;
+}
