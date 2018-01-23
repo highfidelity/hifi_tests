@@ -47,15 +47,23 @@ module.exports.setupTest = function () {
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
     spectatorCameraConfig.orientation = MyAvatar.orientation;
     
+    
+    // Configure the camera
+    spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
+
     return spectatorCameraConfig;
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
     print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+    Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+
     if (stepFunctor.func !== undefined) {
         stepFunctor.func();
     }
 
+    // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
+    // but this seems to work ok if the snapshot is a spearate step
     if (stepFunctor.snap !== undefined && stepFunctor.snap) {
         print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
         Window.takeSecondaryCameraSnapshot();
@@ -76,7 +84,7 @@ var runNextStep = function () {
 var testOver = function() {
     if (runningManual) {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.alert("Test " + currentTestName + " have been completed");
+        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
     //Window.message("Test " + currentTestName + " over");
     print("Test over " + currentTestName); 
@@ -90,8 +98,8 @@ var testOver = function() {
     Script.stop();
 }
 
-var onRunAuto = function() {
-   
+
+var onRunAutoNext = function() {  
     // run the step...
     if (!runNextStep()) {
         testOver();       
@@ -100,9 +108,16 @@ var onRunAuto = function() {
     // and call itself after next timer
     var STEP_TIME = 2000;   
     Script.setTimeout(
-        function () {
-            onRunAuto();
-        },
+        onRunAutoNext,
+        STEP_TIME
+    );
+}
+
+var onRunAuto = function() {  
+    // run the next step after next timer
+    var STEP_TIME = 2000;   
+    Script.setTimeout(
+        onRunAutoNext,
         STEP_TIME
     );
 }
@@ -116,34 +131,10 @@ var onKeyPressEventNextStep = function (event) {
 }
 
 var onRunStepByStep = function() {
-    var messageBox;
-    var closeButton = 0x00200000;
-    function onMessageBoxClosed(id, button) {
-        if (id === messageBox) {
-            if (button === closeButton) {
-                if (!runNextStep()) {
-                    testOver();       
-                }
-                Controller.keyPressEvent.connect( onKeyPressEventNextStep );
-            }
-        }
-    }
-    Window.messageBoxClosed.connect(onMessageBoxClosed);
-
-    messageBox = Window.openMessageBox(
-        "Ready to run test " + currentTestName, 
-        currentSteps.length + " steps\nPress [SPACE] for next steps",
-        closeButton , closeButton);
-/*
-    Window.message(
+    Window.displayAnnouncement(
             "Ready to run test " + currentTestName + "\n"
-         + currentSteps.length + " steps\n" 
-         + "Press [SPACE] for next steps");
-
-    if (!runNextStep()) {
-        testOver();       
-    }
-    Controller.keyPressEvent.connect( onKeyPressEventNextStep );*/
+         + currentSteps.length + " steps\nPress [SPACE] for next steps");
+    Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
 
 // Steps is an array of functions; each function being a test step
