@@ -1,8 +1,11 @@
-
 var currentTestName = "";
 var currentTestRunning = false;
+
 var currentSteps = [];
 var currentStepIndex = 0;
+
+var testCases = [];
+var testCount = 0;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -73,16 +76,18 @@ var runOneStep = function (stepFunctor, stepIndex) {
 var runNextStep = function () {
     // Run next step and increment only if there is one more
     if (currentStepIndex < currentSteps.length) {
-        runOneStep(currentSteps[currentStepIndex], currentStepIndex);
+        runOneStep(testCases[testCount][currentStepIndex], currentStepIndex);
         currentStepIndex++;
+    } else {
+        testCount++;
     }
     
     // Return true to go on or false if done
-    return (currentStepIndex < currentSteps.length)
+    return (testCount < testCases.length)
 }
 
 var testOver = function() {
-    if (runningManual) {
+    if (testMode == "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
@@ -94,10 +99,11 @@ var testOver = function() {
     currentTestName = "";      
     currentTestRunning = false;    
     currentTestCase = null;
-   // maybe not...
-    Script.stop();
+    
+    if (testMode == "manual") {
+        Script.stop();
+    }
 }
-
 
 var onRunAutoNext = function() {  
     // run the step...
@@ -141,9 +147,16 @@ var onRunStepByStep = function() {
 module.exports.runTest = function (testType) {
     if (testType  == "auto") {
         onRunAuto();
-    } else { 
+    } else if (testType = "manual"){ 
         onRunStepByStep();       
     }
+    
+    // Note that currentSteps needs to be cloned before being pushed on the array
+    testCases.push(JSON.parse(JSON.stringify(currentSteps)));
+    testCount++;
+    
+    currentSteps = [];
+    currentStepIndex = 0;
 }
 
 // Add Steps to the test case
@@ -161,28 +174,33 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 }
 
 
-var runningManual = true;
+var testMode = "manual";
 
 module.exports.runManual = function () {
-    return runningManual;
+    return (testMode == "manual");
 }
 
 module.exports.enableAuto = function () {
-    runningManual = false;
+    testMode = "auto";
 }
 
+module.exports.enableRecursive = function () {
+    testMode = "recursive";
+}
 
 module.exports.perform = function (testName, testPath, testMain) {
     currentTestRunning = true;
     
     currentTestCase = new TestCase(testName, testPath, testMain);
     
-    if (runningManual) {     
-        print("Begin manual test:" + testName);        
-        currentTestCase.func("stepbystep");
-    } else {
-        print("Begin auto test:" + testName);        
+    if (testMode == "manual") {     
+        print("Begin manual test:" + testName);
+        currentTestCase.func("manual");
+    } else if (testMode == "auto") {
+        print("Begin auto test:" + testName);
         currentTestCase.func("auto");
+    } else {
+        print("Not running yet - in recursive mode");
     }
 }
 
