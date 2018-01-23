@@ -29,7 +29,7 @@ module.exports.setupTest = function () {
     
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
-    
+
     // Zero the head position
     MyAvatar.bodyYaw =   0.0;
     MyAvatar.bodyPitch = 0.0;
@@ -37,7 +37,7 @@ module.exports.setupTest = function () {
     MyAvatar.headYaw =   0.0;
     MyAvatar.headPitch = 0.0;
     MyAvatar.headRoll =  0.0;
-    
+
     // resolvePath(".") returns a string that looks like "file:/" + <current folder>
     // We need the current folder
     var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
@@ -49,8 +49,8 @@ module.exports.setupTest = function () {
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
     spectatorCameraConfig.orientation = MyAvatar.orientation;
-    
-    
+
+
     // Configure the camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
 
@@ -58,17 +58,18 @@ module.exports.setupTest = function () {
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
-    print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
-    Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+    print("Running step " + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length) +": " + stepFunctor.name);
+    Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length) +": " + stepFunctor.name);
 
     if (stepFunctor.func !== undefined) {
         stepFunctor.func();
     }
 
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
-    // but this seems to work ok if the snapshot is a spearate step
-    if (stepFunctor.snap !== undefined && stepFunctor.snap) {
-        print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
+    // but this seems to work ok if the snapshot is a separate step
+    if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
+        print("==================================" + currentlyExecutingTest + "==========================================");
+        print("Taking snapshot" + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length));
         Window.takeSecondaryCameraSnapshot();
     }
 }
@@ -81,7 +82,7 @@ var runNextStep = function () {
     } else {
         currentlyExecutingTest++;
     }
-    
+
     // Return true to go on or false if done
     return (currentlyExecutingTest < testCases.length)
 }
@@ -92,12 +93,12 @@ var testOver = function() {
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
     //Window.message("Test " + currentTestName + " over");
-    print("Test over " + currentTestName); 
+    print("Test over " + currentTestName);
     
     currentSteps = [];
     currentStepIndex = 0;
-    currentTestName = "";      
-    currentTestRunning = false;    
+    currentTestName = "";
+    currentTestRunning = false;
     currentTestCase = null;
     
     if (testMode == "manual") {
@@ -105,14 +106,14 @@ var testOver = function() {
     }
 }
 
-var onRunAutoNext = function() {  
+var onRunAutoNext = function() {
     // run the step...
     if (!runNextStep()) {
-        testOver();       
+        testOver();
     }
 
     // and call itself after next timer
-    var STEP_TIME = 2000;   
+    var STEP_TIME = 2000;
     Script.setTimeout(
         onRunAutoNext,
         STEP_TIME
@@ -131,7 +132,7 @@ var onRunAuto = function() {
 var onKeyPressEventNextStep = function (event) {
     if (event.key == 32) {
         if (!runNextStep()) {
-            testOver();       
+            testOver();
         }
     }
 }
@@ -148,17 +149,14 @@ module.exports.runTest = function (testType) {
     if (testType  == "auto") {
         onRunAuto();
     } else if (testType = "manual"){ 
-        onRunStepByStep();       
+        onRunStepByStep();
     } else {// testType == "recursive"
         // Do nothing for now
     }
-    
+
     // This array is always used, for non-recursive tests there will be exactly one element.
+    // currentSteps will be re-allocated if needed in the next setup.
     testCases.push(currentSteps);
-    
-    // For next test
-    currentSteps = [];
-    currentStepIndex = 0;
 }
 
 // Add Steps to the test case
@@ -194,7 +192,7 @@ module.exports.perform = function (testName, testPath, testMain) {
     
     currentTestCase = new TestCase(testName, testPath, testMain);
     
-    if (testMode == "manual") {     
+    if (testMode == "manual") {
         print("Begin manual test:" + testName);
         currentTestCase.func("manual");
     } else if (testMode == "auto") {
