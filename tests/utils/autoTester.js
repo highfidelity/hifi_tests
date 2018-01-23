@@ -5,7 +5,7 @@ var currentSteps = [];
 var currentStepIndex = 0;
 
 var testCases = [];
-var testCount = 0;
+var currentlyExecutingTest = 0;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -25,7 +25,7 @@ module.exports.setupTest = function () {
     currentStepIndex = 0;
     currentTestName = currentTestCase.name;
 
-    print("Setup test" + currentTestName);        
+    print("Setup test - " + currentTestName);        
     
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
@@ -75,15 +75,15 @@ var runOneStep = function (stepFunctor, stepIndex) {
 
 var runNextStep = function () {
     // Run next step and increment only if there is one more
-    if (currentStepIndex < currentSteps.length) {
-        runOneStep(testCases[testCount][currentStepIndex], currentStepIndex);
+    if (currentStepIndex < testCases[currentlyExecutingTest].length) {
+        runOneStep(testCases[currentlyExecutingTest][currentStepIndex], currentStepIndex);
         currentStepIndex++;
     } else {
-        testCount++;
+        currentlyExecutingTest++;
     }
     
     // Return true to go on or false if done
-    return (testCount < testCases.length)
+    return (currentlyExecutingTest < testCases.length)
 }
 
 var testOver = function() {
@@ -149,11 +149,13 @@ module.exports.runTest = function (testType) {
         onRunAuto();
     } else if (testType = "manual"){ 
         onRunStepByStep();       
+    } else {// testType == "recursive"
+        // Do nothing for now
     }
     
     // Note that currentSteps needs to be cloned before being pushed on the array
+    // This array is always used, for non-recursive tests there will be exactly one element.
     testCases.push(JSON.parse(JSON.stringify(currentSteps)));
-    testCount++;
     
     currentSteps = [];
     currentStepIndex = 0;
@@ -172,7 +174,6 @@ module.exports.addStep = function (name, stepFunction, snapshot) {
 module.exports.addStepSnapshot = function (name, stepFunction) {
     doAddStep(name, stepFunction, true);
 }
-
 
 var testMode = "manual";
 
@@ -201,6 +202,7 @@ module.exports.perform = function (testName, testPath, testMain) {
         currentTestCase.func("auto");
     } else {
         print("Not running yet - in recursive mode");
+        currentTestCase.func("recursive");
     }
 }
 
