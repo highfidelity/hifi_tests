@@ -1,4 +1,5 @@
 var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
+//var autoTester = Script.require("../../../../utils/autoTester.js" );
 
 autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
