@@ -1,7 +1,7 @@
 var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
 
 autoTester.perform("Spot light", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest());
+    var spectatorCameraConfig = autoTester.setupTest();
 
     // Test material matrix
     Script.include("../../../../../utils/test_stage.js?raw=true")
