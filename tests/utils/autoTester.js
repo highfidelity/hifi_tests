@@ -68,7 +68,6 @@ var runOneStep = function (stepFunctor, stepIndex) {
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
     // but this seems to work ok if the snapshot is a separate step
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
-        print("==================================" + currentlyExecutingTest + "==========================================");
         print("Taking snapshot" + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length));
         Window.takeSecondaryCameraSnapshot();
     }
@@ -157,6 +156,11 @@ module.exports.runTest = function (testType) {
     // This array is always used, for non-recursive tests there will be exactly one element.
     // currentSteps will be re-allocated if needed in the next setup.
     testCases.push(currentSteps);
+}
+
+module.exports.runRecursive = function () {
+    print("Starting recursive tests");
+    onRunAuto();
 }
 
 // Add Steps to the test case
