@@ -1,6 +1,4 @@
 var currentTestName = "";
-var currentTestRunning = false;
-
 var currentSteps = [];
 var currentStepIndex = 0;
 
@@ -58,8 +56,8 @@ module.exports.setupTest = function () {
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
-    print("Running step " + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length) +": " + stepFunctor.name);
-    Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length) +": " + stepFunctor.name);
+    print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+    Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
 
     if (stepFunctor.func !== undefined) {
         stepFunctor.func();
@@ -68,22 +66,22 @@ var runOneStep = function (stepFunctor, stepIndex) {
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
     // but this seems to work ok if the snapshot is a separate step
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
-        print("Taking snapshot" + (stepIndex + 1) + "/" + (testCases[currentlyExecutingTest].length));
+        print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
+        
+        
         Window.takeSecondaryCameraSnapshot();
     }
 }
 
 var runNextStep = function () {
     // Run next step and increment only if there is one more
-    if (currentStepIndex < testCases[currentlyExecutingTest].length) {
-        runOneStep(testCases[currentlyExecutingTest][currentStepIndex], currentStepIndex);
+    if (currentStepIndex < currentSteps.length) {
+        runOneStep(currentSteps[currentStepIndex], currentStepIndex);
         currentStepIndex++;
-    } else {
-        currentlyExecutingTest++;
     }
 
     // Return true to go on or false if done
-    return (currentlyExecutingTest < testCases.length)
+    return (currentStepIndex < currentSteps.length)
 }
 
 var testOver = function() {
@@ -97,7 +95,6 @@ var testOver = function() {
     currentSteps = [];
     currentStepIndex = 0;
     currentTestName = "";
-    currentTestRunning = false;
     currentTestCase = null;
     
     if (testMode == "manual") {
@@ -138,8 +135,9 @@ var onKeyPressEventNextStep = function (event) {
 
 var onRunStepByStep = function() {
     Window.displayAnnouncement(
-            "Ready to run test " + currentTestName + "\n"
-         + currentSteps.length + " steps\nPress [SPACE] for next steps");
+        "Ready to run test " + currentTestName + "\n" +
+        currentSteps.length + " steps\nPress [SPACE] for next steps");
+         
     Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
 
@@ -147,20 +145,18 @@ var onRunStepByStep = function() {
 module.exports.runTest = function (testType) {
     if (testType  == "auto") {
         onRunAuto();
-    } else if (testType = "manual"){ 
+    } else if (testType = "manual") { 
         onRunStepByStep();
-    } else {// testType == "recursive"
-        // Do nothing for now
     }
-
-    // This array is always used, for non-recursive tests there will be exactly one element.
-    // currentSteps will be re-allocated if needed in the next setup.
-    testCases.push(currentSteps);
 }
 
 module.exports.runRecursive = function () {
     print("Starting recursive tests");
-    onRunAuto();
+    // THIS NEEDS TO BE FIXED AS IT DOES NOT WAIT FOR TEST COMPLETION!!!
+    while (testCases.length > 0) {
+        currentTestCase = testCases.pop();
+        currentTestCase.func("auto");
+    }
 }
 
 // Add Steps to the test case
@@ -192,10 +188,9 @@ module.exports.enableRecursive = function () {
 }
 
 module.exports.perform = function (testName, testPath, testMain) {
-    currentTestRunning = true;
-    
     currentTestCase = new TestCase(testName, testPath, testMain);
     
+    // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (testMode == "manual") {
         print("Begin manual test:" + testName);
         currentTestCase.func("manual");
@@ -204,10 +199,7 @@ module.exports.perform = function (testName, testPath, testMain) {
         currentTestCase.func("auto");
     } else {
         print("Not running yet - in recursive mode");
-        currentTestCase.func("recursive");
+        testCases.push(currentTestCase);
     }
 }
 
-module.exports.testRunning = function () {
-    return currentTestRunning;
-}
