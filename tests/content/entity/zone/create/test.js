@@ -1,14 +1,17 @@
-module.exports.complete = false;
+var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
+//var autoTester = Script.require("../../../../utils/autoTester.js" );
 
-module.exports.test = function (testType) {
-    var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
-    var spectatorCameraConfig = autoTester.setupTests(Script.resolvePath("."));
+autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
+    var spectatorCameraConfig = autoTester.setupTest();
 
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
 
     // As a 5 meters cube box
     var dim = { x: 5.0, y: 5.0, z: 5.0};
+
+    // Configure the camera
+    spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
 
     // Define zone properties
     var properties = {
@@ -24,23 +27,14 @@ module.exports.test = function (testType) {
     };
     var zone = Entities.addEntity(properties);
 
-    // An array of tests is created.  These may be called via the timing mechanism for auto-testing,
+    //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-    var steps = [
-        function () {
-            spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
-        },
-        
-        // Take snapshot
-        function () {
-        },
-        
-        // Clean up after test
-        function () {
-            Entities.deleteEntity(zone);
-            module.exports.complete = true;
-        }
-    ]
     
-    var result = autoTester.runTests(testType, steps);
-};
+    autoTester.addStepSnapshot("Take snapshot");
+
+    autoTester.addStep("Clean up after test", function () {
+        Entities.deleteEntity(zone);
+    });
+    
+    var result = autoTester.runTest(testType);
+});
