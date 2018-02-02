@@ -31,6 +31,7 @@ if (true) {
         shape: "Cube",
         name: "",
         position: worldPosition,
+        rotation: MyAvatar.orientation,
         dimensions: { x: width, y: thickness, z: width },
         lifetime: LIFETIME,
         color: floorColor
@@ -49,12 +50,15 @@ var shapeTypes = [
     "static-mesh"
 ];
 
-var urlPrefix = "http://localhost/~andrew/models/";
 var models = [
-    "threeCross-single-mesh.fbx",
-    "threeCross-three-submeshes.fbx"
+    "threeCross-single-mesh",
+    "threeCross-three-submeshes"
 ];
-var compoundShapeURL = urlPrefix + "threeCross-hulls.obj";
+var modelUrls = [
+    "https://github.com/highfidelity/hifi_tests/raw/master/assets/models/collisions/xyzCross-single-mesh.fbx",
+    "https://github.com/highfidelity/hifi_tests/raw/master/assets/models/collisions/xyzCross-three-submeshes.fbx"
+];
+var compoundShapeURL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/collisions/threeCross-hulls.obj";
 
 var numModels = models.length;
 var numShapeTypes = shapeTypes.length;
@@ -66,7 +70,6 @@ var modelDimensions = { x: width, y: 0.5 * width, z: width };
 
 var yOffset = offset.y;
 for (var i = 0; i < numModels; i++) {
-    var model = urlPrefix + models[i];
     var zOffset = offset.z - separation * (i + 1);
     for (var j = 0; j < numShapeTypes; j++) {
         var xOffset = offset.x + (j - 0.5 * (numShapeTypes - 1)) * separation;
@@ -75,7 +78,7 @@ for (var i = 0; i < numModels; i++) {
         var properties = {
             type: "Model",
             name: models[i] + " with shapeType=" + shapeTypes[j],
-            modelURL: urlPrefix + models[i],
+            modelURL: modelUrls[i],
             shapeType: shapeTypes[j],
             dynamic: false,
             lifetime: LIFETIME,
