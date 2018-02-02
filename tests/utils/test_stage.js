@@ -54,7 +54,7 @@ function addBackdropGrid(backdrop) {
     }
 }
 
-function addZone(hasKeyLight, hasAmbient) {
+addZone = function (hasKeyLight, hasAmbient) {
     var zoneDim = Vec3.multiply(BACKDROP_SIZE, TILE_DIM);
     var center = getStagePosOriAt(0, 0, 0).pos;
     

@@ -1,30 +1,14 @@
+Script.include("../../../utils/test_stage.js?raw=true")
+
 var _step = 0;
 var properties;
 var createdEntities = [];
+var LIFETIME = 120;
 
-// all objects will have a finite lifetime
-var LIFETIME = 90; // 1 min
-
-var zone = Entities.addEntity({
-    "dimensions": {
-        "x": 100,
-        "y": 50,
-        "z": 100.0009994506836
-    },
-    "keyLight": {
-        "direction": {
-            "x": 0.567731374502182,
-            "y": -0.258819043636322,
-            "z": 0.951251208782196
-        }
-    },
-    "name": "ZoneTest",
-    "shapeType": "box",
-    "type": "Zone",
-    lifetime: LIFETIME,
-});
+var zone = addZone(true, true);
 var floor = Entities.addEntity({
-    type: "Box",
+    type: "Shape",
+    shape: "Cube",
     name: "Floor",
     position: {x:0, y:-1, z:0},
     dimensions: {x:100, y:1, z:100},
@@ -55,7 +39,25 @@ var voxel = Entities.addEntity(       {
 var hifi = Entities.addEntity({
     type: "Model",
     name: "Hifi",
-    position: {x:2, y:0, z:2},
+    position: {x:1.5, y:0.5, z:2},
+    dimensions: {x:1, y:1, z:1},
+    dynamic: false,
+    lifetime: LIFETIME,
+    modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
+});
+var hifi2 = Entities.addEntity({
+    type: "Model",
+    name: "Hifi",
+    position: {x:1, y:0.5, z:15},
+    dimensions: {x:1, y:1, z:1},
+    dynamic: false,
+    lifetime: LIFETIME,
+    modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
+});
+var hifi3 = Entities.addEntity({
+    type: "Model",
+    name: "Hifi",
+    position: {x:-0.5, y:0.5, z:25},
     dimensions: {x:1, y:1, z:1},
     dynamic: false,
     lifetime: LIFETIME,
@@ -75,7 +77,7 @@ var roof = Entities.addEntity({
         "z": 10
     },
     "shape": "Cube",
-    "type": "Box",
+    "type": "Shape",
 });
 var greenPaint = Entities.addEntity({
     color: {
@@ -83,7 +85,7 @@ var greenPaint = Entities.addEntity({
         green: 10,
         red: 10
     },
-    position: {x:1.25, y:0.5, z:1},
+    position: {x:1.25, y:0.5, z:15},
     dimensions: {x:500, y:500, z:500},
     linePoints: [
         {
@@ -273,6 +275,8 @@ createdEntities.push(zone);
 createdEntities.push(floor);
 createdEntities.push(voxel);
 createdEntities.push(hifi);
+createdEntities.push(hifi2);
+createdEntities.push(hifi3);
 createdEntities.push(greenPaint);
 createdEntities.push(roof);
 

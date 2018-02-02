@@ -1,7 +1,7 @@
 # Engine Render Shadows
 
 ### Preconditions
-Interface is running, logged in an empty domain with editing rights and with avatar in third person view. This test should be performed in Desktop and in HMD mode.
+Interface is running, logged in an empty domain with editing rights and with avatar in first person view. This test should be performed with shadows enabled in Desktop and in HMD mode.
 
 ### Steps
 
