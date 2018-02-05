@@ -1,8 +1,9 @@
-
 var currentTestName = "";
-var currentTestRunning = false;
 var currentSteps = [];
 var currentStepIndex = 0;
+
+var testCases = [];
+var currentlyExecutingTest = 0;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -22,11 +23,11 @@ module.exports.setupTest = function () {
     currentStepIndex = 0;
     currentTestName = currentTestCase.name;
 
-    print("Setup test" + currentTestName);        
+    print("Setup test - " + currentTestName);        
     
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
-    
+
     // Zero the head position
     MyAvatar.bodyYaw =   0.0;
     MyAvatar.bodyPitch = 0.0;
@@ -34,7 +35,7 @@ module.exports.setupTest = function () {
     MyAvatar.headYaw =   0.0;
     MyAvatar.headPitch = 0.0;
     MyAvatar.headRoll =  0.0;
-    
+
     // resolvePath(".") returns a string that looks like "file:/" + <current folder>
     // We need the current folder
     var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
@@ -46,8 +47,8 @@ module.exports.setupTest = function () {
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
     spectatorCameraConfig.orientation = MyAvatar.orientation;
-    
-    
+
+
     // Configure the camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
 
@@ -63,9 +64,11 @@ var runOneStep = function (stepFunctor, stepIndex) {
     }
 
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
-    // but this seems to work ok if the snapshot is a spearate step
-    if (stepFunctor.snap !== undefined && stepFunctor.snap) {
+    // but this seems to work ok if the snapshot is a separate step
+    if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
         print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
+        
+        
         Window.takeSecondaryCameraSnapshot();
     }
 }
@@ -76,37 +79,37 @@ var runNextStep = function () {
         runOneStep(currentSteps[currentStepIndex], currentStepIndex);
         currentStepIndex++;
     }
-    
+
     // Return true to go on or false if done
     return (currentStepIndex < currentSteps.length)
 }
 
 var testOver = function() {
-    if (runningManual) {
+    if (testMode == "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
     //Window.message("Test " + currentTestName + " over");
-    print("Test over " + currentTestName); 
+    print("Test over " + currentTestName);
     
     currentSteps = [];
     currentStepIndex = 0;
-    currentTestName = "";      
-    currentTestRunning = false;    
+    currentTestName = "";
     currentTestCase = null;
-   // maybe not...
-    Script.stop();
+    
+    if (testMode == "manual") {
+        Script.stop();
+    }
 }
 
-
-var onRunAutoNext = function() {  
+var onRunAutoNext = function() {
     // run the step...
     if (!runNextStep()) {
-        testOver();       
+        testOver();
     }
 
     // and call itself after next timer
-    var STEP_TIME = 2000;   
+    var STEP_TIME = 2000;
     Script.setTimeout(
         onRunAutoNext,
         STEP_TIME
@@ -125,15 +128,16 @@ var onRunAuto = function() {
 var onKeyPressEventNextStep = function (event) {
     if (event.key == 32) {
         if (!runNextStep()) {
-            testOver();       
+            testOver();
         }
     }
 }
 
 var onRunStepByStep = function() {
     Window.displayAnnouncement(
-            "Ready to run test " + currentTestName + "\n"
-         + currentSteps.length + " steps\nPress [SPACE] for next steps");
+        "Ready to run test " + currentTestName + "\n" +
+        currentSteps.length + " steps\nPress [SPACE] for next steps");
+         
     Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
 
@@ -141,8 +145,17 @@ var onRunStepByStep = function() {
 module.exports.runTest = function (testType) {
     if (testType  == "auto") {
         onRunAuto();
-    } else { 
-        onRunStepByStep();       
+    } else if (testType = "manual") { 
+        onRunStepByStep();
+    }
+}
+
+module.exports.runRecursive = function () {
+    print("Starting recursive tests");
+    // THIS NEEDS TO BE FIXED AS IT DOES NOT WAIT FOR TEST COMPLETION!!!
+    while (testCases.length > 0) {
+        currentTestCase = testCases.pop();
+        currentTestCase.func("auto");
     }
 }
 
@@ -160,32 +173,33 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
     doAddStep(name, stepFunction, true);
 }
 
-
-var runningManual = true;
+var testMode = "manual";
 
 module.exports.runManual = function () {
-    return runningManual;
+    return (testMode == "manual");
 }
 
 module.exports.enableAuto = function () {
-    runningManual = false;
+    testMode = "auto";
 }
 
+module.exports.enableRecursive = function () {
+    testMode = "recursive";
+}
 
 module.exports.perform = function (testName, testPath, testMain) {
-    currentTestRunning = true;
-    
     currentTestCase = new TestCase(testName, testPath, testMain);
     
-    if (runningManual) {     
-        print("Begin manual test:" + testName);        
-        currentTestCase.func("stepbystep");
-    } else {
-        print("Begin auto test:" + testName);        
+    // Manual and auto tests are run immediately, recursive tests are stored in a queue
+    if (testMode == "manual") {
+        print("Begin manual test:" + testName);
+        currentTestCase.func("manual");
+    } else if (testMode == "auto") {
+        print("Begin auto test:" + testName);
         currentTestCase.func("auto");
+    } else {
+        print("Not running yet - in recursive mode");
+        testCases.push(currentTestCase);
     }
 }
 
-module.exports.testRunning = function () {
-    return currentTestRunning;
-}
