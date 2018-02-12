@@ -23,8 +23,7 @@ var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 120;
 
-function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {
-    
+function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {  
     var backdrop = setupStage(hasZone, hasZone, hasLocalLights)
 
     return backdrop;
