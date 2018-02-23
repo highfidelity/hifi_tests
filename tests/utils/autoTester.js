@@ -13,6 +13,7 @@ TestCase = function (name, path, func) {
 
 var currentTestCase = null;
 var usePrimaryCamera = false;
+var currentRecursiveTestCompleted = false;
 
 module.exports.setupTest = function (primaryCamera) {
     if (currentTestCase === null) {
@@ -49,7 +50,6 @@ module.exports.setupTest = function (primaryCamera) {
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-
     // Configure the camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
 
@@ -71,8 +71,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
     // but this seems to work ok if the snapshot is a separate step
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
-        print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
-        
+        print("Taking snapshot " + (stepIndex + 1));
         
         usePrimaryCamera ? Window.takeSnapshot() : Window.takeSecondaryCameraSnapshot();
     }
@@ -104,6 +103,8 @@ var testOver = function() {
     
     if (testMode === "manual" || testMode === "auto") {
         Script.stop();
+    } else { // testMode === "recursive"
+        currentRecursiveTestCompleted = true;
     }
 }
 
@@ -150,6 +151,7 @@ var onRunStepByStep = function() {
 
 // Steps is an array of functions; each function being a test step
 module.exports.runTest = function (testType) {
+    // In recursive mode, this call is ignored
     if (testType  == "auto") {
         onRunAuto();
     } else if (testType = "manual") { 
@@ -159,16 +161,30 @@ module.exports.runTest = function (testType) {
 
 module.exports.runRecursive = function () {
     print("Starting recursive tests");
-    // THIS NEEDS TO BE FIXED AS IT DOES NOT WAIT FOR TEST COMPLETION!!!
-    while (testCases.length > 0) {
-        currentTestCase = testCases.pop();
-        currentTestCase.func("auto");
-    }
+    
+    currentRecursiveTestCompleted = true;
+    var STEP_TIME = 2000;   
+    Script.setInterval(
+        function () {
+            if (currentRecursiveTestCompleted) {
+                currentRecursiveTestCompleted = false;
+                if (testCases.length > 0) {
+                    currentTestCase = testCases.pop();
+                    currentTestCase.func("auto");
+                } else {
+                    print("Recursive tests complete");
+                    Script.stop();
+                }
+            }
+        },
+        STEP_TIME
+    );
 }
 
 // Add Steps to the test case
 var doAddStep = function (name, stepFunction, snapshot) {
     currentSteps.push({"index": currentSteps.length, "name": name, "func": stepFunction, "snap": snapshot })
+    print("PUSHING STEP" + currentSteps.length);
 }
 
 // Add Steps to the test case
@@ -212,4 +228,3 @@ module.exports.perform = function (testName, testPath, testMain) {
         testCases.push(currentTestCase);
     }
 }
-
