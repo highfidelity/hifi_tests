@@ -12,8 +12,9 @@ TestCase = function (name, path, func) {
 }
 
 var currentTestCase = null;
+var usePrimaryCamera = false;
 
-module.exports.setupTest = function () {
+module.exports.setupTest = function (primaryCamera) {
     if (currentTestCase === null) {
         return;
     }
@@ -52,6 +53,10 @@ module.exports.setupTest = function () {
     // Configure the camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
 
+    if (primaryCamera) {
+        usePrimaryCamera = true;
+    }
+
     return spectatorCameraConfig;
 }
 
@@ -69,7 +74,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         print("Taking snapshot" + (stepIndex + 1) + "/" + (currentSteps.length));
         
         
-        Window.takeSecondaryCameraSnapshot();
+        usePrimaryCamera ? Window.takeSnapshot() : Window.takeSecondaryCameraSnapshot();
     }
 }
 
@@ -102,6 +107,8 @@ var testOver = function() {
     }
 }
 
+var autoTimeStep = 2000;
+
 var onRunAutoNext = function() {
     // run the step...
     if (!runNextStep()) {
@@ -109,10 +116,9 @@ var onRunAutoNext = function() {
     }
 
     // and call itself after next timer
-    var STEP_TIME = 2000;
     Script.setTimeout(
         onRunAutoNext,
-        STEP_TIME
+        autoTimeStep
     );
 }
 
@@ -179,8 +185,11 @@ module.exports.runManual = function () {
     return (testMode == "manual");
 }
 
-module.exports.enableAuto = function () {
+module.exports.enableAuto = function (timeStep) {
     testMode = "auto";
+    if (timeStep) {
+        autoTimeStep = timeStep;
+    }
 }
 
 module.exports.enableRecursive = function () {
