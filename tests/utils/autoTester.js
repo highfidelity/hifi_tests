@@ -81,7 +81,7 @@ var runNextStep = function () {
     }
 
     // Return true to go on or false if done
-    return (currentStepIndex < currentSteps.length)
+    return (currentStepIndex < currentSteps.length);
 }
 
 var testOver = function() {
@@ -97,7 +97,7 @@ var testOver = function() {
     currentTestName = "";
     currentTestCase = null;
     
-    if (testMode == "manual") {
+    if (testMode === "manual" || testMode === "auto") {
         Script.stop();
     }
 }
@@ -106,6 +106,7 @@ var onRunAutoNext = function() {
     // run the step...
     if (!runNextStep()) {
         testOver();
+        return;
     }
 
     // and call itself after next timer
