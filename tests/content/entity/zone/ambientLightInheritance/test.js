@@ -1,7 +1,7 @@
-var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
-//var autoTester = Script.require("../../../../utils/autoTester.js" );
+//var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
+var autoTester = Script.require("../../../../utils/autoTester.js" );
 
-autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
+autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function() {
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment
@@ -16,7 +16,7 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
     var zoneGreenDimensions = { x: 30.0, y: ZONE_HEIGHT, z: 30.0};
     var zoneBlueDimensions  = { x: 20.0, y: ZONE_HEIGHT, z: 20.0};
 
-    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/hazeTests/";
+    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/addRecursionToAutotester/";
     var SUFFIX = "?raw=true";
     
     // Create zones
@@ -168,5 +168,5 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
         }
     );
     
-    var result = autoTester.runTest(testType);
+    var result = autoTester.runTest();
 });

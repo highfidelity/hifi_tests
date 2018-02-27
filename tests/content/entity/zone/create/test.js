@@ -1,7 +1,7 @@
-var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
-//var autoTester = Script.require("../../../../utils/autoTester.js" );
+//var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
+var autoTester = Script.require("../../../../utils/autoTester.js" );
 
-autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
+autoTester.perform("Zone create", Script.resolvePath("."), function() {
     var spectatorCameraConfig = autoTester.setupTest();
 
     // Create the zone centered at the avatar position
@@ -36,5 +36,5 @@ autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
         Entities.deleteEntity(zone);
     });
     
-    var result = autoTester.runTest(testType);
+    var result = autoTester.runTest();
 });

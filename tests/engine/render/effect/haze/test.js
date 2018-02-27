@@ -1,7 +1,7 @@
 //var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
 var autoTester = Script.require("../../../../utils/autoTester.js" );
 
-autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) {
+autoTester.perform("effect - haze", Script.resolvePath("."), function() {
     var spectatorCameraConfig = autoTester.setupTest();
     
     // Load terrain
@@ -9,10 +9,10 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
     position.x = position.x - 5000.0;
     position.y = position.y + 20.0;
     
-    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/hazeTests/";
+    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/addRecursionToAutotester/";
     var SUFFIX = "?raw=true";
 
-    var TERRAIN_URL = Script.resolvePath(TESTS_URL + '/assets/models/geometry/terrain/Nevada-Moon-Rocks.baked.fbx' + SUFFIX);
+    var TERRAIN_URL = Script.resolvePath(TESTS_URL + 'assets/models/geometry/terrain/Nevada-Moon-Rocks.baked.fbx' + SUFFIX);
     var terrain = Entities.addEntity({
         type: 'Model',
         name: 'Terrain',
@@ -185,10 +185,8 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
         function () {
             Entities.deleteEntity(terrain);
             Entities.deleteEntity(sky);
-            
-            module.exports.complete = true;
         }
     );
     
-    var result = autoTester.runTest(testType);
+    var result = autoTester.runTest();
 });
