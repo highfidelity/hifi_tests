@@ -7,6 +7,9 @@ var currentlyExecutingTest = 0;
 
 var testMode = "manual";
 
+var snapshotPrefix = "";
+var snapshotIndex = 0;
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -30,7 +33,9 @@ var runOneStep = function (stepFunctor, stepIndex) {
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
         print("Taking snapshot " + (stepIndex + 1));
         
-        usePrimaryCamera ? Window.takeSnapshot() : Window.takeSecondaryCameraSnapshot();
+        var currentSnapshotName = snapshotPrefix + snapshotIndex.toString();
+        usePrimaryCamera ? Window.takeSnapshot(currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
+        ++snapshotIndex;
     }
 }
 
@@ -106,6 +111,37 @@ var onRunManual = function() {
     Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
 
+// Add Steps to the test case
+var doAddStep = function (name, stepFunction, snapshot) {
+    currentSteps.push({"index": currentSteps.length, "name": name, "func": stepFunction, "snap": snapshot })
+    print("PUSHING STEP" + currentSteps.length);
+}
+
+// The following are exported methods, accessible to test scripts
+
+// Perform is the main method of a test
+//      testName - name of the test
+//      testPath - path the test is executing in
+//      testMain - a function that creates the test
+//
+// The method creates a test case in currentTestCase.
+// If the test mode is manual or auto then its execution is started
+module.exports.perform = function (testName, testPath, testMain) {
+    currentTestCase = new TestCase(testName, testPath, testMain);
+    
+    // Manual and auto tests are run immediately, recursive tests are stored in a queue
+    if (testMode == "manual") {
+        print("Begin manual test:" + testName);
+        currentTestCase.func("manual");
+    } else if (testMode == "auto") {
+        print("Begin auto test:" + testName);
+        currentTestCase.func("auto");
+    } else {
+        print("Not running yet - in recursive mode");
+        testCases.push(currentTestCase);
+    }
+}
+
 module.exports.setupTest = function (primaryCamera) {
     if (currentTestCase === null) {
         return;
@@ -132,8 +168,33 @@ module.exports.setupTest = function (primaryCamera) {
     // resolvePath(".") returns a string that looks like "file:/" + <current folder>
     // We need the current folder
     var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
-    Snapshot.setSnapshotsLocation(path);
+    var pathParts = path.split("/");
+    
+    // Snapshots are saved in the user-selected folder
+    // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
+    // the tests are named D_GitHub_hifi-tests_tests_content_entity_zone_create_0.jpg and so on
+    // Date and time are not used as part of the name, to keep the path lengths to a minimum
+    // (the Windows API limit is 260 characters).
+    //
+    snapshotPrefix = "";
 
+    // On Windows the first part is <disk>: - this is changed
+    var str = pathParts[0];
+    if (str.indexOf(":") !== -1) {
+        snapshotPrefix = str.replace(":", "").toUpperCase();
+    }
+
+    for (var i = 1; i < pathParts.length; ++i) {
+        str = pathParts[i];
+        
+        // Replace any spaces
+        str = str.replace(" ", "__");
+        
+        snapshotPrefix += "_" + str;
+    }
+
+    snapshotIndex = 0;
+    
     var spectatorCameraConfig = Render.getConfig("SecondaryCamera");
     spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
@@ -151,13 +212,6 @@ module.exports.setupTest = function (primaryCamera) {
     return spectatorCameraConfig;
 }
 
-// Add Steps to the test case
-var doAddStep = function (name, stepFunction, snapshot) {
-    currentSteps.push({"index": currentSteps.length, "name": name, "func": stepFunction, "snap": snapshot })
-    print("PUSHING STEP" + currentSteps.length);
-}
-
-// The following are exported methods, accessible to test scripts
 // Add steps to the test case, take snapshot if 3rd parameter is true
 module.exports.addStep = function (name, stepFunction, snapshot) {
     doAddStep(name, stepFunction, snapshot);
@@ -184,29 +238,6 @@ module.exports.enableRecursive = function (timeStep) {
         autoTimeStep = timeStep;
     }
     print("TEST MODE RECURSIVE SELECTED");
-}
-
-// Perform is the main method of a test
-//      testName - name of the test
-//      testPath - path the test is executing in
-//      testMain - a function that creates the test
-//
-// The method creates a test case in currentTestCase.
-// If the test mode is manual or auto then its execution is started
-module.exports.perform = function (testName, testPath, testMain) {
-    currentTestCase = new TestCase(testName, testPath, testMain);
-    
-    // Manual and auto tests are run immediately, recursive tests are stored in a queue
-    if (testMode == "manual") {
-        print("Begin manual test:" + testName);
-        currentTestCase.func("manual");
-    } else if (testMode == "auto") {
-        print("Begin auto test:" + testName);
-        currentTestCase.func("auto");
-    } else {
-        print("Not running yet - in recursive mode");
-        testCases.push(currentTestCase);
-    }
 }
 
 // Steps is an array of functions; each function being a test step
