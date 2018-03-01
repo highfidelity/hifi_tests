@@ -20,6 +20,15 @@ var currentTestCase = null;
 var usePrimaryCamera = false;
 var currentRecursiveTestCompleted = false;
 
+//returns n as a string, padded to length characters with the character ch
+function pad(n, length, ch) {
+  ch = ch || '0';  // default is '0'
+  n += '';         // convert n to string
+  
+  // returns n as is, if it is too long
+  return n.length >= length ? n : new Array(length - n.length + 1).join(ch) + n;
+}
+
 var runOneStep = function (stepFunctor, stepIndex) {
     print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
     Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
@@ -33,7 +42,8 @@ var runOneStep = function (stepFunctor, stepIndex) {
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
         print("Taking snapshot " + (stepIndex + 1));
         
-        var currentSnapshotName = snapshotPrefix + snapshotIndex.toString();
+        // Image numbers are padded to 5 digits
+        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, 5, '0');;
         usePrimaryCamera ? Window.takeSnapshot(currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
         ++snapshotIndex;
     }
