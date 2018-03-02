@@ -43,7 +43,9 @@ var runOneStep = function (stepFunctor, stepIndex) {
         print("Taking snapshot " + (stepIndex + 1));
         
         // Image numbers are padded to 5 digits
-        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, 5, '0');;
+        // Changing this number requires changing the auto-tester C++ code!
+        var NUM_DIGITS = 5;
+        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
         usePrimaryCamera ? Window.takeSnapshot(currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
         ++snapshotIndex;
     }
