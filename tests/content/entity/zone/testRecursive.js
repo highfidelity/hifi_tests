@@ -10,7 +10,7 @@ autoTester.enableRecursive();
 ////Script.include("file:///D:/GitHub/hifi-tests/tests/content/entity/zone/ambientLightInheritance/test.js?raw=true");
 ////Script.include("file:///D:/GitHub/hifi-tests/tests/content/entity/zone/create/test.js");
 ////Script.include("file:///D:/GitHub/hifi-tests/tests/content/entity/zone/ambientLightInheritance/test.js?raw=true");
-Script.include("create/test.js");
-Script.include("ambientLightInheritance/test.js");
+Script.include("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/create/test.js");
+Script.include("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightInheritance/test.js");
 
 autoTester.runRecursive();
