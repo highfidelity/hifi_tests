@@ -2,7 +2,8 @@
 // #debug
 
 ////var autoTester = Script.require("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/autoTester.js?raw=true");
-var autoTester = Script.require("../../../utils/autoTester.js" );
+////var autoTester = Script.require("../../../utils/autoTester.js" );
+var autoTester = Script.require("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/utils/autoTester.js" );
 
 autoTester.enableRecursive();
 
