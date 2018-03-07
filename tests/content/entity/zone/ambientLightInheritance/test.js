@@ -1,5 +1,4 @@
 var autoTester = Script.require("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/utils/autoTester.js" );
-////var autoTester = Script.require("../../../../utils/autoTester.js" );
 
 autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
