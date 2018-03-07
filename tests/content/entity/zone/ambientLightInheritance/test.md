@@ -7,7 +7,8 @@ This test will build the following zone hierarchy:
 The tests consist of setting ambient light component parameters and moving through the zones.  In each zone, the keylight modes are changed.
 
 ## Preconditions
-In an empty region of a domain with editing rights
+In an empty region of a domain with editing rights.
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/contents/entity/zone/ambientLightInheritence/test.js>
 ## Test
 1. Stand in red zone
 2. Verify bright ambient light
