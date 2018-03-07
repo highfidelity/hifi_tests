@@ -1,14 +1,15 @@
-//var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
-var autoTester = Script.require("../../../../utils/autoTester.js" );
+//if (typeof autoTester === "undefined") {
+    var autoTester = Script.require("../../../../utils/autoTester.js" );
+//}
 
-autoTester.perform("Zone create", Script.resolvePath("."), function() {
+autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
 
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
 
     // As a 5 meters cube box
-    var dim = { x: 5.0, y: 5.0, z: 5.0};
+    var dim = { x: 5.0, y: 5.0, z: 5.0 };
 
     // Configure the camera
     spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
@@ -36,5 +37,5 @@ autoTester.perform("Zone create", Script.resolvePath("."), function() {
         Entities.deleteEntity(zone);
     });
     
-    var result = autoTester.runTest();
+    var result = autoTester.runTest(testType);
 });

@@ -1,7 +1,7 @@
-//var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
+////var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
 var autoTester = Script.require("../../../../utils/autoTester.js" );
 
-autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function() {
+autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment
@@ -168,5 +168,5 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
         }
     );
     
-    var result = autoTester.runTest();
+    var result = autoTester.runTest(testType);
 });

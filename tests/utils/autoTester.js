@@ -4,7 +4,6 @@ var currentStepIndex = 0;
 
 var testCases = [];
 var currentlyExecutingTest = 0;
-
 var testMode = "manual";
 
 var snapshotPrefix = "";
@@ -26,7 +25,7 @@ function pad(n, length, ch) {
   n += '';         // convert n to string
   
   // returns n as is, if it is too long
-  return n.length >= length ? n : new Array(length - n.length + 1).join(ch) + n;
+  return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
@@ -63,7 +62,7 @@ var runNextStep = function () {
 }
 
 var testOver = function() {
-    if (testMode == "manual") {
+    if (testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
@@ -142,10 +141,10 @@ module.exports.perform = function (testName, testPath, testMain) {
     currentTestCase = new TestCase(testName, testPath, testMain);
     
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
-    if (testMode == "manual") {
+    if (testMode === "manual") {
         print("Begin manual test:" + testName);
         currentTestCase.func("manual");
-    } else if (testMode == "auto") {
+    } else if (testMode === "auto") {
         print("Begin auto test:" + testName);
         currentTestCase.func("auto");
     } else {
@@ -253,11 +252,11 @@ module.exports.enableRecursive = function (timeStep) {
 }
 
 // Steps is an array of functions; each function being a test step
-module.exports.runTest = function () {
+module.exports.runTest = function (testType) {
     // In recursive mode, this call is ignored
-    if (testMode  == "auto") {
+    if (testType  === "auto") {
         onRunAuto();
-    } else if (testMode = "manual") { 
+    } else if (testType === "manual") { 
         onRunManual();
     }
 }
