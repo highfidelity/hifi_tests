@@ -8,8 +8,16 @@ The tests consist of setting ambient light component parameters and moving throu
 
 ## Preconditions
 In an empty region of a domain with editing rights.
-Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/contents/entity/zone/ambientLightInheritence/test.js>
-## Test
+
+## Automatic Test
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightInheritance/testAuto.js>
+## Manual Test
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightInheritance/test.js>
+
+Press space bar to advance step by step
+## Performing step by step
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightInheritance/test.js>
+
 1. Stand in red zone
 2. Verify bright ambient light
 ![](./ExpectedImage_00001.png) 
