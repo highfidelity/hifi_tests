@@ -14,11 +14,8 @@ Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursi
 ## Manual Test
 Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightInheritance/test.js>
 
-Press space bar to advance step by step
-## Performing step by step
-Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightInheritance/test.js>
-
-1. Stand in red zone
+Press space bar to advance step by step;
+1. Standing in red zone
 2. Verify bright ambient light
 ![](./ExpectedImage_00001.png) 
 3. Move to green zone
