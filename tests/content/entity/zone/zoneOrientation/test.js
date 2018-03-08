@@ -7,9 +7,11 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
     var avatarOriginPosition = MyAvatar.position;
     
     var zonePosition = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
-
     var zoneDimensions = { x: 200.0, y: 200.0, z: 200.0};
     
+    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/addRecursionToAutotester/";
+    var SUFFIX = "?raw=true";
+
     // Create zones
     var SKYBOX_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ColourBoxWithSun.jpg' + SUFFIX);
     var zoneProperties = {
