@@ -85,7 +85,7 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
     
     // An array of tests is created.  These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-    autoTester.addStepSnapshot("Zone not rotated - keylight at zenith");
+    autoTester.addStep("Zone not rotated - keylight at zenith");
         
     // Keylight tests (keylight is straight up)
     autoTester.addStepSnapshot("Pitch zone 45 degrees up, light should come from behind, 45 degrees above horizon",
@@ -176,7 +176,7 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
         }
     );
         
-    autoTester.addStepSnapshot(    
+    autoTester.addStepSnapshot("Cleanup",
         function () {
             Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
             Entities.deleteEntity(zone);
