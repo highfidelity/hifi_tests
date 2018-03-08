@@ -226,11 +226,6 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
         }
     );
         
-    autoTester.addStepSnapshot("Take final snapshot",     
-        function () {
-        }
-    );
-        
     autoTester.addStepSnapshot("Cleanup",     
         function () {
             Entities.deleteEntity(object);
