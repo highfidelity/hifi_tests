@@ -4,22 +4,39 @@ var autoTester = Script.require("../../../../utils/autoTester.js" );
 autoTester.perform("effect - haze", Script.resolvePath("."), function() {
     var spectatorCameraConfig = autoTester.setupTest();
     
-    // Load terrain
-    var position =  MyAvatar.position;
-    position.x = position.x - 5000.0;
-    position.y = position.y + 20.0;
-    
     var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/addRecursionToAutotester/";
     var SUFFIX = "?raw=true";
 
-    var TERRAIN_URL = Script.resolvePath(TESTS_URL + 'assets/models/geometry/terrain/Nevada-Moon-Rocks.baked.fbx' + SUFFIX);
+    var pos =  MyAvatar.position;
+    
     var terrain = Entities.addEntity({
-        type: 'Model',
+        type: 'Box',
         name: 'Terrain',
-        modelURL: TERRAIN_URL,
-        shapeType: 'box',
-        dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
-        position: position
+        shape: 'Cube',
+        dimensions: { x: 1000.0, y: - 2.0, z: 1000.0 },
+        position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
+        color: { "blue": 200, "green": 200, "red": 200
+        }
+    });
+
+    // A far away "tower"
+    var base = Entities.addEntity({
+        type: 'Box',
+        name: 'Tower base',
+        shape: 'Cube',
+        dimensions: { x: 10.0, y: 10, z: 10.0 },
+        position: { x: pos.x, y: pos.y + 1.0, z: pos.z - 1000.0},
+        color: { "blue": 200, "green": 200, "red": 0
+        }
+    });
+    var tower = Entities.addEntity({
+        type: 'Box',
+        name: 'Tower',
+        shape: 'Cube',
+        dimensions: { x: 3.0, y: 300, z: 3.0 },
+        position: { x: pos.x, y: pos.y + 150, z: pos.z - 1000.0},
+        color: { "blue": 0, "green": 200, "red": 200
+        }
     });
 
     var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.ktx' + SUFFIX);
@@ -61,9 +78,9 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
     MyAvatar.headYaw = 90.0;
     spectatorCameraConfig.orientation = { x: 0.0, y: 0.7071, z: 0.0, w: 0.7071 };
 
-    autoTester.addStepSnapshot("Inital state");
+    autoTester.addStepSnapshot("Initial state");
         
-    autoTester.addStepSnapshot("Enable haze, range at 15000",
+    autoTester.addStepSnapshot("Enable haze, range at 15000 - sky is not visible, tower is visible",
         function () {
             var newProperty = { 
                 hazeMode: "enabled",
@@ -75,11 +92,11 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
         
-    autoTester.addStepSnapshot("Set range to 8000",
+    autoTester.addStepSnapshot("Set range to 500 - tower no longer visible",
         function () {
             var newProperty = { 
                 haze: {
-                    hazeRange: 8000.0
+                    hazeRange: 500.0
                 }
             };
             Entities.editEntity(sky, newProperty);  
@@ -87,7 +104,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
         
-    autoTester.addStepSnapshot("Turn on altitude effect",
+    autoTester.addStepSnapshot("Turn on altitude effect - top of tower is visible",
         function () {
             var newProperty = { 
                 haze: {
@@ -98,7 +115,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
         
-    autoTester.addStepSnapshot("Set ceiling to 500",
+    autoTester.addStepSnapshot("Set ceiling to 500 - tower no longer visible",
         function () {
             var newProperty = { 
                 haze: {
@@ -109,18 +126,18 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
         
-    autoTester.addStepSnapshot("Set base to -400",
+    autoTester.addStepSnapshot("Set base to -200 - top of tower is visible",
         function () {
             var newProperty = { 
                 haze: {
-                    hazeBaseRef: -400.0
+                    hazeBaseRef: -200.0
                 }
             };
             Entities.editEntity(sky, newProperty);  
         }
     );
         
-    autoTester.addStepSnapshot("Set base to 0 and colour sandy",
+    autoTester.addStepSnapshot("Set base to 0 and haze colour to sandy - haze looks like a sandstorm",
         function () {
             var newProperty = { 
                 haze: {
@@ -132,7 +149,18 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
         
-    autoTester.addStepSnapshot("Set background blend to 1",
+    autoTester.addStepSnapshot("Set background blend to 0.5 - tower and sky are partially visible",
+        function () {
+            var newProperty = { 
+                haze: {
+                    hazeBackgroundBlend: 0.5
+                }
+            };
+            Entities.editEntity(sky, newProperty);  
+        }
+    );
+        
+    autoTester.addStepSnapshot("Set background blend to 1 - sky becomes clear",
         function () {
             var newProperty = { 
                 haze: {
@@ -143,7 +171,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
     
-    autoTester.addStepSnapshot("Set background blend back to 0",
+    autoTester.addStepSnapshot("Set background blend back to 0 - cannot see tower nor sky",
         function () {
             var newProperty = { 
                 haze: {
@@ -154,7 +182,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
     
-    autoTester.addStepSnapshot("Test glare effect (sun is 15 degrees elevation, 095 azimuth)",
+    autoTester.addStepSnapshot("Test glare effect (sun is 15 degrees elevation, 095 azimuth) - large burgundy sun glare effect can be seen",
         function () {
             var newProperty = {
                 keyLight: {
@@ -170,7 +198,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
     
-    autoTester.addStepSnapshot("Set glare angle to 5 degrees",
+    autoTester.addStepSnapshot("Set glare angle to 5 degrees - sun glare angle becomes smaller",
         function () {
             var newProperty = { 
                 haze: {
