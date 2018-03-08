@@ -240,8 +240,6 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
             Entities.deleteEntity(marker1);
             Entities.deleteEntity(marker2);
             Entities.deleteEntity(marker3);
-
-            module.exports.complete = true;
         }
     );
     

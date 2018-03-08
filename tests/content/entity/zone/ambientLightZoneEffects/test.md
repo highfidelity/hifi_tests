@@ -1,18 +1,16 @@
-# Ambient Light Inheritance
+# Ambient Light Zone Effects
 ## General
 
 The tests consist of setting zone component parameters and moving through the zones.
 
 ## Preconditions
-Run interface and delete all content
+In an empty region of a domain with editing rights.
 
-## Steps
+## Automatic Test
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightZoneEffects/testAuto.js>
+## Manual Test
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightZoneEffects/test.js>
 
-### Step 1
-* Remove all scripts (Edit->Stop All Scripts)
-* Run this [script URL](./test.js?raw=true) (from menu: Edit->Open and Run Script File...).
-  * **Immediately** move mouse cursor out of Interface window (so that cursor does not appear in snapshots).
-* The test runs automatically and creates 5 snapshots.  Takes about 12 seconds.
-  
-### Step 2
-Verify that the 5 snapshots match "ExpectedImage_1" till "ExpectedImage_5".
+Press space bar to advance step by step
+## Performing step by step
+Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightZoneEffects/test.js>
