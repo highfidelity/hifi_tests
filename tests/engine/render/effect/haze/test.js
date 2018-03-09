@@ -1,5 +1,4 @@
-//var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
-var autoTester = Script.require("../../../../utils/autoTester.js" );
+var autoTester = Script.require("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/utils/autoTester.js" );
 
 autoTester.perform("effect - haze", Script.resolvePath("."), function() {
     var spectatorCameraConfig = autoTester.setupTest();
@@ -13,7 +12,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         type: 'Box',
         name: 'Terrain',
         shape: 'Cube',
-        dimensions: { x: 1000.0, y: - 2.0, z: 1000.0 },
+        dimensions: { x: 1000.0, y: 0.2, z: 1000.0 },
         position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
         color: { "blue": 200, "green": 200, "red": 200
         }
@@ -216,5 +215,5 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function() {
         }
     );
     
-    var result = autoTester.runTest();
+    var result = autoTester.runTest(testType);
 });
