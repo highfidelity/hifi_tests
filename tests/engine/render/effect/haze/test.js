@@ -176,12 +176,9 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
         }
     );
     
-    autoTester.addStepSnapshot("Test glare effect (sun is 15 degrees elevation, 095 azimuth) - large burgundy sun glare effect can be seen",
+    autoTester.addStepSnapshot("Test glare effect (sun is 20 degrees elevation, 010 azimuth) - large burgundy sun glare effect can be seen",
         function () {
             var newProperty = {
-                keyLight: {
-                    direction:{"x":0.9622501869, "y":-0.2588190451, "z":-0.08418598283}
-                },
                 haze: {
                     hazeCeiling: 5000.0,
                     hazeEnableGlare: 1,
