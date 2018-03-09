@@ -51,9 +51,9 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
         keyLight:{
             color: {"red":255, "green":255, "blue":255},
             direction: {
-                "x":  0.037007175385951996,
-                "y": -0.7071067690849304,
-                "z": -0.7061376571655273
+                x:  0.16317591071128845,
+                y: -0.3420201241970062,
+                z:  0.9254165291786194
             },
             intensity: 0.8
         },
