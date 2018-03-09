@@ -71,11 +71,6 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
     });
 
 	spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
-    
-    // Look down X axis
-    MyAvatar.bodyYaw = 90.0;
-    MyAvatar.headYaw = 90.0;
-    spectatorCameraConfig.orientation = { x: 0.0, y: 0.7071, z: 0.0, w: 0.7071 };
 
     autoTester.addStepSnapshot("Initial state");
         
