@@ -1,6 +1,6 @@
 var autoTester = Script.require("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/utils/autoTester.js" );
 
-autoTester.perform("effect - haze", Script.resolvePath("."), function() {
+autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     
     var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/addRecursionToAutotester/";
