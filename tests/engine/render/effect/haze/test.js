@@ -211,6 +211,8 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
     autoTester.addStepSnapshot("Clean up",
         function () {
             Entities.deleteEntity(terrain);
+            Entities.deleteEntity(base);
+            Entities.deleteEntity(tower);
             Entities.deleteEntity(sky);
         }
     );
