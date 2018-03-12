@@ -4,7 +4,7 @@ The auto-tester is a stand alone application that provides a mechanism for regre
 * Each test folder has a script that produces a set of snapshots.
 * The snapshots are compared to a 'canonical' set of images that have been produced beforehand.
 
-***Please note that before running any tests that the avatar must be in an empty part of the domain.***
+***Please note that before running any tests that your avatar must be in an empty part of the domain.***
 
 ## autoTester.js
 A utility script in the **tests/utils** folder is **autoTester.js**.  During a test, this script is pulled from the GitHub repository.
