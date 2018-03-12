@@ -1,4 +1,6 @@
-var autoTester = Script.require("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/utils/autoTester.js" );
+var repository = "highfidelity";
+var branch = "master;
+var autoTester = Script.require("https://raw.githubusercontent.com/" + repository + "/hifi_tests/" + branch +"/tests/utils/autoTester.js" );
 
 autoTester.enableAuto();
 
