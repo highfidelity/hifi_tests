@@ -1,6 +1,7 @@
-var repository = "highfidelity";
-var branch = "master;
-var autoTester = Script.require("https://raw.githubusercontent.com/" + repository + "/hifi_tests/" + branch +"/tests/utils/autoTester.js" );
+var user = "highfidelity/";
+var repository = "hifi_tests/";
+var branch = "master/";
+var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js");
 
 autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
@@ -17,7 +18,7 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
     var zoneGreenDimensions = { x: 30.0, y: ZONE_HEIGHT, z: 30.0};
     var zoneBlueDimensions  = { x: 20.0, y: ZONE_HEIGHT, z: 20.0};
 
-    var TESTS_URL = "https://github.com/" + repository + "/hifi_tests/blob/" + branch + "/";
+    var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
     
     // Create zones

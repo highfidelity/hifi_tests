@@ -1,6 +1,11 @@
-var repository = "highfidelity";
-var branch = "master;
-var autoTester = Script.require("https://raw.githubusercontent.com/" + repository + "/hifi_tests/" + branch +"/tests/utils/autoTester.js" );
+var user = "highfidelity/";
+var repository = "hifi_tests/";
+var branch = "master/";
+var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js" );
+
+autoTester.enableAuto();
+
+Script.include("./test.js?raw=true");
 
 autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
@@ -8,7 +13,7 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
     // Set up test environment
     var avatarOriginPosition = MyAvatar.position;
     
-    var TESTS_URL = "https://github.com/" + repository + "/hifi_tests/blob/" + branch + "/";
+    var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
 
     // Place object relative to the avatar (object will always be placed in the same relative position)
