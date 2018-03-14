@@ -1,6 +1,6 @@
 
 
-function MetricsChart(g, metrics, min) {
+function MetricsChart(g, metrics, min, color) {
 
 var x = d3.scaleLinear()
     .rangeRound([0, width]).domain(metrics.timeDomain);
@@ -34,12 +34,12 @@ var line = d3.line()
   g.append("path")
       .attr("class", "line")
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", color)
       .attr("stroke-width", "1.5px")
       .attr("d", line(data));
 
   g.append("line")
-      .attr("stroke", "steelblue")
+      .attr("stroke", color)
       .attr("stroke-width", "1.5px")
       .attr("x1", 0)
       .attr("y1", y(metrics.getAverage()))
