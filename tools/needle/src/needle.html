@@ -66,13 +66,13 @@ TraceLoader(function(trace) {
     .category("trace.render")
     .metrics("Application::paintGL")
  
-  var avatarsMetrics = trace.metLib
-    .category("trace.simulation.avatar")
-    .metrics("NumAvatarsPerSec")
+  //var avatarsMetrics = trace.metLib
+  //  .category("trace.simulation.avatar")
+  //  .metrics("NumAvatarsPerSec")
 
-  var jointsMetrics = trace.metLib
-    .category("trace.simulation.avatar")
-    .metrics("NumJointsPerSec")
+  //var jointsMetrics = trace.metLib
+  //  .category("trace.simulation.avatar")
+  //  .metrics("NumJointsPerSec")
 
   var chart = new MetricsChart(g, paintGLMetrics, 0);
  // var chart = new MetricsChart(g, avatarsMetrics, 0);
