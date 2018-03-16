@@ -68,12 +68,12 @@ TraceLoader(function(trace) {
 
   
 
-    var idleCallMetrics = trace.metLib
+     var presentCallMetrics = trace.metLib
         .category("trace.render")
         .metrics("OpenGLDisplayPlugin::present");
 
 
-    var presentCallMetrics = trace.metLib
+     var idleCallMetrics = trace.metLib
         .category("trace.app")
         .metrics("Application::idle");
 

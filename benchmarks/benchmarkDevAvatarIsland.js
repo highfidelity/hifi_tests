@@ -19,7 +19,7 @@ Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
     name: "benchmarkDevAvatarIsland",
-    loader: TestScript.locationLoader("hifi://dev-AvatarIsland.highfidelity.io/14.9,-9.6,25.7/0,1.0,0.0,0.0", 1, null, null, 180),
+    loader: TestScript.locationLoader("hifi://dev-AvatarIsland.highfidelity.io/14.9,-9.6,25.7/0,1.0,0.0,0.0", 1, null, null, 60),
     tracingRules: AVATAR_TRACING_RULES,
     traceActions: TestScript.locationSteps([
         {dt:6, pos:{x:14.9, y:-9.6, z: 25.7}, ori:{yaw:  0   }},
