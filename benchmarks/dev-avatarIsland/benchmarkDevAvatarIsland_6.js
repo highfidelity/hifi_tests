@@ -8,26 +8,32 @@
 
 'use strict';
 
-Script.include("../BenchmarkLib.js");
+Script.include("./BenchmarkLib.js");
+Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 
 var AVATAR_TRACING_RULES = "" + 
     "trace.*=true\n" +
     "*.detail=true\n" +
     "";
 
-Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
+
+var testStart = { 
+    url: "hifi://dev-AvatarIsland.highfidelity.io/8000,8000,8000/0,0.0,0.0,1.0" 
+};
+
 testScript.addTest({
     name: "benchmarkDevAvatarIsland",
-    loader: TestScript.locationLoader("hifi://dev-AvatarIsland.highfidelity.io/14.9,-9.6,25.7/0,1.0,0.0,0.0", 1, null, null, 60),
+    
+    loader: TestScript.locationLoader(testStart),
+    
     tracingRules: AVATAR_TRACING_RULES,
+    
     traceActions: TestScript.locationSteps([
-        {dt:6, pos:{x: 9.8, y:-8.3, z: -4.9}, ori:{yaw:112.6 }}
-   ]),
-    duration: 6
+        { dt: 30, pos:{ x:63.5, y:-2.1, z: 11.2 }, ori:{ yaw: 72.9 }}     
+    ]),
+    
+    duration: 30
 });
 
-
-
 testScript.runTests();
-
