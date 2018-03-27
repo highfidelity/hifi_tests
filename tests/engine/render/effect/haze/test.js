@@ -1,9 +1,12 @@
-var autoTester = Script.require("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/utils/autoTester.js" );
+var user = "highfidelity/";
+var repository = "hifi_tests/";
+var branch = "master/";
+var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js");
 
 autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     
-    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/addRecursionToAutotester/";
+    var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
 
     var pos =  MyAvatar.position;
