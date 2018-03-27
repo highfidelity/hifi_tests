@@ -1,4 +1,7 @@
-var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
+var user = "highfidelity/";
+var repository = "hifi_tests/";
+var branch = "master/";
+var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js");
 
 autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
@@ -10,7 +13,6 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     var createdEntities = setupStage(false, false)
 
     var posOri = getStagePosOriAt(6, 0, 0)
-
 
     // Define zone properties
     var properties = {
