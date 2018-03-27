@@ -19,6 +19,7 @@ var AVATAR_TRACING_RULES = "" +
 var testScript = new TestScript();
 
 var testStart = { 
+    clearCaches: true,
     url: "hifi://dev-AvatarIsland.highfidelity.io/8000,8000,8000/0,0.0,0.0,1.0" 
 };
 
@@ -30,7 +31,7 @@ testScript.addTest({
     tracingRules: AVATAR_TRACING_RULES,
     
     traceActions: TestScript.locationSteps([
-        { dt: 30, pos:{ x:22.5, y:-4.7, z: -5.4 }, ori:{ yaw: 60.9 }}
+        { dt: 30, pos:{ x: -14.4, y: -9.2, z: -10.4 }, ori:{ yaw: -13.4 }}
     ]),
     
     duration: 30
