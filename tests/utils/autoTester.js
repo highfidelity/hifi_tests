@@ -224,8 +224,8 @@ module.exports.setupTest = function (primaryCamera) {
 }
 
 // Add steps to the test case, take snapshot if 3rd parameter is true
-module.exports.addStep = function (name, stepFunction, snapshot) {
-    doAddStep(name, stepFunction, snapshot);
+module.exports.addStep = function (name, stepFunction) {
+    doAddStep(name, stepFunction, false);
 }
 
 // Add steps to the test case, take snapshot
