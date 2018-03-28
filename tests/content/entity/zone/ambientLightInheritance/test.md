@@ -1,12 +1,12 @@
 # Zone - Ambient Light Inheritance
-## Preconditions
-In an empty region of a domain with editing rights.
-
 ## Automatic Test
-Load script <https://raw.githubusercontent.com/HighFidelity/hifi_tests/master/tests/content/entity/zone/ambientLightInheritance/testAuto.js>
+run this [script URL](./testAuto.js?raw=true) (from menu/Edit/Open and Run scripts from URL...).
 
 ## Manual Test
-Load script <https://raw.githubusercontent.com/HighFidelity/hifi_tests/master/tests/content/entity/zone/ambientLightInheritance/test.js>
+run this [script URL](./test.js?raw=true) (from menu/Edit/Open and Run scripts from URL...).
+
+## Preconditions
+- In an empty region of a domain with editing rights.
 
 ## Steps
 Press space bar to advance step by step
@@ -29,6 +29,11 @@ Press space bar to advance step by step
 ![](./ExpectedImage_00007.png)
 9. Green zone, still no ambient light
 ![](./ExpectedImage_00008.png)
+10. Red on, bright ambient light
+![](./ExpectedImage_00009.png)
+11. Delete entities
+![](./ExpectedImage_00010.png)
+ng)
 10. Red on, bright ambient light
 ![](./ExpectedImage_00009.png)
 11. Delete entities
