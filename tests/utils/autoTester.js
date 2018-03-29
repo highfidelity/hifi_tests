@@ -282,3 +282,34 @@ module.exports.runRecursive = function () {
         STEP_TIME
     );
 }
+
+module.exports.assertPlatform = function (listOfRequiredPlatforms) {
+    // Find our OS
+    var platform = "Unknown";
+    if (Window.isWindows64()) {
+        platform = "Windows64";
+    } else if (Window.isMacOs()) {
+        platform = "MacOS";
+    } else if (Window.isLinux()) {
+        platform = "Linux";
+    } else if (Window.isAndroid()) {
+        platform = "Android";
+    }
+    
+    // platforms will contain the list of required platforms, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredPlatforms = listOfPlatforms.split(" ");
+    
+    var platformOK = false;
+    for (var requiredPlatform in requiredPlatforms) {
+        if (requiredPlatform === platform) {
+            platformOK = true;
+            break;
+        }
+    }
+    
+    if (!platformOK) {
+        print("TEST IS NOT SUPPORTED ON THIS PLATFORM!!!");
+        Script.stop();
+    }
+}
