@@ -298,7 +298,7 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
     
     // platforms will contain the list of required platforms, and possibly some extra spaces
     // (the spaces have no effect)
-    var requiredPlatforms = listOfPlatforms.split(" ");
+    var requiredPlatforms = listOfRequiredPlatforms.split(" ");
     
     var platformOK = false;
     for (var requiredPlatform in requiredPlatforms) {
