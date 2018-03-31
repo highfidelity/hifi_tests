@@ -312,6 +312,6 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
         var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
         print(errorMessage);
         Window.displayAnnouncement(errorMessage);
-        Script.stop();
+        Script.stop(true);
     }
 }
