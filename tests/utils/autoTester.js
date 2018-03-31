@@ -309,7 +309,9 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
     }
     
     if (!platformOK) {
-        print("TEST IS NOT SUPPORTED ON THIS PLATFORM!!!");
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
         Script.stop();
     }
 }
