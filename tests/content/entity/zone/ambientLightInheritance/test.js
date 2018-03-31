@@ -4,7 +4,9 @@ var branch = "needleUpdate/";//"master/";
 var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js");
 
 autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
+    print("BEFORE");
     autoTester.assertPlatform("MacOS");
+    print("AFTER");
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment
