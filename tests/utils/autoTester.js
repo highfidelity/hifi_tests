@@ -344,3 +344,30 @@ module.exports.assertDisplay = function (listOfRequiredDisplays) {
         Script.stop();
     }
 }
+
+module.exports.assertCPUType = function (listOfRequiredCPUs) {
+    // Find our CPU
+    var CPU = "I5";
+    if (Window.isI7()) {
+        display = "I7";
+    }
+    
+    // requiredCPUs will contain the list of required displays, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredCPUs = listOfRequiredCPUs.split(" ");
+    
+    var cpuOK = false;
+    for (var requiredCPU in requiredCPUs) {
+        if (requiredCPU === CPU) {
+            cpuOK = true;
+            break;
+        }
+    }
+    
+    if (!cpuOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS CPU!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
+    }
+}

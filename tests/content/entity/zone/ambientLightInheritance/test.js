@@ -6,6 +6,7 @@ var autoTester = Script.require("https://raw.githubusercontent.com/" + user + re
 autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
     autoTester.assertPlatform("Windows64 MacOS");
     autoTester.assertDisplay("Desktop Rift Vive");
+    autoTester.assertCPU("I5   I7");
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment

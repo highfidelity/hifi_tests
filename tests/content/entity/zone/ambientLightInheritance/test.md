@@ -13,41 +13,43 @@ Run the test on each of the following displays
  - Desktop
  - Rift
  - Vive
+## CPUs
+Run the test on each of the following CPUs
+ - I5
+ - I7
 ## Steps
 Press space bar to advance step by step
 
-### Step 2
-- Desktop Rift Vive
-### Step 3
+### Step 0
 - Red zone, bright ambient light
 - ![](./ExpectedImage_00000.png)
-### Step 4
+### Step 1
 - Green zone, medium ambient light
 - ![](./ExpectedImage_00001.png)
-### Step 5
+### Step 2
 - Blue zone, dark ambient light
 - ![](./ExpectedImage_00002.png)
-### Step 6
+### Step 3
 - Blue off,  no ambient light
 - ![](./ExpectedImage_00003.png)
-### Step 7
+### Step 4
 - Blue inherit, medium ambient light
 - ![](./ExpectedImage_00004.png)
-### Step 8
+### Step 5
 - Green off,  no ambient light
 - ![](./ExpectedImage_00005.png)
-### Step 9
+### Step 6
 - Green inherit, bright ambient light
 - ![](./ExpectedImage_00006.png)
-### Step 10
+### Step 7
 - Red off,  no ambient light
 - ![](./ExpectedImage_00007.png)
-### Step 11
+### Step 8
 - Green zone, still no ambient light
 - ![](./ExpectedImage_00008.png)
-### Step 12
+### Step 9
 - Red on, bright ambient light
 - ![](./ExpectedImage_00009.png)
-### Step 13
+### Step 10
 - Delete entities
 - ![](./ExpectedImage_00010.png)
