@@ -4,7 +4,8 @@ var branch = "needleUpdate/";//"master/";
 var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js");
 
 autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
-    autoTester.assertPlatform("MacOS");
+    autoTester.assertPlatform("Windows64 MacOS");
+    autoTester.assertDisplay("Desktop Rift Vive");
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment

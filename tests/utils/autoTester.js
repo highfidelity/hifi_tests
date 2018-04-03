@@ -296,7 +296,7 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
         platform = "Android";
     }
     
-    // platforms will contain the list of required platforms, and possibly some extra spaces
+    // requiredPlatforms will contain the list of required platforms, and possibly some extra spaces
     // (the spaces have no effect)
     var requiredPlatforms = listOfRequiredPlatforms.split(" ");
     
@@ -312,6 +312,35 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
         var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
         print(errorMessage);
         Window.displayAnnouncement(errorMessage);
-        ScriptDiscoveryService.stopAllScripts();
+        Script.stop();
+    }
+}
+
+module.exports.assertDisplay = function (listOfRequiredDisplays) {
+    // Find our display
+    var display = "Desktop";
+    if (Window.hasRift()) {
+        display = "Rift";
+    } else if (Window.hasVive()) {
+        display = "Vive";
+    }
+    
+    // requiredDisplays will contain the list of required displays, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredDisplays = listOfRequiredDisplays.split(" ");
+    
+    var displayOK = false;
+    for (var requiredDisplay in requiredDisplays) {
+        if (requiredDisplay === display) {
+            displayOK = true;
+            break;
+        }
+    }
+    
+    if (!displayOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS DISPLAY!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
     }
 }
