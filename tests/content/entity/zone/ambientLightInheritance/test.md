@@ -18,7 +18,7 @@ Run the test on each of the following processors
  - I5
  - I7
 ## Graphics Cards
-Run the test on each of the following Graphics Cards
+Run the test on graphics cards from each of the following vendors
  - Nvidia
  - AMD
 ## Steps

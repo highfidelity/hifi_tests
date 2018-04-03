@@ -1,9 +1,8 @@
 // This is an automatically generated file, created by auto-tester
 
-var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js");
+var autoTester = Script.require("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/autoTester.js?raw=true");
 autoTester.enableRecursive();
 
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/content/entity/shape/create/test.js");
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/content/entity/shape/physics/test.js");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/content/entity/shape/create/test.js?raw=true");
 
 autoTester.runRecursive();
