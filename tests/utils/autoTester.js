@@ -287,13 +287,13 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
     // Find our OS
     var platform = "Unknown";
     if (Window.isWindows64()) {
-        platform = "Windows64";
+        platform = "WINDOWS64";
     } else if (Window.isMacOs()) {
-        platform = "MacOS";
+        platform = "MACOS";
     } else if (Window.isLinux()) {
-        platform = "Linux";
+        platform = "LINUX";
     } else if (Window.isAndroid()) {
-        platform = "Android";
+        platform = "ANDROID";
     }
     
     // requiredPlatforms will contain the list of required platforms, and possibly some extra spaces
@@ -302,7 +302,7 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
     
     var platformOK = false;
     for (var requiredPlatform in requiredPlatforms) {
-        if (requiredPlatform === platform) {
+        if (requiredPlatform.toUpperCase() === platform) {
             platformOK = true;
             break;
         }
@@ -318,11 +318,11 @@ module.exports.assertPlatform = function (listOfRequiredPlatforms) {
 
 module.exports.assertDisplay = function (listOfRequiredDisplays) {
     // Find our display
-    var display = "Desktop";
+    var display = "DESKTOP";
     if (Window.hasRift()) {
-        display = "Rift";
+        display = "RIFT";
     } else if (Window.hasVive()) {
-        display = "Vive";
+        display = "VIVE";
     }
     
     // requiredDisplays will contain the list of required displays, and possibly some extra spaces
@@ -331,7 +331,12 @@ module.exports.assertDisplay = function (listOfRequiredDisplays) {
     
     var displayOK = false;
     for (var requiredDisplay in requiredDisplays) {
-        if (requiredDisplay === display) {
+        // The Rift is often called by the manufacturer's name
+        if (requiredDisplay.toUpperCase() == "OCULUS") {
+            requiredDisplay = "RIFT":
+        }
+        
+        if (requiredDisplay.toUpperCase() === display) {
             displayOK = true;
             break;
         }
@@ -349,7 +354,7 @@ module.exports.assertCPUType = function (listOfRequiredCPUs) {
     // Find our CPU
     var CPU = "I5";
     if (Window.isI7()) {
-        display = "I7";
+        CPU = "I7";
     }
     
     // requiredCPUs will contain the list of required displays, and possibly some extra spaces
@@ -366,6 +371,33 @@ module.exports.assertCPUType = function (listOfRequiredCPUs) {
     
     if (!cpuOK) {
         var errorMessage = "TEST IS NOT SUPPORTED ON THIS CPU!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
+    }
+}
+
+module.exports.assertGPUType = function (listOfRequiredGPUs) {
+    // Find our GPU
+    var GPU = "AMD";
+    if (Window.isNvidia()) {
+        GPU = "I7";
+    }
+    
+    // requiredGPUs will contain the list of required GPUs, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredGPUs = listOfRequiredGPUs.split(" ");
+    
+    var gpuOK = false;
+    for (var requiredGPU in requiredGPUs) {
+        if (requiredGPU.toUpperCase() === GPU) {
+            gpuOK = true;
+            break;
+        }
+    }
+    
+    if (!gpuOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS GPU!!!";
         print(errorMessage);
         Window.displayAnnouncement(errorMessage);
         Script.stop();

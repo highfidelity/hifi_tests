@@ -13,10 +13,14 @@ Run the test on each of the following displays
  - Desktop
  - Rift
  - Vive
-## CPUs
-Run the test on each of the following CPUs
+## Processors
+Run the test on each of the following processors
  - I5
  - I7
+## Graphics Cards
+Run the test on each of the following Graphics Cards
+ - Nvidia
+ - AMD
 ## Steps
 Press space bar to advance step by step
 
