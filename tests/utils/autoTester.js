@@ -224,8 +224,8 @@ module.exports.setupTest = function (primaryCamera) {
 }
 
 // Add steps to the test case, take snapshot if 3rd parameter is true
-module.exports.addStep = function (name, stepFunction, snapshot) {
-    doAddStep(name, stepFunction, snapshot);
+module.exports.addStep = function (name, stepFunction) {
+    doAddStep(name, stepFunction, false);
 }
 
 // Add steps to the test case, take snapshot
@@ -281,4 +281,125 @@ module.exports.runRecursive = function () {
         },
         STEP_TIME
     );
+}
+
+module.exports.assertPlatform = function (listOfRequiredPlatforms) {
+    // Find our OS
+    var platform = "Unknown";
+    if (Window.isWindows64()) {
+        platform = "WINDOWS64";
+    } else if (Window.isMacOs()) {
+        platform = "MACOS";
+    } else if (Window.isLinux()) {
+        platform = "LINUX";
+    } else if (Window.isAndroid()) {
+        platform = "ANDROID";
+    }
+    
+    // requiredPlatforms will contain the list of required platforms, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredPlatforms = listOfRequiredPlatforms.split(" ");
+    
+    var platformOK = false;
+    for (var requiredPlatform in requiredPlatforms) {
+        if (requiredPlatform.toUpperCase() === platform) {
+            platformOK = true;
+            break;
+        }
+    }
+    
+    if (!platformOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
+    }
+}
+
+module.exports.assertDisplay = function (listOfRequiredDisplays) {
+    // Find our display
+    var display = "DESKTOP";
+    if (Window.hasRift()) {
+        display = "RIFT";
+    } else if (Window.hasVive()) {
+        display = "VIVE";
+    }
+    
+    // requiredDisplays will contain the list of required displays, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredDisplays = listOfRequiredDisplays.split(" ");
+    
+    var displayOK = false;
+    for (var requiredDisplay in requiredDisplays) {
+        // The Rift is often called by the manufacturer's name
+        if (requiredDisplay.toUpperCase() == "OCULUS") {
+            requiredDisplay = "RIFT":
+        }
+        
+        if (requiredDisplay.toUpperCase() === display) {
+            displayOK = true;
+            break;
+        }
+    }
+    
+    if (!displayOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS DISPLAY!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
+    }
+}
+
+module.exports.assertCPUType = function (listOfRequiredCPUs) {
+    // Find our CPU
+    var CPU = "I5";
+    if (Window.isI7()) {
+        CPU = "I7";
+    }
+    
+    // requiredCPUs will contain the list of required displays, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredCPUs = listOfRequiredCPUs.split(" ");
+    
+    var cpuOK = false;
+    for (var requiredCPU in requiredCPUs) {
+        if (requiredCPU === CPU) {
+            cpuOK = true;
+            break;
+        }
+    }
+    
+    if (!cpuOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS CPU!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
+    }
+}
+
+module.exports.assertGPUType = function (listOfRequiredGPUs) {
+    // Find our GPU
+    var GPU = "AMD";
+    if (Window.isNvidia()) {
+        GPU = "I7";
+    }
+    
+    // requiredGPUs will contain the list of required GPUs, and possibly some extra spaces
+    // (the spaces have no effect)
+    var requiredGPUs = listOfRequiredGPUs.split(" ");
+    
+    var gpuOK = false;
+    for (var requiredGPU in requiredGPUs) {
+        if (requiredGPU.toUpperCase() === GPU) {
+            gpuOK = true;
+            break;
+        }
+    }
+    
+    if (!gpuOK) {
+        var errorMessage = "TEST IS NOT SUPPORTED ON THIS GPU!!!";
+        print(errorMessage);
+        Window.displayAnnouncement(errorMessage);
+        Script.stop();
+    }
 }

@@ -60,23 +60,28 @@ TraceLoader(function(trace) {
  })
 // Output(trace.listMetrics())
 
+    var yMax = 40;
+    
+    var paintGLMetrics = trace.metLib
+        .category("trace.render")
+        .metrics("Application::paintGL");
+
+  
+
+     var presentCallMetrics = trace.metLib
+        .category("trace.render")
+        .metrics("OpenGLDisplayPlugin::present");
 
 
-  var paintGLMetrics = trace.metLib
-    .category("trace.render")
-    .metrics("Application::paintGL")
- 
-  var avatarsMetrics = trace.metLib
-    .category("trace.simulation.avatar")
-    .metrics("NumAvatarsPerSec")
+     var idleCallMetrics = trace.metLib
+        .category("trace.app")
+        .metrics("Application::idle");
 
-  var jointsMetrics = trace.metLib
-    .category("trace.simulation.avatar")
-    .metrics("NumJointsPerSec")
-
-  var chart = new MetricsChart(g, paintGLMetrics, 0);
- // var chart = new MetricsChart(g, avatarsMetrics, 0);
-//  var chart = new MetricsChart(g, jointsMetrics);
+    DrawAxes(g, paintGLMetrics, yMax);
+    
+  var chart1 = new MetricsChart(g, paintGLMetrics, 0, yMax, "red", false);
+  var chart2 = new MetricsChart(g, idleCallMetrics, 0, yMax, "green", false);
+  var chart3 = new MetricsChart(g, presentCallMetrics, 0, yMax, "blue", false);
 })
 
 </script>

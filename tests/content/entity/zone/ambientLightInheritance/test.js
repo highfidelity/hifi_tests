@@ -1,9 +1,15 @@
 var user = "highfidelity/";
 var repository = "hifi_tests/";
 var branch = "master/";
-var autoTester = Script.require("https://raw.githubusercontent.com/" + user + repository + branch + "tests/utils/autoTester.js");
+var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
+autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
+    // Verify system configuration is supported
+    autoTester.assertPlatform("Windows64 MacOS");
+    autoTester.assertDisplay("Desktop Rift Vive");
+    autoTester.assertCPU("I5   I7");
+    autoTester.assertGPU("Nvidia AMD");
+    
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment

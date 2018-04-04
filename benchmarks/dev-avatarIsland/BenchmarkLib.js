@@ -1,3 +1,27 @@
+// Run tests from comand line:
+//      interface --testScript <full path to test script>
+// 
+// The Test scripting interface provides the following methods (see TestScriptingInterface.h):
+//      quit()                              Exits the application
+//      waitForTextureIdle()                Waits for all texture transfers to be complete
+//      waitForDownloadIdle();              Waits for all pending downloads to be complete
+//      waitForProcessingIdle()             Waits for all file parsing operations to be complete
+//      waitIdle()                          Waits for all pending downloads, parsing and texture transfers to be complete
+//      loadTestScene(QString scene)
+//      startTracing(QString logrules = "") Start recording Chrome compatible tracing events, logRules can be used to specify
+//                                          a set of logging category rules to limit what gets captured
+//
+//      stopTracing(QString filename)       Stop recording Chrome compatible tracing events and serialize recorded events to a file,
+//                                          Using a filename with a .gz extension will automatically compress the output file
+//
+//      clear()
+//      waitForConnection(qint64 maxWaitMs = 10000)
+//      wait(int milliseconds)
+//      waitForCondition(qint64 maxWaitMs, std::function<bool()> condition)
+//      startTraceEvent(QString name)
+//      endTraceEvent(QString name)
+//      savePhysicsSimulationStats(QString filename)    Write detailed timing stats of next physics stepSimulation() to filename
+//      profileRange(const QString& name, QScriptValue function)
 
 TEST_ROOT = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/";
 TEST_BINARY_ROOT = "https://hifi-public.s3.amazonaws.com/test_scene_data/";
@@ -8,17 +32,23 @@ DEFAULT_TRACING_RULES = "" +
     "*.detail=false\n" +
     "";
 
+// Pads a number to the left with 0s
 function pad(num, size) {
     var s = num + "";
-    while (s.length < size) { s = "0" + s; }
+    while (s.length < size) {
+        s = "0" + s; 
+    }
+    
     return s;
 }
 
+// Formats date: YYYYMMDD_HHMM
 function formatDate(date) {
     date = date || new Date();
     return date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2) + "_" + pad(date.getHours(), 2) + pad(date.getMinutes(), 2);
 }
 
+// Converts from an Euler angle object to a quaternion
 function parseOrientation(orientation, defaultValue) {
     if ((orientation.x !== undefined) || (orientation.y !== undefined) || (orientation.z !== undefined) || (orientation.w !== undefined)) {
         return orientation
@@ -48,32 +78,31 @@ TestScript = function (properties) {
     return this;
 };
 
-// url - URL to load domain from
-// waitIdle
-// position - initial position
-// orientation - initial orientation
-// delay_secs - time to wait before starting benchmark (gives domain time to load)
-TestScript.locationLoader = function (url, waitIdle, position, orientation, delay_secs) {
+// testStart.url - URL to load domain from
+// testStart.waitIdle
+// testStart.position - initial position
+// testStart.orientation - initial orientation
+TestScript.locationLoader = function (testStart) {
     return function () {
-        print("QQQ going to URL " + url);
-        Window.location = url;
+        print("QQQ going to URL " + testStart.url);
         
-        if (delay_secs !== null) {
-            Test.wait(delay_secs * 1000);
-        } else {
-            Test.wait(3 * 1000);
+        if (testStart.clearCaches) {
+            Test.clearCaches();
         }
+        
+        Window.location = testStart.url;
         
         if (!Test.waitForConnection()) {
             return false;
         }
-        if (position) {
-            MyAvatar.position = position;
+        
+        if (testStart.position) {
+            MyAvatar.position = testStart.position;
         }
-        if (orientation) {
-            MyAvatar.orientation = orientation;
+        if (testStart.orientation) {
+            MyAvatar.orientation = testStart.orientation;
         }
-        if (waitIdle) {
+        if (testStart.waitIdle) {
             print("QQQ waiting for idle");
             Test.waitIdle();
         }
@@ -84,9 +113,8 @@ TestScript.locationLoader = function (url, waitIdle, position, orientation, dela
 TestScript.locationSteps = function(steps) {
     return function () {
         print("TEST locationSteps : " + JSON.stringify(steps))
-        var len = steps.length;
-        var i = 0
-        for (; i < len; i++) {
+        
+        for (var i = 0; i < steps.length; i++) {
             var step = steps[i]
             var dt = 0.0
             if (step.dt !== undefined) {
@@ -100,7 +128,6 @@ TestScript.locationSteps = function(steps) {
                 if (step.ori !== undefined) {
                     nextOri = parseOrientation(step.ori, MyAvatar.orientation)
                 }
-
 
                 Test.wait(dt * 1000.0)
                 MyAvatar.position = nextPos
