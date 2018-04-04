@@ -11,13 +11,8 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_albedoV_ao",  a:0, b:-1, c:-0.5},
-        {name:"hifi_albedoM_ao",  a:0, b:0, c:-0.5},
-        {name:"hifi_albedoVM_ao",  a:0, b:1, c:-0.5},
-      
-        {name:"hifi_metallicV_albedoV_ao",  a:0, b:-1, c:0.5},
-        {name:"hifi_metallicV_albedoM_ao",  a:0, b:0, c:0.5},
-        {name:"hifi_metallicV_albedoVM_ao",  a:0, b:1, c:0.5},
+        {name:"hifi",     a:0, b:0, c:-0.5},
+        {name:"hifi-ao",  a:0, b:0, c:0.5},
     ];
 
     // Add the test Cases
