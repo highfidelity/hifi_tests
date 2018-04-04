@@ -333,7 +333,7 @@ module.exports.assertDisplay = function (listOfRequiredDisplays) {
     for (var requiredDisplay in requiredDisplays) {
         // The Rift is often called by the manufacturer's name
         if (requiredDisplay.toUpperCase() == "OCULUS") {
-            requiredDisplay = "RIFT":
+            requiredDisplay = "RIFT";
         }
         
         if (requiredDisplay.toUpperCase() === display) {
