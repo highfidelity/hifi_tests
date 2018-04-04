@@ -5,6 +5,7 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
     // Test material matrix
     Script.include("../matrix.js?raw=true")

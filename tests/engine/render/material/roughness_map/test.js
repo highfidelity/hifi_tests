@@ -1,6 +1,6 @@
-var user = "highfidelity/";
+var user = "NissimHadar/";
 var repository = "hifi_tests/";
-var branch = "master/";
+var branch = "needleUpdate/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
@@ -12,8 +12,8 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_emissiveV_albedoV_ao",  a:0, b:0, c:-0.5},
-        {name:"hifi_emissiveM_albedoV_ao",  a:0, b:0, c:0.5},  
+        {name:"hifi_roughnessM_albedoV_ao",  a:0, b:0, c:-0.5},
+        {name:"hifi_roughnessM_metallicV_albedoV_ao",  a:0, b:0, c:0.5},
     ];
 
     // Add the test Cases
