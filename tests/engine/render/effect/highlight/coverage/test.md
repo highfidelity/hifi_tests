@@ -5,7 +5,7 @@ Interface is running, logged in an empty domain with editing rights and with ava
 
 ### Steps
 
-During all steps, rendering should be stable in time. Rune the [highlight.js script](./highlight.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) and play each step in sequence by pressing the [SPACE] key.
+During all steps, rendering should be stable in time. Run the [highlight.js script](./highlight.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) and play each step in sequence by pressing the [SPACE] key.
 
 #### Step 1
 - Expected: ![](./init.jpg)

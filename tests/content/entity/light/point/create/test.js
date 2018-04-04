@@ -40,7 +40,6 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
 
     createdEntities.push(light);
 
-
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
     autoTester.addStepSnapshot("Take snapshot");
@@ -53,4 +52,3 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     
     var result = autoTester.runTest(testType);
 });
-

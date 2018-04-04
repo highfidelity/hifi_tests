@@ -211,10 +211,10 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-    spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    // Configure the camera
+    // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
+    spectatorCameraConfig.orientation = MyAvatar.orientation;
 
     if (primaryCamera) {
         usePrimaryCamera = true;
