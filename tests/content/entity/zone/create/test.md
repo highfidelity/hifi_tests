@@ -1,16 +1,20 @@
-# Entity Zone Create
+# Zone create
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-In an empty region of a domain with editing rights
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- run this [script URL](./create.js?raw=true) (from menu/Edit/Open and Run scripts From URL...). 
-- expected ![](./create.png)
-  - A new zone entity called "test create zone" centered on my avatar position, a box of 5 meters side length
-  - The keylight color is turned to green and the background is activated and blue
-  - The world axis aligned bounding box of the zone is visible
-  - The zone stack tool is enabled and represent the newly created zone's key light (green) and background (blue) before the default zone graphics components
-
- 
+### Step 0
+- Take snapshot
+- ![](./ExpectedImage_00000.png)

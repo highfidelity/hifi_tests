@@ -9,6 +9,8 @@ var testMode = "manual";
 var snapshotPrefix = "";
 var snapshotIndex = 0;
 
+var advanceKey = "n";
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -45,7 +47,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
-        usePrimaryCamera ? Window.takeSnapshot(currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
+        usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
         ++snapshotIndex;
     }
 }
@@ -107,7 +109,7 @@ var onRunAuto = function() {
 }
 
 var onKeyPressEventNextStep = function (event) {
-    if (event.key == 32) {
+    if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
         if (!runNextStep()) {
             testOver();
         }
@@ -117,7 +119,7 @@ var onKeyPressEventNextStep = function (event) {
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
-        currentSteps.length + " steps\nPress [SPACE] for next steps");
+        currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
          
     Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
@@ -211,10 +213,10 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-    spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    // Configure the camera
+    // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
+    spectatorCameraConfig.orientation = MyAvatar.orientation;
 
     if (primaryCamera) {
         usePrimaryCamera = true;
@@ -283,123 +285,123 @@ module.exports.runRecursive = function () {
     );
 }
 
-module.exports.assertPlatform = function (listOfRequiredPlatforms) {
-    // Find our OS
-    var platform = "Unknown";
-    if (Window.isWindows64()) {
-        platform = "WINDOWS64";
-    } else if (Window.isMacOs()) {
-        platform = "MACOS";
-    } else if (Window.isLinux()) {
-        platform = "LINUX";
-    } else if (Window.isAndroid()) {
-        platform = "ANDROID";
-    }
-    
-    // requiredPlatforms will contain the list of required platforms, and possibly some extra spaces
-    // (the spaces have no effect)
-    var requiredPlatforms = listOfRequiredPlatforms.split(" ");
-    
-    var platformOK = false;
-    for (var requiredPlatform in requiredPlatforms) {
-        if (requiredPlatform.toUpperCase() === platform) {
-            platformOK = true;
-            break;
-        }
-    }
-    
-    if (!platformOK) {
-        var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
-        print(errorMessage);
-        Window.displayAnnouncement(errorMessage);
-        Script.stop();
-    }
-}
-
-module.exports.assertDisplay = function (listOfRequiredDisplays) {
-    // Find our display
-    var display = "DESKTOP";
-    if (Window.hasRift()) {
-        display = "RIFT";
-    } else if (Window.hasVive()) {
-        display = "VIVE";
-    }
-    
-    // requiredDisplays will contain the list of required displays, and possibly some extra spaces
-    // (the spaces have no effect)
-    var requiredDisplays = listOfRequiredDisplays.split(" ");
-    
-    var displayOK = false;
-    for (var requiredDisplay in requiredDisplays) {
-        // The Rift is often called by the manufacturer's name
-        if (requiredDisplay.toUpperCase() == "OCULUS") {
-            requiredDisplay = "RIFT";
-        }
-        
-        if (requiredDisplay.toUpperCase() === display) {
-            displayOK = true;
-            break;
-        }
-    }
-    
-    if (!displayOK) {
-        var errorMessage = "TEST IS NOT SUPPORTED ON THIS DISPLAY!!!";
-        print(errorMessage);
-        Window.displayAnnouncement(errorMessage);
-        Script.stop();
-    }
-}
-
-module.exports.assertCPUType = function (listOfRequiredCPUs) {
-    // Find our CPU
-    var CPU = "I5";
-    if (Window.isI7()) {
-        CPU = "I7";
-    }
-    
-    // requiredCPUs will contain the list of required displays, and possibly some extra spaces
-    // (the spaces have no effect)
-    var requiredCPUs = listOfRequiredCPUs.split(" ");
-    
-    var cpuOK = false;
-    for (var requiredCPU in requiredCPUs) {
-        if (requiredCPU === CPU) {
-            cpuOK = true;
-            break;
-        }
-    }
-    
-    if (!cpuOK) {
-        var errorMessage = "TEST IS NOT SUPPORTED ON THIS CPU!!!";
-        print(errorMessage);
-        Window.displayAnnouncement(errorMessage);
-        Script.stop();
-    }
-}
-
-module.exports.assertGPUType = function (listOfRequiredGPUs) {
-    // Find our GPU
-    var GPU = "AMD";
-    if (Window.isNvidia()) {
-        GPU = "I7";
-    }
-    
-    // requiredGPUs will contain the list of required GPUs, and possibly some extra spaces
-    // (the spaces have no effect)
-    var requiredGPUs = listOfRequiredGPUs.split(" ");
-    
-    var gpuOK = false;
-    for (var requiredGPU in requiredGPUs) {
-        if (requiredGPU.toUpperCase() === GPU) {
-            gpuOK = true;
-            break;
-        }
-    }
-    
-    if (!gpuOK) {
-        var errorMessage = "TEST IS NOT SUPPORTED ON THIS GPU!!!";
-        print(errorMessage);
-        Window.displayAnnouncement(errorMessage);
-        Script.stop();
-    }
-}
+//module.exports.assertPlatform = function (listOfRequiredPlatforms) {
+//    // Find our OS
+//    var platform = "Unknown";
+//    if (Window.isWindows64()) {
+//        platform = "WINDOWS64";
+//    } else if (Window.isMacOs()) {
+//        platform = "MACOS";
+//    } else if (Window.isLinux()) {
+//        platform = "LINUX";
+//    } else if (Window.isAndroid()) {
+//        platform = "ANDROID";
+//    }
+//    
+//    // requiredPlatforms will contain the list of required platforms, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredPlatforms = listOfRequiredPlatforms.split(" ");
+//    
+//    var platformOK = false;
+//    for (var requiredPlatform in requiredPlatforms) {
+//        if (requiredPlatform.toUpperCase() === platform) {
+//            platformOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!platformOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
+//
+//module.exports.assertDisplay = function (listOfRequiredDisplays) {
+//    // Find our display
+//    var display = "DESKTOP";
+//    if (Window.hasRift()) {
+//        display = "RIFT";
+//    } else if (Window.hasVive()) {
+//        display = "VIVE";
+//    }
+//    
+//    // requiredDisplays will contain the list of required displays, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredDisplays = listOfRequiredDisplays.split(" ");
+//    
+//    var displayOK = false;
+//    for (var requiredDisplay in requiredDisplays) {
+//        // The Rift is often called by the manufacturer's name
+//        if (requiredDisplay.toUpperCase() == "OCULUS") {
+//            requiredDisplay = "RIFT";
+//        }
+//        
+//        if (requiredDisplay.toUpperCase() === display) {
+//            displayOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!displayOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS DISPLAY!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
+//
+//module.exports.assertCPUType = function (listOfRequiredCPUs) {
+//    // Find our CPU
+//    var CPU = "I5";
+//    if (Window.isI7()) {
+//        CPU = "I7";
+//    }
+//    
+//    // requiredCPUs will contain the list of required displays, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredCPUs = listOfRequiredCPUs.split(" ");
+//    
+//    var cpuOK = false;
+//    for (var requiredCPU in requiredCPUs) {
+//        if (requiredCPU === CPU) {
+//            cpuOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!cpuOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS CPU!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
+//
+//module.exports.assertGPUType = function (listOfRequiredGPUs) {
+//    // Find our GPU
+//    var GPU = "AMD";
+//    if (Window.isNvidia()) {
+//        GPU = "I7";
+//    }
+//    
+//    // requiredGPUs will contain the list of required GPUs, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredGPUs = listOfRequiredGPUs.split(" ");
+//    
+//    var gpuOK = false;
+//    for (var requiredGPU in requiredGPUs) {
+//        if (requiredGPU.toUpperCase() === GPU) {
+//            gpuOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!gpuOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS GPU!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
