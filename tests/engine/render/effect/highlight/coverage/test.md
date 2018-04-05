@@ -1,45 +1,53 @@
-# Engine Render Highlight Effect
+# Highlight Test
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running, logged in an empty domain with editing rights and with avatar in third person view. This test should be performed in Desktop and in HMD mode.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-During all steps, rendering should be stable in time. Run the [highlight.js script](./highlight.js?raw=true) (from menu/Edit/Open and Run scripts From URL...) and play each step in sequence by pressing the [SPACE] key.
-
-#### Step 1
-- Expected: ![](./init.jpg)
-
-#### Step 2
-- Expected: ![](./step1.jpg)
-
-#### Step 3
-- Expected: ![](./step2.jpg)
-
-#### Step 4
-- Expected: ![](./step3.jpg)
-
-#### Step 5
-- Expected: ![](./step4.jpg)
-
-#### Step 6
-- Expected: ![](./step5.jpg)
-
-#### Step 7
-- Expected: ![](./step6.jpg)
-
-#### Step 8
-- Expected: ![](./step7.jpg)
-
-#### Step 9
-- Expected: ![](./step8.jpg)
-
-#### Step 10
-- Expected: ![](./step9.jpg)
-
-#### Step 11
-- Expected: ![](./step10.jpg)
-
-#### Step 12
-- Expected: ![](./step11.jpg)
-
+### Step 0
+- Step 1
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- Step 2
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- Step 3
+- ![](./ExpectedImage_00002.png)
+### Step 3
+- Step 4
+- ![](./ExpectedImage_00003.png)
+### Step 4
+- Step 5
+- ![](./ExpectedImage_00004.png)
+### Step 5
+- Step 6
+- ![](./ExpectedImage_00005.png)
+### Step 6
+- Step 7
+- ![](./ExpectedImage_00006.png)
+### Step 7
+- Step 8
+- ![](./ExpectedImage_00007.png)
+### Step 8
+- Step 9
+- ![](./ExpectedImage_00008.png)
+### Step 9
+- Step 10
+- ![](./ExpectedImage_00009.png)
+### Step 10
+- Step 11
+- ![](./ExpectedImage_00010.png)
+### Step 11
+- Take snapshot
+- ![](./ExpectedImage_00011.png)

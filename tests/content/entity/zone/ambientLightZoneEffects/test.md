@@ -1,26 +1,32 @@
-# Ambient Light Zone Effects
-## General
-
-The tests consist of setting zone component parameters and moving through the zones.
-The zones are as in the following image:
-![](./zones.png)
+# zone - ambient light inheritance
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
-In an empty region of a domain with editing rights.
+- In an empty region of a domain with editing rights.
 
-## Automatic Test
-Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightZoneEffects/testAuto.js>
-## Manual Test
-Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/ambientLightZoneEffects/test.js>
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-Press space bar to advance step by step:
-1.  First image is just the zones
-![](./ExpectedImage_00000.png) 
-2. Move forward into red zone (point A - bright sky)
-![](./ExpectedImage_00001.png) 
-3. Move forward into blue zone (point B - night sky)
-![](./ExpectedImage_00002.png)
-4. Move forward and right into green zone (point C - cloudy sky)
-![](./ExpectedImage_00003.png) 
-5. Move left into blue zone (point D - night sky)
-![](./ExpectedImage_00004.png) 
+### Step 0
+- Moving forward
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- Moving forward
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- Moving forward and right
+- ![](./ExpectedImage_00002.png)
+### Step 3
+- Moving left
+- ![](./ExpectedImage_00003.png)
+### Step 4
+- Cleanup
+- ![](./ExpectedImage_00004.png)

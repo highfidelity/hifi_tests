@@ -1,10 +1,11 @@
-var user = "highfidelity/";
+var user = "NissimHadar/";
 var repository = "hifi_tests/";
-var branch = "master/";
+var branch = "needleUpdate/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
     // Test material matrix
     Script.include("../../../../../utils/test_stage.js?raw=true")
@@ -16,18 +17,18 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
 
     // Define zone properties
     var properties = {
-    lifetime: 120,  
-    type: "light",  
-    name: "test create light",
-    position: posOri.pos,
+        lifetime: 120,  
+        type: "light",  
+        name: "test create light",
+        position: posOri.pos,
 
-    name: "light",
-    type: "Light",
-    isSpotlight: false,
-    color: { red: 255, green: 255, blue: 255 },
-    intensity: 1.0,
-    falloffRadius: 3.0,
-    dimensions: { x: 8.0, y: 8.0, z: 3.0 }, 
+        name: "light",
+        type: "Light",
+        isSpotlight: false,
+        color: { red: 255, green: 255, blue: 255 },
+        intensity: 1.0,
+        falloffRadius: 3.0,
+        dimensions: { x: 8.0, y: 8.0, z: 3.0 }, 
     };
 
     // Add the sphere and check its properties

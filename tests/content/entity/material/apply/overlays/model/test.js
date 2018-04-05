@@ -3,10 +3,9 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.enableAuto(5000);
-
 autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest(true);
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 1.2 };
 
     Script.include("../../../../../../utils/test_stage.js?raw=true");
 
@@ -61,7 +60,7 @@ autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePa
 
     autoTester.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Clean up after test", function () {
+    autoTester.addStepSnapshot("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

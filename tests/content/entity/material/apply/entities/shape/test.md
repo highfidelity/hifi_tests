@@ -1,10 +1,20 @@
-# Material Entities Apply to Shape Entities
+# Apply Material Entities to Shape Entities
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-In an empty region of a domain with editing rights
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- run this [script URL](./test.js?raw=true) (from menu/Edit/Open and Run scripts From URL...). 
-- expected ![](./apply.jpg)
+### Step 0
+- Take snapshot
+- ![](./ExpectedImage_00000.png)

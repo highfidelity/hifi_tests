@@ -7,6 +7,7 @@ autoTester.enableAuto(5000);
 
 autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
     Script.include("../../../../../../utils/test_stage.js?raw=true");
 

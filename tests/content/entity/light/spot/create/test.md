@@ -1,13 +1,20 @@
-# Entity Light Spot Create
+# Spot light
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-In an empty region of a domain with editing rights
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Description
-This test create 2 Spot Lights entities in a testing stage & zone with no other lighting
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-### Steps
-
-#### Step 1
-- run this [script URL](./create.js?raw=true) (from menu/Edit/Open and Run scripts From URL...). 
-- expected ![](./create.png)
+### Step 0
+- Take snapshot
+- ![](./ExpectedImage_00000.png)

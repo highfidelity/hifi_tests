@@ -3,10 +3,9 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.enableAuto();
-
 autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest(true);
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
     Script.include("../../../../../utils/test_stage.js?raw=true");
 
