@@ -109,7 +109,7 @@ var onRunAuto = function() {
 }
 
 var onKeyPressEventNextStep = function (event) {
-    if (event.key == advanceKey) {
+    if (event.key == advanceKey.charCodeAt()) {
         if (!runNextStep()) {
             testOver();
         }
@@ -119,7 +119,7 @@ var onKeyPressEventNextStep = function (event) {
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
-        currentSteps.length + " steps\nPress " + advanceKey + " for next steps");
+        currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
          
     Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
