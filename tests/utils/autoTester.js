@@ -45,7 +45,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
-        usePrimaryCamera ? Window.takeSnapshot(true, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
+        usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
         ++snapshotIndex;
     }
 }

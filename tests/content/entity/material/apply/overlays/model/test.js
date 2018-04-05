@@ -60,7 +60,7 @@ autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePa
 
     autoTester.addStepSnapshot("Take snapshot");
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
