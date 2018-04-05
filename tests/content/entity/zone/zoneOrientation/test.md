@@ -1,45 +1,61 @@
-# Zone Orientation Effects
-## General
-This test verifies the effects of zone orientation on  the keylight, ambient light and the skybox.
-
-![](./hierarchy.png) 
-
-The tests consist of setting keylight component parameters and moving through the zones.  In each zone, the keylight modes are changed.
+# zone - ambient light inheritance
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
-In an empty region of a domain with editing rights
-## Automatic Test
-Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/zoneOrientation/testAuto.js>
-## Manual Test
-Load script <https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRecursionToAutotester/tests/content/entity/zone/zoneOrientation/test.js>
+- In an empty region of a domain with editing rights.
 
-Press space bar to advance step by step:
-1.  KEYLIGHT TESTS - Zone not rotated - keylight at zenith
-![](./ExpectedImage_00000.png)
-Press space bar to advance step by step:
-1.  Pitch zone 45 degrees up, light should come from behind, 45 degrees above horizon
-![](./ExpectedImage_00001.png) 
-1. Add yaw zone 90 degrees clockwise, light should come from left, 45 degrees above horizon
-![](./ExpectedImage_00002.png) 
-1. Add roll zone 45 degrees clockwise, light should come from left
-![](./ExpectedImage_00003.png) 
-1. SKYBOX TESTS - Zone not rotated - sun straight ahead on purple background (sphere is hidden)
-![](./ExpectedImage_00004.png)
-1. Yaw zone 15 degrees right, sun should move right
-![](./ExpectedImage_00005.png)
-1. Pitch zone 15 degrees up, yaw zone 15 degrees right, sun should move right and up
-![](./ExpectedImage_00006.png)
-1. Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees, sun should move straight up
-![](./ExpectedImage_00007.png)
-1. AMBIENT LIGHT TESTS - Zone not rotated - diffuse sphere and metallic object visible (skybox still enabled as a visual aid)
-![](./ExpectedImage_00008.png)
-1. Yaw 90 degrees - blue is now behind
-![](./ExpectedImage_00009.png)
-1. Yaw 180 degrees - purple is now behind
-![](./ExpectedImage_00010.png)
-1. Yaw 270 degrees - red is now behind
-![](./ExpectedImage_00011.png)
-1. Pitch 90 - green is now behind
-![](./ExpectedImage_00012.png)
-1. Roll 45 degrees - green top-left, red top-right, yellow bottom-right, blue bottom-left
-![](./ExpectedImage_00013.png)
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
+
+### Step 0
+- Zone not rotated - keylight at zenith
+### Step 1
+- Pitch zone 45 degrees up, light should come from behind, 45 degrees above horizon
+- ![](./ExpectedImage_00000.png)
+### Step 2
+- Add yaw zone 90 degrees clockwise, light should come from left, 45 degrees above horizon
+- ![](./ExpectedImage_00001.png)
+### Step 3
+- Add roll zone 45 degrees clockwise, light should come from left
+- ![](./ExpectedImage_00002.png)
+### Step 4
+- Zone not rotated - sun straight ahead on purple background (sphere is hidden)
+- ![](./ExpectedImage_00003.png)
+### Step 5
+- Yaw zone 15 degrees right, sun should move right
+- ![](./ExpectedImage_00004.png)
+### Step 6
+- Pitch zone 15 degrees up, yaw zone 15 degrees right, sun should move right and up
+- ![](./ExpectedImage_00005.png)
+### Step 7
+- Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees, sun should move straight up
+- ![](./ExpectedImage_00006.png)
+### Step 8
+- Zone not rotated - diffuse sphere and metallic object visible (skybox still enabled as a visual aid)
+- ![](./ExpectedImage_00007.png)
+### Step 9
+- Yaw 90 degrees - blue is now behind
+- ![](./ExpectedImage_00008.png)
+### Step 10
+- Yaw 180 degrees - purple is now behind
+- ![](./ExpectedImage_00009.png)
+### Step 11
+- Yaw 270 degrees - red is now behind
+- ![](./ExpectedImage_00010.png)
+### Step 12
+- Pitch 90 - green is now behind
+- ![](./ExpectedImage_00011.png)
+### Step 13
+- Roll 45 degrees - green top-left, red top-right, yellow bottom-right, blue bottom-left
+- ![](./ExpectedImage_00012.png)
+### Step 14
+- Cleanup
+- ![](./ExpectedImage_00013.png)
