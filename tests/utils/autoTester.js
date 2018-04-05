@@ -9,7 +9,7 @@ var testMode = "manual";
 var snapshotPrefix = "";
 var snapshotIndex = 0;
 
-var advanceKey = " ";
+var advanceKey = "n";
 
 TestCase = function (name, path, func) {
     this.name = name;
