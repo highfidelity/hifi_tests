@@ -109,7 +109,7 @@ var onRunAuto = function() {
 }
 
 var onKeyPressEventNextStep = function (event) {
-    if (event.key == advanceKey.charCodeAt()) {
+    if (event.key == advanceKey.charCodeAt(0)) {
         if (!runNextStep()) {
             testOver();
         }
