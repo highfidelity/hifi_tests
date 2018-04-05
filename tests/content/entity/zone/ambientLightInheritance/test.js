@@ -1,6 +1,6 @@
-var user = "highfidelity/";
+var user = "NissimHadar/";
 var repository = "hifi_tests/";
-var branch = "master/";
+var branch = "needleUpdate/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
