@@ -9,6 +9,8 @@ var testMode = "manual";
 var snapshotPrefix = "";
 var snapshotIndex = 0;
 
+var advanceKey = " ";
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -107,7 +109,7 @@ var onRunAuto = function() {
 }
 
 var onKeyPressEventNextStep = function (event) {
-    if (event.key == 32) {
+    if (event.key == advanceKey) {
         if (!runNextStep()) {
             testOver();
         }
@@ -117,7 +119,7 @@ var onKeyPressEventNextStep = function (event) {
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
-        currentSteps.length + " steps\nPress [SPACE] for next steps");
+        currentSteps.length + " steps\nPress " + advanceKey + " for next steps");
          
     Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
