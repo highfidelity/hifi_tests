@@ -48,11 +48,22 @@ TestScript = function (properties) {
     return this;
 };
 
-TestScript.locationLoader = function (url, waitIdle, position, orientation) {
+// url - URL to load domain from
+// waitIdle
+// position - initial position
+// orientation - initial orientation
+// delay_secs - time to wait before starting benchmark (gives domain time to load)
+TestScript.locationLoader = function (url, waitIdle, position, orientation, delay_secs) {
     return function () {
         print("QQQ going to URL " + url);
         Window.location = url;
-        Test.wait(3 * 1000);
+        
+        if (delay_secs !== null) {
+            Test.wait(delay_secs * 1000);
+        } else {
+            Test.wait(3 * 1000);
+        }
+        
         if (!Test.waitForConnection()) {
             return false;
         }

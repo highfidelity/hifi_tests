@@ -1,14 +1,20 @@
-var autoTester = Script.require("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/autoTester.js" );
-//var autoTester = Script.require("../../../../utils/autoTester.js" );
+var user = "highfidelity/";
+var repository = "hifi_tests/";
+var branch = "master/";
+var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
+    var spectatorCameraConfig = autoTester.setupTest(true);
+
+    // Enabled draw zone bounding box and stack to visualize the stack of zone components
+    Render.getConfig("RenderMainView.DrawZoneStack").enabled = true;
+    Render.getConfig("RenderMainView.DrawZones").enabled = true;
 
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
 
     // As a 5 meters cube box
-    var dim = { x: 5.0, y: 5.0, z: 5.0};
+    var dim = { x: 5.0, y: 5.0, z: 5.0 };
 
     // Configure the camera
     spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
@@ -34,6 +40,8 @@ autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
 
     autoTester.addStep("Clean up after test", function () {
         Entities.deleteEntity(zone);
+        Render.getConfig("RenderMainView.DrawZoneStack").enabled = false;
+        Render.getConfig("RenderMainView.DrawZones").enabled = false;
     });
     
     var result = autoTester.runTest(testType);

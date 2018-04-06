@@ -1,7 +1,7 @@
 // Test content stage
 
 // This script generate a stage made of a dark zone with no lighting, haze or skybox
-var LIFETIME = 120;
+var DEFAULT_LIFETIME = 120;
 
 var BACKDROP_SIZE = 16;
 var BACKDROP_HALFSIZE = 8;
@@ -22,7 +22,7 @@ function getTileColor(a, b, c) {
     return { red: intensity, green: intensity, blue: intensity };
 }
 
-function addTile(a, b, c) {
+function addTile(a, b, c, lifetime) {
     var center = Vec3.sum(stageTileRoot, Vec3.multiply(a, stageAxisA));
     center = Vec3.sum(center, Vec3.multiply(b, stageAxisB));
     center = Vec3.sum(center, Vec3.multiply(c, stageAxisC));                                           
@@ -35,26 +35,29 @@ function addTile(a, b, c) {
         position: center,    
         rotation: stageOrientation,    
         dimensions: TILE_DIM,
-        lifetime: LIFETIME,
-        
+        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime
     }));
 }
 
-function addBackdropGrid(backdrop) {
+function addBackdropGrid(backdrop, lifetime) {
     for (i = BACKDROP_HALFSIZE; i > -BACKDROP_HALFSIZE; i--) {
         for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
-            backdrop.push(addTile(i, j, BACKDROP_MIN_C));
+            backdrop.push(addTile(i, j, BACKDROP_MIN_C, lifetime));
         }
     }
 
     for (i = -1; i < BACKDROP_HALFSIZE; i++) {
          for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
-            backdrop.push(addTile(BACKDROP_HALFSIZE, j, i));
+            backdrop.push(addTile(BACKDROP_HALFSIZE, j, i, lifetime));
         }
     }
 }
 
+<<<<<<< HEAD
 addZone = function (hasKeyLight, hasAmbient) {
+=======
+function addZone(hasKeyLight, hasAmbient, lifetime) {
+>>>>>>> 14bdc2baed2c7de8e75b6162c733fbd7a2106a8b
     var zoneDim = Vec3.multiply(BACKDROP_SIZE, TILE_DIM);
     var center = getStagePosOriAt(0, 0, 0).pos;
     
@@ -67,8 +70,8 @@ addZone = function (hasKeyLight, hasAmbient) {
         position: center,    
         rotation: stageOrientation,    
         dimensions: zoneDim,
-        lifetime: LIFETIME,
-  
+        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
+
         keyLightMode: "enabled",
         skyboxMode: "enabled",
         ambientLightMode: "enabled",
@@ -94,11 +97,70 @@ addZone = function (hasKeyLight, hasAmbient) {
     }));
 }
 
-function addTestBackdrop(name, hasKeyLight, hasAmbient) {
+function addPointLight(pos, color, intensity, lifetime) {
+    return (Entities.addEntity({
+        type: "Light",
+        name: "Point light",
+  
+        position: pos,    
+        dimensions: {
+            x: 6,
+            y: 6,
+            z: 6
+        },
+        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
+
+        "color": color,
+        "intensity": intensity,
+
+        falloffRadius: 0.1
+    }));
+}
+
+function addSpotLight(pos, rotation, color, intensity, lifetime) {
+    return (Entities.addEntity({
+        type: "Light",
+        name: "Spot light",
+  
+        position: pos,
+        "rotation": rotation, 
+        dimensions: {
+            x: 6,
+            y: 6,
+            z: 6
+        },
+
+        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
+
+        "color": color,
+        "intensity": intensity,
+
+        falloffRadius: 1.0,
+        cutoff: 60,
+        exponent: 3,
+        isSpotlight: 1
+    }));
+}
+
+function addTestBackdrop(name, hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
     var backdrop = [];
 
-    addBackdropGrid(backdrop);
-    backdrop.push(addZone(hasKeyLight,hasAmbient));
+    addBackdropGrid(backdrop, lifetime);
+    backdrop.push(addZone(hasKeyLight,hasAmbient, lifetime));
+    if (hasLocalLights) {
+        var basePosition = Vec3.sum(stageRoot, Vec3.multiply(1.5, stageAxisC));
+        var orientation = Quat.lookAtSimple(basePosition, stageRoot);
+        var position = Vec3.sum(stageRoot, Vec3.multiply(-0.5, stageAxisA));
+        backdrop.push( addPointLight(position, {red:255,green:255,blue:255}, 15.0, lifetime) );
+     
+        position = Vec3.sum(basePosition, Vec3.multiply(1.5, stageAxisB));
+        backdrop.push( addSpotLight(position, orientation, {red:255,green:5,blue:5}, 2.5, lifetime) );
+
+        backdrop.push( addSpotLight(basePosition, orientation, {red:5,green:255,blue:5}, 2.5, lifetime) );
+
+        position = Vec3.sum(basePosition, Vec3.multiply(-1.5, stageAxisB));
+        backdrop.push( addSpotLight(position, orientation, {red:5,green:5,blue:255}, 2.5, lifetime) );
+    }
 
     return backdrop;
 }
@@ -111,7 +173,7 @@ stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
 stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
 stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 
-setupStage = function (hasKeyLight, hasAmbient) {
+setupStage = function (hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -127,7 +189,7 @@ setupStage = function (hasKeyLight, hasAmbient) {
     stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
     stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
 
-    return addTestBackdrop("Light_stage_backdrop", hasKeyLight, hasAmbient);
+    return addTestBackdrop("Light_stage_backdrop", hasKeyLight, hasAmbient, hasLocalLights, lifetime);
 }
 
 getStagePosOriAt = function (a, b, c) {    
