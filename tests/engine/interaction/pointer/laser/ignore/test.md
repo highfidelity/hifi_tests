@@ -1,29 +1,53 @@
-# Laser Pointers
+# LaserPointer ignore test
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain where you have edit rights.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [ignore.js script](./ignore.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).
-- Expected: ![](./ignore1.jpg)
-
-#### Step 2
-- Press [SPACE] to move through the steps.
-- Expected:
-![](./ignore2.jpg)
-![](./ignore3.jpg)
-![](./ignore4.jpg)
-![](./ignore5.jpg)
-![](./ignore6.jpg)
-![](./ignore7.jpg)
-![](./ignore8.jpg)
-![](./ignore9.jpg)
-![](./ignore10.jpg)
-![](./ignore11.jpg)
-![](./ignore12.jpg)
-
-#### Step 3
-- The steps will repeat, so if you need to test threading or repeated changes, you can hold [SPACE] to loop through them constantly.
-- Expected: no crashes, pattern repeats consistently
+### Step 0
+- 1st position
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- 2nd position
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- 3rd position
+- ![](./ExpectedImage_00002.png)
+### Step 3
+- 4th position
+- ![](./ExpectedImage_00003.png)
+### Step 4
+- 5th position
+- ![](./ExpectedImage_00004.png)
+### Step 5
+- 6th position
+- ![](./ExpectedImage_00005.png)
+### Step 6
+- 7th position
+- ![](./ExpectedImage_00006.png)
+### Step 7
+- 8th position
+- ![](./ExpectedImage_00007.png)
+### Step 8
+- 9th position
+- ![](./ExpectedImage_00008.png)
+### Step 9
+- 10th position
+- ![](./ExpectedImage_00009.png)
+### Step 10
+- 11th position
+- ![](./ExpectedImage_00010.png)
+### Step 11
+- Clean up
+- ![](./ExpectedImage_00011.png)

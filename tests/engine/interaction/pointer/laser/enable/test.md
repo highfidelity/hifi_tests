@@ -1,18 +1,23 @@
-# Laser Pointers
+# Size of laser end increases with distance
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [enable.js script](./enable.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  It creates two static laser pointers, one enabled and one disabled
-- Expected: ![](./enable1.jpg)
-
-#### Step 2
-- Press [SPACE].  The lasers will toggle their enabled flag.
-- Expected: ![](./enable2.jpg)
-
-#### Step 3
-- Repeatedly press [SPACE].
-- Expected: The pointers should alternate every time.
+### Step 0
+- Enabled right laser
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- Enabled left laser
+- ![](./ExpectedImage_00001.png)

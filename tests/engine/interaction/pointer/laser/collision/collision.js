@@ -1,7 +1,7 @@
 Script.include("../laserPointerUtils.js?raw=true");
 
 var lasers = [];
-lasers.push(Pointers.createPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(-0.75, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_ENTITIES,
@@ -9,7 +9,7 @@ lasers.push(Pointers.createPointer({
     defaultRenderStates: defaultRenderStates,
     enabled: true
 }));
-lasers.push(Pointers.createPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(-0.25, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_OVERLAYS,
@@ -17,7 +17,7 @@ lasers.push(Pointers.createPointer({
     defaultRenderStates: defaultRenderStates,
     enabled: true
 }));
-lasers.push(Pointers.createPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.25, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_AVATARS,
@@ -25,7 +25,7 @@ lasers.push(Pointers.createPointer({
     defaultRenderStates: defaultRenderStates,
     enabled: true
 }));
-lasers.push(Pointers.createPointer({
+lasers.push(Pointers.createPointer(PickType.Ray, {
     position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.75, right)),
     direction: Vec3.normalize({x: 0, y: -1, z: 0}),
     filter: Picks.PICK_HUD,

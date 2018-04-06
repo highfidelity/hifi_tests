@@ -1,11 +1,20 @@
-# Laser Pointers
+# Zone create
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain where you have edit rights.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [centerEndY.js script](./centerEndY.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).
-- Expected:
-![](./centerEndY.jpg)
+### Step 0
+- Running LaserPointer centerEndY test
+- ![](./ExpectedImage_00000.png)

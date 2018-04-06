@@ -1,12 +1,26 @@
-# Laser Pointers
+# Size of laser end increases with distance
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain where you have edit rights.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [distanceScaleEnd.js script](./distanceScaleEnd.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  The end of the laser will get larger as it gets farther away.
-- Expected:
-![](./distanceScaleEnd1.jpg)
-![](./distanceScaleEnd2.jpg)
+### Step 0
+- Minimum distance
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- Mid distance
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- Maximum distance
+- ![](./ExpectedImage_00002.png)

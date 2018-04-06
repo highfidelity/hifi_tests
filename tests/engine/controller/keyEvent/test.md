@@ -1,6 +1,7 @@
 # Engine Controller keyEvent
 
 ### Preconditions
+Open log window with CTRL+SHIFT+L.
 
 ### Steps
 

@@ -1,12 +1,50 @@
-# Laser Pointers
+# LaserPointer lockEnd test
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain where you have edit rights.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [lockEnd.js script](./lockEnd.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  When the laser hits the cube, it will lock onto the cube's center.
-- Expected:
-![](./lockEnd1.jpg)
-![](./lockEnd2.jpg)
+### Step 0
+- 1st Position
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- 2nd Position
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- 3rd Position
+- ![](./ExpectedImage_00002.png)
+### Step 3
+- 4th Position
+- ![](./ExpectedImage_00003.png)
+### Step 4
+- 5th Position
+- ![](./ExpectedImage_00004.png)
+### Step 5
+- 6th Position
+- ![](./ExpectedImage_00005.png)
+### Step 6
+- 7th Position
+- ![](./ExpectedImage_00006.png)
+### Step 7
+- 8th Position
+- ![](./ExpectedImage_00007.png)
+### Step 8
+- 9th Position
+- ![](./ExpectedImage_00008.png)
+### Step 9
+- 10th Position
+- ![](./ExpectedImage_00009.png)
+### Step 10
+- Clean up
+- ![](./ExpectedImage_00010.png)
