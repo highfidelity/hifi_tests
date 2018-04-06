@@ -18,7 +18,8 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
         shape: 'Cube',
         dimensions: { x: 1000.0, y: 0.2, z: 1000.0 },
         position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
-        color: { "blue": 200, "green": 200, "red": 200
+        color: { "blue": 200, "green": 200, "red": 200,
+        canCastShadow:false
         }
     });
 
