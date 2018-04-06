@@ -20,7 +20,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
         true
     );
     
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 3.0 };
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 8.0 };
     spectatorCameraConfig.orientation = { x: 0.0, y: 1.0, z: 0.0, w: 0.0 };
     
     var blueBox = Entities.addEntity({

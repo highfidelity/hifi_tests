@@ -1,13 +1,26 @@
-# Laser Pointers
+# LaserPointer lockEndUUID test
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain where you have edit rights.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [lockEndUUID.js script](./lockEndUUID.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  Press [SPACE] to move through the tests.
-- Expected:
-![](./lockEndUUID1.jpg)
-![](./lockEndUUID2.jpg)
-![](./lockEndUUID3.jpg)
+### Step 0
+- Attached to left
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- Attached to right
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- Attached to right
+- ![](./ExpectedImage_00002.png)

@@ -1,16 +1,35 @@
-# Laser Pointers
+# LaserPointer renderState test
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
-### Preconditions
-Interface is running in an empty domain where you have edit rights.
+## Preconditions
+- In an empty region of a domain with editing rights.
 
-### Steps
+## Platforms
+Run the test on each of the following platforms
+## Displays
+Run the test on each of the following displays
+## Processors
+Run the test on each of the following processors
+## Graphics Cards
+Run the test on graphics cards from each of the following vendors
+## Steps
+Press space bar to advance step by step
 
-#### Step 1
-- Run the [renderState.js script](./renderState.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  Press [SPACE] to loop through the render states.
-- Expected:
-![](./renderState1.jpg)
-![](./renderState2.jpg)
-![](./renderState3.jpg)
-![](./renderState4.jpg)
-![](./renderState5.jpg)
-![](./renderState6.jpg)
+### Step 0
+- Not attached
+- ![](./ExpectedImage_00000.png)
+### Step 1
+- Attached red - state 1
+- ![](./ExpectedImage_00001.png)
+### Step 2
+- Attached green - state 2
+- ![](./ExpectedImage_00002.png)
+### Step 3
+- Attached blue - state 3
+- ![](./ExpectedImage_00003.png)
+### Step 4
+- Attached cyan - state 4
+- ![](./ExpectedImage_00004.png)
+### Step 5
+- Attached red - state 5
+- ![](./ExpectedImage_00005.png)
