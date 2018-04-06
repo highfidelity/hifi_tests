@@ -5,7 +5,7 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest(true);
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
+    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.6 };
 
     Script.include("../../../../../utils/test_stage.js?raw=true");
 
