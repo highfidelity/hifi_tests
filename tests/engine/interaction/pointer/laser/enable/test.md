@@ -15,9 +15,9 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
+### Step 1
 - Enabled right laser
 - ![](./ExpectedImage_00000.png)
-### Step 1
+### Step 2
 - Enabled left laser
 - ![](./ExpectedImage_00001.png)

@@ -15,17 +15,17 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
-- Zone cast shadow flag is off - no shadows should be visible
 ### Step 1
+- Zone cast shadow flag is off - no shadows should be visible
+### Step 2
 - Enable shadows in the zone
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Set the 'Light Altitude' to 10 and 'Light Azimuth' to 30
 - ![](./ExpectedImage_00001.png)
-### Step 3
+### Step 4
 - Remove shadow from one of the towers
 - ![](./ExpectedImage_00002.png)
-### Step 4
+### Step 5
 - Clean up after test
 - ![](./ExpectedImage_00003.png)

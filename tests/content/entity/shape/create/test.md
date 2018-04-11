@@ -15,6 +15,6 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
+### Step 1
 - Take snapshot of all the models
 - ![](./ExpectedImage_00000.png)

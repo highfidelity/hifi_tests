@@ -24,36 +24,36 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
+### Step 1
 - Red zone, bright ambient light
 - ![](./ExpectedImage_00000.png)
-### Step 1
+### Step 2
 - Green zone, medium ambient light
 - ![](./ExpectedImage_00001.png)
-### Step 2
+### Step 3
 - Blue zone, dark ambient light
 - ![](./ExpectedImage_00002.png)
-### Step 3
+### Step 4
 - Blue off,  no ambient light
 - ![](./ExpectedImage_00003.png)
-### Step 4
+### Step 5
 - Blue inherit, medium ambient light
 - ![](./ExpectedImage_00004.png)
-### Step 5
+### Step 6
 - Green off,  no ambient light
 - ![](./ExpectedImage_00005.png)
-### Step 6
+### Step 7
 - Green inherit, bright ambient light
 - ![](./ExpectedImage_00006.png)
-### Step 7
+### Step 8
 - Red off,  no ambient light
 - ![](./ExpectedImage_00007.png)
-### Step 8
+### Step 9
 - Green zone, still no ambient light
 - ![](./ExpectedImage_00008.png)
-### Step 9
+### Step 10
 - Red on, bright ambient light
 - ![](./ExpectedImage_00009.png)
-### Step 10
+### Step 11
 - Delete entities
 - ![](./ExpectedImage_00010.png)
