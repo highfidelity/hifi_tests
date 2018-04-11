@@ -43,6 +43,26 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
         dimensions:{ x: 1.0, y: 1.0, z: 1.0 },
       });
 
+      var inFrontOverlay = Overlays.addOverlay("sphere", {
+        position: { x: pos.x-1.0, y: pos.y, z: pos.z + 2.0},
+        size: 1.0,
+        color: { red: 0, green: 0, blue: 255},
+        alpha: 1,
+        solid: true,
+        drawInFront: false,
+        isVisibleInSecondaryCamera: true
+    });
+
+    var normalOverlay = Overlays.addOverlay("sphere", {
+        position: { x: pos.x+1.0, y: pos.y, z: pos.z + 2.0},
+        size: 1.0,
+        color: { red: 255, green: 0, blue: 0},
+        alpha: 1,
+        solid: true,
+        drawInFront: true,
+        isVisibleInSecondaryCamera: true
+    });
+
     var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.ktx' + SUFFIX);
     var sky = Entities.addEntity({
         type: "Zone",
@@ -89,39 +109,12 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
 
     autoTester.addStep("Bloom is off - no bloom should be visible");
         
-    autoTester.addStepSnapshot("Bloom enabled, initial light direction",
-        function () {
-            bloomConfig.enabled = true;
-            secondaryBloomConfig.enabled = true;
-        }
-    );
-        
-    autoTester.addStepSnapshot("Bloom enabled, different light direction",
-        function () {
-            var newProperty = { 
-                keyLight: {
-                    direction: {
-                        x:  0.16317591071128845,
-                        y: -0.3420201241970062,
-                        z:  0.9254165291786194
-                    },
-                }
-            };
-            Entities.editEntity(sky, newProperty);  
-        }
-    );
-        
-    autoTester.addStepSnapshot("Bloom enabled, high intensity",
+    autoTester.addStepSnapshot("Bloom enabled",
         function () {
             bloomConfig.intensity = 1.0
             secondaryBloomConfig.intensity = 1.0
-        }
-    );
-        
-    autoTester.addStepSnapshot("Bloom enabled, low threshold",
-        function () {
-            bloomThresholdConfig.threshold = 0.05
-            secondaryBloomThresholdConfig.threshold = 0.05
+            bloomConfig.enabled = true;
+            secondaryBloomConfig.enabled = true;
         }
     );
         
@@ -130,6 +123,8 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
             Entities.deleteEntity(terrain);
             Entities.deleteEntity(object);
             Entities.deleteEntity(sky);
+            Overlays.deleteOverlay(normalOverlay);
+            Overlays.deleteOverlay(inFrontOverlay);
             bloomConfig.enabled = defaultEnabled
             bloomConfig.intensity = defaultIntensity
             bloomThresholdConfig.threshold = defaultThreshold
