@@ -9,7 +9,15 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
 
-    var pos =  MyAvatar.position;
+    var pos =  { x: 1000, y: 0, z: 1000 };
+
+    // Initial setup
+    MyAvatar.goToLocation(
+        pos,
+        true,
+        Quat.angleAxis(0, { x: 0, y: 1, z: 0 }),
+        true
+    );
     
     var terrain = Entities.addEntity({
         type: 'Box',
@@ -27,7 +35,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
         name: 'Tower base',
         shape: 'Cube',
         dimensions: { x: 10.0, y: 10, z: 10.0 },
-        position: { x: pos.x, y: pos.y + 1.0, z: pos.z - 1000.0},
+        position: { x: pos.x, y: pos.y + 1.0, z: pos.z - 500.0},
         color: { "blue": 200, "green": 200, "red": 0
         }
     });
@@ -36,7 +44,7 @@ autoTester.perform("effect - haze", Script.resolvePath("."), function(testType) 
         name: 'Tower',
         shape: 'Cube',
         dimensions: { x: 3.0, y: 300, z: 3.0 },
-        position: { x: pos.x, y: pos.y + 150, z: pos.z - 1000.0},
+        position: { x: pos.x, y: pos.y + 150, z: pos.z - 500.0},
         color: { "blue": 0, "green": 200, "red": 200
         }
     });
