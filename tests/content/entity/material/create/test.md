@@ -15,27 +15,27 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
-- Take snapshot
-- ![](./ExpectedImage_00000.png)
 ### Step 1
 - Take snapshot
-- ![](./ExpectedImage_00001.png)
+- ![](./ExpectedImage_00000.png)
 ### Step 2
 - Take snapshot
-- ![](./ExpectedImage_00002.png)
+- ![](./ExpectedImage_00001.png)
 ### Step 3
 - Take snapshot
-- ![](./ExpectedImage_00003.png)
+- ![](./ExpectedImage_00002.png)
 ### Step 4
 - Take snapshot
-- ![](./ExpectedImage_00004.png)
+- ![](./ExpectedImage_00003.png)
 ### Step 5
 - Take snapshot
-- ![](./ExpectedImage_00005.png)
+- ![](./ExpectedImage_00004.png)
 ### Step 6
 - Take snapshot
-- ![](./ExpectedImage_00006.png)
+- ![](./ExpectedImage_00005.png)
 ### Step 7
+- Take snapshot
+- ![](./ExpectedImage_00006.png)
+### Step 8
 - Take snapshot
 - ![](./ExpectedImage_00007.png)

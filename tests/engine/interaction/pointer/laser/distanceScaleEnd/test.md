@@ -15,12 +15,12 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
+### Step 1
 - Minimum distance
 - ![](./ExpectedImage_00000.png)
-### Step 1
+### Step 2
 - Mid distance
 - ![](./ExpectedImage_00001.png)
-### Step 2
+### Step 3
 - Maximum distance
 - ![](./ExpectedImage_00002.png)

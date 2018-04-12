@@ -15,36 +15,36 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
+### Step 1
 - 1st Position
 - ![](./ExpectedImage_00000.png)
-### Step 1
+### Step 2
 - 2nd Position
 - ![](./ExpectedImage_00001.png)
-### Step 2
+### Step 3
 - 3rd Position
 - ![](./ExpectedImage_00002.png)
-### Step 3
+### Step 4
 - 4th Position
 - ![](./ExpectedImage_00003.png)
-### Step 4
+### Step 5
 - 5th Position
 - ![](./ExpectedImage_00004.png)
-### Step 5
+### Step 6
 - 6th Position
 - ![](./ExpectedImage_00005.png)
-### Step 6
+### Step 7
 - 7th Position
 - ![](./ExpectedImage_00006.png)
-### Step 7
+### Step 8
 - 8th Position
 - ![](./ExpectedImage_00007.png)
-### Step 8
+### Step 9
 - 9th Position
 - ![](./ExpectedImage_00008.png)
-### Step 9
+### Step 10
 - 10th Position
 - ![](./ExpectedImage_00009.png)
-### Step 10
+### Step 11
 - Clean up
 - ![](./ExpectedImage_00010.png)

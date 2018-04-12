@@ -15,18 +15,18 @@ Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
-### Step 0
-- Moving forward
-- ![](./ExpectedImage_00000.png)
 ### Step 1
 - Moving forward
-- ![](./ExpectedImage_00001.png)
+- ![](./ExpectedImage_00000.png)
 ### Step 2
+- Moving forward
+- ![](./ExpectedImage_00001.png)
+### Step 3
 - Moving forward and right
 - ![](./ExpectedImage_00002.png)
-### Step 3
+### Step 4
 - Moving left
 - ![](./ExpectedImage_00003.png)
-### Step 4
+### Step 5
 - Cleanup
 - ![](./ExpectedImage_00004.png)
