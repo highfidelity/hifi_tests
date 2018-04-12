@@ -18,7 +18,8 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
         shape: 'Cube',
         dimensions: { x: 1000.0, y: 0.2, z: 1000.0 },
         position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
-        color: { "blue": 200, "green": 200, "red": 200
+        color: { "blue": 200, "green": 200, "red": 200,
+        canCastShadow: false
         }
     });
 
@@ -26,8 +27,8 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
         type: 'Box',
         name: 'Tower1',
         shape: 'Cube',
-        dimensions: { x: 1.0, y: 300, z: 1.0 },
-        position: { x: pos.x, y: pos.y + 142, z: pos.z - 20.0},
+        dimensions: { x: 1.0, y: 5.0, z: 1.0 },
+        position: { x: pos.x, y: pos.y, z: pos.z - 20.0},
         color: { "blue": 0, "green": 200, "red": 200
         }
     });
@@ -36,8 +37,8 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
         type: 'Box',
         name: 'Tower2',
         shape: 'Cube',
-        dimensions: { x: 1.0, y: 300, z: 1.0 },
-        position: { x: pos.x + 4, y: pos.y + 142, z: pos.z - 20.0},
+        dimensions: { x: 1.0, y: 5.0, z: 1.0 },
+        position: { x: pos.x + 4, y: pos.y, z: pos.z - 20.0},
         color: { "blue": 0, "green": 200, "red": 200
         }
     });
@@ -76,6 +77,7 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
     });
 
 	spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
+    Entities.editEntity(terrain, { canCastShadow: false });
 
     autoTester.addStep("Zone cast shadow flag is off - no shadows should be visible");
     
