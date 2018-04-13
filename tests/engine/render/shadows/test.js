@@ -18,8 +18,7 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
         shape: 'Cube',
         dimensions: { x: 1000.0, y: 0.2, z: 1000.0 },
         position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
-        color: { "blue": 200, "green": 200, "red": 200,
-        canCastShadow: false
+        color: { "blue": 200, "green": 200, "red": 200
         }
     });
 
@@ -76,8 +75,7 @@ autoTester.perform("Shadows", Script.resolvePath("."), function(testType) {
         }
     });
 
-	spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
-    Entities.editEntity(terrain, { canCastShadow: false });
+	  spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
 
     autoTester.addStep("Zone cast shadow flag is off - no shadows should be visible");
     
