@@ -11,9 +11,9 @@ autoTester.perform("Haze - low range, low ceiling, high base (inverted haze)", S
 
     var HAZE = {
         hazeRange: 500.0,
-        hazeBaseRef: TEST_POSITION.y,
+        hazeBaseRef: TEST_POSITION.y+150.0,
         hazeAltitudeEffect: 1,
-        hazeCeiling: TEST_POSITION.y+500.0
+        hazeCeiling: TEST_POSITION.y
     };
 
     // Setup

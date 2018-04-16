@@ -11,9 +11,9 @@ autoTester.perform("Haze - low range, high ceiling", Script.resolvePath("."), fu
 
     var HAZE = {
         hazeRange: 500.0,
-        hazeBaseRef: TEST_POSITION.y+150.0,
+        hazeBaseRef: TEST_POSITION.y,
         hazeAltitudeEffect: 1,
-        hazeCeiling: TEST_POSITION.y+50.0
+        hazeCeiling: TEST_POSITION.y+500.0
     };
 
     // Setup
