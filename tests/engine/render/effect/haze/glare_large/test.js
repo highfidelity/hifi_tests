@@ -15,7 +15,7 @@ autoTester.perform("Haze - large glare", Script.resolvePath("."), function(testT
         hazeColor:{"red":153,"green":107,"blue":47},
         hazeEnableGlare: 1,
         hazeGlareColor:{"red":176,"green":25,"blue":68},
-        hazeGlareAngle: 80
+        hazeGlareAngle: 40
     };
 
     // Setup

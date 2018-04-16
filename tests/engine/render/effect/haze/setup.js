@@ -52,7 +52,7 @@ setup = function (hazeDef, spectatorCameraConfig) {
         entities.push( Entities.addEntity({
             type: "Model",
             modelURL: url,
-            name: "hifi_albedoM_ao",
+            name: "Opaque",
             position: { x: pos.x, y: pos.y + 1.0 + i*BIG_MODEL_SCALE, z: pos.z - 500.0},    
             dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
             lifetime: LIFETIME,
@@ -61,17 +61,26 @@ setup = function (hazeDef, spectatorCameraConfig) {
     entities.push( Entities.addEntity({
         type: "Model",
         modelURL: url,
-        name: "hifi_albedoM_ao",
+        name: "Opaque",
         position: { x: pos.x+1.0, y: pos.y, z: pos.z - 3.0},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
+        lifetime: LIFETIME,
+    }) );
+    url = MODEL_DIR_URL + "hifi_opacityV_albedoM_ao" + MODEL_NAME_SUFFIX;
+    entities.push( Entities.addEntity({
+        type: "Model",
+        modelURL: url,
+        name: "Transparent",
+        position: { x: pos.x-10.0, y: pos.y, z: pos.z - 50.0},    
+        dimensions: {x:MEDIUM_MODEL_SCALE, y:MEDIUM_MODEL_SCALE, z:MEDIUM_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
     entities.push( Entities.addEntity({
         type: "Model",
         modelURL: url,
-        name: "hifi_albedoM_ao",
-        position: { x: pos.x-10.0, y: pos.y, z: pos.z - 50.0},    
-        dimensions: {x:MEDIUM_MODEL_SCALE, y:MEDIUM_MODEL_SCALE, z:MEDIUM_MODEL_SCALE},
+        name: "Transparent",
+        position: { x: pos.x+20.0, y: pos.y+10.0, z: pos.z - 200.0},    
+        dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
 
