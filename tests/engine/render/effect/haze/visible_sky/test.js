@@ -3,7 +3,7 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Haze - color", Script.resolvePath("."), function(testType) {
+autoTester.perform("Haze - completely visible sky", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
 
     // Test material matrix
