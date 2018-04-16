@@ -23,8 +23,10 @@ var MODEL_SCALE = 1.0;
 var LIFETIME = 120;
 var MODEL_COUNT = 10;
 
+TEST_POSITION =  { x: 1000, y: -320, z: 1000 };
+
 setup = function (hazeDef, spectatorCameraConfig) {
-    var pos =  { x: 1000, y: -320, z: 1000 };
+    var pos =  TEST_POSITION;
     var entities = []
     // Initial setup
     MyAvatar.goToLocation(
@@ -67,7 +69,7 @@ setup = function (hazeDef, spectatorCameraConfig) {
         type: "Model",
         modelURL: url,
         name: "hifi_albedoM_ao",
-        position: { x: pos.x-1.0, y: pos.y, z: pos.z - 3.0},    
+        position: { x: pos.x-1.0, y: pos.y, z: pos.z - 10.0},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
