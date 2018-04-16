@@ -3,15 +3,17 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Haze - high range", Script.resolvePath("."), function(testType) {
+autoTester.perform("Haze - low range, high ceiling", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
 
     // Test material matrix
     Script.include("../setup.js?raw=true")
 
     var HAZE = {
-        hazeRange: 15000.0,
-        hazeBaseRef: TEST_POSITION.y
+        hazeRange: 500.0,
+        hazeBaseRef: TEST_POSITION.y+150.0,
+        hazeAltitudeEffect: 1,
+        hazeCeiling: TEST_POSITION.y+50.0
     };
 
     // Setup

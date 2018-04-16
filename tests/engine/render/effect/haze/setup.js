@@ -18,12 +18,13 @@ var ASSETS_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/
 var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
 var SUFFIX = "?raw=true";
 var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
-var TOWER_MODEL_SCALE = 20.0;
+var BIG_MODEL_SCALE = 20.0;
+var MEDIUM_MODEL_SCALE = 5.0;
 var MODEL_SCALE = 1.0;
-var LIFETIME = 120;
+var LIFETIME = 30;
 var MODEL_COUNT = 10;
 
-TEST_POSITION =  { x: 1000, y: -320, z: 1000 };
+TEST_POSITION =  { x: 1000, y: 320, z: 1000 };
 
 setup = function (hazeDef, spectatorCameraConfig) {
     var pos =  TEST_POSITION;
@@ -52,8 +53,8 @@ setup = function (hazeDef, spectatorCameraConfig) {
             type: "Model",
             modelURL: url,
             name: "hifi_albedoM_ao",
-            position: { x: pos.x, y: pos.y + 1.0 + i*TOWER_MODEL_SCALE, z: pos.z - 500.0},    
-            dimensions: {x:TOWER_MODEL_SCALE, y:TOWER_MODEL_SCALE, z:TOWER_MODEL_SCALE},
+            position: { x: pos.x, y: pos.y + 1.0 + i*BIG_MODEL_SCALE, z: pos.z - 500.0},    
+            dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
             lifetime: LIFETIME,
         }) );
     }
@@ -69,8 +70,8 @@ setup = function (hazeDef, spectatorCameraConfig) {
         type: "Model",
         modelURL: url,
         name: "hifi_albedoM_ao",
-        position: { x: pos.x-1.0, y: pos.y, z: pos.z - 10.0},    
-        dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
+        position: { x: pos.x-10.0, y: pos.y, z: pos.z - 50.0},    
+        dimensions: {x:MEDIUM_MODEL_SCALE, y:MEDIUM_MODEL_SCALE, z:MEDIUM_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
 
