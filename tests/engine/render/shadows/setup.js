@@ -21,6 +21,7 @@ var MODEL_SCALE = 1.0;
 var LIFETIME = 100;
 
 TEST_POSITION =  { x: 10, y: 3, z: 10 };
+TEST_ORIENTATION =Quat.angleAxis(-30, { x: 1, y: 0, z: 0 });
 
 setup = function (altitude, azimuth) {
     var pos =  TEST_POSITION;
@@ -29,7 +30,7 @@ setup = function (altitude, azimuth) {
     MyAvatar.goToLocation(
         pos,
         true,
-        Quat.angleAxis(180, { x: 0, y: 1, z: 0 }),
+        Quat.multiply(Quat.angleAxis(180, { x: 0, y: 1, z: 0 }), Quat.angleAxis(30, { x: 1, y: 0, z: 0 })),
         true
     );
     
@@ -48,7 +49,7 @@ setup = function (altitude, azimuth) {
         type: "Zone",
         name: "Sky",
 
-        position: {x: pos.x, y: pos.y - 2.0, z: pos.z},
+        position: {x: pos.x, y: pos.y - 3.0, z: pos.z},
         rotation: MyAvatar.orientation,    
         dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
 
@@ -78,10 +79,46 @@ setup = function (altitude, azimuth) {
         type: "Model",
         modelURL: modelUrl,
         name: "Opaque",
-        position: { x: pos.x+1.0, y: pos.y+1.0, z: pos.z - 3.0},    
+        position: { x: pos.x+1.0, y: pos.y-1.0, z: pos.z - 5.0},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
+    }) );
+    entities.push( Entities.addEntity({
+        type: "Model",
+        modelURL: modelUrl,
+        name: "Opaque",
+        position: { x: pos.x+1.0, y: pos.y-2.0, z: pos.z - 6.0},    
+        dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
+        lifetime: LIFETIME,
+        canCastShadow: true
+    }) );
+    entities.push( Entities.addEntity({
+        type: "Model",
+        modelURL: modelUrl,
+        name: "On Floor",
+        position: { x: pos.x, y: pos.y-2.75, z: pos.z - 4.0},    
+        dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
+        lifetime: LIFETIME,
+        canCastShadow: true
+    }) );
+    entities.push( Entities.addEntity({
+        type: "Model",
+        modelURL: modelUrl,
+        name: "Behind",
+        position: { x: pos.x, y: pos.y-1.5, z: pos.z + 2.0},    
+        dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
+        lifetime: LIFETIME,
+        canCastShadow: true
+    }) );
+    entities.push( Entities.addEntity({
+        type: "Model",
+        modelURL: modelUrl,
+        name: "No Cast",
+        position: { x: pos.x-1.0, y: pos.y-1.5, z: pos.z - 3.0},    
+        dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
+        lifetime: LIFETIME,
+        canCastShadow: false
     }) );
 
     return entities
