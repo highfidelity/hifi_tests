@@ -36,10 +36,28 @@ setup = function (altitude, azimuth) {
     
     entities.push( Entities.addEntity({
         type: 'Box',
-        name: 'Terrain',
+        name: 'TerrainRight',
         shape: 'Cube',
-        dimensions: { x: 2000.0, y: 0.2, z: 2000.0 },
-        position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
+        dimensions: { x: 3.0, y: 10.0, z: 2000.0 },
+        position: { x: pos.x+4.0, y: pos.y - 8.0, z: pos.z },
+        color: { "blue": 200, "green": 200, "red": 200 },
+        canCastShadow: false
+    }) );
+    entities.push( Entities.addEntity({
+        type: 'Box',
+        name: 'TerrainFar',
+        shape: 'Cube',
+        dimensions: { x: 100.0, y: 0.2, z: 2000.0 },
+        position: { x: pos.x, y: pos.y - 5.0, z: pos.z },
+        color: { "blue": 100, "green": 200, "red": 200 },
+        canCastShadow: false
+    }) );
+    entities.push( Entities.addEntity({
+        type: 'Box',
+        name: 'TerrainCenter',
+        shape: 'Cube',
+        dimensions: { x: 2.0, y: 10, z: 2000.0 },
+        position: { x: pos.x-0.5, y: pos.y - 8.0, z: pos.z },
         color: { "blue": 200, "green": 200, "red": 200 },
         canCastShadow: false
     }) );
@@ -106,11 +124,12 @@ setup = function (altitude, azimuth) {
         type: "Model",
         modelURL: modelUrl,
         name: "Behind",
-        position: { x: pos.x, y: pos.y-1.5, z: pos.z + 2.0},    
+        position: { x: pos.x, y: pos.y-1.5, z: pos.z + 2.5},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
     }) );
+    modelUrl = MODEL_DIR_URL + "hifi_roughnessV75_metallicV_albedoV_ao" + MODEL_NAME_SUFFIX;
     entities.push( Entities.addEntity({
         type: "Model",
         modelURL: modelUrl,
