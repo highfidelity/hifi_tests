@@ -14,6 +14,5 @@ Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/eng
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/effect/haze/none/test.js?raw=true");
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/effect/haze/partial_sky/test.js?raw=true");
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/effect/haze/visible_sky/test.js?raw=true");
-Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/effect/highlight/coverage/test.js?raw=true");
 
 autoTester.runRecursive();
