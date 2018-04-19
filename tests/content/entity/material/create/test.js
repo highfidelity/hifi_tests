@@ -34,9 +34,9 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(-4, i),
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedo": [0.5, 0, 0],
                         "roughness": i / NUM_ROWS
                       }}),
@@ -46,9 +46,9 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(-3, i),
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedo": [0, 0.5, 0],
                         "opacity": i / NUM_ROWS
                       }}),
@@ -58,9 +58,9 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(-2, i),
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedo": [0, 0, 0.5],
                         "metallic": i / NUM_ROWS
                       }}),
@@ -70,9 +70,9 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(-1, i),
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedo": [0.5, 0.5, 0],
                         "scattering": i / NUM_ROWS
                       }}),
@@ -83,9 +83,9 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
         var secondHalf = i > NUM_ROWS / 2.0;
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(0, i),
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "emissive": secondHalf ? [0, 0, 0] : [i / NUM_ROWS, 0, 1 - i / NUM_ROWS],
                         "albedo": secondHalf ? [i / NUM_ROWS, 0, 1 - i / NUM_ROWS] : [0.5, 0.5, 0.5],
                         "unlit": secondHalf
@@ -110,9 +110,9 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
         var scatteringMapString = "\"normalMap\": \"" + mapLinks[5] + "\",";
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(1, i),
-                      userData: "{\"materials\": {" + albedoString + (i != 2 ? "" : albedoMapString) + (i != NUM_ROWS ? "" : scatteringMapString) + mapString + "}}",
+                      materialData: "{\"materials\": {" + albedoString + (i != 2 ? "" : albedoMapString) + (i != NUM_ROWS ? "" : scatteringMapString) + mapString + "}}",
                       lifetime: LIFETIME
         }));
     }
@@ -121,10 +121,10 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(2, i),
                       materialMappingPos: {x: i / NUM_ROWS, y: i / NUM_ROWS},
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedoMap": texMap
                       }}),
                       lifetime: LIFETIME
@@ -133,10 +133,10 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(3, i),
                       materialMappingScale: {x: 10.0 * (i / NUM_ROWS + 0.1), y: 10.0 * (i / NUM_ROWS + 0.1)},
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedoMap": texMap
                       }}),
                       lifetime: LIFETIME
@@ -145,10 +145,10 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     for (var i = 0; i <= NUM_ROWS; i++) {
         createdEntities.push(Entities.addEntity({
                       type: "Material",
-                      materialURL: "userData",
+                      materialURL: "materialData",
                       position: getPos(4, i),
                       materialMappingRot: 360.0 * i / NUM_ROWS,
-                      userData: JSON.stringify({ "materials": {
+                      materialData: JSON.stringify({ "materials": {
                         "albedoMap": texMap
                       }}),
                       lifetime: LIFETIME

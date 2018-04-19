@@ -36,9 +36,9 @@ autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePa
             if (i != 0 || j != 0) {
                 createdEntities.push(Entities.addEntity({
                               type: "Material",
-                              materialURL: "userData",
+                              materialURL: "materialData",
                               position: pos,
-                              userData: JSON.stringify({ "materials": {
+                              materialData: JSON.stringify({ "materials": {
                                 "albedo": [i / NUM_ROWS, 0, j / NUM_ROWS]
                               }}),
                               priority: 1,
