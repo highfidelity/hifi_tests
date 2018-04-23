@@ -16,5 +16,7 @@ Run the test on graphics cards from each of the following vendors
 Press space bar to advance step by step
 
 ### Step 1
-- Clean up after test
+- Light source altitude: 80.0, azimuth: -60.0
 - ![](./ExpectedImage_00000.png)
+### Step 2
+- Clean up after test

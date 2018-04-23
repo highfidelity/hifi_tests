@@ -20,7 +20,7 @@ var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
 var MODEL_SCALE = 1.0;
 var LIFETIME = 100;
 
-TEST_POSITION =  { x: 10, y: 3, z: 10 };
+TEST_POSITION =  { x: 8000, y: 8000, z: 8000 };
 TEST_ORIENTATION =Quat.angleAxis(-30, { x: 1, y: 0, z: 0 });
 
 setup = function (altitude, azimuth) {
@@ -39,6 +39,7 @@ setup = function (altitude, azimuth) {
         name: 'TerrainRight',
         shape: 'Cube',
         dimensions: { x: 3.0, y: 10.0, z: 2000.0 },
+        lifetime: LIFETIME,
         position: { x: pos.x+4.0, y: pos.y - 8.0, z: pos.z },
         color: { "blue": 200, "green": 200, "red": 200 },
         canCastShadow: false
@@ -48,6 +49,7 @@ setup = function (altitude, azimuth) {
         name: 'TerrainFar',
         shape: 'Cube',
         dimensions: { x: 100.0, y: 0.2, z: 2000.0 },
+        lifetime: LIFETIME,
         position: { x: pos.x, y: pos.y - 5.0, z: pos.z },
         color: { "blue": 100, "green": 200, "red": 200 },
         canCastShadow: false
@@ -57,6 +59,7 @@ setup = function (altitude, azimuth) {
         name: 'TerrainCenter',
         shape: 'Cube',
         dimensions: { x: 2.0, y: 10, z: 2000.0 },
+        lifetime: LIFETIME,
         position: { x: pos.x-0.5, y: pos.y - 8.0, z: pos.z },
         color: { "blue": 200, "green": 200, "red": 200 },
         canCastShadow: false
@@ -70,6 +73,7 @@ setup = function (altitude, azimuth) {
         position: {x: pos.x, y: pos.y - 3.0, z: pos.z},
         rotation: MyAvatar.orientation,    
         dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
+        lifetime: LIFETIME,
 
         keyLightMode: "enabled",
         keyLight:{
