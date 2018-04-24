@@ -26,9 +26,9 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
 
     createdEntities.push(Entities.addEntity({
                   type: "Material",
-                  materialURL: "userData",
+                  materialURL: "materialData",
                   position: MyAvatar.position,
-                  userData: JSON.stringify({ "materials": {
+                  materialData: JSON.stringify({ "materials": {
                     "albedo": [0, 0, 1]
                   }}),
                   lifetime: LIFETIME,

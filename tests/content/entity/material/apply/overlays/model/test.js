@@ -39,9 +39,9 @@ autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePa
             if (i != 0 || j != 0) {
                 var props = {
                               type: "Material",
-                              materialURL: "userData",
+                              materialURL: "materialData",
                               position: pos,
-                              userData: JSON.stringify({ "materials": {
+                              materialData: JSON.stringify({ "materials": {
                                 "albedo": [i / NUM_ROWS, 0, j / NUM_ROWS ]
                               }}),
                               lifetime: LIFETIME,
