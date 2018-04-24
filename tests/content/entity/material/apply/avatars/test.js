@@ -10,7 +10,7 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
     Script.include("../../../../../utils/test_stage.js?raw=true");
 
     // Add the test Cases
-    var createdEntities = setupStage(true, false);
+    var createdEntities = setupStage(true, true, false);
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
