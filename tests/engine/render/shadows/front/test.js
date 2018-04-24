@@ -11,8 +11,10 @@ autoTester.perform("Shadow - light in front", Script.resolvePath("."), function(
 
     spectatorCameraConfig.position = { x: TEST_POSITION.x, y: TEST_POSITION.y, z: TEST_POSITION.z - 0.6 };
     spectatorCameraConfig.orientation = TEST_ORIENTATION;
+    
     // Add the test Cases
     var createdEntities = setup(20.0, 180.0);
+    autoTester.addStep("Light source altitude: 20.0, azimuth: 180.0");
 
     autoTester.addStepSnapshot("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
