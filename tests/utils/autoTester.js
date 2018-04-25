@@ -81,7 +81,7 @@ var testOver = function() {
     print("runmode: " + runMode);
     print("testmode: " + testMode);
     
-    if (runMode === "batch" && testMode === "auto") {
+    if (runMode === "batch" && testMode === "manual") {
         print("PREPARE TO DIE!!!!!!!");
         Test.quit();
         print("WTF==============================================================");
