@@ -79,7 +79,9 @@ var testOver = function() {
     currentTestCase = null;
     
     if (runMode === "batch" && testMode === "auto") {
+        print("PREPARE TO DIE!!!!!!!");
         Test.quit();
+        print("WTF==============================================================");
     } else if (testMode === "manual" || testMode === "auto") {
         Script.stop();
     } else { // testMode === "recursive"
