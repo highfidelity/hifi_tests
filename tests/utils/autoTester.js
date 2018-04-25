@@ -78,7 +78,9 @@ var testOver = function() {
     currentTestName = "";
     currentTestCase = null;
     
-    if (testMode === "manual" || testMode === "auto") {
+    if (runMode === "batch" && testMode === "auto") {
+        Test.quit();
+    } else if (testMode === "manual" || testMode === "auto") {
         Script.stop();
     } else { // testMode === "recursive"
         currentRecursiveTestCompleted = true;
