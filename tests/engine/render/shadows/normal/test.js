@@ -4,10 +4,6 @@ var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Shadow - light on top", Script.resolvePath("."), function(testType) {
-//    Script.setTimeout(function () { Test.quit(); }, 20 * 1000);
-//    Window.location = "localhost/8000,8000,8000/0,0.0,0.0,1.0";
-//    Test.wait(7 * 1000);
-
     var spectatorCameraConfig = autoTester.setupTest();
 
     // Test material matrix
