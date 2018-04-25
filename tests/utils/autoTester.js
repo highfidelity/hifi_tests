@@ -70,13 +70,17 @@ var testOver = function() {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
-    //Window.message("Test " + currentTestName + " over");
+    
+    Window.message("Test " + currentTestName + " over");
     print("Test over " + currentTestName);
     
     currentSteps = [];
     currentStepIndex = 0;
     currentTestName = "";
     currentTestCase = null;
+    
+    print("runmode: " + runMode);
+    print("testmode: " + testMode);
     
     if (runMode === "batch" && testMode === "auto") {
         print("PREPARE TO DIE!!!!!!!");
