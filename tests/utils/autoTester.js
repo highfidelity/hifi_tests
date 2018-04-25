@@ -4,7 +4,9 @@ var currentStepIndex = 0;
 
 var testCases = [];
 var currentlyExecutingTest = 0;
-var testMode = "manual";
+
+var testMode = "manual";      // can be "auto", "recursive"
+var runMode = "interactive";  // can be "batch"
 
 var snapshotPrefix = "";
 var snapshotIndex = 0;
@@ -251,6 +253,10 @@ module.exports.enableRecursive = function (timeStep) {
         autoTimeStep = timeStep;
     }
     print("TEST MODE RECURSIVE SELECTED");
+}
+
+module.exports.enableBatch = function () {
+    runMode = "batch";
 }
 
 // Steps is an array of functions; each function being a test step
