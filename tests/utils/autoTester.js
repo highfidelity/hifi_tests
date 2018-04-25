@@ -71,7 +71,6 @@ var testOver = function() {
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
     
-    Window.message("Test " + currentTestName + " over");
     print("Test is over: " + currentTestName);
     
     currentSteps = [];
