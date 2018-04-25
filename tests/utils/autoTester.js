@@ -81,10 +81,9 @@ var testOver = function() {
     print("runmode: " + runMode);
     print("testmode: " + testMode);
     
-    if (runMode === "batch" && testMode === "manual") {
-        print("PREPARE TO DIE!!!!!!!");
-        Script.setTimeout(function () { Test.quit(); }, 2000);
+    if (runMode === "batch" && testMode === "auto") {
         print("Waiting to die");
+        Script.setTimeout(function () { Test.quit(); }, 2000);
     } else if (testMode === "manual" || testMode === "auto") {
         Script.stop();
     } else { // testMode === "recursive"
