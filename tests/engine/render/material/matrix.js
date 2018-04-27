@@ -46,11 +46,28 @@ function addTestModel(name, position, orientation) {
 }
 
 function addTestCase(test, origin, orientation) {    
-
     var center = getStagePosOriAt(test.a, test.b, test.c).pos;
     return addTestModel(test.name, center, orientation);
 }
 
+function addTestOverlay(name, infront, position, orientation) {
+    var newModel = Overlays.addOverlay("sphere", {
+        position: position,
+        rotation: orientation,
+        size: MODEL_SCALE,
+        color: { red: 0, green: 0, blue: 255},
+        alpha: 1,
+        solid: false,
+        drawInFront: infront
+    });
+  
+    return newModel;
+}
+
+function addOverlayTestCase(test, origin, orientation) {    
+    var center = getStagePosOriAt(test.a, test.b, test.c).pos;
+    return addTestOverlay(test.name, test.infront, center, orientation);
+}
 
 function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights) {
     var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation, hasZone, hasLocalLights);
@@ -60,6 +77,14 @@ function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights) {
         models.push(addTestCase(testCases[i], origin, orientation));
     }  
     return models.concat(backdrop);
+}
+  
+function addOverlayCasesAt(origin, orientation, testCases) {
+    var models = [];
+    for (var i = 0; i < testCases.length; i++) {
+        models.push(addOverlayTestCase(testCases[i], origin, orientation));
+    }  
+    return models;
 }
   
 addCases = function (testCases, hasZone, hasLocalLights) {
@@ -74,4 +99,14 @@ addCases = function (testCases, hasZone, hasLocalLights) {
     return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights);
 }
 
+addOverlayCases = function (testCases) {
+    MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    var orientation = MyAvatar.orientation;
+    orientation = Quat.safeEulerAngles(orientation);
+    orientation.x = 0;
+    orientation = Quat.fromVec3Degrees(orientation);
+    var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
+    return addOverlayCasesAt(root, orientation, testCases);
+}
