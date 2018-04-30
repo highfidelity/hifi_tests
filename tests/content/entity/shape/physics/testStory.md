@@ -5,7 +5,7 @@ Interface is running, logged in an empty region of a domain with editing rights
 ### Steps
 
 #### Step 1
-- Run this [script URL](./test.js?raw=true) (from menu/Edit/Open and Run scripts From URL...)
+- Run this [script URL](./testStory.js?raw=true) (from menu/Edit/Open and Run scripts From URL...)
 - Expected ![](./entity-shape-physics-001.png)
 #### Step 2
 - Click the mouse on any of the sample shapes.
