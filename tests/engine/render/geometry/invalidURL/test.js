@@ -9,7 +9,13 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     // Test material matrix
     Script.include("../../../../utils/test_stage.js?raw=true")
 
-    var createdEntities = setupStage(true, true, true);
+	var flags = { 
+		hasZone: true,
+		hasKeyLight: true,
+		hasAmbient: true,
+		hasLocalLights: false
+	};
+    var createdEntities = setupStage(flags)
 
     var properties = {
         lifetime: 120,  

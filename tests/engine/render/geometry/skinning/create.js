@@ -1,7 +1,14 @@
 Script.include("../../../../utils/test_stage.js?raw=true")
 
-var createdEntities = setupStage(true, true, true);
-var posOri = getStagePosOriAt(0, 0, 0);
+	var flags = { 
+		hasZone: true,
+		hasKeyLight: true,
+		hasAmbient: true,
+		hasLocalLights: false
+	};
+    var createdEntities = setupStage(flags)
+
+	var posOri = getStagePosOriAt(0, 0, 0);
 
 // Define avatar properties
 var properties = {

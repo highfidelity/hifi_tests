@@ -66,7 +66,7 @@ var runNextStep = function () {
 var testOver = function() {
     if (testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+        Window.displayAnnouncement("Test " + currentTestName + " has completed");
     }
     //Window.message("Test " + currentTestName + " over");
     print("Test over " + currentTestName);

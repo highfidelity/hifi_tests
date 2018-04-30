@@ -138,16 +138,16 @@ function addSpotLight(pos, rotation, color, intensity, lifetime) {
     }));
 }
 
-function addTestBackdrop(name, hazeZone, hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
+function addTestBackdrop(name, flags, lifetime) {
     var backdrop = [];
 
     addBackdropGrid(backdrop, lifetime);
     
-    if (hazeZone) {
-        backdrop.push(addZone(hasKeyLight,hasAmbient, lifetime));
+    if (flags.hasZone) {
+        backdrop.push(addZone(flags.hasKeyLight, flags.hasAmbient, lifetime));
     }
     
-    if (hasLocalLights) {
+    if (flags.hasLocalLights) {
         var basePosition = Vec3.sum(stageRoot, Vec3.multiply(1.5, stageAxisC));
         var orientation = Quat.lookAtSimple(basePosition, stageRoot);
         var position = Vec3.sum(stageRoot, Vec3.multiply(-0.5, stageAxisA));
@@ -173,7 +173,7 @@ stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
 stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
 stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 
-setupStage = function (hazeZone, hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
+setupStage = function (flags, lifetime) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -189,7 +189,7 @@ setupStage = function (hazeZone, hasKeyLight, hasAmbient, hasLocalLights, lifeti
     stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
     stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
 
-    return addTestBackdrop("Light_stage_backdrop", hazeZone, hasKeyLight, hasAmbient, hasLocalLights, lifetime);
+    return addTestBackdrop("Light_stage_backdrop", flags, lifetime);
 }
 
 getStagePosOriAt = function (a, b, c) {    

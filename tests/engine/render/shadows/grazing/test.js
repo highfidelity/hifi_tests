@@ -5,6 +5,7 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
+	spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.6 };
 
     // Test material matrix
     Script.include("../setup.js?raw=true")

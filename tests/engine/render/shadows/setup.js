@@ -22,7 +22,13 @@ var LIFETIME = 100;
 
 setup = function (altitude, azimuth) {
     // Create backdrop
-    var entities = setupStage(false, false, false, false, LIFETIME);
+	var flags = { 
+		hasZone: false,
+		hasKeyLight: false,
+		hasAmbient: false,
+		hasLocalLights: false
+	};
+    var entities = setupStage(flags, LIFETIME)
     
     var pos = MyAvatar.position;
     

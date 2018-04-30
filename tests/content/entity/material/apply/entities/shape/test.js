@@ -10,7 +10,13 @@ autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePa
     Script.include("../../../../../../utils/test_stage.js?raw=true");
 
     // Add the test Cases
-    var createdEntities = setupStage(true, true, false);
+	var flags = { 
+		hasZone: true,
+		hasKeyLight: true,
+		hasAmbient: false,
+		hasLocalLights: false
+	};
+    var createdEntities = setupStage(flags)
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
