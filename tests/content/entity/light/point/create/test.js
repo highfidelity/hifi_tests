@@ -12,10 +12,8 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
 
     // Add the test Cases
 	var flags = { 
-		hasZone: true,
 		hasKeyLight: false,
-		hasAmbient: false,
-		hasLocalLights: false
+		hasAmbient: false
 	};
     var createdEntities = setupStage(flags)
 

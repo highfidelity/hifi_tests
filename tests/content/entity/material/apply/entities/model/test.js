@@ -13,10 +13,7 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
 
     // Add the test Cases
 	var flags = { 
-		hasZone: true,
-		hasKeyLight: true,
-		hasAmbient: false,
-		hasLocalLights: false
+		hasAmbient: false
 	};
     var createdEntities = setupStage(flags)
 

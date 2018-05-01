@@ -12,10 +12,8 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
 
     // Add the test Cases
 	var flags = { 
-		hasZone: true,
-		hasKeyLight: true,
-		hasAmbient: false,
-		hasLocalLights: false
+		hasKeyLight: false,
+		hasAmbient: false
 	};
     var createdEntities = setupStage(flags, 200)
 

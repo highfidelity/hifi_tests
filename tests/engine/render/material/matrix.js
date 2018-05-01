@@ -25,7 +25,6 @@ var LIFETIME = 120;
 
 function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {  
 	var flags = { 
-		hasZone: true,
 		hasKeyLight: hasZone,
 		hasAmbient: hasZone,
 		hasLocalLights: hasLocalLights
