@@ -286,6 +286,7 @@ module.exports.runRecursive = function () {
     var STEP_TIME = 2000;   
     Script.setInterval(
         function () {
+            print("TIME STEP");
             if (currentRecursiveTestCompleted) {
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
