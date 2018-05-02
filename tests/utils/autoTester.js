@@ -294,7 +294,7 @@ module.exports.runRecursive = function () {
                 } else {
                     print("FINISHED");
                     if (runMode === "batch") {
-                        print("BATCH
+                        print("BATCH");
                         // Exit interface
                         print("Waiting to die");
                         Script.setTimeout(function () { Test.quit(); }, 2000);
