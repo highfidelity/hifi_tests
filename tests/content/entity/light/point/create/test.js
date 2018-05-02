@@ -13,7 +13,7 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     // Add the test Cases
 	var flags = { 
 		hasKeyLight: false,
-		hasAmbient: false
+		hasAmbientLight: false
 	};
     var createdEntities = setupStage(flags)
 

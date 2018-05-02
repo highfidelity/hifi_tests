@@ -26,7 +26,7 @@ var LIFETIME = 120;
 function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {  
 	var flags = { 
 		hasKeyLight: hasZone,
-		hasAmbient: hasZone,
+		hasAmbientLight: hasZone,
 		hasLocalLights: hasLocalLights
 	};
     var backdrop = setupStage(flags)

@@ -177,7 +177,7 @@ stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 // flags is an object creating the zone if required, and providing values for its fields:
 //      hasZone         - default is on
 //      hasKeyLight     - default is on
-//      hasAmbient      - default is on
+//      hasAmbientLight - default is on
 //      hasLocalLights  - default is off
 //      hasSkybox       - default is on
 //      hasHaze         - default is off
