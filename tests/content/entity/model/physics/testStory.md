@@ -8,7 +8,7 @@ Interface is running, logged in an empty region of a domain with editing rights
 - Make sure this menu option is disabled: **Developer --> Physics --> Draw Collision Shapes**.
 - Expected  "
 #### Step 2
-- Copy this [script URL](./test.js?raw=true) and **Edit --> Open and Run Script from URL...**
+- Copy this [script URL](./testStory.js?raw=true) and **Edit --> Open and Run Script from URL...**
 - Expected : Temporary (120 sec) objects will be created: a floor and two rows of models (six columns).  From left to right the columns use the following **Collision shape types** property:
 
 No Collision

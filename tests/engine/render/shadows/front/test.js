@@ -5,12 +5,10 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("Shadow - light in front", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
-
+	spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.6 };
+	
     // Test material matrix
     Script.include("../setup.js?raw=true")
-
-    spectatorCameraConfig.position = { x: TEST_POSITION.x, y: TEST_POSITION.y, z: TEST_POSITION.z - 0.6 };
-    spectatorCameraConfig.orientation = TEST_ORIENTATION;
     
     // Add the test Cases
     var createdEntities = setup(20.0, 180.0);
