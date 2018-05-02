@@ -66,7 +66,7 @@ var runNextStep = function () {
 var testOver = function() {
     if (testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+        Window.displayAnnouncement("Test " + currentTestName + " has completed");
     }
     //Window.message("Test " + currentTestName + " over");
     print("Test over " + currentTestName);
@@ -213,7 +213,8 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-
+	Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+	
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
