@@ -5,8 +5,9 @@ var currentStepIndex = 0;
 var testCases = [];
 var currentlyExecutingTest = 0;
 
-var testMode = "manual";      // can be "auto", "recursive"
+var testMode = "manual";      // can be "auto"
 var runMode = "interactive";  // can be "batch"
+var isRecursive = false;
 
 var snapshotPrefix = "";
 var snapshotIndex = 0;
@@ -78,16 +79,15 @@ var testOver = function() {
     currentTestName = "";
     currentTestCase = null;
     
-    print("runmode: " + runMode);
-    print("testmode: " + testMode);
-    
-    if (runMode === "batch" && testMode === "auto") {
+    if (isRecursive) {
+        currentRecursiveTestCompleted = true;
+    } else if (runMode === "batch" && testMode === "auto") {
+        // Exit interface
         print("Waiting to die");
         Script.setTimeout(function () { Test.quit(); }, 2000);
-    } else if (testMode === "manual" || testMode === "auto") {
+    } else {
+        // Just stop the script
         Script.stop();
-    } else { // testMode === "recursive"
-        currentRecursiveTestCompleted = true;
     }
 }
 
@@ -151,15 +151,15 @@ module.exports.perform = function (testName, testPath, testMain) {
     currentTestCase = new TestCase(testName, testPath, testMain);
     
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
-    if (testMode === "manual") {
-        print("Begin manual test:" + testName);
-        currentTestCase.func("manual");
-    } else if (testMode === "auto") {
-        print("Begin auto test:" + testName);
-        currentTestCase.func("auto");
-    } else {
+    if (isRecursive) {
         print("Not running yet - in recursive mode");
         testCases.push(currentTestCase);
+    } else if (testMode === "manual") {
+        print("Begin manual test:" + testName);
+        currentTestCase.func("manual");
+    } else { // testMode === "auto"
+        print("Begin auto test:" + testName);
+        currentTestCase.func("auto");
     }
 }
 
@@ -254,7 +254,7 @@ module.exports.enableAuto = function (timeStep) {
 }
 
 module.exports.enableRecursive = function (timeStep) {
-    testMode = "recursive";
+    isRecursive = true;
     if (timeStep) {
         autoTimeStep = timeStep;
     }
@@ -268,6 +268,10 @@ module.exports.enableBatch = function () {
 // Steps is an array of functions; each function being a test step
 module.exports.runTest = function (testType) {
     // In recursive mode, this call is ignored
+    if (isRecursive) {
+        return;
+    }
+    
     if (testType  === "auto") {
         onRunAuto();
     } else if (testType === "manual") { 
