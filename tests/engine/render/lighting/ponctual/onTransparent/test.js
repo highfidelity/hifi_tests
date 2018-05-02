@@ -11,7 +11,11 @@ autoTester.perform("On Transparent", Script.resolvePath("."), function(testType)
     Script.include("../../../../../utils/test_stage.js?raw=true")
 
     // Add the test Cases
-    var createdEntities = setupStage(false, false)
+    var flags = { 
+		hasKeyLight: false,
+		hasAmbient: false
+	};
+    var createdEntities = setupStage(flags)
     var posOri = getStagePosOriAt(4.0, -2, 0.0)
 
     {
