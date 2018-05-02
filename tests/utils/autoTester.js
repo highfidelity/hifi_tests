@@ -292,11 +292,14 @@ module.exports.runRecursive = function () {
                     currentTestCase = testCases.pop();
                     currentTestCase.func("auto");
                 } else {
+                    print("FINISHED");
                     if (runMode === "batch") {
+                        print("BATCH
                         // Exit interface
                         print("Waiting to die");
                         Script.setTimeout(function () { Test.quit(); }, 2000);
                     } else {
+                        print("WTF!!!!");
                         // Just stop the script
                         print("Recursive tests complete");
                         Script.stop();
