@@ -13,7 +13,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     // Add the test Cases
 	var flags = { 
 		hasKeyLight: false,
-		hasAmbient: false
+		hasAmbientLight: false
 	};
     var createdEntities = setupStage(flags, 200)
 

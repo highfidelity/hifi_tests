@@ -11,7 +11,7 @@ autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePa
 
     // Add the test Cases
 	var flags = { 
-		hasAmbient: false
+		hasAmbientLight: false
 	};
     var createdEntities = setupStage(flags)
 

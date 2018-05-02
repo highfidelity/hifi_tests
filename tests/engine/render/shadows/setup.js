@@ -25,7 +25,7 @@ setup = function (altitude, azimuth) {
 	var flags = { 
 		hasZone: false,
 		hasKeyLight: false,
-		hasAmbient: false
+		hasAmbientLight: false
 	};
     var entities = setupStage(flags, LIFETIME)
     
