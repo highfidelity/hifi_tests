@@ -268,10 +268,6 @@ module.exports.enableBatch = function () {
 // Steps is an array of functions; each function being a test step
 module.exports.runTest = function (testType) {
     // In recursive mode, this call is ignored
-    if (isRecursive) {
-        return;
-    }
-    
     if (testType  === "auto") {
         onRunAuto();
     } else if (testType === "manual") { 
