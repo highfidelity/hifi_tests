@@ -4,10 +4,7 @@ var currentStepIndex = 0;
 
 var testCases = [];
 var currentlyExecutingTest = 0;
-
-var testMode = "manual";      // can be "auto"
-var runMode = "interactive";  // can be "batch"
-var isRecursive = false;      // NOTE: recursive is always treated as automatic
+var testMode = "manual";
 
 var snapshotPrefix = "";
 var snapshotIndex = 0;
@@ -67,25 +64,22 @@ var runNextStep = function () {
 }
 
 var testOver = function() {
-    if (!isRecursive && testMode === "manual") {
+    if (testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " has completed");
     }
+    //Window.message("Test " + currentTestName + " over");
+    print("Test over " + currentTestName);
     
     currentSteps = [];
     currentStepIndex = 0;
     currentTestName = "";
     currentTestCase = null;
     
-    if (isRecursive) {
-        currentRecursiveTestCompleted = true;
-    } else if (runMode === "batch" && testMode === "auto") {
-        // Exit interface
-        print("Waiting to die");
-        Script.setTimeout(function () { Test.quit(); }, 2000);
-    } else {
-        // Just stop the script
+    if (testMode === "manual" || testMode === "auto") {
         Script.stop();
+    } else { // testMode === "recursive"
+        currentRecursiveTestCompleted = true;
     }
 }
 
@@ -105,6 +99,15 @@ var onRunAutoNext = function() {
     );
 }
 
+var onRunAuto = function() {  
+    // run the next step after next timer
+    var STEP_TIME = 2000;   
+    Script.setTimeout(
+        onRunAutoNext,
+        STEP_TIME
+    );
+}
+
 var onKeyPressEventNextStep = function (event) {
     if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
         if (!runNextStep()) {
@@ -118,16 +121,7 @@ var onRunManual = function() {
         "Ready to run test " + currentTestName + "\n" +
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
          
-    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
-}
-
-var onRunAuto = function() {  
-    // run the next step after next timer
-    var STEP_TIME = 2000;   
-    Script.setTimeout(
-        onRunAutoNext,
-        STEP_TIME
-    );
+    Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
 
 // Add Steps to the test case
@@ -149,15 +143,15 @@ module.exports.perform = function (testName, testPath, testMain) {
     currentTestCase = new TestCase(testName, testPath, testMain);
     
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
-    if (isRecursive) {
-        print("Not running yet - in recursive mode");
-        testCases.push(currentTestCase);
-    } else if (testMode === "manual") {
+    if (testMode === "manual") {
         print("Begin manual test:" + testName);
         currentTestCase.func("manual");
-    } else { // testMode === "auto"
+    } else if (testMode === "auto") {
         print("Begin auto test:" + testName);
         currentTestCase.func("auto");
+    } else {
+        print("Not running yet - in recursive mode");
+        testCases.push(currentTestCase);
     }
 }
 
@@ -219,7 +213,7 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-	  Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+	Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
 	
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
@@ -253,15 +247,11 @@ module.exports.enableAuto = function (timeStep) {
 }
 
 module.exports.enableRecursive = function (timeStep) {
-    isRecursive = true;
+    testMode = "recursive";
     if (timeStep) {
         autoTimeStep = timeStep;
     }
     print("TEST MODE RECURSIVE SELECTED");
-}
-
-module.exports.enableBatch = function () {
-    runMode = "batch";
 }
 
 // Steps is an array of functions; each function being a test step
@@ -278,6 +268,7 @@ module.exports.runRecursive = function () {
     print("Starting recursive tests");
     
     currentRecursiveTestCompleted = true;
+    var STEP_TIME = 2000;   
     Script.setInterval(
         function () {
             if (currentRecursiveTestCompleted) {
@@ -286,18 +277,132 @@ module.exports.runRecursive = function () {
                     currentTestCase = testCases.pop();
                     currentTestCase.func("auto");
                 } else {
-                    if (runMode === "batch") {
-                        // Exit interface
-                        print("Waiting to die");
-                        Script.setTimeout(function () { Test.quit(); }, 2000);
-                    } else {
-                        // Just stop the script
-                        print("Recursive tests complete");
-                        Script.stop();
-                    }
+                    print("Recursive tests complete");
+                    Script.stop();
                 }
             }
         },
-        1000
+        STEP_TIME
     );
 }
+
+//module.exports.assertPlatform = function (listOfRequiredPlatforms) {
+//    // Find our OS
+//    var platform = "Unknown";
+//    if (Window.isWindows64()) {
+//        platform = "WINDOWS64";
+//    } else if (Window.isMacOs()) {
+//        platform = "MACOS";
+//    } else if (Window.isLinux()) {
+//        platform = "LINUX";
+//    } else if (Window.isAndroid()) {
+//        platform = "ANDROID";
+//    }
+//    
+//    // requiredPlatforms will contain the list of required platforms, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredPlatforms = listOfRequiredPlatforms.split(" ");
+//    
+//    var platformOK = false;
+//    for (var requiredPlatform in requiredPlatforms) {
+//        if (requiredPlatform.toUpperCase() === platform) {
+//            platformOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!platformOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS PLATFORM!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
+//
+//module.exports.assertDisplay = function (listOfRequiredDisplays) {
+//    // Find our display
+//    var display = "DESKTOP";
+//    if (Window.hasRift()) {
+//        display = "RIFT";
+//    } else if (Window.hasVive()) {
+//        display = "VIVE";
+//    }
+//    
+//    // requiredDisplays will contain the list of required displays, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredDisplays = listOfRequiredDisplays.split(" ");
+//    
+//    var displayOK = false;
+//    for (var requiredDisplay in requiredDisplays) {
+//        // The Rift is often called by the manufacturer's name
+//        if (requiredDisplay.toUpperCase() == "OCULUS") {
+//            requiredDisplay = "RIFT";
+//        }
+//        
+//        if (requiredDisplay.toUpperCase() === display) {
+//            displayOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!displayOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS DISPLAY!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
+//
+//module.exports.assertCPUType = function (listOfRequiredCPUs) {
+//    // Find our CPU
+//    var CPU = "I5";
+//    if (Window.isI7()) {
+//        CPU = "I7";
+//    }
+//    
+//    // requiredCPUs will contain the list of required displays, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredCPUs = listOfRequiredCPUs.split(" ");
+//    
+//    var cpuOK = false;
+//    for (var requiredCPU in requiredCPUs) {
+//        if (requiredCPU === CPU) {
+//            cpuOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!cpuOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS CPU!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
+//
+//module.exports.assertGPUType = function (listOfRequiredGPUs) {
+//    // Find our GPU
+//    var GPU = "AMD";
+//    if (Window.isNvidia()) {
+//        GPU = "I7";
+//    }
+//    
+//    // requiredGPUs will contain the list of required GPUs, and possibly some extra spaces
+//    // (the spaces have no effect)
+//    var requiredGPUs = listOfRequiredGPUs.split(" ");
+//    
+//    var gpuOK = false;
+//    for (var requiredGPU in requiredGPUs) {
+//        if (requiredGPU.toUpperCase() === GPU) {
+//            gpuOK = true;
+//            break;
+//        }
+//    }
+//    
+//    if (!gpuOK) {
+//        var errorMessage = "TEST IS NOT SUPPORTED ON THIS GPU!!!";
+//        print(errorMessage);
+//        Window.displayAnnouncement(errorMessage);
+//        Script.stop();
+//    }
+//}
