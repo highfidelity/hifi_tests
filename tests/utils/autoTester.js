@@ -279,7 +279,7 @@ module.exports.runRecursive = function () {
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
-                    currentTestCase.func(testType);
+                    currentTestCase.func(testMode);
                 } else {
                     print("Recursive tests complete");
                     Script.stop();
