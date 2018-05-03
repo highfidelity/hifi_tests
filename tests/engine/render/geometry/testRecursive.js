@@ -2,7 +2,6 @@
 
 var autoTester = Script.require("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/autoTester.js?raw=true");
 autoTester.enableRecursive();
-autoTester.enableAuto();
 
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/geometry/invalidURL/test.js?raw=true");
 
