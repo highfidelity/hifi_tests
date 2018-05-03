@@ -5,6 +5,6 @@ var autoTester = Script.require("https://github.com/highfidelity/hifi_tests/blob
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/content/entity/light/point/create/test.js?raw=true");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/lighting/ponctual/onTransparent/test.js?raw=true");
 
 autoTester.runRecursive();
