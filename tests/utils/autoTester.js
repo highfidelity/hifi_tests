@@ -280,12 +280,14 @@ module.exports.runRecursive = function () {
     print("Starting recursive tests");
     
     currentRecursiveTestCompleted = true;
-    var STEP_TIME = 2000;   
     Script.setInterval(
         function () {
+            print("TIMER FIRED");
             if (currentRecursiveTestCompleted) {
+                print("starting new test - lenght is: " + testCases.length);
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
+                    print("running next test");
                     currentTestCase = testCases.pop();
                     currentTestCase.func("auto");
                 } else {
@@ -302,8 +304,10 @@ module.exports.runRecursive = function () {
                         Script.stop();
                     }
                 }
+            } else {
+                print("still running test");
             }
         },
-        STEP_TIME
+        1000
     );
 }
