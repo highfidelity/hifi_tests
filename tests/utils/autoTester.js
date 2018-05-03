@@ -72,8 +72,6 @@ var testOver = function() {
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
     
-    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Test is over: " + currentTestName);
-    
     currentSteps = [];
     currentStepIndex = 0;
     currentTestName = "";
@@ -282,30 +280,22 @@ module.exports.runRecursive = function () {
     currentRecursiveTestCompleted = true;
     Script.setInterval(
         function () {
-            print("TIMER FIRED");
             if (currentRecursiveTestCompleted) {
-                print("starting new test - lenght is: " + testCases.length);
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
-                    print("running next test");
                     currentTestCase = testCases.pop();
                     currentTestCase.func("auto");
                 } else {
-                    print("FINISHED");
                     if (runMode === "batch") {
-                        print("BATCH");
                         // Exit interface
                         print("Waiting to die");
                         Script.setTimeout(function () { Test.quit(); }, 2000);
                     } else {
-                        print("WTF!!!!");
                         // Just stop the script
                         print("Recursive tests complete");
                         Script.stop();
                     }
                 }
-            } else {
-                print("still running test");
             }
         },
         1000
