@@ -4,10 +4,7 @@ var currentStepIndex = 0;
 
 var testCases = [];
 var currentlyExecutingTest = 0;
-
-var testMode = "manual";      // can be "auto"
-var runMode = "interactive";  // can be "batch"
-var isRecursive = false;      // NOTE: recursive is always treated as automatic
+var testMode = "manual";
 
 var snapshotPrefix = "";
 var snapshotIndex = 0;
@@ -69,25 +66,20 @@ var runNextStep = function () {
 var testOver = function() {
     if (testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+        Window.displayAnnouncement("Test " + currentTestName + " has completed");
     }
-    
-    print("Test is over: " + currentTestName);
+    //Window.message("Test " + currentTestName + " over");
+    print("Test over " + currentTestName);
     
     currentSteps = [];
     currentStepIndex = 0;
     currentTestName = "";
     currentTestCase = null;
     
-    if (isRecursive) {
-        currentRecursiveTestCompleted = true;
-    } else if (runMode === "batch" && testMode === "auto") {
-        // Exit interface
-        print("Waiting to die");
-        Script.setTimeout(function () { Test.quit(); }, 2000);
-    } else {
-        // Just stop the script
+    if (testMode === "manual" || testMode === "auto") {
         Script.stop();
+    } else { // testMode === "recursive"
+        currentRecursiveTestCompleted = true;
     }
 }
 
@@ -107,6 +99,15 @@ var onRunAutoNext = function() {
     );
 }
 
+var onRunAuto = function() {  
+    // run the next step after next timer
+    var STEP_TIME = 2000;   
+    Script.setTimeout(
+        onRunAutoNext,
+        STEP_TIME
+    );
+}
+
 var onKeyPressEventNextStep = function (event) {
     if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
         if (!runNextStep()) {
@@ -120,16 +121,7 @@ var onRunManual = function() {
         "Ready to run test " + currentTestName + "\n" +
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
          
-    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
-}
-
-var onRunAuto = function() {  
-    // run the next step after next timer
-    var STEP_TIME = 2000;   
-    Script.setTimeout(
-        onRunAutoNext,
-        STEP_TIME
-    );
+    Controller.keyPressEvent.connect( onKeyPressEventNextStep );
 }
 
 // Add Steps to the test case
@@ -151,15 +143,15 @@ module.exports.perform = function (testName, testPath, testMain) {
     currentTestCase = new TestCase(testName, testPath, testMain);
     
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
-    if (isRecursive) {
-        print("Not running yet - in recursive mode");
-        testCases.push(currentTestCase);
-    } else if (testMode === "manual") {
+    if (testMode === "manual") {
         print("Begin manual test:" + testName);
         currentTestCase.func("manual");
-    } else { // testMode === "auto"
+    } else if (testMode === "auto") {
         print("Begin auto test:" + testName);
         currentTestCase.func("auto");
+    } else {
+        print("Not running yet - in recursive mode");
+        testCases.push(currentTestCase);
     }
 }
 
@@ -221,7 +213,8 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-
+	Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+	
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
@@ -254,15 +247,11 @@ module.exports.enableAuto = function (timeStep) {
 }
 
 module.exports.enableRecursive = function (timeStep) {
-    isRecursive = true;
+    testMode = "recursive";
     if (timeStep) {
         autoTimeStep = timeStep;
     }
     print("TEST MODE RECURSIVE SELECTED");
-}
-
-module.exports.enableBatch = function () {
-    runMode = "batch";
 }
 
 // Steps is an array of functions; each function being a test step
@@ -285,22 +274,11 @@ module.exports.runRecursive = function () {
             if (currentRecursiveTestCompleted) {
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
-                    print("+++++++++++++++++++++testCases.length = " + testCases.length);
                     currentTestCase = testCases.pop();
                     currentTestCase.func("auto");
                 } else {
-                    print("FINISHED");
-                    if (runMode === "batch") {
-                        print("BATCH");
-                        // Exit interface
-                        print("Waiting to die");
-                        Script.setTimeout(function () { Test.quit(); }, 2000);
-                    } else {
-                        print("WTF!!!!");
-                        // Just stop the script
-                        print("Recursive tests complete");
-                        Script.stop();
-                    }
+                    print("Recursive tests complete");
+                    Script.stop();
                 }
             }
         },
