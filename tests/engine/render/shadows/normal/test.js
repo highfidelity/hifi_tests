@@ -8,9 +8,6 @@ autoTester.perform("Shadow - light on top", Script.resolvePath("."), function(te
 
     // Test material matrix
     Script.include("../setup.js?raw=true")
-
-    spectatorCameraConfig.position = { x: TEST_POSITION.x, y: TEST_POSITION.y, z: TEST_POSITION.z - 0.6 };
-    spectatorCameraConfig.orientation = TEST_ORIENTATION;
     
     // Add the test Cases
     var createdEntities = setup(80.0, -60.0);

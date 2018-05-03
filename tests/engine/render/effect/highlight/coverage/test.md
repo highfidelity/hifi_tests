@@ -2,7 +2,8 @@
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
-- In an empty region of a domain with editing rights.
+- In an empty region of a domain with editing rights.  
+- Use the Woody Avatar
 
 ## Platforms
 Run the test on each of the following platforms
