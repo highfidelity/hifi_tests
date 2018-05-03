@@ -67,7 +67,7 @@ var runNextStep = function () {
 }
 
 var testOver = function() {
-    if (testMode === "manual") {
+    if (!isRecursive && testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
