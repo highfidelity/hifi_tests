@@ -66,7 +66,7 @@ var runNextStep = function () {
 }
 
 var testOver = function() {
-    if (!isRecursive && testMode === "manual") {
+    if (testMode === "manual") {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
@@ -258,9 +258,13 @@ module.exports.enableRecursive = function (timeStep) {
 // Steps is an array of functions; each function being a test step
 module.exports.runTest = function (testType) {
     // In recursive mode, this call is ignored
+    if (isRecursive) {
+        return;
+    }
+    
     if (testType  === "auto") {
         onRunAuto();
-    } else if (testType === "manual") { 
+    } else { // testType === "manual"
         onRunManual();
     }
 }
@@ -275,7 +279,7 @@ module.exports.runRecursive = function () {
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
-                    currentTestCase.func("auto");
+                    currentTestCase.func(testType);
                 } else {
                     print("Recursive tests complete");
                     Script.stop();
