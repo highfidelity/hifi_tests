@@ -1,4 +1,4 @@
-# Apply Material Entities to Shape Entities
+# effect - bloom
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,4 +8,10 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Take snapshot
+- Bloom is off - no bloom should be visible
+- ![](./ExpectedImage_00000.png)
+### Step 2
+- Bloom enabled
+- ![](./ExpectedImage_00001.png)
+### Step 3
+- Clean up

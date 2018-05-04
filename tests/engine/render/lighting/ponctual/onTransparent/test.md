@@ -1,4 +1,4 @@
-# Apply Material Entities to Shape Entities
+# On Transparent
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
