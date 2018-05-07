@@ -11,7 +11,11 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
     var LIFETIME = 200;
 
     // Add the test Cases
-    var createdEntities = setupStage(true, false, false, 200);
+	var flags = { 
+		hasKeyLight: false,
+		hasAmbientLight: false
+	};
+    var createdEntities = setupStage(flags, 200)
 
     var posOri = getStagePosOriAt(0, 0, 0);
 

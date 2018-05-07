@@ -1,6 +1,6 @@
 Script.include("../../../../utils/test_stage.js?raw=true")
 
-var createdEntities = setupStage(true, true);
+    var createdEntities = setupStage();
 
 var properties = {
   lifetime: 120,  

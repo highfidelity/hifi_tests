@@ -53,7 +53,7 @@ function addBackdropGrid(backdrop, lifetime) {
     }
 }
 
-addZone = function (hasKeyLight, hasAmbient, lifetime) {
+addZone = function (flags, lifetime) {
     var zoneDim = Vec3.multiply(BACKDROP_SIZE, TILE_DIM);
     var center = getStagePosOriAt(0, 0, 0).pos;
     
@@ -68,12 +68,12 @@ addZone = function (hasKeyLight, hasAmbient, lifetime) {
         dimensions: zoneDim,
         lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
 
-        keyLightMode: "enabled",
-        skyboxMode: "enabled",
-        ambientLightMode: "enabled",
+        keyLightMode: (flags === undefined || flags.hasKeyLight === undefined || flags.hasKeyLight) ? "enabled" : "disabled",
+        skyboxMode: (flags === undefined || flags.hasSkybox === undefined || flags.hasSkybox) ? "enabled" : "disabled",
+        ambientLightMode: (flags === undefined || flags.hasAmbientLight === undefined || flags.hasAmbientLight) ? "enabled" : "disabled",
 
         keyLight:{
-            intensity: 0.8 * hasKeyLight,
+            intensity: 0.8,
             direction: {
                 "x": 0.037007175385951996,
                 "y": -0.7071067690849304,
@@ -81,12 +81,12 @@ addZone = function (hasKeyLight, hasAmbient, lifetime) {
             },
         },
         ambientLight: {
-            ambientIntensity: 1.0 * hasAmbient,
+            ambientIntensity: 1.0,
             ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.ktx?raw=true",
         },
 
-        hazeMode:"disabled",
-        backgroundMode:"skybox",
+        hazeMode: (flags !== undefined && flags.hasHaze !== undefined && flags.hasHaze) ? "enabled" : "disabled",
+        backgroundMode: "skybox",
         skybox:{
             color: {"red":2,"green":2,"blue":2}, // Dark grey background
         }
@@ -138,12 +138,17 @@ function addSpotLight(pos, rotation, color, intensity, lifetime) {
     }));
 }
 
-function addTestBackdrop(name, hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
+// see comment for setupStage
+function addTestBackdrop(name, flags, lifetime) {
     var backdrop = [];
 
     addBackdropGrid(backdrop, lifetime);
-    backdrop.push(addZone(hasKeyLight,hasAmbient, lifetime));
-    if (hasLocalLights) {
+    
+    if (flags === undefined || flags.hasZone === undefined || flags.hasZone) {
+        backdrop.push(addZone(flags, lifetime));
+    }
+    
+    if (flags !== undefined && flags.hasLocalLights  !== undefined && flags.hasLocalLights) {
         var basePosition = Vec3.sum(stageRoot, Vec3.multiply(1.5, stageAxisC));
         var orientation = Quat.lookAtSimple(basePosition, stageRoot);
         var position = Vec3.sum(stageRoot, Vec3.multiply(-0.5, stageAxisA));
@@ -169,7 +174,14 @@ stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
 stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
 stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 
-setupStage = function (hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
+// flags is an object creating the zone if required, and providing values for its fields:
+//      hasZone         - default is on
+//      hasKeyLight     - default is on
+//      hasAmbientLight - default is on
+//      hasLocalLights  - default is off
+//      hasSkybox       - default is on
+//      hasHaze         - default is off
+setupStage = function (flags, lifetime) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -185,7 +197,7 @@ setupStage = function (hasKeyLight, hasAmbient, hasLocalLights, lifetime) {
     stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
     stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
 
-    return addTestBackdrop("Light_stage_backdrop", hasKeyLight, hasAmbient, hasLocalLights, lifetime);
+    return addTestBackdrop("Light_stage_backdrop", flags, lifetime);
 }
 
 getStagePosOriAt = function (a, b, c) {    

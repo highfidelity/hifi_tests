@@ -11,7 +11,11 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     Script.include("../../../../../utils/test_stage.js?raw=true")
 
     // Add the test Cases
-    var createdEntities = setupStage(false, false)
+	var flags = { 
+		hasKeyLight: false,
+		hasAmbientLight: false
+	};
+    var createdEntities = setupStage(flags)
 
     var posOri = getStagePosOriAt(6, 0, 0)
 
