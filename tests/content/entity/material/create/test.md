@@ -4,14 +4,6 @@
 ## Preconditions
 - In an empty region of a domain with editing rights.
 
-## Platforms
-Run the test on each of the following platforms
-## Displays
-Run the test on each of the following displays
-## Processors
-Run the test on each of the following processors
-## Graphics Cards
-Run the test on graphics cards from each of the following vendors
 ## Steps
 Press space bar to advance step by step
 
@@ -38,4 +30,3 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00006.png)
 ### Step 8
 - Take snapshot
-- ![](./ExpectedImage_00007.png)

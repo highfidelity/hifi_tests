@@ -6,7 +6,8 @@ var testCases = [];
 var currentlyExecutingTest = 0;
 
 var testMode = "manual";      // can be "auto"
-var isRecursive = false;      // NOTE: recursive is always treated as automatic
+var isRecursive = false;
+var runningRecursive = false;
 
 var snapshotPrefix = "";
 var snapshotIndex = 0;
@@ -118,10 +119,9 @@ var onRunManual = function() {
 
 var onRunAuto = function() {  
     // run the next step after next timer
-    var STEP_TIME = 2000;   
     Script.setTimeout(
         onRunAutoNext,
-        STEP_TIME
+        autoTimeStep
     );
 }
 
@@ -257,8 +257,8 @@ module.exports.enableRecursive = function (timeStep) {
 
 // Steps is an array of functions; each function being a test step
 module.exports.runTest = function (testType) {
-    // In recursive mode, this call is ignored
-    if (isRecursive) {
+    // In recursive mode, this call is ignored during script load
+    if (isRecursive && !runningRecursive) {
         return;
     }
     
@@ -271,6 +271,7 @@ module.exports.runTest = function (testType) {
 
 module.exports.runRecursive = function () {
     print("Starting recursive tests");
+    runningRecursive = true;
     
     currentRecursiveTestCompleted = true;
     Script.setInterval(

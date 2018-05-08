@@ -4,23 +4,6 @@
 ## Preconditions
 - In an empty region of a domain with editing rights.
 
-## Platforms
-Run the test on each of the following platforms
- - Windows64
- - MacOS
-## Displays
-Run the test on each of the following displays
- - Desktop
- - Rift
- - Vive
-## Processors
-Run the test on each of the following processors
- - I5
- - I7
-## Graphics Cards
-Run the test on graphics cards from each of the following vendors
- - Nvidia
- - AMD
 ## Steps
 Press space bar to advance step by step
 
@@ -56,4 +39,3 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00009.png)
 ### Step 11
 - Delete entities
-- ![](./ExpectedImage_00010.png)
