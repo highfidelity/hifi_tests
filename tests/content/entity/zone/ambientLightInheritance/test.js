@@ -92,9 +92,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar
-    autoTester.addStepSnapshot("Red zone, bright ambient light");
-    
-    autoTester.addStepSnapshot("Green zone, medium ambient light",
+    autoTester.addStepSnapshot("Red zone, bright ambient light",
         function () {
             MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 5.0};           
             spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 5.0};
@@ -104,7 +102,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         }
     );
     
-    autoTester.addStepSnapshot("Blue zone, dark ambient light",
+    autoTester.addStepSnapshot("Green zone, medium ambient light",
         function () {
             MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 10.0};           
             spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 10.0};
@@ -114,14 +112,14 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         }
     );
     
-    autoTester.addStepSnapshot("Blue off,  no ambient light",
+    autoTester.addStepSnapshot("Blue zone, dark ambient light",
         function () {
             var newProperty = {ambientLightMode: "disabled"};
             Entities.editEntity(zoneBlue, newProperty);  
         }
     );
         
-    autoTester.addStepSnapshot("Blue inherit, medium ambient light",
+    autoTester.addStepSnapshot("Blue off,  no ambient light",
         function () {
             var newProperty = {ambientLightMode: "inherit"};
             Entities.editEntity(zoneBlue, newProperty);  
@@ -135,21 +133,21 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         }
     );
         
-    autoTester.addStepSnapshot("Green inherit, bright ambient light",
+    autoTester.addStepSnapshot("Green off,  no ambient light",
         function () {
             var newProperty = {ambientLightMode: "inherit"};
             Entities.editEntity(zoneGreen, newProperty);  
         }
     );
         
-     autoTester.addStepSnapshot("Red off,  no ambient light",
+     autoTester.addStepSnapshot("Green inherit, bright ambient light",
         function () {
             var newProperty = {ambientLightMode: "disabled"};
             Entities.editEntity(zoneRed, newProperty);  
         }
      );
         
-     autoTester.addStepSnapshot("Green zone, still no ambient light",
+     autoTester.addStepSnapshot("Red off,  no ambient light",
         function () {
             MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 5.0};           
             spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 5.0};
@@ -159,14 +157,14 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         }
      );
                 
-     autoTester.addStepSnapshot("Red on, bright ambient light",
+     autoTester.addStepSnapshot("Green zone, still no ambient light",
         function () {
             var newProperty = {ambientLightMode: "enabled"};
             Entities.editEntity(zoneRed, newProperty);  
         }
      );
 
-     autoTester.addStepSnapshot("Delete entities",
+     autoTester.addStepSnapshot("Red on, bright ambient light",
         function () {
             Entities.deleteEntity(zoneRed);
             Entities.deleteEntity(zoneGreen);

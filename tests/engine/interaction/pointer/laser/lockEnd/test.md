@@ -39,3 +39,4 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00009.png)
 ### Step 11
 - Clean up
+- ![](./ExpectedImage_00010.png)

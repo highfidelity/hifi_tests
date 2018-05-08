@@ -9,3 +9,4 @@ Press space bar to advance step by step
 
 ### Step 1
 - Running LaserPointer centerEndY test
+- ![](./ExpectedImage_00000.png)

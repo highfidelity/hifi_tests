@@ -24,3 +24,4 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00004.png)
 ### Step 6
 - Attached red - state 5
+- ![](./ExpectedImage_00005.png)

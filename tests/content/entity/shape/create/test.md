@@ -9,3 +9,4 @@ Press space bar to advance step by step
 
 ### Step 1
 - Take snapshot of all the models
+- ![](./ExpectedImage_00000.png)

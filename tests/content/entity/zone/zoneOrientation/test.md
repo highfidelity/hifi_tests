@@ -49,5 +49,3 @@ Press space bar to advance step by step
 ### Step 14
 - Roll 45 degrees - green top-left, red top-right, yellow bottom-right, blue bottom-left
 - ![](./ExpectedImage_00013.png)
-### Step 15
-- Cleanup
