@@ -5,15 +5,20 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("Shadow - light on top", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
+	spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.6 };
 
     // Test material matrix
     Script.include("../setup.js?raw=true")
     
     // Add the test Cases
-    var createdEntities = setup(80.0, -60.0);
-    autoTester.addStep("Light source altitude: 80.0, azimuth: -60.0");
+    var createdEntities = [];
+    autoTester.addStep("Set up test case", function () {
+        createdEntities = setup(80.0, -60.0);
+    });
+    
+    autoTester.addStepSnapshot("Light source altitude: 80.0, azimuth: -60.0");
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

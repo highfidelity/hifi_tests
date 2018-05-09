@@ -8,5 +8,7 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Clean up after test
+- Haze with low range, low ceiling and high base
 - ![](./ExpectedImage_00000.png)
+### Step 2
+- Clean up after test

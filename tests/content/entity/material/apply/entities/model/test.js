@@ -63,7 +63,7 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
         }
     }
 
-    autoTester.addStepSnapshot("Take snapshot");
+    autoTester.addStepSnapshot("Display materials on multiple models");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {

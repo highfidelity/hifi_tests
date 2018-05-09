@@ -11,41 +11,69 @@ Press space bar to advance step by step
 - Zone not rotated - keylight at zenith
 - ![](./ExpectedImage_00000.png)
 ### Step 2
-- Pitch zone 45 degrees up, light should come from behind, 45 degrees above horizon
-- ![](./ExpectedImage_00001.png)
+- Pitch zone 45 degrees up
 ### Step 3
-- Add yaw zone 90 degrees clockwise, light should come from left, 45 degrees above horizon
-- ![](./ExpectedImage_00002.png)
+- Light should come from behind, 45 degrees above horizon
+- ![](./ExpectedImage_00001.png)
 ### Step 4
-- Add roll zone 45 degrees clockwise, light should come from left
-- ![](./ExpectedImage_00003.png)
+- Add yaw zone 90 degrees clockwise
 ### Step 5
-- Zone not rotated - sun straight ahead on purple background (sphere is hidden)
-- ![](./ExpectedImage_00004.png)
+- :ight should come from left, 45 degrees above horizon
+- ![](./ExpectedImage_00002.png)
 ### Step 6
-- Yaw zone 15 degrees right, sun should move right
-- ![](./ExpectedImage_00005.png)
+- Add roll zone 45 degrees clockwise
 ### Step 7
-- Pitch zone 15 degrees up, yaw zone 15 degrees right, sun should move right and up
-- ![](./ExpectedImage_00006.png)
+- Light should come from left
+- ![](./ExpectedImage_00003.png)
 ### Step 8
-- Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees, sun should move straight up
-- ![](./ExpectedImage_00007.png)
+- Clear zone rotation
 ### Step 9
-- Zone not rotated - diffuse sphere and metallic object visible (skybox still enabled as a visual aid)
-- ![](./ExpectedImage_00008.png)
+- Sun straight ahead on purple background (sphere is hidden)
+- ![](./ExpectedImage_00004.png)
 ### Step 10
-- Yaw 90 degrees - blue is now behind
-- ![](./ExpectedImage_00009.png)
+- Yaw zone 15 degrees right
 ### Step 11
-- Yaw 180 degrees - purple is now behind
-- ![](./ExpectedImage_00010.png)
+- Sun should move right
+- ![](./ExpectedImage_00005.png)
 ### Step 12
-- Yaw 270 degrees - red is now behind
-- ![](./ExpectedImage_00011.png)
+- Pitch zone 15 degrees up and yaw zone 15 degrees right
 ### Step 13
-- Pitch 90 - green is now behind
-- ![](./ExpectedImage_00012.png)
+- Sun should move right and up
+- ![](./ExpectedImage_00006.png)
 ### Step 14
-- Roll 45 degrees - green top-left, red top-right, yellow bottom-right, blue bottom-left
+- Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees
+### Step 15
+- Sun should move straight up
+- ![](./ExpectedImage_00007.png)
+### Step 16
+- Zone not rotated
+### Step 17
+- Diffuse sphere and metallic object visible (skybox still enabled as a visual aid)
+- ![](./ExpectedImage_00008.png)
+### Step 18
+- Yaw to 90 degrees
+### Step 19
+- Blue is now behind
+- ![](./ExpectedImage_00009.png)
+### Step 20
+- Yaw to 180 degrees
+### Step 21
+- Purple is now behind
+- ![](./ExpectedImage_00010.png)
+### Step 22
+- Yaw to 270 degrees
+### Step 23
+- Red is now behind
+- ![](./ExpectedImage_00011.png)
+### Step 24
+- Pitch 90
+### Step 25
+- Green is now behind
+- ![](./ExpectedImage_00012.png)
+### Step 26
+- Roll 45 degrees
+### Step 27
+- Green top-left, red top-right, yellow bottom-right, blue bottom-left
 - ![](./ExpectedImage_00013.png)
+### Step 28
+- Cleanup

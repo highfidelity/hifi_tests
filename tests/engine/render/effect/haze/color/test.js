@@ -18,7 +18,9 @@ autoTester.perform("Haze - color", Script.resolvePath("."), function(testType) {
     // Setup
     var createdEntities = setup(HAZE,spectatorCameraConfig)
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Show sandy colour of haze");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

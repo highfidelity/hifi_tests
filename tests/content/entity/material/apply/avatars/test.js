@@ -39,7 +39,7 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
                   parentMaterialName: 2
     }, true));
 
-    autoTester.addStepSnapshot("Take snapshot");
+    autoTester.addStepSnapshot("Display material on avatar");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {

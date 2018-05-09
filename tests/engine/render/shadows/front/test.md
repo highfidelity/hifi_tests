@@ -8,7 +8,9 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Light source altitude: 20.0, azimuth: 180.0
+- Set up test case
 ### Step 2
-- Clean up after test
+- Light source altitude: 20.0, azimuth: 180.0
 - ![](./ExpectedImage_00000.png)
+### Step 3
+- Clean up after test

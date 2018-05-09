@@ -11,10 +11,14 @@ autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePa
     Script.include("../setup.js?raw=true")
     
     // Add the test Cases
-    var createdEntities = setup(5.0, 90.0);
-    autoTester.addStep("Light source altitude: 5.0, azimuth: 90.0");
+    var createdEntities = [];
+    autoTester.addStep("Set up test case", function () {
+        createdEntities = setup(5.0, 90.0);
+    });
+    
+    autoTester.addStepSnapshot("Light source altitude: 5.0, azimuth: 90.0");
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

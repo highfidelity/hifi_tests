@@ -3,8 +3,8 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Anti-alisiang test", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
+autoTester.perform("Anti-aliasing test", Script.resolvePath("."), function(testType) {
+    var spectatorCameraConfig = autoTester.setupTest(true); // Use main camera, as overlays are not displayed in secondary
     spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
     // Test material matrix
@@ -22,12 +22,17 @@ autoTester.perform("Anti-alisiang test", Script.resolvePath("."), function(testT
     ];
 
     // Add the test Cases
-    var createdEntities = addCases(TEST_CASES, true)
-    var createdOverlays = addOverlayCases(TEST_OVERLAYS)
+    var createdEntities = [];
+    var createdOverlays = [];
 
-    autoTester.addStep("Anti-aliased image");
+    autoTester.addStep("Set up test case", function () {
+        createdEntities = addCases(TEST_CASES, true)
+        createdOverlays = addOverlayCases(TEST_OVERLAYS)
+    });
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Show anti-aliasing effects");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

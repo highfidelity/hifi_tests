@@ -4,12 +4,6 @@ var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
-//    // Verify system configuration is supported
-//    autoTester.assertPlatform("Windows64 MacOS");
-//    autoTester.assertDisplay("Desktop Rift Vive");
-//    autoTester.assertCPU("I5   I7");
-//    autoTester.assertGPU("Nvidia AMD");
-    
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment
@@ -28,151 +22,151 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     var SUFFIX = "?raw=true";
     
     // Create zones
-    var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.ktx' + SUFFIX);
-    var zoneRedProperties = {
-        type: "Zone",
-        name: "zone red",
-        position: zoneRedPosition,
-        dimensions: zoneRedDimensions,
-        
-        keyLightMode: "disabled",
-        
-        ambientLightMode: "enabled",
-        ambientLight: {
-            ambientURL: BRIGHT_SKY_URL
-        }
-    };
-    var zoneRed = Entities.addEntity(zoneRedProperties);
-
-    var CLOUDY_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg' + SUFFIX);
-    var zoneGreenProperties = {
-        type: "Zone",
-        name: "zone green",
-        position: zoneGreenPosition,
-        dimensions: zoneGreenDimensions,
-        
-        keyLightMode: "disabled",
-        
-        ambientLightMode: "enabled",
-        ambientLight: {
-            ambientURL: CLOUDY_SKY_URL
-        }
-    };
-    var zoneGreen = Entities.addEntity(zoneGreenProperties);
-
-    var NIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg' + SUFFIX);
-    var zoneBlueProperties = {
-        type: "Zone",
-        name: "zone blue",
-        position: zoneBluePosition,
-        dimensions: zoneBlueDimensions,
-        
-        keyLightMode: "disabled",
-        
-        ambientLightMode: "enabled",
-        ambientLight: {
-            ambientURL: NIGHT_SKY_URL
-        }
-    };
-    var zoneBlue = Entities.addEntity(zoneBlueProperties);
+    var zoneRed;
+    var zoneGreen;
+    var zoneBlue;
+    var sphere;
     
-    // Add a white sphere
     var DX = 0.0;
     var DY = 0.6;
     var DZ = -2.0;
-    var sphereProperties = {
-        type: "Sphere",
-        name: "sphere",
-        position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ},
-        dimensions: { x: 0.4, y: 0.4, z: 0.4 },
-        "color": {"red":255,"green":255,"blue":255},
-        visible: true
-    };
-    var sphere = Entities.addEntity(sphereProperties);
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar
-    autoTester.addStepSnapshot("Red zone, bright ambient light",
-        function () {
-            MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 5.0};           
-            spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 5.0};
-
-            var newProperty = {position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ}};
-            Entities.editEntity(sphere, newProperty);
-        }
-    );
     
-    autoTester.addStepSnapshot("Green zone, medium ambient light",
-        function () {
-            MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 10.0};           
-            spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 10.0};
+    autoTester.addStep("Setup zones and sphere", function () {
+        var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.ktx' + SUFFIX);
+        var zoneRedProperties = {
+            type: "Zone",
+            name: "zone red",
+            position: zoneRedPosition,
+            dimensions: zoneRedDimensions,
+            
+            keyLightMode: "disabled",
+            
+            ambientLightMode: "enabled",
+            ambientLight: {
+                ambientURL: BRIGHT_SKY_URL
+            }
+        };
+        zoneRed = Entities.addEntity(zoneRedProperties);
 
-            var newProperty = {position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ}};
-            Entities.editEntity(sphere, newProperty);  
-        }
-    );
-    
-    autoTester.addStepSnapshot("Blue zone, dark ambient light",
-        function () {
-            var newProperty = {ambientLightMode: "disabled"};
-            Entities.editEntity(zoneBlue, newProperty);  
-        }
-    );
+        var CLOUDY_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg' + SUFFIX);
+        var zoneGreenProperties = {
+            type: "Zone",
+            name: "zone green",
+            position: zoneGreenPosition,
+            dimensions: zoneGreenDimensions,
+            
+            keyLightMode: "disabled",
+            
+            ambientLightMode: "enabled",
+            ambientLight: {
+                ambientURL: CLOUDY_SKY_URL
+            }
+        };
+        zoneGreen = Entities.addEntity(zoneGreenProperties);
+
+        var NIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg' + SUFFIX);
+        var zoneBlueProperties = {
+            type: "Zone",
+            name: "zone blue",
+            position: zoneBluePosition,
+            dimensions: zoneBlueDimensions,
+            
+            keyLightMode: "disabled",
+            
+            ambientLightMode: "enabled",
+            ambientLight: {
+                ambientURL: NIGHT_SKY_URL
+            }
+        };
+        zoneBlue = Entities.addEntity(zoneBlueProperties);
         
-    autoTester.addStepSnapshot("Blue off,  no ambient light",
+        // Add a white sphere
+        var sphereProperties = {
+            type: "Sphere",
+            name: "sphere",
+            position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ},
+            dimensions: { x: 0.4, y: 0.4, z: 0.4 },
+            "color": {"red":255,"green":255,"blue":255},
+            visible: true
+        };
+        sphere = Entities.addEntity(sphereProperties);
+    });
+    autoTester.addStepSnapshot("Red zone, bright ambient light");
+    
+    autoTester.addStep("Move to green zone", function () {
+        MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 5.0};           
+        spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 5.0};
+
+        var newProperty = {position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ}};
+        Entities.editEntity(sphere, newProperty);
+    });
+    autoTester.addStepSnapshot("Green zone, medium ambient light");
+    
+    autoTester.addStep("Move to blue zone", function () {
+        MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 10.0};           
+        spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 10.0};
+
+        var newProperty = {position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ}};
+        Entities.editEntity(sphere, newProperty);  
+    });
+    autoTester.addStepSnapshot("Blue zone, dark ambient light");
+    
+    autoTester.addStep("Diable ambient light in blue zone", function () {
+        var newProperty = {ambientLightMode: "disabled"};
+        Entities.editEntity(zoneBlue, newProperty);  
+    });
+    autoTester.addStepSnapshot("Blue off,  no ambient light");
+        
+    autoTester.addStep("Inherit ambient light",
         function () {
             var newProperty = {ambientLightMode: "inherit"};
             Entities.editEntity(zoneBlue, newProperty);  
         }
     );
+    autoTester.addStepSnapshot("Blue zone, medium ambient light (from green)");
         
-    autoTester.addStepSnapshot("Green off,  no ambient light",
-        function () {
-            var newProperty = {ambientLightMode: "disabled"};
-            Entities.editEntity(zoneGreen, newProperty);  
-        }
-    );
+    autoTester.addStep("Disable green ambient light", function () {
+        var newProperty = {ambientLightMode: "disabled"};
+        Entities.editEntity(zoneGreen, newProperty);  
+    });
+    autoTester.addStepSnapshot("Green off,  no ambient light");
         
-    autoTester.addStepSnapshot("Green off,  no ambient light",
-        function () {
-            var newProperty = {ambientLightMode: "inherit"};
-            Entities.editEntity(zoneGreen, newProperty);  
-        }
-    );
+    autoTester.addStep("Set green ambient light to inherit", function () {
+        var newProperty = {ambientLightMode: "inherit"};
+        Entities.editEntity(zoneGreen, newProperty);  
+    });
+    autoTester.addStepSnapshot("Green inherit, bright ambient light (from red)");
         
-     autoTester.addStepSnapshot("Green inherit, bright ambient light",
-        function () {
-            var newProperty = {ambientLightMode: "disabled"};
+    autoTester.addStep("Set red ambient light to off", function () {
+        var newProperty = {ambientLightMode: "disabled"};
             Entities.editEntity(zoneRed, newProperty);  
-        }
-     );
+    });
+    autoTester.addStepSnapshot("Red off,  no ambient light");
         
-     autoTester.addStepSnapshot("Red off,  no ambient light",
-        function () {
-            MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 5.0};           
-            spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 5.0};
+    autoTester.addStep("Move to green zone", function () {
+        MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 5.0};           
+        spectatorCameraConfig.position = {x: avatarOriginPosition.x , y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 5.0};
 
-            var newProperty = {position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ}};
-            Entities.editEntity(sphere, newProperty);  
-        }
-     );
+        var newProperty = {position: {x: MyAvatar.position.x + DX, y: MyAvatar.position.y + DY, z: MyAvatar.position.z + DZ}};
+        Entities.editEntity(sphere, newProperty);  
+    });
+    autoTester.addStepSnapshot("Green zone, still no ambient light");
                 
-     autoTester.addStepSnapshot("Green zone, still no ambient light",
-        function () {
-            var newProperty = {ambientLightMode: "enabled"};
-            Entities.editEntity(zoneRed, newProperty);  
-        }
-     );
+    autoTester.addStep("Set red ambient light to on", function () {
+        var newProperty = {ambientLightMode: "enabled"};
+        Entities.editEntity(zoneRed, newProperty);  
+    });
+    autoTester.addStepSnapshot("Red on, bright ambient light");
 
-     autoTester.addStepSnapshot("Red on, bright ambient light",
-        function () {
-            Entities.deleteEntity(zoneRed);
-            Entities.deleteEntity(zoneGreen);
-            Entities.deleteEntity(zoneBlue);
-            Entities.deleteEntity(sphere);
-          
-        }
-    );
+    autoTester.addStep("Delete entities", function () {
+        Entities.deleteEntity(zoneRed);
+        Entities.deleteEntity(zoneGreen);
+        Entities.deleteEntity(zoneBlue);
+        Entities.deleteEntity(sphere);
+    });
     
     var result = autoTester.runTest(testType);
 });

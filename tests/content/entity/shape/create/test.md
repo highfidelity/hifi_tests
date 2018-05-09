@@ -8,5 +8,9 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Take snapshot of all the models
+- Build a grid of shapes in front of avatar
+### Step 2
+- Take snapshot of all the shapes
 - ![](./ExpectedImage_00000.png)
+### Step 3
+- Clean up after test

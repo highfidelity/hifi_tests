@@ -1,4 +1,4 @@
-# zone - ambient light inheritance
+# zone - effects on skybox
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,17 +8,29 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Moving forward
-- ![](./ExpectedImage_00000.png)
+- Setup object, zones and markers
 ### Step 2
-- Moving forward
-- ![](./ExpectedImage_00001.png)
+- Verify no skybox
+- ![](./ExpectedImage_00000.png)
 ### Step 3
-- Moving forward and right
-- ![](./ExpectedImage_00002.png)
+- Move forward
 ### Step 4
-- Moving left
-- ![](./ExpectedImage_00003.png)
+- Verify bright sky
+- ![](./ExpectedImage_00001.png)
 ### Step 5
-- Cleanup
+- Move forward again
+### Step 6
+- Verify night
+- ![](./ExpectedImage_00002.png)
+### Step 7
+- Moving forward and right
+### Step 8
+- Verify in cloudy zone
+- ![](./ExpectedImage_00003.png)
+### Step 9
+- Move left
+### Step 10
+- Verify in dark zone
 - ![](./ExpectedImage_00004.png)
+### Step 11
+- Cleanup

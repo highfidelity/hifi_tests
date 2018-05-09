@@ -12,7 +12,9 @@ autoTester.perform("Haze - off", Script.resolvePath("."), function(testType) {
     // Setup
     var createdEntities = setup(null,spectatorCameraConfig)
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("No haze");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

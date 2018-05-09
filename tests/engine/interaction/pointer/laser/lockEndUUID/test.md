@@ -14,5 +14,7 @@ Press space bar to advance step by step
 - Attached to right
 - ![](./ExpectedImage_00001.png)
 ### Step 3
-- Attached to right
+- Not attached
 - ![](./ExpectedImage_00002.png)
+### Step 4
+- Clean up

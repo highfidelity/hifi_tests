@@ -16,3 +16,5 @@ Press space bar to advance step by step
 ### Step 3
 - Maximum distance
 - ![](./ExpectedImage_00002.png)
+### Step 4
+- Clean up
