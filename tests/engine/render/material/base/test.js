@@ -17,9 +17,14 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
     ];
 
     // Add the test Cases
-    var createdEntities = addCases(TEST_CASES, true, true)
+    var createdEntities = [];
+    autoTester.addStep("Set up test case", function () {
+        createdEntities = addCases(TEST_CASES, true, true)
+    });
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Show base effects on various materials");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

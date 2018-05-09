@@ -8,5 +8,9 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Clean up after test
+- Set up test case
+### Step 2
+- Show effects of opacity
 - ![](./ExpectedImage_00000.png)
+### Step 3
+- Clean up after test
