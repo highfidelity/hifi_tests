@@ -16,10 +16,14 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
         {name:"hifi_emissiveM_albedoV_ao",  a:0, b:0, c:0.5},  
     ];
 
-    // Add the test Cases
-    var createdEntities = addCases(TEST_CASES, true, true)
-
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    var createdEntities = [];
+    autoTester.addStep("Set up test case", function () {
+        createdEntities = addCases(TEST_CASES, true, true)
+    });
+    
+    autoTester.addStepSnapshot("Show effects of emmisive materials");
+    
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
