@@ -9,6 +9,6 @@ Press space bar to advance step by step
 
 ### Step 1
 - Light source altitude: 20.0, azimuth: 180.0
-- ![](./ExpectedImage_00000.png)
 ### Step 2
 - Clean up after test
+- ![](./ExpectedImage_00000.png)

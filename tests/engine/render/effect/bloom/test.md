@@ -9,9 +9,9 @@ Press space bar to advance step by step
 
 ### Step 1
 - Bloom is off - no bloom should be visible
-- ![](./ExpectedImage_00000.png)
 ### Step 2
 - Bloom enabled
-- ![](./ExpectedImage_00001.png)
+- ![](./ExpectedImage_00000.png)
 ### Step 3
 - Clean up
+- ![](./ExpectedImage_00001.png)

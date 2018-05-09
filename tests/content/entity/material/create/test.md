@@ -30,3 +30,4 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00006.png)
 ### Step 8
 - Take snapshot
+- ![](./ExpectedImage_00007.png)

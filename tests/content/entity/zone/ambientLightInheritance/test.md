@@ -20,7 +20,7 @@ Press space bar to advance step by step
 - Blue off,  no ambient light
 - ![](./ExpectedImage_00003.png)
 ### Step 5
-- Blue inherit, medium ambient light
+- Green off,  no ambient light
 - ![](./ExpectedImage_00004.png)
 ### Step 6
 - Green off,  no ambient light
@@ -37,5 +37,3 @@ Press space bar to advance step by step
 ### Step 10
 - Red on, bright ambient light
 - ![](./ExpectedImage_00009.png)
-### Step 11
-- Delete entities

@@ -12,3 +12,4 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00000.png)
 ### Step 2
 - Enabled left laser
+- ![](./ExpectedImage_00001.png)
