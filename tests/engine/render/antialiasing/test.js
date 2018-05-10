@@ -22,12 +22,17 @@ autoTester.perform("Anti-alisiang test", Script.resolvePath("."), function(testT
     ];
 
     // Add the test Cases
-    var createdEntities = addCases(TEST_CASES, true)
-    var createdOverlays = addOverlayCases(TEST_OVERLAYS)
+    var createdEntities;
+    var createdOverlays;
 
-    autoTester.addStep("Anti-aliased image");
+    autoTester.addStep("Set up test case", function () {
+        createdEntities = addCases(TEST_CASES, true);
+        createdOverlays = addOverlayCases(TEST_OVERLAYS);
+    });
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Anti-aliased image");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
