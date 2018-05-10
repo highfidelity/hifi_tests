@@ -35,6 +35,7 @@ function addTile(a, b, c, lifetime) {
         position: center,    
         rotation: stageOrientation,    
         dimensions: TILE_DIM,
+        canCastShadow: false,
         lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime
     }));
 }
