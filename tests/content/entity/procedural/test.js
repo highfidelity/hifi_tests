@@ -21,7 +21,7 @@ autoTester.perform("Proceral create", Script.resolvePath("."), function(testType
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestPosition.fs",
+                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestPosition.fs?raw=true",
                 "version": 2
             }
         })
@@ -36,7 +36,7 @@ autoTester.perform("Proceral create", Script.resolvePath("."), function(testType
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestTexCoord.fs",
+                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestTexCoord.fs?raw=true",
                 "version": 2
             }
         })
@@ -51,7 +51,7 @@ autoTester.perform("Proceral create", Script.resolvePath("."), function(testType
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestNormal.fs",
+                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestNormal.fs?raw=true",
                 "version": 2
             }
         })
@@ -75,7 +75,7 @@ autoTester.perform("Proceral create", Script.resolvePath("."), function(testType
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralZoneTest.fs",
+                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralZoneTest.fs?raw=true",
                 "version": 2
             }
         })
