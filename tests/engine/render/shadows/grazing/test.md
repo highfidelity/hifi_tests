@@ -5,10 +5,9 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press space bar to advance step by step
+Press 'n' key to advance step by step
 
 ### Step 1
 - Light source altitude: 5.0, azimuth: 90.0
-- ![](./ExpectedImage_00000.png)
 ### Step 2
 - Clean up after test

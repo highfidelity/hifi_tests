@@ -5,19 +5,21 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press space bar to advance step by step
+Press 'n' key to advance step by step
 
 ### Step 1
-- Moving forward
-- ![](./ExpectedImage_00000.png)
+- Setup camera position
 ### Step 2
 - Moving forward
-- ![](./ExpectedImage_00001.png)
+- ![](./ExpectedImage_00000.png)
 ### Step 3
+- Moving forward
+- ![](./ExpectedImage_00001.png)
+### Step 4
 - Moving forward and right
 - ![](./ExpectedImage_00002.png)
-### Step 4
+### Step 5
 - Moving left
 - ![](./ExpectedImage_00003.png)
-### Step 5
+### Step 6
 - Cleanup

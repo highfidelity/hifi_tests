@@ -5,7 +5,7 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press space bar to advance step by step
+Press 'n' key to advance step by step
 
 ### Step 1
 - Not attached
@@ -24,3 +24,6 @@ Press space bar to advance step by step
 - ![](./ExpectedImage_00004.png)
 ### Step 6
 - Attached red - state 5
+- ![](./ExpectedImage_00005.png)
+### Step 7
+- Clean up
