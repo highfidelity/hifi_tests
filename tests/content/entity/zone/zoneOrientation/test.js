@@ -91,102 +91,87 @@ autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), 
     autoTester.addStepSnapshot("Zone not rotated - keylight at zenith");
         
     // Keylight tests (keylight is straight up)
-    autoTester.addStepSnapshot("Pitch zone 45 degrees up, light should come from behind, 45 degrees above horizon",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, 0.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Pitch zone 45 degrees up", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, 0.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Light should come from behind, 45 degrees above horizon");
         
-    autoTester.addStepSnapshot("Add yaw zone 90 degrees clockwise, light should come from left, 45 degrees above horizon",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Add yaw zone 90 degrees clockwise", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot(":ight should come from left, 45 degrees above horizon");
                 
-    autoTester.addStepSnapshot("Add roll zone 45 degrees clockwise, light should come from left",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 45.0 )});  
-        }
-    );
+    autoTester.addStep("Add roll zone 45 degrees clockwise", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 45.0 )});  
+    });
+    autoTester.addStepSnapshot("Light should come from left");
 
     // Skybox tests
-    autoTester.addStepSnapshot("Zone not rotated - sun straight ahead on purple background (sphere is hidden)",
-        function () {
-            Entities.editEntity(sphere, {visible: false });  
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 )});  
-            Entities.editEntity(zone, {keyLightMode: "disabled", skyboxMode: "enabled"});  
-        }
-    );
+    autoTester.addStep("Clear zone rotation", function () {
+        Entities.editEntity(sphere, {visible: false });  
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 )});  
+        Entities.editEntity(zone, {keyLightMode: "disabled", skyboxMode: "enabled"});  
+    });
+    autoTester.addStepSnapshot("Sun straight ahead on purple background (sphere is hidden)");
 
-    autoTester.addStepSnapshot("Yaw zone 15 degrees right, sun should move right",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, -15.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Yaw zone 15 degrees right", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, -15.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Sun should move right");
 
-    autoTester.addStepSnapshot("Pitch zone 15 degrees up, yaw zone 15 degrees right, sun should move right and up",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(15.0, -15.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Pitch zone 15 degrees up and yaw zone 15 degrees right", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(15.0, -15.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Sun should move right and up");
 
-    autoTester.addStepSnapshot("Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees, sun should move straight up",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(15.0, -15.0, 45.0)});  
-        }
-    );
+    autoTester.addStep("Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(15.0, -15.0, 45.0)});  
+    });
+    autoTester.addStepSnapshot("Sun should move straight up");
         
     // Ambient light tests
-    autoTester.addStepSnapshot("Zone not rotated - diffuse sphere and metallic object visible (skybox still enabled as a visual aid)",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
-            
-            // Add metallic object and show sphere
-            Entities.editEntity(sphere, {visible: true });
-            Entities.editEntity(object, {visible: true });  
+    autoTester.addStep("Zone not rotated", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
+        
+        // Add metallic object and show sphere
+        Entities.editEntity(sphere, {visible: true });
+        Entities.editEntity(object, {visible: true });  
 
-            Entities.editEntity(zone, {ambientLightMode: "enabled"});  
-        }
-    );
+        Entities.editEntity(zone, {ambientLightMode: "enabled"});  
+    });
+    autoTester.addStepSnapshot("Diffuse sphere and metallic object visible (skybox still enabled as a visual aid)");
         
-    autoTester.addStepSnapshot("Yaw 90 degrees - blue is now behind",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 90.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Yaw to 90 degrees", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 90.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Blue is now behind");
         
-    autoTester.addStepSnapshot("Yaw 180 degrees - purple is now behind",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 180.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Yaw to 180 degrees", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 180.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Purple is now behind");
         
-    autoTester.addStepSnapshot("Yaw 270 degrees - red is now behind",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 270.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Yaw to 270 degrees", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 270.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Red is now behind");
         
-    autoTester.addStepSnapshot("Pitch 90 - green is now behind",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(90.0, 0.0, 0.0)});  
-        }
-    );
+    autoTester.addStep("Pitch 90", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(90.0, 0.0, 0.0)});  
+    });
+    autoTester.addStepSnapshot("Green is now behind");
         
-    autoTester.addStepSnapshot("Roll 45 degrees - green top-left, red top-right, yellow bottom-right, blue bottom-left",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 45.0)});  
-        }
-    );
+    autoTester.addStep("Roll 45 degrees", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 45.0)});  
+    });
+    autoTester.addStepSnapshot("Green top-left, red top-right, yellow bottom-right, blue bottom-left");
         
-    autoTester.addStep("Cleanup",
-        function () {
-            Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
-            Entities.deleteEntity(zone);
-            Entities.deleteEntity(sphere);
-            Entities.deleteEntity(object);
-        }
-    );
+    autoTester.addStep("Cleanup", function () {
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
+        Entities.deleteEntity(zone);
+        Entities.deleteEntity(sphere);
+        Entities.deleteEntity(object);
+    });
     
     var result = autoTester.runTest(testType);
 });

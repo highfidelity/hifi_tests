@@ -21,7 +21,9 @@ autoTester.perform("Haze - large glare", Script.resolvePath("."), function(testT
     // Setup
     var createdEntities = setup(HAZE,spectatorCameraConfig)
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Show haze with a large glare angle");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

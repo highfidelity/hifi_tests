@@ -25,3 +25,5 @@ Press space bar to advance step by step
 ### Step 6
 - Attached red - state 5
 - ![](./ExpectedImage_00005.png)
+### Step 7
+- Clean up

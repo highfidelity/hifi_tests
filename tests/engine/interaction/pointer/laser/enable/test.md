@@ -13,3 +13,5 @@ Press space bar to advance step by step
 ### Step 2
 - Enabled left laser
 - ![](./ExpectedImage_00001.png)
+### Step 3
+- Clean up

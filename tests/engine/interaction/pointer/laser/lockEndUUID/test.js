@@ -48,7 +48,7 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), fun
         Pointers.setLockEndUUID(lasers[0], null, false);
     });
 
-    autoTester.addStepSnapshot("Attached to right");
+    autoTester.addStepSnapshot("Not attached");
 
     autoTester.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {

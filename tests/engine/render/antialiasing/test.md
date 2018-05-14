@@ -1,4 +1,4 @@
-# Anti-alisiang test
+# Anti-aliasing test
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,7 +8,9 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Anti-aliased image
+- Set up test case
 ### Step 2
-- Clean up after test
+- Show anti-aliasing effects
 - ![](./ExpectedImage_00000.png)
+### Step 3
+- Clean up after test

@@ -8,26 +8,44 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Take snapshot
-- ![](./ExpectedImage_00000.png)
+- Start in non-debug mode
 ### Step 2
 - Take snapshot
-- ![](./ExpectedImage_00001.png)
+- ![](./ExpectedImage_00000.png)
 ### Step 3
-- Take snapshot
-- ![](./ExpectedImage_00002.png)
+- Debug Emissive
 ### Step 4
 - Take snapshot
-- ![](./ExpectedImage_00003.png)
+- ![](./ExpectedImage_00001.png)
 ### Step 5
-- Take snapshot
-- ![](./ExpectedImage_00004.png)
+- Debug Albedo
 ### Step 6
 - Take snapshot
-- ![](./ExpectedImage_00005.png)
+- ![](./ExpectedImage_00002.png)
 ### Step 7
-- Take snapshot
-- ![](./ExpectedImage_00006.png)
+- Debug Metallic
 ### Step 8
 - Take snapshot
+- ![](./ExpectedImage_00003.png)
+### Step 9
+- Debug Roughness
+### Step 10
+- Take snapshot
+- ![](./ExpectedImage_00004.png)
+### Step 11
+- Debug Normal
+### Step 12
+- Take snapshot
+- ![](./ExpectedImage_00005.png)
+### Step 13
+- Debug Occlusion
+### Step 14
+- Take snapshot
+- ![](./ExpectedImage_00006.png)
+### Step 15
+- Debug Scattering
+### Step 16
+- Take snapshot
 - ![](./ExpectedImage_00007.png)
+### Step 17
+- Clean up after test

@@ -8,5 +8,7 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Take snapshot
+- Display materials on multiple models
 - ![](./ExpectedImage_00000.png)
+### Step 2
+- Clean up after test

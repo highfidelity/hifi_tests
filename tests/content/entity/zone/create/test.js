@@ -19,24 +19,27 @@ autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
     // Configure the camera
     spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
 
-    // Define zone properties
-    var properties = {
-        lifetime: 60,  
-        type: "Zone",  
-        name: "test create zone",
-        position: pos,
-        dimensions: dim,
-        keyLight:{"color": {"red":0,"green":255,"blue":0}},
-        
-        skyboxMode: "enabled",
-        skybox:{"color":{"red":0,"green":0,"blue":255}}
-    };
-    var zone = Entities.addEntity(properties);
-
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
+
+    var zone;
+    autoTester.addStep("Set up test case", function () {
+        // Define zone properties
+        var properties = {
+            lifetime: 60,  
+            type: "Zone",  
+            name: "test create zone",
+            position: pos,
+            dimensions: dim,
+            keyLight:{"color": {"red":0,"green":255,"blue":0}},
+            
+            skyboxMode: "enabled",
+            skybox:{"color":{"red":0,"green":0,"blue":255}}
+        };
+        zone = Entities.addEntity(properties);
+    });
     
-    autoTester.addStepSnapshot("Take snapshot");
+    autoTester.addStepSnapshot("Verify zone with blue skybox is visible");
 
     autoTester.addStep("Clean up after test", function () {
         Entities.deleteEntity(zone);

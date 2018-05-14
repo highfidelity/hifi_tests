@@ -17,7 +17,9 @@ autoTester.perform("Haze - high range", Script.resolvePath("."), function(testTy
     // Setup
     var createdEntities = setup(HAZE,spectatorCameraConfig)
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Haze with high range - 15,000 mt");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

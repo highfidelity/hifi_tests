@@ -19,7 +19,9 @@ autoTester.perform("Haze - low range, high ceiling", Script.resolvePath("."), fu
     // Setup
     var createdEntities = setup(HAZE,spectatorCameraConfig)
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Haze with low range and high ceiling");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

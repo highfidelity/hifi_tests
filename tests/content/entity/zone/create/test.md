@@ -8,5 +8,9 @@
 Press space bar to advance step by step
 
 ### Step 1
-- Take snapshot
+- Set up test case
+### Step 2
+- Verify zone with blue skybox is visible
 - ![](./ExpectedImage_00000.png)
+### Step 3
+- Clean up after test

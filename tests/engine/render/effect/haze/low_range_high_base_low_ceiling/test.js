@@ -11,7 +11,7 @@ autoTester.perform("Haze - low range, low ceiling, high base (inverted haze)", S
 
     var HAZE = {
         hazeRange: 500.0,
-        hazeBaseRef: TEST_POSITION.y+150.0,
+        hazeBaseRef: TEST_POSITION.y + 150.0,
         hazeAltitudeEffect: 1,
         hazeCeiling: TEST_POSITION.y
     };
@@ -19,7 +19,9 @@ autoTester.perform("Haze - low range, low ceiling, high base (inverted haze)", S
     // Setup
     var createdEntities = setup(HAZE,spectatorCameraConfig)
 
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("Haze with low range, low ceiling and high base");
+
+    autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }

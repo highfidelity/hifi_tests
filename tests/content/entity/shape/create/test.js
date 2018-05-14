@@ -98,39 +98,40 @@ autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
     var gridStep = 0.55;
 
     var SHAPE_DIMENSIONS = { x: 0.4, y: 0.4, z: 0.4 };
-
-    // build a grid of entities in front of avatar
-    var shapeCount = 0;
-    for (var i = 0; i < numRows && shapeCount < numShapes; ++i) {
-        var yOffset = (i - 0.5 * (numRows - 1)) * gridStep;
-        for (var j = 0; j < numColumns && shapeCount < numShapes; ++j) {
-            // compute position
-            var xOffset = (j - 0.5 * (numColumns - 1)) * gridStep;
-            var offset = { x: xOffset, y: yOffset, z: -gridDistance };
-            offset = Vec3.multiplyQbyV(MyAvatar.orientation, offset);
-            var worldPosition = Vec3.sum(MyAvatar.position, offset);
-
-            // create the entitiy
-            var properties = {
-                type: "Shape",
-                shape: shapes[shapeCount],
-                name: shapes[shapeCount],
-                position: worldPosition,
-                dimensions: SHAPE_DIMENSIONS,
-                lifetime: LIFETIME
-            };
-            var id = Entities.addEntity(properties);
-
-            // save results for later
-            entityIds.push(id);
-            shapeCount++;
-        }
-    }
-
+    
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = { x: 0, y: 1, z: 0, w: 0 };
+
+    autoTester.addStep("Build a grid of shapes in front of avatar", function () {
+        var shapeCount = 0;
+        for (var i = 0; i < numRows && shapeCount < numShapes; ++i) {
+            var yOffset = (i - 0.5 * (numRows - 1)) * gridStep;
+            for (var j = 0; j < numColumns && shapeCount < numShapes; ++j) {
+                // compute position
+                var xOffset = (j - 0.5 * (numColumns - 1)) * gridStep;
+                var offset = { x: xOffset, y: yOffset, z: -gridDistance };
+                offset = Vec3.multiplyQbyV(MyAvatar.orientation, offset);
+                var worldPosition = Vec3.sum(MyAvatar.position, offset);
+
+                // create the entitiy
+                var properties = {
+                    type: "Shape",
+                    shape: shapes[shapeCount],
+                    name: shapes[shapeCount],
+                    position: worldPosition,
+                    dimensions: SHAPE_DIMENSIONS,
+                    lifetime: LIFETIME
+                };
+                var id = Entities.addEntity(properties);
+
+                // save results for later
+                entityIds.push(id);
+                shapeCount++;
+            }
+        }
+    });
     
-    autoTester.addStepSnapshot("Take snapshot of all the models");
+    autoTester.addStepSnapshot("Take snapshot of all the shapes");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i in entityIds) {

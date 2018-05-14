@@ -107,9 +107,9 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
     bloomConfig.enabled = false;
     secondaryBloomConfig.enabled = false;
 
-    autoTester.addStep("Bloom is off - no bloom should be visible");
+    autoTester.addStepSnapshot("Bloom is off - no bloom should be visible");
         
-    autoTester.addStepSnapshot("Bloom enabled",
+    autoTester.addStep("Enable bloom",
         function () {
             bloomConfig.intensity = 1.0
             secondaryBloomConfig.intensity = 1.0
@@ -117,8 +117,9 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
             secondaryBloomConfig.enabled = true;
         }
     );
+    autoTester.addStepSnapshot("Bloom enabled");
         
-    autoTester.addStepSnapshot("Clean up",
+    autoTester.addStep("Clean up",
         function () {
             Entities.deleteEntity(terrain);
             Entities.deleteEntity(object);
