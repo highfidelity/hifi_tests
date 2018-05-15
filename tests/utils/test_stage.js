@@ -36,7 +36,7 @@ function addTile(a, b, c, lifetime) {
         rotation: stageOrientation,    
         dimensions: TILE_DIM,
         canCastShadow: false,
-        grabbable: false,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
         lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime
     }));
 }
