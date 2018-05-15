@@ -5,13 +5,17 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press space bar to advance step by step
+Press 'n' key to advance step by step
 
 ### Step 1
 - Attempt to load model with invalid URL
-- ![](./ExpectedImage_00000.png)
 ### Step 2
-- Load model with valid URL
-- ![](./ExpectedImage_00001.png)
+- Result of invalid URL load
+- ![](./ExpectedImage_00000.png)
 ### Step 3
+- Load model with valid URL
+### Step 4
+- Model is loaded
+- ![](./ExpectedImage_00001.png)
+### Step 5
 - Clean up after test
