@@ -5,10 +5,10 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press space bar to advance step by step
+Press 'n' key to advance step by step
 
 ### Step 1
-- Take snapshot
+- Display material on avatar
 - ![](./ExpectedImage_00000.png)
 ### Step 2
 - Clean up after test

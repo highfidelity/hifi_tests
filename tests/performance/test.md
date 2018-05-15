@@ -5,5 +5,11 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press space bar to advance step by step
+Press 'n' key to advance step by step
 
+### Step 1
+- Clear cache
+### Step 2
+- Wait till idle
+### Step 3
+- Run test
