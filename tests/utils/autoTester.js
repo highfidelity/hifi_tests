@@ -219,9 +219,7 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    if (primaryCamera) {
-        usePrimaryCamera = true;
-    }
+    usePrimaryCamera = (primaryCamera !== undefined && primaryCamera);
 
     return spectatorCameraConfig;
 }
