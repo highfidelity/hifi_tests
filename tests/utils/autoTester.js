@@ -192,9 +192,10 @@ module.exports.setupTest = function (primaryCamera) {
     // Date and time are not used as part of the name, to keep the path lengths to a minimum
     // (the Windows API limit is 260 characters).
     //
+    // Find location of "tests"
     var testsIndex;
     for (testsIndex = pathParts - 1; pathParts > 0; --pathParts) {
-        if (pathParts[testIndex] === "tests") {
+        if (pathParts[testsIndex] === "tests") {
             break;
         }
     }
