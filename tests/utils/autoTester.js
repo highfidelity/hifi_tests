@@ -202,7 +202,8 @@ module.exports.setupTest = function (primaryCamera) {
     
     snapshotPrefix = pathParts[testsIndex];
     for (var i = testsIndex + 1; i < pathParts.length; ++i) {
-        snapshotPrefix += pathSeparator + pathParts[i];
+        var str = pathParts[i];
+        snapshotPrefix += pathSeparator + str;
     }
 
     snapshotIndex = 0;
