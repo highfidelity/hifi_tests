@@ -14,7 +14,6 @@ var snapshotIndex = 0;
 
 var advanceKey = "n";
 var pathSeparator = ".";
-var spaceReplacement = "..";
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -203,9 +202,6 @@ module.exports.setupTest = function (primaryCamera) {
 
     for (var i = 1; i < pathParts.length; ++i) {
         str = pathParts[i];
-        
-        // Replace any spaces
-        str = str.replace(" ", spaceReplacement);
         
         snapshotPrefix += pathSeparator + str;
     }
