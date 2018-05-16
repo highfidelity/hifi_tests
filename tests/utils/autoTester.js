@@ -187,23 +187,21 @@ module.exports.setupTest = function (primaryCamera) {
     
     // Snapshots are saved in the user-selected folder
     // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
-    // the tests are named D.GitHub.hifi-tests.tests.content.entity.zone.create.00000.jpg and so on
+    // the tests are named tests.content.entity.zone.create.00000.jpg and so on
     // (assuming pathSeparator is ".")
     // Date and time are not used as part of the name, to keep the path lengths to a minimum
     // (the Windows API limit is 260 characters).
     //
-    snapshotPrefix = "";
-
-    // On Windows the first part is <disk>: - this is changed
-    var str = pathParts[0];
-    if (str.indexOf(":") !== -1) {
-        snapshotPrefix = str.replace(":", "").toUpperCase();
+    var testsIndex;
+    for (testsIndex = pathParts - 1; pathParts > 0; --pathParts) {
+        if (pathParts[testIndex] === "tests") {
+            break;
+        }
     }
-
-    for (var i = 1; i < pathParts.length; ++i) {
-        str = pathParts[i];
-        
-        snapshotPrefix += pathSeparator + str;
+    
+    snapshotPrefix = pathParts[testIndex]
+    for (var i = testsIndex + 1; i < pathParts.length; ++i) {
+        snapshotPrefix += pathSeparator + pathParts[i];
     }
 
     snapshotIndex = 0;
