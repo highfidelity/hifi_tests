@@ -13,6 +13,8 @@ var snapshotPrefix = "";
 var snapshotIndex = 0;
 
 var advanceKey = "n";
+var pathSeparator = ".";
+var spaceReplacement = "..";
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -186,7 +188,8 @@ module.exports.setupTest = function (primaryCamera) {
     
     // Snapshots are saved in the user-selected folder
     // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
-    // the tests are named D_GitHub_hifi-tests_tests_content_entity_zone_create_0.jpg and so on
+    // the tests are named D.GitHub.hifi-tests.tests.content.entity.zone.create.00000.jpg and so on
+    // (assuming pathSeparator is ".")
     // Date and time are not used as part of the name, to keep the path lengths to a minimum
     // (the Windows API limit is 260 characters).
     //
@@ -202,9 +205,9 @@ module.exports.setupTest = function (primaryCamera) {
         str = pathParts[i];
         
         // Replace any spaces
-        str = str.replace(" ", "__");
+        str = str.replace(" ", spaceReplacement);
         
-        snapshotPrefix += "_" + str;
+        snapshotPrefix += pathSeparator + str;
     }
 
     snapshotIndex = 0;
