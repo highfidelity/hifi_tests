@@ -199,7 +199,7 @@ module.exports.setupTest = function (primaryCamera) {
         }
     }
     
-    snapshotPrefix = pathParts[testIndex]
+    snapshotPrefix = pathParts[testsIndex];
     for (var i = testsIndex + 1; i < pathParts.length; ++i) {
         snapshotPrefix += pathSeparator + pathParts[i];
     }
