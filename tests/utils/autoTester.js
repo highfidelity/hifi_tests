@@ -50,7 +50,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
-        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
+        var currentSnapshotName = snapshotPrefix + pathSeparator + pad(snapshotIndex, NUM_DIGITS, '0');;
         usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
         ++snapshotIndex;
     }
@@ -187,23 +187,22 @@ module.exports.setupTest = function (primaryCamera) {
     
     // Snapshots are saved in the user-selected folder
     // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
-    // the tests are named D.GitHub.hifi-tests.tests.content.entity.zone.create.00000.jpg and so on
+    // the tests are named tests.content.entity.zone.create.00000.jpg and so on
     // (assuming pathSeparator is ".")
     // Date and time are not used as part of the name, to keep the path lengths to a minimum
     // (the Windows API limit is 260 characters).
     //
-    snapshotPrefix = "";
-
-    // On Windows the first part is <disk>: - this is changed
-    var str = pathParts[0];
-    if (str.indexOf(":") !== -1) {
-        snapshotPrefix = str.replace(":", "").toUpperCase();
+    // Find location of "tests"
+    var testsIndex;
+    for (testsIndex = pathParts.length - 1; testsIndex > 0; --testsIndex) {
+        if (pathParts[testsIndex] === "tests") {
+            break;
+        }
     }
-
-    for (var i = 1; i < pathParts.length; ++i) {
-        str = pathParts[i];
-        
-        snapshotPrefix += pathSeparator + str;
+    
+    snapshotPrefix = pathParts[testsIndex];
+    for (var i = testsIndex + 1; i < pathParts.length; ++i) {
+        snapshotPrefix += pathSeparator + pathParts[i];
     }
 
     snapshotIndex = 0;
@@ -219,9 +218,7 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    if (primaryCamera) {
-        usePrimaryCamera = true;
-    }
+    usePrimaryCamera = (primaryCamera !== undefined && primaryCamera);
 
     return spectatorCameraConfig;
 }
