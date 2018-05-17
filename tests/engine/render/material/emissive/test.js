@@ -3,7 +3,7 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
+autoTester.perform("Show effects of emmisive materials", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
@@ -21,7 +21,7 @@ autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
         createdEntities = addCases(TEST_CASES, true, true)
     });
     
-    autoTester.addStepSnapshot("Show effects of emmisive materials");
+    autoTester.addStepSnapshot("Take snapshot of the effects");
     
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {

@@ -5,12 +5,12 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press 'n' key to advance step by step
+Press n key to advance step by step
 
 ### Step 1
 - Start in non-debug mode
 ### Step 2
-- Take snapshot
+- Take snapshot when not in Debug mode
 - ![](./ExpectedImage_00000.png)
 ### Step 3
 - Debug Emissive
