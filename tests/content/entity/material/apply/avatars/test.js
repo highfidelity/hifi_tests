@@ -36,7 +36,8 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
                   }}),
                   lifetime: LIFETIME,
                   priority: 1,
-                  parentMaterialName: 2
+                  parentMaterialName: 2,
+                  parentID: MyAvatar.SELF_ID
     }, true));
 
     autoTester.addStepSnapshot("Display material on avatar");
