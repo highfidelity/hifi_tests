@@ -52,6 +52,5 @@ Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/eng
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/shadows/front/test.js?raw=true");
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/shadows/grazing/test.js?raw=true");
 Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/engine/render/shadows/normal/test.js?raw=true");
-Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/performance/test.js?raw=true");
 
 autoTester.runRecursive();
