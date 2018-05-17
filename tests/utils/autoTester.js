@@ -50,7 +50,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
-        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
+        var currentSnapshotName = snapshotPrefix + pathSeparator + pad(snapshotIndex, NUM_DIGITS, '0');;
         usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
         ++snapshotIndex;
     }
@@ -202,8 +202,7 @@ module.exports.setupTest = function (primaryCamera) {
     
     snapshotPrefix = pathParts[testsIndex];
     for (var i = testsIndex + 1; i < pathParts.length; ++i) {
-        var str = pathParts[i];
-        snapshotPrefix += pathSeparator + str;
+        snapshotPrefix += pathSeparator + pathParts[i];
     }
 
     snapshotIndex = 0;
