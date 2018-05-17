@@ -194,7 +194,7 @@ module.exports.setupTest = function (primaryCamera) {
     //
     // Find location of "tests"
     var testsIndex;
-    for (testsIndex = pathParts.length - 1; pathParts > 0; --pathParts) {
+    for (testsIndex = pathParts.length - 1; pathParts > 0; --testsIndex) {
         if (pathParts[testsIndex] === "tests") {
             break;
         }
