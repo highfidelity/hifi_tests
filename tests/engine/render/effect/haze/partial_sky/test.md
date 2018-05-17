@@ -5,7 +5,7 @@
 - In an empty region of a domain with editing rights.
 
 ## Steps
-Press n key to advance step by step
+Press 'n' key to advance step by step
 
 ### Step 1
 - Haze with sky partially visible
