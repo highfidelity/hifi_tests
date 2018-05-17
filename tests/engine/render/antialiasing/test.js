@@ -5,7 +5,6 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("Anti-aliasing test", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest(true); // Use main camera, as overlays are not displayed in secondary
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
     // Test material matrix
     Script.include("../material/matrix.js?raw=true")
@@ -28,6 +27,8 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), function(testT
     autoTester.addStep("Set up test case", function () {
         createdEntities = addCases(TEST_CASES, true)
         createdOverlays = addOverlayCases(TEST_OVERLAYS)
+
+        MyAvatar.position = { x: MyAvatar.position.x, y: MyAvatar.position.y - 0.2, z: MyAvatar.position.z + 1.3 };
     });
 
     autoTester.addStepSnapshot("Show anti-aliasing effects");
