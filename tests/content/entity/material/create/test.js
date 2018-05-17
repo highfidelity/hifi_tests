@@ -163,7 +163,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), function(testTy
             }));
         }
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    autoTester.addStepSnapshot("Take snapshot when not in Debug mode");
 
     autoTester.addStep("Debug Emissive", function () {
         setDebugMode(6);

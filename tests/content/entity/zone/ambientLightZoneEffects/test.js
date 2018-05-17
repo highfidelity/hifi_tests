@@ -3,7 +3,7 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("zone - effects on skybox", Script.resolvePath("."), function(testType) {
+autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     var avatarOriginPosition = MyAvatar.position;
     spectatorCameraConfig.position = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z};
