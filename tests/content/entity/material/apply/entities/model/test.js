@@ -3,8 +3,6 @@ var repository = "hifi_tests/";
 var branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.enableAuto(5000);
-
 autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
@@ -20,7 +18,7 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
     var posOri = getStagePosOriAt(1, 0, 0);
 
     var NUM_ROWS = 2;
-    var LIFETIME = 120;
+    var LIFETIME = 1200;
 
     var DIM = {x: 0.7, y: 0.8, z: 0.14};
 
@@ -63,11 +61,24 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
         }
     }
 
+    var fxaaWasOn;
+    
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+    
     autoTester.addStepSnapshot("Display materials on multiple models");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
+        }
+        
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
     
