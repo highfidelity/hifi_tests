@@ -168,6 +168,14 @@ module.exports.setupTest = function (primaryCamera) {
     previousSkeletonURL = MyAvatar.skeletonModelURL;
     MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
 
+    // Enter T-pose
+    var i, length, rotation, translation;
+    for (i = 0, length = MyAvatar.getJointNames().length; i < length; i++) {
+       rotation = MyAvatar.getDefaultJointRotation(i);
+       translation = MyAvatar.getDefaultJointTranslation(i);
+       MyAvatar.setJointData(i, rotation, translation);
+    }
+
     if (currentTestCase === null) {
         return;
     }
