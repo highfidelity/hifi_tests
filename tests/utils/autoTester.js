@@ -13,6 +13,9 @@ var snapshotPrefix = "";
 var snapshotIndex = 0;
 
 var advanceKey = "n";
+var pathSeparator = ".";
+
+var previousSkeletonURL;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -77,6 +80,10 @@ var testOver = function() {
     currentTestName = "";
     currentTestCase = null;
     
+    // Restore avatar
+    MyAvatar.skeletonModelURL = previousSkeletonURL;
+    MyAvatar.clearJointsData();
+
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
     } else {
@@ -157,6 +164,18 @@ module.exports.perform = function (testName, testPath, testMain) {
 }
 
 module.exports.setupTest = function (primaryCamera) {
+    // Use the default avatar.  This is a simple model that has no animations when in T-pose
+    previousSkeletonURL = MyAvatar.skeletonModelURL;
+    MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
+    
+    // Enter T-pose
+    var i, length, rotation, translation;
+    for (i = 0, length = MyAvatar.getJointNames().length; i < length; i++) {
+       rotation = MyAvatar.getDefaultJointRotation(i);
+       translation = MyAvatar.getDefaultJointTranslation(i);
+       MyAvatar.setJointData(i, rotation, translation);
+    }
+
     if (currentTestCase === null) {
         return;
     }
@@ -186,25 +205,22 @@ module.exports.setupTest = function (primaryCamera) {
     
     // Snapshots are saved in the user-selected folder
     // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
-    // the tests are named D_GitHub_hifi-tests_tests_content_entity_zone_create_0.jpg and so on
+    // the tests are named tests.content.entity.zone.create.00000.jpg and so on
+    // (assuming pathSeparator is ".")
     // Date and time are not used as part of the name, to keep the path lengths to a minimum
     // (the Windows API limit is 260 characters).
     //
-    snapshotPrefix = "";
-
-    // On Windows the first part is <disk>: - this is changed
-    var str = pathParts[0];
-    if (str.indexOf(":") !== -1) {
-        snapshotPrefix = str.replace(":", "").toUpperCase();
+    // Find location of "tests"
+    var testsIndex;
+    for (testsIndex = pathParts.length - 1; testsIndex > 0; --testsIndex) {
+        if (pathParts[testsIndex] === "tests") {
+            break;
+        }
     }
-
-    for (var i = 1; i < pathParts.length; ++i) {
-        str = pathParts[i];
-        
-        // Replace any spaces
-        str = str.replace(" ", "__");
-        
-        snapshotPrefix += "_" + str;
+    
+    snapshotPrefix = pathParts[testsIndex];
+    for (var i = testsIndex + 1; i < pathParts.length; ++i) {
+        snapshotPrefix += pathSeparator + pathParts[i];
     }
 
     snapshotIndex = 0;
@@ -220,9 +236,7 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    if (primaryCamera) {
-        usePrimaryCamera = true;
-    }
+    usePrimaryCamera = (primaryCamera !== undefined && primaryCamera);
 
     return spectatorCameraConfig;
 }
