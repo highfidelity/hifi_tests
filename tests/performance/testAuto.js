@@ -6,4 +6,4 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.enableAuto();
 
-Script.include("./test.js?raw=true");
+Script.include("./testPerformance.js?raw=true");
