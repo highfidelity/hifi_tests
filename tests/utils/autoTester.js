@@ -230,7 +230,7 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-	  Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+	Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
 	
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};

@@ -1,6 +1,6 @@
-if (typeof user === 'undefined') var user = "highfidelity/";var user = "highfidelity/";
-if (typeof repository === 'undefined') var repository = "hifi_tests/";
-if (typeof branch === 'undefined') var branch = "master/";
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
