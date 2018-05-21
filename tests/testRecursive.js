@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on May 18 2018, 17:30
+// This is an automatically generated file, created by auto-tester on May 21 2018, 10:56
 
 user = "NissimHadar/"
 repository = "hifi_tests/"
@@ -56,6 +56,5 @@ Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/e
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/shadows/front/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/shadows/grazing/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/shadows/normal/test.js?raw=true");
-Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/performance/test.js?raw=true");
 
 autoTester.runRecursive();
