@@ -4,7 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("zone - ambient light inheritance", Script.resolvePath("."), function(testType) {
+autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
    
     // Set up test environment

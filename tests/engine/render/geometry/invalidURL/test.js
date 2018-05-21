@@ -4,7 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Point light", Script.resolvePath("."), function(testType) {
+autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 

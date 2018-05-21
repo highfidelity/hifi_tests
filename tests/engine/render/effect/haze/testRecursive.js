@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // This is an automatically generated file, created by auto-tester on May 21 2018, 10:56
+=======
+// This is an automatically generated file, created by auto-tester on May 16 2018, 9:09
+>>>>>>> 9dfd7991096a9ef7e4c7136e30aa50f15ab55b83
 
 user = "NissimHadar/"
 repository = "hifi_tests/"

@@ -4,7 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("On Transparent", Script.resolvePath("."), function(testType) {
+autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), function(testType) {
     var spectatorCameraConfig = autoTester.setupTest();
     spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
 
@@ -127,7 +127,7 @@ autoTester.perform("On Transparent", Script.resolvePath("."), function(testType)
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-    autoTester.addStepSnapshot("Display the effects of lighting on a transparent object");
+    autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {

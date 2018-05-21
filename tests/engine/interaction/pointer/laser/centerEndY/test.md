@@ -1,4 +1,4 @@
-# Zone create
+# Laser Pointer - from centre down Y axis
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions

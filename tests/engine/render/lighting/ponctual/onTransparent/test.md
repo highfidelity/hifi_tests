@@ -1,4 +1,4 @@
-# On Transparent
+# Lighting on Transparent Object
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Display the effects of lighting on a transparent object
+- Take snapshot of the effects
 - ![](./ExpectedImage_00000.png)
 ### Step 2
 - Clean up after test
