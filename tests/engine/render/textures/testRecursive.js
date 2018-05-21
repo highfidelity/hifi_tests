@@ -9,7 +9,6 @@ var autoTester = Script.require("https://github.com/NissimHadar/hifi_tests/blob/
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/content/entity/material/apply/entities/model/test.js?raw=true");
-Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/content/entity/material/apply/entities/shape/test.js?raw=true");
+Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/textures/procedural/test.js?raw=true");
 
 autoTester.runRecursive();

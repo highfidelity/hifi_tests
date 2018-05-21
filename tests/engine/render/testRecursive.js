@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// This is an automatically generated file, created by auto-tester on May 21 2018, 10:56
-=======
-// This is an automatically generated file, created by auto-tester on May 16 2018, 9:09
->>>>>>> 9dfd7991096a9ef7e4c7136e30aa50f15ab55b83
+// This is an automatically generated file, created by auto-tester on May 21 2018, 11:11
 
 user = "NissimHadar/"
 repository = "hifi_tests/"
@@ -39,5 +35,6 @@ Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/e
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/shadows/front/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/shadows/grazing/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/shadows/normal/test.js?raw=true");
+Script.include("https://github.com/NissimHadar/hifi_tests/blob/newAvatar/tests/engine/render/textures/procedural/test.js?raw=true");
 
 autoTester.runRecursive();
