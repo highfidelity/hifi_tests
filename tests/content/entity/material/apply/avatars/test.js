@@ -25,9 +25,6 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
 
     var LIFETIME = 120;
 
-    var previousSkeletonURL = MyAvatar.skeletonModelURL;
-    MyAvatar.skeletonModelURL = "http://mpassets.highfidelity.com/0dce3426-55c8-4641-8dd5-d76eb575b64a-v1/Anime_F_Outfit.fst";
-
     createdEntities.push(Entities.addEntity({
                   type: "Material",
                   materialURL: "materialData",
@@ -40,13 +37,10 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
                   parentMaterialName: 2,
                   parentID: MyAvatar.SELF_ID
     }, true));
-
+    
     autoTester.addStep("Enter T-pose", function () {
-        var i, length, rotation, translation;
-        for (i = 0, length = MyAvatar.getJointNames().length; i < length; i++) {
-           rotation = MyAvatar.getDefaultJointRotation(i);
-           translation = MyAvatar.getDefaultJointTranslation(i);
-           MyAvatar.setJointData(i, rotation, translation);
+        for (var i = 0, length = MyAvatar.getJointNames().length; i < length; i++) {
+           MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
     });
     
@@ -76,6 +70,7 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         }
 
         Camera.mode = prevCameraMode;
+        MyAvatar.clearJointsData();
     });
     
     var result = autoTester.runTest(testType);
