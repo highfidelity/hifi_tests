@@ -176,7 +176,7 @@ module.exports.setupTest = function (primaryCamera) {
     }
     
     // Make sure camera is in correct mode
-    var prevCameraMode = Camera.mode;
+    prevCameraMode = Camera.mode;
     Camera.mode = "first person";
     
     // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
