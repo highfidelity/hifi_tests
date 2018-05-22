@@ -38,12 +38,6 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
                   parentID: MyAvatar.SELF_ID
     }, true));
     
-    autoTester.addStep("Enter T-pose", function () {
-        for (var i = 0, length = MyAvatar.getJointNames().length; i < length; i++) {
-           MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
-        }
-    });
-    
     autoTester.addStepSnapshot("Avatar without material");
     
     autoTester.addStep("Add material to avatar", function () {
@@ -70,7 +64,6 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         }
 
         Camera.mode = prevCameraMode;
-        MyAvatar.clearJointsData();
     });
     
     var result = autoTester.runTest(testType);
