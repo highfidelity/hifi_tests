@@ -16,6 +16,7 @@ var advanceKey = "n";
 var pathSeparator = ".";
 
 var previousSkeletonURL;
+var prevCameraMode;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -80,10 +81,11 @@ var testOver = function() {
     currentTestName = "";
     currentTestCase = null;
     
-    // Restore avatar
+    // Restore avatar and camera mode
     MyAvatar.skeletonModelURL = previousSkeletonURL;
     MyAvatar.clearJointsData();
-    
+    Camera.mode = prevCameraMode;
+
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
     } else {
@@ -172,10 +174,15 @@ module.exports.setupTest = function (primaryCamera) {
     previousSkeletonURL = MyAvatar.skeletonModelURL;
     MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
 
+    // Wait for skeleton to load (for now - only in test mode)
     if (typeof Test !== 'undefined') {
-        Test.waitForIdle();
+        Test.waitIdle();
     }
     
+    // Make sure camera is in correct mode
+    var prevCameraMode = Camera.mode;
+    Camera.mode = "first person";
+
     // Set Avatar to T-pose
     for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
        MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
