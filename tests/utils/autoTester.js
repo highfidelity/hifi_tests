@@ -82,7 +82,8 @@ var testOver = function() {
     
     // Restore avatar
     MyAvatar.skeletonModelURL = previousSkeletonURL;
-
+    MyAvatar.clearJointsData();
+    
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
     } else {
@@ -163,12 +164,21 @@ module.exports.perform = function (testName, testPath, testMain) {
 }
 
 module.exports.setupTest = function (primaryCamera) {
+    if (currentTestCase === null) {
+        return;
+    }
+    
     // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
     previousSkeletonURL = MyAvatar.skeletonModelURL;
     MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
 
-    if (currentTestCase === null) {
-        return;
+    if (typeof Test !== 'undefined') {
+        Test.waitForIdle();
+    }
+    
+    // Set Avatar to T-pose
+    for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
+       MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
     }
 
     // Clear the test case steps
