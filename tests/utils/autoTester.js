@@ -86,6 +86,11 @@ var testOver = function() {
     MyAvatar.clearJointsData();
     Camera.mode = prevCameraMode;
 
+    // Give avatar time to settle down
+    if (typeof Test !== 'undefined') {
+        Test.wait(1000);
+    }
+    
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
     } else {
