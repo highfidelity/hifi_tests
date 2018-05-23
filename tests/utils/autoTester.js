@@ -16,7 +16,7 @@ var advanceKey = "n";
 var pathSeparator = ".";
 
 var previousSkeletonURL;
-var prevCameraMode;
+var previousCameraMode;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -84,7 +84,7 @@ var testOver = function() {
     // Restore avatar and camera mode
     MyAvatar.skeletonModelURL = previousSkeletonURL;
     MyAvatar.clearJointsData();
-    Camera.mode = prevCameraMode;
+    Camera.mode = previousCameraMode;
 
     // Give avatar time to settle down
     if (typeof Test !== 'undefined') {
@@ -176,7 +176,7 @@ module.exports.setupTest = function (primaryCamera) {
     }
     
     // Make sure camera is in correct mode
-    prevCameraMode = Camera.mode;
+    previousCameraMode = Camera.mode;
     Camera.mode = "first person";
     
     // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
