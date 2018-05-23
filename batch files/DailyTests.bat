@@ -15,7 +15,11 @@ start "DS" "C:\Program Files\High Fidelity\domain-server.exe"
 start "AC" "C:\Program Files\High Fidelity\assignment-client.exe" -n 6
  
 REM Run the performance test
-"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/newAvatar/tests/performance/testPerformance.js quitWhenFinished --testResultsLocation D:\t
+"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/thespot/performance/testAuto.js quitWhenFinished --testResultsLocation D:\t
+
+REM stop the local server
+taskkill /im domain-server.exe /f
+taskkill /im assignment-client.exe /f
 
 REM Restore previous version
 rmdir "C:\Program Files\High Fidelity" /q /s
