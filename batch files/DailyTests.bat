@@ -32,7 +32,7 @@ start "DS" "C:\Program Files\High Fidelity\domain-server.exe"
 start "AC" "C:\Program Files\High Fidelity\assignment-client.exe" -n 6
  
 ECHO Running Interface tests
-"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/performance/thespot/testAuto.js quitWhenFinished --testResultsLocation D:\t
+"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/performance/dev-avatarisland/testAuto.js quitWhenFinished --testResultsLocation D:\t
 
 ECHO Stopping local server
 taskkill /im domain-server.exe /f
