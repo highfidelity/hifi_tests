@@ -15,7 +15,7 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
     });
     
     autoTester.addStep("Run test", function () {
-        Window.location = "hifi://dev-AvatarIsland.highfidelity.io/20.3,-8.1,-9.8/";
+        Window.location = "hifi://dev-AvatarIsland/20.3,-8.1,-9.8/";
         MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0, 79.8, 0);
         
         // Don't start timing till connection established

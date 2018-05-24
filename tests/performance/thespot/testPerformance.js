@@ -15,7 +15,7 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
     });
     
     autoTester.addStep("Run test", function () {
-        Window.location = "hifi://thespot.highfidelity.io/-6.9,-10.3,-8.3/";
+        Window.location = "hifi://thespot/-6.9,-10.3,-8.3/";
         MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0, 4.0, 0);
         
         // Don't start timing till connection established
@@ -42,3 +42,7 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
 
     var result = autoTester.runTest(testType);
 });
+
+hifi://thespot/-2.19915,-10.2582,8.58805/0,-0.362916,0,0.931822
+hifi://zaru/99.6599,-1.80496,79.1072/0,-0.00756529,0,0.999971
+hifi://dev-avatarisland/14.8873,-9.57691,25.6705/0,0.0754528,0,0.997149
