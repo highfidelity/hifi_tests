@@ -12,7 +12,7 @@ IF NOT EXIST HighFidelity-Beta-latest-dev.exe (
 )
 
 REM Directory for installation
-SET INSTALL_DIR=D:\DT
+SET INSTALL_DIR=D:\DT1
 SET TEST_RESULT_LOCATION=D:\t
 
 REM S - silent, D - directory

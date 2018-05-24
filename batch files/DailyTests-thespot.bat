@@ -12,12 +12,12 @@ IF NOT EXIST HighFidelity-Beta-8293.exe (
 )
 
 REM Directorys
-SET INSTALL_DIR=D:\DT
+SET INSTALL_DIR=D:\DT2
 SET TEST_RESULT_LOCATION=D:\t
 
 REM S - silent, D - directory
 ECHO Running installer
-START /WAIT HighFidelity-Beta-8293.exe /S /D=D:\DT
+START /WAIT HighFidelity-Beta-8293.exe /S /D=%INSTALL_DIR%
 
 ECHO Starting local server
 start "DS" %INSTALL_DIR%\domain-server.exe
