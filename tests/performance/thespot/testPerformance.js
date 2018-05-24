@@ -34,7 +34,9 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
             elapsedTime: elapsedTime_sec
         }
         
-        Test.saveObject(results, "results.txt");
+        // We need to replace both colons, so the filename will be legal
+        var date = new Date();
+        Test.saveObject(results, "results" + date.toString().replace(":","_").replace(":","_")+ ".txt");
     });
 
     var result = autoTester.runTest(testType);
