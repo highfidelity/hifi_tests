@@ -35,8 +35,9 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
         }
         
         // We need to replace both colons, so the filename will be legal
+        // We also remove
         var date = new Date();
-        Test.saveObject(results, "results - " + date.toString().replace(":", "_").replace(":", "_")+ ".txt");
+        Test.saveObject(results, ("results - " + date.toString().replace(":", "_").replace(":", "_")).substring(0, 34)+ ".txt");
     });
 
     var result = autoTester.runTest(testType);
