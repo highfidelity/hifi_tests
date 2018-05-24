@@ -1,28 +1,44 @@
-@echo "Starting Test"
+ECHO OFF
+@ECHO Starting Test
 
-REM Download latest version and associated XML file 
 REM PowerShell can load from a URL
+@ECHO Downloading Installation files
 PowerShell.exe -ExecutionPolicy Bypass -Command "& '%~dpn0.ps1'"
 
-REM Run the installer (/S - silent, D - directory)
+REM Verify installer was downloaded
+IF NOT EXIST HighFidelity-Beta-latest-dev.exe (
+    @ECHO Download failed - test aborted
+    EXIT
+)
+    
 REM Note that this requires the directory, but always installs to "High Fidelity"
 REM So as not to delete the users previous version, the previous version is renamed, then renamed back after completion
-ren "C:\Program Files\High Fidelity" "High Fidelity - previous"
+IF EXIST "C:\Program Files\High Fidelity" (
+    @ECHO Renaming previous version
+    ren "C:\Program Files\High Fidelity" "High Fidelity - previous"
+    SET restorePrevious
+)
+
+REM S - silent, D - directory
+ECHO Running installer
 HighFidelity-Beta-latest-dev.exe /S /D="C:\Program Files\High Fidelity"
 
-REM Start the local server
+ECHO Starting local server
 start "DS" "C:\Program Files\High Fidelity\domain-server.exe"
 start "AC" "C:\Program Files\High Fidelity\assignment-client.exe" -n 6
  
-REM Run the performance test
-"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/thespot/performance/testAuto.js quitWhenFinished --testResultsLocation D:\t
+ECHO Running Interface tests
+"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/performance/thespot/testAuto.js quitWhenFinished --testResultsLocation D:\t
 
-REM stop the local server
+ECHO Stopping local server
 taskkill /im domain-server.exe /f
 taskkill /im assignment-client.exe /f
 
-REM Restore previous version
-rmdir "C:\Program Files\High Fidelity" /q /s
-ren "C:\Program Files\High Fidelity - previous" "High Fidelity"
+REM Restore previous version if needed
+IF DEFINED restorePrevious (
+    ECHO Restoring previous version
+    rmdir "C:\Program Files\High Fidelity" /q /s
+    ren "C:\Program Files\High Fidelity - previous" "High Fidelity"
+)
 
-@echo "Completed Test"
+@ECHO Completed Test
