@@ -10,43 +10,24 @@ IF NOT EXIST HighFidelity-Beta-8293.exe (
     @ECHO Download failed - test aborted
     EXIT
 )
-    
-REM Note that this requires the directory, but always installs to "High Fidelity"
-REM So as not to delete the users previous version, the previous version is renamed, then renamed back after completion
-IF EXIST "C:\Program Files\High Fidelity" (
-    @ECHO Renaming previous version
 
-    IF EXIST "C:\Program Files\High Fidelity - previous" (
-        rmdir "C:\Program Files\High Fidelity - previous" /q /s
-    )
-
-    ren "C:\Program Files\High Fidelity" "High Fidelity - previous"
-)
+REM Directorys
+SET INSTALL_DIR=D:\DT
+SET TEST_RESULT_LOCATION=D:\t
 
 REM S - silent, D - directory
 ECHO Running installer
-HighFidelity-Beta-8293.exe /S /D="C:\Program Files\High Fidelity"
+START /WAIT HighFidelity-Beta-8293.exe /S /D=D:\DT
 
 ECHO Starting local server
-start "DS" "C:\Program Files\High Fidelity\domain-server.exe"
-start "AC" "C:\Program Files\High Fidelity\assignment-client.exe" -n 6
+start "DS" %INSTALL_DIR%\domain-server.exe
+start "AC" %INSTALL_DIR%\assignment-client.exe -n 6
  
 ECHO Running Interface tests
-"C:\Program Files\High Fidelity\interface.exe" --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/performance/thespot/testAuto.js quitWhenFinished --testResultsLocation D:\t
+%INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/performance/thespot/testAuto.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
 
 ECHO Stopping local server
-taskkill /im domain-server.exe /f
-taskkill /im assignment-client.exe /f
-
-ECHO Wait 6 seconds
-ping 127.0.0.1 -n 7 >nul
-
-REM Restore previous version if needed
-IF EXIST "C:\Program Files\High Fidelity - previous" (
-    ECHO Restoring previous version
-    
-    rmdir "C:\Program Files\High Fidelity" /q /s
-    ren "C:\Program Files\High Fidelity - previous" "High Fidelity"
-)
+taskkill /im assignment-client.exe /f >nul
+taskkill /im domain-server.exe /f >nul
 
 @ECHO Completed Test
