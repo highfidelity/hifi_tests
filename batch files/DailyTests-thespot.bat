@@ -6,7 +6,7 @@ REM PowerShell can load from a URL
 PowerShell.exe -ExecutionPolicy Bypass -Command "& '%~dpn0.ps1'"
 
 REM Verify installer was downloaded
-IF NOT EXIST HighFidelity-Beta-latest-dev.exe (
+IF NOT EXIST Hifi-Installer.exe (
     @ECHO Download failed - test aborted
     EXIT
 )
@@ -25,7 +25,7 @@ IF EXIST "C:\Program Files\High Fidelity" (
 
 REM S - silent, D - directory
 ECHO Running installer
-HighFidelity-Beta-latest-dev.exe /S /D="C:\Program Files\High Fidelity"
+Hifi-Installer.exe /S /D="C:\Program Files\High Fidelity"
 
 ECHO Starting local server
 start "DS" "C:\Program Files\High Fidelity\domain-server.exe"
