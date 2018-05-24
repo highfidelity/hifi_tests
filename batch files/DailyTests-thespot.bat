@@ -38,6 +38,9 @@ ECHO Stopping local server
 taskkill /im domain-server.exe /f
 taskkill /im assignment-client.exe /f
 
+ECHO Wait 6 seconds
+ping 192.0.2.1 -n 7 >nul
+
 REM Restore previous version if needed
 IF EXIST "C:\Program Files\High Fidelity - previous" (
     ECHO Restoring previous version
