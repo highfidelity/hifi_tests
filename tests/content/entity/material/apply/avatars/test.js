@@ -1,6 +1,7 @@
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "master/";
+
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath("."), function(testType) {
@@ -24,9 +25,6 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
 
     var LIFETIME = 120;
 
-    var previousSkeletonURL = MyAvatar.skeletonModelURL;
-    MyAvatar.skeletonModelURL = "http://mpassets.highfidelity.com/0dce3426-55c8-4641-8dd5-d76eb575b64a-v1/Anime_F_Outfit.fst";
-
     createdEntities.push(Entities.addEntity({
                   type: "Material",
                   materialURL: "materialData",
@@ -39,14 +37,23 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
                   parentMaterialName: 2,
                   parentID: MyAvatar.SELF_ID
     }, true));
-
-    autoTester.addStep("Enter T-pose", function () {
-        var i, length, rotation, translation;
-        for (i = 0, length = MyAvatar.getJointNames().length; i < length; i++) {
-           rotation = MyAvatar.getDefaultJointRotation(i);
-           translation = MyAvatar.getDefaultJointTranslation(i);
-           MyAvatar.setJointData(i, rotation, translation);
-        }
+    
+    autoTester.addStepSnapshot("Avatar without material");
+    
+    autoTester.addStep("Add material to avatar", function () {
+        createdEntities.push(Entities.addEntity({
+            type: "Material",
+            materialURL: "materialData",
+            position: MyAvatar.position,
+            materialData: JSON.stringify({ "materials": {
+            "albedo": [0, 0, 1]
+            }}),
+            lifetime: LIFETIME,
+            priority: 1,
+            parentMaterialName: 0,
+            parentID: MyAvatar.SELF_ID
+            }, true)
+        );    
     });
     
     autoTester.addStepSnapshot("Display material on avatar");
@@ -55,9 +62,8 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
-        MyAvatar.skeletonModelURL = previousSkeletonURL;
+
         Camera.mode = prevCameraMode;
-        MyAvatar.clearJointsData();
     });
     
     var result = autoTester.runTest(testType);

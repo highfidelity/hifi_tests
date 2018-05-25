@@ -15,6 +15,9 @@ var snapshotIndex = 0;
 var advanceKey = "n";
 var pathSeparator = ".";
 
+var previousSkeletonURL;
+var previousCameraMode;
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -27,11 +30,11 @@ var currentRecursiveTestCompleted = false;
 
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
-  ch = ch || '0';  // default is '0'
-  n += '';         // convert n to string
-  
-  // returns n as is, if it is too long
-  return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
+    ch = ch || '0';  // default is '0'
+    n += '';         // convert n to string
+
+    // returns n as is, if it is too long
+    return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
@@ -77,6 +80,16 @@ var testOver = function() {
     currentStepIndex = 0;
     currentTestName = "";
     currentTestCase = null;
+    
+    // Restore avatar and camera mode
+    MyAvatar.skeletonModelURL = previousSkeletonURL;
+    MyAvatar.clearJointsData();
+    Camera.mode = previousCameraMode;
+
+    // Give avatar time to settle down
+    if (typeof Test !== 'undefined') {
+        Test.wait(1000);
+    }
     
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
@@ -161,6 +174,24 @@ module.exports.setupTest = function (primaryCamera) {
     if (currentTestCase === null) {
         return;
     }
+    
+    // Make sure camera is in correct mode
+    previousCameraMode = Camera.mode;
+    Camera.mode = "first person";
+    
+    // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
+    previousSkeletonURL = MyAvatar.skeletonModelURL;
+    MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
+
+    // Wait for skeleton to load (for now - only in test mode)
+    if (typeof Test !== 'undefined') {
+        Test.waitIdle();
+    }
+
+    // Set Avatar to T-pose
+    for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
+        MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
+    }
 
     // Clear the test case steps
     currentSteps = [];
@@ -212,8 +243,8 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-	  Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
-	
+    Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;

@@ -1,8 +1,9 @@
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "master/";
+
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.enableAuto();
+autoTester.enableAuto(5000);
 
 Script.include("./test.js?raw=true");

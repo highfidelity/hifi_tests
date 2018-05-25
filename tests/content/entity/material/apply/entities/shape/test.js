@@ -1,6 +1,7 @@
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "master/";
+
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePath("."), function(testType) {
@@ -52,11 +53,24 @@ autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePa
         }
     }
 
+    var fxaaWasOn;
+    
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     autoTester.addStepSnapshot("Display materials on multiple shapes");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
+        }
+        
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
     
