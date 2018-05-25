@@ -114,6 +114,8 @@ var onRunAutoNext = function() {
             testOver();
             return;
         }
+    } else {
+        print("Waiting for download to complete");
     }
     
     // and call itself after next timer
