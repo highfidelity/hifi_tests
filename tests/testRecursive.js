@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on May 25 2018, 13:19
+// This is an automatically generated file, created by auto-tester on May 25 2018, 15:59
 
 user = "NissimHadar/";
 repository = "hifi_tests/";
@@ -41,6 +41,7 @@ Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/engine/interaction/pointer/laser/lockEnd/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/engine/interaction/pointer/laser/ignore/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/engine/interaction/pointer/laser/faceAvatar/test.js?raw=true");
+Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/engine/interaction/pointer/laser/enable/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/engine/interaction/pointer/laser/distanceScaleEnd/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/engine/interaction/pointer/laser/centerEndY/test.js?raw=true");
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/content/entity/zone/zoneOrientation/test.js?raw=true");
