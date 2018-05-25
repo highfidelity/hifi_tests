@@ -15,6 +15,8 @@ var snapshotIndex = 0;
 var advanceKey = "n";
 var pathSeparator = ".";
 
+var downloadInProgress = false;
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -27,11 +29,15 @@ var currentRecursiveTestCompleted = false;
 
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
-  ch = ch || '0';  // default is '0'
-  n += '';         // convert n to string
-  
-  // returns n as is, if it is too long
-  return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
+    ch = ch || '0';  // default is '0'
+    n += '';         // convert n to string
+
+    // returns n as is, if it is too long
+    return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
+}
+
+function onDownloadInfoChanged(info) {
+    downloadInProgress = (info.downloading.length == 0 && info.pending == 0);
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
@@ -89,12 +95,14 @@ var testOver = function() {
 var autoTimeStep = 2000;
 
 var onRunAutoNext = function() {
-    // run the step...
-    if (!runNextStep()) {
-        testOver();
-        return;
+    // If not downloading then run the next step...
+    if (!downloadInProgress) {
+        if (!runNextStep()) {
+            testOver();
+            return;
+        }
     }
-
+    
     // and call itself after next timer
     Script.setTimeout(
         onRunAutoNext,
@@ -212,14 +220,17 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-	  Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
-	
+    Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
     usePrimaryCamera = (usePrimaryCameraForSnapshots !== undefined && usePrimaryCameraForSnapshots);
 
+    // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
+    AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
+    
     return spectatorCameraConfig;
 }
 
