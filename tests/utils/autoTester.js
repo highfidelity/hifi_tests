@@ -41,6 +41,7 @@ function pad(n, length, ch) {
 
 function onDownloadInfoChanged(info) {
     downloadInProgress = (info.downloading.length == 0 && info.pending == 0);
+    print("DOWNLOAD STATUS " + info.downloading.length + "         " + info.pending);
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
