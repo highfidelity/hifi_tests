@@ -157,7 +157,7 @@ module.exports.perform = function (testName, testPath, testMain) {
     }
 }
 
-module.exports.setupTest = function (primaryCamera) {
+module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     if (currentTestCase === null) {
         return;
     }
@@ -218,7 +218,7 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    usePrimaryCamera = (primaryCamera !== undefined && primaryCamera);
+    usePrimaryCamera = (usePrimaryCameraForSnapshots !== undefined && usePrimaryCameraForSnapshots);
 
     return spectatorCameraConfig;
 }
