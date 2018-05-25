@@ -30,11 +30,11 @@ var currentRecursiveTestCompleted = false;
 
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
-  ch = ch || '0';  // default is '0'
-  n += '';         // convert n to string
-  
-  // returns n as is, if it is too long
-  return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
+    ch = ch || '0';  // default is '0'
+    n += '';         // convert n to string
+
+    // returns n as is, if it is too long
+    return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
@@ -190,7 +190,7 @@ module.exports.setupTest = function (primaryCamera) {
 
     // Set Avatar to T-pose
     for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
-       MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
+        MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
     }
 
     // Clear the test case steps
@@ -243,8 +243,8 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
     spectatorCameraConfig.vFoV = 45;
     Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-	Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
-	
+    Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+
     // Configure the secondary camera
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
