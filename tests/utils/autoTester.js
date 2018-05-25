@@ -15,6 +15,9 @@ var snapshotIndex = 0;
 var advanceKey = "n";
 var pathSeparator = ".";
 
+var previousSkeletonURL;
+var previousCameraMode;
+
 var downloadInProgress = false;
 
 TestCase = function (name, path, func) {
@@ -83,6 +86,16 @@ var testOver = function() {
     currentStepIndex = 0;
     currentTestName = "";
     currentTestCase = null;
+    
+    // Restore avatar and camera mode
+    MyAvatar.skeletonModelURL = previousSkeletonURL;
+    MyAvatar.clearJointsData();
+    Camera.mode = previousCameraMode;
+
+    // Give avatar time to settle down
+    if (typeof Test !== 'undefined') {
+        Test.wait(1000);
+    }
     
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
@@ -168,6 +181,24 @@ module.exports.perform = function (testName, testPath, testMain) {
 module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     if (currentTestCase === null) {
         return;
+    }
+    
+    // Make sure camera is in correct mode
+    previousCameraMode = Camera.mode;
+    Camera.mode = "first person";
+    
+    // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
+    previousSkeletonURL = MyAvatar.skeletonModelURL;
+    MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
+
+    // Wait for skeleton to load (for now - only in test mode)
+    if (typeof Test !== 'undefined') {
+        Test.waitIdle();
+    }
+
+    // Set Avatar to T-pose
+    for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
+        MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
     }
 
     // Clear the test case steps

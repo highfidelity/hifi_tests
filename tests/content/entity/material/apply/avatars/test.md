@@ -8,7 +8,14 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Display material on avatar
-- ![](./ExpectedImage_00000.png)
+- Enter T-pose
 ### Step 2
+- Avatar without material
+- ![](./ExpectedImage_00000.png)
+### Step 3
+- Add material to avatar
+### Step 4
+- Display material on avatar
+- ![](./ExpectedImage_00001.png)
+### Step 5
 - Clean up after test
