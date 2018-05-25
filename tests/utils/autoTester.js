@@ -264,6 +264,12 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
     AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
     
+    // In command line mode, maximize window size 
+    // (so that primary camera snapshots will have the correct size)
+    if (typeof Test !== 'undefined') {
+        Test.showMaximized();
+    }
+    
     return spectatorCameraConfig;
 }
 
