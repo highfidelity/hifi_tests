@@ -1,10 +1,10 @@
-// This is an automatically generated file, created by auto-tester on May 25 2018, 11:53
+// This is an automatically generated file, created by auto-tester on May 25 2018, 12:53
 
-user = "NissimHadar/";
+user = "highfidelity/";
 repository = "hifi_tests/";
-branch = "DailyTests/";
+branch = "master/";
 
-var autoTester = Script.require("https://github.com/NissimHadar/hifi_tests/blob/DailyTests/tests/utils/autoTester.js?raw=true");
+var autoTester = Script.require("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/autoTester.js?raw=true");
 
 autoTester.enableRecursive();
 autoTester.enableAuto();
