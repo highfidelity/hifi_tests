@@ -16,6 +16,7 @@ SET INSTALL_DIR=D:\DT1
 SET TEST_RESULT_LOCATION=D:\t
 
 REM S - silent, D - directory
+REM Note that %INSTALL_DIR% wil be created if needed.
 ECHO Running installer
 START /WAIT HighFidelity-Beta-latest-dev.exe /S /D=%INSTALL_DIR%
 
@@ -24,7 +25,7 @@ start "DS" %INSTALL_DIR%\domain-server.exe
 start "AC" %INSTALL_DIR%\assignment-client.exe -n 6
  
 ECHO Running Interface tests
-%INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/performance/dev-avatarisland/testAuto.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
+%INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/NissimHadar/hifi_tests/DailyTests/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
 
 ECHO Stopping local server
 taskkill /im assignment-client.exe /f >nul
