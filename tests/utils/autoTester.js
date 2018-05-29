@@ -21,6 +21,9 @@ var previousCameraMode;
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
+var resetOverlays;
+var isReticleVisible;
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -95,8 +98,16 @@ var testOver = function() {
     // Restore avatar and camera mode
     MyAvatar.skeletonModelURL = previousSkeletonURL;
     MyAvatar.clearJointsData();
+    
     Camera.mode = previousCameraMode;
 
+    // Restore overlays
+    Menu.setIsOptionChecked("Show Overlays", resetOverlays);
+
+    // Restore mouse
+    Reticle.visible = isReticleVisible;
+    Reticle.allowMouseCapture = true;
+    
     // Give avatar time to settle down
     if (typeof Test !== 'undefined') {
         Test.wait(1000);
@@ -113,6 +124,8 @@ var testOver = function() {
 var autoTimeStep = 2000;
 
 var onRunAutoNext = function() {
+    var timeStep = autoTimeStep;
+    
     // If not downloading then run the next step...
     if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         if (!runNextStep()) {
@@ -120,8 +133,9 @@ var onRunAutoNext = function() {
             return;
         }
     } else if (!downloadInProgress) {
-        // This assumes the message is displayed for not more than 2 seconds (autoTimeStep)
+        // This assumes the message is displayed for not more than 4 seconds
         print("Waiting for 'LOADING CONTENT...' message to be removed");
+        timeStep = 4000;
         loadingContentIsStillDisplayed = false;
     } else {
         print("Waiting for download to complete");
@@ -130,7 +144,7 @@ var onRunAutoNext = function() {
     // and call itself after next timer
     Script.setTimeout(
         onRunAutoNext,
-        autoTimeStep
+        timeStep
     );
 }
 
@@ -280,8 +294,14 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
         Test.showMaximized();
     
         // Also, remove 2D overlays from the window, so that they won't appear in snapshots
-        Menu.setIsOptionChecked("Show Overlays", false);
+        resetOverlays = Menu.isOptionChecked("Show Overlays"); // For completeness. Certainly true if the button is visible to be clicked.
+        if (resetOverlays) {
+            Menu.setIsOptionChecked("Show Overlays", false);
+        }
+
+        isReticleVisible = Reticle.visible;
         Reticle.visible = false;
+        
         Reticle.allowMouseCapture = false;
     }
 
