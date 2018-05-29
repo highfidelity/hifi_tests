@@ -64,7 +64,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
         isVisibleInSecondaryCamera: true
     });
 
-    var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.ktx' + SUFFIX);
+    var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json' + SUFFIX);
     var sky = Entities.addEntity({
         type: "Zone",
         name: "Sky",

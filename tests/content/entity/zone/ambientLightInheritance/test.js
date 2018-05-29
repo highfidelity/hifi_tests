@@ -36,7 +36,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     // or stepped through with the space bar
     
     autoTester.addStep("Setup zones and sphere", function () {
-        var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.ktx' + SUFFIX);
+        var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json' + SUFFIX);
         var zoneRedProperties = {
             type: "Zone",
             name: "zone red",
