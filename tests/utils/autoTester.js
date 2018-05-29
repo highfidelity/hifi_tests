@@ -19,6 +19,7 @@ var previousSkeletonURL;
 var previousCameraMode;
 
 var downloadInProgress = false;
+var loadingContentIsStillDisplayed = false;
 
 TestCase = function (name, path, func) {
     this.name = name;
@@ -40,7 +41,11 @@ function pad(n, length, ch) {
 }
 
 function onDownloadInfoChanged(info) {
-    downloadInProgress = (info.downloading.length != 0 || info.pending != 0);
+    // After download is complete, the "LOADING CONTENT..." message is still displayed for a short time
+    if (info.downloading.length == 0 && info.pending == 0) {
+        downloadInProgress = false;
+        loadingContentIsStillDisplayed = true;
+    }
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
@@ -109,11 +114,15 @@ var autoTimeStep = 2000;
 
 var onRunAutoNext = function() {
     // If not downloading then run the next step...
-    if (!downloadInProgress) {
+    if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         if (!runNextStep()) {
             testOver();
             return;
         }
+    } else if (!downloadInProgress) {
+        // This assumes the message is displayed for not more than 2 seconds (autoTimeStep)
+        print("Waiting for 'LOADING CONTENT...' message to be removed");
+        loadingContentIsStillDisplayed = false;
     } else {
         print("Waiting for download to complete");
     }
