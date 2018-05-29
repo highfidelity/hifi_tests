@@ -264,12 +264,17 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
     AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
     
-    // In command line mode, maximize window size 
-    // (so that primary camera snapshots will have the correct size)
     if (typeof Test !== 'undefined') {
+        // In command line mode, maximize window size 
+        // (so that primary camera snapshots will have the correct size)
         Test.showMaximized();
-    }
     
+        // Also, remove 2D overlays from the window, so that they won't appear in snapshots
+        Menu.setIsOptionChecked("Show Overlays", false);
+        Reticle.visible = false;
+        Reticle.allowMouseCapture = false;
+    }
+
     return spectatorCameraConfig;
 }
 
