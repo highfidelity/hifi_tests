@@ -263,6 +263,7 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
 
     // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
     AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
+    AccountServices.updateDownloadInfo();
     
     if (typeof Test !== 'undefined') {
         // In command line mode, maximize window size 
