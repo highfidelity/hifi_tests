@@ -295,10 +295,10 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     
         // Also, remove 2D overlays from the window, so that they won't appear in snapshots
         resetOverlays = Menu.isOptionChecked("Show Overlays"); // For completeness. Certainly true if the button is visible to be clicked.
-        if (resetOverlays) {
-            Menu.setIsOptionChecked("Show Overlays", true);
-            Menu.setIsOptionChecked("Show Overlays", false);
-        }
+        
+        // This sucks...
+        Menu.setIsOptionChecked("Show Overlays", true);
+        Menu.setIsOptionChecked("Show Overlays", false);
 
         isReticleVisible = Reticle.visible;
         Reticle.visible = false;
