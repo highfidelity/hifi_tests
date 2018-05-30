@@ -57,10 +57,13 @@
 //      }
 //  }
 
+if (typeof user === 'undefined') user = "NissimHadar/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "fixNotifications/";
 
 (function () { // BEGIN LOCAL_SCOPE
 
-    Script.include("./libraries/soundArray.js");
+    Script.include("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/libraries/soundArray.js?raw=true");
 
     var width = 340.0; //width of notification overlay
     var windowDimensions = Controller.getViewportDimensions(); // get the size of the interface window
