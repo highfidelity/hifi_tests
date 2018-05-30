@@ -1,3 +1,5 @@
+Script.include("./notifications.js");
+
 var currentTestName = "";
 var currentSteps = [];
 var currentStepIndex = 0;
