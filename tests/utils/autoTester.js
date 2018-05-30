@@ -1,4 +1,8 @@
-ScriptDiscoveryService.loadScript("./notifications.js?raw=true");
+if (typeof user === 'undefined') user = "NissimHadar/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "fixNotifications/";
+
+ScriptDiscoveryService.loadScript("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/notifications.js?raw=true");
 
 var currentTestName = "";
 var currentSteps = [];
