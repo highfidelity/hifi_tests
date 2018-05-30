@@ -13,6 +13,7 @@ var repository = "hifi_tests/";
 var branch = "master/";
 
 var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
+var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
 var ASSETS_URL = TESTS_URL + "assets/"
 var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
 var SUFFIX = "?raw=true";
@@ -32,7 +33,7 @@ setup = function (altitude, azimuth) {
     var pos = MyAvatar.position;
     
     // Create zone
-    var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json' + SUFFIX);
+    var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
         name: "Zone",
