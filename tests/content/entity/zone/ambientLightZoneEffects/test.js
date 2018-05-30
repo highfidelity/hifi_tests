@@ -13,6 +13,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
+    var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
 
     // Place object relative to the avatar (object will always be placed in the same relative position)
     var objectOrientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
@@ -53,7 +54,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     var OBJ_DY = 0.65;
     var OBJ_DZ = -2.0;
 
-    var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json' + SUFFIX);
+    var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     var CLOUDY_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg' + SUFFIX);
     var NIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg' + SUFFIX);
 

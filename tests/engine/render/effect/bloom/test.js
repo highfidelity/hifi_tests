@@ -22,6 +22,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
 
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
+    var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
     var MODEL_DIR_URL = TESTS_URL + "assets/models/material_matrix_models/fbx/blender/";
     var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
     
@@ -64,7 +65,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
         isVisibleInSecondaryCamera: true
     });
 
-    var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json' + SUFFIX);
+    var SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     var sky = Entities.addEntity({
         type: "Zone",
         name: "Sky",

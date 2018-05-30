@@ -21,6 +21,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
 
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
+    var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
     
     // Create zones
     var zoneRed;
@@ -36,7 +37,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     // or stepped through with the space bar
     
     autoTester.addStep("Setup zones and sphere", function () {
-        var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json' + SUFFIX);
+        var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
         var zoneRedProperties = {
             type: "Zone",
             name: "zone red",
