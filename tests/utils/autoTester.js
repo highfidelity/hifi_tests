@@ -1,4 +1,4 @@
-Script.include("./notifications.js");
+ScriptDiscoveryService.loadScript("./notifications.js");
 
 var currentTestName = "";
 var currentSteps = [];
