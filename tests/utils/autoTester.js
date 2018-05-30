@@ -1,3 +1,9 @@
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "master/";
+
+ScriptDiscoveryService.loadScript("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoNotifications.js?raw=true");
+
 var currentTestName = "";
 var currentSteps = [];
 var currentStepIndex = 0;
