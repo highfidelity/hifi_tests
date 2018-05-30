@@ -2,7 +2,7 @@
 /*jslint vars:true, plusplus:true, forin:true*/
 /*global Script, Settings, Window, Controller, Overlays, SoundArray, MyAvatar, Tablet, Camera, HMD, Menu, Quat, Vec3*/
 //
-//  notifications.js
+//  autoNotifications.js
 //  Version 0.801
 //  Created by Adrian
 //
