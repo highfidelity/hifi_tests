@@ -84,7 +84,7 @@ addZone = function (flags, lifetime) {
         },
         ambientLight: {
             ambientIntensity: 1.0,
-            ambientURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json?raw=true",
+            ambientURL: "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json",
         },
 
         hazeMode: (flags !== undefined && flags.hasHaze !== undefined && flags.hasHaze) ? "enabled" : "disabled",
