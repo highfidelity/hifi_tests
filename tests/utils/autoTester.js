@@ -2,7 +2,7 @@ if (typeof user === 'undefined') user = "highfidelity/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
 if (typeof branch === 'undefined') branch = "master/";
 
-ScriptDiscoveryService.loadScript("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoNotifications.js?raw=true");
+var runAutoNotifications = true;
 
 var currentTestName = "";
 var currentSteps = [];
@@ -214,6 +214,11 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
         return;
     }
     
+    // Show desktop notifications (not shown in auto mode)
+    if (runAutoNotifications) {
+        ScriptDiscoveryService.loadScript("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoNotifications.js?raw=true");
+    }
+
     // Make sure camera is in correct mode
     previousCameraMode = Camera.mode;
     Camera.mode = "first person";
@@ -326,9 +331,13 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function (timeStep) {
     testMode = "auto";
+    
     if (timeStep) {
         autoTimeStep = timeStep;
     }
+    
+    runAutoNotifications = false;
+
     print("TEST MODE AUTO SELECTED");
 }
 
