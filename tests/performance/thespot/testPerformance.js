@@ -16,8 +16,8 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
     });
     
     autoTester.addStep("Run test", function () {
-        Window.location = "hifi://dev-AvatarIsland.highfidelity.io/20.3,-8.1,-9.8/";
-        MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0, 79.8, 0);
+        Window.location = "localhost/-6.9,-10.3,-8.3/";
+        MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0, 4.0, 0);
         
         // Don't start timing till connection established
         Test.waitForConnection();
@@ -35,7 +35,10 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
             elapsedTime: elapsedTime_sec
         }
         
-        Test.saveObject(results, "results.txt");
+        // We need to replace both colons, so the filename will be legal
+        // We also remove
+        var date = new Date();
+        Test.saveObject(results, ("results - " + date.toString().replace(":", "_").replace(":", "_")).substring(0, 34)+ ".txt");
     });
 
     var result = autoTester.runTest(testType);
