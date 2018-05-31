@@ -86,9 +86,9 @@ TestScript.locationLoader = function (testStart) {
     return function () {
         print("QQQ going to URL " + testStart.url);
         
-        ////if (testStart.clearCaches) {
-        ////    Test.clearCaches();
-        ////}
+////        if (testStart.clearCaches) {
+////            Test.clearCaches();
+////        }
         
         Window.location = testStart.url;
         
