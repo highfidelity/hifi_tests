@@ -1,6 +1,6 @@
-if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof user === 'undefined') user = "NissimHadar/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+if (typeof branch === 'undefined') branch = "DailyTests/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
@@ -16,7 +16,7 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), function(t
     });
     
     autoTester.addStep("Run test", function () {
-        Window.location = "hifi://thespot/-6.9,-10.3,-8.3/";
+        Window.location = "localhost/-6.9,-10.3,-8.3/";
         MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0, 4.0, 0);
         
         // Don't start timing till connection established
