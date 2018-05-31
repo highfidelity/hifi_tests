@@ -27,9 +27,6 @@ var previousCameraMode;
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
-var resetOverlays;
-var isReticleVisible;
-
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -106,13 +103,6 @@ var testOver = function() {
     MyAvatar.clearJointsData();
     
     Camera.mode = previousCameraMode;
-
-    // Restore overlays
-    Menu.setIsOptionChecked("Show Overlays", resetOverlays);
-
-    // Restore mouse
-    Reticle.visible = isReticleVisible;
-    Reticle.allowMouseCapture = true;
     
     // Give avatar time to settle down
     if (typeof Test !== 'undefined') {
@@ -304,13 +294,9 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
         // (so that primary camera snapshots will have the correct size)
         Test.showMaximized();
     
-        // Also, remove 2D overlays from the window, so that they won't appear in snapshots
-        resetOverlays = Menu.isOptionChecked("Show Overlays");
+        // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
         Menu.setIsOptionChecked("Show Overlays", false);
-
-        isReticleVisible = Reticle.visible;
         Reticle.visible = false;
-        
         Reticle.allowMouseCapture = false;
     }
 
