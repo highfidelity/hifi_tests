@@ -1,8 +1,7 @@
 # Engine Controller keyEvent
 
 ### Preconditions
-Open log window with CTRL+SHIFT+L (or Developer->Log)
-Verify Developer->Verbose Logging is enabled
+Interface is running.
 
 ### Steps
 
