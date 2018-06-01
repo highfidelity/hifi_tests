@@ -2,8 +2,6 @@ if (typeof user === 'undefined') user = "highfidelity/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
 if (typeof branch === 'undefined') branch = "master/";
 
-ScriptDiscoveryService.loadScript("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoNotifications.js?raw=true");
-
 var currentTestName = "";
 var currentSteps = [];
 var currentStepIndex = 0;
@@ -24,6 +22,9 @@ var pathSeparator = ".";
 var previousSkeletonURL;
 var previousCameraMode;
 
+var downloadInProgress = false;
+var loadingContentIsStillDisplayed = false;
+
 TestCase = function (name, path, func) {
     this.name = name;
     this.path = path;
@@ -43,10 +44,21 @@ function pad(n, length, ch) {
     return (n.length >= length) ? n : new Array(length - n.length + 1).join(ch) + n;
 }
 
+function onDownloadInfoChanged(info) {
+    // After download is complete, the "LOADING CONTENT..." message is still displayed for a short time
+    if (info.downloading.length == 0 && info.pending == 0) {
+        downloadInProgress = false;
+        loadingContentIsStillDisplayed = true;
+    }
+}
+
 var runOneStep = function (stepFunctor, stepIndex) {
     print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
-    Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
 
+    if (testMode === "manual") {
+        Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+    }
+    
     if (stepFunctor.func !== undefined) {
         stepFunctor.func();
     }
@@ -81,7 +93,7 @@ var testOver = function() {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
-    
+
     currentSteps = [];
     currentStepIndex = 0;
     currentTestName = "";
@@ -90,13 +102,14 @@ var testOver = function() {
     // Restore avatar and camera mode
     MyAvatar.skeletonModelURL = previousSkeletonURL;
     MyAvatar.clearJointsData();
+
     Camera.mode = previousCameraMode;
 
     // Give avatar time to settle down
     if (typeof Test !== 'undefined') {
         Test.wait(1000);
     }
-    
+
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
     } else {
@@ -108,16 +121,27 @@ var testOver = function() {
 var autoTimeStep = 2000;
 
 var onRunAutoNext = function() {
-    // run the step...
-    if (!runNextStep()) {
-        testOver();
-        return;
+    var timeStep = autoTimeStep;
+
+    // If not downloading then run the next step...
+    if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
+        if (!runNextStep()) {
+            testOver();
+            return;
+        }
+    } else if (!downloadInProgress) {
+        // This assumes the message is displayed for not more than 4 seconds
+        print("Waiting for 'LOADING CONTENT...' message to be removed");
+        timeStep = 4000;
+        loadingContentIsStillDisplayed = false;
+    } else {
+        print("Waiting for download to complete");
     }
 
     // and call itself after next timer
     Script.setTimeout(
         onRunAutoNext,
-        autoTimeStep
+        timeStep
     );
 }
 
@@ -176,11 +200,11 @@ module.exports.perform = function (testName, testPath, testMain) {
     }
 }
 
-module.exports.setupTest = function (primaryCamera) {
+module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
     if (currentTestCase === null) {
         return;
     }
-    
+
     // Make sure camera is in correct mode
     previousCameraMode = Camera.mode;
     Camera.mode = "first person";
@@ -205,9 +229,6 @@ module.exports.setupTest = function (primaryCamera) {
     currentTestName = currentTestCase.name;
 
     print("Setup test - " + currentTestName);        
-    
-    // Hide the avatar
-    MyAvatar.setEnableMeshVisible(false);
 
     // Zero the head position
     MyAvatar.bodyYaw =   0.0;
@@ -255,7 +276,22 @@ module.exports.setupTest = function (primaryCamera) {
     spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
     spectatorCameraConfig.orientation = MyAvatar.orientation;
 
-    usePrimaryCamera = (primaryCamera !== undefined && primaryCamera);
+    usePrimaryCamera = (usePrimaryCameraForSnapshots !== undefined && usePrimaryCameraForSnapshots);
+
+    // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
+    AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
+    AccountServices.updateDownloadInfo();
+    
+    if (typeof Test !== 'undefined') {
+        // In command line mode, maximize window size 
+        // (so that primary camera snapshots will have the correct size)
+        Test.showMaximized();
+
+        // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
+        Menu.setIsOptionChecked("Show Overlays", false);
+        Reticle.visible = false;
+        Reticle.allowMouseCapture = false;
+    }
 
     return spectatorCameraConfig;
 }
@@ -274,9 +310,11 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function (timeStep) {
     testMode = "auto";
+
     if (timeStep) {
         autoTimeStep = timeStep;
     }
+
     print("TEST MODE AUTO SELECTED");
 }
 
@@ -285,6 +323,7 @@ module.exports.enableRecursive = function (timeStep) {
     if (timeStep) {
         autoTimeStep = timeStep;
     }
+
     print("TEST MODE RECURSIVE SELECTED");
 }
 
@@ -294,7 +333,7 @@ module.exports.runTest = function (testType) {
     if (isRecursive && !runningRecursive) {
         return;
     }
-    
+
     if (testType  === "auto") {
         onRunAuto();
     } else { // testType === "manual"
@@ -305,7 +344,7 @@ module.exports.runTest = function (testType) {
 module.exports.runRecursive = function () {
     print("Starting recursive tests");
     runningRecursive = true;
-    
+
     currentRecursiveTestCompleted = true;
     Script.setInterval(
         function () {
