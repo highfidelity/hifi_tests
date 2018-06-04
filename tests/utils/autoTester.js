@@ -71,8 +71,13 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
-        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
-        usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(false, currentSnapshotName);
+        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');
+
+        // Show snapshots on screen in manual mode (first parameter)
+        usePrimaryCamera 
+            ? Window.takeSnapshot((testMode === "manual"), false, 0.0, currentSnapshotName) 
+            : Window.takeSecondaryCameraSnapshot((testMode === "manual"), currentSnapshotName);
+
         ++snapshotIndex;
     }
 }
