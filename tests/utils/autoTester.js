@@ -232,7 +232,7 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     var usePrimaryCamera = (validationCamera === "primary");
 print("========================================================usePrimaryCamera = ", usePrimaryCamera);
 
-    currentTestCase = new TestCase(testName, testPath, testMain, originFrame, validationCamera);
+    currentTestCase = new TestCase(testName, testPath, testMain, originFrame, usePrimaryCamera);
 
     previousCameraMode = Camera.mode;
     if (usePrimaryCamera) {
