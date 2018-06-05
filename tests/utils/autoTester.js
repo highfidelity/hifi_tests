@@ -19,6 +19,8 @@ var snapshotIndex = 0;
 var advanceKey = "n";
 var pathSeparator = ".";
 
+var previousCameraMode;
+
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
@@ -107,6 +109,8 @@ var testOver = function() {
     currentStepIndex = 0;
     currentTestName = "";
     currentTestCase = null;
+
+    Camera.mode = previousCameraMode;
 
      if (!isManualMode()) {
         // Also, restore 2D overlays and mouse from the window
@@ -224,7 +228,8 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     var usePrimaryCamera = (validationCamera === "primary");
     
     currentTestCase = new TestCase(testName, testPath, testMain, validationCamera, originFrame);
-    
+
+    previousCameraMode = Camera.mode;
     Camera.mode = "independent";
 
     // Clear the test case steps
