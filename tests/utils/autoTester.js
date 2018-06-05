@@ -188,34 +188,6 @@ var doAddStep = function (name, stepFunction, snapshot) {
     print("PUSHING STEP" + currentSteps.length);
 }
 
-validationCamera_setTranslation = function(position) {
-    // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
-    var cameraPosition = Vec3.sum(currentTestCase.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
-    print("origin is ", currentTestCase.originFrame.x, currentTestCase.originFrame.y, currentTestCase.originFrame.z);
-    if (this.usePrimaryCamera) {
-        Camera.setPosition(cameraPosition);
-    } else {
-        spectatorCameraConfig.position = cameraPosition;
-    }
-}
-
-validationCamera_translate = function (offset) {
-    if (this.usePrimaryCamera) {
-        Camera.setPosition(Vec3.sum(Camera.getPosition(), offset));
-    } else {
-        spectatorCameraConfig.position += offset;
-    }
-}
-
-validationCamera_setRotation = function (rotation) {
-    var orientation = Quat.fromPitchYawRollDegrees(rotation.x, rotation.y, rotation.z);
-    if (this.usePrimaryCamera) {
-        Camera.setOrientation(orientation);
-    } else {
-        spectatorCameraConfig.orientation += orientation;
-    }
-}
-
 // The following are exported methods, accessible to test scripts
 
 // Perform is the main method of a test
@@ -296,6 +268,13 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     }
 
     // move validation camera to initial position
+    var cameraPosition = Vec3.sum(currentTestCase.originFrame, VALIDATION_CAMERA_OFFSET);
+    if (usePrimaryCamera) {
+        Camera.setPosition(cameraPosition);
+    } else {
+        spectatorCameraConfig.position = cameraPosition;
+    }
+
     validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
     validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
 
@@ -377,4 +356,32 @@ module.exports.runRecursive = function () {
         },
         1000
     );
+}
+
+module.exports.validationCamera_setTranslation = function(position) {
+    // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
+    var cameraPosition = Vec3.sum(currentTestCase.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
+    print("origin is ", currentTestCase.originFrame.x, currentTestCase.originFrame.y, currentTestCase.originFrame.z);
+    if (currentTestCase.usePrimaryCamera) {
+        Camera.setPosition(cameraPosition);
+    } else {
+        spectatorCameraConfig.position = cameraPosition;
+    }
+}
+
+module.exports.validationCamera_translate = function (offset) {
+    if (currentTestCase.usePrimaryCamera) {
+        Camera.setPosition(Vec3.sum(Camera.getPosition(), offset));
+    } else {
+        spectatorCameraConfig.position += offset;
+    }
+}
+
+module.exports.validationCamera_setRotation = function (rotation) {
+    var orientation = Quat.fromPitchYawRollDegrees(rotation.x, rotation.y, rotation.z);
+    if (currentTestCase.usePrimaryCamera) {
+        Camera.setOrientation(orientation);
+    } else {
+        spectatorCameraConfig.orientation += orientation;
+    }
 }
