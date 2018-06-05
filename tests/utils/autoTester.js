@@ -275,9 +275,6 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
         spectatorCameraConfig.position = cameraPosition;
     }
 
-    validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
-    validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
-
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
         print("Not running yet - in recursive mode");
