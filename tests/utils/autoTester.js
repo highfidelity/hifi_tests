@@ -358,7 +358,7 @@ module.exports.runRecursive = function () {
 module.exports.validationCamera_setTranslation = function(position) {
     // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
     var cameraPosition = Vec3.sum(currentTestCase.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
-    print("origin is ", currentTestCase.originFrame.x, currentTestCase.originFrame.y, currentTestCase.originFrame.z);
+    print("origin is I HOPE!!!!!!!         ", currentTestCase.originFrame.x, currentTestCase.originFrame.y, currentTestCase.originFrame.z);
     if (currentTestCase.usePrimaryCamera) {
         Camera.setPosition(cameraPosition);
     } else {
