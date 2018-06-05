@@ -35,8 +35,8 @@ TestCase = function (name, path, func, originFrame, usePrimaryCamera) {
     this.name = name;
     this.path = path;
     this.func = func;
-    this.usePrimaryCamera = usePrimaryCamera;
     this.originFrame = originFrame;
+    this.usePrimaryCamera = usePrimaryCamera;
 }
 
 var currentTestCase = null;
@@ -229,7 +229,7 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     var originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
     var usePrimaryCamera = (validationCamera === "primary");
     
-    currentTestCase = new TestCase(testName, testPath, testMain, validationCamera, originFrame);
+    currentTestCase = new TestCase(testName, testPath, testMain, originFrame, validationCamera);
 
     previousCameraMode = Camera.mode;
     if (usePrimaryCamera) {
