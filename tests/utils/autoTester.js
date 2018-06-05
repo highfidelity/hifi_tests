@@ -25,9 +25,9 @@ var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
 // origin is located 1m below avatar centre
-// avatar eyes are set to 0.76 cm above avatar centre
+// avatar eyes are set to 1.76 cm above the origin
 const ORIGIN_FRAME_OFFSET = { x: 0.0, y: -1.0, z: 0.0 };
-const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 0.76, z: 0.0 };
+const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 1.76, z: 0.0 };
 
 var spectatorCameraConfig;
 
@@ -191,6 +191,7 @@ var doAddStep = function (name, stepFunction, snapshot) {
 validationCamera_setTranslation = function(position) {
     // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
     var cameraPosition = Vec3.sum(this.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
+    print("origin is ", this.originFrame.x, this.originFrame.y, this.originFrame.z);
     if (this.usePrimaryCamera) {
         Camera.setPosition(cameraPosition);
     } else {
