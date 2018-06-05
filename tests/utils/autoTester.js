@@ -184,7 +184,7 @@ var doAddStep = function (name, stepFunction, snapshot) {
     print("PUSHING STEP" + currentSteps.length);
 }
 
-module.exports.validationCamera_setTranslation = function(position) {
+validationCamera_setTranslation = function(position) {
     var cameraPosition = Vec3.sum(this.originFrame, position);
     if (this.usePrimaryCamera) {
         Camera.setPosition(cameraPosition);
@@ -193,7 +193,7 @@ module.exports.validationCamera_setTranslation = function(position) {
     }
 }
 
-module.exports.validationCamera_translate = function (offset) {
+validationCamera_translate = function (offset) {
     if (this.usePrimaryCamera) {
         Camera.setPosition(Vec3.sum(Camera.getPosition(), offset));
     } else {
@@ -201,7 +201,7 @@ module.exports.validationCamera_translate = function (offset) {
     }
 }
 
-module.exports.validationCamera_setRotation = function (rotation) {
+validationCamera_setRotation = function (rotation) {
     var orientation = Quat.fromPitchYawRollDegrees(rotation.x, rotation.y, rotation.z);
     if (this.usePrimaryCamera) {
         Camera.setOrientation(orientation);
