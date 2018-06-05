@@ -190,8 +190,8 @@ var doAddStep = function (name, stepFunction, snapshot) {
 
 validationCamera_setTranslation = function(position) {
     // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
-    var cameraPosition = Vec3.sum(this.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
-    print("origin is ", this.originFrame.x, this.originFrame.y, this.originFrame.z);
+    var cameraPosition = Vec3.sum(currentTestCase.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
+    print("origin is ", currentTestCase.originFrame.x, currentTestCase.originFrame.y, currentTestCase.originFrame.z);
     if (this.usePrimaryCamera) {
         Camera.setPosition(cameraPosition);
     } else {
