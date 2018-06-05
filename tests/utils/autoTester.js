@@ -178,7 +178,7 @@ var doAddStep = function (name, stepFunction, snapshot) {
 }
 
 var validationCamera_setTranslation = function(position) {
-    var cameraPostion = Vec3.sum(this.originFrame, position);
+    var cameraPosition = Vec3.sum(this.originFrame, position);
     if (this.usePrimaryCamera) {
         Camera.setPosition(cameraPosition);
     } else {
