@@ -191,12 +191,12 @@ var doAddStep = function (name, stepFunction, snapshot) {
 validationCamera_setTranslation = function(position) {
     // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
     var cameraPosition = Vec3.sum(currentTestCase.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
-    print("cameraPosition is ", cameraPosition.x, cameraPosition.y, cameraPosition.z);
+print("cameraPosition is ", cameraPosition.x, cameraPosition.y, cameraPosition.z);
     if (currentTestCase.usePrimaryCamera) {
-        print("PRI");
+print("PRI");
         Camera.setPosition(cameraPosition);
     } else {
-        print("SEC");
+print("SEC");
         spectatorCameraConfig.position = cameraPosition;
     }
 }
@@ -230,6 +230,7 @@ validationCamera_setRotation = function (rotation) {
 module.exports.perform = function (testName, testPath, validationCamera, testMain) {
     var originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
     var usePrimaryCamera = (validationCamera === "primary");
+print("========================================================usePrimaryCamera = ", usePrimaryCamera);
 
     currentTestCase = new TestCase(testName, testPath, testMain, originFrame, validationCamera);
 
