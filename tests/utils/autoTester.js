@@ -230,7 +230,6 @@ validationCamera_setRotation = function (rotation) {
 module.exports.perform = function (testName, testPath, validationCamera, testMain) {
     var originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
     var usePrimaryCamera = (validationCamera === "primary");
-print("========================================================usePrimaryCamera = ", usePrimaryCamera);
 
     currentTestCase = new TestCase(testName, testPath, testMain, originFrame, usePrimaryCamera);
 
