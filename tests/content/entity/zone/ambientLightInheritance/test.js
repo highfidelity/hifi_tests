@@ -1,12 +1,10 @@
-if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof user === 'undefined') user = "NissimHadar/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+if (typeof branch === 'undefined') branch = "autoTesterSpec/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-   
+autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", function(testType) {
     // Set up test environment
     var avatarOriginPosition = MyAvatar.position;
     
@@ -23,7 +21,6 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     var SUFFIX = "?raw=true";
     var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
     
-    // Create zones
     var zoneRed;
     var zoneGreen;
     var zoneBlue;
@@ -33,10 +30,11 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     var DY = 0.6;
     var DZ = -2.0;
 
-    //Add test steps, These may be called via the timing mechanism for auto-testing,  
+    // Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar
     
     autoTester.addStep("Setup zones and sphere", function () {
+        // Create zones
         var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
         var zoneRedProperties = {
             type: "Zone",

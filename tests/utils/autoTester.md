@@ -9,7 +9,7 @@ The testing philosophy has 4 major objectives:
 2. Simple manual use of the tests for development purposes.
 3. Simple syntax for writing tests by developers
 4. Simple execution of the tests by testers.
-
+ 
 To achieve these objectives, the testing implementation includes the following design decisions:
 1. To the maximum extent possible - snapshots are taken with the secondary camera.  This enables independent positioning, as well as control of the snapshot image size.
 2. The test coordinate system is defined by the avatar's position (the avatar is rotated to point down the Z axis).  The avatar's position is defined as the hip position - therefore:  the test position is defined as a point a fixed height below the avatar (i.e. the assumed position of the avatar's feet) and the camera position is a fixed height above the avatar (i.e. the avatar's assumed eye position).
@@ -19,6 +19,33 @@ To achieve these objectives, the testing implementation includes the following d
 4. In general, a test stage is performed in 2 steps:  
 * Create the image and position the camera
 * Take the snapshot
+
+## Test Case
+### Origin Frame
+An origin frame can be defined to create and position the assets required for the test relative to this origin.
+The origin frame also helps defining the Validation Camera position
+To define the origin frame, use the 'defineOriginFrame' method before any steps in the test case
+The Origin Frame is then automatically computed from the actual MyAvatar position.
+
+The orientation of the frame is world aligned.
+The position of the frame is always 1m below the MyAvatar position (regardless of its size).
+The position of the Validation Camera is then defined as 1.76m UP from the origin position.
+
+### Validation Camera
+To validate a test, we are capturing snapshots from a 'Validation Camera'.
+The view from this camera can be captured from the primary or the secondary views currently available on the rendering engine of Interface depending on the constraints of the test.
+The actual camera used for capturing the validation image is an implementation issue (ideally they should work the same).
+During the test, we will refer to 'validation Camera' 
+
+The initial location of the Validation Camera is automatically updated when calling 'defineOriginFrame'
+
+The Validation camera can be accessed and moved around in the Origin Frame space using the following functions 
+* validationCamera_translate(offset vec3)
+* rotate()
+
+
+
+
 ## Folder Structure
 The top level folder of importance is `tests`.  The relevant contents of this folder are:
 1. `testsOutline.md` - an outline of all available tests.  This file is created by `autoTester.exe`.
@@ -50,9 +77,9 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 The test itself is written in the perform method:
 ```
 autoTester.perform("<test description string>", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
+    autoTester.setupTest();
 
-    // set up test
+    // set up specific test 
     
     // create steps
     
@@ -70,3 +97,7 @@ As described above, steps usually come in pairs.  The following is an example sh
 ```
 The first step moves forward 10 metres (the avatar is looking *down* the Z axis).
 ## `autoTester.js` documentation
+
+### AutoTester Class
+
+Autotoester is a module exported form including the file
