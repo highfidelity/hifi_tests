@@ -55,7 +55,7 @@ function onDownloadInfoChanged(info) {
 var runOneStep = function (stepFunctor, stepIndex) {
     print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
 
-    if (testMode === "manual") {
+    if (isManualMode()) {
         Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
     }
     
@@ -71,8 +71,13 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
-        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
-        usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
+        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');
+
+        // Show snapshots on screen in manual mode (first parameter)
+        usePrimaryCamera 
+            ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
+            : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
+
         ++snapshotIndex;
     }
 }
@@ -89,7 +94,7 @@ var runNextStep = function () {
 }
 
 var testOver = function() {
-    if (testMode === "manual") {
+    if (isManualMode()) {
         Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
         Window.displayAnnouncement("Test " + currentTestName + " have been completed");
     }
@@ -161,6 +166,10 @@ var onRunManual = function() {
     Controller.keyPressEvent.connect(onKeyPressEventNextStep);
 }
 
+function isManualMode() {
+    return (testMode === "manual");
+}
+
 var onRunAuto = function() {  
     // run the next step after next timer
     Script.setTimeout(
@@ -191,7 +200,7 @@ module.exports.perform = function (testName, testPath, testMain) {
     if (isRecursive) {
         print("Not running yet - in recursive mode");
         testCases.push(currentTestCase);
-    } else if (testMode === "manual") {
+    } else if (isManualMode()) {
         print("Begin manual test:" + testName);
         currentTestCase.func("manual");
     } else { // testMode === "auto"
