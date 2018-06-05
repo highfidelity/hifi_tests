@@ -108,6 +108,13 @@ var testOver = function() {
     currentTestName = "";
     currentTestCase = null;
 
+     if (!isManualMode()) {
+        // Also, restore 2D overlays and mouse from the window
+        Menu.setIsOptionChecked("Show Overlays", true);
+        Reticle.visible = true;
+        Reticle.allowMouseCapture = true;
+    }
+
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
     } else {
@@ -261,10 +268,12 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
         // (so that primary camera snapshots will have the correct size)
         Test.showMaximized();
 
-        // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
-        Menu.setIsOptionChecked("Show Overlays", false);
-        Reticle.visible = false;
-        Reticle.allowMouseCapture = false;
+        if (!isManualMode()) {
+            // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
+            Menu.setIsOptionChecked("Show Overlays", false);
+            Reticle.visible = false;
+            Reticle.allowMouseCapture = false;
+        }
     }
     
     // Setup validation camera
