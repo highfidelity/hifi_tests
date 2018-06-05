@@ -189,7 +189,8 @@ var doAddStep = function (name, stepFunction, snapshot) {
 }
 
 validationCamera_setTranslation = function(position) {
-    var cameraPosition = Vec3.sum(this.originFrame, position);
+    // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
+    var cameraPosition = Vec3.sum(this.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
     if (this.usePrimaryCamera) {
         Camera.setPosition(cameraPosition);
     } else {
@@ -230,7 +231,9 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     currentTestCase = new TestCase(testName, testPath, testMain, validationCamera, originFrame);
 
     previousCameraMode = Camera.mode;
-    Camera.mode = "independent";
+    if (usePrimaryCamera) {
+        Camera.mode = "independent";
+    }
 
     // Clear the test case steps
     currentSteps = [];
