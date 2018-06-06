@@ -94,7 +94,8 @@ autoTester.perform("<test description string>", Script.resolvePath("."), "second
 });    
 ```
 Note that "secondary" may be replaced by "primary".  This is needed for tests that require the primary camera 
-(e.g. - tests that show overlays, shadows and so on).
+(e.g. - tests that show overlays, shadows and so on).  
+The **`autoTester.runTest(testType);`** call is the line that requests the execution of the steps.  
 As described above, steps usually come in pairs.  The following is an example showing the idea:
 ```
     autoTester.addStep("Move to blue zone", function () {
@@ -108,7 +109,42 @@ As described above, steps usually come in pairs.  The following is an example sh
 ```
 The first step moves forward 10 metres (the avatar is looking *down* the Z axis).
 ## `autoTester.js` documentation
+`autoTester.js` provides the **`perform`** method, used in all tests.  This method accepts 4 parameters:
+1. The name of the script (a string)
+2. The path to the test.  This is used so we can include the path in the snapshots' names.
+3. Which camera to use for validation.  This is "secondary" or "primary"
+4. A single lambda function.  This function is run immediately, unless tests are being run in recursive mode.
+This function accepts a single parameter "auto" or "manual", defining the mode that will be used when the test is executed. 
 
-### AutoTester Class
+Recursive mode is selected by calling `autoTester.enableRecursive();` before calling perform.
+Recursive tests are usually performed automatically as follows:
+```
+// This is an automatically generated file, created by auto-tester on Jun 1 2018, 11:24
 
-Autotoester is a module exported form including the file
+user = "highfidelity/";
+repository = "hifi_tests/";
+branch = "master/";
+
+var autoTester = Script.require("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/autoTester.js?raw=true");
+
+autoTester.enableRecursive();
+autoTester.enableAuto();
+
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/content/entity/zone/zoneOrientation/test.js?raw=true");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/content/entity/zone/create/test.js?raw=true");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/content/entity/zone/ambientLightZoneEffects/test.js?raw=true");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/content/entity/zone/ambientLightInheritance/test.js?raw=true");
+
+autoTester.runRecursive();
+```
+Note that this code is generated automatically by the `auto-tester` tool.
+As shown in the snippet - *auto* mode is selected by `autoTester.enableAuto();`, *manual* is the default.
+Also note that *recursive* is distinct from *auto/manual*.
+
+**`perform`** creates a `TestCase` object with the parameters.
+If not in recursive mode, this is executed immediately .  In recursive mode, the object is pushed on to `testCases`.  
+This array is executed by the `autoTester.runRecursive();` method.  This method checks for the completion of the previous test,
+every second.  If the test is complete and there are more tests then the next test case is run.
+
+
+ 

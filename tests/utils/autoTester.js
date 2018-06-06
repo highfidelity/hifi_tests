@@ -101,34 +101,6 @@ var runNextStep = function () {
     return (currentStepIndex < currentSteps.length);
 }
 
-var testOver = function() {
-    if (isManualMode()) {
-        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
-    }
-
-    currentSteps = [];
-    currentStepIndex = 0;
-    currentTestName = "";
-    currentTestCase = null;
-
-    Camera.mode = previousCameraMode;
-
-     if (!isManualMode()) {
-        // Also, restore 2D overlays and mouse from the window
-        Menu.setIsOptionChecked("Show Overlays", true);
-        Reticle.visible = true;
-        Reticle.allowMouseCapture = true;
-    }
-
-    if (isRecursive) {
-        currentRecursiveTestCompleted = true;
-    } else {
-        // Just stop the script
-        Script.stop();
-    }
-}
-
 var autoTimeStep = 2000;
 
 var onRunAutoNext = function() {
@@ -137,7 +109,7 @@ var onRunAutoNext = function() {
     // If not downloading then run the next step...
     if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         if (!runNextStep()) {
-            testOver();
+            tearDownTest();
             return;
         }
     } else if (!downloadInProgress) {
@@ -159,7 +131,7 @@ var onRunAutoNext = function() {
 var onKeyPressEventNextStep = function (event) {
     if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
         if (!runNextStep()) {
-            testOver();
+            tearDownTest();
         }
     }
 }
@@ -188,6 +160,109 @@ var onRunAuto = function() {
 var doAddStep = function (name, stepFunction, snapshot) {
     currentSteps.push({"index": currentSteps.length, "name": name, "func": stepFunction, "snap": snapshot })
     print("PUSHING STEP" + currentSteps.length);
+}
+
+setUpTest = function() {
+    // Clear the test case steps
+    currentSteps = [];
+    currentStepIndex = 0;
+    currentTestName = currentTestCase.name;
+
+    // resolvePath(".") returns a string that looks like "file:/" + <current folder>
+    // We need the current folder
+    var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
+    var pathParts = path.split("/");
+
+    // Snapshots are saved in the user-selected folder
+    // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
+    // the tests are named tests.content.entity.zone.create.00000.jpg and so on
+    // (assuming pathSeparator is ".")
+    // Date and time are not used as part of the name, to keep the path lengths to a minimum
+    // (the Windows API limit is 260 characters).
+    //
+    // Find location of "tests"
+    var testsIndex;
+    for (testsIndex = pathParts.length - 1; testsIndex > 0; --testsIndex) {
+        if (pathParts[testsIndex] === "tests") {
+            break;
+        }
+    }
+
+    snapshotPrefix = pathParts[testsIndex];
+    for (var i = testsIndex + 1; i < pathParts.length; ++i) {
+        snapshotPrefix += pathSeparator + pathParts[i];
+    }
+
+    snapshotIndex = 0;
+
+    // Setup validation camera
+    var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
+    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    if (usePrimaryCamera) {
+        Camera.setPosition(p0);
+        Camera.setOrientation(q0);
+    } else {
+        spectatorCameraConfig = Render.getConfig("SecondaryCamera");
+        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+        spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
+        spectatorCameraConfig.vFoV = 45;
+        Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
+        Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+
+        spectatorCameraConfig.position = p0;
+        spectatorCameraConfig.orientation = q0;
+    }
+
+    // Set the camera mode to independent
+    previousCameraMode = Camera.mode;
+    if (usePrimaryCamera) {
+        Camera.mode = "independent";
+    }
+
+    if (typeof Test !== 'undefined') {
+        // In command line mode, maximize window size 
+        // (so that primary camera snapshots will have the correct size)
+        Test.showMaximized();
+    }
+
+    if (!isManualMode()) {
+        // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
+        Menu.setIsOptionChecked("Show Overlays", false);
+        Reticle.visible = false;
+        Reticle.allowMouseCapture = false;
+    }
+
+    // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
+    AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
+    AccountServices.updateDownloadInfo();
+}
+
+tearDownTest = function() {
+    // Reset camera mode
+    Camera.mode = previousCameraMode;
+
+    if (isManualMode()) {
+        // Disconnect key event
+        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
+        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+    }
+
+    if (!isManualMode()) {
+        //Restore 2D overlays and mouse from the window
+        Menu.setIsOptionChecked("Show Overlays", true);
+        Reticle.visible = true;
+        Reticle.allowMouseCapture = true;
+    }
+
+    if (isRecursive) {
+        currentRecursiveTestCompleted = true;
+    } else {
+        // Just stop the script
+        Script.stop();
+    }
+
+    // Disconnect callback
+    AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
 }
 
 validationCamera_setTranslation = function(position) {
@@ -229,80 +304,7 @@ validationCamera_setRotation = function (rotation) {
 // If the test mode is manual or auto then its execution is started
 module.exports.perform = function (testName, testPath, validationCamera, testMain) {
     var usePrimaryCamera = (validationCamera === "primary");
-
     currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera);
-
-    previousCameraMode = Camera.mode;
-    if (usePrimaryCamera) {
-        Camera.mode = "independent";
-    }
-
-    // Clear the test case steps
-    currentSteps = [];
-    currentStepIndex = 0;
-    currentTestName = currentTestCase.name;
-
-    // resolvePath(".") returns a string that looks like "file:/" + <current folder>
-    // We need the current folder
-    var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
-    var pathParts = path.split("/");
-
-    // Snapshots are saved in the user-selected folder
-    // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
-    // the tests are named tests.content.entity.zone.create.00000.jpg and so on
-    // (assuming pathSeparator is ".")
-    // Date and time are not used as part of the name, to keep the path lengths to a minimum
-    // (the Windows API limit is 260 characters).
-    //
-    // Find location of "tests"
-    var testsIndex;
-    for (testsIndex = pathParts.length - 1; testsIndex > 0; --testsIndex) {
-        if (pathParts[testsIndex] === "tests") {
-            break;
-        }
-    }
-    
-    snapshotPrefix = pathParts[testsIndex];
-    for (var i = testsIndex + 1; i < pathParts.length; ++i) {
-        snapshotPrefix += pathSeparator + pathParts[i];
-    }
-
-    snapshotIndex = 0;
-
-    // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
-    AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
-    AccountServices.updateDownloadInfo();
-    
-    if (typeof Test !== 'undefined') {
-        // In command line mode, maximize window size 
-        // (so that primary camera snapshots will have the correct size)
-        Test.showMaximized();
-
-        if (!isManualMode()) {
-            // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
-            Menu.setIsOptionChecked("Show Overlays", false);
-            Reticle.visible = false;
-            Reticle.allowMouseCapture = false;
-        }
-    }
-
-    // Setup validation camera
-    var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
-    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-    if (usePrimaryCamera) {
-        Camera.setPosition(p0);
-        Camera.setOrientation(q0);
-    } else {
-        spectatorCameraConfig = Render.getConfig("SecondaryCamera");
-        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
-        spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
-        spectatorCameraConfig.vFoV = 45;
-        Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-        Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
-
-        spectatorCameraConfig.position = p0;
-        spectatorCameraConfig.orientation = q0;
-    }
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
@@ -355,6 +357,9 @@ module.exports.runTest = function (testType) {
         return;
     }
 
+    // Setup the screen, camera, snapshots for the next test  
+    setup();
+    
     if (testType  === "auto") {
         onRunAuto();
     } else { // testType === "manual"
