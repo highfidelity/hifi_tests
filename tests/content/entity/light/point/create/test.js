@@ -45,6 +45,7 @@ autoTester.perform("Point light", Script.resolvePath("."), "secondary", function
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
+    autoTester.addStep("Wait for entities to load");
     autoTester.addStepSnapshot("Display point light");
 
     autoTester.addStep("Clean up after test", function () {
