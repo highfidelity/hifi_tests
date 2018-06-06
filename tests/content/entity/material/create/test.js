@@ -4,18 +4,15 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Material Entities", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(true);
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
-
+autoTester.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../../../../utils/test_stage.js?raw=true");
     var LIFETIME = 200;
 
     // Add the test Cases
-	var flags = { 
-		hasKeyLight: false,
-		hasAmbientLight: false
-	};
+    var flags = { 
+        hasKeyLight: false,
+        hasAmbientLight: false
+    };
     var createdEntities = setupStage(flags, 200)
 
     var posOri = getStagePosOriAt(0, 0, 0);
