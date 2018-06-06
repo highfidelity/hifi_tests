@@ -4,10 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-   
-    // Set up test environment
+autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "secondary", function(testType) {
     var avatarOriginPosition = MyAvatar.position;
     
     var zonePosition = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
@@ -16,9 +13,12 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), fun
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
 
+    var LIFETIME = 60.0;
+
     // Create zones
     var SKYBOX_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ColourBoxWithSun.jpg' + SUFFIX);
     var zoneProperties = {
+        lifetime: LIFETIME,
         type: "Zone",
         name: "zone",
         position: zonePosition,
@@ -54,13 +54,16 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), fun
     var SPHERE_DX = 0.5;
     var SPHERE_DY = 0.6;
     var SPHERE_DZ = -2.0;
+
     var sphereProperties = {
+        lifetime: LIFETIME,
         type: "Sphere",
         name: "sphere",
         position: {x: MyAvatar.position.x + SPHERE_DX, y: MyAvatar.position.y + SPHERE_DY, z: MyAvatar.position.z + SPHERE_DZ},
         dimensions: { x: 0.7, y: 0.7, z: 0.7 },
         color: {"red": 255,"green": 255,"blue": 255},
-        visible: true
+        visible: true,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     };
     var sphere = Entities.addEntity(sphereProperties);
     
@@ -73,13 +76,15 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), fun
     var objectPosition = {x: MyAvatar.position.x + OBJECT_DX, y: MyAvatar.position.y + OBJECT_DY, z: MyAvatar.position.z  + OBJECT_DZ};
     var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
     var objectProperties = {
+        lifetime: LIFETIME,
         type: "Model",
         modelURL: TESTS_URL + 'assets/models/material_matrix_models/fbx/blender/' + objectName + '.fbx' + SUFFIX,
         name: objectName,
         position: objectPosition,    
         rotation: objectOrientation,    
         dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
-        visible: false
+        visible: false,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     };
     var object = Entities.addEntity(objectProperties);
     

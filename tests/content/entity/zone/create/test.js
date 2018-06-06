@@ -4,9 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(true);
-
+autoTester.perform("Zone create", Script.resolvePath("."), "primary", function(testType) {
     // Enabled draw zone bounding box and stack to visualize the stack of zone components
     Render.getConfig("RenderMainView.DrawZoneStack").enabled = true;
     Render.getConfig("RenderMainView.DrawZones").enabled = true;
@@ -17,12 +15,8 @@ autoTester.perform("Zone create", Script.resolvePath("."), function(testType) {
     // As a 5 meters cube box
     var dim = { x: 5.0, y: 5.0, z: 5.0 };
 
-    // Configure the camera
-    spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
-
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-
     var zone;
     autoTester.addStep("Set up test case", function () {
         // Define zone properties
