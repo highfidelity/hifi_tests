@@ -1,13 +1,10 @@
-if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof user === 'undefined') user = "NissimHadar/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+if (typeof branch === 'undefined') branch = "autoTesterSpec/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
-
+autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../../../../../../utils/test_stage.js?raw=true");
 
     // Add the test Cases
