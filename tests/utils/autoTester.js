@@ -82,7 +82,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
         
-        this.usePrimaryCamera 
+        currentTestCase.usePrimaryCamera 
             ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
             : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
         
