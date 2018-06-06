@@ -288,9 +288,10 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
 
     // Setup validation camera
     var v0 = { x: 0.0, y: 0.0, z: 0.0 };
+    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     if (usePrimaryCamera) {
         Camera.setPosition(v0);
-        Camera.setOrientation(v0);
+        Camera.setOrientation(q0);
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
@@ -300,7 +301,7 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
         Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
 
         spectatorCameraConfig.position = v0;
-        spectatorCameraConfig.orientation = v0;
+        spectatorCameraConfig.orientation = q0;
     }
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
