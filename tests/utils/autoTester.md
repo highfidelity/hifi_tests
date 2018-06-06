@@ -20,6 +20,11 @@ A test case consists of initialization code followed by a series of steps. In ge
 * Create the image and position the camera
 * Take the snapshot
 
+It is suggested to set the following properties for all entities:
+* lifetime: 60,
+* position: Vec3.sum(MyAvatar.position, *some offset*),
+* userData: JSON.stringify({ grabbableKey: { grabbable: false } })
+
 ## Test Case
 
 ### Origin Frame
