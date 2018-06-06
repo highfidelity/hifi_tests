@@ -16,11 +16,12 @@ To achieve these objectives, the testing implementation includes the following d
 
 3. In automatic mode, steps are advanced every 2 seconds.  The test may modify this value during setup.  
   
-4. In general, a test stage is performed in 2 steps:  
+A test case consists of initialization code followed by a series of steps. In general, the steps are in pairs:
 * Create the image and position the camera
 * Take the snapshot
 
 ## Test Case
+
 ### Origin Frame
 An origin frame can be defined to create and position the assets required for the test relative to this origin.
 The origin frame also helps defining the Validation Camera position
@@ -37,15 +38,13 @@ The view from this camera can be captured from the primary or the secondary view
 The actual camera used for capturing the validation image is an implementation issue (ideally they should work the same).
 During the test, we will refer to 'validation Camera' 
 
-The initial location of the Validation Camera is automatically updated when calling 'defineOriginFrame'
+The initial location of the Validation Camera is automatically updated when calling 'defineOriginFrame' 
 
 The Validation camera can be accessed and moved around in the Origin Frame space using the following functions 
+* validationCamera_setTranslation(offset vec3)
 * validationCamera_translate(offset vec3)
-* rotate()
-
-
-
-
+* validationCamera_setRotation(rotation vec3)
+* 
 ## Folder Structure
 The top level folder of importance is `tests`.  The relevant contents of this folder are:
 1. `testsOutline.md` - an outline of all available tests.  This file is created by `autoTester.exe`.
@@ -77,23 +76,23 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 The test itself is written in the perform method:
 ```
 autoTester.perform("<test description string>", Script.resolvePath("."), function(testType) {
-    autoTester.setupTest();
-
-    // set up specific test 
+    // set up zones, objects and other entities 
     
     // create steps
-    
     
     var result = autoTester.runTest(testType);
 });    
 ```
 As described above, steps usually come in pairs.  The following is an example showing the idea:
 ```
-    autoTester.addStep("Move foward to next zone", function () {
-        moveTo({ x: 0, y: 0, z: -10 });
+    autoTester.addStep("Move to blue zone", function () {
+        var offset = { x: 0.0, y: 0.0, z: -10.0 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, offset);
+        validationCamera_setTranslation(offset);
+        
+        Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
-    
-    autoTester.addStepSnapshot("Zone has dark ambient light");
+    autoTester.addStepSnapshot("Blue zone, dark ambient light");
 ```
 The first step moves forward 10 metres (the avatar is looking *down* the Z axis).
 ## `autoTester.js` documentation
