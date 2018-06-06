@@ -214,7 +214,7 @@ validationCamera_setRotation = function (rotation) {
     if (currentTestCase.usePrimaryCamera) {
         Camera.setOrientation(orientation);
     } else {
-        spectatorCameraConfig.orientation += orientation;
+        spectatorCameraConfig.orientation = orientation;
     }
 }
 
