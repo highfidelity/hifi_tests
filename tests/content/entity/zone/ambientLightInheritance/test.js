@@ -101,18 +101,18 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     autoTester.addStepSnapshot("Red zone, bright ambient light");
     
     autoTester.addStep("Move to green zone", function () {
-        var offset = { x: 0.0, y: 0.0, z: -5.0 };
-        MyAvatar.position  = Vec3.sum(avatarOriginPosition, offset);
-        validationCamera_setTranslation(offset);
+        var position = { x: 0.0, y: 0.0, z: -5.0 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
         
         Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
     autoTester.addStepSnapshot("Green zone, medium ambient light");
     
     autoTester.addStep("Move to blue zone", function () {
-        var offset = { x: 0.0, y: 0.0, z: -10.0 };
-        MyAvatar.position  = Vec3.sum(avatarOriginPosition, offset);
-        validationCamera_setTranslation(offset);
+        var position = { x: 0.0, y: 0.0, z: -10.0 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
         
         Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
@@ -144,9 +144,9 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     autoTester.addStepSnapshot("Red off,  no ambient light");
         
     autoTester.addStep("Move to green zone", function () {
-        var offset = { x: 0.0, y: 0.0, z: -5.0 };
-        MyAvatar.position  = Vec3.sum(avatarOriginPosition, offset);
-        validationCamera_setTranslation(offset);
+        var position = { x: 0.0, y: 0.0, z: -5.0 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
         
         Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
