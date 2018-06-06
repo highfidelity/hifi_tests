@@ -109,6 +109,7 @@ As described above, steps usually come in pairs.  The following is an example sh
 ```
 The first step moves forward 10 metres (the avatar is looking *down* the Z axis).
 ## `autoTester.js` documentation
+### `perform` method
 `autoTester.js` provides the **`perform`** method, used in all tests.  This method accepts 4 parameters:
 1. The name of the script (a string)
 2. The path to the test.  This is used so we can include the path in the snapshots' names.
@@ -145,6 +146,8 @@ Also note that *recursive* is distinct from *auto/manual*.
 If not in recursive mode, this is executed immediately .  In recursive mode, the object is pushed on to `testCases`.  
 This array is executed by the `autoTester.runRecursive();` method.  This method checks for the completion of the previous test,
 every second.  If the test is complete and there are more tests then the next test case is run.
+### `runTest` method
+This is the method that initiates execution of the test, in either *manual* or *auto* mode.
 
 
  
