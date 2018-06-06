@@ -91,14 +91,6 @@ var runOneStep = function (stepFunctor, stepIndex) {
 }
 
 var runNextStep = function () {
-    // Setup origin and reset camera position on first step
-    if (currentStepIndex == 0) {
-        originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);    
-    
-        validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
-        validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
-    }
-
     // Run next step and increment only if there is one more
     if (currentStepIndex < currentSteps.length) {
         runOneStep(currentSteps[currentStepIndex], currentStepIndex);
@@ -293,15 +285,22 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
             Reticle.allowMouseCapture = false;
         }
     }
-    
+
     // Setup validation camera
-    if (!usePrimaryCamera) {
+    var v0 = { x: 0.0, y: 0.0, z: 0.0 };
+    if (usePrimaryCamera) {
+        Camera.setPosition(v0);
+        Camera.setOrientation(v0);
+    } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
         spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
         spectatorCameraConfig.vFoV = 45;
         Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
         Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+
+        spectatorCameraConfig.position = v0;
+        spectatorCameraConfig.orientation = v0;
     }
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
