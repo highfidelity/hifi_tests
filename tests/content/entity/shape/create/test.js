@@ -4,9 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-
+autoTester.perform("Shape create", Script.resolvePath("."), "secondary", function(testType) {
     var entityIds = [];
 
     var LIFETIME = 60; // 1 min
@@ -47,26 +45,26 @@ autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
         lightProperties.name = "greenLight";
         localPosition = { x: 0, y: -lightDistance, z: -1.0 * lightDistance};
         localPosition = Vec3.multiplyQbyV(MyAvatar.orientation, localPosition);
-        
+
         worldPosition = Vec3.sum(MyAvatar.position, localPosition);
         lightProperties.position = worldPosition;
         lightProperties.color = { red: 0, green: 255, blue: 0 };
         var greenLight = Entities.addEntity(lightProperties);
-        
+
         entityIds.push(greenLight);
 
         // blue
         lightProperties.name = "blueLight";
-        
+
         localPosition = { x: -lightDistance, y: 0, z: -1.5 * lightDistance};
         localPosition = Vec3.multiplyQbyV(MyAvatar.orientation, localPosition);
-        
+
         worldPosition = Vec3.sum(MyAvatar.position, localPosition);
         lightProperties.position = worldPosition;
-        
+
         lightProperties.color = { red: 0, green: 0, blue: 255 };
         var blueLight = Entities.addEntity(lightProperties);
-        
+
         entityIds.push(blueLight);
     }
     makeLights();
@@ -90,7 +88,7 @@ autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
         "Cone",
         "Cylinder"
     ];
-    
+
     // We will create a grid of entities, one instance of each shape,
     var numShapes = shapes.length;
     var numColumns = 3;
@@ -99,9 +97,10 @@ autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
     var gridStep = 0.55;
 
     var SHAPE_DIMENSIONS = { x: 0.4, y: 0.4, z: 0.4 };
-    
-    spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
-    spectatorCameraConfig.orientation = { x: 0, y: 1, z: 0, w: 0 };
+
+    autoTester.addStep("Rotate secondary camera", function () {
+        validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
+    });
 
     autoTester.addStep("Build a grid of shapes in front of avatar", function () {
         var shapeCount = 0;
@@ -131,7 +130,7 @@ autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
             }
         }
     });
-    
+
     autoTester.addStepSnapshot("Take snapshot of all the shapes");
 
     autoTester.addStep("Clean up after test", function () {
@@ -139,6 +138,6 @@ autoTester.perform("Shape create", Script.resolvePath("."), function(testType) {
             Entities.deleteEntity(entityIds[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });
