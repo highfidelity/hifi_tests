@@ -24,6 +24,9 @@ var previousCameraMode;
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
+// This will be set when each test case begins
+var originFrame;
+
 // origin is located 1m below avatar centre
 // avatar eyes are set to 1.76 cm above the origin
 const ORIGIN_FRAME_OFFSET = { x: 0.0, y: -1.0, z: 0.0 };
@@ -31,11 +34,10 @@ const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 1.76, z: 0.0 };
 
 var spectatorCameraConfig;
 
-TestCase = function (name, path, func, originFrame, usePrimaryCamera) {
+TestCase = function (name, path, func, usePrimaryCamera) {
     this.name = name;
     this.path = path;
     this.func = func;
-    this.originFrame = originFrame;
     this.usePrimaryCamera = usePrimaryCamera;
 }
 
@@ -89,6 +91,14 @@ var runOneStep = function (stepFunctor, stepIndex) {
 }
 
 var runNextStep = function () {
+    // Setup origin and reset camera position on first step
+    if (currentStepIndex == 0) {
+        originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);    
+    
+        validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
+        validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
+    }
+
     // Run next step and increment only if there is one more
     if (currentStepIndex < currentSteps.length) {
         runOneStep(currentSteps[currentStepIndex], currentStepIndex);
@@ -190,13 +200,11 @@ var doAddStep = function (name, stepFunction, snapshot) {
 
 validationCamera_setTranslation = function(position) {
     // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
-    var cameraPosition = Vec3.sum(currentTestCase.originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
-print("cameraPosition is ", cameraPosition.x, cameraPosition.y, cameraPosition.z);
+    var cameraPosition = Vec3.sum(originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
+
     if (currentTestCase.usePrimaryCamera) {
-print("PRI");
         Camera.setPosition(cameraPosition);
     } else {
-print("SEC");
         spectatorCameraConfig.position = cameraPosition;
     }
 }
@@ -228,10 +236,9 @@ validationCamera_setRotation = function (rotation) {
 // The method creates a test case in currentTestCase.
 // If the test mode is manual or auto then its execution is started
 module.exports.perform = function (testName, testPath, validationCamera, testMain) {
-    var originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
     var usePrimaryCamera = (validationCamera === "primary");
 
-    currentTestCase = new TestCase(testName, testPath, testMain, originFrame, usePrimaryCamera);
+    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera);
 
     previousCameraMode = Camera.mode;
     if (usePrimaryCamera) {
@@ -296,10 +303,6 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
         Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
         Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
     }
-
-    // move validation camera to initial position
-    validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
-    validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
