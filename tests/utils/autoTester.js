@@ -75,13 +75,13 @@ var runOneStep = function (stepFunctor, stepIndex) {
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
     // but this seems to work ok if the snapshot is a separate step
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
-        print("Taking snapshot " + (stepIndex + 1));
+        print("Taking snapshot for step " + (stepIndex + 1));
         
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
-        
+
         currentTestCase.usePrimaryCamera 
             ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
             : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
@@ -163,8 +163,9 @@ var doAddStep = function (name, stepFunction, snapshot) {
 }
 
 setUpTest = function() {
-    // Clear the test case steps
-    currentSteps = [];
+    // Setup origin
+    originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
+
     currentStepIndex = 0;
     currentTestName = currentTestCase.name;
 
@@ -198,7 +199,8 @@ setUpTest = function() {
     // Setup validation camera
     var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-    if (usePrimaryCamera) {
+
+    if (currentTestCase.usePrimaryCamera) {
         Camera.setPosition(p0);
         Camera.setOrientation(q0);
     } else {
@@ -215,7 +217,7 @@ setUpTest = function() {
 
     // Set the camera mode to independent
     previousCameraMode = Camera.mode;
-    if (usePrimaryCamera) {
+    if (currentTestCase.usePrimaryCamera) {
         Camera.mode = "independent";
     }
 
@@ -238,7 +240,10 @@ setUpTest = function() {
 }
 
 tearDownTest = function() {
-    // Reset camera mode
+    // Clear the test case steps
+    currentSteps = [];
+
+   // Reset camera mode
     Camera.mode = previousCameraMode;
 
     if (isManualMode()) {
