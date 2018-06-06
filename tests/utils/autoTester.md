@@ -2,7 +2,7 @@
 ## General
 `autoTester.js` contains utilities to facilitate writing tests.  This file describes the folder structure, the boilerplate required to create a test and documents the functionality of the `autoTester.js` script.
 
-The tests are designed to run from GitHub and do not need to be  downloaded.
+The tests are designed to run from GitHub and do not need to be downloaded.
 
 The testing philosophy has 4 major objectives:
 1. Exact reproduction of the snapshots to allow automatic comparison of actual results with the expected images.
@@ -11,10 +11,15 @@ The testing philosophy has 4 major objectives:
 4. Simple execution of the tests by testers.
  
 To achieve these objectives, the testing implementation includes the following design decisions:
-1. To the maximum extent possible - snapshots are taken with the secondary camera.  This enables independent positioning, as well as control of the snapshot image size.
-2. The test coordinate system is defined by the avatar's position (the avatar is rotated to point down the Z axis).  The avatar's position is defined as the hip position - therefore:  the test position is defined as a point a fixed height below the avatar (i.e. the assumed position of the avatar's feet) and the camera position is a fixed height above the avatar (i.e. the avatar's assumed eye position).
+1. To the maximum extent possible - snapshots are taken with the secondary camera.
+This enables independent positioning, as well as control of the snapshot image size.
+2. The test coordinate system is defined by the avatar's position (the avatar is rotated to point down the Z axis).
+The avatar's position is defined as the hip position - 
+therefore:  the test position is defined as a point a fixed height below the avatar (i.e. the assumed position of the avatar's feet) 
+and the camera position is a fixed height above the avatar (i.e. the avatar's assumed eye position).
 
-3. In automatic mode, steps are advanced every 2 seconds.  The test may modify this value during setup.  
+3. In automatic mode, steps are advanced every 2 seconds.  The test may modify this value during setup.
+4. **"Expected Images"** are created by running the test, and then using the `auto-tester` tool (documented elsewhere).
   
 A test case consists of initialization code followed by a series of steps. In general, the steps are in pairs:
 * Create the image and position the camera
@@ -80,7 +85,7 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 ```
 The test itself is written in the perform method:
 ```
-autoTester.perform("<test description string>", Script.resolvePath("."), function(testType) {
+autoTester.perform("<test description string>", Script.resolvePath("."), "secondary", function(testType) {
     // set up zones, objects and other entities 
     
     // create steps
@@ -88,6 +93,8 @@ autoTester.perform("<test description string>", Script.resolvePath("."), functio
     var result = autoTester.runTest(testType);
 });    
 ```
+Note that "secondary" may be replaced by "primary".  This is needed for tests that require the primary camera 
+(e.g. - tests that show overlays, shadows and so on).
 As described above, steps usually come in pairs.  The following is an example showing the idea:
 ```
     autoTester.addStep("Move to blue zone", function () {
