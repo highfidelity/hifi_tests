@@ -1,12 +1,10 @@
-if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof user === 'undefined') user = "NissimHadar/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+if (typeof branch === 'undefined') branch = "autoTesterSpec/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Procedural create", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-
+autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", function(testType) {
     var entityIds = [];
 
     var LIFETIME = 60; // 1 min
@@ -82,11 +80,10 @@ autoTester.perform("Procedural create", Script.resolvePath("."), function(testTy
         })
     }));
 
-    autoTester.addStep("Setup secondary camera", function () {
-        spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
-        spectatorCameraConfig.orientation = { x: 0, y: 1, z: 0, w: 0 };
+    autoTester.addStep("Rotate secondary camera", function () {
+        validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
     });
-
+    
     autoTester.addStepSnapshot("Take snapshot of the procedural shape and zone entities");
 
     autoTester.addStep("Clean up after test", function () {
