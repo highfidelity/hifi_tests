@@ -358,7 +358,7 @@ module.exports.runTest = function (testType) {
     }
 
     // Setup the screen, camera, snapshots for the next test  
-    setup();
+    setUpTest();
     
     if (testType  === "auto") {
         onRunAuto();
