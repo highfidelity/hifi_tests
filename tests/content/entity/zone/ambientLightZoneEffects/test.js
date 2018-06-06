@@ -4,23 +4,18 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
+autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", function(testType) {
     var avatarOriginPosition = MyAvatar.position;
-    spectatorCameraConfig.position = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z};
 
-    // Set up test environment
-    
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
     var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
 
-    // Place object relative to the avatar (object will always be placed in the same relative position)
-    var objectOrientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-    var objectPosition = {x: avatarOriginPosition.x + OBJ_DX, y: avatarOriginPosition.y + OBJ_DY, z: avatarOriginPosition.z  + OBJ_DZ};
-
     var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
     var MODEL_SCALE = 0.75;
+    var MODEL_OFFSET = { x: 0.0, y: 0.65, z: -2.0};
+
+    var LIFETIME = 60.0;
 
     var object;
     var zone1;
@@ -32,12 +27,15 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     
     var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
     var objectProperties = {
+        lifetime: LIFETIME,
         type: "Model",
         modelURL: TESTS_URL + 'assets/models/material_matrix_models/fbx/blender/' + objectName + '.fbx' + SUFFIX,
         name: objectName,
-        position: objectPosition,    
-        rotation: objectOrientation,    
+        position: Vec3.sum(MyAvatar.position, MODEL_OFFSET),    
+        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),    
         dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
+        visible: true,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     };
     object = Entities.addEntity(objectProperties);
 
@@ -50,10 +48,6 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     var marker2Dimensions = { x:  8.0, y: 0.01, z: 20.0};
     var marker3Dimensions = { x:  4.0, y: 0.01, z: 30.0};
 
-    var OBJ_DX = 0.0;
-    var OBJ_DY = 0.65;
-    var OBJ_DZ = -2.0;
-
     var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     var CLOUDY_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg' + SUFFIX);
     var NIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg' + SUFFIX);
@@ -62,6 +56,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     // or stepped through with the space bar
     autoTester.addStep("Setup object, zones and markers", function () {
         var zone1properties = {
+            lifetime: LIFETIME,
             type: "Zone",
             name: "Zone 1",
 
@@ -94,6 +89,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
         zone1 = Entities.addEntity(zone1properties);
 
         var zone2properties = {
+            lifetime: LIFETIME,
             type: "Zone",
             name: "Zone 2",
 
@@ -126,6 +122,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
         zone2 = Entities.addEntity(zone2properties);
 
         var zone3properties = {
+            lifetime: LIFETIME,
             type: "Zone",
             name: "Zone 3",
 
@@ -159,78 +156,76 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
 
         // Show zone positions with rectangles
         var marker1properties = {
+            lifetime: LIFETIME,
             type: "Box",
             name: "marker 1",
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 5.0, z: MyAvatar.position.z - 25.0},
             dimensions: marker1Dimensions,
             "color": {"red": 200,"green": 0,"blue": 0},
-            visible: true
+            visible: true,
+            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
         };
         marker1 = Entities.addEntity(marker1properties);
 
         var marker2properties = {
+            lifetime: LIFETIME,
             type: "Box",
             name: "marker 2",
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 5.0 + 0.01, z: MyAvatar.position.z - 25.0},
             dimensions: marker2Dimensions,
             "color": {"red": 0,"green": 200,"blue":0},
-            visible: true
+            visible: true,
+            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
         };
         marker2 = Entities.addEntity(marker2properties);
 
         var marker3properties = {
+            lifetime: LIFETIME,
             type: "Box",
             name: "marker 3",
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 5.0 + 0.02, z: MyAvatar.position.z - 25.0},
             dimensions: marker3Dimensions,
             "color": {"red": 0,"green": 0,"blue": 200},
-            visible: true
+            visible: true,
+            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
         };
         marker3 = Entities.addEntity(marker3properties);
     });
     autoTester.addStepSnapshot("Verify no skybox");
     
     autoTester.addStep("Move forward", function () {
-        MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 7.5};
-        spectatorCameraConfig.position = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 7.5};
+        var position = { x: 0.0, y: 0.0, z: -7.5 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
         
-        var newProperty = { 
-            position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
-        };
-        Entities.editEntity(object, newProperty);  
+        Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
     autoTester.addStepSnapshot("Verify bright sky");
      
     autoTester.addStep("Move forward again", function () {
-        MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 12.5};
-        spectatorCameraConfig.position = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 12.5};
+        var position = { x: 0.0, y: 0.0, z: -12.5 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
 
-        var newProperty = { 
-            position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
-        };
-        Entities.editEntity(object, newProperty);
+        Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
     autoTester.addStepSnapshot("Verify night");
         
     autoTester.addStep("Moving forward and right", function () {
-        MyAvatar.position  = {x: avatarOriginPosition.x + 3.0, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 17.5};
-        spectatorCameraConfig.position = {x: avatarOriginPosition.x + 3.0, y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 17.5};
+        var position = { x: 0.0, y: 3.0, z: -17.5 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
 
-        var newProperty = { 
-            position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
-        };
-        Entities.editEntity(object, newProperty);  
+        Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
     autoTester.addStepSnapshot("Verify in cloudy zone");
         
     autoTester.addStep("Move left", function () {
-        MyAvatar.position  = {x: avatarOriginPosition.x, y: avatarOriginPosition.y, z: avatarOriginPosition.z - 17.5};
-        spectatorCameraConfig.position = {x: avatarOriginPosition.x, y: avatarOriginPosition.y + 0.6, z: avatarOriginPosition.z - 17.5};
+        var position = { x: 0.0, y: 0.0, z: -17.5 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
         
-        var newProperty = { 
-            position: {x: MyAvatar.position.x + OBJ_DX, y: MyAvatar.position.y + OBJ_DY, z: MyAvatar.position.z + OBJ_DZ}
-        };
-        Entities.editEntity(object, newProperty);  
+        Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
     autoTester.addStepSnapshot("Verify in dark zone");
         
