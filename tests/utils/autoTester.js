@@ -319,7 +319,7 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
         print("Not running yet - in recursive mode");
-        testCases.push(currentTestCase);
+        testCases.push(runOneTestCase(currentTestCase, isManualMode() ? "manual" : "auto"));
     } else if (isManualMode()) {
         print("Begin manual test:" + testName);
         runOneTestCase(currentTestCase, "manual");
