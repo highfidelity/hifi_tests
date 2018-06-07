@@ -272,7 +272,7 @@ tearDownTest = function() {
     }
 
     // Disconnect callback
-    AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
+    //AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
 }
 
 validationCamera_setTranslation = function(position) {
