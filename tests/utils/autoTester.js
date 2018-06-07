@@ -272,7 +272,7 @@ tearDownTest = function() {
     }
 
     // Disconnect callback
-    //AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
+    AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
 }
 
 validationCamera_setTranslation = function(position) {
@@ -319,7 +319,7 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
         print("Not running yet - in recursive mode");
-        testCases.push(runOneTestCase(currentTestCase, isManualMode() ? "manual" : "auto"));
+        testCases.push(currentTestCase);
     } else if (isManualMode()) {
         print("Begin manual test:" + testName);
         runOneTestCase(currentTestCase, "manual");
@@ -385,7 +385,7 @@ module.exports.runRecursive = function () {
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
-                    currentTestCase.func(testMode);
+                    runOneTestCase(currentTestCase, testMode);
                 } else {
                     print("Recursive tests complete");
                     Script.stop();
