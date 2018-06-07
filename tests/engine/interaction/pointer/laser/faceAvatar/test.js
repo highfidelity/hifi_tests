@@ -1,12 +1,10 @@
-if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof user === 'undefined') user = "NissimHadar/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+if (typeof branch === 'undefined') branch = "autoTesterSpec/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(true);
-    
+autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     var lasers = [];
@@ -31,35 +29,49 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), func
     };
     entities.push(Entities.addEntity(properties));
 
-    var angle = 0;
-    MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
-    MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
+    var prevCameraMode;
 
-    autoTester.addStepSnapshot("1st position", function () {
+    autoTester.addStep("Set camera to first person mode", function () {
+        prevCameraMode = Camera.mode;
+        Camera.mode = "first person";
+    });
+
+    autoTester.addStep("Move to 1st position", function () {
+        var angle = 0;
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
+    });
+    autoTester.addStepSnapshot("1st position");
+
+    autoTester.addStep("Move to 2nd position", function () {
         var angle = 1.0 * 3.1416 / 5.0;
         MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
+    autoTester.addStepSnapshot("2nd position");
 
-    autoTester.addStepSnapshot("2nd position", function () {
+    autoTester.addStep("Move to 3rd position", function () {
         var angle = 2.0 * 3.1416 / 5.0;
         MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
+    autoTester.addStepSnapshot("3rd position");
 
-    autoTester.addStepSnapshot("3rd position", function () {
+    autoTester.addStep("Move to 4th position", function () {
         var angle = 3.0 * 3.1416 / 5.0;
         MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
+    autoTester.addStepSnapshot("4th position");
 
-    autoTester.addStepSnapshot("4th position", function () {
+    autoTester.addStep("Move to 5th position", function () {
         var angle = 4.0 * 3.1416 / 5.0;
         MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
-
-    autoTester.addStepSnapshot("Clean up after test", function () {
+    autoTester.addStepSnapshot("5th position");
+    
+    autoTester.addStep("Clean up after test", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
@@ -68,6 +80,8 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), func
         }
         lasers = [];
         entities = [];
+
+        Camera.mode = prevCameraMode;
     });
     
     var result = autoTester.runTest(testType);
