@@ -4,10 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Spot light", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
-
+autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../../../../../utils/test_stage.js?raw=true")
 
@@ -23,20 +20,20 @@ autoTester.perform("Spot light", Script.resolvePath("."), function(testType) {
 
     // Define zone properties
     var properties = {
-    lifetime: 120,  
-    type: "light",  
-    name: "test create spot light",
-    position: posOri.pos,
-    rotation: lightOri,
+        lifetime: 120,  
+        type: "light",  
+        name: "test create spot light",
+        position: posOri.pos,
+        rotation: lightOri,
 
-    type: "Light",
-    isSpotlight: true,
-    color: { red: 255, green: 255, blue: 255 },
-    intensity: 2.0,
-    falloffRadius: 6.0,
-    exponent: 0.1,
-    cutoff: 45,
-    dimensions: { x: 8.0, y: 8.0, z: 12.0 }, 
+        type: "Light",
+        isSpotlight: true,
+        color: { red: 255, green: 255, blue: 255 },
+        intensity: 2.0,
+        falloffRadius: 6.0,
+        exponent: 0.1,
+        cutoff: 45,
+        dimensions: { x: 8.0, y: 8.0, z: 12.0 }, 
     };
 
     // Add the sphere and check its properties
@@ -72,7 +69,7 @@ autoTester.perform("Spot light", Script.resolvePath("."), function(testType) {
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-    
+    autoTester.addStep("Wait for entities to load");
     autoTester.addStepSnapshot("Display the 2 spotlights");
 
     autoTester.addStep("Clean up after test", function () {

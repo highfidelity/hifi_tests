@@ -19,20 +19,29 @@ var snapshotIndex = 0;
 var advanceKey = "n";
 var pathSeparator = ".";
 
-var previousSkeletonURL;
 var previousCameraMode;
 
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
-TestCase = function (name, path, func) {
+// This will be set when each test case begins
+var originFrame;
+
+// origin is located 1m below avatar centre
+// avatar eyes are set to 1.76 cm above the origin
+const ORIGIN_FRAME_OFFSET = { x: 0.0, y: -1.0, z: 0.0 };
+const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 1.76, z: 0.0 };
+
+var spectatorCameraConfig;
+
+TestCase = function (name, path, func, usePrimaryCamera) {
     this.name = name;
     this.path = path;
     this.func = func;
+    this.usePrimaryCamera = usePrimaryCamera;
 }
 
 var currentTestCase = null;
-var usePrimaryCamera = false;
 var currentRecursiveTestCompleted = false;
 
 //returns n as a string, padded to length characters with the character ch
@@ -55,7 +64,7 @@ function onDownloadInfoChanged(info) {
 var runOneStep = function (stepFunctor, stepIndex) {
     print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
 
-    if (testMode === "manual") {
+    if (isManualMode()) {
         Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
     }
     
@@ -66,13 +75,17 @@ var runOneStep = function (stepFunctor, stepIndex) {
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
     // but this seems to work ok if the snapshot is a separate step
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
-        print("Taking snapshot " + (stepIndex + 1));
+        print("Taking snapshot for step " + (stepIndex + 1));
         
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
-        usePrimaryCamera ? Window.takeSnapshot(false, false, 0.0, currentSnapshotName) : Window.takeSecondaryCameraSnapshot(currentSnapshotName);
+
+        currentTestCase.usePrimaryCamera 
+            ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
+            : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
+        
         ++snapshotIndex;
     }
 }
@@ -88,36 +101,6 @@ var runNextStep = function () {
     return (currentStepIndex < currentSteps.length);
 }
 
-var testOver = function() {
-    if (testMode === "manual") {
-        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
-    }
-
-    currentSteps = [];
-    currentStepIndex = 0;
-    currentTestName = "";
-    currentTestCase = null;
-    
-    // Restore avatar and camera mode
-    MyAvatar.skeletonModelURL = previousSkeletonURL;
-    MyAvatar.clearJointsData();
-
-    Camera.mode = previousCameraMode;
-
-    // Give avatar time to settle down
-    if (typeof Test !== 'undefined') {
-        Test.wait(1000);
-    }
-
-    if (isRecursive) {
-        currentRecursiveTestCompleted = true;
-    } else {
-        // Just stop the script
-        Script.stop();
-    }
-}
-
 var autoTimeStep = 2000;
 
 var onRunAutoNext = function() {
@@ -126,7 +109,7 @@ var onRunAutoNext = function() {
     // If not downloading then run the next step...
     if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         if (!runNextStep()) {
-            testOver();
+            tearDownTest();
             return;
         }
     } else if (!downloadInProgress) {
@@ -148,7 +131,7 @@ var onRunAutoNext = function() {
 var onKeyPressEventNextStep = function (event) {
     if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
         if (!runNextStep()) {
-            testOver();
+            tearDownTest();
         }
     }
 }
@@ -159,6 +142,10 @@ var onRunManual = function() {
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
          
     Controller.keyPressEvent.connect(onKeyPressEventNextStep);
+}
+
+function isManualMode() {
+    return (testMode === "manual");
 }
 
 var onRunAuto = function() {  
@@ -175,74 +162,23 @@ var doAddStep = function (name, stepFunction, snapshot) {
     print("PUSHING STEP" + currentSteps.length);
 }
 
-// The following are exported methods, accessible to test scripts
-
-// Perform is the main method of a test
-//      testName - name of the test
-//      testPath - path the test is executing in
-//      testMain - a function that creates the test
-//
-// The method creates a test case in currentTestCase.
-// If the test mode is manual or auto then its execution is started
-module.exports.perform = function (testName, testPath, testMain) {
-    currentTestCase = new TestCase(testName, testPath, testMain);
-    
-    // Manual and auto tests are run immediately, recursive tests are stored in a queue
-    if (isRecursive) {
-        print("Not running yet - in recursive mode");
-        testCases.push(currentTestCase);
-    } else if (testMode === "manual") {
-        print("Begin manual test:" + testName);
-        currentTestCase.func("manual");
-    } else { // testMode === "auto"
-        print("Begin auto test:" + testName);
-        currentTestCase.func("auto");
-    }
+runOneTestCase = function(testCase, testType) {
+    setUpTest(testCase);
+    testCase.func(testType);
 }
 
-module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
-    if (currentTestCase === null) {
-        return;
-    }
+setUpTest = function(testCase) {
+    // Setup origin
+    originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
 
-    // Make sure camera is in correct mode
-    previousCameraMode = Camera.mode;
-    Camera.mode = "first person";
-    
-    // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
-    previousSkeletonURL = MyAvatar.skeletonModelURL;
-    MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
-
-    // Wait for skeleton to load (for now - only in test mode)
-    if (typeof Test !== 'undefined') {
-        Test.waitIdle();
-    }
-
-    // Set Avatar to T-pose
-    for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
-        MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
-    }
-
-    // Clear the test case steps
-    currentSteps = [];
     currentStepIndex = 0;
-    currentTestName = currentTestCase.name;
-
-    print("Setup test - " + currentTestName);        
-
-    // Zero the head position
-    MyAvatar.bodyYaw =   0.0;
-    MyAvatar.bodyPitch = 0.0;
-    MyAvatar.bodyRoll =  0.0;
-    MyAvatar.headYaw =   0.0;
-    MyAvatar.headPitch = 0.0;
-    MyAvatar.headRoll =  0.0;
+    currentTestName = testCase.name;
 
     // resolvePath(".") returns a string that looks like "file:/" + <current folder>
     // We need the current folder
-    var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
+    var path = testCase.path.substring(testCase.path.indexOf(":") + 4);
     var pathParts = path.split("/");
-    
+
     // Snapshots are saved in the user-selected folder
     // For a test running from D:/GitHub/hifi-tests/tests/content/entity/zone/create/tests.js
     // the tests are named tests.content.entity.zone.create.00000.jpg and so on
@@ -257,43 +193,140 @@ module.exports.setupTest = function (usePrimaryCameraForSnapshots) {
             break;
         }
     }
-    
+
     snapshotPrefix = pathParts[testsIndex];
     for (var i = testsIndex + 1; i < pathParts.length; ++i) {
         snapshotPrefix += pathSeparator + pathParts[i];
     }
 
     snapshotIndex = 0;
-    
-    var spectatorCameraConfig = Render.getConfig("SecondaryCamera");
-    spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
-    spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
-    spectatorCameraConfig.vFoV = 45;
-    Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-    Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
 
-    // Configure the secondary camera
-    spectatorCameraConfig.position = {x: MyAvatar.position.x, y: MyAvatar.position.y + 0.6, z: MyAvatar.position.z};
-    spectatorCameraConfig.orientation = MyAvatar.orientation;
+    // Setup validation camera
+    var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
+    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
-    usePrimaryCamera = (usePrimaryCameraForSnapshots !== undefined && usePrimaryCameraForSnapshots);
+    if (testCase.usePrimaryCamera) {
+        Camera.setPosition(p0);
+        Camera.setOrientation(q0);
+    } else {
+        spectatorCameraConfig = Render.getConfig("SecondaryCamera");
+        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+        spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
+        spectatorCameraConfig.vFoV = 45;
+        Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
+        Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
 
-    // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
-    AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
-    AccountServices.updateDownloadInfo();
-    
+        spectatorCameraConfig.position = p0;
+        spectatorCameraConfig.orientation = q0;
+    }
+
+    // Set the camera mode to independent
+    previousCameraMode = Camera.mode;
+    if (testCase.usePrimaryCamera) {
+        Camera.mode = "independent";
+    }
+
     if (typeof Test !== 'undefined') {
         // In command line mode, maximize window size 
         // (so that primary camera snapshots will have the correct size)
         Test.showMaximized();
+    }
 
+    if (!isManualMode()) {
         // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
         Menu.setIsOptionChecked("Show Overlays", false);
         Reticle.visible = false;
         Reticle.allowMouseCapture = false;
     }
 
-    return spectatorCameraConfig;
+    // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
+    AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
+    AccountServices.updateDownloadInfo();
+}
+
+tearDownTest = function() {
+    // Clear the test case steps
+    currentSteps = [];
+
+   // Reset camera mode
+    Camera.mode = previousCameraMode;
+
+    if (isManualMode()) {
+        // Disconnect key event
+        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
+        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+    }
+
+    if (!isManualMode()) {
+        //Restore 2D overlays and mouse from the window
+        Menu.setIsOptionChecked("Show Overlays", true);
+        Reticle.visible = true;
+        Reticle.allowMouseCapture = true;
+    }
+
+    if (isRecursive) {
+        currentRecursiveTestCompleted = true;
+    } else {
+        // Just stop the script
+        Script.stop();
+    }
+
+    // Disconnect callback
+    AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
+}
+
+validationCamera_setTranslation = function(position) {
+    // The camera position is the sum of the origin frame, position (relative to that frame) and the eye (i.e. camera) offset
+    var cameraPosition = Vec3.sum(originFrame, Vec3.sum(position, VALIDATION_CAMERA_OFFSET));
+
+    if (currentTestCase.usePrimaryCamera) {
+        Camera.setPosition(cameraPosition);
+    } else {
+        spectatorCameraConfig.position = cameraPosition;
+    }
+}
+
+validationCamera_translate = function (offset) {
+    if (currentTestCase.usePrimaryCamera) {
+        Camera.setPosition(Vec3.sum(Camera.getPosition(), offset));
+    } else {
+        spectatorCameraConfig.position += offset;
+    }
+}
+
+validationCamera_setRotation = function (rotation) {
+    var orientation = Quat.fromPitchYawRollDegrees(rotation.x, rotation.y, rotation.z);
+    if (currentTestCase.usePrimaryCamera) {
+        Camera.setOrientation(orientation);
+    } else {
+        spectatorCameraConfig.orientation = orientation;
+    }
+}
+
+// The following are exported methods, accessible to test scripts
+
+// Perform is the main method of a test
+//      testName - name of the test
+//      testPath - path the test is executing in
+//      testMain - a function that creates the test
+//
+// The method creates a test case in currentTestCase.
+// If the test mode is manual or auto then its execution is started
+module.exports.perform = function (testName, testPath, validationCamera, testMain) {
+    var usePrimaryCamera = (validationCamera === "primary");
+    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera);
+
+    // Manual and auto tests are run immediately, recursive tests are stored in a queue
+    if (isRecursive) {
+        print("Not running yet - in recursive mode");
+        testCases.push(currentTestCase);
+    } else if (isManualMode()) {
+        print("Begin manual test:" + testName);
+        runOneTestCase(currentTestCase, "manual");
+    } else { // testMode === "auto"
+        print("Begin auto test:" + testName);
+        runOneTestCase(currentTestCase, "auto");
+    }
 }
 
 // Add steps to the test case, take snapshot if 3rd parameter is true
@@ -333,7 +366,7 @@ module.exports.runTest = function (testType) {
     if (isRecursive && !runningRecursive) {
         return;
     }
-
+    
     if (testType  === "auto") {
         onRunAuto();
     } else { // testType === "manual"
@@ -352,7 +385,7 @@ module.exports.runRecursive = function () {
                 currentRecursiveTestCompleted = false;
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
-                    currentTestCase.func(testMode);
+                    runOneTestCase(currentTestCase, testMode);
                 } else {
                     print("Recursive tests complete");
                     Script.stop();

@@ -4,9 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Size of laser end increases with distance", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(true);
-
+autoTester.perform("Size of laser end increases with distance", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     var lasers = [];

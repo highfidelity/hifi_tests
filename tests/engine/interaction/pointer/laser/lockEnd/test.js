@@ -4,9 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(true);
-    
+autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     var lasers = [];
@@ -31,67 +29,79 @@ autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), functio
     };
     var box = Entities.addEntity(properties);
 
-    autoTester.addStepSnapshot("1st Position", function () {
+    autoTester.addStepSnapshot("1st Position");
+
+    autoTester.addStep("Move to 2nd position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.5, right))
         });
     });
+    autoTester.addStepSnapshot("2nd Position");
 
-    autoTester.addStepSnapshot("2nd Position", function () {
+    autoTester.addStep("Move to 3rd Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.4, right))
         });
     });
+    autoTester.addStepSnapshot("3rd Position");
 
-    autoTester.addStepSnapshot("3rd Position", function () {
+    autoTester.addStep("Move to 4th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.3, right))
         });
     });
+    autoTester.addStepSnapshot("4th Position");
 
-    autoTester.addStepSnapshot("4th Position", function () {
+    autoTester.addStep("Move to 5th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.2, right))
         });
     });
+    autoTester.addStepSnapshot("5th Position");
 
-    autoTester.addStepSnapshot("5th Position", function () {
+    autoTester.addStep("Move to 6th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.1, right))
         });
     });
+    autoTester.addStepSnapshot("6th Position");
 
-    autoTester.addStepSnapshot("6th Position", function () {
+    autoTester.addStep("Move to 7th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.0, right))
         });
     });
+    autoTester.addStepSnapshot("7th Position");
 
-    autoTester.addStepSnapshot("7th Position", function () {
+    autoTester.addStep("Move to 8th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.1, right))
         });
     });
+    autoTester.addStepSnapshot("8th Position");
 
-    autoTester.addStepSnapshot("8th Position", function () {
+    autoTester.addStep("Move to 9th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.2, right))
         });
     });
+    autoTester.addStepSnapshot("9th Position");
 
-    autoTester.addStepSnapshot("9th Position", function () {
+    autoTester.addStep("Move to 10th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.3, right))
         });
     });
+    autoTester.addStepSnapshot("10th Position");
 
-    autoTester.addStepSnapshot("10th Position", function () {
+    autoTester.addStep("Move t 11th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.4, right))
         });
     });
+    autoTester.addStepSnapshot("11th Position");
 
-    autoTester.addStepSnapshot("Clean up", function () {
+    autoTester.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
