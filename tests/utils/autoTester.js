@@ -164,7 +164,7 @@ var doAddStep = function (name, stepFunction, snapshot) {
 
 runOneTestCase = function(testCase, testType) {
     setUpTest(testCase);
-    testCase(testType);
+    testCase.func(testType);
 }
 
 setUpTest = function(testCase) {
