@@ -162,16 +162,21 @@ var doAddStep = function (name, stepFunction, snapshot) {
     print("PUSHING STEP" + currentSteps.length);
 }
 
-setUpTest = function() {
+runOneTestCase = function(testCase, testType) {
+    setUpTest(testCase);
+    testCase(testType);
+}
+
+setUpTest = function(testCase) {
     // Setup origin
     originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
 
     currentStepIndex = 0;
-    currentTestName = currentTestCase.name;
+    currentTestName = testCase.name;
 
     // resolvePath(".") returns a string that looks like "file:/" + <current folder>
     // We need the current folder
-    var path = currentTestCase.path.substring(currentTestCase.path.indexOf(":") + 4);
+    var path = testCase.path.substring(testCase.path.indexOf(":") + 4);
     var pathParts = path.split("/");
 
     // Snapshots are saved in the user-selected folder
@@ -200,7 +205,7 @@ setUpTest = function() {
     var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
-    if (currentTestCase.usePrimaryCamera) {
+    if (testCase.usePrimaryCamera) {
         Camera.setPosition(p0);
         Camera.setOrientation(q0);
     } else {
@@ -217,7 +222,7 @@ setUpTest = function() {
 
     // Set the camera mode to independent
     previousCameraMode = Camera.mode;
-    if (currentTestCase.usePrimaryCamera) {
+    if (testCase.usePrimaryCamera) {
         Camera.mode = "independent";
     }
 
@@ -317,10 +322,10 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
         testCases.push(currentTestCase);
     } else if (isManualMode()) {
         print("Begin manual test:" + testName);
-        currentTestCase.func("manual");
+        runOneTestCase(currentTestCase, "manual");
     } else { // testMode === "auto"
         print("Begin auto test:" + testName);
-        currentTestCase.func("auto");
+        runOneTestCase(currentTestCase, "auto");
     }
 }
 
@@ -361,9 +366,6 @@ module.exports.runTest = function (testType) {
     if (isRecursive && !runningRecursive) {
         return;
     }
-
-    // Setup the screen, camera, snapshots for the next test  
-    setUpTest();
     
     if (testType  === "auto") {
         onRunAuto();
