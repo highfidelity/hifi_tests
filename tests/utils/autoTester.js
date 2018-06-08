@@ -206,8 +206,11 @@ setUpTest = function(testCase) {
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
     if (testCase.usePrimaryCamera) {
-        Camera.setPosition(p0);
         Camera.setOrientation(q0);
+        Camera.setPosition(p0);
+
+        // The avatar is also pointed down the Z axis, so the test can be seen on-screen
+        MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
@@ -216,8 +219,8 @@ setUpTest = function(testCase) {
         Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
         Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
 
-        spectatorCameraConfig.position = p0;
         spectatorCameraConfig.orientation = q0;
+        spectatorCameraConfig.position = p0;
     }
 
     // Set the camera mode to independent
@@ -290,7 +293,7 @@ validationCamera_translate = function (offset) {
     if (currentTestCase.usePrimaryCamera) {
         Camera.setPosition(Vec3.sum(Camera.getPosition(), offset));
     } else {
-        spectatorCameraConfig.position += offset;
+        spectatorCameraConfig.position = Vec3.sum(spectatorCameraConfig.position, offset);
     }
 }
 
