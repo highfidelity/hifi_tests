@@ -56,6 +56,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
     
     autoTester.addStep("Move back to see all the models", function () {
         MyAvatar.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z + 2.4 };
+        validationCamera_translate({ x: 0.0, y: 0.0, z: 2.4 });
     });
     autoTester.addStepSnapshot("Initial position");
 

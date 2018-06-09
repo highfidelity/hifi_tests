@@ -4,21 +4,22 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Haze - low range, low ceiling", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-
+autoTester.perform("Haze - low range, low ceiling", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../setup.js?raw=true")
 
     var HAZE = {
         hazeRange: 500.0,
-        hazeBaseRef: TEST_POSITION.y,
+        hazeBaseRef: MyAvatar.position.y,
         hazeAltitudeEffect: 1,
-        hazeCeiling: TEST_POSITION.y+5.0
+        hazeCeiling: MyAvatar.position.y + 5.0
     };
 
     // Setup
-    var createdEntities = setup(HAZE,spectatorCameraConfig)
+    var createdEntities;
+    autoTester.addStep("Setup", function () {
+        createdEntities = setup(HAZE);
+    });
 
     autoTester.addStepSnapshot("Haze with low range and low ceiling");
 
@@ -27,6 +28,6 @@ autoTester.perform("Haze - low range, low ceiling", Script.resolvePath("."), fun
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });

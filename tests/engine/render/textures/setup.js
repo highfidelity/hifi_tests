@@ -14,7 +14,7 @@ var branch = "master/";
 var ASSETS_BASE_URL = Script.resolvePath("../../../../assets") + "/";
 console.warn("QQQ " + ASSETS_BASE_URL);
 var LIFETIME = 300;
-var SHADER_URL = ASSETS_BASE_URL + "shaders/texture.fs";
+var SHADER_URL = ASSETS_BASE_URL + "shaders/texture.fs?raw=true";
 var IMAGE_POSITION;
 var USER_DATA = { 
     ProceduralEntity: {
@@ -43,7 +43,7 @@ getAspect = function(props) {
     if (props.resolution) {
         return props.resolution[0] / props.resolution[1];
     }
-    
+
     return 1.0;
 }
 
@@ -69,8 +69,10 @@ createTexture = function(props) {
     } else if (aspect < 1) {
         dimensions.x *= aspect;
     }
-    var imageUrl = Script.resolvePath(ASSETS_BASE_URL + "textures/" + props.image);
+
+    var imageUrl = Script.resolvePath(ASSETS_BASE_URL + "textures/" + props.image + "?raw=true");
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
+
     return Entities.addEntity({
         type: "Box",
         lifetime: LIFETIME,

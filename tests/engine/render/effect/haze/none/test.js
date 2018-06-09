@@ -4,14 +4,15 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Haze - off", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-
+autoTester.perform("Haze - off", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../setup.js?raw=true")
 
     // Setup
-    var createdEntities = setup(null,spectatorCameraConfig)
+    var createdEntities;
+    autoTester.addStep("Setup", function () {
+        createdEntities = setup(null);
+    });
 
     autoTester.addStepSnapshot("No haze");
 
@@ -20,6 +21,6 @@ autoTester.perform("Haze - off", Script.resolvePath("."), function(testType) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });

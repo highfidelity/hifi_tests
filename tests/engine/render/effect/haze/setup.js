@@ -10,7 +10,7 @@
 //    hazeColor:{"red":153,"green":107,"blue":47}
 //    hazeAltitudeEffect: 1,  
 // };
-// var entities = setup(HAZE, spectatorCameraConfig);
+// var entities = setup(HAZE);
 // 
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
@@ -25,18 +25,9 @@ var MODEL_SCALE = 1.0;
 var LIFETIME = 30;
 var MODEL_COUNT = 10;
 
-TEST_POSITION =  { x: 1000, y: 320, z: 1000 };
-
-setup = function (hazeDef, spectatorCameraConfig) {
-    var pos =  TEST_POSITION;
+setup = function (hazeDef) {
+    var pos =  MyAvatar.position;
     var entities = []
-    // Initial setup
-    MyAvatar.goToLocation(
-        pos,
-        true,
-        Quat.angleAxis(180, { x: 0, y: 1, z: 0 }),
-        true
-    );
     
     entities.push( Entities.addEntity({
         type: 'Box',
@@ -126,8 +117,6 @@ setup = function (hazeDef, spectatorCameraConfig) {
         haze: hazeDef
     });
     entities.push(sky)
-
-    spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
 
     return entities;
 }

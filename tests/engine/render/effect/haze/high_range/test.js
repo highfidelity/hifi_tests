@@ -4,19 +4,20 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Haze - high range", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-
+autoTester.perform("Haze - high range", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../setup.js?raw=true")
 
     var HAZE = {
         hazeRange: 15000.0,
-        hazeBaseRef: TEST_POSITION.y
+        hazeBaseRef: MyAvatar.position.y
     };
 
     // Setup
-    var createdEntities = setup(HAZE,spectatorCameraConfig)
+    var createdEntities;
+    autoTester.addStep("Setup", function () {
+        createdEntities = setup(HAZE);
+    });
 
     autoTester.addStepSnapshot("Haze with high range - 15,000 mt");
 
@@ -25,6 +26,6 @@ autoTester.perform("Haze - high range", Script.resolvePath("."), function(testTy
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });
