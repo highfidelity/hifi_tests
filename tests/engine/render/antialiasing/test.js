@@ -4,9 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Anti-aliasing test", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest(true); // Use main camera, as overlays are not displayed in secondary
-
+autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", function(testType) {
     // Test material matrix
     Script.include("../material/matrix.js?raw=true")
 
@@ -15,7 +13,7 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), function(testT
         {name:"hifi_normalM_albedoV_ao",  a:0, b:-0.5, c:-0.5},
         {name:"hifi_normalM_metallicV_albedoV_ao",  a:0, b:-0.5, c:0.5},  
     ];
-    
+
     var TEST_OVERLAYS = [
         {name:"sphere",  a:0, b:0.5, c:-0.5, infront: false},
         {name:"sphereInFront",  a:0, b:0.5, c:0.5, infront: true},  
@@ -42,6 +40,6 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), function(testT
             Overlays.deleteOverlay(createdOverlays[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });
