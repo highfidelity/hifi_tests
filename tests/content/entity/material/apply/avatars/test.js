@@ -34,7 +34,8 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
 
     var previousSkeletonURL;
     var previousScale;
-
+    var bool previousAvatarVisibility;
+    
     autoTester.addStep("Setup avatar", function () {
         // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
         previousSkeletonURL = MyAvatar.skeletonModelURL;
@@ -56,8 +57,11 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         Camera.mode = "first person";
     });    
 
-    autoTester.addStep("Setup avatar", function () {
+    autoTester.addStep("Setup avatar, and make sure it is visible", function () {
         Camera.mode = "mirror";
+
+        previousAvatarVisibility = MyAvatar.getEnableMeshVisible();
+        MyAvatar.setEnableMeshVisible(true);
     });    
 
     autoTester.addStepSnapshot("Avatar without material");
@@ -89,6 +93,8 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         MyAvatar.skeletonModelURL = previousSkeletonURL;
         MyAvatar.scale = previousScale;
         MyAvatar.clearJointsData();
+
+        MyAvatar.setEnableMeshVisible(previousAvatarVisibility);
     });
     
     var result = autoTester.runTest(testType);
