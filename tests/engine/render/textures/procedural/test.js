@@ -5,8 +5,7 @@ if (typeof branch === 'undefined') branch = "master/";
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 var testFiles = [
-    //// Uncompressed KTX not working...
-    ////{ image: "uncompressed_color.ktx", resolution: [2048, 2048] },
+    { image: "uncompressed_color.ktx", resolution: [2048, 2048] },
     { image: "compressed_color.ktx", resolution: [2048, 2048] },
     { image: "jpeg.jpg", resolution: [8192, 4096] },
 ];
