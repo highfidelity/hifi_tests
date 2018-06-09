@@ -229,6 +229,9 @@ setUpTest = function(testCase) {
         Camera.mode = "independent";
     }
 
+    // Hide the avatar
+    MyAvatar.setEnableMeshVisible(false);
+
     if (typeof Test !== 'undefined') {
         // In command line mode, maximize window size 
         // (so that primary camera snapshots will have the correct size)
@@ -266,6 +269,9 @@ tearDownTest = function() {
         Reticle.visible = true;
         Reticle.allowMouseCapture = true;
     }
+
+    // Show the avatar
+    MyAvatar.setEnableMeshVisible(true);
 
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
