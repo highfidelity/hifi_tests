@@ -10,13 +10,13 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", fun
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_normalM_albedoV_ao",  a:0, b:-0.5, c:-0.5},
-        {name:"hifi_normalM_metallicV_albedoV_ao",  a:0, b:-0.5, c:0.5},  
+        { name: "hifi_normalM_albedoV_ao",  a: 0, b: -0.5, c: -0.5 },
+        { name: "hifi_normalM_metallicV_albedoV_ao",  a: 0, b: -0.5, c: 0.5 }
     ];
 
     var TEST_OVERLAYS = [
-        {name:"sphere",  a:0, b:0.5, c:-0.5, infront: false},
-        {name:"sphereInFront",  a:0, b:0.5, c:0.5, infront: true},  
+        { name: "sphere",  a: 0, b: 0.5, c: -0.5, infront: false },
+        { name: "sphereInFront",  a: 0, b: 0.5, c: 0.5, infront: true }
     ];
 
     // Add the test Cases
@@ -27,7 +27,9 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", fun
         createdEntities = addCases(TEST_CASES, true)
         createdOverlays = addOverlayCases(TEST_OVERLAYS)
 
-        MyAvatar.position = { x: MyAvatar.position.x, y: MyAvatar.position.y - 0.2, z: MyAvatar.position.z + 1.3 };
+        var offset = { x: 0.0, y: -0.4, z: 0.45 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
     });
 
     autoTester.addStepSnapshot("Show anti-aliasing effects");
