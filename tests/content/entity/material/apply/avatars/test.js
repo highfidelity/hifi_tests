@@ -34,7 +34,6 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
 
     var previousSkeletonURL;
     var previousScale;
-    var prevCameraMode;
 
     autoTester.addStep("Setup avatar", function () {
         // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
@@ -54,9 +53,13 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
 
-        prevCameraMode = Camera.mode;
+        Camera.mode = "first person";
+    });    
+
+    autoTester.addStep("Setup avatar", function () {
         Camera.mode = "mirror";
     });    
+
     autoTester.addStepSnapshot("Avatar without material");
     
     autoTester.addStep("Add material to avatar", function () {
@@ -86,8 +89,6 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         MyAvatar.skeletonModelURL = previousSkeletonURL;
         MyAvatar.scale = previousScale;
         MyAvatar.clearJointsData();
-
-        Camera.mode = prevCameraMode;
     });
     
     var result = autoTester.runTest(testType);
