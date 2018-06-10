@@ -1,6 +1,6 @@
-if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof user === 'undefined') user = "NissimHadar/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+if (typeof branch === 'undefined') branch = "fixBadTests/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
@@ -28,12 +28,12 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
         type: "Model",
         modelURL: MODEL_DIR_URL + "hifi_metallicV_albedoV_ao" + MODEL_NAME_SUFFIX,
         name: "Shiny Object",
-        position: { x: pos.x, y: pos.y, z: pos.z - 3.5},      
+        position: { x: pos.x, y: pos.y + 0.5, z: pos.z - 2.5},      
         dimensions:{ x: 1.0, y: 1.0, z: 1.0 },
       });
 
       var inFrontOverlay = Overlays.addOverlay("sphere", {
-        position: { x: pos.x-1.0, y: pos.y, z: pos.z - 3.5},
+        position: { x: pos.x-1.0, y: pos.y + 0.5, z: pos.z - 2.5},
         size: 1.0,
         color: { red: 0, green: 0, blue: 255},
         alpha: 1,
@@ -43,7 +43,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
     });
 
     var normalOverlay = Overlays.addOverlay("sphere", {
-        position: { x: pos.x+1.0, y: pos.y, z: pos.z - 3.5},
+        position: { x: pos.x+1.0, y: pos.y + 0.5, z: pos.z - 2.5},
         size: 1.0,
         color: { red: 255, green: 0, blue: 0},
         alpha: 1,
