@@ -15,7 +15,7 @@ autoTester.perform("Show effects of emmisive materials", Script.resolvePath(".")
     ];
 
     // Add the test Cases
-    var OFFSET = { x: 0.0, y: -0.5, z: -0.1 };
+    var OFFSET = { x: 0.0, y: -1.0, z: -0.1 };
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
         createdEntities = addCases(TEST_CASES, true, true)
