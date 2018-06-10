@@ -11,9 +11,9 @@ autoTester.perform("Haze - large glare", Script.resolvePath("."), "secondary", f
     var HAZE = {
         hazeRange: 500.0,
         hazeBaseRef: MyAvatar.position.y,
-        hazeColor: {" red": 153, "green": 107,"blue": 47 },
+        hazeColor: { red: 153, green: 107, blue: 47 },
         hazeEnableGlare: 1,
-        hazeGlareColor: { "red": 176, "green": 25, "blue": 68},
+        hazeGlareColor: { red: 176, green: 25, blue: 68},
         hazeGlareAngle: 40
     };
 

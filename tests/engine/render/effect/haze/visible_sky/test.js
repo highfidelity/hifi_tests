@@ -11,7 +11,7 @@ autoTester.perform("Haze - completely visible sky", Script.resolvePath("."), "se
     var HAZE = {
         hazeRange: 500.0,
         hazeBaseRef: MyAvatar.position.y,
-        hazeColor: { "red": 153, "green": 107, "blue": 47 },
+        hazeColor: { red: 153, green: 107, blue: 47 },
         hazeBackgroundBlend: 1.0
     };
 

@@ -35,7 +35,7 @@ setup = function (hazeDef) {
         shape: 'Cube',
         dimensions: { x: 2000.0, y: 0.2, z: 2000.0 },
         position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
-        color: { "blue": 200, "green": 200, "red": 200 }
+        color: { blue: 200, green: 200, red: 200 }
     }) );
 
     var i;
@@ -45,7 +45,7 @@ setup = function (hazeDef) {
             type: "Model",
             modelURL: url,
             name: "Opaque",
-            position: { x: pos.x, y: pos.y + 1.0 + i*BIG_MODEL_SCALE, z: pos.z - 500.0},    
+            position: { x: pos.x, y: pos.y + 1.0 + i * BIG_MODEL_SCALE, z: pos.z - 500.0},    
             dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
             lifetime: LIFETIME,
         }) );
@@ -54,7 +54,7 @@ setup = function (hazeDef) {
         type: "Model",
         modelURL: url,
         name: "Opaque",
-        position: { x: pos.x+1.0, y: pos.y, z: pos.z - 3.0},    
+        position: { x: pos.x + 1.0, y: pos.y, z: pos.z - 3.0},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
@@ -63,7 +63,7 @@ setup = function (hazeDef) {
         type: "Model",
         modelURL: url,
         name: "Transparent",
-        position: { x: pos.x-10.0, y: pos.y, z: pos.z - 50.0},    
+        position: { x: pos.x - 10.0, y: pos.y, z: pos.z - 50.0},    
         dimensions: {x:MEDIUM_MODEL_SCALE, y:MEDIUM_MODEL_SCALE, z:MEDIUM_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
@@ -71,7 +71,7 @@ setup = function (hazeDef) {
         type: "Model",
         modelURL: url,
         name: "Transparent",
-        position: { x: pos.x+20.0, y: pos.y+10.0, z: pos.z - 200.0},    
+        position: { x: pos.x + 20.0, y: pos.y + 10.0, z: pos.z - 200.0},    
         dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
@@ -87,13 +87,13 @@ setup = function (hazeDef) {
         type: "Zone",
         name: "Sky",
 
-        position: {x: pos.x, y: pos.y - 2.0, z: pos.z - 25.0},
+        position: { x: pos.x, y: pos.y - 2.0, z: pos.z - 25.0 },
         rotation: MyAvatar.orientation,    
         dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
 
         keyLightMode: "enabled",
         keyLight:{
-            color: {"red":255, "green":255, "blue":255},
+            color: { red: 255, green: 255, blue: 255},
             direction: {
                 x:  0.16317591071128845,
                 y: -0.3420201241970062,
@@ -104,7 +104,7 @@ setup = function (hazeDef) {
 
         skyboxMode: "enabled",
         skybox: {
-            color: {"red":255,"green":255,"blue":255},
+            color: { red: 255, green: 255, blue: 255 },
             url: SKY_URL
         },
         
