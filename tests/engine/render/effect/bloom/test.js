@@ -4,28 +4,15 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
+autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", function(testType) {
     var pos =  MyAvatar.position;
-
-    // Initial setup
-    MyAvatar.goToLocation(
-        { x: pos.x, y: pos.y, z: pos.z },
-        true,
-        Quat.angleAxis(0, { x: 0, y: 1, z: 0 }),
-        true
-    );
-
-    spectatorCameraConfig.position = { x: pos.x, y: pos.y, z: pos.z - 0.2 };
-    spectatorCameraConfig.orientation = { x: 0.0, y: 1.0, z: 0.0, w: 0.0 };
-
 
     var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
     var SUFFIX = "?raw=true";
     var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
     var MODEL_DIR_URL = TESTS_URL + "assets/models/material_matrix_models/fbx/blender/";
     var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
-    
+
     var terrain = Entities.addEntity({
         type: 'Box',
         name: 'Terrain',
@@ -41,12 +28,12 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
         type: "Model",
         modelURL: MODEL_DIR_URL + "hifi_metallicV_albedoV_ao" + MODEL_NAME_SUFFIX,
         name: "Shiny Object",
-        position: { x: pos.x, y: pos.y, z: pos.z + 2.0},      
+        position: { x: pos.x, y: pos.y + 0.5, z: pos.z - 2.5},      
         dimensions:{ x: 1.0, y: 1.0, z: 1.0 },
       });
 
       var inFrontOverlay = Overlays.addOverlay("sphere", {
-        position: { x: pos.x-1.0, y: pos.y, z: pos.z + 2.0},
+        position: { x: pos.x-1.0, y: pos.y + 0.5, z: pos.z - 2.5},
         size: 1.0,
         color: { red: 0, green: 0, blue: 255},
         alpha: 1,
@@ -56,7 +43,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
     });
 
     var normalOverlay = Overlays.addOverlay("sphere", {
-        position: { x: pos.x+1.0, y: pos.y, z: pos.z + 2.0},
+        position: { x: pos.x+1.0, y: pos.y + 0.5, z: pos.z - 2.5},
         size: 1.0,
         color: { red: 255, green: 0, blue: 0},
         alpha: 1,
@@ -70,7 +57,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
         type: "Zone",
         name: "Sky",
 
-        position: {x: pos.x, y: pos.y - 2.0, z: pos.z - 25.0},
+        position: {x: pos.x, y: pos.y - 2.0, z: pos.z + 25.0},
         rotation: MyAvatar.orientation,    
         dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
 
@@ -111,16 +98,14 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
 
     autoTester.addStepSnapshot("Bloom is off - no bloom should be visible");
         
-    autoTester.addStep("Enable bloom",
-        function () {
-            bloomConfig.intensity = 1.0
-            secondaryBloomConfig.intensity = 1.0
-            bloomConfig.enabled = true;
-            secondaryBloomConfig.enabled = true;
-        }
-    );
+    autoTester.addStep("Enable bloom", function () {
+        bloomConfig.intensity = 1.0
+        secondaryBloomConfig.intensity = 1.0
+        bloomConfig.enabled = true;
+        secondaryBloomConfig.enabled = true;
+    });
     autoTester.addStepSnapshot("Bloom enabled");
-        
+
     autoTester.addStep("Clean up",
         function () {
             Entities.deleteEntity(terrain);
@@ -136,6 +121,6 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), function(testType)
             secondaryBloomThresholdConfig.threshold = defaultThreshold
         }
     );
-    
+
     var result = autoTester.runTest(testType);
 });

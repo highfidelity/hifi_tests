@@ -4,10 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Show base effects on various materials", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
-
+autoTester.perform("Show base effects on various materials", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../matrix.js?raw=true")
 
@@ -18,11 +15,12 @@ autoTester.perform("Show base effects on various materials", Script.resolvePath(
     ];
 
     // Add the test Cases
+    var OFFSET = { x: 0.0, y: -1.0, z: -0.1 };
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
         createdEntities = addCases(TEST_CASES, true, true)
+        validationCamera_translate(OFFSET);
     });
-
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {
@@ -30,6 +28,6 @@ autoTester.perform("Show base effects on various materials", Script.resolvePath(
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });

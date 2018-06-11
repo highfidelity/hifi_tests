@@ -4,9 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-    
+autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", function(testType) {
     var createdEntities = [];
     var createdOverlays = [];
 
@@ -20,10 +18,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
         Quat.angleAxis(0, { x: 0, y: 1, z: 0 }),
         true
     );
-    
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 8.0 };
-    spectatorCameraConfig.orientation = { x: 0.0, y: 1.0, z: 0.0, w: 0.0 };
-    
+
     var blueBox = Entities.addEntity({
         type: "Box",
         name: "BlueBox",
@@ -33,7 +28,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
         lifetime: LIFETIME,
         color: { red: 0, green: 0, blue: 155 }
     });
-    
+
     var redSphere = Entities.addEntity({
         type: "Sphere",
         name: "RedSphere",
@@ -43,7 +38,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
         lifetime: LIFETIME,
         color: { red: 200, green: 0, blue: 0 }
     });
-    
+
     var greenPaint = Entities.addEntity({
         color: {
             blue: 10,
@@ -235,7 +230,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
         lifetime: LIFETIME,
         dynamic: false,
     });
-    
+
     var hifi = Entities.addEntity({
         type: "Model",
         name: "Hifi",
@@ -245,7 +240,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
         lifetime: LIFETIME,
         modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
     });
-    
+
     var terrain = Entities.addEntity(       {
         type: "PolyVox",
         name: "Terrain",
@@ -278,6 +273,11 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
     createdEntities.push(hifi);
     createdEntities.push(terrain);
 
+    autoTester.addStep("Position secondary camera", function() {
+        validationCamera_translate({ x: 0.0, y: 0.0, z: -8.0 });
+        validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
+    });
+
     autoTester.addStepSnapshot("Step 1",
         function() {
             var style = {        
@@ -298,7 +298,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.addToSelectedItemsList("TestHifi1", "entity", blueBox)
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 2",
         function() {
              Selection.addToSelectedItemsList("TestHifi1", "entity", hifi)
@@ -324,7 +324,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.enableListHighlight("TestHifi1", style)
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 4",
         function() {
             var style = {        
@@ -365,8 +365,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.enableListHighlight("TestHifi4", style)
             Selection.addToSelectedItemsList("TestHifi4", "avatar", MyAvatar.sessionUUID)
         }
-   );
-   
+    );
+
     autoTester.addStepSnapshot("Step 6",   
        function() {
             var style = {        
@@ -387,13 +387,13 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.addToSelectedItemsList("TestHifi3", "overlay", overlayModel)
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 7",    
         function() {
             Selection.addToSelectedItemsList("TestHifi3", "entity", terrain)
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 8",
         function() {
             var style = {        
@@ -413,13 +413,13 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.enableListHighlight("TestHifi2", style)
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 9",
         function () {
             Selection.disableListHighlight("TestHifi2");
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 10",
         function() {
             var style = {        
@@ -439,7 +439,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.enableListHighlight("TestHifi2", style)
         }
     );
-    
+
     autoTester.addStepSnapshot("Step 11",
         function () {
             Selection.disableListHighlight("TestHifi1");
@@ -447,7 +447,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             Selection.disableListHighlight("TestHifi3");
         }
     );
-    
+
     autoTester.addStepSnapshot("Take snapshot");
 
     autoTester.addStep("Clean up after test", 
@@ -466,6 +466,6 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), function(testType)
             }
         }
     );
-    
+
     var result = autoTester.runTest(testType);
 });

@@ -8,9 +8,9 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
     Script.include("../../../../../utils/test_stage.js?raw=true");
 
     // Add the test Cases
-	var flags = { 
-		hasAmbientLight: false
-	};
+    var flags = { 
+        hasAmbientLight: false
+    };
     var createdEntities = setupStage(flags)
 
     var posOri = getStagePosOriAt(0, 0, 0);
@@ -34,7 +34,7 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
 
     var previousSkeletonURL;
     var previousScale;
-    var prevCameraMode;
+    var previousAvatarVisibility;
 
     autoTester.addStep("Setup avatar", function () {
         // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
@@ -54,9 +54,16 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
 
-        prevCameraMode = Camera.mode;
-        Camera.mode = "mirror";
+        Camera.mode = "first person";
     });    
+
+    autoTester.addStep("Setup avatar, and make sure it is visible", function () {
+        Camera.mode = "mirror";
+
+        previousAvatarVisibility = MyAvatar.getEnableMeshVisible();
+        MyAvatar.setEnableMeshVisible(true);
+    });
+
     autoTester.addStepSnapshot("Avatar without material");
     
     autoTester.addStep("Add material to avatar", function () {
@@ -87,8 +94,8 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         MyAvatar.scale = previousScale;
         MyAvatar.clearJointsData();
 
-        Camera.mode = prevCameraMode;
+        MyAvatar.setEnableMeshVisible(previousAvatarVisibility);
     });
-    
+
     var result = autoTester.runTest(testType);
 });

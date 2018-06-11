@@ -212,7 +212,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     autoTester.addStepSnapshot("Verify night");
         
     autoTester.addStep("Moving forward and right", function () {
-        var position = { x: 0.0, y: 3.0, z: -17.5 };
+        var position = { x: 3.0, y: 0.0, z: -17.5 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
 

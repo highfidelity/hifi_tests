@@ -4,10 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
-
+autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../../../../utils/test_stage.js?raw=true")
 
@@ -37,12 +34,12 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), fun
         createdEntities.push(Entities.addEntity(properties));
     });
     autoTester.addStepSnapshot("Model is loaded");
-    
+
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });

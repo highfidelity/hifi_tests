@@ -4,10 +4,7 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), function(testType) {
-    var spectatorCameraConfig = autoTester.setupTest();
-    spectatorCameraConfig.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z - 0.2 };
-
+autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../../../../../utils/test_stage.js?raw=true")
 
@@ -21,7 +18,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), fu
 
     {
         var lightOri = Quat.multiply(Quat.fromPitchYawRollDegrees(-90, 0, 0), posOri.ori);
-    
+
         // Define zone properties
         var properties = {
         lifetime: 120,  
@@ -37,7 +34,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), fu
             y: -0.5159533023834229,
             z: -1.52587890625e-05
         },
-    
+
         type: "Light",
         isSpotlight: true,
         color: { red: 255, green: 220, blue: 20 },
@@ -51,14 +48,14 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), fu
             z: 6.066980838775635
         }
         };
-    
+
         // Add the sphere and check its properties
         var light = Entities.addEntity(properties);
         createdEntities.push(light);
     }
     {
         var lightOri = Quat.multiply(Quat.fromPitchYawRollDegrees(-90, 0, 0), posOri.ori);
-    
+
         // Define zone properties
         var properties = {
         lifetime: 120,  
@@ -74,7 +71,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), fu
             y: 0.6035095453262329,
             z: -4.57763671875e-05
         },
-    
+
         type: "Light",
         isSpotlight: false,
         color: { red: 255, green: 48, blue: 79 },
@@ -86,7 +83,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), fu
             z: 4.0
         }
         };
-    
+
         // Add the sphere and check its properties
         var light = Entities.addEntity(properties);
         createdEntities.push(light);
@@ -134,7 +131,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), fu
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = autoTester.runTest(testType);
 });
 
