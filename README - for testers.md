@@ -17,7 +17,7 @@ In the same folder, there is an automatic version, named **testAuto.js**.  This 
 Relevant folders have a script called **testRecursive.js**.  Running this script will run all the test.js scripts in the folder and all those in the folders contained in this folder recursively.
 
 ## Setup autoTester - Windows 10
-Download and run <https://hifi-content.s3.amazonaws.com/nissim/autoTester/Release.exe> to download and install the autoTester executable and its associated files.
+Download and run <https://hifi-content.s3.amazonaws.com/nissim/autoTester/AutoTester-Installer.exe> to download and install the autoTester executable and its associated files.
 You will be asked where you want to install - choose a convenient location.
 
 ## Using the auto-tester
