@@ -205,7 +205,6 @@ setUpTest = function(testCase) {
     var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
-    if (testCase.usePrimaryCamera) {
     // Set the camera mode to independent
     if (testCase.usePrimaryCamera) {
         previousCameraMode = Camera.mode;
