@@ -20,7 +20,7 @@ autoTester.perform("Haze - small glare", Script.resolvePath("."), "secondary", f
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Show haze with small glare angle");

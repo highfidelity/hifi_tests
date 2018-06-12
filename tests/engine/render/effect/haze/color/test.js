@@ -16,7 +16,7 @@ autoTester.perform("Haze - color", Script.resolvePath("."), "secondary", functio
 
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
     autoTester.addStepSnapshot("Show sandy colour of haze");
 

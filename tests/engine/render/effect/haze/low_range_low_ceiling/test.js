@@ -18,7 +18,7 @@ autoTester.perform("Haze - low range, low ceiling", Script.resolvePath("."), "se
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with low range and low ceiling");

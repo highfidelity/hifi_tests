@@ -25,16 +25,15 @@ var MODEL_SCALE = 1.0;
 var LIFETIME = 30;
 var MODEL_COUNT = 10;
 
-setup = function (hazeDef) {
-    var pos =  MyAvatar.position;
+setup = function (hazeDef, originFrame) {
     var entities = []
-    
+
     entities.push( Entities.addEntity({
         type: 'Box',
         name: 'Terrain',
         shape: 'Cube',
         dimensions: { x: 2000.0, y: 0.2, z: 2000.0 },
-        position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
+        position: { x: originFrame.x, y: originFrame.y - 3.0, z: originFrame.z },
         color: { blue: 200, green: 200, red: 200 }
     }) );
 
@@ -45,7 +44,7 @@ setup = function (hazeDef) {
             type: "Model",
             modelURL: url,
             name: "Opaque",
-            position: { x: pos.x, y: pos.y + 1.0 + i * BIG_MODEL_SCALE, z: pos.z - 500.0},    
+            position: { x: originFrame.x, y: originFrame.y + 1.0 + i * BIG_MODEL_SCALE, z: originFrame.z - 500.0},    
             dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
             lifetime: LIFETIME,
         }) );
@@ -54,7 +53,7 @@ setup = function (hazeDef) {
         type: "Model",
         modelURL: url,
         name: "Opaque",
-        position: { x: pos.x + 1.0, y: pos.y, z: pos.z - 3.0},    
+        position: { x: originFrame.x + 1.0, y: originFrame.y, z: originFrame.z - 3.0},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
@@ -63,7 +62,7 @@ setup = function (hazeDef) {
         type: "Model",
         modelURL: url,
         name: "Transparent",
-        position: { x: pos.x - 10.0, y: pos.y, z: pos.z - 50.0},    
+        position: { x: originFrame.x - 10.0, y: originFrame.y, z: originFrame.z - 50.0},    
         dimensions: {x:MEDIUM_MODEL_SCALE, y:MEDIUM_MODEL_SCALE, z:MEDIUM_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
@@ -71,7 +70,7 @@ setup = function (hazeDef) {
         type: "Model",
         modelURL: url,
         name: "Transparent",
-        position: { x: pos.x + 20.0, y: pos.y + 10.0, z: pos.z - 200.0},    
+        position: { x: originFrame.x + 20.0, y: originFrame.y + 10.0, z: originFrame.z - 200.0},    
         dimensions: {x:BIG_MODEL_SCALE, y:BIG_MODEL_SCALE, z:BIG_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
@@ -87,8 +86,7 @@ setup = function (hazeDef) {
         type: "Zone",
         name: "Sky",
 
-        position: { x: pos.x, y: pos.y - 2.0, z: pos.z - 25.0 },
-        rotation: MyAvatar.orientation,    
+        position: { x: originFrame.x, y: originFrame.y - 2.0, z: originFrame.z - 25.0 },
         dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
 
         keyLightMode: "enabled",
