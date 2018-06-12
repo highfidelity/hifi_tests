@@ -22,7 +22,7 @@ var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
 var BIG_MODEL_SCALE = 20.0;
 var MEDIUM_MODEL_SCALE = 5.0;
 var MODEL_SCALE = 1.0;
-var LIFETIME = 30;
+var LIFETIME = 3000;
 var MODEL_COUNT = 10;
 
 setup = function (hazeDef, originFrame) {
@@ -53,7 +53,7 @@ setup = function (hazeDef, originFrame) {
         type: "Model",
         modelURL: url,
         name: "Opaque",
-        position: { x: originFrame.x + 1.0, y: originFrame.y, z: originFrame.z - 3.0},    
+        position: { x: originFrame.x + 1.0, y: originFrame.y + 1.0, z: originFrame.z - 3.0},    
         dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
     }) );

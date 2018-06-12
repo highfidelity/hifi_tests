@@ -16,9 +16,7 @@ autoTester.perform("Haze - high range", Script.resolvePath("."), "secondary", fu
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        var offset = { x: 0.0, y: -1.0, z: 0.0 };
-        createdEntities = setup(HAZE, Vec3.sum(autoTester.getOriginFrame(), offset));
-        validationCamera_translate(offset);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with high range - 15,000 mt");

@@ -11,9 +11,7 @@ autoTester.perform("Haze - off", Script.resolvePath("."), "secondary", function(
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        var offset = { x: 0.0, y: -1.0, z: 0.0 };
-        createdEntities = setup(null, Vec3.sum(autoTester.getOriginFrame(), offset));
-        validationCamera_translate(offset);
+        createdEntities = setup(null, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("No haze");

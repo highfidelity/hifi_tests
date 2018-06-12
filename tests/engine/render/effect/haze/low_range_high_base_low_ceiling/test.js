@@ -18,9 +18,7 @@ autoTester.perform("Haze - low range, low ceiling, high base (inverted haze)", S
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        var offset = { x: 0.0, y: -1.0, z: 0.0 };
-        createdEntities = setup(HAZE, Vec3.sum(autoTester.getOriginFrame(), offset));
-        validationCamera_translate(offset);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with low range, low ceiling and high base");
