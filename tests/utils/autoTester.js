@@ -211,6 +211,11 @@ setUpTest = function(testCase) {
 
         // The avatar is also pointed down the Z axis, so the test can be seen on-screen
         MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+
+        // Zero the head position
+        MyAvatar.headYaw =   0.0;
+        MyAvatar.headPitch = 0.0;
+        MyAvatar.headRoll =  0.0;
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
