@@ -30,8 +30,6 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
 
     var entities = [];
     var overlays = [];
-    console.warn("-----------------------------------------------------------------------------------------------------------------------------------------------right = ", right.x, right.y, right.z);
-
     for (i = 0; i < 3; i++) {
         var properties = {
             type: "Shape",
