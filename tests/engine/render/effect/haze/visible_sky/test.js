@@ -18,7 +18,9 @@ autoTester.perform("Haze - completely visible sky", Script.resolvePath("."), "se
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE, autoTester.getOriginFrame());
+        var offset = { x: 0.0, y: -1.0, z: 0.0 };
+        createdEntities = setup(HAZE, Vec3.sum( autoTester.getOriginFrame(), offset);
+        validationCamera_translate(offset);
     });
 
     autoTester.addStepSnapshot("Haze sky complete visible");
