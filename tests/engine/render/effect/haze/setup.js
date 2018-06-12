@@ -22,7 +22,7 @@ var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
 var BIG_MODEL_SCALE = 20.0;
 var MEDIUM_MODEL_SCALE = 5.0;
 var MODEL_SCALE = 1.0;
-var LIFETIME = 3000;
+var LIFETIME = 30;
 var MODEL_COUNT = 10;
 
 setup = function (hazeDef, originFrame) {
