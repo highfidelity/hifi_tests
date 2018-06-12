@@ -9,16 +9,16 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
     
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
-        position: Vec3.sum(Vec3.sum(pos, { x: 0, y: 0.5, z :0 }), Vec3.multiply(0.0, right)),
-        direction: Vec3.normalize({ x: 0, y: -1, z: 0 }),
+        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z :0.0 }), Vec3.multiply(0.0, right)),
+        direction: Vec3.normalize({ x: 0.0, y: -1.0, z: 0.0 }),
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
         enabled: true
     }));
     lasers.push(Pointers.createPointer(PickType.Ray, {
-        position: Vec3.sum(Vec3.sum(pos, { x: 0, y: 0.5, z: 0}), Vec3.multiply(0.0, right)),
-        direction: Vec3.normalize({ x: 0, y: -1, z: 0 }),
+        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z: 0.0 }), Vec3.multiply(0.0, right)),
+        direction: Vec3.normalize({ x: 0.0, y: -1.0, z: 0.0 }),
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
@@ -34,7 +34,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         var properties = {
             type: "Shape",
             shape: "Cube",
-            position: Vec3.sum(Vec3.sum(pos, { x: 0, y: 0.25 - 0.5 * i, z:0 }), Vec3.multiply(0.0, right)),
+            position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.25 - 0.5 * i, z: 0.0 }), Vec3.multiply(0.0, right)),
             color: { red: 255, green: 0, blue: 0 },
             dimensions: { x: 0.1, y: 0.1, z: 0.1 },
             lifetime: 300,
@@ -43,7 +43,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         entities.push(Entities.addEntity(properties));
 
         properties = {
-            position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.0 - 0.5 * i, z:0}), Vec3.multiply(0.0, right)),
+            position: Vec3.sum(Vec3.sum(pos, {x: 0.0, y:0.0 - 0.5 * i, z: 0.0}), Vec3.multiply(0.0, right)),
             color: { red: 0, green: 255, blue: 0 },
             dimensions: { x: 0.1, y: 0.1, z: 0.1 },
             solid: true,
@@ -54,9 +54,12 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         overlays.push(Overlays.addOverlay("cube", properties));
     }
     
-    autoTester.addStep("Move back to see all the models", function () {
-        MyAvatar.position = { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z + 2.4 };
-        validationCamera_translate({ x: 0.0, y: 0.0, z: 2.4 });
+    autoTester.addStep("Move back to and down to see all the objects", function () {
+        var offset = { x: 0.0, y: -0.5, z: 2.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+        
+        console.warn(MyAvatar.position.x, MyAvatar.position.y, MyAvatar.position.z, "========", pos.x, pos.y, pos.z);
     });
     autoTester.addStepSnapshot("Initial position");
 
