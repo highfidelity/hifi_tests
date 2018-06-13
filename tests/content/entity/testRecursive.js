@@ -1,8 +1,8 @@
-// This is an automatically generated file, created by auto-tester on Jun 13 2018, 9:29
+// This is an automatically generated file, created by auto-tester on Jun 13 2018, 9:33
 
 user = "highfidelity/";
 repository = "hifi_tests/";
-branch = "master/";
+branch = "RC69/";
 
 Test.wait(10000);
 
