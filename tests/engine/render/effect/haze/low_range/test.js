@@ -16,7 +16,7 @@ autoTester.perform("Haze - low range", Script.resolvePath("."), "secondary", fun
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with low range - 500 mt");

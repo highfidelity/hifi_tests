@@ -11,7 +11,7 @@ autoTester.perform("Shadow - light in front", Script.resolvePath("."), "secondar
     // Add the test Cases
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
-        createdEntities = setup(20.0, 180.0);
+        createdEntities = setup(20.0, 180.0, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Light source altitude: 20.0, azimuth: 180.0");

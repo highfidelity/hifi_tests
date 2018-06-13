@@ -11,7 +11,7 @@ autoTester.perform("Haze - off", Script.resolvePath("."), "secondary", function(
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(null);
+        createdEntities = setup(null, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("No haze");
