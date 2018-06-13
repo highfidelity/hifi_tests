@@ -54,12 +54,13 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         overlays.push(Overlays.addOverlay("cube", properties));
     }
     
-    autoTester.addStep("Move back to and down to see all the objects", function () {
+    autoTester.addStep("Move back and down to see all the objects", function () {
         var offset = { x: 0.0, y: -0.5, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
         
-        console.warn(MyAvatar.position.x, MyAvatar.position.y, MyAvatar.position.z, "========", pos.x, pos.y, pos.z);
+        // Due to what seems to be a bug, set the camera orientation to 0
+        validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
     });
     autoTester.addStepSnapshot("Initial position");
 
