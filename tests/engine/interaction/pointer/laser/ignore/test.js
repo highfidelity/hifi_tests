@@ -6,7 +6,13 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 
 autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
-    
+
+    var orientation = MyAvatar.orientation;
+    var dir = Quat.getForward(orientation);
+    dir.y = 0;
+    var pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), {x:0, y:0.5, z:0});
+    var right = Quat.getRight(orientation);
+
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
         position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z :0.0 }), Vec3.multiply(0.0, right)),
@@ -58,9 +64,6 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         var offset = { x: 0.0, y: -1.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
-        
-        // Due to what seems to be a bug, set the camera orientation to 0
-        validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
     });
     autoTester.addStepSnapshot("Initial position");
 
