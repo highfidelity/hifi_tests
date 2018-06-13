@@ -24,9 +24,12 @@ START /WAIT HighFidelity-Beta-latest-dev.exe /S /D=%INSTALL_DIR%
 ECHO Starting local server
 start "DS" %INSTALL_DIR%\domain-server.exe
 start "AC" %INSTALL_DIR%\assignment-client.exe -n 6
- 
+
+ECHO Waiting for server to stabilize 
+ping localhost -n 7 >nul
+
 ECHO Running Interface tests
-%INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/highfidelity/hifi_tests/%BRANCH%/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
+START /WAIT %INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/highfidelity/hifi_tests/%BRANCH%/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
 
 ECHO Stopping local server
 taskkill /im assignment-client.exe /f >nul
