@@ -145,3 +145,4 @@ dir = Quat.getForward(orientation);
 dir.y = 0;
 pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), {x:0, y:0.5, z:0});
 right = Quat.getRight(orientation);
+console.warn(">>>>>>>>>>>>>>>>>>>>>>>>", orientation.x, orientation.y, orientation.z, orientation.w);
