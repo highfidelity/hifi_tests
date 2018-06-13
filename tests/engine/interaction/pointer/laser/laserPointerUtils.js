@@ -141,10 +141,10 @@ defaultRenderStates = [{name: "one", start: start1, path: path1, distance: DEFAU
                            {name: "four", start: start1, path: path1, distance: DEFAULT_DISTANCE}];
 
 // Data that needs to be initialized for each test
-var orientation;
-var dir;
-var pos;
-var right;
+orientation = { x: 0.0, y: 0.0, z: 0.0, w: 1.0 };
+dir = { x: 0.0, y: 0.0, z: 0.0 };
+pos = { x: 0.0, y: 0.0, z: 0.0 };
+right = { x: 0.0, y: 0.0, z: 0.0 };
 initializeTestData = function () {
     orientation = MyAvatar.orientation;
     dir = Quat.getForward(orientation);
