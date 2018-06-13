@@ -1,18 +1,19 @@
-// This is an automatically generated file, created by auto-tester on Jun 10 2018, 13:53
+// This is an automatically generated file, created by auto-tester on Jun 13 2018, 8:48
 
 user = "highfidelity/";
 repository = "hifi_tests/";
-branch = "master/";
+branch = "RC69/";
 
 Test.wait(10000);
 
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true");
+var repositoryPath = "https://github.com/" + user + repository + "blob/" + branch;
+var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=true");
 
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include("https://github.com/" + user + repository + "blob/" + branch + "/tests/engine/render/shadows/normal/test.js?raw=true");
-Script.include("https://github.com/" + user + repository + "blob/" + branch + "/tests/engine/render/shadows/grazing/test.js?raw=true");
-Script.include("https://github.com/" + user + repository + "blob/" + branch + "/tests/engine/render/shadows/front/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/normal/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/grazing/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/front/test.js?raw=true");
 
 autoTester.runRecursive();
