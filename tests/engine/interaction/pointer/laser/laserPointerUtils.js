@@ -143,7 +143,6 @@ defaultRenderStates = [{name: "one", start: start1, path: path1, distance: DEFAU
 // Data that needs to be initialized for each test
 var orientation;
 var dir;
-dir.y;
 var pos;
 var right;
 initializeTestData = function () {
