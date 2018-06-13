@@ -139,9 +139,3 @@ defaultRenderStates = [{name: "one", start: start1, path: path1, distance: DEFAU
                            {name: "two", start: start1, path: path1, distance: DEFAULT_DISTANCE},
                            {name: "three", start: start1, path: path1, distance: DEFAULT_DISTANCE},
                            {name: "four", start: start1, path: path1, distance: DEFAULT_DISTANCE}];
-
-orientation = MyAvatar.orientation;
-dir = Quat.getForward(orientation);
-dir.y = 0;
-pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), {x:0, y:0.5, z:0});
-right = Quat.getRight(orientation);
