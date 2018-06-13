@@ -206,11 +206,18 @@ setUpTest = function(testCase) {
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
     if (testCase.usePrimaryCamera) {
+        // Set the camera mode to independent
+        previousCameraMode = Camera.mode;
+        Camera.mode = "independent";
+        
         Camera.setOrientation(q0);
         Camera.setPosition(p0);
 
         // The avatar is also pointed down the Z axis, so the test can be seen on-screen
         MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+        MyAvatar.headYaw =   0.0;
+        MyAvatar.headPitch = 0.0;
+        MyAvatar.headRoll =  0.0;
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
@@ -223,11 +230,6 @@ setUpTest = function(testCase) {
         spectatorCameraConfig.position = p0;
     }
 
-    // Set the camera mode to independent
-    previousCameraMode = Camera.mode;
-    if (testCase.usePrimaryCamera) {
-        Camera.mode = "independent";
-    }
 
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
