@@ -72,6 +72,11 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "pri
     autoTester.addStepSnapshot("5th position");
     
     autoTester.addStep("Clean up after test", function () {
+        // Restore avatar's pose
+        var angle = 0.0 * 3.1416 / 5.0;
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
+
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }

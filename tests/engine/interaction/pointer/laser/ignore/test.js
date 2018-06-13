@@ -55,7 +55,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
     }
     
     autoTester.addStep("Move back and down to see all the objects", function () {
-        var offset = { x: 0.0, y: -0.5, z: 2.0 };
+        var offset = { x: 0.0, y: -1.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
         
