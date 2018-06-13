@@ -13,11 +13,11 @@ IF NOT EXIST HighFidelity-Beta-latest-dev.exe (
 )
 
 REM Directory for installation
+REM Note that either directory will be created if needed.
 SET INSTALL_DIR=D:\DT1
 SET TEST_RESULT_LOCATION=D:\t
 
 REM S - silent, D - directory
-REM Note that %INSTALL_DIR% will be created if needed.
 ECHO Running installer
 START /WAIT HighFidelity-Beta-latest-dev.exe /S /D=%INSTALL_DIR%
 
