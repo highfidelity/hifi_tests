@@ -1,5 +1,6 @@
 ECHO OFF
-@ECHO Starting Test
+SET BRANCH=%1
+@ECHO Starting Test for %BRANCH%
 
 REM PowerShell can load from a URL
 @ECHO Downloading Installation files
@@ -25,12 +26,12 @@ start "DS" %INSTALL_DIR%\domain-server.exe
 start "AC" %INSTALL_DIR%\assignment-client.exe -n 6
  
 ECHO Running Interface tests
-%INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
+%INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/highfidelity/hifi_tests/%BRANCH%/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
 
 ECHO Stopping local server
 taskkill /im assignment-client.exe /f >nul
 taskkill /im domain-server.exe /f >nul
 
 @ECHO Completed test, starting evaluation
-START /WAIT %AUTOTESTER_PATH%\Release\auto-tester.exe --testFolder %TEST_RESULT_LOCATION%
+START /WAIT %AUTOTESTER_PATH%\Release\auto-tester.exe --testFolder %TEST_RESULT_LOCATION% --branch %BRANCH%
 @ECHO Evaluation complete
