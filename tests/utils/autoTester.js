@@ -230,7 +230,6 @@ setUpTest = function(testCase) {
         spectatorCameraConfig.position = p0;
     }
 
-
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
 
