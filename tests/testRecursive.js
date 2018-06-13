@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-// This is an automatically generated file, created by auto-tester on Jun 13 2018, 8:48
-=======
-// This is an automatically generated file, created by auto-tester on Jun 11 2018, 10:45
->>>>>>> d58baf90cc9f754957cdc0f01a35572d222472ab
+// This is an automatically generated file, created by auto-tester on Jun 13 2018, 9:29
 
 user = "highfidelity/";
 repository = "hifi_tests/";
-branch = "RC69/";
+branch = "master/";
 
 Test.wait(10000);
 
@@ -16,7 +12,6 @@ var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-<<<<<<< HEAD
 Script.include(repositoryPath + "/tests/engine/render/textures/procedural/test.js?raw=true");
 Script.include(repositoryPath + "/tests/engine/render/shadows/normal/test.js?raw=true");
 Script.include(repositoryPath + "/tests/engine/render/shadows/grazing/test.js?raw=true");
@@ -62,8 +57,6 @@ Script.include(repositoryPath + "/tests/content/entity/material/create/test.js?r
 Script.include(repositoryPath + "/tests/content/entity/material/apply/overlays/model/test.js?raw=true");
 Script.include(repositoryPath + "/tests/content/entity/material/apply/entities/shape/test.js?raw=true");
 Script.include(repositoryPath + "/tests/content/entity/material/apply/entities/model/test.js?raw=true");
-=======
->>>>>>> d58baf90cc9f754957cdc0f01a35572d222472ab
 Script.include(repositoryPath + "/tests/content/entity/material/apply/avatars/test.js?raw=true");
 Script.include(repositoryPath + "/tests/content/entity/light/spot/create/test.js?raw=true");
 Script.include(repositoryPath + "/tests/content/entity/light/point/create/test.js?raw=true");
