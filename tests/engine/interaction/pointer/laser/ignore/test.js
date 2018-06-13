@@ -7,11 +7,7 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    var orientation = MyAvatar.orientation;
-    var dir = Quat.getForward(orientation);
-    dir.y = 0;
-    var pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), {x:0, y:0.5, z:0});
-    var right = Quat.getRight(orientation);
+    initializeTestData();
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
