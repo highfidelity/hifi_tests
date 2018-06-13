@@ -143,8 +143,5 @@ defaultRenderStates = [{name: "one", start: start1, path: path1, distance: DEFAU
 orientation = MyAvatar.orientation;
 dir = Quat.getForward(orientation);
 dir.y = 0;
-
-// Use origin frame, then add 1m to get back original object position.
-pos = Vec3.sum(Vec3.sum(Vec3.sum(autoTester.getOriginFrame(), {x: 0.0, y: 1.0, z: 0.0 }), Vec3.multiply(2.0, Vec3.normalize(dir))), {x: 0.0, y: 0.5, z: 0.0 });
-
+pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), {x:0, y:0.5, z:0});
 right = Quat.getRight(orientation);
