@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on Jun 13 2018, 9:33
+// This is an automatically generated file, created by auto-tester on Jun 14 2018, 8:02
 
 user = "highfidelity/";
 repository = "hifi_tests/";
@@ -13,9 +13,12 @@ autoTester.enableRecursive();
 autoTester.enableAuto();
 
 Script.include(repositoryPath + "/tests/engine/render/textures/procedural/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/render/shadows/normal/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/render/shadows/grazing/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/render/shadows/front/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/secondaryCamera/normal/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/secondaryCamera/grazing/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/secondaryCamera/front/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/primaryCamera/normal/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/primaryCamera/grazing/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/primaryCamera/front/test.js?raw=true");
 Script.include(repositoryPath + "/tests/engine/render/material/roughness_map/test.js?raw=true");
 Script.include(repositoryPath + "/tests/engine/render/material/roughness/test.js?raw=true");
 Script.include(repositoryPath + "/tests/engine/render/material/opacity/test.js?raw=true");

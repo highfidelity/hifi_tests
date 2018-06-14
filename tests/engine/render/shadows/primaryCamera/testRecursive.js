@@ -12,6 +12,8 @@ var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "/tests/content/entity/light/spot/create/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/primaryCamera/normal/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/primaryCamera/grazing/test.js?raw=true");
+Script.include(repositoryPath + "/tests/engine/render/shadows/primaryCamera/front/test.js?raw=true");
 
 autoTester.runRecursive();
