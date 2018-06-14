@@ -8,9 +8,9 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+if (typeof branch === 'undefined') branch = "master/";
 
 var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
 var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
