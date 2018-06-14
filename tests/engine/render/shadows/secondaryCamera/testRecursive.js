@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on Jun 14 2018, 8:02
+// This is an automatically generated file, created by auto-tester on Jun 14 2018, 10:18
 
 user = "highfidelity/";
 repository = "hifi_tests/";
@@ -12,8 +12,5 @@ var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "/tests/engine/render/shadows/secondaryCamera/normal/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/render/shadows/secondaryCamera/grazing/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/render/shadows/secondaryCamera/front/test.js?raw=true");
 
 autoTester.runRecursive();
