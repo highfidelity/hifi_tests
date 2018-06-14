@@ -196,7 +196,9 @@ setupStage = function (flags, lifetime, originFrame) {
     stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));   
 
     if (originFrame) {
-        stageRoot = originFrame;
+        var shiftedOrigin = originFrame;
+        shiftedOrigin.y += 1.0;
+        stageRoot = Vec3.sum(shiftedOrigin, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
     } else {
         stageRoot = Vec3.sum(MyAvatar.position, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
     }
