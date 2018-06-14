@@ -151,4 +151,7 @@ initializeTestData = function () {
     dir.y = 0.0;
     pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), { x: 0.0, y: 0.5, z: 0.0 });
     right = Quat.getRight(orientation);
+
+    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    Camera.setOrientation(q0);
 }
