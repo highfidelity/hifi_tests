@@ -4,14 +4,14 @@ if (typeof branch === 'undefined') branch = "master/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
-autoTester.perform("Shadow - light on top", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Shadow - light on top", Script.resolvePath("."), "primary", function(testType) {
     // Test material matrix
-    Script.include("../setup.js?raw=true")
+    Script.include("../../setup.js?raw=true")
 
     // Add the test Cases
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
-        createdEntities = setup(80.0, -60.0, autoTester.getOriginFrame());
+        createdEntities = setup(80.0, -60.0);
     });
 
     autoTester.addStepSnapshot("Light source altitude: 80.0, azimuth: -60.0");
