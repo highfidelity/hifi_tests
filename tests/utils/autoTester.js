@@ -405,3 +405,8 @@ module.exports.runRecursive = function () {
         1000
     );
 }
+
+// This is a position; the orientation is assumed to be looking down the Z axis, Y is up.
+module.exports.getOriginFrame = function () {
+    return originFrame;
+}

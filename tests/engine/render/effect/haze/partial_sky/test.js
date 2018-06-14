@@ -18,7 +18,7 @@ autoTester.perform("Haze - partially visible sky", Script.resolvePath("."), "sec
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with sky partially visible");

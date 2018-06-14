@@ -21,25 +21,22 @@ var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
 var MODEL_SCALE = 1.0;
 var LIFETIME = 100;
 
-setup = function (altitude, azimuth) {
+setup = function (altitude, azimuth, originFrame) {
     // Create backdrop
-	var flags = { 
-		hasZone: false,
-		hasKeyLight: false,
-		hasAmbientLight: false
-	};
+    var flags = { 
+        hasZone: false,
+        hasKeyLight: false,
+        hasAmbientLight: false
+    };
     var entities = setupStage(flags, LIFETIME)
-    
-    var pos = MyAvatar.position;
-    
+
     // Create zone
     var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
         name: "Zone",
 
-        position: { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z },
-        rotation: MyAvatar.orientation,    
+        position: originFrame,
         dimensions: { x: 1000.0, y: 1000.0, z: 1000.0},
 
         keyLightMode: "enabled",
@@ -52,61 +49,59 @@ setup = function (altitude, azimuth) {
 
         skyboxMode: "disabled",
         ambientLightMode: "disabled"
-    }) );
+    }));
 
     var modelUrl = MODEL_DIR_URL + "hifi_albedoM_ao" + MODEL_NAME_SUFFIX;
     entities.push(Entities.addEntity({
         type: "Model",
         modelURL: modelUrl,
         name: "Opaque",
-        position: { x: pos.x - 2.0, y: pos.y + 1.25, z: pos.z - 5.0},    
+        position: { x: originFrame.x - 2.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
         dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
-    }) );
-    
+    }));
+
     entities.push(Entities.addEntity({
         type: "Model",
         modelURL: modelUrl,
         name: "Opaque",
-        position: { x: pos.x - 1.0, y: pos.y + 1.25, z: pos.z - 5.0},    
+        position: { x: originFrame.x - 1.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
         dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
-    }) );
-    
+    }));
+
     entities.push(Entities.addEntity({
         type: "Model",
         modelURL: modelUrl,
         name: "On Floor",
-        position: { x: pos.x, y: pos.y + 1.25, z: pos.z - 5.0},    
+        position: { x: originFrame.x, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
         dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
-    }) );
-    
+    }));
+
     entities.push(Entities.addEntity({
         type: "Model",
         modelURL: modelUrl,
         name: "Behind",
-        position: { x: pos.x + 1.0, y: pos.y + 1.25, z: pos.z - 5.0},    
+        position: { x: originFrame.x + 1.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
         dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
-    }) );
-    
+    }));
+
     modelUrl = MODEL_DIR_URL + "hifi_roughnessV75_metallicV_albedoV_ao" + MODEL_NAME_SUFFIX;
     entities.push(Entities.addEntity({
         type: "Model",
         modelURL: modelUrl,
         name: "No Cast",
-        position: { x: pos.x + 2.0, y: pos.y + 1.25, z: pos.z - 5.0},    
+        position: { x: originFrame.x + 2.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
         dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: false
-    }) );
+    }));
 
     return entities
 }
-
- 
