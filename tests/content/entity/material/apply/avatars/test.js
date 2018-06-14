@@ -44,25 +44,23 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         previousScale = MyAvatar.scale;
         MyAvatar.scale = 1.0;
 
+        previousAvatarVisibility = MyAvatar.getEnableMeshVisible();
+        MyAvatar.setEnableMeshVisible(true);
+
         // Wait for skeleton to load (for now - only in test mode)
         if (typeof Test !== 'undefined') {
             Test.waitIdle();
         }
 
+        validationCamera_translate({ x: 0.0, y: -0.25, z: 0.4 });
+    });
+
+    autoTester.addStep("Set T-Pose", function () {
         // Set Avatar to T-pose
         for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
-
-        Camera.mode = "first person";
     });    
-
-    autoTester.addStep("Setup avatar, and make sure it is visible", function () {
-        Camera.mode = "mirror";
-
-        previousAvatarVisibility = MyAvatar.getEnableMeshVisible();
-        MyAvatar.setEnableMeshVisible(true);
-    });
 
     autoTester.addStepSnapshot("Avatar without material");
     
