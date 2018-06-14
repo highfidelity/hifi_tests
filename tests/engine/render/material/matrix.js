@@ -29,7 +29,7 @@ function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLigh
 		hasAmbientLight: hasZone,
 		hasLocalLights: hasLocalLights
 	};
-    var backdrop = setupStage(flags, undefined, originFrame)
+    var backdrop = setupStage(flags, undefined, originFrame);
 
     return backdrop;
 }
