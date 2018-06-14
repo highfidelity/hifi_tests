@@ -7,7 +7,7 @@ var autoTester = Script.require("https://github.com/" + user + repository + "blo
 autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    initializeTestData();
+    initializeTestData(autoTester.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
