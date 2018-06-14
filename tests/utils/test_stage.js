@@ -183,7 +183,7 @@ stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 //      hasLocalLights  - default is off
 //      hasSkybox       - default is on
 //      hasHaze         - default is off
-setupStage = function (flags, lifetime) {
+setupStage = function (flags, lifetime, originFrame) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -195,7 +195,12 @@ setupStage = function (flags, lifetime) {
     stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
     stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));   
 
-    stageRoot = Vec3.sum(MyAvatar.position, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    if (originFrame) {
+        stageRoot = Vec3.sum(originFrame, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    } else {
+        stageRoot = Vec3.sum(MyAvatar.position, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    }
+    
     stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
     stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
 

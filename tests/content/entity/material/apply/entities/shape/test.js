@@ -11,7 +11,7 @@ autoTester.perform("Apply Material Entities to Shape Entities", Script.resolvePa
 	var flags = { 
 		hasAmbientLight: false
 	};
-    var createdEntities = setupStage(flags)
+    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame());
 
     var posOri = getStagePosOriAt(0, 0, 0);
 

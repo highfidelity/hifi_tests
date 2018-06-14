@@ -28,7 +28,7 @@ setup = function (altitude, azimuth, originFrame) {
         hasKeyLight: false,
         hasAmbientLight: false
     };
-    var entities = setupStage(flags, LIFETIME)
+    var entities = setupStage(flags, LIFETIME, originFrame);
 
     // Create zone
     var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');

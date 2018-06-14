@@ -13,7 +13,7 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
 		hasKeyLight: false,
 		hasAmbientLight: false
 	};
-    var createdEntities = setupStage(flags)
+    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame());
 
     var posOri = getStagePosOriAt(6.9, 0, 4)
     var lightOri = Quat.multiply(Quat.fromPitchYawRollDegrees(-90, 0, 0), posOri.ori);

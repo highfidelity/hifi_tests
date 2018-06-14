@@ -13,7 +13,7 @@ autoTester.perform("Point light", Script.resolvePath("."), "secondary", function
 		hasKeyLight: false,
 		hasAmbientLight: false
 	};
-    var createdEntities = setupStage(flags)
+    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame());
 
     var posOri = getStagePosOriAt(6, 0, 0)
 

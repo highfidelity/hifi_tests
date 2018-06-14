@@ -13,7 +13,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
         hasKeyLight: false,
         hasAmbientLight: false
     };
-    var createdEntities = setupStage(flags, 200)
+    var createdEntities = setupStage(flags, 200, autoTester.getOriginFrame());
 
     var posOri = getStagePosOriAt(0, 0, 0);
 

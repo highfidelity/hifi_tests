@@ -8,7 +8,7 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
     // Test material matrix
     Script.include("../../../../utils/test_stage.js?raw=true")
 
-    var createdEntities = setupStage()
+    var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
 
     var properties = {
         lifetime: 120,  
