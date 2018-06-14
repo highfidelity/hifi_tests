@@ -196,7 +196,7 @@ setupStage = function (flags, lifetime, originFrame) {
     stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));   
 
     if (originFrame) {
-        stageRoot = Vec3.sum(originFrame, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
+        stageRoot = originFrame;
     } else {
         stageRoot = Vec3.sum(MyAvatar.position, Vec3.multiply(-ROOT_Z_OFFSET, Quat.getForward(orientation)));
     }
@@ -214,3 +214,4 @@ getStagePosOriAt = function (a, b, c) {
 
     return { "pos": center, "ori": stageOrientation};
 }
+
