@@ -249,6 +249,11 @@ setUpTest = function(testCase) {
     // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
     AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
     AccountServices.updateDownloadInfo();
+
+    // Enforce Desktop display (unless manual mode)
+    if (!isManualMode()) {
+        Menu.setIsOptionChecked("Desktop", true);
+    }
 }
 
 tearDownTest = function() {
