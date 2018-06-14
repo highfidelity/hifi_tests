@@ -145,13 +145,14 @@ orientation = { x: 0.0, y: 0.0, z: 0.0, w: 1.0 };
 dir = { x: 0.0, y: 0.0, z: 0.0 };
 pos = { x: 0.0, y: 0.0, z: 0.0 };
 right = { x: 0.0, y: 0.0, z: 0.0 };
-initializeTestData = function () {
-    orientation = MyAvatar.orientation;
+initializeTestData = function (originFrame) {
+    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    orientation = q0;
     dir = Quat.getForward(orientation);
     dir.y = 0.0;
     pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), { x: 0.0, y: 0.5, z: 0.0 });
     right = Quat.getRight(orientation);
 
-    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     Camera.setOrientation(q0);
+    Camera.setPosition(originFrame);
 }
