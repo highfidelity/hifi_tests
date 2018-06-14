@@ -1,6 +1,6 @@
 Script.include("../../../../utils/test_stage.js?raw=true")
 
-    var createdEntities = setupStage();
+    var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
 
 var properties = {
   lifetime: 120,  

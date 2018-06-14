@@ -32,7 +32,7 @@ setup = function () {
         hasAmbientLight: false
     };
     IMAGE_POSITION = Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.6, z: -0.7 }));
-    return setupStage(flags, LIFETIME)
+    return setupStage(flags, LIFETIME, autoTester.getOriginFrame());
 }
 
 getAspect = function(props) {

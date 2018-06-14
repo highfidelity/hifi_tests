@@ -13,7 +13,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), "s
 		hasKeyLight: false,
 		hasAmbientLight: false
 	};
-    var createdEntities = setupStage(flags)
+    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame())
     var posOri = getStagePosOriAt(4.0, -2, 0.0)
 
     {

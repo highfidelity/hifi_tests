@@ -21,7 +21,7 @@ autoTester.perform("Show effects of opacity", Script.resolvePath("."), "secondar
     var OFFSET = { x: 0.0, y: -0.8, z: -0.1 };
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
-        createdEntities = addCases(TEST_CASES, true, true)
+        createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
     autoTester.addStepSnapshot("Take snapshot of the effects");
