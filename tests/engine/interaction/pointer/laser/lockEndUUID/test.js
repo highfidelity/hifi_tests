@@ -40,7 +40,13 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "pr
     overlays.push(Overlays.addOverlay("cube", properties));
 
     Pointers.setLockEndUUID(lasers[0], entities[0], false);
-    
+
+    autoTester.addStep("Move up and back to see the objects", function () {
+        var offset = { x: 0.0, y: 1.0, z: 1.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
+
     autoTester.addStepSnapshot("Attached to left", function() {
         Pointers.setLockEndUUID(lasers[0], overlays[0], true);
     });
