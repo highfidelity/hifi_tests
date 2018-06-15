@@ -1,9 +1,13 @@
-ECHO OFF
+@ECHO OFF
 SET BRANCH=%1
-@ECHO Starting Test for %BRANCH%
+ECHO Starting Test for %BRANCH%
+
+ECHO Before starting - stop any local server that may be running
+taskkill /im assignment-client.exe /f >nul
+taskkill /im domain-server.exe /f >nul
 
 REM PowerShell can load from a URL
-@ECHO Downloading Installation files
+ECHO Downloading Installation files
 PowerShell.exe -ExecutionPolicy Bypass -Command "& '%~dpn0.ps1'"
 
 REM Verify installer was downloaded
@@ -35,6 +39,6 @@ ECHO Stopping local server
 taskkill /im assignment-client.exe /f >nul
 taskkill /im domain-server.exe /f >nul
 
-@ECHO Completed test, starting evaluation
+ECHO Completed test, starting evaluation
 START /WAIT %AUTOTESTER_PATH%\Release\auto-tester.exe --testFolder %TEST_RESULT_LOCATION% --branch %BRANCH%
-@ECHO Evaluation complete
+ECHO Evaluation complete
