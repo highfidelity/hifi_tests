@@ -2,7 +2,7 @@ if (typeof user === 'undefined') user = "highfidelity/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
 
 Script.include("https://github.com/NissimHadar/hifi_tests/blob/addRCtoDailyTests/tests/utils/branchUtils.js?raw=true");
-getBranch(Script.resolvePath("."));
+console.warn("====================BRANCH is: ", getBranch(Script.resolvePath("."), repository));
 
 if (typeof branch === 'undefined') branch = "RC69/";
 
