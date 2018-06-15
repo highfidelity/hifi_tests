@@ -8,9 +8,12 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
+if (typeof user === 'undefined') user = "highfidelity/";
+if (typeof repository === 'undefined') repository = "hifi_tests/";
+
+Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
+if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
+
 var ASSETS_BASE_URL = Script.resolvePath("../../../../assets") + "/";
 console.warn("QQQ " + ASSETS_BASE_URL);
 var LIFETIME = 300;
