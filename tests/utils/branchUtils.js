@@ -1,7 +1,5 @@
 // Find the GitHub branch we are running from
 getBranch = function (path, repository) {
-    print("==========================================", path);
-    console.warn("==========================================", path);
     // The branch is the word after the repository name, and before the word "tests"
     // Assumes that the branch exists in the path
 
