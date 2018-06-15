@@ -35,7 +35,13 @@ autoTester.perform("Size of laser end increases with distance", Script.resolvePa
     Entities.editEntity(entities[0], { 
         position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.5, Vec3.UP))
     });
-    
+
+    autoTester.addStep("Move up and back to see the objects", function () {
+        var offset = { x: 0.0, y: 1.0, z: 1.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
+
     autoTester.addStepSnapshot("Minimum distance", function () {
         Entities.editEntity(entities[0], { 
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.0, Vec3.UP))

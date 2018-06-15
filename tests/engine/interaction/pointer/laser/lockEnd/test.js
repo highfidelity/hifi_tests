@@ -31,6 +31,12 @@ autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), "primar
     };
     var box = Entities.addEntity(properties);
 
+    autoTester.addStep("Move up and back to see the objects", function () {
+        var offset = { x: 0.0, y: 1.0, z: 1.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
+
     autoTester.addStepSnapshot("1st Position");
 
     autoTester.addStep("Move to 2nd position", function () {

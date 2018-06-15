@@ -31,6 +31,12 @@ autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath
     };
     entities.push(Entities.addEntity(properties));
 
+    autoTester.addStep("Move up to see the objects", function () {
+        var offset = { x: 0.0, y: 1.0, z: 0.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
+
     autoTester.addStepSnapshot("Running LaserPointer centerEndY test");
 
     autoTester.addStep("Clean up after test", function () {

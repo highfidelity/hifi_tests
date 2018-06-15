@@ -34,6 +34,12 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "p
     Pointers.disablePointer(lasers[0]);
     Pointers.enablePointer(lasers[1]);
 
+    autoTester.addStep("Move back to see the objects", function () {
+        var offset = { x: 0.0, y: 0.0, z: 2.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
+
     autoTester.addStepSnapshot("Enabled right laser", function () {
         Pointers.disablePointer(lasers[1]);
         Pointers.enablePointer(lasers[0]);

@@ -33,7 +33,13 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "pr
     var states = ["", "one", "two", "three", "four", "five"];
 
     Pointers.setRenderState(lasers[0], states[0]);
-    
+
+    autoTester.addStep("Move up to see the objects", function () {
+        var offset = { x: 0.0, y: 1.0, z: 0.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
+
     autoTester.addStepSnapshot("Not attached", function() {
         Pointers.setRenderState(lasers[0], states[1]);
     });
