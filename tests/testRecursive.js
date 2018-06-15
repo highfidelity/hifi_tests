@@ -1,10 +1,12 @@
-// This is an automatically generated file, created by auto-tester on Jun 14 2018, 10:18
+// This is an automatically generated file, created by auto-tester on Jun 15 2018, 14:06
 
 user = "highfidelity/";
 repository = "hifi_tests/";
-branch = "RC69/";
+branch = getBranch(Script.resolvePath("."), repository) +" / ";
 
-Test.wait(10000);
+if (typeof Test !== 'undefined') {
+    Test.wait(10000);
+};
 
 var repositoryPath = "https://github.com/" + user + repository + "blob/" + branch;
 var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=true");
