@@ -2,7 +2,7 @@ if (typeof user === 'undefined') user = "highfidelity/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
 
 Script.include("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRCtoDailyTests/tests/utils/branchUtils.js");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository);
+if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
 
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
