@@ -57,8 +57,8 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
     }
 
     autoTester.addStep("DEBUG1111", function () {
-        console.warn("Avatar Q = ", MyAvatar.orientation.x, MyAvatar.orientation.y, MyAvatar.orientation.z, MyAvatar.orientation.w);
-        console.warn("Camera Q = ", Camera.orientation.x, Camera.orientation.y, Camera.orientation.z, MyAvatar.orientation.w);
+        print("Avatar Q = ", MyAvatar.orientation.x, MyAvatar.orientation.y, MyAvatar.orientation.z, MyAvatar.orientation.w);
+        print("Camera Q = ", Camera.orientation.x, Camera.orientation.y, Camera.orientation.z, MyAvatar.orientation.w);
     });
 
     autoTester.addStep("Move back to see all the objects", function () {
@@ -69,8 +69,8 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
     autoTester.addStepSnapshot("Initial position");
 
     autoTester.addStep("DEBUG2222", function () {
-        console.warn("Avatar Q = ", MyAvatar.orientation.x, MyAvatar.orientation.y, MyAvatar.orientation.z, MyAvatar.orientation.w);
-        console.warn("Camera Q = ", Camera.orientation.x, Camera.orientation.y, Camera.orientation.z, MyAvatar.orientation.w);
+        print("Avatar Q = ", MyAvatar.orientation.x, MyAvatar.orientation.y, MyAvatar.orientation.z, MyAvatar.orientation.w);
+        print("Camera Q = ", Camera.orientation.x, Camera.orientation.y, Camera.orientation.z, MyAvatar.orientation.w);
     });
 
     autoTester.addStep("1st position", function () {
