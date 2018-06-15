@@ -10,7 +10,7 @@ getBranch = function (path, repository) {
 
     // If the first word is not "https" then the script is probably running from a local file
     // In this case, assume the required branch is "master"
-    if (words[0] !== "https") {
+    if (words[0] !== "https:") {
         return "master";
     }
 
