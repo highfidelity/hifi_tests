@@ -23,6 +23,14 @@ autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", fu
         stageEntities = setup();
     });
 
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     autoTester.addStep("Position avatar and camera", function() {
         MyAvatar.position = Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.4, z: 0.0 }));
         validationCamera_translate(Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: -0.2, z: 0.0 }));
@@ -53,6 +61,11 @@ autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", fu
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < stageEntities.length; i++) {
             Entities.deleteEntity(stageEntities[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 

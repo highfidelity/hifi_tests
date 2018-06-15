@@ -32,6 +32,9 @@ autoTester.perform("Show effects of roughness", Script.resolvePath("."), "second
         createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
+
+    autoTester.addStep("Give models time to load");
+
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {
