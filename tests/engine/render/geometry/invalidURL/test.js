@@ -25,6 +25,9 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
             createdEntities.push(Entities.addEntity(properties));
         }
     );
+
+    autoTester.addStep("Give models time to load");
+
     autoTester.addStepSnapshot("Result of invalid URL load");
 
     autoTester.addStep("Load model with valid URL", function () {
