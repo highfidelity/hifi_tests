@@ -55,13 +55,23 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         };
         overlays.push(Overlays.addOverlay("cube", properties));
     }
-    
+
+    autoTester.addStep("DEBUG1111", function () {
+        console.warn("Avatar Q = ", MyAvatar.orientation.x, MyAvatar.orientation.y, MyAvatar.orientation.z, MyAvatar.orientation.w);
+        console.warn("Camera Q = ", Camera.orientation.x, Camera.orientation.y, Camera.orientation.z, MyAvatar.orientation.w);
+    });
+
     autoTester.addStep("Move back to see all the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
     autoTester.addStepSnapshot("Initial position");
+
+    autoTester.addStep("DEBUG2222", function () {
+        console.warn("Avatar Q = ", MyAvatar.orientation.x, MyAvatar.orientation.y, MyAvatar.orientation.z, MyAvatar.orientation.w);
+        console.warn("Camera Q = ", Camera.orientation.x, Camera.orientation.y, Camera.orientation.z, MyAvatar.orientation.w);
+    });
 
     autoTester.addStep("1st position", function () {
         var ignore = [];
