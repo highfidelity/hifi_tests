@@ -34,7 +34,7 @@ setup = function (originFrame) {
         hasKeyLight: false,
         hasAmbientLight: false
     };
-    IMAGE_POSITION = { x: originFrame.x, y: originFrame.y + 1.6, z: originFrame.z - 0.7 };
+    IMAGE_POSITION = { x: originFrame.x, y: originFrame.y + 1.8, z: originFrame.z - 0.5 };
     return setupStage(flags, LIFETIME, originFrame);
 }
 
