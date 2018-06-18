@@ -62,6 +62,19 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
+
+        // Set all angles to 0
+        var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+        MyAvatar.orientation = q0;
+
+        MyAvatar.bodyYaw =   0.0;
+        MyAvatar.bodyPitch = 0.0;
+        MyAvatar.bodyRoll =  0.0;
+        MyAvatar.headYaw =   0.0;
+        MyAvatar.headPitch = 0.0;
+        MyAvatar.headRoll =  0.0;
+
+        Camera.setOrientation(q0);
     });
     autoTester.addStepSnapshot("Initial position");
 
