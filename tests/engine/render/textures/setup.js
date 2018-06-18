@@ -28,14 +28,14 @@ var USER_DATA = {
     grabbableKey: { grabbable: false, ignoreIK: true }
 };
 
-setup = function () {
+setup = function (originFrame) {
     var flags = { 
         hasZone: false,
         hasKeyLight: false,
         hasAmbientLight: false
     };
-    IMAGE_POSITION = Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.6, z: -0.7 }));
-    return setupStage(flags, LIFETIME, autoTester.getOriginFrame());
+    IMAGE_POSITION = { x: originFrame.x, y: originFrame.y + 1.8, z: originFrame.z - 0.5 };
+    return setupStage(flags, LIFETIME, originFrame);
 }
 
 getAspect = function(props) {
