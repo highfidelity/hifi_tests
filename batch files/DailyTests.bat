@@ -1,4 +1,11 @@
 @ECHO OFF
+REM Exit, with message, if branch parameter is missing
+IF NOT "%~1" == "" GOTO :OK
+ECHO Missing branch parameter
+EXIT /b
+
+:OK
+    
 SET BRANCH=%1
 ECHO Starting Test for %BRANCH%
 
@@ -24,6 +31,9 @@ SET TEST_RESULT_LOCATION=D:\t
 REM S - silent, D - directory
 ECHO Running installer
 START /WAIT HighFidelity-Beta-latest-dev.exe /S /D=%INSTALL_DIR%
+
+ECHO Deleting all previous images
+DEL %TEST_RESULT_LOCATION%\*.png
 
 ECHO Starting local server
 start "DS" %INSTALL_DIR%\domain-server.exe
