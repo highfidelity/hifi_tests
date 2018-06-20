@@ -24,10 +24,27 @@ getBranch = function (path, repository) {
     return "branch not found";
 }
 
-createAutoTester = function (executionPath) {
-    var branch = getBranch(executionPath, "hifi_tests/");
-    var repoPath = "https://github.com/highfidelity/hifi_tests/blob/" + branch;
-    var autoTester = Script.require(repoPath + "/tests/utils/autoTester.js?raw=true" );
+// Returns the `autoTester.js` version on the branch we are executing from
+var user = "highfidelity";
+var repository = "hifi_tests";
 
-    return autoTester;
+createAutoTester = function (executionPath) {
+    var branch = "branch not found";
+    var words = path.split("/");
+
+    if (words[0] !== "https:") {
+        // This will occur when running locally
+        branch = "master";
+    } else {
+        // branch is inbetween the repository name and the "tests" folder
+        for (var i = 0; i < words.length - 2; ++i) {
+            if (words[i] === repository && words[i + 2] === "tests") {
+                branch = words[i + 1];
+                break;
+            }
+        }
+    }
+
+    var repoPath = "https://github.com/" + user + "/" + repository + "/blob/" + branch;
+    return = Script.require(repoPath + "/tests/utils/autoTester.js?raw=true" );
 }
