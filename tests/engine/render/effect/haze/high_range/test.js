@@ -16,7 +16,7 @@ autoTester.perform("Haze - high range", Script.resolvePath("."), "secondary", fu
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with high range - 15,000 mt");

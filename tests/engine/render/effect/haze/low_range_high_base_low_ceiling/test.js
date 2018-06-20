@@ -18,7 +18,7 @@ autoTester.perform("Haze - low range, low ceiling, high base (inverted haze)", S
     // Setup
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
 
     autoTester.addStepSnapshot("Haze with low range, low ceiling and high base");
