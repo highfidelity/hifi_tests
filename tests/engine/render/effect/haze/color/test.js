@@ -2,7 +2,6 @@ if (typeof user === 'undefined') user = "highfidelity/";
 if (typeof repository === 'undefined') repository = "hifi_tests/";
 if (typeof branch === 'undefined') branch = "master/";
 
-
 var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
 
 autoTester.perform("Haze - color", Script.resolvePath("."), "secondary", function(testType) {
@@ -16,7 +15,7 @@ autoTester.perform("Haze - color", Script.resolvePath("."), "secondary", functio
 
     var createdEntities;
     autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE);
+        createdEntities = setup(HAZE, autoTester.getOriginFrame());
     });
     autoTester.addStepSnapshot("Show sandy colour of haze");
 
