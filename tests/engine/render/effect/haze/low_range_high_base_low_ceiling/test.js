@@ -1,4 +1,4 @@
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/RC69/tests/utils/branchUtils.js");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Haze - low range, low ceiling, high base (inverted haze)", Script.resolvePath("."), "secondary", function(testType) {
