@@ -48,5 +48,5 @@ createAutoTester = function (executionPath) {
     }
 
     var repoPath = "https://github.com/" + user + "/" + repository + "/blob/" + branch;
-    return = Script.require(repoPath + "/tests/utils/autoTester.js?raw=true");
+    return Script.require(repoPath + "/tests/utils/autoTester.js?raw=true");
 }
