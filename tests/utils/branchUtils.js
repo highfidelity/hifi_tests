@@ -23,3 +23,11 @@ getBranch = function (path, repository) {
     // This should never happen
     return "branch not found";
 }
+
+function createAutoTester(executionPath) {
+    var branch = getBranch(executionPath, "hifi_tests/");
+    var repoPath = "https://github.com/highfidelity/hifi_tests/blob/" + branch;
+    var autoTester = Script.require(repoPath + "/tests/utils/autoTester.js?raw=true" );
+
+    return autoTester;
+}
