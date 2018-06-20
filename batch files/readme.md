@@ -6,7 +6,7 @@ Two files are required to use the tests: `DailyTests.bat` calls a PowerShell scr
 
 Please be aware that the HiFi installer is downloaded to the current directory.  In addition, an XML file is downloaded (`dev-builds.xml`) - this file contains the build number.
 
-To test a specific build, say 8429, modify `DailyTests.ps1` to download *<http://builds.highfidelity.com/HighFidelity-Beta-8429.exe>* (instead of <http://builds.highfidelity.com/HighFidelity-Beta-latest-dev.exe>).
+To test a specific build, say 8429, modify `DailyTests.ps1` to download *<http://builds.highfidelity.com/HighFidelity-Beta-8429.exe>* (instead of *<http://builds.highfidelity.com/HighFidelity-Beta-latest-dev.exe>*).
 ## Installation
 ### Windows UAC
 To enable silent installation, Windows UAC has to be disabled.  Since a new installer is downloaded each time, it is not possible to disable UAC only for this file; therefore, UAC has to be fully disabled.  The procedure for this is as follows:
@@ -18,6 +18,19 @@ To enable silent installation, Windows UAC has to be disabled.  Since a new inst
 You will be asked where you want to install - choose a convenient location.
 2. Create an environment variable named `AUTOTESTER_PATH` and set it to the location you selected.
 ## Usage
-Before running the test - make sure the HighFidelity server is not running; otherwise the installation of Interface will fail.
+Make sure the local sandbox is not running.
+
+Open *DailyTests.bat* and edit the following two lines, to point to appropriate directories:
+```
+SET INSTALL_DIR=D:\<installation directory>
+SET TEST_RESULT_LOCATION=<snapshot and test results directory>
+```
+
+To run: `>DailyTests.bat <RC name>`
+If any tests fail, a zipped directory will be created, containing the test results.
+### Notes
+Any previous snapshots (i.e. PNG files) are deleted before the test.
+
+Previous test failures are **not** deleted - the test failure zip files are named with the test execution date and time.
 ## Task Scheduling
 I have used Splinterware's *System Scheduler* successfully, after failing to run a batch file from the Windows Task Scheduler.  The free version, which is all that is required, can be downloaded from <https://www.splinterware.com/download/index.html>. 
