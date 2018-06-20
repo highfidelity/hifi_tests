@@ -25,10 +25,12 @@ getBranch = function (path, repository) {
 }
 
 // Returns the `autoTester.js` version on the branch we are executing from
-var user = "highfidelity";
-var repository = "hifi_tests";
 
 createAutoTester = function (executionPath) {
+    var user = "highfidelity";
+    var repository = "hifi_tests";
+    
+    // Find the execution branch
     var branch = "branch not found";
     var words = path.split("/");
 
@@ -46,5 +48,5 @@ createAutoTester = function (executionPath) {
     }
 
     var repoPath = "https://github.com/" + user + "/" + repository + "/blob/" + branch;
-    return = Script.require(repoPath + "/tests/utils/autoTester.js?raw=true" );
+    return = Script.require(repoPath + "/tests/utils/autoTester.js?raw=true");
 }
