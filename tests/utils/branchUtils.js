@@ -43,6 +43,6 @@ createAutoTester = function (executionPath) {
     // Find the execution branch
     var branch = getBranch(executionPath);
 
-    var repoPath = "https://raw.githubusercontent.com/" + user + "/" + repository + "/" + branch;
-    return Script.require(repoPath + "/tests/utils/autoTester.js");
+    var repoPath = "https://github.com/" + user + "/" + repository + "/blob/" + branch;
+    return Script.require(repoPath + "/tests/utils/autoTester.js?raw=true");
 }
