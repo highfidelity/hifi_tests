@@ -28,7 +28,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 2, y: 0.25, z: 0.25 },
         dynamic: false,
         lifetime: LIFETIME,
-        color: { red: 0, green: 0, blue: 155 }
+        color: { red: 0, green: 0, blue: 155 },
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var redSphere = Entities.addEntity({
@@ -38,7 +39,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 0.5, y: 0.5, z: 0.5 },
         dynamic: false,
         lifetime: LIFETIME,
-        color: { red: 200, green: 0, blue: 0 }
+        color: { red: 200, green: 0, blue: 0 },
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var greenPaint = Entities.addEntity({
@@ -231,6 +233,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         type: "PolyLine",
         lifetime: LIFETIME,
         dynamic: false,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var hifi = Entities.addEntity({
@@ -240,7 +243,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 2, y: 2, z: 2 },
         dynamic: false,
         lifetime: LIFETIME,
-        modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
+        modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true",
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var terrain = Entities.addEntity(       {
@@ -255,7 +259,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dynamic: false,
         xTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg",
         yTextureURL: "http://headache.hungry.com/~seth/hifi/grass.png",
-        zTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg"
+        zTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg",
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var overlayProperties = {
@@ -263,7 +268,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         name: "overlayModel",
         position: { x: MyAvatar.position.x + 2.0, y: MyAvatar.position.y, z: MyAvatar.position.z + 3.0 },
         dimensions: { x: 2, y: 2, z: 2 },
-        grabbable: true
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     }
     var overlayModel = Overlays.addOverlay("model", overlayProperties);
 
