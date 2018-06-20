@@ -1,4 +1,4 @@
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/RC69/tests/utils/branchUtils.js");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePath("."), "primary", function(testType) {
