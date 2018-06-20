@@ -6,7 +6,7 @@ Two files are required to use the tests: `DailyTests.bat` calls a PowerShell scr
 
 Please be aware that the HiFi installer is downloaded to the current directory.  In addition, an XML file is downloaded (`dev-builds.xml`) - this file contains the build number.
 
-To test a specific build, say 8429, modify `DailyTests.ps1` to download *<http://builds.highfidelity.com/HighFidelity-Beta-8429.exe>* (instead of <http://builds.highfidelity.com/HighFidelity-Beta-latest-dev.exe>).
+To test a specific build, say 8429, modify `DailyTests.ps1` to download *<http://builds.highfidelity.com/HighFidelity-Beta-8429.exe>* (instead of *<http://builds.highfidelity.com/HighFidelity-Beta-latest-dev.exe>*).
 ## Installation
 ### Windows UAC
 To enable silent installation, Windows UAC has to be disabled.  Since a new installer is downloaded each time, it is not possible to disable UAC only for this file; therefore, UAC has to be fully disabled.  The procedure for this is as follows:
