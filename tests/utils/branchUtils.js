@@ -32,7 +32,7 @@ createAutoTester = function (executionPath) {
     
     // Find the execution branch
     var branch = "branch not found";
-    var words = path.split("/");
+    var words = executionPath.split("/");
 
     if (words[0] !== "https:") {
         // This will occur when running locally
