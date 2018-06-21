@@ -1,4 +1,4 @@
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/branchUtils.js?raw=true");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary", function(testType) {
