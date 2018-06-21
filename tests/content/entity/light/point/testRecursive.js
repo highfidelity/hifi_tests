@@ -9,7 +9,7 @@ if (typeof Test !== 'undefined') {
     Test.wait(10000);
 };
 
-var repositoryPath = "https://github.com/" + user + repository + "blob/" + branch;
+var repositoryPath = "https://github.com/highfidelity/hifi_tests/blob/" + branch;
 var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=true");
 
 autoTester.enableRecursive();
