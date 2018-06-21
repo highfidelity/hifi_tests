@@ -8,7 +8,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
 
     MyAvatar.orientation = { x: 0, y: 1, z: 0, w: 0 };
 
-    var branch = autoTester.getBranch();
+    var assetsRepo = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
     
     entityIds.push(Entities.addEntity({
         type: "Shape",
@@ -19,7 +19,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralShapeTestPosition.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestPosition.fs",
                 "version": 2
             }
         })
@@ -34,7 +34,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralShapeTestTexCoord.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestTexCoord.fs",
                 "version": 2
             }
         })
@@ -49,7 +49,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralShapeTestNormal.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestNormal.fs",
                 "version": 2
             }
         })
@@ -73,7 +73,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralZoneTest.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralZoneTest.fs",
                 "version": 2
             }
         })
