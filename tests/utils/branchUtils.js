@@ -25,11 +25,11 @@ createAutoTester = function (executionPath) {
     // If the first word is not "https" then the script is probably running from a local file
     var words = executionPath.split("/");
 
-    if (words[0] !== "https:" && words.length >= 6) {
-        // Note that word[1] is null and word[2] is "raw.githubusercontent.com"
-        user = word[3];
-        repository = word[4];
-        branch = word[5];
+    if (words[0] === "https:" && words.length >= 6) {
+        // Note that words[1] is null and words[2] is "raw.githubusercontent.com"
+        user = words[3];
+        repository = words[4];
+        branch = words[5];
     }
 
     // This needs to work for both 'https://' and 'file://' URLs
