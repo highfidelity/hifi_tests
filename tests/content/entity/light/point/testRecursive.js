@@ -3,18 +3,15 @@
 Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/RC69/tests/utils/branchUtils.js");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-branch = getBranch(Script.resolvePath(".")) +"/";
+var repositoryPath = autoTester.autoTester();
 
 if (typeof Test !== 'undefined') {
     Test.wait(10000);
 };
 
-var repositoryPath = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + branch;
-var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js");
-
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "/tests/content/entity/light/point/create/test.js");
+Script.include(repositoryPath + "content/entity/light/point/create/test.js");
 
 autoTester.runRecursive();
