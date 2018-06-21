@@ -24,25 +24,27 @@ getBranch = function (executionPath) {
 }
 
 //Locate the "tests" folder ,returns the path including "tests"
-getTestsRoot = function (executionPath) {
+getRepositoryPath = function (executionPath) {
     var words = executionPath.split("/");
 
-    var testsRoot = "";
+    var repositoryPath = "";
     for (var i = 0; i < words.length; ++i) {
+        repositoryPath += words[i] + "/";
         if (words[i] === "tests") {
             break;
         }
-        testRoot += words[i] + "/";
     }
 
-    return testRoot + "/tests";
+    return repositoryPath;
 }
 
 // Returns the `autoTester.js` version on the branch we are executing from
 createAutoTester = function (executionPath) {
-    // Find the execution branch
+    var repositoryPath = getRepositoryPath(executionPath);
     var branch = getBranch(executionPath);
 
-    var repoPath = "https://github.com/" + user + "/" + repository + "/blob/" + branch;
-    return Script.require(repoPath + "/tests/utils/autoTester.js?raw=true");
+    var autoTester =  Script.require(repositoryPath + "utils/autoTester.js");
+    autoTester.setRepositoryPathAndBranch(repositoryPath, branch);
+
+    return autoTester;
 }

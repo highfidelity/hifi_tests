@@ -407,3 +407,18 @@ module.exports.runRecursive = function () {
 module.exports.getOriginFrame = function () {
     return originFrame;
 }
+
+// Utilities to provide GitHub branch and repository (i.e. GitHub path to "tests")
+var _repositoryPath;
+var _branch;
+module.exports.setRepositoryPathAndBranch = function (repositoryPath, branch) {
+    _repositoryPath = repositoryPath;
+    _branch = branch;
+}
+
+module.exports.getRepositoryPath = function () {
+    return _repositoryPath;
+}
+module.exports.getBranch = function () {
+    return _branch;
+}
