@@ -3,7 +3,7 @@
 Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/RC69/tests/utils/branchUtils.js");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-var repositoryPath = autoTester.autoTester();
+var repositoryPath = autoTester.getRepositoryPath();
 
 if (typeof Test !== 'undefined') {
     Test.wait(10000);
