@@ -1,16 +1,13 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../../../../utils/test_stage.js?raw=true")
 
     var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
+
+    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
 
     var properties = {
         lifetime: 120,  
@@ -31,8 +28,7 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
     autoTester.addStepSnapshot("Result of invalid URL load");
 
     autoTester.addStep("Load model with valid URL", function () {
-        //properties.modelURL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/geometry/avatars/art3mis/art3mis.fst?raw=true";
-        properties.modelURL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/geometry/avatars/art3mis/art3mis.fst";
+        properties.modelURL = TESTS_URL + "assets/models/geometry/avatars/art3mis/art3mis.fst";
         properties.position = getStagePosOriAt(0, 1, 0).pos;
         properties.name = "valid url model";
 
