@@ -76,7 +76,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
         var NUM_DIGITS = 5;
-        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0');;
+        var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
         currentTestCase.usePrimaryCamera 
             ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
@@ -246,6 +246,11 @@ setUpTest = function(testCase) {
     // Set callback for changes in download status.  This is used so we don't advance steps when data is downloading
     AccountServices.downloadInfoChanged.connect(onDownloadInfoChanged);
     AccountServices.updateDownloadInfo();
+
+    // Enforce Desktop display (unless manual mode)
+    if (!isManualMode()) {
+        Menu.setIsOptionChecked("Desktop", true);
+    }
 }
 
 tearDownTest = function() {
