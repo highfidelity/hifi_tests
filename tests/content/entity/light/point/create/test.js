@@ -1,4 +1,4 @@
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/RC69/tests/utils/branchUtils.js");
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Point light", Script.resolvePath("."), "secondary", function(testType) {
