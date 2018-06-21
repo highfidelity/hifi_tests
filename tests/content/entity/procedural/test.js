@@ -8,6 +8,8 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
 
     MyAvatar.orientation = { x: 0, y: 1, z: 0, w: 0 };
 
+    var branch = autoTester.getBranch();
+    
     entityIds.push(Entities.addEntity({
         type: "Shape",
         shape: "Cube",
@@ -17,7 +19,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestPosition.fs?raw=true",
+                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralShapeTestPosition.fs?raw=true",
                 "version": 2
             }
         })
@@ -32,7 +34,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestTexCoord.fs?raw=true",
+                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralShapeTestTexCoord.fs?raw=true",
                 "version": 2
             }
         })
@@ -47,7 +49,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestNormal.fs?raw=true",
+                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralShapeTestNormal.fs?raw=true",
                 "version": 2
             }
         })
@@ -71,7 +73,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralZoneTest.fs?raw=true",
+                "shaderUrl": "https://github.com/highfidelity/hifi_tests/blob/" + branch + "/assets/shaders/proceduralZoneTest.fs?raw=true",
                 "version": 2
             }
         })
