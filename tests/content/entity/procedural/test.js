@@ -9,7 +9,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
     MyAvatar.orientation = { x: 0, y: 1, z: 0, w: 0 };
 
     var assetsRepo = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-    
+
     entityIds.push(Entities.addEntity({
         type: "Shape",
         shape: "Cube",
