@@ -3,6 +3,7 @@ var repository = "hifi_tests";
 
 // Find the GitHub branch we are running from
 getBranch = function (executionPath) {
+    console.warn("EXECUTION PATH = ", executionPath);
     // The branch is the word after the repository name, and before the word "tests"
     // Assumes that the branch exists in the executionPath
     var words = executionPath.split("/");
