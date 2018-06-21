@@ -15,7 +15,7 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-var ASSETS_URL = TEST_URL + "assets/";
+var ASSETS_URL = TESTS_URL + "assets/";
 var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";

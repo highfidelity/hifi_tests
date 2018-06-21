@@ -9,7 +9,7 @@
 Script.include("../../../utils/test_stage.js?raw=true")
 
 var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-var ASSETS_URL = TEST_URL + "assets/";
+var ASSETS_URL = TESTS_URL + "assets/";
 
 var LIFETIME = 300;
 var SHADER_URL = ASSETS_URL + "shaders/texture.fs";
