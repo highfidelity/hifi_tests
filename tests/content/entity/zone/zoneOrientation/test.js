@@ -7,13 +7,12 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "se
     var zonePosition = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
     var zoneDimensions = { x: 200.0, y: 200.0, z: 200.0};
     
-    var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
-    var SUFFIX = "?raw=true";
+    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
 
     var LIFETIME = 60.0;
 
     // Create zones
-    var SKYBOX_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ColourBoxWithSun.jpg' + SUFFIX);
+    var SKYBOX_URL = TESTS_URL + 'assets/skymaps/ColourBoxWithSun.jpg';
     var zoneProperties = {
         lifetime: LIFETIME,
         type: "Zone",
@@ -75,7 +74,7 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "se
     var objectProperties = {
         lifetime: LIFETIME,
         type: "Model",
-        modelURL: TESTS_URL + 'assets/models/material_matrix_models/fbx/blender/' + objectName + '.fbx' + SUFFIX,
+        modelURL: TESTS_URL + 'assets/models/material_matrix_models/fbx/blender/' + objectName + '.fbx',
         name: objectName,
         position: objectPosition,    
         rotation: objectOrientation,    
