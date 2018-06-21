@@ -1,10 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", function(testType) {
     var createdEntities = [];
@@ -236,6 +231,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
+    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
     var hifi = Entities.addEntity({
         type: "Model",
         name: "Hifi",
@@ -243,7 +239,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 2, y: 2, z: 2 },
         dynamic: false,
         lifetime: LIFETIME,
-        modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true",
+        modelURL: TESTS_URL + "assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true",
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 

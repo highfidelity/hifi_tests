@@ -1,10 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
@@ -13,8 +8,8 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "pr
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
-        position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.0, right)),
-        direction: Vec3.normalize({x: 0, y: -1, z: 0}),
+        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z: 0.0 }), Vec3.multiply(0.0, right)),
+        direction: Vec3.normalize({ x: 0.0, y: -1, z: 0.0 }),
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
@@ -25,8 +20,8 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "pr
     var properties = {
         type: "Shape",
         shape: "Cube",
-        position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.0, right)),
-        dimensions: {x: 0.1, y: 0.1, z: 0.1},
+        position: Vec3.sum(Vec3.sum(pos, { x:0.0, y: 0.0, z: 0.0}), Vec3.multiply(0.0, right)),
+        dimensions: { x: 0.1, y: 0.1, z: 0.1 },
         lifetime: 300,
         rotation: orientation
     };

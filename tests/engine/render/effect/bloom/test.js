@@ -1,19 +1,12 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", function(testType) {
     var pos =  MyAvatar.position;
 
-    var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
-    var SUFFIX = "?raw=true";
-    var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
+    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
     var MODEL_DIR_URL = TESTS_URL + "assets/models/material_matrix_models/fbx/blender/";
-    var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
+    var MODEL_NAME_SUFFIX = ".fbx";
 
     var terrain = Entities.addEntity({
         type: 'Box',
@@ -54,7 +47,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
         isVisibleInSecondaryCamera: true
     });
 
-    var SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+    var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     var sky = Entities.addEntity({
         type: "Zone",
         name: "Sky",
