@@ -1,7 +1,3 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
 var currentTestName = "";
 var currentSteps = [];
 var currentStepIndex = 0;
@@ -410,4 +406,19 @@ module.exports.runRecursive = function () {
 // This is a position; the orientation is assumed to be looking down the Z axis, Y is up.
 module.exports.getOriginFrame = function () {
     return originFrame;
+}
+
+// Utilities to provide GitHub branch and repository (i.e. GitHub path to "tests")
+var _repositoryPath;
+var _branch;
+module.exports.setRepositoryPathAndBranch = function (repositoryPath, branch) {
+    _repositoryPath = repositoryPath;
+    _branch = branch;
+}
+
+module.exports.getRepositoryPath = function () {
+    return _repositoryPath;
+}
+module.exports.getBranch = function () {
+    return _branch;
 }
