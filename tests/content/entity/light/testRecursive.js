@@ -12,7 +12,7 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "/tests/content/entity/light/spot/create/test.js?raw=true");
-Script.include(repositoryPath + "/tests/content/entity/light/point/create/test.js?raw=true");
+Script.include(repositoryPath + "content/entity/light/spot/create/test.js?raw=true");
+Script.include(repositoryPath + "content/entity/light/point/create/test.js?raw=true");
 
 autoTester.runRecursive();
