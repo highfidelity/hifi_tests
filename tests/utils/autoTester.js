@@ -414,16 +414,30 @@ module.exports.getOriginFrame = function () {
 }
 
 // Utilities to provide GitHub branch and repository (i.e. GitHub path to "tests")
-var _repositoryPath;
+var _user;
+var _repository;
 var _branch;
-module.exports.setRepositoryPathAndBranch = function (repositoryPath, branch) {
-    _repositoryPath = repositoryPath;
+var _repositoryPath;
+
+module.exports.setRepositoryInfo = function (user, repository, branch, repositoryPath) {
+    _user = user;
+    _repository = repository;
     _branch = branch;
+    _repositoryPath = repositoryPath;
+}
+
+module.exports.getUser = function () {
+    return _user;
+}
+
+module.exports.getRepository = function () {
+    return _repository;
+}
+
+module.exports.getBranch = function () {
+    return _branch;
 }
 
 module.exports.getRepositoryPath = function () {
     return _repositoryPath;
-}
-module.exports.getBranch = function () {
-    return _branch;
 }
