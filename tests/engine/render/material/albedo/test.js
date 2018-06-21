@@ -1,4 +1,4 @@
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/branchUtils.js?raw=true");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Effects of albedo on various materials", Script.resolvePath("."), "secondary", function(testType) {

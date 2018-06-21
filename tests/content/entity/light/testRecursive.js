@@ -1,6 +1,6 @@
-// This is an automatically generated file, created by auto-tester on Jun 15 2018, 14:39
+// This is an automatically generated file, created by auto-tester on Jun 21 2018, 14:25
 
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/RC69/tests/utils/branchUtils.js");
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 var repositoryPath = autoTester.getRepositoryPath();
@@ -12,7 +12,7 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "content/entity/light/spot/create/test.js?raw=true");
-Script.include(repositoryPath + "content/entity/light/point/create/test.js?raw=true");
+Script.include(repositoryPath + "content/entity/light/spot/create/test.js");
+Script.include(repositoryPath + "content/entity/light/point/create/test.js");
 
 autoTester.runRecursive();
