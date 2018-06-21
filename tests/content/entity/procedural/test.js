@@ -1,10 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", function(testType) {
     var entityIds = [];
@@ -12,6 +7,8 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
     var LIFETIME = 60; // 1 min
 
     MyAvatar.orientation = { x: 0, y: 1, z: 0, w: 0 };
+
+    var assetsRepo = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
 
     entityIds.push(Entities.addEntity({
         type: "Shape",
@@ -22,7 +19,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestPosition.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestPosition.fs",
                 "version": 2
             }
         })
@@ -37,7 +34,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestTexCoord.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestTexCoord.fs",
                 "version": 2
             }
         })
@@ -52,7 +49,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralShapeTestNormal.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestNormal.fs",
                 "version": 2
             }
         })
@@ -76,7 +73,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": "https://github.com/" + user + repository + "blob/" + branch + "assets/shaders/proceduralZoneTest.fs?raw=true",
+                "shaderUrl": assetsRepo + "assets/shaders/proceduralZoneTest.fs",
                 "version": 2
             }
         })
