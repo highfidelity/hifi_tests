@@ -8,16 +8,12 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
+var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
+var ASSETS_URL = TEST_URL + "assets/";
 
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var ASSETS_BASE_URL = Script.resolvePath("../../../../assets") + "/";
-console.warn("QQQ " + ASSETS_BASE_URL);
 var LIFETIME = 300;
-var SHADER_URL = ASSETS_BASE_URL + "shaders/texture.fs?raw=true";
+var SHADER_URL = ASSETS_URL + "shaders/texture.fs";
+
 var IMAGE_POSITION;
 var USER_DATA = { 
     ProceduralEntity: {
@@ -73,7 +69,7 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl = Script.resolvePath(ASSETS_BASE_URL + "textures/" + props.image + "?raw=true");
+    var imageUrl = Script.resolvePath(ASSETS_URL + "textures/" + props.image + "?raw=true");
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({

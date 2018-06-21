@@ -8,18 +8,11 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-
-Script.include("https://github.com/highfidelity/hifi_tests/blob/RC69/tests/utils/branchUtils.js?raw=true");
-if (typeof branch === 'undefined') branch = getBranch(Script.resolvePath("."), repository) +"/";
-
-var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
-var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
-var ASSETS_URL = TESTS_URL + "assets/"
+var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
+var ASSETS_URL = TESTS_URL + "assets/";
 var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
-var SUFFIX = "?raw=true";
-var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
+
+var MODEL_NAME_SUFFIX = ".fbx";
 var MODEL_SCALE = 1.0;
 var LIFETIME = 100;
 
@@ -33,7 +26,7 @@ setup = function (altitude, azimuth, originFrame) {
     var entities = setupStage(flags, LIFETIME, originFrame);
 
     // Create zone
-    var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+    var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
         name: "Zone",
