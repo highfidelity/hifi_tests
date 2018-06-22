@@ -21,7 +21,7 @@ createAutoTester = function (executionPath) {
     var branch = "master";
     
     // The format of the execution path is as follows (assuming the test is in the "tests' folder hierarchy)
-    // "https://raw.githubusercontent.com/<user>/<repository/<branch>/tests/..."
+    // "https://raw.githubusercontent.com/<user>/<repository>/<branch>/tests/..."
     // If the first word is not "https" then the script is probably running from a local file
     var words = executionPath.split("/");
 

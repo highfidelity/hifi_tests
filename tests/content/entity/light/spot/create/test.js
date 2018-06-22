@@ -1,4 +1,4 @@
-Script.include("https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRCtoDailyTests/tests/utils/branchUtils.js");
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(testType) {
