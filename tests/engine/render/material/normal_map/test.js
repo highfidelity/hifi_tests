@@ -1,8 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Show effects of normal maps", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
@@ -18,7 +15,7 @@ autoTester.perform("Show effects of normal maps", Script.resolvePath("."), "seco
     var OFFSET = { x: 0.0, y: -1.0, z: -0.1 };
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
-        createdEntities = addCases(TEST_CASES, true, true)
+        createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
     autoTester.addStepSnapshot("Take snapshot of the effects");

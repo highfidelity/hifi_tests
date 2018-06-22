@@ -1,8 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", function(testType) {
     var avatarOriginPosition = MyAvatar.position;
@@ -16,9 +13,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     var zoneGreenDimensions = { x: 30.0, y: ZONE_HEIGHT, z: 30.0};
     var zoneBlueDimensions  = { x: 20.0, y: ZONE_HEIGHT, z: 20.0};
 
-    var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
-    var SUFFIX = "?raw=true";
-    var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
+    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
     
     var zoneRed;
     var zoneGreen;
@@ -34,7 +29,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     
     autoTester.addStep("Setup zones and sphere", function () {
         // Create zones
-        var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+        var BRIGHT_SKY_URL = TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json';
         var zoneRedProperties = {
             lifetime: LIFETIME,
             type: "Zone",
@@ -51,7 +46,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         };
         zoneRed = Entities.addEntity(zoneRedProperties);
 
-        var CLOUDY_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg' + SUFFIX);
+        var CLOUDY_SKY_URL = TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg';
         var zoneGreenProperties = {
             lifetime: LIFETIME,
             type: "Zone",
@@ -68,7 +63,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         };
         zoneGreen = Entities.addEntity(zoneGreenProperties);
 
-        var NIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg' + SUFFIX);
+        var NIGHT_SKY_URL = TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg';
         var zoneBlueProperties = {
             lifetime: LIFETIME,
             type: "Zone",

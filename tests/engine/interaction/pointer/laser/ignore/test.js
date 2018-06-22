@@ -1,12 +1,11 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/branchUtils.js?raw=true");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
-    
+
+    initializeTestData(autoTester.getOriginFrame());
+
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
         position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z :0.0 }), Vec3.multiply(0.0, right)),
@@ -53,13 +52,24 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         };
         overlays.push(Overlays.addOverlay("cube", properties));
     }
-    
-    autoTester.addStep("Move back to and down to see all the objects", function () {
-        var offset = { x: 0.0, y: -0.5, z: 2.0 };
+
+    autoTester.addStep("Move back to see all the objects", function () {
+        var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
-        
-        console.warn(MyAvatar.position.x, MyAvatar.position.y, MyAvatar.position.z, "========", pos.x, pos.y, pos.z);
+
+        // Set all angles to 0
+        var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+        MyAvatar.orientation = q0;
+
+        MyAvatar.bodyYaw =   0.0;
+        MyAvatar.bodyPitch = 0.0;
+        MyAvatar.bodyRoll =  0.0;
+        MyAvatar.headYaw =   0.0;
+        MyAvatar.headPitch = 0.0;
+        MyAvatar.headRoll =  0.0;
+
+        Camera.setOrientation(q0);
     });
     autoTester.addStepSnapshot("Initial position");
 

@@ -1,12 +1,9 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
-
-autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePath("."), "primary", function(testType) {
     // Test material matrix
-    Script.include("../setup.js?raw=true")
+    Script.include("../../setup.js?raw=true")
 
     // Add the test Cases
     var createdEntities = [];

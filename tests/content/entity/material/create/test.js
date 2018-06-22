@@ -1,8 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../../../../utils/test_stage.js?raw=true");
@@ -13,7 +10,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
         hasKeyLight: false,
         hasAmbientLight: false
     };
-    var createdEntities = setupStage(flags, 200)
+    var createdEntities = setupStage(flags, 200, autoTester.getOriginFrame());
 
     var posOri = getStagePosOriAt(0, 0, 0);
 

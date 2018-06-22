@@ -8,13 +8,12 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
-var ASSETS_BASE_URL = Script.resolvePath("../../../../assets") + "/";
-console.warn("QQQ " + ASSETS_BASE_URL);
+var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
+var ASSETS_URL = TESTS_URL + "assets/";
+
 var LIFETIME = 300;
-var SHADER_URL = ASSETS_BASE_URL + "shaders/texture.fs?raw=true";
+var SHADER_URL = ASSETS_URL + "shaders/texture.fs";
+
 var IMAGE_POSITION;
 var USER_DATA = { 
     ProceduralEntity: {
@@ -25,14 +24,14 @@ var USER_DATA = {
     grabbableKey: { grabbable: false, ignoreIK: true }
 };
 
-setup = function () {
+setup = function (originFrame) {
     var flags = { 
         hasZone: false,
         hasKeyLight: false,
         hasAmbientLight: false
     };
-    IMAGE_POSITION = Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.6, z: -0.7 }));
-    return setupStage(flags, LIFETIME)
+    IMAGE_POSITION = { x: originFrame.x, y: originFrame.y + 1.8, z: originFrame.z - 0.5 };
+    return setupStage(flags, LIFETIME, originFrame);
 }
 
 getAspect = function(props) {
@@ -70,7 +69,7 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl = Script.resolvePath(ASSETS_BASE_URL + "textures/" + props.image + "?raw=true");
+    var imageUrl = Script.resolvePath(ASSETS_URL + "textures/" + props.image + "?raw=true");
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({
