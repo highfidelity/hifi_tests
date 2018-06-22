@@ -150,8 +150,9 @@ every second.  If the test is complete and there are more tests then the next te
 This is the method that initiates execution of the test, in either *manual* or *auto* mode.
 ### GitHub Repository utility methods
 A number of methods provide information on the GitHub repository the tests are currently being run from.  "Default" refers to running tests from the _hifi_tests_ repository belonging to the _highfidelity_ user, on the _master_ branch.
+Note that all results include the final **'/'**.
 1. **module.exports.getUser()** provides the GitHub user.  Default is _highfidelity_.
-2. **module.exports.getRepository()** provides the repository, default is _hifi_tests_ (this won't normally change)
+2. **module.exports.getRepositoryPath()** provides the repository, default is the path to _hifi_tests_
 3. **module.exports.getBranch()** provides the branch, default is _master_
 4. **module.exports.getTestsRootPath()** provides the path to the top-level tests folder
 5. **module.exports.getUtilsRootPath()** provides the path to the top-level _utils_ folder
