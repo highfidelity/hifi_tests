@@ -1,6 +1,7 @@
 var _step = 0;
 var createdEntities = [];
 var createdOverlays = [];
+var assetsRootPath = autoTester.getAssetsRootPath();
 
 print("Running Highlight Test - press <SPACE> to go to next steps");
 MyAvatar.goToLocation(
@@ -23,6 +24,7 @@ var blueBox = Entities.addEntity({
     lifetime: LIFETIME,
     color: { red: 0, green: 0, blue: 155 }
 });
+
 var redSphere = Entities.addEntity({
     type: "Sphere",
     name: "RedSphere",
@@ -32,6 +34,7 @@ var redSphere = Entities.addEntity({
     lifetime: LIFETIME,
     color: { red: 200, green: 0, blue: 0 }
 });
+
 var greenPaint = Entities.addEntity({
     color: {
         blue: 10,
@@ -227,6 +230,7 @@ var greenPaint = Entities.addEntity({
     lifetime: LIFETIME,
     dynamic: false,
 });
+
 var hifi = Entities.addEntity({
     type: "Model",
     name: "Hifi",
@@ -234,8 +238,9 @@ var hifi = Entities.addEntity({
     dimensions: {x:2, y:2, z:2},
     dynamic: false,
     lifetime: LIFETIME,
-    modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
+    modelURL: assetsRootPath + "models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
 });
+
 var terrain = Entities.addEntity(       {
     type: "PolyVox",
     name: "Terrain",
@@ -251,9 +256,8 @@ var terrain = Entities.addEntity(       {
     zTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg"
 });
 
-
 var overlayProperties = {
-    url: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
+    url: assetsRootPath + "models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
     name: "overlayModel",
     position: {x:2, y:0, z:3},
     dimensions: {x:2, y:2, z:2},

@@ -14,7 +14,8 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
+var assetsRootPath = autoTester.getAssetsRootPath();
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
 var MODEL_SCALE = 0.75;

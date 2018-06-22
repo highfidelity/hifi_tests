@@ -5,6 +5,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     var createdEntities = [];
     var createdOverlays = [];
 
+    var assetsRootPath = autoTester.getAssetsRootPath();
+
     // all objects will have a finite lifetime
     var LIFETIME = 300; // 5 min
 
@@ -239,7 +241,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 2, y: 2, z: 2 },
         dynamic: false,
         lifetime: LIFETIME,
-        modelURL: TESTS_URL + "assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true",
+        modelURL: assetsRootPath + "models/material_matrix_models/fbx/master/hifi.fbx?raw=true",
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
@@ -260,7 +262,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     });
 
     var overlayProperties = {
-        url: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
+        url: assetsRootPath + "models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
         name: "overlayModel",
         position: { x: MyAvatar.position.x + 2.0, y: MyAvatar.position.y, z: MyAvatar.position.z + 3.0 },
         dimensions: { x: 2, y: 2, z: 2 },

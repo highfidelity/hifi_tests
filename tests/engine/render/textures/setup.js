@@ -8,11 +8,10 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-var ASSETS_URL = TESTS_URL + "assets/";
+var assetsRootPath = autoTester.getAssetsRootPath();
 
 var LIFETIME = 300;
-var SHADER_URL = ASSETS_URL + "shaders/texture.fs";
+var SHADER_URL = assetsRootPath + "shaders/texture.fs";
 
 var IMAGE_POSITION;
 var USER_DATA = { 
@@ -69,7 +68,7 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl = Script.resolvePath(ASSETS_URL + "textures/" + props.image + "?raw=true");
+    var imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image + "?raw=true");
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({
