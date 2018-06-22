@@ -153,9 +153,9 @@ A number of methods provide information on the GitHub repository the tests are c
 1. **module.exports.getUser()** provides the GitHub user.  Default is _highfidelity_.
 2. **module.exports.getRepository()** provides the repository, default is _hifi_tests_ (this won't normally change)
 3. **module.exports.getBranch()** provides the branch, default is _master_
-4. **module.exports.getTestsPath()** provides the path to the top-level tests folder
-5. **module.exports.getUtilsPath()** provides the path to the _utils_ folder
-6. **module.exports.getAssetsPath()** provides the path to the _assets_ folder. 
+4. **module.exports.getTestsRootPath()** provides the path to the top-level tests folder
+5. **module.exports.getUtilsRootPath()** provides the path to the _utils_ folder
+6. **module.exports.getAssetsRootPath()** provides the path to the _assets_ folder. 
 
 
 
