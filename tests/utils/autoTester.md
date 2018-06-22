@@ -157,7 +157,3 @@ Note that all results include the final **'/'**.
 4. **module.exports.getTestsRootPath()** provides the path to the top-level tests folder
 5. **module.exports.getUtilsRootPath()** provides the path to the top-level _utils_ folder
 6. **module.exports.getAssetsRootPath()** provides the path to the top-level _assets_ folder. 
-
-
-
- 
