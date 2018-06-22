@@ -1,5 +1,5 @@
 //Locate the "tests" folder ,returns the path including "tests"
-getRepositoryPath = function (executionPath) {
+getTestsRootPath = function (executionPath) {
     var words = executionPath.split("/");
 
     var repositoryPath = "";
@@ -33,10 +33,10 @@ createAutoTester = function (executionPath) {
     }
 
     // This needs to work for both 'https://' and 'file://' URLs
-    var repositoryPath = getRepositoryPath(executionPath);
+    var testsRootPath = getTestsRootPath(executionPath);
 
     var autoTester =  Script.require(repositoryPath + "utils/autoTester.js");
-    autoTester.setRepositoryInfo(user, repository, branch, repositoryPath);
+    autoTester.setRepositoryInfo(user, repository, branch, testsRootPath);
 
     return autoTester;
 }

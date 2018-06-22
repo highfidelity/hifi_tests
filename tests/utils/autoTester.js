@@ -413,17 +413,17 @@ module.exports.getOriginFrame = function () {
     return originFrame;
 }
 
-// Utilities to provide GitHub branch and repository (i.e. GitHub path to "tests")
+// Utilities to provide GitHub information
 var _user;
 var _repository;
 var _branch;
-var _repositoryPath;
+var _testsRootPath;
 
-module.exports.setRepositoryInfo = function (user, repository, branch, repositoryPath) {
+module.exports.setRepositoryInfo = function (user, repository, branch, testsRootPath) {
     _user = user;
     _repository = repository;
     _branch = branch;
-    _repositoryPath = repositoryPath;
+    _testsRootPath = testsRootPath;
 }
 
 module.exports.getUser = function () {
@@ -438,6 +438,14 @@ module.exports.getBranch = function () {
     return _branch;
 }
 
-module.exports.getRepositoryPath = function () {
-    return _repositoryPath;
+module.exports.getTestsRootPath = function () {
+    return _testsRootPath;
+}
+
+module.exports.getUtilsRootPath = function () {
+    return _testsRootPath + "/utils";
+}
+
+module.exports.getAssetsRootPath = function () {
+    return _testsRootPath + "/assets";
 }
