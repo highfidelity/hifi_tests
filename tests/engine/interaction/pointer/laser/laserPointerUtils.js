@@ -140,8 +140,21 @@ defaultRenderStates = [{name: "one", start: start1, path: path1, distance: DEFAU
                            {name: "three", start: start1, path: path1, distance: DEFAULT_DISTANCE},
                            {name: "four", start: start1, path: path1, distance: DEFAULT_DISTANCE}];
 
-orientation = MyAvatar.orientation;
-dir = Quat.getForward(orientation);
-dir.y = 0;
-pos = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(2.0, Vec3.normalize(dir))), {x:0, y:0.5, z:0});
-right = Quat.getRight(orientation);
+// Data that needs to be initialized for each test
+orientation = { x: 0.0, y: 0.0, z: 0.0, w: 1.0 };
+dir = { x: 0.0, y: 0.0, z: 0.0 };
+pos = { x: 0.0, y: 0.0, z: 0.0 };
+right = { x: 0.0, y: 0.0, z: 0.0 };
+initializeTestData = function (originFrame) {
+    var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    orientation = q0;
+    dir = Quat.getForward(orientation);
+    dir.y = 0.0;
+    var shiftedPosition = originFrame;
+    shiftedPosition.y += 1.0;
+    pos = Vec3.sum(Vec3.sum(shiftedPosition, Vec3.multiply(2.0, Vec3.normalize(dir))), { x: 0.0, y: 0.5, z: 0.0 });
+    right = Quat.getRight(orientation);
+
+    Camera.setOrientation(q0);
+    Camera.setPosition(originFrame);
+}

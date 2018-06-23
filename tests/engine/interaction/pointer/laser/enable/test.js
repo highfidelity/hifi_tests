@@ -1,11 +1,10 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
+
+    initializeTestData(autoTester.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -31,6 +30,12 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "p
 
     Pointers.disablePointer(lasers[0]);
     Pointers.enablePointer(lasers[1]);
+
+    autoTester.addStep("Move back to see the objects", function () {
+        var offset = { x: 0.0, y: 0.0, z: 2.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
 
     autoTester.addStepSnapshot("Enabled right laser", function () {
         Pointers.disablePointer(lasers[1]);

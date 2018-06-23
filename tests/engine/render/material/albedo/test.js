@@ -1,8 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://github.com/highfidelity/hifi_tests/blob/master/tests/utils/branchUtils.js?raw=true");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Effects of albedo on various materials", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
@@ -23,7 +20,7 @@ autoTester.perform("Effects of albedo on various materials", Script.resolvePath(
     var OFFSET = { x: 0.0, y: -0.8, z: -0.1 };
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
-        createdEntities = addCases(TEST_CASES, true, true);
+        createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
     autoTester.addStepSnapshot("Take snapshot of the effects");

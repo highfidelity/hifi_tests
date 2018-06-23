@@ -1,8 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
@@ -13,8 +10,8 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), "s
 		hasKeyLight: false,
 		hasAmbientLight: false
 	};
-    var createdEntities = setupStage(flags)
-    var posOri = getStagePosOriAt(4.0, -2, 0.0)
+    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame());
+    var posOri = getStagePosOriAt(4.0, -2, 0.0);
 
     {
         var lightOri = Quat.multiply(Quat.fromPitchYawRollDegrees(-90, 0, 0), posOri.ori);

@@ -23,13 +23,13 @@ var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 120;
 
-function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {  
+function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights, originFrame) {  
 	var flags = { 
 		hasKeyLight: hasZone,
 		hasAmbientLight: hasZone,
 		hasLocalLights: hasLocalLights
 	};
-    var backdrop = setupStage(flags)
+    var backdrop = setupStage(flags, undefined, originFrame);
 
     return backdrop;
 }
@@ -74,8 +74,8 @@ function addOverlayTestCase(test, origin, orientation) {
     return addTestOverlay(test.name, test.infront, center, orientation);
 }
 
-function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights) {
-    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation, hasZone, hasLocalLights);
+function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights, originFrame) {
+    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation, hasZone, hasLocalLights, originFrame);
     
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
@@ -92,7 +92,7 @@ function addOverlayCasesAt(origin, orientation, testCases) {
     return models;
 }
   
-addCases = function (testCases, hasZone, hasLocalLights) {
+addCases = function (testCases, hasZone, hasLocalLights, originFrame) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -101,7 +101,7 @@ addCases = function (testCases, hasZone, hasLocalLights) {
     var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
     root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
-    return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights);
+    return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights, originFrame);
 }
 
 addOverlayCases = function (testCases) {

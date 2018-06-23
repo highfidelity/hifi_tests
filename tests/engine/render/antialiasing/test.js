@@ -1,8 +1,5 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", function(testType) {
     // Test material matrix
@@ -24,8 +21,8 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", fun
     var createdOverlays = [];
 
     autoTester.addStep("Set up test case", function () {
-        createdEntities = addCases(TEST_CASES, true)
-        createdOverlays = addOverlayCases(TEST_OVERLAYS)
+        createdEntities = addCases(TEST_CASES, true, autoTester.getOriginFrame());
+        createdOverlays = addOverlayCases(TEST_OVERLAYS);
 
         var offset = { x: 0.0, y: -0.4, z: 0.45 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
