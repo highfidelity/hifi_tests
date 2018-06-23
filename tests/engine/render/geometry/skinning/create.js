@@ -1,6 +1,6 @@
 Script.include("../../../../utils/test_stage.js?raw=true")
-
     var createdEntities = setupStage();
+    var assetsRootPath = autoTester.getAssetsRootPath();
 
 	var posOri = getStagePosOriAt(0, 0, 0);
 
@@ -10,9 +10,9 @@ var properties = {
   type: "Model",  
   name: "animated model",
   position: posOri.pos,
-  modelURL: "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/geometry/avatars/art3mis/art3mis.fst",
+  modelURL: assetsRootPath + "models/geometry/avatars/art3mis/art3mis.fst",
   animation: {
-    url: "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/geometry/avatars/animations/side_step_right.fbx",
+    url: assetsRootPath + "models/geometry/avatars/animations/side_step_right.fbx",
     running: true,
     loop: true,
     allowTranslation: false

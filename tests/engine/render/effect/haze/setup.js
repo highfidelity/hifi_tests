@@ -14,9 +14,8 @@
 // 
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
-var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-var ASSETS_URL = TESTS_URL + "assets/";
-var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
+var assetsRootPath = autoTester.getAssetsRootPath();
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
 
@@ -82,7 +81,7 @@ setup = function (hazeDef, originFrame) {
         hazeMode = "enabled";
     }
 
-    var SKY_URL = Script.resolvePath(ASSETS_URL + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+    var SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     var sky = Entities.addEntity({
         type: "Zone",
         name: "Sky",

@@ -8,8 +8,7 @@
 // Test material matrix
 Script.include("../../../utils/test_stage.js?raw=true")
 
-var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-var ASSETS_URL = TESTS_URL + "assets/";
+var assetsRootPath = autoTester.getAssetsRootPath();
 var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
@@ -26,7 +25,7 @@ setup = function (altitude, azimuth, originFrame) {
     var entities = setupStage(flags, LIFETIME, originFrame);
 
     // Create zone
-    var BRIGHT_SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+    var BRIGHT_SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
         name: "Zone",

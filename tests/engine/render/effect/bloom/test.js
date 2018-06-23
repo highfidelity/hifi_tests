@@ -4,8 +4,8 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", function(testType) {
     var pos =  MyAvatar.position;
 
-    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
-    var MODEL_DIR_URL = TESTS_URL + "assets/models/material_matrix_models/fbx/blender/";
+    var assetsRootPath = autoTester.getAssetsRootPath();
+    var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
     var MODEL_NAME_SUFFIX = ".fbx";
 
     var terrain = Entities.addEntity({
@@ -47,7 +47,7 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
         isVisibleInSecondaryCamera: true
     });
 
-    var SKY_URL = Script.resolvePath(TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+    var SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     var sky = Entities.addEntity({
         type: "Zone",
         name: "Sky",

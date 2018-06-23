@@ -7,7 +7,7 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
 
     var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
 
-    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
+    var assetsRootPath = autoTester.getAssetsRootPath();
 
     var properties = {
         lifetime: 120,  
@@ -28,7 +28,7 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
     autoTester.addStepSnapshot("Result of invalid URL load");
 
     autoTester.addStep("Load model with valid URL", function () {
-        properties.modelURL = TESTS_URL + "assets/models/geometry/avatars/art3mis/art3mis.fst";
+        properties.modelURL = assetsRootPath + "models/geometry/avatars/art3mis/art3mis.fst";
         properties.position = getStagePosOriAt(0, 1, 0).pos;
         properties.name = "valid url model";
 

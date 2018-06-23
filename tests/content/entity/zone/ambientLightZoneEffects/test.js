@@ -4,7 +4,7 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", function(testType) {
     var avatarOriginPosition = MyAvatar.position;
 
-    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
+    var assetsRootPath = autoTester.getAssetsRootPath();
 
     var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
     var MODEL_SCALE = 0.75;
@@ -19,12 +19,13 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     var marker1;
     var marker2;
     var marker3;
-    
+
+
     var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
     var objectProperties = {
         lifetime: LIFETIME,
         type: "Model",
-        modelURL: TESTS_URL + 'assets/models/material_matrix_models/fbx/blender/' + objectName + '.fbx',
+        modelURL: assetsRootPath + 'models/material_matrix_models/fbx/blender/' + objectName + '.fbx',
         name: objectName,
         position: Vec3.sum(MyAvatar.position, MODEL_OFFSET),    
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),    
@@ -43,9 +44,9 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
     var marker2Dimensions = { x:  8.0, y: 0.01, z: 20.0};
     var marker3Dimensions = { x:  4.0, y: 0.01, z: 30.0};
 
-    var BRIGHT_SKY_URL = TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json';
-    var CLOUDY_SKY_URL = TESTS_URL + 'assets/skymaps/ThickCloudsWater2.jpg';
-    var NIGHT_SKY_URL = TESTS_URL + 'assets/skymaps/FullMoon1024Compressed.jpg';
+    var BRIGHT_SKY_URL = assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json';
+    var CLOUDY_SKY_URL = assetsRootPath + 'skymaps/ThickCloudsWater2.jpg';
+    var NIGHT_SKY_URL = assetsRootPath + 'skymaps/FullMoon1024Compressed.jpg';
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar

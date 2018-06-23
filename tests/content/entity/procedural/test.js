@@ -8,7 +8,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
 
     MyAvatar.orientation = { x: 0, y: 1, z: 0, w: 0 };
 
-    var assetsRepo = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
+    var assetsRootPath = autoTester.getAssetsRootPath();
 
     entityIds.push(Entities.addEntity({
         type: "Shape",
@@ -19,7 +19,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestPosition.fs",
+                "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestPosition.fs",
                 "version": 2
             }
         })
@@ -34,7 +34,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestTexCoord.fs",
+                "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestTexCoord.fs",
                 "version": 2
             }
         })
@@ -49,7 +49,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": assetsRepo + "assets/shaders/proceduralShapeTestNormal.fs",
+                "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestNormal.fs",
                 "version": 2
             }
         })
@@ -73,7 +73,7 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": assetsRepo + "assets/shaders/proceduralZoneTest.fs",
+                "shaderUrl": assetsRootPath + "shaders/proceduralZoneTest.fs",
                 "version": 2
             }
         })
