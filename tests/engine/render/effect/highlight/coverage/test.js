@@ -233,7 +233,6 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
-    var TESTS_URL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/" + autoTester.getBranch() + "/";
     var hifi = Entities.addEntity({
         type: "Model",
         name: "Hifi",
