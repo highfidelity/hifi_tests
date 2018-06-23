@@ -202,21 +202,18 @@ setUpTest = function(testCase) {
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
     if (testCase.usePrimaryCamera) {
-        // The avatar is pointed down the Z axis, so the test can be seen on-screen
-        MyAvatar.orientation = q0;
-        MyAvatar.bodyYaw =   0.0;
-        MyAvatar.bodyPitch = 0.0;
-        MyAvatar.bodyRoll =  0.0;
-        MyAvatar.headYaw =   0.0;
-        MyAvatar.headPitch = 0.0;
-        MyAvatar.headRoll =  0.0;
-
         // Set the camera mode to independent
         previousCameraMode = Camera.mode;
         Camera.mode = "independent";
         
         Camera.setOrientation(q0);
         Camera.setPosition(p0);
+
+        // The avatar is also pointed down the Z axis, so the test can be seen on-screen
+        MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+        MyAvatar.headYaw =   0.0;
+        MyAvatar.headPitch = 0.0;
+        MyAvatar.headRoll =  0.0;
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
@@ -228,6 +225,7 @@ setUpTest = function(testCase) {
         spectatorCameraConfig.orientation = q0;
         spectatorCameraConfig.position = p0;
     }
+
 
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
@@ -415,31 +413,24 @@ module.exports.getOriginFrame = function () {
     return originFrame;
 }
 
-// Utilities to provide GitHub branch and repository (i.e. GitHub path to "tests")
-var _user;
-var _repository;
-var _branch;
+// Utilities to provide GitHub repository path
 var _repositoryPath;
-
-module.exports.setRepositoryInfo = function (user, repository, branch, repositoryPath) {
-    _user = user;
-    _repository = repository;
-    _branch = branch;
+module.exports.setRepositoryInfo = function (repositoryPath) {
     _repositoryPath = repositoryPath;
-}
-
-module.exports.getUser = function () {
-    return _user;
-}
-
-module.exports.getRepository = function () {
-    return _repository;
-}
-
-module.exports.getBranch = function () {
-    return _branch;
 }
 
 module.exports.getRepositoryPath = function () {
     return _repositoryPath;
+}
+
+module.exports.getTestsRootPath = function () {
+    return _repositoryPath + "tests/";
+}
+
+module.exports.getUtilsRootPath = function () {
+    return _repositoryPath + "tests/utils/";
+}
+
+module.exports.getAssetsRootPath = function () {
+    return _repositoryPath + "assets/";
 }
