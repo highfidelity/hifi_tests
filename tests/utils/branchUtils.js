@@ -35,7 +35,7 @@ createAutoTester = function (executionPath) {
     var repositoryPath = getRepositoryPath(executionPath);
 
     var autoTester =  Script.require(repositoryPath + "tests/utils/autoTester.js");
-    autoTester.setRepositoryInfo(user, repositoryPath, branch);
+    autoTester.setRepositoryInfo(repositoryPath);
 
     return autoTester;
 }
