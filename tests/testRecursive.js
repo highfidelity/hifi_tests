@@ -1,6 +1,6 @@
 // This is an automatically generated file, created by auto-tester on Jun 21 2018, 14:25
 
-PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/NissimHadar/hifi_tests/addRCtoDailyTests/tests/utils/branchUtils.js";
+PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
