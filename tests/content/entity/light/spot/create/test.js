@@ -4,7 +4,7 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
-    Script.include("../../../../../utils/test_stage.js?raw=true")
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
 	var flags = { 

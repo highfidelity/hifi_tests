@@ -3,7 +3,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePath("."), "primary", function(testType) {
-    Script.include("../../../../../../utils/test_stage.js?raw=true");
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
     var flags = { 

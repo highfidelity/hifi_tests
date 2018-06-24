@@ -1,4 +1,4 @@
-Script.include("../../../../utils/test_stage.js?raw=true")
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
     var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
 
     var properties = {

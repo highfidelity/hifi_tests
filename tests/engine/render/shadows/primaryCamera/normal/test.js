@@ -4,7 +4,7 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Shadow - light on top", Script.resolvePath("."), "primary", function(testType) {
     // Test material matrix
-    Script.include("../../setup.js?raw=true")
+    Script.include("../../setup.js?raw=true");
 
     // Add the test Cases
     var createdEntities = [];

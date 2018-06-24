@@ -6,7 +6,7 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include("../../../utils/test_stage.js?raw=true")
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js")
 
 var assetsRootPath = autoTester.getAssetsRootPath();
 
