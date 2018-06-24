@@ -9,7 +9,7 @@
 Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
 var assetsRootPath = autoTester.getAssetsRootPath();
-var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
 var MODEL_SCALE = 1.0;
