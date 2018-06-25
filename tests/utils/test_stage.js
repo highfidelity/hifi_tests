@@ -177,13 +177,16 @@ stageAxisA = Vec3.multiply(TILE_UNIT, Quat.getForward(stageOrientation));
 stageAxisB = Vec3.multiply(TILE_UNIT, Quat.getRight(stageOrientation));
 stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 
-// flags is an object creating the zone if required, and providing values for its fields:
-//      hasZone         - default is on
-//      hasKeyLight     - default is on
-//      hasAmbientLight - default is on
-//      hasLocalLights  - default is off
-//      hasSkybox       - default is on
-//      hasHaze         - default is off
+// initData has 3 elements:
+//      flags is an object creating the zone if required, and providing values for its fields:
+//           hasZone         - default is on
+//           hasKeyLight     - default is on
+//           hasAmbientLight - default is on
+//           hasLocalLights  - default is off
+//           hasSkybox       - default is on
+//           hasHaze         - default is off
+//      lifetime - default is 200
+//      originFrame - the coordinate system origin
 setupStage = function (initData) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;

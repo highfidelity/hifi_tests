@@ -14,7 +14,7 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), "s
         },
         originFrame: autoTester.getOriginFrame()
     };
-    var createdEntities = setupStage(initData));
+    var createdEntities = setupStage(initData);
     
     var posOri = getStagePosOriAt(4.0, -2, 0.0);
 
