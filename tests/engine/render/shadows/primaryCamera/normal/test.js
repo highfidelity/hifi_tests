@@ -1,9 +1,10 @@
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Shadow - light on top", Script.resolvePath("."), "primary", function(testType) {
     // Test material matrix
-    Script.include("../../setup.js?raw=true")
+    Script.include("../../setup.js?raw=true");
 
     // Add the test Cases
     var createdEntities = [];

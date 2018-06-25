@@ -1,9 +1,10 @@
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Point light", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
-    Script.include("../../../../../utils/test_stage.js?raw=true")
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
 	var flags = { 

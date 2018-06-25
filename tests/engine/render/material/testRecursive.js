@@ -1,9 +1,10 @@
-// This is an automatically generated file, created by auto-tester on Jun 21 2018, 14:25
+// This is an automatically generated file, created by auto-tester on Jun 24 2018, 12:31
 
-Script.include("https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js");
+PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-var repositoryPath = autoTester.getRepositoryPath();
+var testsRootPath = autoTester.getTestsRootPath();
 
 if (typeof Test !== 'undefined') {
     Test.wait(10000);
@@ -12,12 +13,12 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "engine/render/material/roughness_map/test.js");
-Script.include(repositoryPath + "engine/render/material/roughness/test.js");
-Script.include(repositoryPath + "engine/render/material/opacity/test.js");
-Script.include(repositoryPath + "engine/render/material/normal_map/test.js");
-Script.include(repositoryPath + "engine/render/material/emissive/test.js");
-Script.include(repositoryPath + "engine/render/material/base/test.js");
-Script.include(repositoryPath + "engine/render/material/albedo/test.js");
+Script.include(testsRootPath + "engine/render/material/roughness_map/test.js");
+Script.include(testsRootPath + "engine/render/material/roughness/test.js");
+Script.include(testsRootPath + "engine/render/material/opacity/test.js");
+Script.include(testsRootPath + "engine/render/material/normal_map/test.js");
+Script.include(testsRootPath + "engine/render/material/emissive/test.js");
+Script.include(testsRootPath + "engine/render/material/base/test.js");
+Script.include(testsRootPath + "engine/render/material/albedo/test.js");
 
 autoTester.runRecursive();

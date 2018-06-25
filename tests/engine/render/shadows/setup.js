@@ -6,10 +6,10 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include("../../../utils/test_stage.js?raw=true")
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
 var assetsRootPath = autoTester.getAssetsRootPath();
-var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
 var MODEL_SCALE = 1.0;

@@ -1,4 +1,5 @@
-//Locate the "tests" folder ,returns the path including "tests"
+// Locate the "repository" folder ,returns the path up to, but not including, "tests"
+// Note that the result includes the final '/'
 getRepositoryPath = function (executionPath) {
     var words = executionPath.split("/");
 
@@ -12,6 +13,7 @@ getRepositoryPath = function (executionPath) {
 
     return repositoryPath;
 }
+
 // Returns the `autoTester.js` version on the branch we are executing from
 createAutoTester = function (executionPath) {
     // Default values
@@ -33,7 +35,7 @@ createAutoTester = function (executionPath) {
     var repositoryPath = getRepositoryPath(executionPath);
 
     var autoTester =  Script.require(repositoryPath + "tests/utils/autoTester.js");
-    autoTester.setRepositoryInfo(user, repositoryPath, branch);
+    autoTester.setRepositoryInfo(repositoryPath);
 
     return autoTester;
 }
