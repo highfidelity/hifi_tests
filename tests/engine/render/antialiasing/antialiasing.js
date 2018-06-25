@@ -56,7 +56,13 @@ function addOverlayTestCase(test, origin, orientation) {
 }
 
 function addCasesAt(origin, orientation, testCases, hasZone) {
-    var backdrop = setupStage(hasZone, hasZone, false);
+    var initData = {
+        flags : { 
+            hasZone: hasZone,
+        },
+        originFrame: autoTester.getOriginFrame()
+    };
+    var backdrop = setupStage(initData);
 
     var models = [];
     for (var i = 0; i < testCases.length; i++) {

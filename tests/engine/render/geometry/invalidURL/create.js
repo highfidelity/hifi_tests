@@ -3,7 +3,8 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
-var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
+var initData = { originFrame: autoTester.getOriginFrame() };
+var createdEntities = setupStage(initData);
 
 var properties = {
     lifetime: 120,  

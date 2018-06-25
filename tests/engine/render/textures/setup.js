@@ -24,13 +24,17 @@ var USER_DATA = {
 };
 
 setup = function (originFrame) {
-    var flags = { 
-        hasZone: false,
-        hasKeyLight: false,
-        hasAmbientLight: false
-    };
     IMAGE_POSITION = { x: originFrame.x, y: originFrame.y + 1.8, z: originFrame.z - 0.5 };
-    return setupStage(flags, LIFETIME, originFrame);
+
+    var initData = {
+        flags : { 
+            hasZone: false,
+            hasKeyLight: false,
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
+    };
+    return setupStage(initData);
 }
 
 getAspect = function(props) {

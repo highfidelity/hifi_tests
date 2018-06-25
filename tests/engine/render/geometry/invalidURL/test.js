@@ -6,7 +6,8 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
     // Test material matrix
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
-    var createdEntities = setupStage(undefined, undefined, autoTester.getOriginFrame());
+    var initData = { originFrame: autoTester.getOriginFrame() };
+    var createdEntities = setupStage(initData);
 
     var assetsRootPath = autoTester.getAssetsRootPath();
 

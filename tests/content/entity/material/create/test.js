@@ -7,11 +7,15 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
     var LIFETIME = 200;
 
     // Add the test Cases
-    var flags = { 
-        hasKeyLight: false,
-        hasAmbientLight: false
+    var initData = {
+        flags : { 
+            hasKeyLight: false,
+            hasAmbientLight: false
+        },
+        lifetime: 200,
+        originFrame: autoTester.getOriginFrame()
     };
-    var createdEntities = setupStage(flags, 200, autoTester.getOriginFrame());
+    var createdEntities = setupStage(initData);
 
     var posOri = getStagePosOriAt(0, 0, 0);
 

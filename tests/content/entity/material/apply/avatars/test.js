@@ -6,10 +6,13 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
-    var flags = { 
-        hasAmbientLight: false
+    var initData = {
+        flags : { 
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
     };
-    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame());
+    var createdEntities = setupStage(initData);
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
