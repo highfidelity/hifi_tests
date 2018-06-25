@@ -13,7 +13,7 @@ SET BRANCH=%1
 ECHO Starting Test for %BRANCH%
 
 SET USER="highfidelity"
-IF NOT "%~2" == "" GOTO :NO_USER_PARAMETER
+IF "%~2" == "" GOTO :NO_USER_PARAMETER
 SET USER=%2
 
 :NO_USER_PARAMETER
@@ -52,7 +52,7 @@ ECHO Waiting for server to stabilize
 ping localhost -n 7 >nul
 
 ECHO Running Interface tests
-START /WAIT %INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/%USER%/"hifi_tests"/%BRANCH%/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
+START /WAIT %INSTALL_DIR%\interface.exe --url hifi://localhost/8000,8000,8000/0,0.0,0.0,1.0 --testScript https://raw.githubusercontent.com/%USER%/hifi_tests/%BRANCH%/tests/testRecursive.js quitWhenFinished --testResultsLocation %TEST_RESULT_LOCATION%
 
 ECHO Stopping local server
 taskkill /im assignment-client.exe /f >nul
