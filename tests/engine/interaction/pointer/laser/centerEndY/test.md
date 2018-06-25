@@ -8,7 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Move up to see the objects
+### Step 2
 - Running LaserPointer centerEndY test
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Clean up after test

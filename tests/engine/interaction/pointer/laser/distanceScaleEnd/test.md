@@ -8,13 +8,15 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Move up and back to see the objects
+### Step 2
 - Minimum distance
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Mid distance
 - ![](./ExpectedImage_00001.png)
-### Step 3
+### Step 4
 - Maximum distance
 - ![](./ExpectedImage_00002.png)
-### Step 4
+### Step 5
 - Clean up

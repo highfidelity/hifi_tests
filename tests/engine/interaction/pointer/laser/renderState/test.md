@@ -8,22 +8,24 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Move up to see the objects
+### Step 2
 - Not attached
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Attached red - state 1
 - ![](./ExpectedImage_00001.png)
-### Step 3
+### Step 4
 - Attached green - state 2
 - ![](./ExpectedImage_00002.png)
-### Step 4
+### Step 5
 - Attached blue - state 3
 - ![](./ExpectedImage_00003.png)
-### Step 5
+### Step 6
 - Attached cyan - state 4
 - ![](./ExpectedImage_00004.png)
-### Step 6
+### Step 7
 - Attached red - state 5
 - ![](./ExpectedImage_00005.png)
-### Step 7
+### Step 8
 - Clean up
