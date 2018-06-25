@@ -22,11 +22,12 @@ Make sure the local sandbox is not running.
 
 Open *DailyTests.bat* and edit the following two lines, to point to appropriate directories:
 ```
-SET INSTALL_DIR=D:\<installation directory>
+SET INSTALL_DIR=<installation directory>
 SET TEST_RESULT_LOCATION=<snapshot and test results directory>
 ```
 
-To run: `>DailyTests.bat <RC name>`
+To run: `>DailyTests.bat <RC name>`.  
+An optional second parameter may be provided - the GitHub user.  The default is *highfidelity*.  
 If any tests fail, a zipped directory will be created, containing the test results.
 ### Notes
 Any previous snapshots (i.e. PNG files) are deleted before the test.
