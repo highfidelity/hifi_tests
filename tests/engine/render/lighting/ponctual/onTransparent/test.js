@@ -7,11 +7,15 @@ autoTester.perform("Lighting on Transparent Object", Script.resolvePath("."), "s
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
-    var flags = { 
-		hasKeyLight: false,
-		hasAmbientLight: false
-	};
-    var createdEntities = setupStage(flags, undefined, autoTester.getOriginFrame());
+    var initData = {
+        flags : { 
+            hasKeyLight: false,
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
+    };
+    var createdEntities = setupStage(initData));
+    
     var posOri = getStagePosOriAt(4.0, -2, 0.0);
 
     {

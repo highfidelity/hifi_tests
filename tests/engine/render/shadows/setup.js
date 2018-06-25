@@ -17,12 +17,15 @@ var LIFETIME = 100;
 
 setup = function (altitude, azimuth, originFrame) {
     // Create backdrop
-    var flags = { 
-        hasZone: false,
-        hasKeyLight: false,
-        hasAmbientLight: false
+    var initData = {
+        flags : { 
+            hasZone: false,
+            hasKeyLight: false,
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
     };
-    var entities = setupStage(flags, LIFETIME, originFrame);
+    var entities = setupStage(initData);
 
     // Create zone
     var BRIGHT_SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
