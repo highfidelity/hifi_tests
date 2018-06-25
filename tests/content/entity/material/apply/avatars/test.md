@@ -8,14 +8,16 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Enter T-pose
+- Setup avatar
 ### Step 2
+- Set T-Pose
+### Step 3
 - Avatar without material
 - ![](./ExpectedImage_00000.png)
-### Step 3
-- Add material to avatar
 ### Step 4
+- Add material to avatar
+### Step 5
 - Display material on avatar
 - ![](./ExpectedImage_00001.png)
-### Step 5
+### Step 6
 - Clean up after test

@@ -8,7 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Setup
+### Step 2
 - Haze with low range, low ceiling and high base
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Clean up after test
