@@ -8,10 +8,12 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Move back to see the objects
+### Step 2
 - Enabled right laser
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Enabled left laser
 - ![](./ExpectedImage_00001.png)
-### Step 3
+### Step 4
 - Clean up

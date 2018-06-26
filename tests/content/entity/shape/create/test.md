@@ -8,9 +8,11 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Build a grid of shapes in front of avatar
+- Rotate secondary camera
 ### Step 2
+- Build a grid of shapes in front of avatar
+### Step 3
 - Take snapshot of all the shapes
 - ![](./ExpectedImage_00000.png)
-### Step 3
+### Step 4
 - Clean up after test
