@@ -12,9 +12,10 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include("../../../utils/test_stage.js?raw=true")
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js")
 
-var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
+var assetsRootPath = autoTester.getAssetsRootPath();
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
 var MODEL_SCALE = 0.75;
@@ -23,13 +24,16 @@ var ROOT_Y_OFFSET = -0.1;
 var ROOT_Z_OFFSET = 3.0;
 var LIFETIME = 120;
 
-function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights) {  
-	var flags = { 
-		hasKeyLight: hasZone,
-		hasAmbientLight: hasZone,
-		hasLocalLights: hasLocalLights
-	};
-    var backdrop = setupStage(flags)
+function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights, originFrame) {  
+    var initData = {
+        flags : { 
+            hasKeyLight: hasZone,
+            hasAmbientLight: hasZone,
+            hasLocalLights: hasLocalLights
+        },
+        originFrame: autoTester.getOriginFrame()
+    };
+    var backdrop = setupStage(initData);
 
     return backdrop;
 }
@@ -74,8 +78,8 @@ function addOverlayTestCase(test, origin, orientation) {
     return addTestOverlay(test.name, test.infront, center, orientation);
 }
 
-function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights) {
-    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation, hasZone, hasLocalLights);
+function addCasesAt(origin, orientation, testCases, hasZone, hasLocalLights, originFrame) {
+    var backdrop = addTestBackdropLocal("Material_matrix_backdrop", origin, orientation, hasZone, hasLocalLights, originFrame);
     
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
@@ -92,7 +96,7 @@ function addOverlayCasesAt(origin, orientation, testCases) {
     return models;
 }
   
-addCases = function (testCases, hasZone, hasLocalLights) {
+addCases = function (testCases, hasZone, hasLocalLights, originFrame) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
@@ -101,7 +105,7 @@ addCases = function (testCases, hasZone, hasLocalLights) {
     var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
     root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
-    return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights);
+    return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights, originFrame);
 }
 
 addOverlayCases = function (testCases) {

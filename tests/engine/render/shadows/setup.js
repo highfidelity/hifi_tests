@@ -6,32 +6,29 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include("../../../utils/test_stage.js?raw=true")
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
+var assetsRootPath = autoTester.getAssetsRootPath();
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
-var TESTS_URL = "https://github.com/" + user + repository + "blob/" + branch;
-var RAW_TESTS_URL = "https://raw.githubusercontent.com/" + user + repository + branch;
-var ASSETS_URL = TESTS_URL + "assets/"
-var MODEL_DIR_URL = ASSETS_URL + "models/material_matrix_models/fbx/blender/";
-var SUFFIX = "?raw=true";
-var MODEL_NAME_SUFFIX = ".fbx"+SUFFIX;
+var MODEL_NAME_SUFFIX = ".fbx";
 var MODEL_SCALE = 1.0;
 var LIFETIME = 100;
 
 setup = function (altitude, azimuth, originFrame) {
     // Create backdrop
-    var flags = { 
-        hasZone: false,
-        hasKeyLight: false,
-        hasAmbientLight: false
+    var initData = {
+        flags : { 
+            hasZone: false,
+            hasKeyLight: false,
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
     };
-    var entities = setupStage(flags, LIFETIME)
+    var entities = setupStage(initData);
 
     // Create zone
-    var BRIGHT_SKY_URL = Script.resolvePath(RAW_TESTS_URL + 'assets/skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
+    var BRIGHT_SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
         name: "Zone",

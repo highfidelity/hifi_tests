@@ -6,15 +6,13 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include("../../../utils/test_stage.js?raw=true")
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js")
 
-var user = "highfidelity/";
-var repository = "hifi_tests/";
-var branch = "master/";
-var ASSETS_BASE_URL = Script.resolvePath("../../../../assets") + "/";
-console.warn("QQQ " + ASSETS_BASE_URL);
+var assetsRootPath = autoTester.getAssetsRootPath();
+
 var LIFETIME = 300;
-var SHADER_URL = ASSETS_BASE_URL + "shaders/texture.fs?raw=true";
+var SHADER_URL = assetsRootPath + "shaders/texture.fs";
+
 var IMAGE_POSITION;
 var USER_DATA = { 
     ProceduralEntity: {
@@ -25,14 +23,18 @@ var USER_DATA = {
     grabbableKey: { grabbable: false, ignoreIK: true }
 };
 
-setup = function () {
-    var flags = { 
-        hasZone: false,
-        hasKeyLight: false,
-        hasAmbientLight: false
+setup = function (originFrame) {
+    IMAGE_POSITION = { x: originFrame.x, y: originFrame.y + 1.8, z: originFrame.z - 0.5 };
+
+    var initData = {
+        flags : { 
+            hasZone: false,
+            hasKeyLight: false,
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
     };
-    IMAGE_POSITION = Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.6, z: -0.7 }));
-    return setupStage(flags, LIFETIME)
+    return setupStage(initData);
 }
 
 getAspect = function(props) {
@@ -70,7 +72,7 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl = Script.resolvePath(ASSETS_BASE_URL + "textures/" + props.image + "?raw=true");
+    var imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image + "?raw=true");
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({

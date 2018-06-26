@@ -1,7 +1,12 @@
 // Test material matrix
-Script.include("../../../utils/test_stage.js?raw=true")
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
-var MODEL_DIR_URL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/";
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+
+var assetsRootPath = autoTester.getAssetsRootPath();
+var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
 var MODEL_SCALE = 0.75;
@@ -22,7 +27,7 @@ function addTestModel(name, position, orientation) {
         angularDamping:0,
         lifetime: LIFETIME,
       });
-  
+
     return newModel;
 }
 
@@ -36,7 +41,7 @@ function addTestOverlay(name, infront, position, orientation) {
         solid: false,
         drawInFront: infront
     });
-  
+
     return newModel;
 }
 
@@ -51,8 +56,14 @@ function addOverlayTestCase(test, origin, orientation) {
 }
 
 function addCasesAt(origin, orientation, testCases, hasZone) {
-    var backdrop = setupStage(hasZone, hasZone, false);
-    
+    var initData = {
+        flags : { 
+            hasZone: hasZone,
+        },
+        originFrame: autoTester.getOriginFrame()
+    };
+    var backdrop = setupStage(initData);
+
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
         models.push(addTestCase(testCases[i], origin, orientation));
@@ -64,10 +75,10 @@ function addOverlayCasesAt(origin, orientation, testCases) {
     var models = [];
     for (var i = 0; i < testCases.length; i++) {
         models.push(addOverlayTestCase(testCases[i], origin, orientation));
-    }  
+    }
     return models;
 }
-  
+
 addCases = function (testCases, hasZone) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;

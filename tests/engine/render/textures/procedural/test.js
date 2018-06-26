@@ -1,8 +1,6 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 var testFiles = [
     ////{ image: "uncompressed_color.ktx", resolution: [2048, 2048] },
@@ -18,12 +16,15 @@ autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", fu
 
     var stageEntities;
     autoTester.addStep("Set up scene", function() {
-        stageEntities = setup();
+        stageEntities = setup(autoTester.getOriginFrame());
     });
 
-    autoTester.addStep("Position avatar and camera", function() {
-        MyAvatar.position = Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: 0.4, z: 0.0 }));
-        validationCamera_translate(Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0, y: -0.2, z: 0.0 }));
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
 
     testFiles.forEach(function(props) {
@@ -51,6 +52,11 @@ autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", fu
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < stageEntities.length; i++) {
             Entities.deleteEntity(stageEntities[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 
