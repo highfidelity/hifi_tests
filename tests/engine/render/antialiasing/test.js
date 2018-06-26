@@ -23,7 +23,7 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", fun
 
     autoTester.addStep("Set up test case", function () {
         createdEntities = addCases(TEST_CASES, true, autoTester.getOriginFrame());
-        createdOverlays = addOverlayCases(TEST_OVERLAYS);
+        createdOverlays = addOverlayCases(TEST_OVERLAYS, autoTester.getOriginFrame());
 
         var offset = { x: 0.0, y: -0.4, z: 0.45 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);

@@ -21,7 +21,7 @@ var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.80928379297
 var MODEL_SCALE = 0.75;
 var MODEL_SPIN = 0.0;
 var ROOT_Y_OFFSET = -0.1;
-var ROOT_Z_OFFSET = 3.0;
+var ROOT_Z_OFFSET = 4.0;
 var LIFETIME = 120;
 
 function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLights, originFrame) {  
@@ -102,19 +102,19 @@ addCases = function (testCases, hasZone, hasLocalLights, originFrame) {
     orientation = Quat.safeEulerAngles(orientation);
     orientation.x = 0;
     orientation = Quat.fromVec3Degrees(orientation);
-    var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    var root = Vec3.sum(originFrame, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
     root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
     return addCasesAt(root, orientation, testCases, hasZone, hasLocalLights, originFrame);
 }
 
-addOverlayCases = function (testCases) {
+addOverlayCases = function (testCases, originFrame) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
     var orientation = MyAvatar.orientation;
     orientation = Quat.safeEulerAngles(orientation);
     orientation.x = 0;
     orientation = Quat.fromVec3Degrees(orientation);
-    var root = Vec3.sum(MyAvatar.position, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
+    var root = Vec3.sum(originFrame, Vec3.multiply(ROOT_Z_OFFSET, Quat.getForward(orientation)));
     root = Vec3.sum(root, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
 
     return addOverlayCasesAt(root, orientation, testCases);
