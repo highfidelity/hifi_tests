@@ -1,12 +1,12 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", function(testType) {
     var createdEntities = [];
     var createdOverlays = [];
+
+    var assetsRootPath = autoTester.getAssetsRootPath();
 
     // all objects will have a finite lifetime
     var LIFETIME = 300; // 5 min
@@ -26,7 +26,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 2, y: 0.25, z: 0.25 },
         dynamic: false,
         lifetime: LIFETIME,
-        color: { red: 0, green: 0, blue: 155 }
+        color: { red: 0, green: 0, blue: 155 },
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var redSphere = Entities.addEntity({
@@ -36,7 +37,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 0.5, y: 0.5, z: 0.5 },
         dynamic: false,
         lifetime: LIFETIME,
-        color: { red: 200, green: 0, blue: 0 }
+        color: { red: 200, green: 0, blue: 0 },
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var greenPaint = Entities.addEntity({
@@ -229,6 +231,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         type: "PolyLine",
         lifetime: LIFETIME,
         dynamic: false,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var hifi = Entities.addEntity({
@@ -238,7 +241,8 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dimensions: { x: 2, y: 2, z: 2 },
         dynamic: false,
         lifetime: LIFETIME,
-        modelURL: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/master/hifi.fbx?raw=true"
+        modelURL: assetsRootPath + "models/material_matrix_models/fbx/master/hifi.fbx?raw=true",
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var terrain = Entities.addEntity(       {
@@ -253,15 +257,16 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         dynamic: false,
         xTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg",
         yTextureURL: "http://headache.hungry.com/~seth/hifi/grass.png",
-        zTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg"
+        zTextureURL: "http://headache.hungry.com/~seth/hifi/dirt.jpeg",
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     var overlayProperties = {
-        url: "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
+        url: assetsRootPath + "models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
         name: "overlayModel",
         position: { x: MyAvatar.position.x + 2.0, y: MyAvatar.position.y, z: MyAvatar.position.z + 3.0 },
         dimensions: { x: 2, y: 2, z: 2 },
-        grabbable: true
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     }
     var overlayModel = Overlays.addOverlay("model", overlayProperties);
 

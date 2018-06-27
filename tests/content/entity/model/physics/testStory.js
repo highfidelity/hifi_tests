@@ -16,6 +16,8 @@ Script.scriptEnding.connect(cleanup);
 var LIFETIME = 120; // 2 min
 var offset = { x: 0, y: -10, z: -18 };
 
+var assetsRootPath = autoTester.getAssetsRootPath();
+
 // build a floor
 if (true) {
     var floorColor = { red:100, green: 200, blue: 80 };
@@ -55,10 +57,10 @@ var models = [
     "threeCross-three-submeshes"
 ];
 var modelUrls = [
-    "https://github.com/highfidelity/hifi_tests/raw/master/assets/models/collisions/xyzCross-single-mesh.fbx",
-    "https://github.com/highfidelity/hifi_tests/raw/master/assets/models/collisions/xyzCross-three-submeshes.fbx"
+    assetsRootPath + "models/collisions/xyzCross-single-mesh.fbx",
+    assetsRootPath + "models/collisions/xyzCross-three-submeshes.fbx"
 ];
-var compoundShapeURL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/collisions/threeCross-hulls.obj";
+var compoundShapeURL = assetsRootPath + "models/collisions/threeCross-hulls.obj";
 
 var numModels = models.length;
 var numShapeTypes = shapeTypes.length;

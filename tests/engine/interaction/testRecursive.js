@@ -1,24 +1,25 @@
-// This is an automatically generated file, created by auto-tester on Jun 11 2018, 10:45
+// This is an automatically generated file, created by auto-tester on Jun 24 2018, 12:31
 
-user = "highfidelity/";
-repository = "hifi_tests/";
-branch = "master/";
+PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
-Test.wait(10000);
+var testsRootPath = autoTester.getTestsRootPath();
 
-var repositoryPath = "https://github.com/" + user + repository + "blob/" + branch;
-var autoTester = Script.require(repositoryPath + "tests/utils/autoTester.js?raw=true");
+if (typeof Test !== 'undefined') {
+    Test.wait(10000);
+};
 
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/renderState/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/lockEndUUID/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/lockEnd/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/ignore/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/faceAvatar/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/enable/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/distanceScaleEnd/test.js?raw=true");
-Script.include(repositoryPath + "/tests/engine/interaction/pointer/laser/centerEndY/test.js?raw=true");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/renderState/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/lockEndUUID/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/lockEnd/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/ignore/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/faceAvatar/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/enable/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/distanceScaleEnd/test.js");
+Script.include(testsRootPath + "engine/interaction/pointer/laser/centerEndY/test.js");
 
 autoTester.runRecursive();

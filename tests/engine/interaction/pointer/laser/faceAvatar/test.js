@@ -1,11 +1,11 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
+
+    initializeTestData(autoTester.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -72,6 +72,11 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "pri
     autoTester.addStepSnapshot("5th position");
     
     autoTester.addStep("Clean up after test", function () {
+        // Restore avatar's pose
+        var angle = 0.0 * 3.1416 / 5.0;
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
+
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }

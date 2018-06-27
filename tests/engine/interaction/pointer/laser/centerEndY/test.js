@@ -1,11 +1,11 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath("."), "primary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
+
+    initializeTestData(autoTester.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -28,6 +28,12 @@ autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath
         rotation: orientation
     };
     entities.push(Entities.addEntity(properties));
+
+    autoTester.addStep("Move up to see the objects", function () {
+        var offset = { x: 0.0, y: 1.0, z: 0.0 };
+        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
+        validationCamera_translate(offset);
+    });
 
     autoTester.addStepSnapshot("Running LaserPointer centerEndY test");
 

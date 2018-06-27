@@ -1,17 +1,18 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "primary", function(testType) {
-    Script.include("../../../../../utils/test_stage.js?raw=true");
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
-    var flags = { 
-        hasAmbientLight: false
+    var initData = {
+        flags : { 
+            hasAmbientLight: false
+        },
+        originFrame: autoTester.getOriginFrame()
     };
-    var createdEntities = setupStage(flags)
+    var createdEntities = setupStage(initData);
 
     var posOri = getStagePosOriAt(0, 0, 0);
 

@@ -1,14 +1,15 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
-    Script.include("../../../../utils/test_stage.js?raw=true")
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
-    var createdEntities = setupStage()
+    var initData = { originFrame: autoTester.getOriginFrame() };
+    var createdEntities = setupStage(initData);
+
+    var assetsRootPath = autoTester.getAssetsRootPath();
 
     var properties = {
         lifetime: 120,  
@@ -23,11 +24,13 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
             createdEntities.push(Entities.addEntity(properties));
         }
     );
+
+    autoTester.addStep("Give models time to load");
+
     autoTester.addStepSnapshot("Result of invalid URL load");
 
     autoTester.addStep("Load model with valid URL", function () {
-        //properties.modelURL = "https://github.com/highfidelity/hifi_tests/blob/master/assets/models/geometry/avatars/art3mis/art3mis.fst?raw=true";
-        properties.modelURL = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/geometry/avatars/art3mis/art3mis.fst";
+        properties.modelURL = assetsRootPath + "models/geometry/avatars/art3mis/art3mis.fst";
         properties.position = getStagePosOriAt(0, 1, 0).pos;
         properties.name = "valid url model";
 
