@@ -10,12 +10,14 @@ Press 'n' key to advance step by step
 ### Step 1
 - Attempt to load model with invalid URL
 ### Step 2
+- Give models time to load
+### Step 3
 - Result of invalid URL load
 - ![](./ExpectedImage_00000.png)
-### Step 3
-- Load model with valid URL
 ### Step 4
+- Load model with valid URL
+### Step 5
 - Model is loaded
 - ![](./ExpectedImage_00001.png)
-### Step 5
+### Step 6
 - Clean up after test

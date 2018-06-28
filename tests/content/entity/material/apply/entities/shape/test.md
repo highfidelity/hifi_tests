@@ -8,7 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Turn off TAA for this test
+### Step 2
 - Display materials on multiple shapes
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Clean up after test

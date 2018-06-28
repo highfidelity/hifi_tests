@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Setup secondary camera
+- Rotate secondary camera
 ### Step 2
 - Take snapshot of the procedural shape and zone entities
 - ![](./ExpectedImage_00000.png)

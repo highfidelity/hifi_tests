@@ -8,7 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Wait for entities to load
+### Step 2
 - Display point light
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Clean up after test
