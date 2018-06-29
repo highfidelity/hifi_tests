@@ -3,25 +3,27 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
-    var createdEntities = setupStage();
+    var initData = { originFrame: autoTester.getOriginFrame() };
+    var createdEntities = setupStage(initData);
+    
     var assetsRootPath = autoTester.getAssetsRootPath();
 
-	var posOri = getStagePosOriAt(0, 0, 0);
+    var posOri = getStagePosOriAt(0, 0, 0);
 
-// Define avatar properties
-var properties = {
-  lifetime: 120,  
-  type: "Model",  
-  name: "animated model",
-  position: posOri.pos,
-  modelURL: assetsRootPath + "models/geometry/avatars/art3mis/art3mis.fst",
-  animation: {
-    url: assetsRootPath + "models/geometry/avatars/animations/side_step_right.fbx",
-    running: true,
-    loop: true,
-    allowTranslation: false
-  }
-};
+    // Define avatar properties
+    var properties = {
+      lifetime: 120,  
+      type: "Model",  
+      name: "animated model",
+      position: posOri.pos,
+      modelURL: assetsRootPath + "models/geometry/avatars/art3mis/art3mis.fst",
+      animation: {
+        url: assetsRootPath + "models/geometry/avatars/animations/side_step_right.fbx",
+        running: true,
+        loop: true,
+        allowTranslation: false
+      }
+    };
 
 var model = Entities.addEntity(properties);
 createdEntities.push(model);
