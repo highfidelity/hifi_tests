@@ -67,7 +67,8 @@ function addTestOverlay(name, infront, position, orientation) {
         color: { red: 0, green: 0, blue: 255},
         alpha: 1,
         solid: false,
-        drawInFront: infront
+        drawInFront: infront,
+        isVisibleInSecondaryCamera: true
     });
   
     return newModel;
