@@ -1,15 +1,13 @@
 // Create the material test model matrix
 // Based on: https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/material_matrix_models/material_matrix.js
 
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
 
-    Script.include("../../../../../utils/test_stage.js?raw=true");
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 
     var flags = {
@@ -62,8 +60,9 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
             {name:"hifi_opacityV_albedoM_ao",  a:10, b:0}
         ];
 
-        var MODEL_DIR_URL = "https://github.com/" + user + repository + "blob/" + branch + "assets/models/material_matrix_models/fbx/blender/";
-        var MODEL_NAME_SUFFIX = ".fbx?raw=true";
+        var assetsRootPath = autoTester.getAssetsRootPath();
+        var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
+        var MODEL_NAME_SUFFIX = ".fbx";
         var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
         var MODEL_Y_OFFSET = -0.1;
         var MODEL_SCALE = 0.3;

@@ -1,12 +1,10 @@
-if (typeof user === 'undefined') user = "highfidelity/";
-if (typeof repository === 'undefined') repository = "hifi_tests/";
-if (typeof branch === 'undefined') branch = "master/";
-
-var autoTester = Script.require("https://github.com/" + user + repository + "blob/" + branch + "tests/utils/autoTester.js?raw=true" );
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
 
-    Script.include("../../../../../utils/test_stage.js?raw=true");
+    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
     var DIM = { x: 0.5, y: 0.5, z: 0.5};
 
