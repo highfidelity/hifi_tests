@@ -14,8 +14,7 @@ autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         centerEndY: false,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
     Pointers.setRenderState(lasers[0], "five");
 

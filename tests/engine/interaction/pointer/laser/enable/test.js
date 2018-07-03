@@ -14,8 +14,7 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "s
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
     lasers.push(Pointers.createPointer(PickType.Ray, {
         position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.25, right)),
@@ -23,8 +22,7 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "s
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: false,
-        isVisibleInSecondaryCamera: true
+        enabled: false
     }));
 
     for (i = 0; i < lasers.length; i++) {

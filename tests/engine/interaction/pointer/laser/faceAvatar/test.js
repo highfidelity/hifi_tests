@@ -14,8 +14,7 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "sec
         filter: Picks.PICK_ENTITIES,
         renderStates: [{name: "one", start: start1, path: path1, end: end8}],
         faceAvatar: true,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
     Pointers.setRenderState(lasers[0], "one");
 

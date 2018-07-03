@@ -15,8 +15,7 @@ autoTester.perform("Size of laser end increases with distance", Script.resolvePa
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
         distanceScaleEnd: true,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
     Pointers.setRenderState(lasers[0], "one");
 

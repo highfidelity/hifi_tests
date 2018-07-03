@@ -15,8 +15,7 @@ autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), "second
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
         lockEnd: true,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
     Pointers.setRenderState(lasers[0], "one");
 

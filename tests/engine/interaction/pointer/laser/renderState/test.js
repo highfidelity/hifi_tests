@@ -14,8 +14,7 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "se
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
 
     var entities = [];

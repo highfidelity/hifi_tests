@@ -14,8 +14,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
 
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -24,8 +23,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true,
-        isVisibleInSecondaryCamera: true
+        enabled: true
     }));
 
     Pointers.setRenderState(lasers[0], "one");
