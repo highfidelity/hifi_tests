@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Size of laser end increases with distance", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("Size of laser end increases with distance", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -15,7 +15,8 @@ autoTester.perform("Size of laser end increases with distance", Script.resolvePa
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
         distanceScaleEnd: true,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
     Pointers.setRenderState(lasers[0], "one");
 
@@ -34,8 +35,8 @@ autoTester.perform("Size of laser end increases with distance", Script.resolvePa
         position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.5, Vec3.UP))
     });
 
-    autoTester.addStep("Move up and back to see the objects", function () {
-        var offset = { x: 0.0, y: 1.0, z: 1.0 };
+    autoTester.addStep("Move back to see the objects", function () {
+        var offset = { x: 0.0, y: 0.0, z: 1.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });

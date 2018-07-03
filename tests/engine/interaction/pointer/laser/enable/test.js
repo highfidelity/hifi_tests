@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -14,7 +14,8 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "p
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
     lasers.push(Pointers.createPointer(PickType.Ray, {
         position: Vec3.sum(Vec3.sum(pos, {x:0, y:0.5, z:0}), Vec3.multiply(0.25, right)),
@@ -22,7 +23,8 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "p
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: false
+        enabled: false,
+        isVisibleInSecondaryCamera: true
     }));
 
     for (i = 0; i < lasers.length; i++) {

@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -14,7 +14,8 @@ autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         centerEndY: false,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
     Pointers.setRenderState(lasers[0], "five");
 
@@ -28,12 +29,6 @@ autoTester.perform("Laser Pointer - from centre down Y axis", Script.resolvePath
         rotation: orientation
     };
     entities.push(Entities.addEntity(properties));
-
-    autoTester.addStep("Move up to see the objects", function () {
-        var offset = { x: 0.0, y: 1.0, z: 0.0 };
-        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
-        validationCamera_translate(offset);
-    });
 
     autoTester.addStepSnapshot("Running LaserPointer centerEndY test");
 

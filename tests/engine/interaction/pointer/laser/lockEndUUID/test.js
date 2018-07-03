@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -14,7 +14,8 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "pr
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
     Pointers.setRenderState(lasers[0], "one");
 
@@ -27,7 +28,8 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "pr
         dimensions: {x: 0.1, y: 0.1, z: 0.5},
         lifetime: 300,
         color: {red:255, green:0, blue:0},
-        rotation: orientation
+        rotation: orientation,
+        isVisibleInSecondaryCamera: true
     };
     
     entities.push(Entities.addEntity(properties));
@@ -39,21 +41,22 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "pr
 
     Pointers.setLockEndUUID(lasers[0], entities[0], false);
 
-    autoTester.addStep("Move up and back to see the objects", function () {
-        var offset = { x: 0.0, y: 1.0, z: 1.0 };
+    autoTester.addStep("Move back to see the objects", function () {
+        var offset = { x: 0.0, y: 0.0, z: 1.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
-
-    autoTester.addStepSnapshot("Attached to left", function() {
+    autoTester.addStepSnapshot("Attached to left:");
+    
+    autoTester.addStep("Attach to right", function() {
         Pointers.setLockEndUUID(lasers[0], overlays[0], true);
     });
+    autoTester.addStepSnapshot("Attached to right:");
     
-    autoTester.addStepSnapshot("Attached to right", function() {
+    autoTester.addStep("Disconnect", function() {
         Pointers.setLockEndUUID(lasers[0], null, false);
     });
-
-    autoTester.addStepSnapshot("Not attached");
+    autoTester.addStepSnapshot("Not attached:");
 
     autoTester.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {

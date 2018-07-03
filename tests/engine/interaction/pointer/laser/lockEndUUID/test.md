@@ -8,15 +8,19 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Move up and back to see the objects
+- Move back to see the objects
 ### Step 2
-- Attached to left
+- Attached to left:
 - ![](./ExpectedImage_00000.png)
 ### Step 3
-- Attached to right
-- ![](./ExpectedImage_00001.png)
+- Attach to right
 ### Step 4
-- Not attached
-- ![](./ExpectedImage_00002.png)
+- Attached to right:
+- ![](./ExpectedImage_00001.png)
 ### Step 5
+- Disconnect
+### Step 6
+- Not attached:
+- ![](./ExpectedImage_00002.png)
+### Step 7
 - Clean up

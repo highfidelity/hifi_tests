@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -14,15 +14,18 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
+
     lasers.push(Pointers.createPointer(PickType.Ray, {
         position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z: 0.0 }), Vec3.multiply(0.0, right)),
         direction: Vec3.normalize({ x: 0.0, y: -1.0, z: 0.0 }),
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
         defaultRenderStates: defaultRenderStates,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
 
     Pointers.setRenderState(lasers[0], "one");
@@ -49,7 +52,8 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "primary
             solid: true,
             alpha: 1.0,
             visible: true,
-            rotation: orientation
+            rotation: orientation,
+            isVisibleInSecondaryCamera: true
         };
         overlays.push(Overlays.addOverlay("cube", properties));
     }

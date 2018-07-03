@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -14,7 +14,8 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "pri
         filter: Picks.PICK_ENTITIES,
         renderStates: [{name: "one", start: start1, path: path1, end: end8}],
         faceAvatar: true,
-        enabled: true
+        enabled: true,
+        isVisibleInSecondaryCamera: true
     }));
     Pointers.setRenderState(lasers[0], "one");
 
