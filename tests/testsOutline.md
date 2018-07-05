@@ -79,7 +79,7 @@ Directories with an appended (*) have an automatic test
           - [onTransparent](./engine/render/lighting/ponctual/onTransparent?raw=true)  [(test description)](./engine/render/lighting/ponctual/onTransparent/test.md) (*)
       - [lod](./engine/render/lod?raw=true)
         - [overlay](./engine/render/lod/overlay?raw=true)
-          - [model](./engine/render/lod/overlay/model?raw=true)  [(test description)](./engine/render/lod/overlay/model/testStory.md)
+          - [model](./engine/render/lod/overlay/model?raw=true)  [(test description)](./engine/render/lod/overlay/model/test.md)  [(test description)](./engine/render/lod/overlay/model/testStory.md) (*)
       - [material](./engine/render/material?raw=true)
         - [albedo](./engine/render/material/albedo?raw=true)  [(test description)](./engine/render/material/albedo/test.md) (*)
         - [base](./engine/render/material/base?raw=true)  [(test description)](./engine/render/material/base/test.md) (*)
