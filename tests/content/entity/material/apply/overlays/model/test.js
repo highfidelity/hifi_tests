@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePath("."), "secondary", function(testType) {
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
@@ -36,7 +36,8 @@ autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePa
                           lifetime: LIFETIME,
                           url: "http://mpassets.highfidelity.com/0dce3426-55c8-4641-8dd5-d76eb575b64a-v1/Anime_F_Outfit.fst",
                           dimensions: DIM,
-                          orientation: posOri.ori
+                          orientation: posOri.ori,
+                          isVisibleInSecondaryCamera: true
             });
             createdOverlays.push(model);
             if (i != 0 || j != 0) {

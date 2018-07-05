@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../material/matrix.js?raw=true")
 

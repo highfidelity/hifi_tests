@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(autoTester.getOriginFrame());
@@ -32,34 +32,33 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "pr
 
     Pointers.setRenderState(lasers[0], states[0]);
 
-    autoTester.addStep("Move up to see the objects", function () {
-        var offset = { x: 0.0, y: 1.0, z: 0.0 };
-        MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
-        validationCamera_translate(offset);
-    });
+    autoTester.addStepSnapshot("Not attached");
 
-    autoTester.addStepSnapshot("Not attached", function() {
+    autoTester.addStep("Set to state 1 (red)", function() {
         Pointers.setRenderState(lasers[0], states[1]);
     });
+    autoTester.addStepSnapshot("Attached red:");
 
-    autoTester.addStepSnapshot("Attached red - state 1", function() {
+    autoTester.addStep("Set to state 2 (green)", function() {
         Pointers.setRenderState(lasers[0], states[2]);
     });
+    autoTester.addStepSnapshot("Attached green:");
 
-    autoTester.addStepSnapshot("Attached green - state 2", function() {
+    autoTester.addStep("Set to state 3 (blue)", function() {
         Pointers.setRenderState(lasers[0], states[3]);
     });
+    autoTester.addStepSnapshot("Attached blue:");
 
-    autoTester.addStepSnapshot("Attached blue - state 3", function() {
+    autoTester.addStep("Set to state 4 (cyan)", function() {
         Pointers.setRenderState(lasers[0], states[4]);
     });
+    autoTester.addStepSnapshot("Attached cyan:");
 
-    autoTester.addStepSnapshot("Attached cyan - state 4", function() {
+    autoTester.addStep("Set to state 5 (red)", function() {
         Pointers.setRenderState(lasers[0], states[5]);
     });
+    autoTester.addStepSnapshot("Attached red:");
 
-    autoTester.addStepSnapshot("Attached red - state 5");
-    
     autoTester.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
@@ -70,6 +69,6 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "pr
         lasers = [];
         entities = [];
     });
-    
+
     var result = autoTester.runTest(testType);
 });

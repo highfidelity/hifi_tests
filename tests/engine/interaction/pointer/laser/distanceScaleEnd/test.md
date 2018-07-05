@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Move up and back to see the objects
+- Move back to see the objects
 ### Step 2
 - Minimum distance
 - ![](./ExpectedImage_00000.png)
