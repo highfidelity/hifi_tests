@@ -78,10 +78,14 @@ var runOneStep = function (stepFunctor, stepIndex) {
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
-        currentTestCase.usePrimaryCamera 
-            ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
-            : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
-        
+        if (currentTestCase.usePrimaryCamera ) {
+            Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName);
+        } else {
+            spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+            Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
+            spectatorCameraConfig.enableSecondaryCameraRenderConfigs(false);
+        }
+
         ++snapshotIndex;
     }
 }
@@ -216,7 +220,7 @@ setUpTest = function(testCase) {
         MyAvatar.headRoll =  0.0;
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
-        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(false);
         spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
         spectatorCameraConfig.vFoV = 45;
         Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
