@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on Jun 24 2018, 12:31
+// This is an automatically generated file, created by auto-tester on Jul 5 2018, 10:28
 
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
@@ -13,6 +13,10 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
+Script.include(testsRootPath + "content/overlay/material/test.js");
+Script.include(testsRootPath + "content/overlay/layer/drawInFront/shape/test.js");
+Script.include(testsRootPath + "content/overlay/layer/drawInFront/model/test.js");
+Script.include(testsRootPath + "content/overlay/layer/drawHUDLayer/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneOrientation/test.js");
 Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightZoneEffects/test.js");
