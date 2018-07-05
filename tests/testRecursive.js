@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on Jul 2 2018, 19:22
+// This is an automatically generated file, created by auto-tester on Jul 5 2018, 10:28
 
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
@@ -24,6 +24,7 @@ Script.include(testsRootPath + "engine/render/material/normal_map/test.js");
 Script.include(testsRootPath + "engine/render/material/emissive/test.js");
 Script.include(testsRootPath + "engine/render/material/base/test.js");
 Script.include(testsRootPath + "engine/render/material/albedo/test.js");
+Script.include(testsRootPath + "engine/render/lod/overlay/model/test.js");
 Script.include(testsRootPath + "engine/render/lighting/ponctual/onTransparent/test.js");
 Script.include(testsRootPath + "engine/render/geometry/invalidURL/test.js");
 Script.include(testsRootPath + "engine/render/effect/highlight/coverage/test.js");
@@ -48,6 +49,10 @@ Script.include(testsRootPath + "engine/interaction/pointer/laser/faceAvatar/test
 Script.include(testsRootPath + "engine/interaction/pointer/laser/enable/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/distanceScaleEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/centerEndY/test.js");
+Script.include(testsRootPath + "content/overlay/material/test.js");
+Script.include(testsRootPath + "content/overlay/layer/drawInFront/shape/test.js");
+Script.include(testsRootPath + "content/overlay/layer/drawInFront/model/test.js");
+Script.include(testsRootPath + "content/overlay/layer/drawHUDLayer/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneOrientation/test.js");
 Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightZoneEffects/test.js");
