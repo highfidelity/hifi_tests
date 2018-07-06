@@ -16,6 +16,7 @@ var advanceKey = "n";
 var pathSeparator = ".";
 
 var previousCameraMode;
+var previousSecondaryCameraState;
 
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
@@ -78,13 +79,9 @@ var runOneStep = function (stepFunctor, stepIndex) {
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
-        if (currentTestCase.usePrimaryCamera ) {
-            Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName);
-        } else {
-            spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
-            Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
-            spectatorCameraConfig.enableSecondaryCameraRenderConfigs(false);
-        }
+        currentTestCase.usePrimaryCamera 
+            ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
+            : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
 
         ++snapshotIndex;
     }
@@ -220,7 +217,10 @@ setUpTest = function(testCase) {
         MyAvatar.headRoll =  0.0;
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
-        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(false);
+
+        previousSecondaryCameraState = spectatorCameraConfig.enabled;
+        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+
         spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
         spectatorCameraConfig.vFoV = 45;
         Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
@@ -285,6 +285,11 @@ tearDownTest = function() {
     } else {
         // Just stop the script
         Script.stop();
+    }
+
+    // Restore secondary camera state as needed
+    if (!testCase.usePrimaryCamera) {
+        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(previousSecondaryCameraState);
     }
 
     // Disconnect callback
