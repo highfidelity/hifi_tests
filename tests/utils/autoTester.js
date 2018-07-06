@@ -16,7 +16,7 @@ var advanceKey = "n";
 var pathSeparator = ".";
 
 var previousCameraMode;
-var previousSecondaryCameraState;
+var secondaryCameraHasBeenEnabled = false;
 
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
@@ -218,8 +218,11 @@ setUpTest = function(testCase) {
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
 
-        previousSecondaryCameraState = spectatorCameraConfig.enabled;
-        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+        // Turn on seconday camera if not already on
+        if (!spectatorCameraConfig.enabled) {
+            secondaryCameraHasBeenEnabled = true;
+            spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
+        }
 
         spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
         spectatorCameraConfig.vFoV = 45;
@@ -287,11 +290,9 @@ tearDownTest = function() {
         Script.stop();
     }
 
-    console.warn("previousSecondaryCameraState = ", previousSecondaryCameraState, "+++++++++++++++++++++++++++++++++++++++++++++");
-    // Restore secondary camera state as needed
-    if (!testCase.usePrimaryCamera) {
-        console.warn("restoring camera===================================================================================================");
-        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(previousSecondaryCameraState);
+    // Turn secondary camera off if it was off before test
+    if (secondaryCameraHasBeenEnabled) {
+        spectatorCameraConfig.enableSecondaryCameraRenderConfigs(false);
     }
 
     // Disconnect callback
