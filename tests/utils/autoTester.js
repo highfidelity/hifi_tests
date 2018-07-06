@@ -218,7 +218,7 @@ setUpTest = function(testCase) {
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
 
-        // Turn on seconday camera if not already on
+        // Turn on secondary camera if not already on
         if (!spectatorCameraConfig.enabled) {
             secondaryCameraHasBeenEnabled = true;
             spectatorCameraConfig.enableSecondaryCameraRenderConfigs(true);
