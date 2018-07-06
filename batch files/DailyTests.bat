@@ -2,7 +2,7 @@
 
 REM First parameter is compulsory - which GitHub branch to run from
 REM Second parameter is compulsory - installation directory for the HighFidelity executable
-REM Third parameter is compulsory - installation directory for the HighFidelity executable
+REM Third parameter is compulsory - directory for the test results (snapshots and zipped error log).
 REM Fourth parameter selects the GitHub user, default is "highfidelity" (useful for debugging)
 
 REM Exit, with message, if branch parameter is missing
