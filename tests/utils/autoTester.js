@@ -287,8 +287,10 @@ tearDownTest = function() {
         Script.stop();
     }
 
+    console.warn("previousSecondaryCameraState = ", previousSecondaryCameraState, "+++++++++++++++++++++++++++++++++++++++++++++");
     // Restore secondary camera state as needed
     if (!testCase.usePrimaryCamera) {
+        console.warn("restoring camera===================================================================================================");
         spectatorCameraConfig.enableSecondaryCameraRenderConfigs(previousSecondaryCameraState);
     }
 
