@@ -315,11 +315,6 @@ validationCamera_setRotation = function (rotation) {
     }
 }
 
-// This is a position; the orientation is assumed to be looking down the Z axis, Y is up.
-getOriginFrame = function () {
-    return originFrame;
-}
-
 // The following are exported methods, accessible to test scripts
 
 // Perform is the main method of a test
