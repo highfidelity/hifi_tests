@@ -1,4 +1,5 @@
 Script.include("../laserPointerUtils.js?raw=true");
+initializeTestData(MyAvatar.position);
 
 var lasers = [];
 lasers.push(Pointers.createPointer(PickType.Ray, {
