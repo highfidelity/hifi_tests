@@ -413,6 +413,11 @@ module.exports.runRecursive = function () {
     );
 }
 
+// This is a position; the orientation is assumed to be looking down the Z axis, Y is up.
+module.exports.getOriginFrame = function () {
+    return originFrame;
+}
+
 // Utilities to provide GitHub repository path
 var _repositoryPath;
 module.exports.setRepositoryInfo = function (repositoryPath) {

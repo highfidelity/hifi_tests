@@ -3,7 +3,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 Script.include("../laserPointerUtils.js?raw=true");
-initializeTestData(autoTester.getOriginFrame());
+initializeTestData(getOriginFrame());
 
 var lasers = [];
 lasers.push(Pointers.createPointer(PickType.Ray, {
