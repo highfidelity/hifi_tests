@@ -10,7 +10,7 @@ Press 'n' key to advance step by step
 ### Step 1
 - Set up test case
 ### Step 2
-- Show overlays with different alphas (all should be before cubes)
+- Show overlays with different 'drawInFront' (only left should be before cube)
 - ![](./ExpectedImage_00000.png)
 ### Step 3
 - Clean up after test

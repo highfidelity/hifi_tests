@@ -15,71 +15,39 @@ autoTester.perform("Overlays with alpha", Script.resolvePath("."), "secondary", 
     
     autoTester.addStep("Set up test case", function () {
         createdOverlays[0] = Overlays.addOverlay("sphere", {
-            position: { x: p.x - 3.0, y: p.y + 1.0, z: p.z - 9.0 },
+            position: { x: p.x - 1.0, y: p.y + 1.0, z: p.z - 9.0 },
             size: MODEL_SCALE,
             color: sphereColor,
-            alpha: 0.25,
+            alpha: 0.8,
             solid: true,
             drawInFront: true,
             isVisibleInSecondaryCamera: true
         });
         createdEntities[0] = Entities.addEntity({
             type: "Box",
-            position: { x: p.x - 2.0, y: p.y + 1.0, z: p.z - 6.0 },
-            color: cubeColor,
-            dimensions: DIM
-        });
-
-        createdOverlays[1] = Overlays.addOverlay("sphere", {
-            position: { x: p.x - 1.0, y: p.y + 1.0, z: p.z - 9.0 },
-            size: MODEL_SCALE,
-            color: sphereColor,
-            alpha: 0.50,
-            solid: true,
-            drawInFront: true,
-            isVisibleInSecondaryCamera: true
-        });
-        createdEntities[1] = Entities.addEntity({
-            type: "Box",
             position: { x: p.x - 0.7, y: p.y + 1.0, z: p.z - 6.0 },
             color: cubeColor,
             dimensions: DIM
         });
 
-        createdOverlays[2] = Overlays.addOverlay("sphere", {
+        createdOverlays[1] = Overlays.addOverlay("sphere", {
             position: { x: p.x + 1.0, y: p.y + 1.0, z: p.z - 9.0 },
             size: MODEL_SCALE,
             color: sphereColor,
-            alpha: 0.75,
+            alpha: 0.8,
             solid: true,
-            drawInFront: true,
+            drawInFront: false,
             isVisibleInSecondaryCamera: true
         });
-        createdEntities[2] = Entities.addEntity({
+        createdEntities[1] = Entities.addEntity({
             type: "Box",
             position: { x: p.x + 0.7, y: p.y + 1.0, z: p.z - 6.0 },
             color: cubeColor,
             dimensions: DIM
         });
-
-        createdOverlays[3] = Overlays.addOverlay("sphere", {
-            position: { x: p.x + 3.0, y: p.y + 1.0, z: p.z - 9.0 },
-            size: MODEL_SCALE,
-            color: sphereColor,
-            alpha: 1.00,
-            solid: true,
-            drawInFront: true,
-            isVisibleInSecondaryCamera: true
-        });
-        createdEntities[3] = Entities.addEntity({
-            type: "Box",
-            position: { x: p.x + 2.0, y: p.y + 1.0, z: p.z - 6.0 },
-            color: cubeColor,
-            dimensions: DIM
-        });
     });
 
-    autoTester.addStepSnapshot("Show overlays with different alphas (all should be in front of cubes)");
+    autoTester.addStepSnapshot("Show overlays with different 'drawInFront' (only left should be before cube)");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
