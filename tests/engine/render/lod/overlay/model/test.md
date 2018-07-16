@@ -8,22 +8,17 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Everything is visible
+- 8 models visible
 - ![](./ExpectedImage_00000.png)
 ### Step 2
-- Set LOD to 50
+- Set LOD to 30
 ### Step 3
-- Backdrop partially visible
+- 4 models visible
 - ![](./ExpectedImage_00001.png)
 ### Step 4
 - Set LOD to 10
 ### Step 5
-- Just both models visible (in secondary)
+- Only one model visible
 - ![](./ExpectedImage_00002.png)
 ### Step 6
-- Set LOD to 8.5
-### Step 7
-- Only right model visible (in secondary)
-- ![](./ExpectedImage_00003.png)
-### Step 8
 - Clean up
