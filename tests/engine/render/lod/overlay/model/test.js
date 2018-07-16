@@ -3,67 +3,50 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("LOD test", Script.resolvePath("."), "secondary", function(testType) {
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
-
-    // Add the test Cases
-    var flags = { 
-        hasAmbientLight: false
-    };
-
-    var createdEntities = setupStage(flags)
     var createdOverlays = [];
-
-    var posOri = getStagePosOriAt(1, 0, 0);
 
     var LIFETIME = 120;
     var DIM = {x: 1.0, y: 1.2, z: 0.28};
 
+    MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    
+    var pos = autoTester.getOriginFrame();
+    var ori = MyAvatar.orientation;
+
+    validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
+    validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
+    
+    // Create line of models
     var assetsRootPath = autoTester.getAssetsRootPath();
-
-    createdOverlays.push(Overlays.addOverlay("model", {
-        position: Vec3.sum(posOri.pos, Vec3.multiply(-0.5, Quat.getRight(posOri.ori))),
-        lifetime: LIFETIME,
-        url: Script.resolvePath(assetsRootPath + "models/geometry/avatars/kaya/Kaya.fbx"),
-        dimensions: DIM,
-        orientation: posOri.ori,
-        isGroupCulled: false,
-        isVisibleInSecondaryCamera: true
-    }));
-
-    createdOverlays.push(Overlays.addOverlay("model", {
-        position: Vec3.sum(posOri.pos, Vec3.multiply(0.5, Quat.getRight(posOri.ori))),
-        lifetime: LIFETIME,
-        url: Script.resolvePath(assetsRootPath + "models/geometry/avatars/kaya/Kaya.fbx"),
-        dimensions: DIM,
-        orientation: posOri.ori,
-        isGroupCulled: true,
-        isVisibleInSecondaryCamera: true
-    }));
-
+    var URL = Script.resolvePath(assetsRootPath + "models/geometry/avatars/kaya/Kaya.fbx");
+    for (var i = 0; i < 8; ++i) {
+        createdOverlays.push(Overlays.addOverlay("model", {
+            position: Vec3.sum(Vec3.sum(pos, Vec3.multiply(0.75, Quat.getUp(ori))), Vec3.multiply(2.0 + 4.0 * i, Quat.getForward(ori))),
+            lifetime: LIFETIME,
+            url: URL,
+            dimensions: DIM,
+            orientation: ori,
+            isGroupCulled: false,
+            isVisibleInSecondaryCamera: true
+        }));
+    }
+    
     LODManager.setAutomaticLODAdjust(false);
     LODManager.setOctreeSizeScale(32768 * 400);
 
-    autoTester.addStepSnapshot("Everything is visible");
+    autoTester.addStepSnapshot("8 models visible");
 
-    autoTester.addStep("Set LOD to 50", function () {
-        LODManager.setOctreeSizeScale(32768 * 50);
+    autoTester.addStep("Set LOD to 30", function () {
+        LODManager.setOctreeSizeScale(32768 * 30);
     });
-    autoTester.addStepSnapshot("Backdrop partially visible");
+    autoTester.addStepSnapshot("4 models visible");
 
     autoTester.addStep("Set LOD to 10", function () {
         LODManager.setOctreeSizeScale(32768 * 10);
     });
-    autoTester.addStepSnapshot("Just both models visible (in secondary)");
-
-    autoTester.addStep("Set LOD to 8.5", function () {
-        LODManager.setOctreeSizeScale(32768 * 8.5);
-    });
-    autoTester.addStepSnapshot("Only right model visible (in secondary)");
+    autoTester.addStepSnapshot("Only one model visible");
 
     autoTester.addStep("Clean up", function () {
-        for (var i = 0; i < createdEntities.length; i++) {
-            Entities.deleteEntity(createdEntities[i]);
-        }
         for (var i = 0; i < createdOverlays.length; i++) {
             Overlays.deleteOverlay(createdOverlays[i]);
         }
