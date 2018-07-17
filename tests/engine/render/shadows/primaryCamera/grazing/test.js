@@ -3,7 +3,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePath("."), "primary", function(testType) {
-    // Test material matrix
+    // Setup the stage
     Script.include("../../setup.js?raw=true")
 
     // Add the test Cases
@@ -12,13 +12,25 @@ autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePa
         createdEntities = setup(5.0, 90.0, autoTester.getOriginFrame());
     });
 
-    autoTester.addStepSnapshot("Light source altitude: 5.0, azimuth: 90.0");
-
-    autoTester.addStep("Clean up after test", function () {
-        for (var i = 0; i < createdEntities.length; i++) {
-            Entities.deleteEntity(createdEntities[i]);
+    var wasAvatarVisible;
+    autoTester.addStep("Show avatar if it is invisible (otherwise, shadows don't work correctly)", function () {
+        wasAvatarVisible = MyAvatar.getEnableMeshVisible();
+        if (!wasAvatarVisible) {
+            MyAvatar.setEnableMeshVisible(true);
         }
     });
 
-    var result = autoTester.runTest(testType);
+    autoTester.addStepSnapshot("Light source altitude: 5.0, azimuth: 90.0");
+
+    autoTester.addStep("Clean up after test, hiding avatar if it wasn't visible", function () {
+        for (var i = 0; i < createdEntities.length; i++) {
+            Entities.deleteEntity(createdEntities[i]);
+        }
+
+        if (!wasAvatarVisible) {
+            MyAvatar.setEnableMeshVisible(false);
+        }
+    });
+
+    autoTester.runTest(testType);
 });

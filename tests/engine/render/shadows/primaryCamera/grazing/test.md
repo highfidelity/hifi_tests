@@ -10,7 +10,9 @@ Press 'n' key to advance step by step
 ### Step 1
 - Set up test case
 ### Step 2
+- Show avatar if it is invisible (otherwise, shadows don't work correctly)
+### Step 3
 - Light source altitude: 5.0, azimuth: 90.0
 - ![](./ExpectedImage_00000.png)
-### Step 3
-- Clean up after test
+### Step 4
+- Clean up after test, hiding avatar if it wasn't visible
