@@ -45,7 +45,7 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
         // Pick 1:    [ ]     (gap) (y = +0.5)
         // Pick 2:     [ ]    (touching at border) (y = 0)
         // Pick 3:      [ ]   (overlapping 50%) (y = -0.5)
-        for (int i = 0; i <= 2; i++) {
+        for (var i = 0; i <= 2; i++) {
             createTestPick(PickType.Collision, {
                 enabled: true,
                 filter: Picks.PICK_ENTITIES,
@@ -64,11 +64,11 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection
         // Boxes also have y-offset for better visualization
         var pickIntersects = [];
-        for (int i = 0; i < createdPicks.length; i++) {
+        for (var i = 0; i < createdPicks.length; i++) {
             pickIntersects.push(Picks.getPrevPickResult(createdPicks[i]).intersects);
         }
         
-        for (int i = 0; i <= 2; i++) {
+        for (var i = 0; i <= 2; i++) {
             var intersectColor;
             if (pickIntersects[i]) {
                 intersectColor = COLOR_YES_COLLISION;
