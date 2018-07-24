@@ -1,6 +1,7 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
+Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
 autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", function(testType) {
     var initData = { originFrame: autoTester.getOriginFrame() };
@@ -21,7 +22,7 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
     
     function clearTestPicks() {
         for (var i = 0; i < createdPicks.length; i++) {
-            Picks.remove(createdPicks[i]);
+            Picks.removePick(createdPicks[i]);
         }
         createdPicks = [];
     }
@@ -41,10 +42,10 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
     
     autoTester.addStep("Create cubic collision picks", function () {
         // Create three picks, one with a gap, one touching, and one definitely inside
-        // Box:          [ ]  (y = -1)
-        // Pick 1:    [ ]     (gap) (y = +0.5)
+        // Box:      [ ]      (y = -1)
+        // Pick 1:      [ ]   (gap) (y = +0.5)
         // Pick 2:     [ ]    (touching at border) (y = 0)
-        // Pick 3:      [ ]   (overlapping 50%) (y = -0.5)
+        // Pick 3:    [ ]     (overlapping 50%) (y = -0.5)
         for (var i = 0; i <= 2; i++) {
             createTestPick(PickType.Collision, {
                 enabled: true,
@@ -65,24 +66,28 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
         // Boxes also have y-offset for better visualization
         var pickIntersects = [];
         for (var i = 0; i < createdPicks.length; i++) {
-            pickIntersects.push(Picks.getPrevPickResult(createdPicks[i]).intersects);
+            pickIntersects.push(Picks.getPrevPickResult(createdPicks[i]));
         }
         
-        for (var i = 0; i <= 2; i++) {
+        for (var i = 0; i < createdPicks.length; i++) {
             var intersectColor;
-            if (pickIntersects[i]) {
+            if (pickIntersects[i].intersects == true) {
                 intersectColor = COLOR_YES_COLLISION;
             } else {
                 intersectColor = COLOR_NO_COLLISION;
             }
+            
+            // A height difference makes it easier to differentiate the cubes
+            var stageHeightOffset = Vec3.subtract(getStagePosOriAt(0, 0, i).pos, getStagePosOriAt(0, 0, 0).pos);
+            
             createdEntities.push(Entities.addEntity({
                 color: intersectColor,
                 lifetime: ENTITY_LIFETIME,
                 userData: ENTITY_USER_DATA,
                 type: "Box",
                 name: "Box",
-                position: getStagePosOriAt(0, (i-1)*-0.5, i).pos,
-                dimensions: { x: 1, y: 1, z: 1 }
+                position: Vec3.sum(pickIntersects[i].collisionRegion.position, stageHeightOffset),
+                dimensions: pickIntersects[i].collisionRegion.shape.dimensions
             }));
         }
     });
