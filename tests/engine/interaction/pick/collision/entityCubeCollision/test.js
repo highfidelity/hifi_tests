@@ -75,8 +75,11 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
         }
         
         for (var i = 0; i < createdPicks.length; i++) {
+            var intersect = pickIntersects[i];
+            var collisionRegion = intersect.collisionRegion;
+            
             var intersectColor;
-            if (pickIntersects[i].intersects == true) {
+            if (intersect.intersects == true) {
                 intersectColor = COLOR_YES_COLLISION;
             } else {
                 intersectColor = COLOR_NO_COLLISION;
@@ -91,36 +94,38 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
                 userData: ENTITY_USER_DATA,
                 type: "Box",
                 name: "Box",
-                position: Vec3.sum(pickIntersects[i].collisionRegion.position, stageHeightOffset),
-                rotation: pickIntersects[i].collisionRegion.orientation,
-                dimensions: pickIntersects[i].collisionRegion.shape.dimensions
+                position: Vec3.sum(collisionRegion.position, stageHeightOffset),
+                rotation: collisionRegion.orientation,
+                dimensions: collisionRegion.shape.dimensions
             }));
             
             var collisionPointSelfOffset = Vec3.sum(stageHeightOffset, { x: 0, y: 0, z: 0 });
-            collisionPointSelfOffset = Vec3.sum(collisionPointSelfOffset, pickIntersects[i].collisionRegion.position);
-            var zJustBiggerThanPick = 1.1*pickIntersects[i].collisionRegion.shape.dimensions.z;
+            collisionPointSelfOffset = Vec3.sum(collisionPointSelfOffset, collisionRegion.position);
+            var zJustBiggerThanPick = 1.1*collisionRegion.shape.dimensions.z;
             
             // Collision point visualizations
-            for (var j = 0; j < pickIntersects[i].intersectingEntities.length; j++) {
+            for (var j = 0; j < intersect.intersectingEntities.length; j++) {
+                var intersectingEntity = intersect.intersectingEntities[j];
+                
                 createdEntities.push(Entities.addEntity({
                     color: COLOR_COLLISION_SELF,
                     lifetime: ENTITY_LIFETIME,
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(Vec3.multiplyQbyV(pickIntersects[i].collisionRegion.orientation, pickIntersects[i].intersectingEntities[j].pickCollisionPoint), collisionPointSelfOffset),
-                    rotation: pickIntersects[i].collisionRegion.orientation,
+                    position: Vec3.sum(Vec3.multiplyQbyV(collisionRegion.orientation, intersectingEntity.pickCollisionPoint), collisionPointSelfOffset),
+                    rotation: collisionRegion.orientation,
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
                 
-                var entityPosition = Entities.getEntityProperties(pickIntersects[i].intersectingEntities[j].objectID, ["position"]).position;
+                var entityPosition = Entities.getEntityProperties(intersectingEntity.objectID, ["position"]).position;
                 createdEntities.push(Entities.addEntity({
                     color: COLOR_COLLISION_OTHER,
                     lifetime: ENTITY_LIFETIME,
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(pickIntersects[i].intersectingEntities[j].entityCollisionPoint, entityPosition),
+                    position: Vec3.sum(intersectingEntity.entityCollisionPoint, entityPosition),
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
             }
