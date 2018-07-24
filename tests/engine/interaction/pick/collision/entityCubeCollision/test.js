@@ -39,7 +39,7 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
             userData: ENTITY_USER_DATA,
             type: "Box",
             name: "Box",
-            position: getStagePosOriAt(0, -1, 0).pos,
+            position: getStagePosOriAt(3, -1, 0).pos,
             dimensions: { x: 1, y: 1, z: 1 }
         }));
     });
@@ -58,7 +58,7 @@ autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", f
                     shapeType: "box",
                     dimensions: { x: 1, y: 1, z: 1 }
                 },
-                position: getStagePosOriAt(0, (i-1)*-0.5, 0).pos,
+                position: getStagePosOriAt(3, (i-1)*-0.5, 0).pos,
                 orientation: Quat.normalize({ x: 0, y: 0, z: .1, w: 1})
             });
         }
