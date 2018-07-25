@@ -105,21 +105,20 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
                 dimensions: collisionRegion.shape.dimensions
             }));
             
-            var collisionPointSelfOffset = Vec3.sum(regionDisplayOffset, { x: 0, y: 0, z: 0 });
-            collisionPointSelfOffset = Vec3.sum(collisionPointSelfOffset, collisionRegion.position);
             var zJustBiggerThanPick = 1.1*collisionRegion.shape.dimensions.z;
             
             // Collision point visualizations
             for (var j = 0; j < intersect.entityIntersections.length; j++) {
                 var entityIntersection = intersect.entityIntersections[j];
                 
+                var relativePickCollisionPoint = Vec3.subtract(entityIntersection.pickCollisionPoint, collisionRegion.position);
                 createdEntities.push(Entities.addEntity({
                     color: COLOR_COLLISION_SELF,
                     lifetime: ENTITY_LIFETIME,
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(Vec3.multiplyQbyV(collisionRegion.orientation, entityIntersection.pickCollisionPoint), collisionPointSelfOffset),
+                    position: Vec3.sum(regionDisplayOffset, entityIntersection.pickCollisionPoint),
                     rotation: collisionRegion.orientation,
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
@@ -131,7 +130,7 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(entityIntersection.entityCollisionPoint, entityPosition),
+                    position: entityIntersection.entityCollisionPoint,
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
             }
