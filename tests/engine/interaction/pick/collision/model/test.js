@@ -110,8 +110,8 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
             var zJustBiggerThanPick = 1.1*collisionRegion.shape.dimensions.z;
             
             // Collision point visualizations
-            for (var j = 0; j < intersect.intersectingEntities.length; j++) {
-                var intersectingEntity = intersect.intersectingEntities[j];
+            for (var j = 0; j < intersect.entityIntersections.length; j++) {
+                var entityIntersection = intersect.entityIntersections[j];
                 
                 createdEntities.push(Entities.addEntity({
                     color: COLOR_COLLISION_SELF,
@@ -119,19 +119,19 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(Vec3.multiplyQbyV(collisionRegion.orientation, intersectingEntity.pickCollisionPoint), collisionPointSelfOffset),
+                    position: Vec3.sum(Vec3.multiplyQbyV(collisionRegion.orientation, entityIntersection.pickCollisionPoint), collisionPointSelfOffset),
                     rotation: collisionRegion.orientation,
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
                 
-                var entityPosition = Entities.getEntityProperties(intersectingEntity.objectID, ["position"]).position;
+                var entityPosition = Entities.getEntityProperties(entityIntersection.objectID, ["position"]).position;
                 createdEntities.push(Entities.addEntity({
                     color: COLOR_COLLISION_OTHER,
                     lifetime: ENTITY_LIFETIME,
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(intersectingEntity.entityCollisionPoint, entityPosition),
+                    position: Vec3.sum(entityIntersection.entityCollisionPoint, entityPosition),
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
             }
