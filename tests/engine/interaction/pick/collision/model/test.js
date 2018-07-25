@@ -83,16 +83,6 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
             var intersect = pickIntersects[i];
             var collisionRegion = intersect.collisionRegion;
             
-            // TODO: Test
-            // An offset makes it easier to see the pick results, but let's not use that for now
-            var regionDisplayOffset;
-            if (i == 0) {
-                regionDisplayOffset = Vec3.subtract(getStagePosOriAt(0, 0, 0).pos, getStagePosOriAt(0, 0, 0).pos);
-            }
-            else {
-                regionDisplayOffset = Vec3.subtract(getStagePosOriAt(0, 0, 0).pos, getStagePosOriAt(0, 0, 0).pos);
-            }
-            
             createdEntities.push(Entities.addEntity({
                 lifetime: ENTITY_LIFETIME,
                 userData: ENTITY_USER_DATA,
@@ -100,7 +90,7 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
                 shapeType: "simple-compound",
                 modelURL: jackModelURL,
                 name: "Box",
-                position: Vec3.sum(collisionRegion.position, regionDisplayOffset),
+                position: collisionRegion.position,
                 rotation: collisionRegion.orientation,
                 dimensions: collisionRegion.shape.dimensions
             }));
@@ -118,7 +108,7 @@ autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "seconda
                     userData: ENTITY_USER_DATA,
                     type: "Box",
                     name: "Box",
-                    position: Vec3.sum(regionDisplayOffset, entityIntersection.pickCollisionPoint),
+                    position: entityIntersection.pickCollisionPoint,
                     rotation: collisionRegion.orientation,
                     dimensions: { x: 0.15, y: 0.15, z: zJustBiggerThanPick }
                 }));
