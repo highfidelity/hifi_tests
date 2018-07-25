@@ -3,7 +3,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
-autoTester.perform("Test CollisionPick", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "secondary", function(testType) {
     var initData = { originFrame: autoTester.getOriginFrame() };
     var createdEntities = setupStage(initData);
     

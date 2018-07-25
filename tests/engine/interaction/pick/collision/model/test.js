@@ -5,7 +5,7 @@ Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 var assetsRootPath = autoTester.getAssetsRootPath();
 var jackModelURL = assetsRootPath + "models/collisions/xyzCross-three-submeshes.fbx";
 
-autoTester.perform("Test model CollisionPick", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Test model CollisionPick with models", Script.resolvePath("."), "secondary", function(testType) {
     var initData = { originFrame: autoTester.getOriginFrame() };
     var createdEntities = setupStage(initData);
     
