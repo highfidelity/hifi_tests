@@ -1,4 +1,4 @@
-# Texture Rendering
+# Parabola - enabling and disabling
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,20 +8,12 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Set up scene
+- Move back to see the objects
 ### Step 2
-- Turn off TAA for this test
-### Step 3
-- Texture 
-### Step 4
-- Full Resolution
+- Enabled right pick
 - ![](./ExpectedImage_00000.png)
-### Step 5
-- Update Mip 
-### Step 6
-- Mip 
+### Step 3
+- Enabled left pick
 - ![](./ExpectedImage_00001.png)
-### Step 7
-- Cleanup Texture
-### Step 8
-- Clean up after test
+### Step 4
+- Clean up

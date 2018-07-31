@@ -17,13 +17,5 @@ Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/enable/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/renderState/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/lockEndUUID/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/lockEnd/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/ignore/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/faceAvatar/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/enable/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/distanceScaleEnd/test.js");
-Script.include(testsRootPath + "engine/interaction/pointer/laser/centerEndY/test.js");
 
 autoTester.runRecursive();
