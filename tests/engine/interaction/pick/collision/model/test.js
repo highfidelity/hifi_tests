@@ -64,29 +64,19 @@ autoTester.perform("Test model CollisionPick with models", Script.resolvePath(".
         }
         
         for (var i = 0; i < createdPicks.length; i++) {
-            var intersect = pickIntersects[i];
-            var collisionRegion = intersect.collisionRegion;
+            var collisionResult = pickIntersects[i];
+            var collisionRegion = collisionResult.collisionRegion;
             
-            createdEntities.push(Entities.addEntity({
-                lifetime: ENTITY_LIFETIME,
-                userData: ENTITY_USER_DATA,
-                type: "Model",
-                shapeType: "simple-compound",
-                modelURL: jackModelURL,
-                name: "Box",
-                position: collisionRegion.position,
-                rotation: collisionRegion.orientation,
-                dimensions: collisionRegion.shape.dimensions
-            }));
+            visualizePick(createdEntities, collisionResult, { x: 0, y: 0, z: 0 });
             
             var zJustBiggerThanPick = 1.1*collisionRegion.shape.dimensions.z;
             var collisionDisplayDimensions = { x: 0.15, y: 0.15, z: zJustBiggerThanPick };
             
             // Collision point visualizations
-            for (var j = 0; j < intersect.intersectingObjects.length; j++) {
-                var intersectingObject = intersect.intersectingObjects[j];
+            for (var j = 0; j < collisionResult.intersectingObjects.length; j++) {
+                var intersectingObject = collisionResult.intersectingObjects[j];
                 
-                visualizePickCollisions(createdEntities, intersect, intersectingObject, {x:0,y:0,z:0}, collisionDisplayDimensions);
+                visualizePickCollisions(createdEntities, collisionResult, intersectingObject, {x:0,y:0,z:0}, collisionDisplayDimensions);
             }
         }
     });

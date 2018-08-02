@@ -27,6 +27,45 @@ clearEntities = function (createdEntities) {
     createdEntities.length = 0;
 }
 
+// Visualizes the position and shape of a pick with a given position offset. Currently only supports model and box picks. Visualized box picks will also change color depending on if there is a collision.
+visualizePick = function (createdEntities, collisionResult, pickPositionOffset) {
+    var collisionRegion = collisionResult.collisionRegion;
+    var shapeType = collisionRegion.shape.shapeType;
+    var modelURL = collisionRegion.shape.modelURL;
+    var entityName = shapeType + createdEntities.length;
+    
+    var entityType;
+    if (shapeType == "hull" || shapeType == "compound" || shapeType == "simple-hull" || shapeType == "simple-compound" || shapeType == "static-mesh") {
+        entityType = "Model";
+    }
+    else {
+        // shapeType == "box"
+        entityType = "Box";
+    }
+    
+    var intersectColor;
+    if (collisionResult.intersects == true) {
+        intersectColor = COLOR_YES_COLLISION;
+    }
+    else {
+        intersectColor = COLOR_NO_COLLISION;
+    }
+    
+    var ent = {
+        color: intersectColor,
+        lifetime: ENTITY_LIFETIME,
+        userData: ENTITY_USER_DATA,
+        type: entityType,
+        name: entityName,
+        modelURL: modelURL,
+        position: Vec3.sum(collisionRegion.position, pickPositionOffset),
+        rotation: collisionRegion.orientation,
+        dimensions: collisionRegion.shape.dimensions
+    };
+    
+    createdEntities.push(Entities.addEntity(ent));
+}
+
 // Visualizes the collision points of the collision pick result using box entities
 visualizePickCollisions = function (createdEntities, collisionResult, intersectingObject, pickPositionOffset, collisionDisplayDimensions) {
     var collisionRegion = collisionResult.collisionRegion;

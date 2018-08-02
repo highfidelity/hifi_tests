@@ -54,39 +54,22 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
         }
         
         for (var i = 0; i < createdPicks.length; i++) {
-            var intersect = pickIntersects[i];
-            var collisionRegion = intersect.collisionRegion;
-            
-            var intersectColor;
-            if (intersect.intersects == true) {
-                intersectColor = COLOR_YES_COLLISION;
-            } else {
-                intersectColor = COLOR_NO_COLLISION;
-            }
+            var collisionResult = pickIntersects[i];
             
             // A height difference makes it easier to differentiate the cubes
             var stageHeightOffset = Vec3.subtract(getStagePosOriAt(0, 0, i).pos, getStagePosOriAt(0, 0, 0).pos);
             
-            createdEntities.push(Entities.addEntity({
-                color: intersectColor,
-                lifetime: ENTITY_LIFETIME,
-                userData: ENTITY_USER_DATA,
-                type: "Box",
-                name: "Box",
-                position: Vec3.sum(collisionRegion.position, stageHeightOffset),
-                rotation: collisionRegion.orientation,
-                dimensions: collisionRegion.shape.dimensions
-            }));
+            visualizePick(createdEntities, collisionResult, stageHeightOffset);
             
-            var zJustBiggerThanPick = 1.1*collisionRegion.shape.dimensions.z;
+            var zJustBiggerThanPick = 1.1*collisionResult.collisionRegion.shape.dimensions.z;
             var collisionDisplayDimensions = { x: 0.15, y: 0.15, z: zJustBiggerThanPick };
             var pickPositionOffset = stageHeightOffset;
             
             // Collision point visualizations
-            for (var j = 0; j < intersect.intersectingObjects.length; j++) {
-                var intersectingObject = intersect.intersectingObjects[j];
+            for (var j = 0; j < collisionResult.intersectingObjects.length; j++) {
+                var intersectingObject = collisionResult.intersectingObjects[j];
                 
-                visualizePickCollisions(createdEntities, intersect, intersectingObject, pickPositionOffset, collisionDisplayDimensions);
+                visualizePickCollisions(createdEntities, collisionResult, intersectingObject, pickPositionOffset, collisionDisplayDimensions);
             }
         }
     });
