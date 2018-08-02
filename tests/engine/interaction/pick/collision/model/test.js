@@ -83,10 +83,10 @@ autoTester.perform("Test model CollisionPick with models", Script.resolvePath(".
             var collisionDisplayDimensions = { x: 0.15, y: 0.15, z: zJustBiggerThanPick };
             
             // Collision point visualizations
-            for (var j = 0; j < intersect.entityIntersections.length; j++) {
-                var entityIntersection = intersect.entityIntersections[j];
+            for (var j = 0; j < intersect.intersectingObjects.length; j++) {
+                var intersectingObject = intersect.intersectingObjects[j];
                 
-                visualizePickCollisions(createdEntities, intersect, entityIntersection, {x:0,y:0,z:0}, collisionDisplayDimensions);
+                visualizePickCollisions(createdEntities, intersect, intersectingObject, {x:0,y:0,z:0}, collisionDisplayDimensions);
             }
         }
     });

@@ -28,27 +28,31 @@ clearEntities = function (createdEntities) {
 }
 
 // Visualizes the collision points of the collision pick result using box entities
-visualizePickCollisions = function (createdEntities, collisionResult, entityIntersection, pickPositionOffset, collisionDisplayDimensions) {
+visualizePickCollisions = function (createdEntities, collisionResult, intersectingObject, pickPositionOffset, collisionDisplayDimensions) {
     var collisionRegion = collisionResult.collisionRegion;
     
-    createdEntities.push(Entities.addEntity({
-        color: COLOR_COLLISION_SELF,
-        lifetime: ENTITY_LIFETIME,
-        userData: ENTITY_USER_DATA,
-        type: "Box",
-        name: "Box",
-        position: Vec3.sum(pickPositionOffset, entityIntersection.pickCollisionPoint),
-        rotation: collisionRegion.orientation,
-        dimensions: collisionDisplayDimensions
-    }));
-    
-    createdEntities.push(Entities.addEntity({
-        color: COLOR_COLLISION_OTHER,
-        lifetime: ENTITY_LIFETIME,
-        userData: ENTITY_USER_DATA,
-        type: "Box",
-        name: "Box",
-        position: entityIntersection.entityCollisionPoint,
-        dimensions: collisionDisplayDimensions
-    }));
+    for (var i = 0; i < intersectingObject.collisionPointPairs.length; i++) {
+        var collisionPointPair = intersectingObject.collisionPointPairs[i];
+        
+        createdEntities.push(Entities.addEntity({
+            color: COLOR_COLLISION_SELF,
+            lifetime: ENTITY_LIFETIME,
+            userData: ENTITY_USER_DATA,
+            type: "Box",
+            name: "Box",
+            position: Vec3.sum(pickPositionOffset, collisionPointPair.pick),
+            rotation: collisionRegion.orientation,
+            dimensions: collisionDisplayDimensions
+        }));
+        
+        createdEntities.push(Entities.addEntity({
+            color: COLOR_COLLISION_OTHER,
+            lifetime: ENTITY_LIFETIME,
+            userData: ENTITY_USER_DATA,
+            type: "Box",
+            name: "Box",
+            position: collisionPointPair.object,
+            dimensions: collisionDisplayDimensions
+        }));
+    }
 }

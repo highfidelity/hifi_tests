@@ -83,10 +83,10 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
             var pickPositionOffset = stageHeightOffset;
             
             // Collision point visualizations
-            for (var j = 0; j < intersect.entityIntersections.length; j++) {
-                var entityIntersection = intersect.entityIntersections[j];
+            for (var j = 0; j < intersect.intersectingObjects.length; j++) {
+                var intersectingObject = intersect.intersectingObjects[j];
                 
-                visualizePickCollisions(createdEntities, intersect, entityIntersection, pickPositionOffset, collisionDisplayDimensions);
+                visualizePickCollisions(createdEntities, intersect, intersectingObject, pickPositionOffset, collisionDisplayDimensions);
             }
         }
     });
