@@ -5,7 +5,7 @@ Interface is running, logged in an empty region of a domain with editing rights
 ### Steps
 
 #### Step 1
-- Make sure this menu option is disabled: **Developer --> Physics --> Draw Collision Shapes**.
+- Make sure this menu option is disabled: **Developer --> Physics --> Show Bullet Collision**.
 - Expected  "
 #### Step 2
 - Copy this [script URL](./testStory.js?raw=true) and **Edit --> Open and Run Script from URL...**
@@ -22,9 +22,8 @@ Exact - All polygons (non-dynamic only)
 You should see something like this:
 ![](./models-visuals.png)
 #### Step 3
-- Enable this menu option: **Developer --> Physics --> Draw Collision Shapes**.
+- Enable this menu option: **Developer --> Physics --> Show Bullet Collision**.
 - Expected : You should see something like this:
-![](./models-collisions.png)
 #### Step 4
 - Bump your avatar into the various model instances.
 - Expected : The objects should collide as they appear.

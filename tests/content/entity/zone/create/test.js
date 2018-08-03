@@ -2,11 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Zone create", Script.resolvePath("."), "primary", function(testType) {
-    // Enabled draw zone bounding box and stack to visualize the stack of zone components
-    Render.getConfig("RenderMainView.DrawZoneStack").enabled = true;
-    Render.getConfig("RenderMainView.DrawZones").enabled = true;
-
+autoTester.perform("Zone create", Script.resolvePath("."), "secondary", function(testType) {
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
 
@@ -36,8 +32,6 @@ autoTester.perform("Zone create", Script.resolvePath("."), "primary", function(t
 
     autoTester.addStep("Clean up after test", function () {
         Entities.deleteEntity(zone);
-        Render.getConfig("RenderMainView.DrawZoneStack").enabled = false;
-        Render.getConfig("RenderMainView.DrawZones").enabled = false;
     });
     
     var result = autoTester.runTest(testType);

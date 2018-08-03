@@ -8,22 +8,22 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Everything is visible
+- Both models visible
 - ![](./ExpectedImage_00000.png)
 ### Step 2
-- Set LOD to 50
+- Set LOD to 10
 ### Step 3
-- Backdrop partially visible
+- Eyes of left model cannot be seen
 - ![](./ExpectedImage_00001.png)
 ### Step 4
-- Set LOD to 10
+- Set LOD to 5.8
 ### Step 5
-- Just both models visible (in secondary)
+- Only right model visible, including eyes
 - ![](./ExpectedImage_00002.png)
 ### Step 6
-- Set LOD to 8.5
+- Set LOD to 4
 ### Step 7
-- Only right model visible (in secondary)
+- No models are visible
 - ![](./ExpectedImage_00003.png)
 ### Step 8
 - Clean up
