@@ -29,6 +29,11 @@ clearEntities = function (createdEntities) {
 
 // Visualizes the position and shape of a pick with a given position offset. Currently only supports model and box picks. Visualized box picks will also change color depending on if there is a collision.
 visualizePick = function (createdEntities, collisionResult, pickPositionOffset) {
+    visualizePickAtExactPosition(createdEntities, collisionResult, Vec3.sum(collisionResult.collisionRegion.position, pickPositionOffset));
+}
+
+// Visualizes the position and shape of a pick at the exact position. Currently only supports model and box picks. Visualized box picks will also change color depending on if there is a collision.
+visualizePickAtExactPosition = function (createdEntities, collisionResult, pickPosition) {
     var collisionRegion = collisionResult.collisionRegion;
     var shapeType = collisionRegion.shape.shapeType;
     var modelURL = collisionRegion.shape.modelURL;
@@ -58,7 +63,7 @@ visualizePick = function (createdEntities, collisionResult, pickPositionOffset) 
         type: entityType,
         name: entityName,
         modelURL: modelURL,
-        position: Vec3.sum(collisionRegion.position, pickPositionOffset),
+        position: pickPosition,
         rotation: collisionRegion.orientation,
         dimensions: collisionRegion.shape.dimensions
     };
