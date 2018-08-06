@@ -1,4 +1,4 @@
-// This is an automatically generated file, created by auto-tester on Jul 2 2018, 19:22
+// This is an automatically generated file, created by auto-tester on Aug 6 2018, 14:18
 
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
@@ -13,5 +13,6 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
+Script.include(testsRootPath + "engine/controller/reticle/test.js");
 
 autoTester.runRecursive();
