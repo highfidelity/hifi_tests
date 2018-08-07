@@ -3,34 +3,27 @@
 The auto-tester is a stand alone application that provides a mechanism for regression testing.  The general idea is simple:
 * Each test folder has a script that produces a set of snapshots.
 * The snapshots are compared to a 'canonical' set of images that have been produced beforehand.
+* The result, if any test failed, is a zipped folder describing the failure.
 
-***Please note that before running any tests that your avatar must be in an empty part of the domain.***
-
-## autoTester.js
-A utility script in the **tests/utils** folder is **autoTester.js**.  During a test, this script is pulled from the GitHub repository.
-
-This script is a module that exposes two functions.
-### setupTests.js
-This function hides the avatar, sets its orientation to 0, sets the snapshots folder and sets up the secondary camera.  The secondary camera is used to take snapshots so that the snapshot size will be independent of the user's monitor.  This secondary camera is the function return value.
-### runTests
-This function runs the tests in either of 2 modes:
-1. Manual - the space bar is used to sequence through the steps.  The steps are displayed in the log.
-2. Automatic - the steps are sequenced through automatically, at a rate of one per two seconds.  This mode creates a series of snapshots.
+Auto-tester has 4 functions, separated into 4 tabs:
+1. Creating tests, MD files and recursive scripts
+2. Evaluating the results of running tests
+3. TestRail interface
+4. Windows task bar utility (Windows only)
 ## Setup
 ### Windows 10
-* Clone the hifi_tests repository
+#### Tests Repository
+* Clone the hifi_tests repository - this is not needed when to either run tests or evaluate their results.
 ```
-git clone https://github.com/NissimHadar/hifi_tests.git
+git clone https://github.com/highfidelity/hifi_tests.git
 ```
-* Double click **setup.bat** (located in tools/autoTester) to download and install autotester (Note: do not select setup.ps1 by mistake). When prompted, select folder to install autoTester (the default is usually OK).
-* ![](./setup_7z.png)
+#### Auto-Tester
+1. Download the installer by browsing to [here](<https://hifi-content.s3.amazonaws.com/nissim/autoTester/AutoTester-Installer.exe>).
+2. Double click on the installer and install to a convenient location  
+![](./setup_7z.png)
+3. To run the auto-tester, double click **auto-tester.exe**.
+####
 
-The executable is located in the **autoTester/Release** folder, and is named **autoTester.exe**.
-## Test Folder Content
-Each test is in a separate folder, which should contain the following file:
-1. test.js - a module containing the test.  The contents are described in detail below.
-2. runAuto.js - runs the test.js script automatically, creating a set of snapshots.
-3. runManual.js - runs the test.js step by step.
 ## Test File Content
 ### test.js
 An automatic test is always named **test.js**.  This file contains a javascript module, as described below.  
