@@ -48,11 +48,21 @@ autoTester.perform("Test CollisionPick with identical cubes", Script.resolvePath
             pickIntersects.push(Picks.getPrevPickResult(createdPicks[i]));
         }
         
+        // Second pick is up a bit and third pick is to the right, to fit in the camera properly
+        var pickOffsets = [
+            [0, 0, 0],
+            [0, 0, 1.5],
+            [0, 1.5, 0]
+        ]
+        
         for (var i = 0; i < createdPicks.length; i++) {
             var collisionResult = pickIntersects[i];
             
             // A depth difference to prevent z-fighting
-            var pickVisOffset = Vec3.subtract(getStagePosOriAt(-0.01, 0, 1.5*i).pos, getStagePosOriAt(0, 0, 0).pos);
+            var pickVisOffset = Vec3.subtract(
+                getStagePosOriAt(-0.01+pickOffsets[i][0], pickOffsets[i][1], pickOffsets[i][2]).pos,
+                getStagePosOriAt(0, 0, 0).pos
+            );
             var collisionPointVisOffset = Vec3.sum({ x:0.01, y:0, z:0 }, pickVisOffset);
             
             visualizePick(createdEntities, collisionResult, pickVisOffset);
