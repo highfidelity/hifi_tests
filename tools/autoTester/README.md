@@ -13,7 +13,7 @@ Auto-tester has 4 functions, separated into 4 tabs:
 ## Setup
 ### Windows 10
 #### Tests Repository
-* Clone the hifi_tests repository - this is not needed when to either run tests or evaluate their results.
+* Clone the hifi_tests repository - this is not needed to run tests nor evaluate their results.
 ```
 git clone https://github.com/highfidelity/hifi_tests.git
 ```
@@ -22,72 +22,7 @@ git clone https://github.com/highfidelity/hifi_tests.git
 2. Double click on the installer and install to a convenient location  
 ![](./setup_7z.png)
 3. To run the auto-tester, double click **auto-tester.exe**.
-####
 
-## Test File Content
-### test.js
-An automatic test is always named **test.js**.  This file contains a javascript module, as described below.  
-#### test.js details
-The **test.js** file itself has two requirements:
-1. Export a parameterless function named `test`
-2. Export a boolean named`complete`
-    1. Initialized to false
-    2. Set to true on completion of the test
-    
-In addition, the test hierarchy, only the test root may, and must, be named **tests**.  This is because the test needs to find the **tests/utils** folder.
-    
-A test expects an empty world and should end with an empty world, for the next test (if any).  The test should create a list of snapshots in the local folder.  The following code snippet describes one way of doing this.
-
-```javascript
-module.exports.complete = false;
-
-module.exports.test = function (testType) {
-    var TESTS_URL = "https://github.com/NissimHadar/hifi_tests/blob/NissimHadar/tests/";
-    var SUFFIX = "?raw=true";
-    var autoTester = Script.require(TESTS_URL + "utils/autoTester.js" + SUFFIX);
-    var spectatorCameraConfig = autoTester.setupTests(Script.resolvePath("."));
-
-    // Create the zone centered at the avatar position
-    var pos = MyAvatar.position;
-
-    // As a 5 meters cube box
-    var dim = { x: 5.0, y: 5.0, z: 5.0};
-
-    // Define zone properties
-    var properties = {
-        lifetime: 60,  
-        type: "Zone",  
-        name: "test create zone",
-        position: pos,
-        dimensions: dim,
-        keyLight:{"color": {"red":0,"green":255,"blue":0}},
-        
-        skyboxMode: "enabled",
-        skybox:{"color":{"red":0,"green":0,"blue":255}}
-    };
-    var zone = Entities.addEntity(properties);
-
-    // An array of tests is created.  These may be called via the timing mechanism for auto-testing,
-    // or stepped through with the space bar
-    var steps = [
-        function () {
-            spectatorCameraConfig.position = {x: pos.x, y: pos.y + 0.6, z: pos.z};
-        },
-        
-        // Take snapshot
-        function () {
-        },
-        
-        // Clean up after test
-        function () {
-            Entities.deleteEntity(zone);
-            module.exports.complete = true;
-        }
-    ]
-    
-    var result = autoTester.runTests(testType, steps);
-};
-```
 ## Using the auto-tester
 The auto-tester provides the following 5 functions:
 1. Evaluate a single test
