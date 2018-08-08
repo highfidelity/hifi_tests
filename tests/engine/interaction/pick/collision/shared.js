@@ -10,7 +10,9 @@ COLOR_COLLISION_SELF = { red: 0, green: 128, blue: 255 };
 COLOR_COLLISION_OTHER = { red: 255, green: 128, blue: 0 };
 
 createTestPick = function (createdPicks, pickType, properties) {
-    createdPicks.push(Picks.createPick(pickType, properties));
+    var testPick = Picks.createPick(pickType, properties);
+    createdPicks.push(testPick);
+    return testPick;
 }
 
 clearTestPicks = function (createdPicks) {
