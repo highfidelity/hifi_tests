@@ -1,5 +1,5 @@
 # Shadow - light at grazing angle from left
-## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
+## Run this script URL: [Manual](https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/engine/render/shadows/primaryCamera/grazing/test.js)   [Auto](https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/engine/render/shadows/primaryCamera/grazing/testAuto.js)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
 - In an empty region of a domain with editing rights.

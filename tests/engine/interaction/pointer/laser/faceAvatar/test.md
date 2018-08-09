@@ -1,5 +1,5 @@
 # LaserPointer faceAvatar test
-## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
+## Run this script URL: [Manual](https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/engine/interaction/pointer/laser/faceAvatar/test.js)   [Auto](https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/engine/interaction/pointer/laser/faceAvatar/testAuto.js)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
 - In an empty region of a domain with editing rights.
