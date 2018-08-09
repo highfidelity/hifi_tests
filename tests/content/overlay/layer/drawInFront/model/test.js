@@ -96,15 +96,22 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
         orientation = Quat.safeEulerAngles(orientation);
         orientation.x = 0;
         orientation = Quat.fromVec3Degrees(orientation);
-        var root = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(5, Quat.getForward(orientation))),
-            Vec3.multiply(-5.5 * MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z), Quat.getRight(orientation)));
+
+        var position = autoTester.getOriginFrame();
+        position.y = position.y + 0.92;
+        
+        var root = Vec3.sum(
+            Vec3.sum(position, Vec3.multiply(5, Quat.getForward(orientation))),
+            Vec3.multiply(-5.5 * MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z), Quat.getRight(orientation))
+        );
+        
         root = Vec3.sum(root, Vec3.multiply(MODEL_Y_OFFSET, Quat.getUp(orientation)));
 
         addCases(root, orientation);
 
         createdEntities.push(Entities.addEntity({
                 type: "Box",
-                position: Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(3, Quat.getFront(orientation))), Vec3.multiply(0.5, Vec3.UP)),
+                position: Vec3.sum(Vec3.sum(position, Vec3.multiply(3, Quat.getFront(orientation))), Vec3.multiply(0.5, Vec3.UP)),
                 visible: true,
                 alpha: 1,
                 orientation: orientation,
