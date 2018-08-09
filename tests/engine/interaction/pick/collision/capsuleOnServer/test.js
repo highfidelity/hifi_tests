@@ -38,8 +38,7 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
     var mouseJointPick = 0;
     var rightHandJointPick = 0;
     
-    // Get the position to be used by the test capsule pick
-    function getTestCapsulePickPos(capsuleHeight) {
+    function getCapsulePlacementPick() {
         var pickToUse;
         if (!HMD.active) {
             if (mouseJointPick == 0) {
@@ -62,13 +61,46 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
             }
             pickToUse = rightHandJointPick;
         }
+        return pickToUse;
+    }
+    
+    // Get the position to be used by the test capsule pick
+    function getTestCapsulePickPos(capsuleHeight) {
+        var pickToUse = getCapsulePlacementPick();
         var result = Picks.getPrevPickResult(pickToUse);
         var pointingAt = result.intersection;
         // Pick result location + capsule half-height offset + small y increase to prevent colliding with a flat ground
         return Vec3.sum(Vec3.sum(pointingAt, getOffsetToPickPos(capsuleHeight)), { x:0, y:0.01, z:0 });
     }
     
-    function createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, pos) {
+    function quatProject(a, b) {
+        return {
+            x: a.x * b.x,
+            y: a.y * b.y,
+            z: a.z * b.z,
+            w: a.w * b.w
+        };
+    }
+    
+    function getTestCapsulePickOri() {
+        if (!HMD.active) {
+            return Quat.IDENTITY;
+        }
+        
+        // This demonstrates a rotation with valid pick behavior, but not the desired one.
+        var pickToUse = getCapsulePlacementPick();
+        var result = Picks.getPrevPickResult(pickToUse);
+        var jointRayResultDirection = result.searchRay.direction;
+        var avatarFacingDirection = MyAvatar.getJointRotation(bodyJointIndex);
+        var jointLookAt = Quat.lookAt(Vec3.ZERO, Quat.getForward(jointRayResultDirection), Vec3.UP);
+        var avatarLookAt = Quat.lookAt(Vec3.ZERO, Quat.getForward(avatarFacingDirection), Vec3.UP);
+        // We only want the rotation of the wrist relative to the pointing direction
+        var wristRot = Quat.multiply(Quat.inverse(jointLookAt), jointRayResultDirection);
+        // Return the rotation in the perspective of the avatar facing direction
+        return Quat.multiply(avatarLookAt, wristRot);
+    }
+    
+    function createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, pos, ori) {
         var capsuleTestPick = createTestPick(createdPicks, PickType.Collision, {
             enabled: true,
             filter: Picks.PICK_ENTITIES + Picks.PICK_AVATARS,
@@ -76,7 +108,8 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
                 shapeType: "capsule-y",
                 dimensions: { x: capsuleRadius*2.0, y: capsuleHeight-(capsuleRadius*2.0), z: capsuleRadius*2.0 }
             },
-            position: pos
+            position: pos,
+            orientation: ori
         });
         Picks.setIgnoreItems(capsuleTestPick, [MyAvatar.sessionUUID]);
         
@@ -192,7 +225,7 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
         });
         var pickVisualizationOverlays = [lowerSphere, cylinder, upperSphere]
         
-        var capsuleTestPick = createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, getTestCapsulePickPos(capsuleHeight));
+        var capsuleTestPick = createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, getTestCapsulePickPos(capsuleHeight), getTestCapsulePickOri());
         
         addScriptInterval(scriptIntervals, 20, function() {
             // Get result from previous pick and destroy/replace with a new pick since parenting isn't implemented yet
@@ -205,14 +238,21 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
                 }
             }
             Picks.removePick(capsuleTestPick);
-            capsuleTestPick = createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, getTestCapsulePickPos(capsuleHeight));
+            capsuleTestPick = createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, getTestCapsulePickPos(capsuleHeight), getTestCapsulePickOri());
             
             // Use overlay to visualize previous pick result
             // When there is not enough time to get the result, the result may be empty, so we need to check for that
             if (result.collisionRegion != undefined) {
+                var overlayBottomPosition = Vec3.sum(
+                    result.collisionRegion.position,
+                    Vec3.multiplyQbyV(result.collisionRegion.orientation, getOffsetFromPickPos(capsuleHeight))
+                );
+                var overlayOrientation = result.collisionRegion.orientation;
                 Overlays.editOverlay(baseOverlay, {
-                    position: Vec3.sum(result.collisionRegion.position, getOffsetFromPickPos(capsuleHeight))
+                    position: overlayBottomPosition,
+                    rotation: overlayOrientation
                 });
+                
                 var collisionColor;
                 if (result.intersects) {
                     collisionColor = COLOR_YES_COLLISION;
