@@ -130,10 +130,11 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
     autoTester.addStepSnapshot("Take snapshot of all the models");
 
     autoTester.addStep("Clean up after test", function () {
-        for (var i in createdEntities) {
+        for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
-        for (var i in createdOverlays) {
+        
+        for (var i = 0; i < createdOverlays.length; i++) {
             Overlays.deleteOverlay(createdOverlays[i]);
         }
 
