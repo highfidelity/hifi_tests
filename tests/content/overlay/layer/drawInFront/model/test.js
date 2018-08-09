@@ -18,6 +18,14 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     autoTester.addStep("Build the material matrix", function () {
         // List here all the entries of the Material Matrix
         var TEST_CASES = [
@@ -127,6 +135,11 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
         }
         for (var i in createdOverlays) {
             Overlays.deleteOverlay(createdOverlays[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 
