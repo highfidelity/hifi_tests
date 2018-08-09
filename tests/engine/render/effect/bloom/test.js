@@ -77,28 +77,20 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
         ambientLightMode: "enabled",
         ambientLight: {
             ambientURL: SKY_URL
+        },
+
+        bloomMode: "disabled",
+        bloom: {
+            bloomIntensity: 1.0
         }
     });
-
-    var bloomConfig = Render.getConfig("RenderMainView.Bloom")
-    var bloomThresholdConfig = Render.getConfig("RenderMainView.BloomThreshold")
-    var secondaryBloomConfig = Render.getConfig("SecondaryCameraJob.Bloom")
-    var secondaryBloomThresholdConfig = Render.getConfig("SecondaryCameraJob.BloomThreshold")
-
-    var defaultEnabled = bloomConfig.enabled
-    var defaultIntensity = bloomConfig.intensity
-    var defaultThreshold = bloomThresholdConfig.threshold
-        
-    bloomConfig.enabled = false;
-    secondaryBloomConfig.enabled = false;
 
     autoTester.addStepSnapshot("Bloom is off - no bloom should be visible");
         
     autoTester.addStep("Enable bloom", function () {
-        bloomConfig.intensity = 1.0
-        secondaryBloomConfig.intensity = 1.0
-        bloomConfig.enabled = true;
-        secondaryBloomConfig.enabled = true;
+        Entities.editEntity(sky, {
+            bloomMode: "enabled"
+        })
     });
     autoTester.addStepSnapshot("Bloom enabled");
 
@@ -109,12 +101,6 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
             Entities.deleteEntity(sky);
             Overlays.deleteOverlay(normalOverlay);
             Overlays.deleteOverlay(inFrontOverlay);
-            bloomConfig.enabled = defaultEnabled
-            bloomConfig.intensity = defaultIntensity
-            bloomThresholdConfig.threshold = defaultThreshold
-            secondaryBloomConfig.enabled = defaultEnabled
-            secondaryBloomConfig.intensity = defaultIntensity
-            secondaryBloomThresholdConfig.threshold = defaultThreshold
         }
     );
 
