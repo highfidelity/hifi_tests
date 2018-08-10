@@ -230,13 +230,7 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
         addScriptInterval(scriptIntervals, 20, function() {
             // Get result from previous pick and destroy/replace with a new pick since parenting isn't implemented yet
             var result = Picks.getPrevPickResult(capsuleTestPick);
-            var index = 0;
-            for (; index < createdPicks.length; index++) {
-                if (createdPicks[index] == capsuleTestPick) {
-                    createdPicks.splice(index, 1);
-                    break;
-                }
-            }
+            // Remove the pick, but keep it in the list of createdPicks to ensure proper cleanup later
             Picks.removePick(capsuleTestPick);
             capsuleTestPick = createTestCapsulePickAtPos(createdPicks, capsuleRadius, capsuleHeight, getTestCapsulePickPos(capsuleHeight), getTestCapsulePickOri());
             
