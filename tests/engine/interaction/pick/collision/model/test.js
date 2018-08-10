@@ -15,7 +15,7 @@ autoTester.perform("Test model CollisionPick with models", Script.resolvePath(".
     
     var TEST_DIMENSIONS = { x: 1.01, y: 1.01, z: 1.01 };
     
-    autoTester.addStep("Create test model", function () {
+    autoTester.addStep("Create test model and model collision picks", function () {
         // Create jack model to test collisions against
         createdEntities.push(Entities.addEntity({
             lifetime: ENTITY_LIFETIME,
@@ -27,9 +27,7 @@ autoTester.perform("Test model CollisionPick with models", Script.resolvePath(".
             position: getStagePosOriAt(3, 0, 1).pos,
             dimensions: TEST_DIMENSIONS
         }));
-    });
-    
-    autoTester.addStep("Create model collision picks", function () {
+        
         // Create two jack-shaped picks, one touching on both corners from the top left side, and one directly underneath
         createTestPick(createdPicks, PickType.Collision, {
             enabled: true,
@@ -52,8 +50,6 @@ autoTester.perform("Test model CollisionPick with models", Script.resolvePath(".
             position: getStagePosOriAt(3, -0.5, 1).pos
         });
     });
-    
-    autoTester.addStep("Wait for collision picks to get results");
     
     autoTester.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection

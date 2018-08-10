@@ -10,7 +10,7 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
     var createdEntities = setupStage(initData);
     var createdPicks = [];
     
-    autoTester.addStep("Create test box", function () {
+    autoTester.addStep("Create test box and 5 cubic collision picks", function () {
         var extents = Vec3.subtract(
             getStagePosOriAt(3.25, 4.25, 0.25).pos,
             getStagePosOriAt(2.75, -4.25, -0.25).pos
@@ -27,9 +27,7 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
             dimensions: { x: Math.abs(extents.x), y: Math.abs(extents.y), z: Math.abs(extents.z) },
             rotation: Quat.normalize({ x: 0, y: 0, z: 0.1, w: 0.9 })
         }));
-    });
-    
-    autoTester.addStep("Create 5 cubic collision picks", function () {
+        
         // Create five picks with horizontal offsets
         for (var i = 0; i < 5; i++) {
             createTestPick(createdPicks, PickType.Collision, {
@@ -43,8 +41,6 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
             });
         }
     });
-    
-    autoTester.addStep("Wait for collision picks to get results");
     
     autoTester.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection

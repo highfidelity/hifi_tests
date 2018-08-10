@@ -11,8 +11,7 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
     var createdPicks = [];
     var filteredEntity;
     
-    autoTester.addStep("Create test box", function () {
-        // Create box
+    autoTester.addStep("Create test box and collision picks with different filters", function () {
         createdEntities.push(Entities.addEntity({
             color: COLOR_NEUTRAL,
             lifetime: ENTITY_LIFETIME,
@@ -23,9 +22,7 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
             dimensions: { x: 1, y: 1, z: 1 }
         }));
         filteredEntity = createdEntities[createdEntities.length-1];
-    });
-    
-    autoTester.addStep("Create collision picks with different filters", function () {
+        
         for (var i = 0; i <= 2; i++) {
             createTestPick(createdPicks, PickType.Collision, {
                 enabled: true,
@@ -45,8 +42,6 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
         // Pick 2 should register collision (tests whitelist success)
         Picks.setIncludeItems(createdPicks[2], [filteredEntity]);
     });
-    
-    autoTester.addStep("Wait for collision picks to get results");
     
     autoTester.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection

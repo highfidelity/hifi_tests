@@ -10,7 +10,7 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
     var createdEntities = setupStage(initData);
     var createdPicks = [];
     
-    autoTester.addStep("Create test box", function () {
+    autoTester.addStep("Create test box and cubic collision picks", function () {
         // Create box
         createdEntities.push(Entities.addEntity({
             color: COLOR_NEUTRAL,
@@ -21,9 +21,7 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
             position: getStagePosOriAt(3, -1, 0).pos,
             dimensions: { x: 1, y: 1, z: 1 }
         }));
-    });
-    
-    autoTester.addStep("Create cubic collision picks", function () {
+        
         // Create three picks, one with a gap, one touching, and one definitely inside
         // Box:      [ ]      (y = -1)
         // Pick 1:      [ ]   (gap) (y = +0.5)
@@ -42,8 +40,6 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
             });
         }
     });
-    
-    autoTester.addStep("Wait for collision picks to get results");
     
     autoTester.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection

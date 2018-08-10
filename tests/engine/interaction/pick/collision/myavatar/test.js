@@ -22,8 +22,6 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
         });
     });
     
-    autoTester.addStep("Wait for collision picks to get results");
-    
     autoTester.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection
         // Boxes also have y-offset for better visualization

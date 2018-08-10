@@ -10,7 +10,7 @@ autoTester.perform("Test CollisionPick with identical cubes", Script.resolvePath
     var createdEntities = setupStage(initData);
     var createdPicks = [];
     
-    autoTester.addStep("Create test box", function () {
+    autoTester.addStep("Create test box and identical cubic collision picks", function () {
         // Create box
         createdEntities.push(Entities.addEntity({
             color: COLOR_NEUTRAL,
@@ -21,9 +21,7 @@ autoTester.perform("Test CollisionPick with identical cubes", Script.resolvePath
             position: getStagePosOriAt(3, 0, 0).pos,
             dimensions: { x: 1, y: 1, z: 1 }
         }));
-    });
-    
-    autoTester.addStep("Create identical cubic collision picks", function () {
+        
         // Create three picks in the same place
         for (var i = 0; i <= 2; i++) {
             createTestPick(createdPicks, PickType.Collision, {
@@ -37,8 +35,6 @@ autoTester.perform("Test CollisionPick with identical cubes", Script.resolvePath
             });
         }
     });
-    
-    autoTester.addStep("Wait for collision picks to get results");
     
     autoTester.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection
