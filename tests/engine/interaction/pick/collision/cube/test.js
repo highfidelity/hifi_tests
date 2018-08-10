@@ -38,7 +38,7 @@ autoTester.perform("Test CollisionPick with cubes", Script.resolvePath("."), "se
                     dimensions: { x: 1, y: 1, z: 1 }
                 },
                 position: getStagePosOriAt(3, (i-1)*-0.5, 0).pos,
-                rotation: Quat.normalize({ x: 0, y: 0, z: .1, w: 1})
+                orientation: Quat.normalize({ x: 0, y: 0, z: .1, w: 1})
             });
         }
     });
