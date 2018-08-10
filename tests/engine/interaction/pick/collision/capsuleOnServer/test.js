@@ -153,9 +153,9 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
         var collisionPoints = [];
         for (var i = 0; i < intersectingObjects.length; i++) {
             var intersectingObject = intersectingObjects[i];
-            for (var j = 0; j < intersectingObject.contactPointPairs.length; j++) {
-                collisionPoints.push(intersectingObject.contactPointPairs[j].pickContactPoint);
-                collisionPoints.push(intersectingObject.contactPointPairs[j].objectContactPoint);
+            for (var j = 0; j < intersectingObject.collisionContacts.length; j++) {
+                collisionPoints.push(intersectingObject.collisionContacts[j].pointOnPick);
+                collisionPoints.push(intersectingObject.collisionContacts[j].pointOnObject);
             }
         }
         if (collisionPointOverlays.length < collisionPoints.length) {

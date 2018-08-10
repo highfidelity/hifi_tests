@@ -77,8 +77,8 @@ visualizePickAtExactPosition = function (createdEntities, collisionResult, pickP
 visualizePickCollisions = function (createdEntities, collisionResult, intersectingObject, pickPositionOffset, collisionDisplayDimensions) {
     var collisionRegion = collisionResult.collisionRegion;
     
-    for (var i = 0; i < intersectingObject.contactPointPairs.length; i++) {
-        var collisionPointPair = intersectingObject.contactPointPairs[i];
+    for (var i = 0; i < intersectingObject.collisionContacts.length; i++) {
+        var collisionPointPair = intersectingObject.collisionContacts[i];
         
         createdEntities.push(Entities.addEntity({
             color: COLOR_COLLISION_SELF,
@@ -86,7 +86,7 @@ visualizePickCollisions = function (createdEntities, collisionResult, intersecti
             userData: ENTITY_USER_DATA,
             type: "Box",
             name: "Box",
-            position: Vec3.sum(pickPositionOffset, collisionPointPair.pickContactPoint),
+            position: Vec3.sum(pickPositionOffset, collisionPointPair.pointOnPick),
             rotation: collisionRegion.orientation,
             dimensions: collisionDisplayDimensions
         }));
@@ -97,7 +97,7 @@ visualizePickCollisions = function (createdEntities, collisionResult, intersecti
             userData: ENTITY_USER_DATA,
             type: "Box",
             name: "Box",
-            position: collisionPointPair.objectContactPoint,
+            position: collisionPointPair.pointOnObject,
             dimensions: collisionDisplayDimensions
         }));
     }
