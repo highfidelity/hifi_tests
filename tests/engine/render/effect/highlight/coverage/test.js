@@ -12,17 +12,22 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     var LIFETIME = 300; // 5 min
 
     // Initial setup
+    
     MyAvatar.goToLocation(
         { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z },
         true,
         Quat.angleAxis(0, { x: 0, y: 1, z: 0 }),
         true
     );
+    position = autoTester.getOriginFrame();
+    position.z = position.z + 1.0;
 
+    validationCamera_translate({ x: 0.0, y: -0.75, z: 5.8 });
+    
     var blueBox = Entities.addEntity({
         type: "Box",
         name: "BlueBox",
-        position: { x: MyAvatar.position.x - 1.0, y: MyAvatar.position.y + 0.5, z: MyAvatar.position.z - 1.0 },
+        position: { x: position.x - 1.0, y: position.y + 0.5, z: position.z - 1.0 },
         dimensions: { x: 2, y: 0.25, z: 0.25 },
         dynamic: false,
         lifetime: LIFETIME,
@@ -33,7 +38,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     var redSphere = Entities.addEntity({
         type: "Sphere",
         name: "RedSphere",
-        position: { x: MyAvatar.position.x + 1.0, y: MyAvatar.position.y + 1.0, z: MyAvatar.position.z - 1.0 },
+        position: { x: position.x + 1.0, y: position.y + 1.0, z: position.z - 1.0 },
         dimensions: { x: 0.5, y: 0.5, z: 0.5 },
         dynamic: false,
         lifetime: LIFETIME,
@@ -47,7 +52,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
             green: 10,
             red: 10
         },
-        position: {x: MyAvatar.position.x + 1.25, y: MyAvatar.position.y - 0.5, z: MyAvatar.position.z + 1.0 },
+        position: {x: position.x + 1.25, y: position.y - 0.5, z: position.z + 1.0 },
         dimensions: { x: 1, y: 2.1, z: 0.1 },
         linePoints: [
             {
@@ -237,7 +242,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     var hifi = Entities.addEntity({
         type: "Model",
         name: "Hifi",
-        position: { x: MyAvatar.position.x, y: MyAvatar.position.y, z: MyAvatar.position.z + 2.0 },
+        position: { x: position.x, y: position.y, z: position.z + 2.0 },
         dimensions: { x: 2, y: 2, z: 2 },
         dynamic: false,
         lifetime: LIFETIME,
@@ -248,7 +253,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     var terrain = Entities.addEntity(       {
         type: "PolyVox",
         name: "Terrain",
-        position: { x: MyAvatar.position.x, y: MyAvatar.position.y - 3.0, z: MyAvatar.position.z + 5.0 },
+        position: { x: position.x, y: position.y - 3.0, z: position.z + 5.0 },
         dimensions: { x: 16, y: 16, z: 16 },
         voxelData: "ABAAQAAQAAAAzgAAQAB42u3YMQ7DIBBE0bn/pZ0mRQxYRhFSwvr9bqn5mt05DmAdaeekndPOaeePl+T8kpxfcqadcYMfi6X+5wv/0/mfzv8cve+9/+A/fpr39/7Le/7jMf7Le/7jwff+wrwH//Hf9/66vA//+Y/t+/25vLff8x8F+v25vLff8x8V9v2p+36434P/2L7fG+T9cL93z/MfFfN+tN+75/mP/fN+rs97PzKK/yiW96P9Xn/HfxT0f5j3+jv+4zF5f9Xfgf+olvdX9zzq8wIVumOl",
         voxelSurfaceStyle: 0,
@@ -264,7 +269,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     var overlayProperties = {
         url: assetsRootPath + "models/material_matrix_models/fbx/blender/hifi_metallicV_albedoVM_ao.fbx?raw=true",
         name: "overlayModel",
-        position: { x: MyAvatar.position.x + 2.0, y: MyAvatar.position.y, z: MyAvatar.position.z + 3.0 },
+        position: { x: position.x + 2.0, y: position.y, z: position.z + 3.0 },
         dimensions: { x: 2, y: 2, z: 2 },
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     }

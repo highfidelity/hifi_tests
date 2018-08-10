@@ -18,6 +18,14 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     autoTester.addStep("Build the material matrix", function () {
         // List here all the entries of the Material Matrix
         var TEST_CASES = [
@@ -96,15 +104,22 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
         orientation = Quat.safeEulerAngles(orientation);
         orientation.x = 0;
         orientation = Quat.fromVec3Degrees(orientation);
-        var root = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(5, Quat.getForward(orientation))),
-            Vec3.multiply(-5.5 * MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z), Quat.getRight(orientation)));
+
+        var position = autoTester.getOriginFrame();
+        position.y = position.y + 0.92;
+        
+        var root = Vec3.sum(
+            Vec3.sum(position, Vec3.multiply(5, Quat.getForward(orientation))),
+            Vec3.multiply(-5.5 * MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z), Quat.getRight(orientation))
+        );
+        
         root = Vec3.sum(root, Vec3.multiply(MODEL_Y_OFFSET, Quat.getUp(orientation)));
 
         addCases(root, orientation);
 
         createdEntities.push(Entities.addEntity({
                 type: "Box",
-                position: Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(3, Quat.getFront(orientation))), Vec3.multiply(0.5, Vec3.UP)),
+                position: Vec3.sum(Vec3.sum(position, Vec3.multiply(3, Quat.getFront(orientation))), Vec3.multiply(0.5, Vec3.UP)),
                 visible: true,
                 alpha: 1,
                 orientation: orientation,
@@ -115,11 +130,17 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
     autoTester.addStepSnapshot("Take snapshot of all the models");
 
     autoTester.addStep("Clean up after test", function () {
-        for (var i in createdEntities) {
+        for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
-        for (var i in createdOverlays) {
+        
+        for (var i = 0; i < createdOverlays.length; i++) {
             Overlays.deleteOverlay(createdOverlays[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 
