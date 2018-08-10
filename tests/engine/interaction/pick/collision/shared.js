@@ -66,7 +66,7 @@ visualizePickAtExactPosition = function (createdEntities, collisionResult, pickP
         name: entityName,
         modelURL: modelURL,
         position: pickPosition,
-        rotation: collisionRegion.orientation,
+        rotation: collisionRegion.rotation,
         dimensions: collisionRegion.shape.dimensions
     };
     
@@ -87,7 +87,7 @@ visualizePickCollisions = function (createdEntities, collisionResult, intersecti
             type: "Box",
             name: "Box",
             position: Vec3.sum(pickPositionOffset, collisionPointPair.pointOnPick),
-            rotation: collisionRegion.orientation,
+            rotation: collisionRegion.rotation,
             dimensions: collisionDisplayDimensions
         }));
         

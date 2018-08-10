@@ -109,7 +109,7 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
                 dimensions: { x: capsuleRadius*2.0, y: capsuleHeight-(capsuleRadius*2.0), z: capsuleRadius*2.0 }
             },
             position: pos,
-            orientation: ori
+            rotation: ori
         });
         Picks.setIgnoreItems(capsuleTestPick, [MyAvatar.sessionUUID]);
         
@@ -245,12 +245,12 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
             if (result.collisionRegion != undefined) {
                 var overlayBottomPosition = Vec3.sum(
                     result.collisionRegion.position,
-                    Vec3.multiplyQbyV(result.collisionRegion.orientation, getOffsetFromPickPos(capsuleHeight))
+                    Vec3.multiplyQbyV(result.collisionRegion.rotation, getOffsetFromPickPos(capsuleHeight))
                 );
-                var overlayOrientation = result.collisionRegion.orientation;
+                var overlayRotation = result.collisionRegion.rotation;
                 Overlays.editOverlay(baseOverlay, {
                     position: overlayBottomPosition,
-                    rotation: overlayOrientation
+                    rotation: overlayRotation
                 });
                 
                 var collisionColor;
