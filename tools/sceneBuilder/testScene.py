@@ -110,6 +110,6 @@ def makeAvatars():
       entities.append(makeRandomAvatar(position))
   return makeExport(entities)
       
-f = open('../scenes/staticAvatars.json', 'w')
+f = open('../assets/scenes/staticAvatars.json', 'w')
 json.dump(makeAvatars(), f, sort_keys=True, indent=2);
 f.close()

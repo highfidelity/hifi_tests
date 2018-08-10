@@ -2,7 +2,7 @@
 TEST_ROOT = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/";
 TEST_BINARY_ROOT = "https://hifi-public.s3.amazonaws.com/test_scene_data/";
 TEST_SCRIPTS_ROOT = TEST_ROOT + "scripts/";
-TEST_SCENES_ROOT = TEST_ROOT + "scenes/";
+TEST_SCENES_ROOT = TEST_ROOT + "assets/scenes/";
 DEFAULT_TRACING_RULES = "" +
     "trace.*=true\n" +
     "*.detail=false\n" +

@@ -1,3 +1,5 @@
+# General
+This document describes the philosophy behind the testing infrastructure and then details the requirements for writing test scripts.
 # Engine Test Plan
 
 This repository folder is the root of the master database of test cases for the core engine features of High Fidelity platform.
@@ -7,8 +9,6 @@ The testing technique depends on the aspect or behavior beeing demonstrated, the
 - standalone script running in Interface.exe with some preconditions and producing an expected result (visual or print out)
 - running Interface.exe with some preconditions in "test" mode and producing performance trace records of the test run that require to be analyzed
 - running Interface.exe and performing a user story steps by steps (relying on the actual ui offered by the application and an actual QA User) to validate and expected result
-
-As of now (October 2017) we are focusing on building a concrete database of the standalone scripts types which are simple and easy to automate in the long run.
 
 ## Test types
 We identify different types of test used for different purpose
@@ -91,17 +91,6 @@ For example: [Entity Shape Create](./content/entity/shape/create)
 
 ### Script Guidelines
 - Make the script automated as much as possible without any user input required at best
-- If user input is required to make test progress step by step use a simple Key event connected to the 'space" key:
-   ```
-   var _step = 0;
-   Controller.keyPressEvent.connect(function(event){
-       if (event.key == 32) {
-          step++;
-          executeStep(_step);
-       }   
-   });
-   function executeStep(step) { ... }
-   ```
 - Every entitiy created during the test must be deleted at the end of the script for cleanup
   - collect the entites created in a local array and delete them all on exit
     ```
@@ -122,4 +111,49 @@ For example: [Entity Shape Create](./content/entity/shape/create)
 - the story.md file reference the required files to perform during the test and the expected result(s)
 - the result is either a print out in the log out or and actuall snapshot of the rendering (also stored in the test case folder).
 
-## TO BE CONTINUED
+## Test Folder Content
+Each test is in a separate folder, which should contain the following files:
+1. test.js - a module containing the test.  The contents are described in detail below.
+2. runAuto.js - runs the test.js script automatically, creating a set of snapshots.
+3. test.md - this is created by auto-tester.
+4. Expected_Image_xxxx - these are created by running the script and then using auto-tester.
+5. In addition - **auto-tester** is used to create recursive scripts.  These are all named **testRecursive.js** and will run every applicable test (i.e., those named *test.js*) in all subfolders below this script.  This allows running **ALL** the tests, by running the *testRecursive.js* script located in the **tests** root folder.
+# Test Script Structure
+A test script has the following structure:
+```
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+
+var autoTester = createAutoTester(Script.resolvePath("."));
+
+autoTester.perform("Test Description", Script.resolvePath("."), "secondary", function(testType) {
+
+   <list of steps>
+  
+   autoTester.runTest(testType);
+});
+
+```
+The first line verifies that *PATH_TO_THE_REPO_PATH_UTILS_FILE* points to a script named **branchUtils.js**.  This script will always be available in the master branch of the hifi_tests branch of the highfidelity user.  This is used to enable running tests from the repository of a different user for testing purposes.
+
+The second line includes can then include **branchUtils.js**.
+
+The third line creates the autoTester object, which stores the test steps, and then initiates the test (via *runTest*).
+
+Tests are not run immediately. Instead all steps of all tests are first stored on a stack.  This is required because of the vagaries of the JavaScript language.
+## Test Steps
+A test step is a function that can also create a snapshot (the function is not compulsory, see below).  Loading entities and setting state take finite time, so the recommended procedure is to write pairs of steps, as follows:
+```
+    autoTester.addStep("Clear zone rotation", function () {
+        Entities.editEntity(sphere, {visible: false });  
+        Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 )});  
+        Entities.editEntity(zone, {keyLightMode: "disabled", skyboxMode: "enabled"});  
+    });
+    autoTester.addStepSnapshot("Sun straight ahead on purple background (sphere is hidden)");
+```
+The first step edits an entity, while the second step just takes a snapshot (note that it has no function).
+
+The first parameter is a string describing the step.  This string is also used by auto-tester when creating the MD file.
+
+The final step in a test should delete all entities created by the test, and restore Interface to its state prior to the test (i.e. - restore shadows, point of view and avatar visibility).
