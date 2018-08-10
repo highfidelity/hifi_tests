@@ -13,6 +13,11 @@
 Script.include("../BenchmarkLib.js");
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 
+SPOT500_TRACING_RULES = "" +
+    "trace.*=true\n" +
+    "*.detail=false\n" +
+    "";
+
 var TRACE_TOOLBAR = "com.highfidelity.interface.toolbar.trace";
 var TRACE_ICON = Script.resolvePath("../assets/traceButton.png"); 
 var TRACE_NAME = "trace-{DATE}_{TIME}";
@@ -64,7 +69,7 @@ function startTrace() {
     traceActive = true;
     button.editProperties({isActive: traceActive});
     print("QQQ starting trace " + TRACE_NAME + " for " + TRACE_DURATION + " seconds");
-    Test.startTracing(DEFAULT_TRACING_RULES);
+    Test.startTracing(SPOT500_TRACING_RULES);
     if (TRACE_DURATION > 0) {
         Script.setTimeout(function(){
             stopTrace();
