@@ -272,6 +272,8 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
         rightHandJointPick = 0;
     }
     
+    Script.scriptEnding.connect(cleanup);
+    
     autoTester.addStep("Visualize pick without collision points", function () {
         visualizeCapsulePick(false);
     });

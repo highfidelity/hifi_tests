@@ -77,9 +77,15 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
     
     autoTester.addStepSnapshot("Collision pick results are visible");
     
-    autoTester.addStep("Clean up after test", function () {
+    function cleanup() {
         clearEntities(createdEntities);
         clearTestPicks(createdPicks);
+    }
+    
+    Script.scriptEnding.connect(cleanup);
+    
+    autoTester.addStep("Clean up after test", function () {
+        cleanup();
     });
     
     var result = autoTester.runTest(testType);
