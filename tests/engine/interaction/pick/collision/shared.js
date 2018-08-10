@@ -3,8 +3,8 @@ ENTITY_USER_DATA = JSON.stringify({ grabbableKey: { grabbable: false } });
 
 COLOR_NEUTRAL = { red: 230, green: 230, blue: 230 };
 // These are for visualization of the test picks
-COLOR_NO_COLLISION = { red: 255, green: 0, blue: 0 };
-COLOR_YES_COLLISION = { red: 0, green: 255, blue: 0 };
+COLOR_NO_COLLISION = { red: 0, green: 255, blue: 0 };
+COLOR_YES_COLLISION = { red: 255, green: 0, blue: 0 };
 // These are for visualization of the collision points
 COLOR_COLLISION_SELF = { red: 0, green: 128, blue: 255 };
 COLOR_COLLISION_OTHER = { red: 255, green: 128, blue: 0 };
