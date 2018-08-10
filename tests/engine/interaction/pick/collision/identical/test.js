@@ -5,7 +5,7 @@ Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
 Script.include(Script.resolvePath(autoTester.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
-autoTester.perform("Test CollisionPick with identical cubes", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Test CollisionPick with identical cube picks", Script.resolvePath("."), "secondary", function(testType) {
     var initData = { originFrame: autoTester.getOriginFrame() };
     var createdEntities = setupStage(initData);
     var createdPicks = [];
