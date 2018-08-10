@@ -19,8 +19,8 @@ createAutoTester = function (executionPath) {
     // Default values
     var user = "highfidelity";;
     var branch = "master";
-
-    // The format of the execution path is either (assuming the test is in the "tests' folder hierarchy)
+    
+    // The format of the execution path is either as follows (assuming the test is in the "tests' folder hierarchy)
     //      "https://raw.githubusercontent.com/<user>/<repository>/<branch>/tests/..."
     // or
     //      "https://github.com/<user>/blob/<repository>/<branch>/tests/..."
@@ -28,27 +28,28 @@ createAutoTester = function (executionPath) {
     // If the first word is not "https" then the script is probably running from a local file
     var words = executionPath.split("/");
 
+    var rawExecutionPath = executionPath;
     if (words[0] === "https:") {
+        // The execution path is first converted into the first format, as this is needed down the line
+        if (words[2] !== "raw.githubusercontent.com") {
+            rawExecutionPath = rawExecutionPath.replace("github.com", "raw.githubusercontent.com");
+            rawExecutionPath = rawExecutionPath.replace("/blob/", "/");
+        }
+            
         // Note that words[1] is null
         user = words[3];
-
+        
+        // The second format has the 'blob' token
         if (words[2] === "raw.githubusercontent.com") {
             branch = words[5];
         } else {
-            // The second format has the 'blob' token
             branch = words[6];
         }
     }
 
-    var repositoryPath = getRepositoryPath(executionPath);
-    var autoTesterPath = repositoryPath + "tests/utils/autoTester.js";
+    var repositoryPath = getRepositoryPath(rawExecutionPath);
 
-    // For the second format we need to append "?raw=true" to the path
-    if (words[2] === "github.com") {
-        autoTesterPath = autoTesterPath + "?raw=true";
-    }
-
-    var autoTester =  Script.require(autoTesterPath);
+    var autoTester =  Script.require(repositoryPath + "tests/utils/autoTester.js");
     autoTester.setRepositoryInfo(repositoryPath);
 
     return autoTester;
