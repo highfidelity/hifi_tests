@@ -1,7 +1,8 @@
 // Test shadow setup
 
-// To use this script, include it, and call "setup(altitude, azimuth)", altitude and azimuth being
-// the key light angles. The function returns an array of created entities.
+// To use this script, include it, and call "setup(altitude, azimuth, originFrame)", 
+// altitude and azimuth being the key light angles.
+// The function returns an array of created entities.
 // 
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 

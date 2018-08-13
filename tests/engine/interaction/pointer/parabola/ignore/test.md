@@ -1,4 +1,4 @@
-# Show effects of opacity
+# Parabola ignore test
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,11 +8,14 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Set up test case
+- Move back to see all the objects
 ### Step 2
-- Wait for models to load
-### Step 3
-- Take snapshot of the effects
+- Initial position
 - ![](./ExpectedImage_00000.png)
+### Step 3
+- Position 
 ### Step 4
-- Clean up after test
+- Position 
+- ![](./ExpectedImage_00001.png)
+### Step 5
+- Clean up

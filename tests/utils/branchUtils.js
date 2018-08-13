@@ -20,19 +20,34 @@ createAutoTester = function (executionPath) {
     var user = "highfidelity";;
     var branch = "master";
     
-    // The format of the execution path is as follows (assuming the test is in the "tests' folder hierarchy)
-    // "https://raw.githubusercontent.com/<user>/<repository>/<branch>/tests/..."
+    // The format of the execution path is either as follows (assuming the test is in the "tests' folder hierarchy)
+    //      "https://raw.githubusercontent.com/<user>/<repository>/<branch>/tests/..."
+    // or
+    //      "https://github.com/<user>/blob/<repository>/<branch>/tests/..."
+    //
     // If the first word is not "https" then the script is probably running from a local file
     var words = executionPath.split("/");
 
-    if (words[0] === "https:" && words.length >= 6) {
-        // Note that words[1] is null and words[2] is "raw.githubusercontent.com"
+    var rawExecutionPath = executionPath;
+    if (words[0] === "https:") {
+        // The execution path is first converted into the first format, as this is needed down the line
+        if (words[2] !== "raw.githubusercontent.com") {
+            rawExecutionPath = rawExecutionPath.replace("github.com", "raw.githubusercontent.com");
+            rawExecutionPath = rawExecutionPath.replace("/blob/", "/");
+        }
+            
+        // Note that words[1] is null
         user = words[3];
-        branch = words[5];
+        
+        // The second format has the 'blob' token
+        if (words[2] === "raw.githubusercontent.com") {
+            branch = words[5];
+        } else {
+            branch = words[6];
+        }
     }
 
-    // This needs to work for both 'https://' and 'file://' URLs
-    var repositoryPath = getRepositoryPath(executionPath);
+    var repositoryPath = getRepositoryPath(rawExecutionPath);
 
     var autoTester =  Script.require(repositoryPath + "tests/utils/autoTester.js");
     autoTester.setRepositoryInfo(repositoryPath);
