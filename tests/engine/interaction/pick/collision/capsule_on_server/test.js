@@ -68,6 +68,9 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
     function getTestCapsulePickPos(capsuleHeight) {
         var pickToUse = getCapsulePlacementPick();
         var result = Picks.getPrevPickResult(pickToUse);
+        if (result.intersection == undefined) {
+            return Vec3.ZERO;
+        }
         var pointingAt = result.intersection;
         // Pick result location + capsule half-height offset + small y increase to prevent colliding with a flat ground
         return Vec3.sum(Vec3.sum(pointingAt, getOffsetToPickPos(capsuleHeight)), { x:0, y:0.01, z:0 });
@@ -90,6 +93,9 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
         // This demonstrates a rotation with valid pick behavior, but not the desired one.
         var pickToUse = getCapsulePlacementPick();
         var result = Picks.getPrevPickResult(pickToUse);
+        if (result.searchRay == undefined) {
+            return Quat.IDENTITY;
+        }
         var jointRayResultDirection = result.searchRay.direction;
         var avatarFacingDirection = MyAvatar.getJointRotation(bodyJointIndex);
         var jointLookAt = Quat.lookAt(Vec3.ZERO, Quat.getForward(jointRayResultDirection), Vec3.UP);
