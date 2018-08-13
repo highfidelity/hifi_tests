@@ -31,7 +31,8 @@ autoTester.perform("Test CollisionPick with identical cube picks", Script.resolv
                     shapeType: "box",
                     dimensions: { x: 1, y: 1, z: 1 }
                 },
-                position: getStagePosOriAt(3.0, 0.5, 0.5).pos
+                position: getStagePosOriAt(2.99, 0.5, 0.5).pos,
+                orientation: Quat.normalize({ x: 0.001, y: 0.001, z: -0.001, w: 1.0})
             });
         }
     });

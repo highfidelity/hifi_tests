@@ -31,7 +31,8 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
                     shapeType: "box",
                     dimensions: { x: 1, y: 1, z: 1 }
                 },
-                position: getStagePosOriAt(3.0, 0.5, 0.5).pos
+                position: getStagePosOriAt(2.99, 0.5, 0.5).pos,
+                orientation: Quat.normalize({ x: 0.001, y: 0.001, z: -0.001, w: 1.0})
             });
         }
         
@@ -55,7 +56,7 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
             
             // A depth difference to prevent z-fighting
             // Pick visualizations also have an x-offset to differentiate from the identical picks test
-            var pickVisOffset = Vec3.subtract(getStagePosOriAt(-0.01, -0.5+1.5*(i-1), 1.5).pos, getStagePosOriAt(0, 0, 0).pos);
+            var pickVisOffset = Vec3.subtract(getStagePosOriAt(-0.02, -0.5+1.5*(i-1), 1.5).pos, getStagePosOriAt(0, 0, 0).pos);
             var collisionPointVisOffset = Vec3.sum({ x:0.01, y:0, z:0 }, pickVisOffset);
             
             visualizePick(createdEntities, collisionResult, pickVisOffset);
