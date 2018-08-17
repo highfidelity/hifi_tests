@@ -1,5 +1,5 @@
 # Test capsule CollisionPick on server
-## Run this script URL: [Manual](./test.js?raw=true)
+## Run this script URL: [Manual](./testStory.js?raw=true)
 
 ## Preconditions
 - In a complicated test domain such as engine-dev
