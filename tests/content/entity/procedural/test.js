@@ -18,11 +18,9 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         position: Vec3.sum(MyAvatar.position, Vec3.sum(Vec3.multiply(4, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(-1, Quat.getRight(MyAvatar.orientation)))),
         dimensions: { x: 0.5, y: 0.5, z: 0.5 },
         lifetime: LIFETIME,
-        userData: JSON.stringify({
-            "ProceduralEntity": {
-                "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestPosition.fs",
-                "version": 2
-            }
+        proceduralData: JSON.stringify({
+            "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestPosition.fs",
+            "version": 2
         })
     }));
 
@@ -33,11 +31,9 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         position: Vec3.sum(MyAvatar.position, Vec3.multiply(4, Quat.getFront(MyAvatar.orientation))),
         dimensions: { x: 0.5, y: 0.5, z: 0.5 },
         lifetime: LIFETIME,
-        userData: JSON.stringify({
-            "ProceduralEntity": {
-                "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestTexCoord.fs",
-                "version": 2
-            }
+        proceduralData: JSON.stringify({
+            "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestTexCoord.fs",
+            "version": 2
         })
     }));
 
@@ -48,11 +44,9 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         position: Vec3.sum(MyAvatar.position, Vec3.sum(Vec3.multiply(4, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(1, Quat.getRight(MyAvatar.orientation)))),
         dimensions: { x: 0.5, y: 0.5, z: 0.5 },
         lifetime: LIFETIME,
-        userData: JSON.stringify({
-            "ProceduralEntity": {
-                "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestNormal.fs",
-                "version": 2
-            }
+        proceduralData: JSON.stringify({
+            "shaderUrl": assetsRootPath + "shaders/proceduralShapeTestNormal.fs",
+            "version": 2
         })
     }));
 
@@ -70,13 +64,12 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
                 "z": 1.0
             },
             "intensity": 1.0
-        },        skyboxMode: "enabled",
+        },
+        skyboxMode: "enabled",
         lifetime: LIFETIME,
-        userData: JSON.stringify({
-            "ProceduralEntity": {
-                "shaderUrl": assetsRootPath + "shaders/proceduralZoneTest.fs",
-                "version": 2
-            }
+        proceduralData: JSON.stringify({
+            "shaderUrl": assetsRootPath + "shaders/proceduralZoneTest.fs",
+            "version": 2
         })
     }));
 
