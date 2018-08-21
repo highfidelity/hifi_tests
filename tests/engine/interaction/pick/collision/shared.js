@@ -15,6 +15,12 @@ createTestPick = function (createdPicks, pickType, properties) {
     return testPick;
 }
 
+createEntity = function (createdEntities, properties) {
+    var entity = Entities.addEntity(properties);
+    createdEntities.push(entity);
+    return entity;
+}
+
 clearTestPicks = function (createdPicks) {
     for (var i = 0; i < createdPicks.length; i++) {
         Picks.removePick(createdPicks[i]);
@@ -100,5 +106,119 @@ visualizePickCollisions = function (createdEntities, collisionResult, intersecti
             position: collisionPointPair.pointOnObject,
             dimensions: collisionDisplayDimensions
         }));
+    }
+}
+
+createOverlay = function (createdOverlays, overlayType, overlayData) {
+    var overlay = Overlays.addOverlay(overlayType, overlayData);
+    createdOverlays.push(overlay);
+    return overlay;
+}
+
+clearOverlays = function (createdOverlays) {
+    for (var i = 0; i < createdOverlays.length; i++) {
+        Overlays.deleteOverlay(createdOverlays[i]);
+    }
+    createdOverlays.length = 0;
+}
+
+setOverlayProperties = function (overlays, properties) {
+    for (var i = 0; i < overlays.length; i++) {
+        var overlay = overlays[i];
+        Overlays.editOverlay(overlay, properties);
+    }
+}
+
+addScriptInterval = function (scriptIntervals, intervalLength, func) {
+    var interval = Script.setInterval(func, intervalLength);
+    scriptIntervals.push(interval);
+    return interval;
+}
+
+clearScriptIntervals = function (scriptIntervals) {
+    for (var i = 0; i < scriptIntervals.length; i++) {
+        var interval = scriptIntervals[i];
+        Script.clearInterval(interval);
+    }
+    scriptIntervals.length = 0;
+}
+
+createCollisionPointOverlay = function (collisionPointOverlays, collisionPointSize) {
+    var overlay = createOverlay(collisionPointOverlays, "shape", {
+        shape: "Sphere",
+        dimensions: { x: collisionPointSize, y: collisionPointSize, z: collisionPointSize },
+        isSolid: true,
+        drawInFront: true
+    });
+    return overlay;
+}
+
+// Update overlay visualization for a collision pick
+// All the overlays in pickVisualization overlays are assumed to be parented to baseOverlay
+updatePickVisualization = function (baseOverlay, pickVisualizationOverlays, pickResult, pickPosOffset) {
+    // When there is not enough time to get the result, the result may be empty, so we need to check for that
+    if (pickResult.collisionRegion != undefined) {
+        var overlayBottomPosition = Vec3.sum(
+            pickResult.collisionRegion.position,
+            Vec3.multiplyQbyV(pickResult.collisionRegion.orientation, pickPosOffset)
+        );
+        var overlayOrientation = pickResult.collisionRegion.orientation;
+        Overlays.editOverlay(baseOverlay, {
+            position: overlayBottomPosition,
+            rotation: overlayOrientation
+        });
+        
+        var collisionColor;
+        if (pickResult.intersects) {
+            collisionColor = COLOR_YES_COLLISION;
+        } else {
+            collisionColor = COLOR_NO_COLLISION;
+        }
+        setOverlayProperties(pickVisualizationOverlays, { color: collisionColor });
+    }
+}
+
+visualizeCollisionPoints = function (collisionPointOverlays, intersectingObjects, collisionPointSize) {
+    // Allocate overlays since I don't know how expensive it is to add an overlay
+    // Flattened list of collision point pairs. Odd is pick (self) and even is object (other)
+    var collisionPoints = [];
+    for (var i = 0; i < intersectingObjects.length; i++) {
+        var intersectingObject = intersectingObjects[i];
+        for (var j = 0; j < intersectingObject.collisionContacts.length; j++) {
+            collisionPoints.push(intersectingObject.collisionContacts[j].pointOnPick);
+            collisionPoints.push(intersectingObject.collisionContacts[j].pointOnObject);
+        }
+    }
+    if (collisionPointOverlays.length < collisionPoints.length) {
+        var toAdd = collisionPoints.length - collisionPointOverlays.length;
+        for (var i = 0; i < toAdd; i++) {
+            createCollisionPointOverlay(collisionPointOverlays, collisionPointSize);
+        }
+    }
+    
+    // Set positions and colors of overlays to match points
+    var odd = true;
+    for (var i = 0; i < collisionPoints.length; i++) {
+        var collisionColor;
+        if (odd) {
+            collisionColor = COLOR_COLLISION_SELF;
+        } else {
+            collisionColor = COLOR_COLLISION_OTHER;
+        }
+        
+        Overlays.editOverlay(collisionPointOverlays[i], {
+            visible: true,
+            color: collisionColor,
+            position: collisionPoints[i]
+        });
+        
+        odd = !odd;
+    }
+    
+    // Make the rest of the overlays invisible
+    for (var i = collisionPoints.length; i < collisionPointOverlays.length; i++) {
+        Overlays.editOverlay(collisionPointOverlays[i], {
+            visible: false
+        });
     }
 }
