@@ -36,37 +36,38 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "sec
         Camera.mode = "first person";
     });
 
+	var RADIUS = 1.5;
     autoTester.addStep("Move to 1st position", function () {
         var angle = 0;
-        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(RADIUS * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
     autoTester.addStepSnapshot("1st position");
 
     autoTester.addStep("Move to 2nd position", function () {
         var angle = 1.0 * 3.1416 / 5.0;
-        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(RADIUS * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
     autoTester.addStepSnapshot("2nd position");
 
     autoTester.addStep("Move to 3rd position", function () {
         var angle = 2.0 * 3.1416 / 5.0;
-        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(RADIUS * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
     autoTester.addStepSnapshot("3rd position");
 
     autoTester.addStep("Move to 4th position", function () {
         var angle = 3.0 * 3.1416 / 5.0;
-        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(RADIUS * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
     autoTester.addStepSnapshot("4th position");
 
     autoTester.addStep("Move to 5th position", function () {
         var angle = 4.0 * 3.1416 / 5.0;
-        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(RADIUS * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
     });
     autoTester.addStepSnapshot("5th position");
@@ -74,7 +75,7 @@ autoTester.perform("LaserPointer faceAvatar test", Script.resolvePath("."), "sec
     autoTester.addStep("Clean up after test", function () {
         // Restore avatar's pose
         var angle = 0.0 * 3.1416 / 5.0;
-        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(2.0 * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
+        MyAvatar.position = Vec3.sum(pos, Vec3.sum(Vec3.multiply(RADIUS * Math.cos(angle), dir), Vec3.multiply(2.0 * Math.sin(angle), right)));
         MyAvatar.orientation = Quat.lookAt(MyAvatar.position, pos, Vec3.UP);
 
         for (i = 0; i < lasers.length; i++) {
