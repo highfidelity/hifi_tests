@@ -9,7 +9,7 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "se
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
-        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z: 0.0 }), Vec3.multiply(0.0, right)),
+        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.3, z: 0.0 }), Vec3.multiply(0.0, right)),
         direction: Vec3.normalize({ x: 0.0, y: -1, z: 0.0 }),
         filter: Picks.PICK_ENTITIES,
         renderStates: renderStates,
@@ -21,7 +21,7 @@ autoTester.perform("LaserPointer renderState test", Script.resolvePath("."), "se
     var properties = {
         type: "Shape",
         shape: "Cube",
-        position: Vec3.sum(Vec3.sum(pos, { x:0.0, y: 0.0, z: 0.0}), Vec3.multiply(0.0, right)),
+        position: Vec3.sum(Vec3.sum(pos, { x:0.0, y: -0.2, z: 0.0}), Vec3.multiply(0.0, right)),
         dimensions: { x: 0.1, y: 0.1, z: 0.1 },
         lifetime: 300,
         rotation: orientation

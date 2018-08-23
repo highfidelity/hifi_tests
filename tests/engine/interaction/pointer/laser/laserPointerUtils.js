@@ -184,7 +184,7 @@ initializeTestData = function (originFrame) {
     dir.y = 0.0;
     var shiftedPosition = originFrame;
     shiftedPosition.y += 1.0;
-    pos = Vec3.sum(Vec3.sum(shiftedPosition, Vec3.multiply(2.0, Vec3.normalize(dir))), { x: 0.0, y: 0.5, z: 1.0 });
+    pos = Vec3.sum(Vec3.sum(shiftedPosition, Vec3.multiply(2.0, Vec3.normalize(dir))), { x: 0.0, y: 0.7, z: 1.0 });
     right = Quat.getRight(orientation);
 
     Camera.setOrientation(q0);
