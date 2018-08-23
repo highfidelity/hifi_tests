@@ -9,7 +9,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
-        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z :0.0 }), Vec3.multiply(0.0, right)),
+        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.8, z : 0.6 }), Vec3.multiply(0.0, right)),
         direction: Vec3.normalize({ x: 0.0, y: -1.0, z: 0.0 }),
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
@@ -18,7 +18,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
     }));
 
     lasers.push(Pointers.createPointer(PickType.Ray, {
-        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.5, z: 0.0 }), Vec3.multiply(0.0, right)),
+        position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.8, z: 0.6 }), Vec3.multiply(0.0, right)),
         direction: Vec3.normalize({ x: 0.0, y: -1.0, z: 0.0 }),
         filter: Picks.PICK_ENTITIES | Picks.PICK_OVERLAYS,
         renderStates: renderStates,
@@ -35,7 +35,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
         var properties = {
             type: "Shape",
             shape: "Cube",
-            position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.25 - 0.5 * i, z: 0.0 }), Vec3.multiply(0.0, right)),
+            position: Vec3.sum(Vec3.sum(pos, { x: 0.0, y: 0.65 - 0.5 * i, z: 0.6 }), Vec3.multiply(0.0, right)),
             color: { red: 255, green: 0, blue: 0 },
             dimensions: { x: 0.1, y: 0.1, z: 0.1 },
             lifetime: 300,
@@ -44,7 +44,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
         entities.push(Entities.addEntity(properties));
 
         properties = {
-            position: Vec3.sum(Vec3.sum(pos, {x: 0.0, y:0.0 - 0.5 * i, z: 0.0}), Vec3.multiply(0.0, right)),
+            position: Vec3.sum(Vec3.sum(pos, {x: 0.0, y: 0.4 - 0.5 * i, z: 0.6 }), Vec3.multiply(0.0, right)),
             color: { red: 0, green: 255, blue: 0 },
             dimensions: { x: 0.1, y: 0.1, z: 0.1 },
             solid: true,
