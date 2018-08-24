@@ -1,4 +1,4 @@
-# Test capsule CollisionPick on server
+# Test pick parenting on server
 ## Run this script URL: [Manual](./testStory.js?raw=true)
 
 ## Preconditions
