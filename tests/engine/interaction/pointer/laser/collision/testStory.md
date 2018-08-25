@@ -6,7 +6,7 @@ Interface is running in an empty domain where you have edit rights.  Wear the de
 ### Steps
 
 #### Step 1
-- Run the [collision.js script](./collision.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  Zoom out.
+- Run the [testStory.js script](./testStory.js?raw=true) (from Menu/Edit/Open and Run scripts From URL...).  Zoom out.
 - Expected: ![](./collision1.jpg)
 
 #### Step 2
