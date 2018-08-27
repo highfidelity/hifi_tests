@@ -178,17 +178,27 @@ updatePickVisualization = function (baseOverlay, pickVisualizationOverlays, pick
     }
 }
 
-visualizeCollisionPoints = function (collisionPointOverlays, intersectingObjects, collisionPointSize) {
-    // Allocate overlays since I don't know how expensive it is to add an overlay
+// Visualize collision points, allocated to collisionPointOverlays
+// If maxPoints is >= 0, limit the total amount of collision points
+visualizeCollisionPoints = function (collisionPointOverlays, intersectingObjects, collisionPointSize, maxPoints) {
+    // Allocate overlays since it's pretty expensive to add an overlay
     // Flattened list of collision point pairs. Odd is pick (self) and even is object (other)
     var collisionPoints = [];
+    var hasMaxPoints = maxPoints >= 0;
     for (var i = 0; i < intersectingObjects.length; i++) {
+        if (hasMaxPoints && collisionPoints.length >= maxPoints) {
+            break;
+        }
         var intersectingObject = intersectingObjects[i];
         for (var j = 0; j < intersectingObject.collisionContacts.length; j++) {
+            if (hasMaxPoints && collisionPoints.length >= maxPoints) {
+                break;
+            }
             collisionPoints.push(intersectingObject.collisionContacts[j].pointOnPick);
             collisionPoints.push(intersectingObject.collisionContacts[j].pointOnObject);
         }
     }
+    
     if (collisionPointOverlays.length < collisionPoints.length) {
         var toAdd = collisionPoints.length - collisionPointOverlays.length;
         for (var i = 0; i < toAdd; i++) {

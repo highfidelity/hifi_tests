@@ -82,7 +82,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, getOffsetFromPickPos(capsuleHeight));
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, capsuleCollisionPointSize);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, capsuleCollisionPointSize, -1);
                 }
             }
         });
@@ -133,7 +133,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, Vec3.ZERO);
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, handBoxCollisionPointSize);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, handBoxCollisionPointSize, -1);
                 }
             }
         });
@@ -193,14 +193,13 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, Vec3.ZERO);
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, cylinderCollisionPointSize);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, cylinderCollisionPointSize, -1);
                 }
             }
         });
     }
     
     function visualizeRayParentedPick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
-        // TODO: Rewrite to match purpose (collision pick parented to ray pick
         var capsuleHeight = 2.0;
         var capsuleRadius = 0.25;
         var capsuleCollisionPointSize = 0.1;
@@ -266,7 +265,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, getOffsetFromPickPos(capsuleHeight));
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, capsuleCollisionPointSize);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, capsuleCollisionPointSize, -1);
                 }
             }
         });
