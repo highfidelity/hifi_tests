@@ -14,9 +14,8 @@
 ### Step 1 - Mouse Parenting
 - Be in desktop mode
 - Assuming the script has just loaded and "n" has not been pressed yet, press "n" twice to advance to first step
-- Move the mouse around. Verify a capsule-shaped visualization follows the mouse.
-- Verify the capsule is red when colliding with things or near things, but green otherwise.
-- Verify contact points appear when the capsule is red.
+- Move the mouse around and turn the camera. A visualization should follow the mouse.
+- The visualization is a capsule, however it should look circular when the mouse and camera are still, due to the capsule's orientation. Verify the capsule visualization updates its position and orientation so that it appears circular when the mouse and camera come to rest.
 
 ### Step 2 - Joint Parenting
 - Be in HMD mode
