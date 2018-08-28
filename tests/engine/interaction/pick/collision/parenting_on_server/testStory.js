@@ -25,10 +25,10 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
         return Vec3.subtract({x:0,y:0,z:0}, getOffsetToPickPos(capsuleHeight));
     }
     
-    function visualizeCapsulePick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
-        var capsuleHeight = 0.4;
-        var capsuleRadius = 0.05;
-        var capsuleCollisionPointSize = 0.005;
+    function visualizeMouseCapsulePick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
+        var capsuleHeight = 0.04;
+        var capsuleRadius = 0.005;
+        var capsuleCollisionPointSize = 0.0005;
         var cylinderHeight = capsuleHeight - (capsuleRadius*2.0);
         
         // Platform overlay at the very bottom which serves as the parent of the other overlays
@@ -249,7 +249,8 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 dimensions: { x: capsuleRadius*2.0, y: capsuleHeight-(capsuleRadius*2.0), z: capsuleRadius*2.0 }
             },
             position: { x:0, y:pickHeightOffset+(capsuleHeight*0.5), z:0 },
-            parentID: parentRayPick
+            parentID: parentRayPick,
+            threshold: 0.05
         });
         
         Picks.setIgnoreItems(parentRayPick, [MyAvatar.sessionUUID]);
@@ -287,7 +288,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
     
     autoTester.addStep("Visualize capsule pick parented to the mouse (with contact points)", function () {
         cleanup();
-        visualizeCapsulePick(true, createdPicks, createdOverlays, scriptIntervals);
+        visualizeMouseCapsulePick(true, createdPicks, createdOverlays, scriptIntervals);
     });
     
     autoTester.addStep("Please use HMD", function () {

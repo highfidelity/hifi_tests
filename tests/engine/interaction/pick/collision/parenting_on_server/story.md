@@ -7,7 +7,8 @@
 - HMD mode and keyboard available
 
 ## Terminology
-- "Colliding" - Throughout this test, you should see 3-dimensional objects are supposed to change color between green and red, depending on whether they are colliding with something or not. Green indicates no collision and red indicates collision. The objects are also allowed to be red when close to some things but not touching. (This behavior will be improved in the future.) However, if the objects is green while colliding with things, that is considered a failure. The object is considered colliding with an entity when its visualization overlaps with the entity's collision mesh. Collision meshes can be visualized by temporarily enabling Developer -> Physics -> Show Bullet Collision. A visualization standing on the ground may also be colliding on some parts of the ground if the ground is not flat.
+- "Colliding" - Throughout this test, you should see 3-dimensional objects are supposed to change color between green and red, depending on whether they are colliding with something or not. Green indicates no collision and red indicates collision. The objects are also allowed to be green when colliding but only by a small amount proportional to the size of the thing being collided with (this is due to an optimization in the physics engine which makes corners and edges more rounded). However, if the objects are green while deep inside an object, or red when not colliding, that is considered a failure. The object is considered colliding with an entity when its visualization overlaps with the entity's collision mesh. A visualization standing on the ground may also be colliding on some parts of the ground if the ground is not flat.
+- "Collision Mesh" - Collision meshes can be visualized by temporarily enabling Developer -> Physics -> Show Bullet Collision.
 - "Contact points" - At some points of the test, when the 3d visualization object is red, you will see additional visualizations of the contact points. These points are either inside or near the red visualization (ideally they should be inside; this behavior will be improved in the future). The number of points and their positions can vary depending on the nature of the collision.
 
 ### Step 1 - Mouse Parenting
@@ -38,7 +39,7 @@
 - Be in HMD mode
 - Press "n" twice to advance to the next step
 - Move your dominant hand controller around. Verify a capsule-shaped visualization follows where the controller is pointing.
-- Verify the capsule is red when colliding or near things, but green otherwise.
+- Verify the capsule is red when colliding or near things, but green otherwise. This collision check has been made less sensitive, so the capsule will need to be overlapping more deeply with a collision mesh to be considered colliding.
 - Verify contact points appear when the capsule is red.
 
 ### Step 5
