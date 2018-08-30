@@ -18,7 +18,8 @@ function pad(num, size) {
 //    yyyymmdd_hhmm
 function formatDate(date) {
     date = new Date();
-    return date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2) + "_" + pad(date.getHours(), 2) + pad(date.getMinutes(), 2);
+    return date.getFullYear() + pad(date.getMonth() + 1, 2) + pad(date.getDate(), 2) + "_" + 
+    pad(date.getHours(), 2) + pad(date.getMinutes(), 2) + pad(date.getSeconds(), 2);
 }
 
 // Create a trace file when the advance key is pressed
