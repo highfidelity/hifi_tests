@@ -18,6 +18,7 @@ Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
 Script.include(testsRootPath + "content/entity/shape/create/test.js");
 Script.include(testsRootPath + "content/entity/procedural/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/test.js");
 Script.include(testsRootPath + "content/entity/material/create/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/overlays/model/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/shape/test.js");

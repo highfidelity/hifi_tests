@@ -24,11 +24,13 @@ autoTester.perform("Read OBJ model with transparency", Script.resolvePath("."), 
         lifetime: LIFETIME,
         type: "Model",
         modelURL: assetsRootPath + 'models/obj_models/testTransparent.obj',
-        position: Vec3.sum(position, {x: 0.0, y: 0.65, z: -2.2 }),   
-        rotation: Quat.fromPitchYawRollDegrees(0.0, 45.0, 0.0),    
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.2 }),   
+        rotation: Quat.fromPitchYawRollDegrees(45.0, 45.0, 0.0),    
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     }));
+
+    autoTester.addStepSnapshot("Backdrop visible through holes in object");
 
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
