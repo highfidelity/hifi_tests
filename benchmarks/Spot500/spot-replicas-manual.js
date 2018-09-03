@@ -17,7 +17,7 @@ Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 
 SPOT500_TRACING_RULES = "" +
     "trace.*=true\n" +
-    "*.detail=false\n" +
+    "*.detail=true\n" +
     "";
 
 var TRACE_TOOLBAR = "com.highfidelity.interface.toolbar.trace";
