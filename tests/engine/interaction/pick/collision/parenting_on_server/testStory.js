@@ -143,7 +143,6 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
     }
     
     function visualizeModelJointPick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
-        // TODO: Figure out why the pick is just attaching to the center of the model rather than the specified joint. I suspect it's an issue with the model file used, since the collision detection is otherwise correct
         var cylinderLength = 0.3;
         var cylinderRadius = cylinderLength * 0.25;
         
@@ -153,6 +152,10 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
             lifetime: 5*60,
             position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, Vec3.UP))
         });
+        // If we parent the pick to the entity before its model is rendered, not only will its dimensions will be wrong, but the entity won't have its joints yet, so we wait until the model is loaded.
+        while (Entities.getEntityProperties(testModel, ["renderInfo"]).renderInfo.verticesCount == 0) {
+            continue;
+        }
         
         // Platform overlay at the very bottom which serves as the parent of the other overlays
         // Its position will be updated to match the previous pick result
