@@ -31,7 +31,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
         modelURL: assetsRootPath + 'models/material_matrix_models/fbx/blender/' + objectName + '.fbx',
         name: objectName,
         position: Vec3.sum(MyAvatar.position, MODEL_OFFSET),    
-        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),    
+        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
@@ -60,7 +60,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
             name: "Zone 1",
 
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 2.0, z: MyAvatar.position.z - 25.0},
-            rotation: MyAvatar.orientation,    
+            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             dimensions: zone1Dimensions,
 
             keyLightMode: "enabled",
@@ -93,7 +93,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
             name: "Zone 2",
 
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 2.0, z: MyAvatar.position.z - 25.0},
-            rotation: MyAvatar.orientation,    
+            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             dimensions: zone2Dimensions,
 
             keyLightMode: "enabled",
@@ -126,7 +126,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
             name: "Zone 3",
 
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 2.0, z: MyAvatar.position.z - 25.0},
-            rotation: MyAvatar.orientation,    
+            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             dimensions: zone3Dimensions,
 
             keyLightMode: "enabled",
@@ -159,6 +159,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
             type: "Box",
             name: "marker 1",
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 5.0, z: MyAvatar.position.z - 25.0},
+			rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             dimensions: marker1Dimensions,
             "color": {"red": 200,"green": 0,"blue": 0},
             visible: true,
@@ -171,6 +172,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
             type: "Box",
             name: "marker 2",
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 5.0 + 0.01, z: MyAvatar.position.z - 25.0},
+			rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             dimensions: marker2Dimensions,
             "color": {"red": 0,"green": 200,"blue":0},
             visible: true,
@@ -183,6 +185,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
             type: "Box",
             name: "marker 3",
             position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 5.0 + 0.02, z: MyAvatar.position.z - 25.0},
+			rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             dimensions: marker3Dimensions,
             "color": {"red": 0,"green": 0,"blue": 200},
             visible: true,
