@@ -89,7 +89,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
     }
     
     function visualizeHandBoxPick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
-        var handBoxWidth = 0.2;
+        var handBoxWidth = 0.2*MyAvatar.scale;
         
         // Platform overlay at the very bottom which serves as the parent of the other overlays
         // Its position will be updated to match the previous pick result
@@ -203,7 +203,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 });
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.05*resultDimensions.x, -1);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.1*resultDimensions.x, -1);
                 }
             }
         });
@@ -276,7 +276,7 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
                 var resultDimensions = result.collisionRegion.shape.dimensions;
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.05*resultDimensions.x, -1);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.2*resultDimensions.x, -1);
                 }
             }
         });
