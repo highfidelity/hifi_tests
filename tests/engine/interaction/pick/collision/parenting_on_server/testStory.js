@@ -90,7 +90,6 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
     
     function visualizeHandBoxPick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
         var handBoxWidth = 0.2;
-        var handBoxCollisionPointSize = handBoxWidth*0.05;
         
         // Platform overlay at the very bottom which serves as the parent of the other overlays
         // Its position will be updated to match the previous pick result
@@ -131,9 +130,13 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
             // When there is not enough time to get the result, the result may be empty, so we need to check for that
             if (result.collisionRegion != undefined) {
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, Vec3.ZERO);
+                var resultDimensions = result.collisionRegion.shape.dimensions;
+                Overlays.editOverlay(handBox, {
+                    dimensions: resultDimensions
+                });
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, handBoxCollisionPointSize, -1);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.05*resultDimensions.x, -1);
                 }
             }
         });
@@ -143,7 +146,6 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
         // TODO: Figure out why the pick is just attaching to the center of the model rather than the specified joint. I suspect it's an issue with the model file used, since the collision detection is otherwise correct
         var cylinderLength = 0.3;
         var cylinderRadius = cylinderLength * 0.25;
-        var cylinderCollisionPointSize = cylinderLength*0.05;
         
         var testModel = createEntity(createdEntities, {
             type: "Model",
@@ -162,13 +164,13 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
             orientation: Quat.normalize({ x:0, y:0, z:1, w:1})
         });
         // This overlay will have its color updated to match the previous pick result
-        var handBox = createOverlay(createdOverlays, "shape", {
+        var jointCylinder = createOverlay(createdOverlays, "shape", {
             parentID: baseOverlay,
             shape: "Cylinder",
             dimensions: { x: cylinderRadius*2.0, y: cylinderLength, z: cylinderRadius*2.0 },
             localPosition: {x:0, y:0, z:0}
         });
-        var pickVisualizationOverlays = [handBox]
+        var pickVisualizationOverlays = [jointCylinder]
         
         var jointCylinderTestPick = createTestPick(createdPicks, PickType.Collision, {
             enabled: true,
@@ -191,9 +193,14 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
             // When there is not enough time to get the result, the result may be empty, so we need to check for that
             if (result.collisionRegion != undefined) {
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, Vec3.ZERO);
+                var resultDimensions = result.collisionRegion.shape.dimensions;
+                var cylinderDimensions = {x: resultDimensions.y, y: resultDimensions.x, z: resultDimensions.y};
+                Overlays.editOverlay(jointCylinder, {
+                    dimensions: cylinderDimensions
+                });
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, cylinderCollisionPointSize, -1);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.05*resultDimensions.x, -1);
                 }
             }
         });
@@ -202,7 +209,6 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
     function visualizeRayParentedPick(showCollisionPoints, createdPicks, createdOverlays, scriptIntervals) {
         var capsuleHeight = 2.0;
         var capsuleRadius = 0.25;
-        var capsuleCollisionPointSize = 0.1;
         var cylinderHeight = capsuleHeight - (capsuleRadius*2.0);
         var pickHeightOffset = 0.01;
         
@@ -264,9 +270,10 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
             // When there is not enough time to get the result, the result may be empty, so we need to check for that
             if (result.collisionRegion != undefined) {
                 updatePickVisualization(baseOverlay, pickVisualizationOverlays, result, getOffsetFromPickPos(capsuleHeight));
+                var resultDimensions = result.collisionRegion.shape.dimensions;
                 
                 if (showCollisionPoints) {
-                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, capsuleCollisionPointSize, -1);
+                    visualizeCollisionPoints(collisionPointOverlays, result.intersectingObjects, 0.05*resultDimensions.x, -1);
                 }
             }
         });
