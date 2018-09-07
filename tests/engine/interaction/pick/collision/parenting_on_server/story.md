@@ -24,16 +24,18 @@
 - Verify a cube-shaped visualization follows the controller.
 - Verify the cube is red when colliding with things or near things, but green otherwise.
 - Verify contact points appear when the cube is red.
-- Resize the avatar by going into the avatar app in the tablet. Verify the cube is still red when colliding, and that contact points appear when the cube is red.
+- Resize the avatar by going into the avatar app in the tablet. Verify the cube scales proportionally with the avatar.
+- With the avatar now resized, verify the cube is still red when colliding, and that contact points appear when the cube is red.
 
 ### Step 3 - Entity Parenting
 - Be in desktop mode
 - Press "n" twice to advance to the next step
 - Back away, and you should see a new object placed in the environment, with a cylinder-shaped visualization attached to it.
-- Open the create menu (accessible by clicking the "Create" button on the toolbar), select the object, and move it around. Verify the cylinder follows the object.
+- Open the create menu (accessible by clicking the "Create" button on the toolbar), select the object, and move it around. Verify the cylinder follows the object's foot.
 - Verify the cylinder is red when colliding or near things, but green otherwise.
 - Verify contact points appear when the cylinder is red.
-- Resize the object the cylinder is following by opening the create menu and clicking and dragging on one of the corners of the cube encompassing the object. Verify the cylinder is still red when colliding, and that contact points appear when the cylinder is red.
+- Resize the object the cylinder is following by opening the create menu and clicking and dragging on one of the corners of the cube encompassing the object. Verify the cylinder scales proportionally with the object.
+- With the object now resized, verify the cylinder is still red when colliding, and that contact points appear when the cylinder is red.
 - With the create menu open, select the created object and delete it. If the object does not go away, you can force the removal of the object by selecting the object, going to the "Properties" tab of the "Create Tools" window, and setting the lifetime of the object to 0.
 
 ### Step 4 - RayPick Parenting
