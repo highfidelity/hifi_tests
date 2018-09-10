@@ -27,6 +27,7 @@ autoTester.perform("Parabola renderState test", Script.resolvePath("."), "second
         position: Vec3.sum(Vec3.sum(pos, { x:0.0, y: 0.0, z: 0.0}), Vec3.multiply(0.5, right)),
         dimensions: { x: 0.1, y: 1.0, z: 0.1 },
         lifetime: 300,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
         rotation: orientation
     };
     entities.push(Entities.addEntity(properties));
