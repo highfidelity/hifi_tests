@@ -27,6 +27,7 @@ autoTester.perform("Parabola lockEnd test", Script.resolvePath("."), "secondary"
         position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.0, right)),
         dimensions: {x: 0.1, y: 0.5, z: 0.5},
         lifetime: 300,
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
         rotation: orientation
     };
     var box = Entities.addEntity(properties);

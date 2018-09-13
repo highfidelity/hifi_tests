@@ -30,6 +30,7 @@ autoTester.perform("Parabola ignore test", Script.resolvePath("."), "secondary",
             position: Vec3.sum(origin, Vec3.multiply(2 * i + 1, right)),
             dimensions: { x: 0.1, y: 10, z: 4 },
             color: { red: 255, green: 0, blue: 0 },
+            userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
             visible: true
         }));
 
