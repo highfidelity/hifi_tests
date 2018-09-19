@@ -2,6 +2,6 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.enableAuto();
+autoTester.enableAuto(6000);
 
 Script.include("./test.js?raw=true");
