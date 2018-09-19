@@ -36,6 +36,14 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
 
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     autoTester.addStep("Start in non-debug mode", function() {
         setDebugMode(0);
 
@@ -205,7 +213,12 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
+        }
     });
-    
+
     var result = autoTester.runTest(testType);
 });
