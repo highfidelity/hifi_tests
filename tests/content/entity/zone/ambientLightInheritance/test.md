@@ -23,7 +23,7 @@ Press 'n' key to advance step by step
 - Blue zone, dark ambient light
 - ![](./ExpectedImage_00002.png)
 ### Step 7
-- Diable ambient light in blue zone
+- Disable ambient light in blue zone
 ### Step 8
 - Blue off,  no ambient light
 - ![](./ExpectedImage_00003.png)

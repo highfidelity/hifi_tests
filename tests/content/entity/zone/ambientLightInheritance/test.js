@@ -113,7 +113,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     });
     autoTester.addStepSnapshot("Blue zone, dark ambient light");
 
-    autoTester.addStep("Diable ambient light in blue zone", function () {
+    autoTester.addStep("Disable ambient light in blue zone", function () {
         Entities.editEntity(zoneBlue, { ambientLightMode: "disabled" });  
     });
     autoTester.addStepSnapshot("Blue off,  no ambient light");
