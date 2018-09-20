@@ -363,6 +363,13 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
     doAddStep(name, stepFunction, true);
 }
 
+// Add a delay - multiple of 2 seconds
+module.exports.add2secondDelays = function(numDelays) {
+    for (var i = 0; i < numDelays; ++i) {
+        doAddStep("delay", undefined, false);
+    }
+}
+
 // The default mode is manual
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
@@ -371,15 +378,8 @@ module.exports.enableAuto = function () {
     print("TEST MODE AUTO SELECTED");
 }
 
-module.exports.setTimeStep = function (timeStep) {
-    autoTimeStep = timeStep;
-}
-
-module.exports.enableRecursive = function (timeStep) {
+module.exports.enableRecursive = function () {
     isRecursive = true;
-    if (timeStep) {
-        autoTimeStep = timeStep;
-    }
 
     print("TEST MODE RECURSIVE SELECTED");
 }

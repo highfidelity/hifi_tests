@@ -3,8 +3,6 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", function(testType) {
-    autoTester.setTimeStep(5000);
-
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
@@ -61,6 +59,9 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
             }
         }
     }
+
+    // Wait 6 seconds for models to load
+    autoTester.add2secondDelays(3);
 
     var fxaaWasOn;
     

@@ -3,8 +3,6 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", function(testType) {
-    autoTester.setTimeStep(5000);
-
     // Test material matrix
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
@@ -27,7 +25,8 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
         }
     );
 
-    autoTester.addStep("Give models time to load");
+    // Wait 6 seconds for models to load
+    autoTester.add2secondDelays(3);
 
     autoTester.addStepSnapshot("Result of invalid URL load");
 

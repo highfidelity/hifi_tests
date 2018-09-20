@@ -3,8 +3,6 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
-    autoTester.setTimeStep(6000);
-
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 
@@ -173,6 +171,10 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
             }));
         }
     });
+
+    // Wait 10 seconds for models to load
+    autoTester.add2secondDelays(5);
+
     autoTester.addStepSnapshot("Take snapshot when not in Debug mode");
 
     autoTester.addStep("Debug Emissive", function () {
