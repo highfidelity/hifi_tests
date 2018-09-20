@@ -8,9 +8,13 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Create drawInFront shape overlays
+- Turn off TAA for this test
 ### Step 2
+- Create a zone
+### Step 3
+- Create drawInFront shape overlays
+### Step 4
 - Take snapshot of all the models
 - ![](./ExpectedImage_00000.png)
-### Step 3
+### Step 5
 - Clean up after test
