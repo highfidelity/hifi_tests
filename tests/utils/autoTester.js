@@ -365,14 +365,14 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 
 // The default mode is manual
 // The default time between test steps may be modified through these methods
-module.exports.enableAuto = function (timeStep) {
+module.exports.enableAuto = function () {
     testMode = "auto";
 
-    if (timeStep) {
-        autoTimeStep = timeStep;
-    }
-
     print("TEST MODE AUTO SELECTED");
+}
+
+module.exports.setTimeStep = function (timeStep) {
+    autoTimeStep = timeStep;
 }
 
 module.exports.enableRecursive = function (timeStep) {

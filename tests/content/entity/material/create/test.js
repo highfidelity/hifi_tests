@@ -3,6 +3,8 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
+    autoTester.setTimeStep(10000);
+
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 

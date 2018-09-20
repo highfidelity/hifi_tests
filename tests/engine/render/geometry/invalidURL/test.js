@@ -3,6 +3,8 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", function(testType) {
+    autoTester.setTimeStep(5000);
+
     // Test material matrix
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
