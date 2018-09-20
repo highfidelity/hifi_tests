@@ -17,6 +17,15 @@ autoTester.perform("Effects of albedo on various materials", Script.resolvePath(
         {name:"hifi_metallicV_albedoVM_ao",  a:0, b:1, c:0.5},
     ];
 
+
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     // Add the test Cases
     var OFFSET = { x: 0.0, y: -0.8, z: -0.1 };
     var createdEntities = [];
@@ -29,6 +38,11 @@ autoTester.perform("Effects of albedo on various materials", Script.resolvePath(
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 

@@ -16,6 +16,14 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
+    var fxaaWasOn;
+
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     autoTester.addStep("Create drawInFront shape overlays", function () {
         var NUM = 5.0;
         for (var i = 0; i < NUM; i++) {
@@ -87,6 +95,11 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
         
         for (var i = 0; i < createdOverlays.length; i++) {
             Overlays.deleteOverlay(createdOverlays[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 
