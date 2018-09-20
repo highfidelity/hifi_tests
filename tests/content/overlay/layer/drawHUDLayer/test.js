@@ -6,17 +6,12 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "secondary", function(testType) {
-
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 
-    var flags = {
-        hasAmbientLight: true
-    };
-    var createdEntities = setupStage(flags, 200);
+    var createdEntities = [];
     var createdOverlays = [];
 
-    var posOri = getStagePosOriAt(0, 0, 0);
+    var posOri = autoTester.getOriginFrame();
 
     var fxaaWasOn;
 
@@ -118,6 +113,44 @@ autoTester.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "sec
                 orientation: orientation,
                 dimensions: { x: 4, y: 2, z: 0.5},
         }));
+    });
+
+    autoTester.addStep("Create a zone", function () {
+        var assetsRootPath = autoTester.getAssetsRootPath();
+        var zoneProperties = {
+            lifetime: LIFETIME,
+            type: "Zone",
+            name: "zone",
+            position: posOri,
+            rotation: Quat.fromPitchYawRollDegrees(90.0, 0.0, 0.0 ),
+            
+            dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
+
+            keyLightMode: "enabled",
+            keyLight:{
+                color: { "red": 255, "green": 255, "blue": 255 },
+                intensity: 0.8,
+                direction: {
+                    "x": 0.0,
+                    "y": -0.70710678118,
+                    "z": -0.70710678118
+                }
+            },
+
+            skyboxMode: "enabled",
+            skybox: {
+                color: { "red": 255,"green": 255,"blue": 255 },
+                url: assetsRootPath + 'skymaps/ColourBoxWithSun.jpg'
+            },
+
+            ambientLightMode: "enabled",
+            ambientLight: {
+                ambientURL: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json",
+            },
+
+            hazeMode: "disabled"
+        };
+        createdEntities.push(Entities.addEntity(zoneProperties));
     });
 
     autoTester.addStepSnapshot("Take snapshot of all the models");

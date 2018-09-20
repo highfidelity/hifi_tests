@@ -8,9 +8,13 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Build the material matrix
+- Turn off TAA for this test
 ### Step 2
+- Build the material matrix
+### Step 3
+- Create a zone
+### Step 4
 - Take snapshot of all the models
 - ![](./ExpectedImage_00000.png)
-### Step 3
+### Step 5
 - Clean up after test
