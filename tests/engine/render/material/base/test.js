@@ -8,8 +8,8 @@ autoTester.perform("Show base effects on various materials", Script.resolvePath(
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi",     a:0, b:0, c:-0.5},
-        {name:"hifi-ao",  a:0, b:0, c:0.5},
+        {name:"hifi",    a: 1.0,  b:-0.5, c: -0.1 },
+        {name:"hifi-ao", a: 1.0 , b: 0.5, c: -0.1 }
     ];
 
     // Add the test Cases

@@ -8,8 +8,8 @@ autoTester.perform("Show effects of roughness maps", Script.resolvePath("."), "s
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_roughnessM_albedoV_ao",  a:0, b:0, c:-0.5},
-        {name:"hifi_roughnessM_metallicV_albedoV_ao",  a:0, b:0, c:0.5},
+        {name:"hifi_roughnessM_albedoV_ao",           a: 1.0,  b:-0.5, c: -0.1 },
+        {name:"hifi_roughnessM_metallicV_albedoV_ao", a: 1.0 , b: 0.5, c: -0.1 }
     ];
 
     // Add the test Cases
