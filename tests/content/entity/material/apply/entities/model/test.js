@@ -3,18 +3,9 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", function(testType) {
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+    var createdEntities = [];
 
-    // Add the test Cases
-    var initData = {
-        flags : { 
-            hasAmbientLight: false
-        },
-        originFrame: autoTester.getOriginFrame()
-    };
-    var createdEntities = setupStage(initData);
-
-    var posOri = getStagePosOriAt(1, 0, 0);
+    var posOri = Vec3.sum(autoTester.getOriginFrame(), { x: 0.0, y: 1.3, z: -3.3 } );
 
     var NUM_ROWS = 2;
     var LIFETIME = 1200;
@@ -22,7 +13,7 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
     var DIM = {x: 0.7, y: 0.8, z: 0.14};
 
     function getPos(col, row) {
-        var center = posOri.pos;
+        var center = posOri;
         return Vec3.sum(Vec3.sum(center, Vec3.multiply(Quat.getRight(MyAvatar.orientation), col * DIM.x)), Vec3.multiply(Quat.getUp(MyAvatar.orientation), -(row - NUM_ROWS) * DIM.y));
     }
 
@@ -60,8 +51,43 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
         }
     }
 
-    // Wait 6 seconds for models to load
-    autoTester.add2secondDelays(3);
+    autoTester.addStep("Create a zone", function () {
+        var assetsRootPath = autoTester.getAssetsRootPath();
+        var zoneProperties = {
+            lifetime: LIFETIME,
+            type: "Zone",
+            name: "zone",
+            position: posOri,
+            rotation: Quat.fromPitchYawRollDegrees(90.0, 0.0, 0.0 ),
+            
+            dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
+
+            keyLightMode: "enabled",
+            keyLight:{
+                color: { "red": 255, "green": 255, "blue": 255 },
+                intensity: 0.8,
+                direction: {
+                    "x": 0.0,
+                    "y": -0.70710678118,
+                    "z": -0.70710678118
+                }
+            },
+
+            skyboxMode: "enabled",
+            skybox: {
+                color: { "red": 255,"green": 255,"blue": 255 },
+                url: assetsRootPath + 'skymaps/ColourBoxWithSun.jpg'
+            },
+
+            ambientLightMode: "enabled",
+            ambientLight: {
+                ambientURL: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json",
+            },
+
+            hazeMode: "disabled"
+        };
+        createdEntities.push(Entities.addEntity(zoneProperties));
+    });
 
     var fxaaWasOn;
     
@@ -70,6 +96,9 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
         Render.getConfig("RenderMainView.JitterCam").none();
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
+
+    // Wait 6 seconds for models to load
+    autoTester.add2secondDelays(3);
     
     autoTester.addStepSnapshot("Display materials on multiple models");
 
