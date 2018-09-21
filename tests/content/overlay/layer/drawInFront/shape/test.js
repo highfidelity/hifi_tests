@@ -58,7 +58,7 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
 
     autoTester.addStep("Create drawInFront shape overlays", function () {
         var NUM = 5.0;
-        var overlayPos = Vec3.sum(posOri.pos, { x: 0.0, y: 0.7, z: -3.5 });
+        var overlayPos = Vec3.sum(posOri, { x: 0.0, y: 0.7, z: -3.5 });
         for (var i = 0; i < NUM; i++) {
             createdOverlays.push(Overlays.addOverlay("cube", {
                 position: Vec3.sum(overlayPos, Vec3.sum(Vec3.multiply(i * DIM.z, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(-1.5 * DIM.x, Quat.getRight(MyAvatar.orientation)))),
@@ -109,14 +109,14 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
             }));
         }
 
-        var boxPos = Vec3.sum(posOri.pos, { x: 0.0, y: 0.2, z: 0.5 });
+        var boxPos = Vec3.sum(posOri, { x: 0.0, y: 0.2, z: 0.5 });
         createdEntities.push(Entities.addEntity({
-                type: "Box",
-                position: Vec3.sum(Vec3.sum(posOri.pos, Vec3.multiply(2.5, Quat.getFront(MyAvatar.orientation))), Vec3.multiply(1.25, Vec3.UP)),
-                visible: true,
-                alpha: 1,
-                orientation: MyAvatar.orientation,
-                dimensions: { x: 2, y: 2, z: 0.2}
+            type: "Box",
+            position: Vec3.sum(Vec3.sum(boxPos, Vec3.multiply(2.5, Quat.getFront(MyAvatar.orientation))), Vec3.multiply(1.25, Vec3.UP)),
+            visible: true,
+            alpha: 1,
+            orientation: MyAvatar.orientation,
+            dimensions: { x: 2, y: 2, z: 0.2}
         }));
     });
 
