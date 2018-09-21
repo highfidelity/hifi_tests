@@ -12,6 +12,13 @@ autoTester.perform("Show base effects on various materials", Script.resolvePath(
         {name:"hifi-ao", a: 1.0 , b: 0.5, c: -0.1 }
     ];
 
+    var fxaaWasOn;
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     // Add the test Cases
     var OFFSET = { x: 0.0, y: -1.0, z: -0.1 };
     var createdEntities = [];
@@ -26,6 +33,11 @@ autoTester.perform("Show base effects on various materials", Script.resolvePath(
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
+        }
+
+        if (!fxaaWasOn) {
+            Render.getConfig("RenderMainView.JitterCam").play();
+            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 

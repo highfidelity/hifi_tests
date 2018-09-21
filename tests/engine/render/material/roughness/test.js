@@ -21,20 +21,19 @@ autoTester.perform("Show effects of roughness", Script.resolvePath("."), "second
         {name:"hifi_roughnessV100_metallicV_albedoV_ao", a:-0.6, b:  2.0, c:  0.5}
     ];
 
+    var fxaaWasOn;
+    autoTester.addStep("Turn off TAA for this test", function () {
+        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+        Render.getConfig("RenderMainView.JitterCam").none();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    });
+
     // Add the test Cases
     var OFFSET = { x: 0.0, y: -0.8, z: -0.1 };
     var createdEntities = [];
     autoTester.addStep("Set up test case", function () {
         createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
-    });
-
-    var fxaaWasOn;
-
-    autoTester.addStep("Turn off TAA for this test", function () {
-        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
-        Render.getConfig("RenderMainView.JitterCam").none();
-        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
 
     autoTester.add2secondDelays(2);

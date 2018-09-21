@@ -17,9 +17,7 @@ autoTester.perform("Effects of albedo on various materials", Script.resolvePath(
         {name:"hifi_metallicV_albedoVM_ao",  a:0, b:1, c:0.5},
     ];
 
-
     var fxaaWasOn;
-
     autoTester.addStep("Turn off TAA for this test", function () {
         fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
         Render.getConfig("RenderMainView.JitterCam").none();
