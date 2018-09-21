@@ -33,6 +33,8 @@ autoTester.perform("Effects of albedo on various materials", Script.resolvePath(
         createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
+    
+    autoTester.add2secondDelays(2);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {
