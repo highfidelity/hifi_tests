@@ -1,4 +1,4 @@
-# Attempt to access invalid URL
+# Texture Rendering
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,14 +8,20 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Attempt to load model with invalid URL
+- Set up scene
 ### Step 2
-- Result of invalid URL load
-- ![](./ExpectedImage_00000.png)
+- Turn off TAA for this test
 ### Step 3
-- Load model with valid URL
+- Texture 
 ### Step 4
-- Model is loaded
-- ![](./ExpectedImage_00001.png)
+- Full Resolution
+- ![](./ExpectedImage_00000.png)
 ### Step 5
+- Update Mip 
+### Step 6
+- Mip 
+- ![](./ExpectedImage_00001.png)
+### Step 7
+- Cleanup Texture
+### Step 8
 - Clean up after test

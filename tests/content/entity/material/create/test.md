@@ -8,44 +8,46 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Start in non-debug mode
+- Turn off TAA for this test
 ### Step 2
+- Start in non-debug mode
+### Step 3
 - Take snapshot when not in Debug mode
 - ![](./ExpectedImage_00000.png)
-### Step 3
-- Debug Emissive
 ### Step 4
+- Debug Emissive
+### Step 5
 - Take snapshot
 - ![](./ExpectedImage_00001.png)
-### Step 5
-- Debug Albedo
 ### Step 6
+- Debug Albedo
+### Step 7
 - Take snapshot
 - ![](./ExpectedImage_00002.png)
-### Step 7
-- Debug Metallic
 ### Step 8
+- Debug Metallic
+### Step 9
 - Take snapshot
 - ![](./ExpectedImage_00003.png)
-### Step 9
-- Debug Roughness
 ### Step 10
+- Debug Roughness
+### Step 11
 - Take snapshot
 - ![](./ExpectedImage_00004.png)
-### Step 11
-- Debug Normal
 ### Step 12
+- Debug Normal
+### Step 13
 - Take snapshot
 - ![](./ExpectedImage_00005.png)
-### Step 13
-- Debug Occlusion
 ### Step 14
+- Debug Occlusion
+### Step 15
 - Take snapshot
 - ![](./ExpectedImage_00006.png)
-### Step 15
-- Debug Scattering
 ### Step 16
+- Debug Scattering
+### Step 17
 - Take snapshot
 - ![](./ExpectedImage_00007.png)
-### Step 17
+### Step 18
 - Clean up after test

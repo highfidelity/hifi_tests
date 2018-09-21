@@ -8,11 +8,13 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Set up test case
+- Turn off TAA for this test
 ### Step 2
-- Wait for models to load
+- Set up test case
 ### Step 3
+- Wait for models to load
+### Step 4
 - Take snapshot of the effects
 - ![](./ExpectedImage_00000.png)
-### Step 4
+### Step 5
 - Clean up after test
