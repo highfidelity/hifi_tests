@@ -8,11 +8,11 @@ autoTester.perform("Show effects of opacity", Script.resolvePath("."), "secondar
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_opacityV_NormalM_albedoM_ao",  a:0, b:-1, c:-0.5},
-        {name:"hifi_opacityM_NormalM_albedoM_ao",  a:0, b:0, c:-0.5},
-        {name:"hifi_opacityA_NormalM_albedoM_ao",  a:0, b:1, c:-0.5},
+        {name:"hifi_opacityV_NormalM_albedoM_ao",  a: -0.2, b: -1.0, c: -0.5},
+        {name:"hifi_opacityM_NormalM_albedoM_ao",  a: -0.2, b:  0.0, c: -0.5},
+        {name:"hifi_opacityA_NormalM_albedoM_ao",  a: -0.2, b:  1.0, c: -0.5},
       
-        {name:"hifi_opacityV_albedoM_ao",  a:0, b:-1, c:0.5},
+        {name:"hifi_opacityV_albedoM_ao",          a: -0.2, b: -1.0, c:  0.5}
     ];
 
     var fxaaWasOn;

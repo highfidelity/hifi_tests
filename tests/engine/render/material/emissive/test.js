@@ -8,8 +8,8 @@ autoTester.perform("Show effects of emmisive materials", Script.resolvePath(".")
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_emissiveV_albedoV_ao", a: 1.0,  b:-0.5, c: -0.1 },
-        {name:"hifi_emissiveM_albedoV_ao", a: 1.0 , b: 0.5, c: -0.1 }
+        {name:"hifi_emissiveV_albedoV_ao", a: 0.5,  b:-0.5, c: -0.1 },
+        {name:"hifi_emissiveM_albedoV_ao", a: 0.5 , b: 0.5, c: -0.1 }
     ];
 
     var fxaaWasOn;
