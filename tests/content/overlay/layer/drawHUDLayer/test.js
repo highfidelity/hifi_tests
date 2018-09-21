@@ -153,6 +153,7 @@ autoTester.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "sec
         createdEntities.push(Entities.addEntity(zoneProperties));
     });
 
+    autoTester.add2secondDelays(5);
     autoTester.addStepSnapshot("Take snapshot of all the models");
 
     autoTester.addStep("Clean up after test", function () {
