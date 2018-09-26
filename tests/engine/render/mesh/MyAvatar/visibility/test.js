@@ -3,12 +3,11 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), "secondary", function(testType) {
-    MyAvatar.orientation = Quat.fromVec3Degrees({x:0, y:180, z:0});
-
     var LIFETIME = 120;
 
     var previousSkeletonURL;
     var previousScale;
+	var previousCameraMode;
     var previousAvatarVisibility;
 	var zone;
 	
@@ -59,8 +58,13 @@ autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), 
             Test.waitIdle();
         }
 
-        validationCamera_translate({ x: 0.0, y: -0.25, z: 0.4 });
+        previousCameraMode = Camera.mode;
+        Camera.mode = "first person";
     });
+
+    autoTester.addStep("Set camera to third person", function () {
+		Camera.mode = "third person";
+    });    
 
     autoTester.addStep("Set T-Pose", function () {
         // Set Avatar to T-pose
@@ -68,6 +72,12 @@ autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), 
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
     });    
+
+    autoTester.addStep("Position secondary camera", function () {
+        validationCamera_setRotation(0.0, 0.0, 0.0);
+        validationCamera_setTranslation(Vec3.sum(MyAvatar.getEyePosition(), { x: 0.0, y: -0.8, z: 0.5 }));
+    });
+
 
     autoTester.addStepSnapshot("Avatar visible");
     
@@ -84,6 +94,8 @@ autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), 
         MyAvatar.scale = previousScale;
         MyAvatar.clearJointsData();
         MyAvatar.setEnableMeshVisible(previousAvatarVisibility);
+        
+        Camera.mode = previousCameraMode;
     });
 
     autoTester.runTest(testType);
