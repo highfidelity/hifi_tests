@@ -39,7 +39,6 @@ Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
-Script.include(testsRootPath + "engine/render/antialiasing/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");
