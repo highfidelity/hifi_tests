@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function(testType) {
+autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", function(testType) {
     var LIFETIME = 120;
 
     var previousSkeletonURL;
@@ -92,16 +92,30 @@ autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "primary", funct
         floor = Entities.addEntity(floorProperties);
     });
 
+    autoTester.addStep("Position secondary camera", function () {
+        validationCamera_setTranslation(MyAvatar.getEyePosition());
+    });
+
     autoTester.addStepSnapshot("Scale = 1.0");
 
     autoTester.addStep("Set scale to 2.0", function () {
         MyAvatar.scale = 2.0;
     });
+
+    autoTester.addStep("Position secondary camera", function () {
+        validationCamera_setTranslation(MyAvatar.getEyePosition());
+    });
+
     autoTester.addStepSnapshot("Scale = 2.0");
 
     autoTester.addStep("Set scale to 0.5", function () {
         MyAvatar.scale = 0.5;
     });
+
+    autoTester.addStep("Position secondary camera", function () {
+        validationCamera_setTranslation(MyAvatar.getEyePosition());
+    });
+
     autoTester.addStepSnapshot("Scale = 0.5");
 
     autoTester.addStep("Clean up after test", function () {
