@@ -1,6 +1,5 @@
-// This is an automatically generated file, created by auto-tester on Aug 13 2018, 11:50
-
-PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/sabrina-shanman/hifi_tests/safe-teleport-target/tests/utils/branchUtils.js";
+// This is an automatically generated file, created by auto-tester
+PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 

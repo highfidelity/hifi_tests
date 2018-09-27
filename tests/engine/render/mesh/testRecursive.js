@@ -12,10 +12,7 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(testsRootPath + "engine/interaction/pick/collision/myavatar/test.js");
-Script.include(testsRootPath + "engine/interaction/pick/collision/many/test.js");
-Script.include(testsRootPath + "engine/interaction/pick/collision/identical/test.js");
-Script.include(testsRootPath + "engine/interaction/pick/collision/filter/test.js");
-Script.include(testsRootPath + "engine/interaction/pick/collision/cube/test.js");
+Script.include(testsRootPath + "engine/render/mesh/MyAvatar/visibility/test.js");
+Script.include(testsRootPath + "engine/render/mesh/MyAvatar/scale/test.js");
 
 autoTester.runRecursive();
