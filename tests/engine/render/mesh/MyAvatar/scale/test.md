@@ -8,23 +8,31 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Setup avatar
+- Create zone, box and floor
 ### Step 2
-- Set T-Pose
+- Setup avatar
 ### Step 3
-- Create zone and cube
+- Set T-Pose
 ### Step 4
+- Position secondary camera behind eyepoint
+### Step 5
+- Delay
+### Step 6
 - Scale = 1.0
 - ![](./ExpectedImage_00000.png)
-### Step 5
+### Step 7
 - Set scale to 2.0
-### Step 6
+### Step 8
+- Delay
+### Step 9
 - Scale = 2.0
 - ![](./ExpectedImage_00001.png)
-### Step 7
+### Step 10
 - Set scale to 0.5
-### Step 8
+### Step 11
+- Delay
+### Step 12
 - Scale = 0.5
 - ![](./ExpectedImage_00002.png)
-### Step 9
+### Step 13
 - Clean up after test
