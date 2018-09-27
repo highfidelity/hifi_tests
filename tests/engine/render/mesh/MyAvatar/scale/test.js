@@ -56,25 +56,30 @@ autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", fun
         for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
+
+        // Set orientation to 0
+        MyAvatar.orientation = Quat.fromVec3Degrees({x: 0.0, y: 0.0, z: 0.0 });        
     });    
 
     autoTester.addStep("Position secondary camera behind eyepoint", function () {
-        validationCamera_setRotation(0.0, 0.0, 0.0);
-        validationCamera_setTranslation(Vec3.sum(MyAvatar.getEyePosition(), { x: 0.0, y: -0.9, z: 0.5 }));
+        validationCamera_translate({ x: 0.0, y: -0.2, z: 2.5 });
     });
 
+    autoTester.addStep("Delay");
     autoTester.addStepSnapshot("Scale = 1.0");
 
     autoTester.addStep("Set scale to 2.0", function () {
         MyAvatar.scale = 2.0;
     });
 
+    autoTester.addStep("Delay");
     autoTester.addStepSnapshot("Scale = 2.0");
 
     autoTester.addStep("Set scale to 0.5", function () {
         MyAvatar.scale = 0.5;
     });
 
+    autoTester.addStep("Delay");
     autoTester.addStepSnapshot("Scale = 0.5");
     
     autoTester.addStep("Clean up after test", function () {

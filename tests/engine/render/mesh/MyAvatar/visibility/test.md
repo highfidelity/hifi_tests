@@ -14,12 +14,14 @@ Press 'n' key to advance step by step
 ### Step 3
 - Set T-Pose
 ### Step 4
+- Position secondary camera
+### Step 5
 - Avatar visible
 - ![](./ExpectedImage_00000.png)
-### Step 5
-- Hide avatar mesh
 ### Step 6
+- Hide avatar mesh
+### Step 7
 - Avatar not visible
 - ![](./ExpectedImage_00001.png)
-### Step 7
+### Step 8
 - Clean up after test
