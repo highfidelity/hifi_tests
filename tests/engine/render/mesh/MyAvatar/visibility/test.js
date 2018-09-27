@@ -7,17 +7,17 @@ autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), 
 
     var previousSkeletonURL;
     var previousScale;
-	var previousCameraMode;
     var previousAvatarVisibility;
 	var zone;
-	
+	var originPosition = autoTester.getOriginFrame();
+    
     autoTester.addStep("Create a zone", function () {
         var assetsRootPath = autoTester.getAssetsRootPath();
         var zoneProperties = {
             lifetime: LIFETIME,
             type: "Zone",
             name: "zone",
-            position: autoTester.getOriginFrame(),
+            position: originPosition,
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
             
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
@@ -57,25 +57,20 @@ autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), 
         if (typeof Test !== 'undefined') {
             Test.waitIdle();
         }
-
-        previousCameraMode = Camera.mode;
-        Camera.mode = "first person";
     });
-
-    autoTester.addStep("Set camera to third person", function () {
-		Camera.mode = "third person";
-    });    
 
     autoTester.addStep("Set T-Pose", function () {
         // Set Avatar to T-pose
         for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
+
+        // Set orientation to 0
+        MyAvatar.orientation = Quat.fromVec3Degrees({x: 0.0, y: 0.0, z: 0.0 });        
     });    
 
     autoTester.addStep("Position secondary camera", function () {
-        validationCamera_setRotation(0.0, 0.0, 0.0);
-        validationCamera_setTranslation(Vec3.sum(MyAvatar.getEyePosition(), { x: 0.0, y: -0.8, z: 0.5 }));
+        validationCamera_translate({ x: 0.0, y: -0.2, z: 0.5 });
     });
 
 
@@ -94,8 +89,6 @@ autoTester.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), 
         MyAvatar.scale = previousScale;
         MyAvatar.clearJointsData();
         MyAvatar.setEnableMeshVisible(previousAvatarVisibility);
-        
-        Camera.mode = previousCameraMode;
     });
 
     autoTester.runTest(testType);
