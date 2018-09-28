@@ -24,5 +24,10 @@ Script.include(testsRootPath + "engine/interaction/pointer/laser/faceAvatar/test
 Script.include(testsRootPath + "engine/interaction/pointer/laser/enable/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/distanceScaleEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/centerEndY/test.js");
+Script.include(testsRootPath + "engine/interaction/pick/collision/myavatar/test.js");
+Script.include(testsRootPath + "engine/interaction/pick/collision/many/test.js");
+Script.include(testsRootPath + "engine/interaction/pick/collision/identical/test.js");
+Script.include(testsRootPath + "engine/interaction/pick/collision/filter/test.js");
+Script.include(testsRootPath + "engine/interaction/pick/collision/cube/test.js");
 
 autoTester.runRecursive();
