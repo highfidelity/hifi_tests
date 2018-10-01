@@ -37,6 +37,7 @@ autoTester.perform("Show effects of roughness", Script.resolvePath("."), "second
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
 
+    autoTester.add2sDelays(5);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {

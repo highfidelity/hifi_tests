@@ -19,6 +19,8 @@ autoTester.perform("Show effects of emmisive materials", Script.resolvePath(".")
         createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
+
+    autoTester.add2sDelays(3);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {
