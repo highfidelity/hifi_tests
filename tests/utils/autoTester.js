@@ -3,7 +3,7 @@ var currentSteps = [];
 var currentStepIndex = 0;
 
 var testCases = [];
-var currentlyExecutingTest = 0;
+var currentlyExecutingStep = false;
 
 var testMode = "manual";      // can be "auto"
 var isRecursive = false;
@@ -90,7 +90,9 @@ var runOneStep = function (stepFunctor, stepIndex) {
 var runNextStep = function () {
     // Run next step and increment only if there is one more
     if (currentStepIndex < currentSteps.length) {
+        currentlyExecutingStep = true;
         runOneStep(currentSteps[currentStepIndex], currentStepIndex);
+        currentlyExecutingStep = false;
         currentStepIndex++;
     }
 
@@ -105,9 +107,12 @@ var onRunAutoNext = function() {
 
     // If not downloading then run the next step...
     if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
-        if (!runNextStep()) {
-            tearDownTest();
-            return;
+        // Only run next step if current step is complete
+        if (!currentlyExecutingStep) {
+            if (!runNextStep()) {
+                tearDownTest();
+                return;
+            }
         }
     } else if (!downloadInProgress) {
         // This assumes the message is displayed for not more than 4 seconds
@@ -358,6 +363,12 @@ module.exports.addStep = function (name, stepFunction) {
     doAddStep(name, stepFunction, false);
 }
 
+module.exports.add2sDelays = function (numDelays) {
+    for (var i = 0; i < numDelays; ++i) {
+        doAddStep("2 second delay");
+    }
+}
+
 // Add steps to the test case, take snapshot
 module.exports.addStepSnapshot = function (name, stepFunction) {
     doAddStep(name, stepFunction, true);
@@ -365,12 +376,8 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 
 // The default mode is manual
 // The default time between test steps may be modified through these methods
-module.exports.enableAuto = function (timeStep) {
+module.exports.enableAuto = function () {
     testMode = "auto";
-
-    if (timeStep) {
-        autoTimeStep = timeStep;
-    }
 
     print("TEST MODE AUTO SELECTED");
 }

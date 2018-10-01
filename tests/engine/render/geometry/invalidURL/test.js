@@ -25,7 +25,7 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
         }
     );
 
-    autoTester.addStep("Give models time to load");
+    autoTester.add2sDelays(3);
 
     autoTester.addStepSnapshot("Result of invalid URL load");
 
