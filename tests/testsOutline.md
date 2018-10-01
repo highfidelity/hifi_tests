@@ -79,7 +79,7 @@ Directories with an appended (*) have an automatic test
           - [lockEnd](./engine/interaction/pointer/parabola/lockEnd?raw=true)  [(test description)](./engine/interaction/pointer/parabola/lockEnd/test.md) (*)
           - [renderState](./engine/interaction/pointer/parabola/renderState?raw=true)  [(test description)](./engine/interaction/pointer/parabola/renderState/test.md) (*)
     - [render](./engine/render?raw=true)
-      - [antialiasing](./engine/render/antialiasing?raw=true)  [(test description)](./engine/render/antialiasing/test.md) (*)
+      - [antialiasing](./engine/render/antialiasing?raw=true)  [(test description)](./engine/render/antialiasing/testStory.md)
       - [effect](./engine/render/effect?raw=true)
         - [bloom](./engine/render/effect/bloom?raw=true)  [(test description)](./engine/render/effect/bloom/test.md) (*)
         - [haze](./engine/render/effect/haze?raw=true)
