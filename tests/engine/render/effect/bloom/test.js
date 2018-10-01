@@ -3,8 +3,9 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", function(testType) {
-    var pos =  MyAvatar.position;
-
+    var pos =  autoTester.getOriginFrame();
+    pos.y += 1.0;
+    
     var assetsRootPath = autoTester.getAssetsRootPath();
     var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
     var MODEL_NAME_SUFFIX = ".fbx";
