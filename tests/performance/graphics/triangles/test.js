@@ -4,8 +4,6 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("1 million triangles test", Script.resolvePath("."), "secondary", function(testType) {
     const LIFETIME = 120;
-    const STEP_TIME_MS = 100;
-    const NUM_STEPS = 100;
 
     // entities
     var zone;
@@ -16,15 +14,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
     var assetsRootPath = autoTester.getAssetsRootPath();
     var position = autoTester.getOriginFrame();
 
-    var gameRateAverage;
-    var renderRateAverage;
-    var presentRateAverage;
-
     var previousAvatarVisibility;
-
-    const GAME_RATE_LIMIT    = 30;
-    const RENDER_RATE_LIMIT  = 30;
-    const PRESENT_RATE_LIMIT = 30;
 
     var previousThrottleFPS;
     autoTester.addStep("Do not throttle FPS if not focus", function () {
@@ -80,36 +70,63 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         model = Entities.addEntity(modelProperties);
     });
 
-    autoTester.addStep("Wait for the model to load", function () {
-        if (typeof Test !== 'undefined') {
-            Test.waitIdle();
-        }
+    autoTester.add2sDelays(8);
+
+
+    var gameTimes;
+    var renderTimes;
+    var presentTimes;
+
+    var gameRateAverage;
+    var renderRateAverage;
+    var presentRateAverage;
+
+    const GAME_RATE_LIMIT    = 30;
+    const RENDER_RATE_LIMIT  = 30;
+    const PRESENT_RATE_LIMIT = 30;
+
+    autoTester.addStep("Start measuring rates", function() {
+        Stats.update();
+        gameTimes    = Stats.gameLoopRate;
+        renderTimes  = Stats.renderrate;
+        presentTimes = Stats.presentrate;
     });
 
-    autoTester.addStep("Measure rates", function() {
-        if (typeof Test !== 'undefined') {
-            // We can use the wait method
-            gameTimes    = 0;
-            renderTimes  = 0;
-            presentTimes = 0;
-            
-            for (var i = 0; i < NUM_STEPS; ++i) {
-                Test.wait(STEP_TIME_MS);
-                gameTimes    += Stats.gameLoopRate;
-                renderTimes  += Stats.renderrate;
-                presentTimes += Stats.presentrate;
-            };
-            
-            gameRateAverage    = gameTimes    / NUM_STEPS;
-            renderRateAverage  = renderTimes  / NUM_STEPS;
-            presentRateAverage = presentTimes / NUM_STEPS;
-        } else {
-            // just use the current value
-            gameRateAverage    = Stats.gameLoopRate;
-            renderRateAverage  = Stats.renderrate;
-            presentRateAverage = Stats.presentrate;
-        }
+    autoTester.addStep("Measure after step", function() {
+        Stats.update();
+        gameTimes    += Stats.gameLoopRate;
+        renderTimes  += Stats.renderrate;
+        presentTimes += Stats.presentrate;
+    });
 
+    autoTester.addStep("Measure after step", function() {
+        Stats.update();
+        gameTimes    += Stats.gameLoopRate;
+        renderTimes  += Stats.renderrate;
+        presentTimes += Stats.presentrate;
+    });
+
+    autoTester.addStep("Measure after step", function() {
+        Stats.update();
+        gameTimes    += Stats.gameLoopRate;
+        renderTimes  += Stats.renderrate;
+        presentTimes += Stats.presentrate;
+    });
+    
+    autoTester.addStep("Measure after step", function() {
+        Stats.update();
+        gameTimes    += Stats.gameLoopRate;
+        renderTimes  += Stats.renderrate;
+        presentTimes += Stats.presentrate;
+    });
+            
+    autoTester.addStep("Average results", function() {
+        gameRateAverage    = gameTimes    / 5;
+        renderRateAverage  = renderTimes  / 5;
+        presentRateAverage = presentTimes / 5;
+    });
+
+    autoTester.addStep("Show overlay with results", function() {
         overlay = Overlays.addOverlay("text3d", {
             position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0.0, y: 0.8, z: -6.7 })),
             rotation: MyAvatar.orientation,

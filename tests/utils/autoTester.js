@@ -3,7 +3,6 @@ var currentSteps = [];
 var currentStepIndex = 0;
 
 var testCases = [];
-var currentlyExecutingStep = false;
 
 var testMode = "manual";      // can be "auto"
 var isRecursive = false;
@@ -90,9 +89,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
 var runNextStep = function () {
     // Run next step and increment only if there is one more
     if (currentStepIndex < currentSteps.length) {
-        currentlyExecutingStep = true;
         runOneStep(currentSteps[currentStepIndex], currentStepIndex);
-        currentlyExecutingStep = false;
         currentStepIndex++;
     }
 
@@ -108,11 +105,9 @@ var onRunAutoNext = function() {
     // If not downloading then run the next step...
     if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
-        if (!currentlyExecutingStep) {
-            if (!runNextStep()) {
-                tearDownTest();
-                return;
-            }
+        if (!runNextStep()) {
+            tearDownTest();
+            return;
         }
     } else if (!downloadInProgress) {
         // This assumes the message is displayed for not more than 4 seconds
