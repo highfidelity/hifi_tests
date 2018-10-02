@@ -290,13 +290,6 @@ tearDownTest = function() {
 
     if (isRecursive) {
         currentRecursiveTestCompleted = true;
-
-        // Create "finished" file so auto-tester knows tests ran to completion
-        //    note that the contents are not important
-        if (typeof Test !== 'undefined') {
-            Test.saveObject({ complete: true }, "tests_completed.txt");
-        };
-
     } else {
         // Just stop the script
         Script.stop();
@@ -426,6 +419,13 @@ module.exports.runRecursive = function () {
                     runOneTestCase(currentTestCase, testMode);
                 } else {
                     print("Recursive tests complete");
+
+                    // Create "finished" file so auto-tester knows tests ran to completion
+                    //    note that the contents are not important
+                    if (typeof Test !== 'undefined') {
+                        Test.saveObject({ complete: true }, "tests_completed.txt");
+                    };
+
                     Script.stop();
                 }
             }
