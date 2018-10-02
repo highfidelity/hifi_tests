@@ -30,7 +30,6 @@ autoTester.perform("Show effects of roughness", Script.resolvePath("."), "second
     });
 
     var fxaaWasOn;
-
     autoTester.addStep("Turn off TAA for this test", function () {
         fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
         Render.getConfig("RenderMainView.JitterCam").none();
