@@ -15,8 +15,9 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
     var position = autoTester.getOriginFrame();
 
     var previousAvatarVisibility;
-
+    var previousShowStatistics;
     var previousThrottleFPS;
+
     autoTester.addStep("Do not throttle FPS if not focus", function () {
         previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
         Menu.setIsOptionChecked( "Throttle FPS If Not Focus", false);
@@ -54,6 +55,10 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         // Set orientation to 0
         MyAvatar.orientation = Quat.fromVec3Degrees({x: 0.0, y: 0.0, z: 0.0 });
         validationCamera_setRotation(0.0, 0.0, 0.0);
+
+        // Show statistics (needed to activate call to `Stats::updateStats()`)
+        previousShowStatistics = Menu.isOptionChecked("Show Statistics");
+        Menu.setIsOptionChecked("Show Statistics", true);
     });
 
     autoTester.addStep("Add model with 1,000,000 triangles (appears in BOTH cameras)", function () {
@@ -185,7 +190,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         MyAvatar.setEnableMeshVisible(previousAvatarVisibility);
 
         Menu.setIsOptionChecked( "Throttle FPS If Not Focus", previousThrottleFPS);
-
+        Menu.setIsOptionChecked("Show Statistics", previousShowStatistics);
     });
 
     autoTester.runTest(testType);
