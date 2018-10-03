@@ -164,7 +164,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
         }
     });
         
-    autoTester.add2sDelays(5);
+    autoTester.addDelaySeconds(10);
 
     autoTester.addStepSnapshot("Take snapshot when not in Debug mode");
 

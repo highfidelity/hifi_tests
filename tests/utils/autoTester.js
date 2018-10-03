@@ -238,7 +238,6 @@ setUpTest = function(testCase) {
         spectatorCameraConfig.position = p0;
     }
 
-
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
 
@@ -363,9 +362,14 @@ module.exports.addStep = function (name, stepFunction) {
     doAddStep(name, stepFunction, false);
 }
 
-module.exports.add2sDelays = function (numDelays) {
-    for (var i = 0; i < numDelays; ++i) {
-        doAddStep("2 second delay");
+module.exports.addDelaySeconds = function (delaySeconds) {
+    // Ignore this function in manual mode
+    if (!isManualMode()) {
+        var timeStepSeconds = autoTimeStep / 1000;
+        var numDelays = 1 + delaySeconds / timeStepSeconds;
+        for (var i = 0; i < numDelays; ++i) {
+            doAddStep(String(timeStepSeconds) + " seconds delay");
+        }
     }
 }
 
@@ -378,16 +382,11 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
     testMode = "auto";
-
     print("TEST MODE AUTO SELECTED");
 }
 
-module.exports.enableRecursive = function (timeStep) {
+module.exports.enableRecursive = function () {
     isRecursive = true;
-    if (timeStep) {
-        autoTimeStep = timeStep;
-    }
-
     print("TEST MODE RECURSIVE SELECTED");
 }
 
