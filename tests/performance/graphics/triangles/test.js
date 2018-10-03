@@ -75,7 +75,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         model = Entities.addEntity(modelProperties);
     });
 
-    autoTester.add2sDelays(8);
+    autoTester.addDelaySeconds(16);
 
 
     var gameTimes;
