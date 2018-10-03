@@ -41,5 +41,9 @@ Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/ssao/high/test.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/ssao/default/test.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/hbao/high/test.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/hbao/default/test.js");
 
 autoTester.runRecursive();
