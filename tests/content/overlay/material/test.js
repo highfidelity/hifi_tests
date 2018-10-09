@@ -16,8 +16,9 @@ autoTester.perform("Model Overlay Material create", Script.resolvePath("."), "se
     var createdEntities = setupStage(flags, 200);
     var createdOverlays = [];
 
-    var posOri = getStagePosOriAt(0, 0, 0);
-
+    var posOri = autoTester.getOriginFrame();
+    posOri.y += 1.0;
+    
     autoTester.addStep("Build the material matrix", function () {
         // List here all the entries of the Material Matrix
         var TEST_CASES = [

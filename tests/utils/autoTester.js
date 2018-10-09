@@ -3,7 +3,6 @@ var currentSteps = [];
 var currentStepIndex = 0;
 
 var testCases = [];
-var currentlyExecutingTest = 0;
 
 var testMode = "manual";      // can be "auto"
 var isRecursive = false;
@@ -105,6 +104,7 @@ var onRunAutoNext = function() {
 
     // If not downloading then run the next step...
     if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
+        // Only run next step if current step is complete
         if (!runNextStep()) {
             tearDownTest();
             return;
@@ -233,7 +233,6 @@ setUpTest = function(testCase) {
         spectatorCameraConfig.position = p0;
     }
 
-
     // Hide the avatar
     MyAvatar.setEnableMeshVisible(false);
 
@@ -358,6 +357,17 @@ module.exports.addStep = function (name, stepFunction) {
     doAddStep(name, stepFunction, false);
 }
 
+module.exports.addDelay = function (delaySeconds) {
+    // Ignore this function in manual mode
+    if (!isManualMode()) {
+        var timeStepSeconds = autoTimeStep / 1000;
+        var numDelays = 1 + delaySeconds / timeStepSeconds;
+        for (var i = 0; i < numDelays; ++i) {
+            doAddStep(String(timeStepSeconds) + " seconds delay");
+        }
+    }
+}
+
 // Add steps to the test case, take snapshot
 module.exports.addStepSnapshot = function (name, stepFunction) {
     doAddStep(name, stepFunction, true);
@@ -365,22 +375,13 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 
 // The default mode is manual
 // The default time between test steps may be modified through these methods
-module.exports.enableAuto = function (timeStep) {
+module.exports.enableAuto = function () {
     testMode = "auto";
-
-    if (timeStep) {
-        autoTimeStep = timeStep;
-    }
-
     print("TEST MODE AUTO SELECTED");
 }
 
-module.exports.enableRecursive = function (timeStep) {
+module.exports.enableRecursive = function () {
     isRecursive = true;
-    if (timeStep) {
-        autoTimeStep = timeStep;
-    }
-
     print("TEST MODE RECURSIVE SELECTED");
 }
 
