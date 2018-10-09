@@ -27,7 +27,7 @@ autoTester.perform("Show effects of roughness maps", Script.resolvePath("."), "s
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
     
-    autoTester.addDelaySeconds(6);
+    autoTester.addDelay(6);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {

@@ -30,7 +30,7 @@ autoTester.perform("Show effects of opacity", Script.resolvePath("."), "secondar
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
 
-    autoTester.addDelaySeconds(6);
+    autoTester.addDelay(6);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {

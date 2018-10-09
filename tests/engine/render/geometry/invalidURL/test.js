@@ -25,7 +25,7 @@ autoTester.perform("Attempt to access invalid URL", Script.resolvePath("."), "se
         }
     );
 
-    autoTester.addDelaySeconds(6);
+    autoTester.addDelay(6);
 
     autoTester.addStepSnapshot("Result of invalid URL load");
 

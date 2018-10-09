@@ -357,7 +357,7 @@ module.exports.addStep = function (name, stepFunction) {
     doAddStep(name, stepFunction, false);
 }
 
-module.exports.addDelaySeconds = function (delaySeconds) {
+module.exports.addDelay = function (delaySeconds) {
     // Ignore this function in manual mode
     if (!isManualMode()) {
         var timeStepSeconds = autoTimeStep / 1000;
