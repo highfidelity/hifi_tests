@@ -16,7 +16,8 @@ autoTester.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "sec
     var createdEntities = setupStage(flags, 200);
     var createdOverlays = [];
 
-    var posOri = getStagePosOriAt(0, 0, 0);
+    var posOri = autoTester.getOriginFrame();
+    posOri.y += 1.0;
 
     autoTester.addStep("Build the material matrix", function () {
         // List here all the entries of the Material Matrix
@@ -111,6 +112,7 @@ autoTester.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "sec
                 dimensions: { x: 4, y: 2, z: 0.5},
         }));
     });
+    autoTester.addDelay(8);
 
     autoTester.addStepSnapshot("Take snapshot of all the models");
 
