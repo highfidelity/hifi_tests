@@ -112,7 +112,7 @@ autoTester.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "sec
                 dimensions: { x: 4, y: 2, z: 0.5},
         }));
     });
-    autoTester.addDelaySeconds(8);
+    autoTester.addDelay(8);
 
     autoTester.addStepSnapshot("Take snapshot of all the models");
 

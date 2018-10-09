@@ -68,7 +68,7 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
     });
     
-    autoTester.addDelaySeconds(6);
+    autoTester.addDelay(6);
     
     autoTester.addStepSnapshot("Display materials on multiple models");
 

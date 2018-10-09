@@ -20,7 +20,7 @@ autoTester.perform("Show effects of roughness maps", Script.resolvePath("."), "s
         validationCamera_translate(OFFSET);
     });
     
-    autoTester.addDelaySeconds(6);
+    autoTester.addDelay(6);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {
