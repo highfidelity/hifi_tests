@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Create zone, box and floor
+- Create zone
 ### Step 2
 - Setup avatar
 ### Step 3
