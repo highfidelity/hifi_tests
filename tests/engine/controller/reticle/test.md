@@ -13,7 +13,7 @@ Press 'n' key to advance step by step
 - Default reticle in centre of screen
 - ![](./ExpectedImage_00000.png)
 ### Step 3
-- Set scaling to 10 (for large cursor)
+- Set scaling to 50 (for large cursor)
 ### Step 4
 - Large cursor
 - ![](./ExpectedImage_00001.png)
@@ -35,7 +35,7 @@ Press 'n' key to advance step by step
 ### Step 11
 - Show reticle
 ### Step 12
-- Reticle should be displayed
+- Normal reticle should be displayed
 - ![](./ExpectedImage_00005.png)
 ### Step 13
 - Cleanup
