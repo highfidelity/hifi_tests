@@ -19,14 +19,6 @@ autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", fu
         stageEntities = setup(autoTester.getOriginFrame());
     });
 
-    var fxaaWasOn;
-
-    autoTester.addStep("Turn off TAA for this test", function () {
-        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
-        Render.getConfig("RenderMainView.JitterCam").none();
-        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
-    });
-
     testFiles.forEach(function(props) {
         var maxMip = getMaxMip(props);
 
@@ -52,11 +44,6 @@ autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", fu
     autoTester.addStep("Clean up after test", function () {
         for (var i = 0; i < stageEntities.length; i++) {
             Entities.deleteEntity(stageEntities[i]);
-        }
-
-        if (!fxaaWasOn) {
-            Render.getConfig("RenderMainView.JitterCam").play();
-            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
         }
     });
 

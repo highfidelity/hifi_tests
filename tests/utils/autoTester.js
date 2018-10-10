@@ -40,6 +40,9 @@ TestCase = function (name, path, func, usePrimaryCamera) {
 var currentTestCase = null;
 var currentRecursiveTestCompleted = false;
 
+// TAA will be disabled for each test.  A test may enable as desired
+var fxaaWasOn;
+
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
     ch = ch || '0';  // default is '0'
@@ -257,6 +260,11 @@ setUpTest = function(testCase) {
     if (!isManualMode()) {
         Menu.setIsOptionChecked("Desktop", true);
     }
+
+    // Disable TAA
+    fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+    Render.getConfig("RenderMainView.JitterCam").none();
+    Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
 }
 
 tearDownTest = function() {
@@ -296,6 +304,12 @@ tearDownTest = function() {
 
     // Disconnect callback
     AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
+    
+    // Enable TAA as required
+    if (!fxaaWasOn) {
+        Render.getConfig("RenderMainView.JitterCam").play();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
+    }
 }
 
 validationCamera_setTranslation = function(position) {
