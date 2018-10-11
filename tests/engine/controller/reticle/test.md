@@ -13,12 +13,12 @@ Press 'n' key to advance step by step
 - Default reticle in centre of screen
 - ![](./ExpectedImage_00000.png)
 ### Step 3
-- Set scaling to 50 (for large cursor)
+- Set scaling to 60 (for large cursor)
 ### Step 4
 - Large cursor
 - ![](./ExpectedImage_00001.png)
 ### Step 5
-- Move cursor to right
+- Move cursor to left
 ### Step 6
 - Reticle should have moved to the right
 - ![](./ExpectedImage_00002.png)

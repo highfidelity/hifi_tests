@@ -42,22 +42,23 @@ autoTester.perform("Reticle control", Script.resolvePath("."), "primary", functi
     autoTester.addDelay(4);
     autoTester.addStepSnapshot("Default reticle in centre of screen");
 
-    autoTester.addStep("Set scaling to 50 (for large cursor)", function () {
-        Reticle.setScale(50.0);
+    autoTester.addStep("Set scaling to 60 (for large cursor)", function () {
+        Reticle.setScale(60.0);
     });
     autoTester.addStepSnapshot("Large cursor");
 
-    autoTester.addStep("Move cursor to right", function () {
-        Reticle.setPosition({ x: 1440, y: 540 });
+    autoTester.addStep("Move cursor to left", function () {
+        Reticle.setPosition({ x: 200, y: 540 });
     });
     autoTester.addStepSnapshot("Reticle should have moved to the right");
 
     autoTester.addStep("Move cursor up", function () {
-        Reticle.setPosition({ x: 1440, y: 270 });
+        Reticle.setPosition({ x: 220, y: 170 });
     });
     autoTester.addStepSnapshot("Reticle should have moved up");
 
     autoTester.addStep("Hide reticle", function () {
+        Reticle.setPosition({ x: 560, y: 200 });
         Reticle.visible = false;
     });
     autoTester.addStepSnapshot("No reticle should be displayed");
