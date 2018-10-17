@@ -9,7 +9,7 @@ autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", fun
     var previousScale;
 	var zone;
 	
-    autoTester.addStep("Create zone, box and floor", function () {
+    autoTester.addStep("Create zone", function () {
         var assetsRootPath = autoTester.getAssetsRootPath();
         var zoneProperties = {
             lifetime: LIFETIME,
