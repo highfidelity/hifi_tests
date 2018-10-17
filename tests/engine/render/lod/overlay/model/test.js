@@ -44,13 +44,13 @@ autoTester.perform("LOD test", Script.resolvePath("."), "secondary", function(te
 
     autoTester.addStepSnapshot("Both models visible");
 
-    autoTester.addStep("Set LOD to 10", function () {
-        LODManager.setOctreeSizeScale(32768 * 10);
+    autoTester.addStep("Set LOD to 60", function () {
+        LODManager.setOctreeSizeScale(32768 * 60);
     });
     autoTester.addStepSnapshot("Eyes of left model cannot be seen");
 
-    autoTester.addStep("Set LOD to 5.8", function () {
-        LODManager.setOctreeSizeScale(32768 * 5.8);
+    autoTester.addStep("Set LOD to 10", function () {
+        LODManager.setOctreeSizeScale(32768 * 10);
     });
     autoTester.addStepSnapshot("Only right model visible, including eyes");
 

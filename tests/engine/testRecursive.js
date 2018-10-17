@@ -12,7 +12,6 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(testsRootPath + "engine/render/textures/procedural/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/normal/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/grazing/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/front/test.js");

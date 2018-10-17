@@ -40,6 +40,9 @@ TestCase = function (name, path, func, usePrimaryCamera) {
 var currentTestCase = null;
 var currentRecursiveTestCompleted = false;
 
+// TAA will be disabled for each test.  A test may enable as desired
+var fxaaWasOn;
+
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
     ch = ch || '0';  // default is '0'
@@ -58,7 +61,7 @@ function onDownloadInfoChanged(info) {
 }
 
 var runOneStep = function (stepFunctor, stepIndex) {
-    print("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
+    console.warn("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
 
     if (isManualMode()) {
         Window.displayAnnouncement("Running step " + (stepIndex + 1) + "/" + (currentSteps.length) +": " + stepFunctor.name);
@@ -71,7 +74,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
     // Not quite sure this is the definitive solution here because of the snapshot bug latency issue.
     // but this seems to work ok if the snapshot is a separate step
     if ((stepFunctor.snap !== undefined) && stepFunctor.snap) {
-        print("Taking snapshot for step " + (stepIndex + 1));
+        console.warn("Taking snapshot for step " + (stepIndex + 1));
         
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the auto-tester C++ code!
@@ -111,11 +114,11 @@ var onRunAutoNext = function() {
         }
     } else if (!downloadInProgress) {
         // This assumes the message is displayed for not more than 4 seconds
-        print("Waiting for 'LOADING CONTENT...' message to be removed");
+        console.warn("Waiting for 'LOADING CONTENT...' message to be removed");
         timeStep = 4000;
         loadingContentIsStillDisplayed = false;
     } else {
-        print("Waiting for download to complete");
+        console.warn("Waiting for download to complete");
     }
 
     // and call itself after next timer
@@ -156,7 +159,7 @@ var onRunAuto = function() {
 // Add Steps to the test case
 var doAddStep = function (name, stepFunction, snapshot) {
     currentSteps.push({"index": currentSteps.length, "name": name, "func": stepFunction, "snap": snapshot })
-    print("PUSHING STEP" + currentSteps.length);
+    console.warn("PUSHING STEP" + currentSteps.length);
 }
 
 runOneTestCase = function(testCase, testType) {
@@ -257,6 +260,11 @@ setUpTest = function(testCase) {
     if (!isManualMode()) {
         Menu.setIsOptionChecked("Desktop", true);
     }
+
+    // Disable TAA
+    fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+    Render.getConfig("RenderMainView.JitterCam").none();
+    Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
 }
 
 tearDownTest = function() {
@@ -296,6 +304,12 @@ tearDownTest = function() {
 
     // Disconnect callback
     AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
+    
+    // Enable TAA as required
+    if (!fxaaWasOn) {
+        Render.getConfig("RenderMainView.JitterCam").play();
+        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
+    }
 }
 
 validationCamera_setTranslation = function(position) {
@@ -341,13 +355,13 @@ module.exports.perform = function (testName, testPath, validationCamera, testMai
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
-        print("Not running yet - in recursive mode");
+        console.warn("Not running yet - in recursive mode");
         testCases.push(currentTestCase);
     } else if (isManualMode()) {
-        print("Begin manual test:" + testName);
+        console.warn("Begin manual test:" + testName);
         runOneTestCase(currentTestCase, "manual");
     } else { // testMode === "auto"
-        print("Begin auto test:" + testName);
+        console.warn("Begin auto test:" + testName);
         runOneTestCase(currentTestCase, "auto");
     }
 }
@@ -377,12 +391,13 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
     testMode = "auto";
-    print("TEST MODE AUTO SELECTED");
+
+    console.warn("TEST MODE AUTO SELECTED");
 }
 
 module.exports.enableRecursive = function () {
     isRecursive = true;
-    print("TEST MODE RECURSIVE SELECTED");
+    console.warn("TEST MODE RECURSIVE SELECTED");
 }
 
 // Steps is an array of functions; each function being a test step
@@ -400,7 +415,7 @@ module.exports.runTest = function (testType) {
 }
 
 module.exports.runRecursive = function () {
-    print("Starting recursive tests");
+    console.warn("Starting recursive tests");
     runningRecursive = true;
 
     currentRecursiveTestCompleted = true;
@@ -412,7 +427,14 @@ module.exports.runRecursive = function () {
                     currentTestCase = testCases.pop();
                     runOneTestCase(currentTestCase, testMode);
                 } else {
-                    print("Recursive tests complete");
+                    console.warn("Recursive tests complete");
+
+                    // Create "finished" file so auto-tester knows tests ran to completion
+                    //    note that the contents are not important
+                    if (typeof Test !== 'undefined') {
+                        Test.saveObject({ complete: true }, "tests_completed.txt");
+                    };
+
                     Script.stop();
                 }
             }

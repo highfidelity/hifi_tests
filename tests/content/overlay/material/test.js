@@ -103,6 +103,7 @@ autoTester.perform("Model Overlay Material create", Script.resolvePath("."), "se
         addCases(root, orientation);
     });
 
+    autoTester.addDelay(8);
     autoTester.addStepSnapshot("Take snapshot of all the models");
 
     autoTester.addStep("Clean up after test", function () {

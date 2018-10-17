@@ -129,5 +129,7 @@ Directories with an appended (*) have an automatic test
       - [textures](./engine/render/textures?raw=true)
         - [procedural](./engine/render/textures/procedural?raw=true)  [(test description)](./engine/render/textures/procedural/testStory.md) (*)
   - [performance](./performance?raw=true)
+    - [graphics](./performance/graphics?raw=true)
+      - [triangles](./performance/graphics/triangles?raw=true)  [(test description)](./performance/graphics/triangles/test.md) (*)
     - [manualTrace](./performance/manualTrace?raw=true)  [(test description)](./performance/manualTrace/test.md)
     - [sceneLoad](./performance/sceneLoad?raw=true)  [(test description)](./performance/sceneLoad/test.md)

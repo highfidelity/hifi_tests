@@ -12,6 +12,5 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(testsRootPath + "engine/render/textures/procedural/test.js");
 
 autoTester.runRecursive();
