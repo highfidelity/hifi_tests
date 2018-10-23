@@ -26,6 +26,26 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
         return (Math.abs(x - y) < 0.0001);
     }
     
+    convertResultToLines = function(result) {
+        intResult = Math.floor(result); // just to be safe
+        var line = "";
+        var i = 1;
+        while (intResult > 0) {
+            if (intResult % 2) {
+                if (line !== "") {
+                    line = line + ', ';
+                }
+                line = line + i.toString();
+                intResult -= 1;
+            }
+            
+            intResult /= 2;
+            i += 1;
+        }
+        
+        return line;
+    }
+
     autoTester.addStep("Create a background zone", function () {
         var zoneProperties = {
             lifetime: LIFETIME,
@@ -96,6 +116,34 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
                 color: { red: 12, green: 93, blue: 233 },
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
             },
+                        
+            ambientLightMode: "disabled",
+            ambientLight: {
+                ambientURL: assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json'
+            },
+            
+            hazeMode: 'enabled',
+            haze: {
+                hazeRange: 502.5,
+                hazeColor: { red: 153, green: 107, blue: 47 },
+                hazeGlareColor: { red: 53, green: 64, blue: 128 },
+                hazeEnableGlare: true,
+                hazeGlareAngle: 64.5,
+                hazeAltitudeEffect: true,
+                hazeCeiling: 5432.0,
+                hazeBaseRef: 1423.0,
+                hazeBackgroundBlend: 0.375,
+                hazeAttenuateKeyLight: false,
+                hazeKeyLightRange: 1000.0,
+                hazeKeyLightAltitude: 2343.0
+            },
+
+            bloomMode: "disabled",
+            bloom: {
+                bloomIntensity: 1.0,
+                bloomThreshold: 0.875
+            },
+
             isVisible: false
         };
         zone = Entities.addEntity(zoneProperties);
@@ -137,17 +185,43 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
         result += (properties.skybox.color.green == 93) ? 0 : i; i *= 2;
         result += (properties.skybox.color.blue  == 233) ? 0 : i; i *= 2; 
         
-        result += (properties.skybox.url ==assetsRootPath + 'skymaps/YellowCube.jpg') 
+        result += (properties.skybox.url == assetsRootPath + 'skymaps/YellowCube.jpg') 
            ? 0 : i; i *= 2; 
+
+        result += (properties.ambientLightMode == "disabled") ? 0 : i; i *= 2;
+        result += (properties.ambientLight.ambientURL == assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json') 
+           ? 0 : i; i *= 2; 
+       
+        result += (properties.hazeMode == "enabled") ? 0 : i; i *= 2;
+        result += (properties.haze.hazeRange == 502.5) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeColor.red   == 153) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeColor.green == 107) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeColor.blue  == 47) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeGlareColor.red   == 53) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeGlareColor.green == 64) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeGlareColor.blue  == 128) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeEnableGlare == true) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeGlareAngle == 64.5) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeAltitudeEffect == true) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeCeiling == 5432.0) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeBaseRef == 1423.0) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeBackgroundBlend == 0.375) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeAttenuateKeyLight == false) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeKeyLightRange == 1000.0) ? 0 : i; i *= 2;
+        result += (properties.haze.hazeKeyLightAltitude == 2343.0) ? 0 : i; i *= 2;
+        
+        result += (properties.bloomMode == "disabled") ? 0 : i; i *= 2;
+        result += (properties.bloom.bloomIntensity == 1.0) ? 0 : i; i *= 2;
+        result += (properties.bloom.bloomThreshold == 0.875) ? 0 : i; i *= 2;
         
         Entities.editEntity(box, { color: resultsColour(result) });
         
         if (result != 0) {
-            console.warn("mismatch value is: " + result);
+            console.warn("mismatch values at line(s): " + convertResultToLines(result));
         }
     });
    
-    autoTester.addStep("Set up spotlight", function () {
+    autoTester.addStep("Set up light", function () {
         var properties = {
             lifetime: LIFETIME,  
             name: "ABCDEFGHIJ1234",
@@ -183,7 +257,7 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
         Entities.editEntity(box, { color: resultsColour(result) });
         
         if (result != 0) {
-            console.warn("mismatch value is: " + result);
+            console.warn("mismatch values at line(s): " + convertResultToLines(result));
         }
     });
     
