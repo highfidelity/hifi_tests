@@ -21,17 +21,14 @@ autoTester.perform("Point light", Script.resolvePath("."), "secondary", function
     // Define zone properties
     var properties = {
         lifetime: 120,  
-        type: "light",  
         name: "test create light",
         position: posOri.pos,
 
-        name: "light",
         type: "Light",
         isSpotlight: false,
         color: { red: 255, green: 255, blue: 255 },
         intensity: 1.0,
-        falloffRadius: 3.0,
-        dimensions: { x: 8.0, y: 8.0, z: 3.0 }, 
+        falloffRadius: 3.0
     };
 
     // Add the sphere and check its properties

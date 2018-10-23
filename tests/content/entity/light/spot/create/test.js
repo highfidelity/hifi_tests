@@ -22,7 +22,6 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
     // Define zone properties
     var properties = {
         lifetime: 120,  
-        type: "light",  
         name: "test create spot light",
         position: posOri.pos,
         rotation: lightOri,
@@ -33,8 +32,7 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
         intensity: 2.0,
         falloffRadius: 6.0,
         exponent: 0.1,
-        cutoff: 45,
-        dimensions: { x: 8.0, y: 8.0, z: 12.0 }, 
+        cutoff: 45
     };
 
     // Add the sphere and check its properties
@@ -46,7 +44,6 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
 
     properties = {
         lifetime: 120,  
-        type: "light",  
         name: "test create spot light",
         position: posOri2.pos,
         rotation: lightOri2,
@@ -57,8 +54,7 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
         intensity: 2.0,
         falloffRadius: 6.0,
         exponent: 1,
-        cutoff: 20,
-        dimensions: { x: 8.0, y: 8.0, z: 12.0 }, 
+        cutoff: 20
     };
     createdEntities.push(Entities.addEntity(properties));
 
