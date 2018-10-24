@@ -3,14 +3,9 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
 autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", function(testType) {
-    const LIFETIME = 120;
-    var originPosition = autoTester.getOriginFrame();
-    var assetsRootPath = autoTester.getAssetsRootPath();
-    
-    var backgroundZone;
-    var box;
+    Script.include(../common.js);
+    setup();
     var zone;
-    var light;
      
     // returns green if value is 0, else red 
     resultsColour = function(value) {
@@ -222,10 +217,8 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
     });
     
     autoTester.addStep("Clean up after test", function () {
-        Entities.deleteEntity(backgroundZone);
-        Entities.deleteEntity(box);
+        teardown();
         Entities.deleteEntity(zone);
-        Entities.deleteEntity(light);
     });
     
     var result = autoTester.runTest(testType);
