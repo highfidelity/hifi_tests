@@ -19,7 +19,7 @@ Press 'n' key to advance step by step
 ### Step 5
 - Test zone
 ### Step 6
-- Set up spotlight
+- Set up light
 ### Step 7
 - Show result
 - ![](./ExpectedImage_00001.png)
