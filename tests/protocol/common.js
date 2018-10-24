@@ -1,11 +1,12 @@
+LIFETIME = 120;
+originPosition = autoTester.getOriginFrame();
+assetsRootPath = autoTester.getAssetsRootPath();
+
+box = 0;
+
+var backgroundZone;
+
 setup = function() {
-    const LIFETIME = 120;
-    var originPosition = autoTester.getOriginFrame();
-    var assetsRootPath = autoTester.getAssetsRootPath();
-    
-    var backgroundZone;
-    var box;
-     
     // returns green if value is 0, else red 
     resultsColour = function(value) {
         if (value == 0) {
@@ -83,7 +84,15 @@ setup = function() {
         box = Entities.addEntity(boxProperties);
     });
     autoTester.addStepSnapshot("Check that box is white (testing the tester...)");
-});
+}
+
+showResults = function(result) {
+    Entities.editEntity(box, { color: resultsColour(result) });
+        
+    if (result != 0) {
+        console.warn("mismatch values at line(s): " + convertResultToLines(result));
+    }
+}
 
 teardown = function() {
     Entities.deleteEntity(backgroundZone);
