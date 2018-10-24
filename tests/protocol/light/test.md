@@ -1,0 +1,32 @@
+# Protocol sanity
+## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
+
+## Preconditions
+- In an empty region of a domain with editing rights.
+
+## Steps
+Press 'n' key to advance step by step
+
+### Step 1
+- Create a background zone
+### Step 2
+- Prepare result box, green if passed, red if failed
+### Step 3
+- Check that box is white (testing the tester...)
+- ![](./ExpectedImage_00000.png)
+### Step 4
+- Create a zone
+### Step 5
+- Test zone
+### Step 6
+- Set up light
+### Step 7
+- Show result
+- ![](./ExpectedImage_00001.png)
+### Step 8
+- Test spotlight
+### Step 9
+- Show result
+- ![](./ExpectedImage_00002.png)
+### Step 10
+- Clean up after test
