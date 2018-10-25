@@ -263,7 +263,7 @@ setUpTest = function(testCase) {
 
     // Disable TAA
     fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
-    Render.getConfig("RenderMainView.JitterCam").none();
+    Render.getConfig("RenderMainView.AntialiasingSetup").none();
     Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
 }
 
@@ -307,7 +307,7 @@ tearDownTest = function() {
     
     // Enable TAA as required
     if (!fxaaWasOn) {
-        Render.getConfig("RenderMainView.JitterCam").play();
+        Render.getConfig("RenderMainView.AntialiasingSetup").play();
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
     }
 }
