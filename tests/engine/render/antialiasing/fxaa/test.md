@@ -10,7 +10,7 @@ Press 'n' key to advance step by step
 ### Step 1
 - Set up test case
 ### Step 2
-- Show anti-aliasing effects
+- Show FXAA anti-aliasing effects
 - ![](./ExpectedImage_00000.png)
 ### Step 3
 - Clean up after test

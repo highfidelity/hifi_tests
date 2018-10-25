@@ -40,5 +40,7 @@ Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
+Script.include(testsRootPath + "engine/render/antialising/taa/test.js");
+Script.include(testsRootPath + "engine/render/antialising/fxaa/test.js");
 
 autoTester.runRecursive();
