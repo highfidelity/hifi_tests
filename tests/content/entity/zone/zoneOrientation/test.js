@@ -102,7 +102,7 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "se
     autoTester.addStep("Add yaw zone 90 degrees clockwise", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 0.0)});  
     });
-    autoTester.addStepSnapshot(":ight should come from left, 45 degrees above horizon");
+    autoTester.addStepSnapshot("Light should come from left, 45 degrees above horizon");
 
     autoTester.addStep("Add roll zone 45 degrees clockwise", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 45.0 )});  
