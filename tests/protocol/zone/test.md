@@ -8,25 +8,11 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Create a background zone
+- Create a zone
 ### Step 2
-- Prepare result box, green if passed, red if failed
+- Test zone
 ### Step 3
-- Check that box is white (testing the tester...)
+- Show result
 - ![](./ExpectedImage_00000.png)
 ### Step 4
-- Create a zone
-### Step 5
-- Test zone
-### Step 6
-- Set up light
-### Step 7
-- Show result
-- ![](./ExpectedImage_00001.png)
-### Step 8
-- Test spotlight
-### Step 9
-- Show result
-- ![](./ExpectedImage_00002.png)
-### Step 10
 - Clean up after test

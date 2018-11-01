@@ -15,11 +15,6 @@ setup = function() {
             return { red: 255, green:   0, blue: 0 };
         }
     }
-  
-    // compares 2 floats with 4 digit accuracy
-    fEqual= function(x, y) {
-        return (Math.abs(x - y) < 0.0001);
-    }
     
     convertResultToLines = function(result) {
         intResult = Math.floor(result); // just to be safe
@@ -84,6 +79,24 @@ setup = function() {
         box = Entities.addEntity(boxProperties);
     });
     autoTester.addStepSnapshot("Check that box is white (testing the tester...)");
+}
+
+compareObjects = function(object1, object2, result, index) {
+    if (typeof result === 'undefined') result = 0;
+    if (typeof index  === 'undefined') index  = 1;
+    
+    for (var key in object1) {
+        var nextObject = object1[key];
+        if (typeof nextObject === 'object') {
+            compareObjects(nextObject, object2[key], result, index);
+        } else {
+            result += (object1[key] == object2[key]) ? 0 : index;
+            index *= 2;
+            console.warn(key, object1[key], object2[key], (object1[key] == object2[key]));
+        }
+    }
+
+    return result;
 }
 
 showResults = function(result) {
