@@ -10,6 +10,7 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
     
     var setProperties = {
         lifetime: LIFETIME,
+        description: "A55ADEiOjHg6F",
         type: "Zone",
         name: "Kih85Rfg",
         position: Vec3.sum(originPosition, { x: 0.0, y: 1.6, z: 3000 }),
@@ -59,7 +60,20 @@ autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", func
         bloom: {
             bloomIntensity: 1.0,
             bloomThreshold: 0.875
-        }
+        },
+
+        visible: true,
+        canCastShadow: false,
+        flyingAllowed: true,
+        ghostingAllowed: false,
+        
+        filterURL: "http://ABCDEFG0987654321",
+        collisionSoundURL: "http://7654321dwedweod",
+        compoundShapeURL: "https://mnt589uwrgjaIEFO",
+
+        shapeType: "box",
+        
+        userData: "{ \"latitude\": 47.0, \"longitude\": 122.0, \"year\": 2018, \"month\": 6, \"day\": 13, \"hour\": 20, \"minute\": 0 }"
     };
 
     autoTester.addStep("Create a zone", function () {
