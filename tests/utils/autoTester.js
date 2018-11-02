@@ -398,6 +398,14 @@ module.exports.enableAuto = function () {
 module.exports.enableRecursive = function () {
     isRecursive = true;
     console.warn("TEST MODE RECURSIVE SELECTED");
+    
+    // Mac window size is set to 1920x1057 (1036 + 21 for menu) when running automated tests.
+    // This is required to match the size of the primary camera snapshots to the expected values.
+    if (typeof Test !== 'undefined') {
+        if (Test.getOperatingSystemType() === "MACOS") {
+            Test.setGeometry(20, 20,1920, 1057);
+        }
+    }
 }
 
 // Steps is an array of functions; each function being a test step
