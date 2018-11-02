@@ -137,3 +137,4 @@ Directories with an appended (*) have an automatic test
       - [triangles](./performance/graphics/triangles?raw=true)  [(test description)](./performance/graphics/triangles/test.md) (*)
     - [manualTrace](./performance/manualTrace?raw=true)  [(test description)](./performance/manualTrace/test.md)
     - [sceneLoad](./performance/sceneLoad?raw=true)  [(test description)](./performance/sceneLoad/test.md)
+  - [protocol](./protocol?raw=true)  [(test description)](./protocol/test.md) (*)
