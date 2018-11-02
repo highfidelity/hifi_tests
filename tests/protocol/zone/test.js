@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Protocol sanity", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
     
