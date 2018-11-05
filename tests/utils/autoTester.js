@@ -265,6 +265,13 @@ setUpTest = function(testCase) {
     fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
     Render.getConfig("RenderMainView.JitterCam").none();
     Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+
+    // Set screen size to 1920 x 1050 on MAC
+    if (typeof Test !== 'undefined') {
+        if (Test.getOperatingSystemType() === 'MACOS') {
+            Test.setGeometry(20,20, 1920, 1050);
+        }
+    }
 }
 
 tearDownTest = function() {
