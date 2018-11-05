@@ -22,7 +22,8 @@ autoTester.perform("Show effects of opacity", Script.resolvePath("."), "secondar
         createdEntities = addCases(TEST_CASES, true, true, autoTester.getOriginFrame());
         validationCamera_translate(OFFSET);
     });
-    autoTester.addStep("Wait for models to load");
+
+    autoTester.addDelay(6);
     autoTester.addStepSnapshot("Take snapshot of the effects");
 
     autoTester.addStep("Clean up after test", function () {

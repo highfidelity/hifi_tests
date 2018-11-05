@@ -12,7 +12,6 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(testsRootPath + "engine/render/textures/procedural/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/normal/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/grazing/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/front/test.js");
@@ -41,6 +40,8 @@ Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
+Script.include(testsRootPath + "engine/render/camera/secondary/test.js");
+Script.include(testsRootPath + "engine/render/camera/primary/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");

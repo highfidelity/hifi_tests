@@ -12,6 +12,7 @@ autoTester.perform("Shadow - light at grazing angle from left", Script.resolvePa
         createdEntities = setup(5.0, 90.0, autoTester.getOriginFrame());
     });
 
+    autoTester.addDelay(3);
     autoTester.addStepSnapshot("Light source altitude: 5.0, azimuth: 90.0");
 
     autoTester.addStep("Clean up after test", function () {

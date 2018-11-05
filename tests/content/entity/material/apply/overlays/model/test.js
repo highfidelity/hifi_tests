@@ -62,6 +62,8 @@ autoTester.perform("Apply Material Entities to Model Overlays", Script.resolvePa
         }
     }
 
+    autoTester.addDelay(6);
+    
     autoTester.addStepSnapshot("Display materials on multiple model overlays");
 
     autoTester.addStep("Clean up after test", function () {
