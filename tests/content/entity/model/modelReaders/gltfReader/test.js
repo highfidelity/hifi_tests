@@ -29,9 +29,7 @@ autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", func
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
-    0.198
-    0.195
-    0.0202
+    
     createdEntities.push(testEntity);
 
     autoTester.addStepSnapshot("Model is visible");
