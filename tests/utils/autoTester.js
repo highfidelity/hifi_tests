@@ -241,8 +241,11 @@ setUpTest = function(testCase) {
 
     if (typeof Test !== 'undefined') {
         // In command line mode, maximize window size 
-        // (so that primary camera snapshots will have the correct size)
-        Test.showMaximized();
+        // so that primary camera snapshots will have the correct size
+        // This is not used on Mac (an AppleScript is used for that)
+        if (Test.getOperatingSystemType() === 'WINDOWS') {
+            Test.showMaximized();
+        }
     }
 
     if (!isManualMode()) {
@@ -265,13 +268,6 @@ setUpTest = function(testCase) {
     fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
     Render.getConfig("RenderMainView.JitterCam").none();
     Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
-
-    // Set screen size to 1920 x 1050 on MAC
-    if (typeof Test !== 'undefined') {
-        if (Test.getOperatingSystemType() === 'MACOS') {
-            Test.setGeometry(20,20, 1920, 1050);
-        }
-    }
 }
 
 tearDownTest = function() {
@@ -405,14 +401,6 @@ module.exports.enableAuto = function () {
 module.exports.enableRecursive = function () {
     isRecursive = true;
     console.warn("TEST MODE RECURSIVE SELECTED");
-    
-    // Mac window size is set to 1920x1057 (1036 + 21 for menu) when running automated tests.
-    // This is required to match the size of the primary camera snapshots to the expected values.
-    if (typeof Test !== 'undefined') {
-        if (Test.getOperatingSystemType() === "MACOS") {
-            Test.setGeometry(20, 20,1920, 1057);
-        }
-    }
 }
 
 // Steps is an array of functions; each function being a test step
