@@ -41,6 +41,8 @@ Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
+Script.include(testsRootPath + "engine/render/camera/secondary/test.js");
+Script.include(testsRootPath + "engine/render/camera/primary/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");
@@ -66,6 +68,7 @@ Script.include(testsRootPath + "content/overlay/layer/drawInFront/alpha/test.js"
 Script.include(testsRootPath + "content/overlay/layer/drawHUDLayer/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneOrientation/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneEffects/test.js");
+Script.include(testsRootPath + "content/entity/zone/shadowControl/test.js");
 Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
 Script.include(testsRootPath + "content/entity/shape/create/test.js");
