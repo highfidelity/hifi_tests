@@ -5,7 +5,7 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = autoTester.getAssetsRootPath();
     var LIFETIME = 60.0;
-    var position = MyAvatar.position;
+    var position = autoTester.getOriginFrame();
 	
     Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
 
@@ -14,7 +14,7 @@ autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", func
             hasKeyLight: true,
             hasAmbientLight: true
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: position
     };
     var createdEntities = setupStage(initData);
     

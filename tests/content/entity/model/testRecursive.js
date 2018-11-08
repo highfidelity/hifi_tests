@@ -12,6 +12,10 @@ if (typeof Test !== 'undefined') {
 autoTester.enableRecursive();
 autoTester.enableAuto();
 
-Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/still_life/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/simple/test.js");
 
 autoTester.runRecursive();
