@@ -13,5 +13,7 @@ autoTester.enableRecursive();
 autoTester.enableAuto();
 
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/test.js");
 
 autoTester.runRecursive();
