@@ -77,5 +77,5 @@ taskkill /im assignment-client.exe /f >nul
 taskkill /im domain-server.exe /f >nul
 
 ECHO Completed test, starting evaluation
-START /WAIT %AUTOTESTER_PATH%\Release\auto-tester.exe --testFolder %TEST_RESULT_LOCATION% --branch %BRANCH% --user %USER%
+START /WAIT %AUTOTESTER_PATH%\Release\nitpick.exe --testFolder %TEST_RESULT_LOCATION% --branch %BRANCH% --user %USER%
 ECHO Evaluation complete

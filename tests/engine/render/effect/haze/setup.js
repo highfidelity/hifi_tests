@@ -1,7 +1,7 @@
 // Test haze setup
 
 // To use this script, include it, and define an object with all the haze properties, get the spectatorCameraConfig from the
-// autoTester and call "setup(hazeProperties, spectatorCameraConfig)",
+// nitpick and call "setup(hazeProperties, spectatorCameraConfig)",
 // the script will create the correct zone and objects and move the Avatar and return the list of entities in an array.
 // If null is sent, then haze will be turned off.
 // Example:
@@ -14,7 +14,7 @@
 // 
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
-var assetsRootPath = autoTester.getAssetsRootPath();
+var assetsRootPath = nitpick.getAssetsRootPath();
 var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";

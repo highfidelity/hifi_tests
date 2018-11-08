@@ -7,9 +7,9 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
-var assetsRootPath = autoTester.getAssetsRootPath();
+var assetsRootPath = nitpick.getAssetsRootPath();
 var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
@@ -24,7 +24,7 @@ setup = function (altitude, azimuth, originFrame) {
             hasKeyLight: false,
             hasAmbientLight: false
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var entities = setupStage(initData);
 

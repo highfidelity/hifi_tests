@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("1 million triangles test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("1 million triangles test", Script.resolvePath("."), "secondary", function(testType) {
     const LIFETIME = 120;
 
     // entities
@@ -11,19 +11,19 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
     var overlay;
     var box;
 
-    var assetsRootPath = autoTester.getAssetsRootPath();
-    var position = autoTester.getOriginFrame();
+    var assetsRootPath = nitpick.getAssetsRootPath();
+    var position = nitpick.getOriginFrame();
 
     var previousAvatarVisibility;
     var previousShowStatistics;
     var previousThrottleFPS;
 
-    autoTester.addStep("Do not throttle FPS if not focus", function () {
+    nitpick.addStep("Do not throttle FPS if not focus", function () {
         previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
         Menu.setIsOptionChecked( "Throttle FPS If Not Focus", false);
     });
 
-    autoTester.addStep("Create zone and hide the avatar mesh", function () {
+    nitpick.addStep("Create zone and hide the avatar mesh", function () {
         var zoneProperties = {
             lifetime: LIFETIME,
             type: "Zone",
@@ -61,7 +61,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         Menu.setIsOptionChecked("Show Statistics", true);
     });
 
-    autoTester.addStep("Add model with 1,000,000 triangles (appears in BOTH cameras)", function () {
+    nitpick.addStep("Add model with 1,000,000 triangles (appears in BOTH cameras)", function () {
         // Note that the secondary camera doubles the number of triangles
         var modelProperties = {
             type: "Model",
@@ -75,7 +75,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         model = Entities.addEntity(modelProperties);
     });
 
-    autoTester.addDelay(16);
+    nitpick.addDelay(16);
 
 
     var gameTimes;
@@ -90,48 +90,48 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
     const RENDER_RATE_LIMIT  = 30;
     const PRESENT_RATE_LIMIT = 30;
 
-    autoTester.addStep("Start measuring rates", function() {
+    nitpick.addStep("Start measuring rates", function() {
         Stats.update();
         gameTimes    = Stats.gameLoopRate;
         renderTimes  = Stats.renderrate;
         presentTimes = Stats.presentrate;
     });
 
-    autoTester.addStep("Measure after step", function() {
+    nitpick.addStep("Measure after step", function() {
         Stats.update();
         gameTimes    += Stats.gameLoopRate;
         renderTimes  += Stats.renderrate;
         presentTimes += Stats.presentrate;
     });
 
-    autoTester.addStep("Measure after step", function() {
+    nitpick.addStep("Measure after step", function() {
         Stats.update();
         gameTimes    += Stats.gameLoopRate;
         renderTimes  += Stats.renderrate;
         presentTimes += Stats.presentrate;
     });
 
-    autoTester.addStep("Measure after step", function() {
+    nitpick.addStep("Measure after step", function() {
         Stats.update();
         gameTimes    += Stats.gameLoopRate;
         renderTimes  += Stats.renderrate;
         presentTimes += Stats.presentrate;
     });
     
-    autoTester.addStep("Measure after step", function() {
+    nitpick.addStep("Measure after step", function() {
         Stats.update();
         gameTimes    += Stats.gameLoopRate;
         renderTimes  += Stats.renderrate;
         presentTimes += Stats.presentrate;
     });
             
-    autoTester.addStep("Average results", function() {
+    nitpick.addStep("Average results", function() {
         gameRateAverage    = gameTimes    / 5;
         renderRateAverage  = renderTimes  / 5;
         presentRateAverage = presentTimes / 5;
     });
 
-    autoTester.addStep("Show overlay with results", function() {
+    nitpick.addStep("Show overlay with results", function() {
         overlay = Overlays.addOverlay("text3d", {
             position: Vec3.sum(MyAvatar.position, Vec3.multiplyQbyV(MyAvatar.orientation, { x: 0.0, y: 0.8, z: -6.7 })),
             rotation: MyAvatar.orientation,
@@ -144,7 +144,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         });
     });
 
-    autoTester.addStep("Take snapshot of results overlay, and also save as a text file", function () {
+    nitpick.addStep("Take snapshot of results overlay, and also save as a text file", function () {
         Window.takeSnapshot(false, false, 0, "triangles_test_results.jpg");
         
         if (typeof Test !== 'undefined') {
@@ -160,7 +160,7 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         Entities.deleteEntity(model);
     });
 
-    autoTester.addStep("Prepare result box, green if passed, red if failed", function () {
+    nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
         Overlays.deleteOverlay(overlay);
         var colour;
         if (gameRateAverage > GAME_RATE_LIMIT && renderRateAverage > RENDER_RATE_LIMIT && presentRateAverage > PRESENT_RATE_LIMIT) {
@@ -181,9 +181,9 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         box = Entities.addEntity(boxProperties);
     });
 
-    autoTester.addStepSnapshot("Take snapshot of results");    
+    nitpick.addStepSnapshot("Take snapshot of results");    
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         Entities.deleteEntity(zone);
         Entities.deleteEntity(box);
 
@@ -193,5 +193,5 @@ autoTester.perform("1 million triangles test", Script.resolvePath("."), "seconda
         Menu.setIsOptionChecked("Show Statistics", previousShowStatistics);
     });
 
-    autoTester.runTest(testType);
+    nitpick.runTest(testType);
 });
