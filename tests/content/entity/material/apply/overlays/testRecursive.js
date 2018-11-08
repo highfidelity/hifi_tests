@@ -1,17 +1,17 @@
-// This is an automatically generated file, created by auto-tester
+// This is an automatically generated file, created by nitpick
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-var testsRootPath = autoTester.getTestsRootPath();
+var testsRootPath = nitpick.getTestsRootPath();
 
 if (typeof Test !== 'undefined') {
     Test.wait(10000);
 };
 
-autoTester.enableRecursive();
-autoTester.enableAuto();
+nitpick.enableRecursive();
+nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/material/apply/overlays/model/test.js");
 
-autoTester.runRecursive();
+nitpick.runRecursive();

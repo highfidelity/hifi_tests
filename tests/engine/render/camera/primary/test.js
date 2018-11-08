@@ -1,20 +1,20 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function(testType) {
+nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function(testType) {
     var LIFETIME = 120;
 	var createdEntities = [];
-    var position = autoTester.getOriginFrame();
+    var position = nitpick.getOriginFrame();
 	
-    autoTester.addStep("Create zone and model", function () {
-        var assetsRootPath = autoTester.getAssetsRootPath();
+    nitpick.addStep("Create zone and model", function () {
+        var assetsRootPath = nitpick.getAssetsRootPath();
      
         createdEntities.push(Entities.addEntity({
             lifetime: LIFETIME,
             type: "Zone",
             name: "zone",
-            position: autoTester.getOriginFrame(),
+            position: nitpick.getOriginFrame(),
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
@@ -43,24 +43,24 @@ autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "primary", funct
             userData: JSON.stringify({ grabbableKey: { grabbable: false } })
         }));
     });
-    autoTester.addStepSnapshot("Snapshot - 1920x1036, 45 degrees");
+    nitpick.addStepSnapshot("Snapshot - 1920x1036, 45 degrees");
 
-    autoTester.addStep("Change position", function () {
+    nitpick.addStep("Change position", function () {
         Camera.mode = "first person";
         MyAvatar.goToLocation({ x: MyAvatar.position.x - 0.8,  y: MyAvatar.position.y, z: MyAvatar.position.z + 1.0 }, false);
     });
-    autoTester.addStepSnapshot("Position has moved back and left");
+    nitpick.addStepSnapshot("Position has moved back and left");
 
-    autoTester.addStep("Change orientation", function () {
+    nitpick.addStep("Change orientation", function () {
         MyAvatar.goToLocation(MyAvatar.position, true, Quat.fromPitchYawRollDegrees(5.0, -25.0, 0.0));
     });
-    autoTester.addStepSnapshot("Orientation tilted up and yawed right");
+    nitpick.addStepSnapshot("Orientation tilted up and yawed right");
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
 
-    autoTester.runTest(testType);
+    nitpick.runTest(testType);
 });

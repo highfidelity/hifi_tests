@@ -1,10 +1,10 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
 
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
     var DIM = { x: 0.5, y: 0.5, z: 0.5};
 
@@ -16,7 +16,7 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
-    autoTester.addStep("Create drawInFront shape overlays", function () {
+    nitpick.addStep("Create drawInFront shape overlays", function () {
         var NUM = 5.0;
         for (var i = 0; i < NUM; i++) {
             createdOverlays.push(Overlays.addOverlay("cube", {
@@ -78,9 +78,9 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
         }));
     });
 
-    autoTester.addStepSnapshot("Take snapshot of all the models");
+    nitpick.addStepSnapshot("Take snapshot of all the models");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
@@ -90,5 +90,5 @@ autoTester.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seco
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

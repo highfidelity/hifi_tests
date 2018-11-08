@@ -1,15 +1,15 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Procedural create", Script.resolvePath("."), "secondary", function(testType) {
     var entityIds = [];
 
     var LIFETIME = 60; // 1 min
 
     MyAvatar.orientation = { x: 0, y: 1, z: 0, w: 0 };
 
-    var assetsRootPath = autoTester.getAssetsRootPath();
+    var assetsRootPath = nitpick.getAssetsRootPath();
 
     entityIds.push(Entities.addEntity({
         type: "Shape",
@@ -80,17 +80,17 @@ autoTester.perform("Procedural create", Script.resolvePath("."), "secondary", fu
         })
     }));
 
-    autoTester.addStep("Rotate secondary camera", function () {
+    nitpick.addStep("Rotate secondary camera", function () {
         validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
     });
     
-    autoTester.addStepSnapshot("Take snapshot of the procedural shape and zone entities");
+    nitpick.addStepSnapshot("Take snapshot of the procedural shape and zone entities");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i in entityIds) {
             Entities.deleteEntity(entityIds[i]);
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

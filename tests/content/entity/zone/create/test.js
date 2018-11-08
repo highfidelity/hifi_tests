@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Zone create", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Zone create", Script.resolvePath("."), "secondary", function(testType) {
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
 
@@ -12,7 +12,7 @@ autoTester.perform("Zone create", Script.resolvePath("."), "secondary", function
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
     var zone;
-    autoTester.addStep("Set up test case", function () {
+    nitpick.addStep("Set up test case", function () {
         // Define zone properties
         var properties = {
             lifetime: 60,  
@@ -28,11 +28,11 @@ autoTester.perform("Zone create", Script.resolvePath("."), "secondary", function
         zone = Entities.addEntity(properties);
     });
     
-    autoTester.addStepSnapshot("Verify zone with blue skybox is visible");
+    nitpick.addStepSnapshot("Verify zone with blue skybox is visible");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         Entities.deleteEntity(zone);
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

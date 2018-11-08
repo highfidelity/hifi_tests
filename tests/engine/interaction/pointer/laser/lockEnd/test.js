@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("LaserPointer lockEnd test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -29,85 +29,85 @@ autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), "second
     };
     var box = Entities.addEntity(properties);
 
-    autoTester.addStep("Move back to see the objects", function () {
+    nitpick.addStep("Move back to see the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 1.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
 
-    autoTester.addStepSnapshot("1st Position");
+    nitpick.addStepSnapshot("1st Position");
 
-    autoTester.addStep("Move to 2nd position", function () {
+    nitpick.addStep("Move to 2nd position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.5, right))
         });
     });
-    autoTester.addStepSnapshot("2nd Position");
+    nitpick.addStepSnapshot("2nd Position");
 
-    autoTester.addStep("Move to 3rd Position", function () {
+    nitpick.addStep("Move to 3rd Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.4, right))
         });
     });
-    autoTester.addStepSnapshot("3rd Position");
+    nitpick.addStepSnapshot("3rd Position");
 
-    autoTester.addStep("Move to 4th Position", function () {
+    nitpick.addStep("Move to 4th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.3, right))
         });
     });
-    autoTester.addStepSnapshot("4th Position");
+    nitpick.addStepSnapshot("4th Position");
 
-    autoTester.addStep("Move to 5th Position", function () {
+    nitpick.addStep("Move to 5th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.2, right))
         });
     });
-    autoTester.addStepSnapshot("5th Position");
+    nitpick.addStepSnapshot("5th Position");
 
-    autoTester.addStep("Move to 6th Position", function () {
+    nitpick.addStep("Move to 6th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(-0.1, right))
         });
     });
-    autoTester.addStepSnapshot("6th Position");
+    nitpick.addStepSnapshot("6th Position");
 
-    autoTester.addStep("Move to 7th Position", function () {
+    nitpick.addStep("Move to 7th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.0, right))
         });
     });
-    autoTester.addStepSnapshot("7th Position");
+    nitpick.addStepSnapshot("7th Position");
 
-    autoTester.addStep("Move to 8th Position", function () {
+    nitpick.addStep("Move to 8th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.1, right))
         });
     });
-    autoTester.addStepSnapshot("8th Position");
+    nitpick.addStepSnapshot("8th Position");
 
-    autoTester.addStep("Move to 9th Position", function () {
+    nitpick.addStep("Move to 9th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.2, right))
         });
     });
-    autoTester.addStepSnapshot("9th Position");
+    nitpick.addStepSnapshot("9th Position");
 
-    autoTester.addStep("Move to 10th Position", function () {
+    nitpick.addStep("Move to 10th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.3, right))
         });
     });
-    autoTester.addStepSnapshot("10th Position");
+    nitpick.addStepSnapshot("10th Position");
 
-    autoTester.addStep("Move t 11th Position", function () {
+    nitpick.addStep("Move t 11th Position", function () {
         Entities.editEntity(box, {
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:-0.25, z:0}), Vec3.multiply(0.4, right))
         });
     });
-    autoTester.addStepSnapshot("11th Position");
+    nitpick.addStepSnapshot("11th Position");
 
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
@@ -116,5 +116,5 @@ autoTester.perform("LaserPointer lockEnd test", Script.resolvePath("."), "second
         lasers = [];
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

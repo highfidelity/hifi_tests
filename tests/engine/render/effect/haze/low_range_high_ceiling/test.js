@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Haze - low range, high ceiling", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Haze - low range, high ceiling", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../setup.js?raw=true")
 
@@ -15,17 +15,17 @@ autoTester.perform("Haze - low range, high ceiling", Script.resolvePath("."), "s
 
     // Setup
     var createdEntities;
-    autoTester.addStep("Setup", function () {
-        createdEntities = setup(HAZE, autoTester.getOriginFrame());
+    nitpick.addStep("Setup", function () {
+        createdEntities = setup(HAZE, nitpick.getOriginFrame());
     });
 
-    autoTester.addStepSnapshot("Haze with low range and high ceiling");
+    nitpick.addStepSnapshot("Haze with low range and high ceiling");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

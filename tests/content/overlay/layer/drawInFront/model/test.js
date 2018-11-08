@@ -3,11 +3,11 @@
 
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Model Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
 
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 
     var flags = {
@@ -18,7 +18,7 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
-    autoTester.addStep("Build the material matrix", function () {
+    nitpick.addStep("Build the material matrix", function () {
         // List here all the entries of the Material Matrix
         var TEST_CASES = [
             {name:"hifi",     a:0, b:0},
@@ -60,7 +60,7 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
             {name:"hifi_opacityV_albedoM_ao",  a:10, b:0}
         ];
 
-        var assetsRootPath = autoTester.getAssetsRootPath();
+        var assetsRootPath = nitpick.getAssetsRootPath();
         var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
         var MODEL_NAME_SUFFIX = ".fbx";
         var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
@@ -97,7 +97,7 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
         orientation.x = 0;
         orientation = Quat.fromVec3Degrees(orientation);
 
-        var position = autoTester.getOriginFrame();
+        var position = nitpick.getOriginFrame();
         position.y = position.y + 0.92;
         
         var root = Vec3.sum(
@@ -119,9 +119,9 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
         }));
     });
 
-    autoTester.addStepSnapshot("Take snapshot of all the models");
+    nitpick.addStepSnapshot("Take snapshot of all the models");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
@@ -131,5 +131,5 @@ autoTester.perform("Model Overlay Draw in Front", Script.resolvePath("."), "seco
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

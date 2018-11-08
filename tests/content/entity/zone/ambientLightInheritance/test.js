@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", function(testType) {
     var avatarOriginPosition = MyAvatar.position;
 
     var zoneRedPosition   = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
@@ -14,7 +14,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     var zoneGreenDimensions = { x: 30.0, y: ZONE_HEIGHT, z: 30.0};
     var zoneBlueDimensions  = { x: 20.0, y: ZONE_HEIGHT, z: 20.0};
 
-    var assetsRootPath = autoTester.getAssetsRootPath();
+    var assetsRootPath = nitpick.getAssetsRootPath();
     var zoneRed;
     var zoneGreen;
     var zoneBlue;
@@ -27,7 +27,7 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
     // Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar
     
-    autoTester.addStep("Setup zones and sphere", function () {
+    nitpick.addStep("Setup zones and sphere", function () {
         // Create zones
         var BRIGHT_SKY_URL = assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json';
         var zoneRedProperties = {
@@ -93,71 +93,71 @@ autoTester.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), 
         };
         sphere = Entities.addEntity(sphereProperties);
     });
-    autoTester.addStepSnapshot("Red zone, bright ambient light");
+    nitpick.addStepSnapshot("Red zone, bright ambient light");
 
-    autoTester.addStep("Move to green zone", function () {
+    nitpick.addStep("Move to green zone", function () {
         var position = { x: 0.0, y: 0.0, z: -5.0 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
         
         Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
-    autoTester.addStepSnapshot("Green zone, medium ambient light");
+    nitpick.addStepSnapshot("Green zone, medium ambient light");
 
-    autoTester.addStep("Move to blue zone", function () {
+    nitpick.addStep("Move to blue zone", function () {
         var position = { x: 0.0, y: 0.0, z: -10.0 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
 
         Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
-    autoTester.addStepSnapshot("Blue zone, dark ambient light");
+    nitpick.addStepSnapshot("Blue zone, dark ambient light");
 
-    autoTester.addStep("Diable ambient light in blue zone", function () {
+    nitpick.addStep("Diable ambient light in blue zone", function () {
         Entities.editEntity(zoneBlue, { ambientLightMode: "disabled" });  
     });
-    autoTester.addStepSnapshot("Blue off,  no ambient light");
+    nitpick.addStepSnapshot("Blue off,  no ambient light");
 
-    autoTester.addStep("Inherit ambient light", function () {
+    nitpick.addStep("Inherit ambient light", function () {
         Entities.editEntity(zoneBlue, { ambientLightMode: "inherit" });  
     });
-    autoTester.addStepSnapshot("Blue zone, medium ambient light (from green)");
+    nitpick.addStepSnapshot("Blue zone, medium ambient light (from green)");
 
-    autoTester.addStep("Disable green ambient light", function () {
+    nitpick.addStep("Disable green ambient light", function () {
         Entities.editEntity(zoneGreen, { ambientLightMode: "disabled" });  
     });
-    autoTester.addStepSnapshot("Green off,  no ambient light");
+    nitpick.addStepSnapshot("Green off,  no ambient light");
 
-    autoTester.addStep("Set green ambient light to inherit", function () {
+    nitpick.addStep("Set green ambient light to inherit", function () {
         Entities.editEntity(zoneGreen, { ambientLightMode: "inherit" });  
     });
-    autoTester.addStepSnapshot("Green inherit, bright ambient light (from red)");
+    nitpick.addStepSnapshot("Green inherit, bright ambient light (from red)");
 
-    autoTester.addStep("Set red ambient light to off", function () {
+    nitpick.addStep("Set red ambient light to off", function () {
         Entities.editEntity(zoneRed, { ambientLightMode: "disabled" });  
     });
-    autoTester.addStepSnapshot("Red off,  no ambient light");
+    nitpick.addStepSnapshot("Red off,  no ambient light");
 
-    autoTester.addStep("Move to green zone", function () {
+    nitpick.addStep("Move to green zone", function () {
         var position = { x: 0.0, y: 0.0, z: -5.0 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
 
         Entities.editEntity(sphere, { position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET) });
     });
-    autoTester.addStepSnapshot("Green zone, still no ambient light");
+    nitpick.addStepSnapshot("Green zone, still no ambient light");
 
-    autoTester.addStep("Set red ambient light to on", function () {
+    nitpick.addStep("Set red ambient light to on", function () {
         Entities.editEntity(zoneRed, { ambientLightMode: "enabled" });  
     });
-    autoTester.addStepSnapshot("Red on, bright ambient light");
+    nitpick.addStepSnapshot("Red on, bright ambient light");
 
-    autoTester.addStep("Delete entities", function () {
+    nitpick.addStep("Delete entities", function () {
         Entities.deleteEntity(zoneRed);
         Entities.deleteEntity(zoneGreen);
         Entities.deleteEntity(zoneBlue);
         Entities.deleteEntity(sphere);
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

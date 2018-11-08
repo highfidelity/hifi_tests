@@ -77,7 +77,7 @@ var runOneStep = function (stepFunctor, stepIndex) {
         console.warn("Taking snapshot for step " + (stepIndex + 1));
         
         // Image numbers are padded to 5 digits
-        // Changing this number requires changing the auto-tester C++ code!
+        // Changing this number requires changing the nitpick C++ code!
         var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
@@ -432,7 +432,7 @@ module.exports.runRecursive = function () {
                 } else {
                     console.warn("Recursive tests complete");
 
-                    // Create "finished" file so auto-tester knows tests ran to completion
+                    // Create "finished" file so nitpick knows tests ran to completion
                     //    note that the contents are not important
                     if (typeof Test !== 'undefined') {
                         Test.saveObject({ complete: true }, "tests_completed.txt");

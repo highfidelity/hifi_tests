@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Overlays with alpha", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Overlays with alpha", Script.resolvePath("."), "secondary", function(testType) {
     var createdOverlays = [];
     var createdEntities = [];
 
@@ -11,9 +11,9 @@ autoTester.perform("Overlays with alpha", Script.resolvePath("."), "secondary", 
 
     var sphereColor = { red: 0, green: 0, blue: 255 };
     var cubeColor = { red: 255, green: 255, blue: 0 };
-    var p = autoTester.getOriginFrame();
+    var p = nitpick.getOriginFrame();
     
-    autoTester.addStep("Set up test case", function () {
+    nitpick.addStep("Set up test case", function () {
         createdOverlays[0] = Overlays.addOverlay("sphere", {
             position: { x: p.x - 1.0, y: p.y + 1.0, z: p.z - 9.0 },
             size: MODEL_SCALE,
@@ -47,9 +47,9 @@ autoTester.perform("Overlays with alpha", Script.resolvePath("."), "secondary", 
         });
     });
 
-    autoTester.addStepSnapshot("Show overlays with different 'drawInFront' (only left should be before cube)");
+    nitpick.addStepSnapshot("Show overlays with different 'drawInFront' (only left should be before cube)");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
@@ -59,5 +59,5 @@ autoTester.perform("Overlays with alpha", Script.resolvePath("."), "secondary", 
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

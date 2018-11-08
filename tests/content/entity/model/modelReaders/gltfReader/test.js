@@ -1,20 +1,20 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", function(testType) {
-    var assetsRootPath = autoTester.getAssetsRootPath();
+nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", function(testType) {
+    var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = MyAvatar.position;
 	
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     var initData = {
         flags : { 
             hasKeyLight: true,
             hasAmbientLight: true
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var createdEntities = setupStage(initData);
     
@@ -32,13 +32,13 @@ autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", func
     
     createdEntities.push(testEntity);
 
-    autoTester.addStepSnapshot("Model is visible");
+    nitpick.addStepSnapshot("Model is visible");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

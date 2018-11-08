@@ -1,16 +1,16 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", function(testType) {
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", function(testType) {
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
     var initData = {
         flags : { 
             hasAmbientLight: false
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var createdEntities = setupStage(initData);
 
@@ -60,15 +60,15 @@ autoTester.perform("Apply Material Entities to Model Entities", Script.resolvePa
         }
     }
 
-    autoTester.addDelay(6);
+    nitpick.addDelay(6);
 
-    autoTester.addStepSnapshot("Display materials on multiple models");
+    nitpick.addStepSnapshot("Display materials on multiple models");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });
