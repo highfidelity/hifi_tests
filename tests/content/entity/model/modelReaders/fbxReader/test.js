@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Read FBX model", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = autoTester.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = autoTester.getOriginFrame();
@@ -17,20 +17,22 @@ autoTester.perform("Read GLTF model", Script.resolvePath("."), "secondary", func
         originFrame: position
     };
     var createdEntities = setupStage(initData);
-    
-    var testEntity = Entities.addEntity({
+
+    var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
+    var MODEL_SCALE = 0.75;
+    var MODEL_OFFSET = { x: 0.0, y: 0.7, z: -1.5};
+    var objectName = "hifi_roughnessV00_metallicV_albedoV_ao";
+    createdEntities.push(Entities.addEntity({
         lifetime: LIFETIME,
         type: "Model",
-        // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/BoomBox
-        modelURL: assetsRootPath + 'models/gltf_models/BoomBox.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.2 }),
-        dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
-        rotation: Quat.fromPitchYawRollDegrees(45.0, -25.0, 0.0),
+        modelURL: assetsRootPath + 'models/material_matrix_models/fbx/blender/' + objectName + '.fbx',
+        name: objectName,
+        position: Vec3.sum(MyAvatar.position, MODEL_OFFSET),    
+        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
+        dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
-    });
-    
-    createdEntities.push(testEntity);
+    }));
 
     autoTester.addStepSnapshot("Model is visible");
 
