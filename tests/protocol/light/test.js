@@ -10,7 +10,7 @@ autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath(
   
     var setProperties = {
         lifetime: LIFETIME,  
-        name: "ABCDEFGHIJ1234",
+        name: "Name of light entity",
         type: "Light",
         isSpotlight: true,
         color: { red: 11, green: 33, blue: 55 },

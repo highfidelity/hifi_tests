@@ -10,9 +10,9 @@ autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath(
     
     var setProperties = {
         lifetime: LIFETIME,
-        description: "A55ADEiOjHg6F",
+        description: "Description",
         type: "Zone",
-        name: "Kih85Rfg",
+        name: "Name of zone entity",
         position: Vec3.sum(originPosition, { x: 0.0, y: 1.6, z: 3000 }),
         rotation: Quat.fromPitchYawRollDegrees(1.0, 7.0, 43.0 ),
         
@@ -67,9 +67,9 @@ autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath(
         flyingAllowed: true,
         ghostingAllowed: false,
         
-        filterURL: "http://ABCDEFG0987654321",
-        collisionSoundURL: "http://7654321dwedweod",
-        compoundShapeURL: "https://mnt589uwrgjaIEFO",
+        filterURL: "http://Filter URL",
+        collisionSoundURL: "http://Collision sound URL",
+        compoundShapeURL: "https://Compound shape URL",
 
         shapeType: "box",
         
