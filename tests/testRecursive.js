@@ -12,6 +12,7 @@ if (typeof Test !== 'undefined') {
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+Script.include(testsRootPath + "protocol/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/normal/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/grazing/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/front/test.js");
@@ -72,7 +73,11 @@ Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
 Script.include(testsRootPath + "content/entity/shape/create/test.js");
 Script.include(testsRootPath + "content/entity/procedural/test.js");
-Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/still_life/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/simple/test.js");
 Script.include(testsRootPath + "content/entity/material/create/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/overlays/model/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/shape/test.js");
