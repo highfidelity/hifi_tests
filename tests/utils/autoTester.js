@@ -17,6 +17,8 @@ var pathSeparator = ".";
 var previousCameraMode;
 var secondaryCameraHasBeenEnabled = false;
 
+var previousThrottleFPS;
+
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
@@ -265,14 +267,21 @@ setUpTest = function(testCase) {
     fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
     Render.getConfig("RenderMainView.JitterCam").none();
     Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    
+    // This is needed to enable valid tests when Interface does not have focus
+    // The problem is that models aren't rendered when there is no focus
+    previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false)
 }
 
 tearDownTest = function() {
     // Clear the test case steps
     currentSteps = [];
 
-   // Reset camera mode
-    Camera.mode = previousCameraMode;
+   // Reset camera mode if needed
+    if (previousCameraMode) {
+        Camera.mode = previousCameraMode;
+    }
 
     if (isManualMode()) {
         // Disconnect key event
@@ -310,6 +319,9 @@ tearDownTest = function() {
         Render.getConfig("RenderMainView.JitterCam").play();
         Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
     }
+    
+    // Restore as required
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", previousThrottleFPS)
 }
 
 validationCamera_setTranslation = function(position) {
