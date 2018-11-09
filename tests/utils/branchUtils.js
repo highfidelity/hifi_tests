@@ -17,8 +17,8 @@ getRepositoryPath = function (executionPath) {
 // Returns the `nitpick.js` version on the branch we are executing from
 createNitpick = function (executionPath) {
     // Default values
-    var user = "NissimHadar";;
-    var branch = "MAC";
+    var user = "highfidelity";;
+    var branch = "master";
     
     // The format of the execution path is either as follows (assuming the test is in the "tests' folder hierarchy)
     //      "https://raw.githubusercontent.com/<user>/<repository>/<branch>/tests/..."
