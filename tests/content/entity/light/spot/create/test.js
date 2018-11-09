@@ -55,7 +55,8 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
         intensity: 2.0,
         falloffRadius: 6.0,
         exponent: 1,
-        cutoff: 20
+        cutoff: 20,
+        dimensions: { x: 8.0, y: 8.0, z: 12.0 }, 
     };
     createdEntities.push(Entities.addEntity(properties));
 
