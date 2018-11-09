@@ -28,7 +28,8 @@ autoTester.perform("Point light", Script.resolvePath("."), "secondary", function
         isSpotlight: false,
         color: { red: 255, green: 255, blue: 255 },
         intensity: 1.0,
-        falloffRadius: 3.0
+        falloffRadius: 3.0,
+        dimensions: { x: 8.0, y: 8.0, z: 3.0 }, 
     };
 
     // Add the sphere and check its properties
