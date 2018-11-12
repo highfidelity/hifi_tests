@@ -12,7 +12,8 @@ if (typeof Test !== 'undefined') {
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
-Script.include(testsRootPath + "protocol/test.js");
+Script.include(testsRootPath + "protocol/zone/test.js");
+Script.include(testsRootPath + "protocol/light/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/normal/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/grazing/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/front/test.js");
