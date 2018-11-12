@@ -274,7 +274,7 @@ setUpTest = function(testCase) {
     // This is needed to enable valid tests when Interface does not have focus
     // The problem is that models aren't rendered when there is no focus
     previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
-    Menu.setIsOptionChecked("Throttle FPS I
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false);
 }
 
 tearDownTest = function() {
@@ -322,7 +322,7 @@ tearDownTest = function() {
     }
 
     // Restore as required
-    Menu.setIsOptionChecked("Throttle FPS If Not Focus", previousThrottleFPS)
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", previousThrottleFPS);
 }
 
 validationCamera_setTranslation = function(position) {
