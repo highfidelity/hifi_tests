@@ -3,8 +3,9 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", function(testType) {
-    var avatarOriginPosition = MyAvatar.position;
-
+    var avatarOriginPosition = nitpick.getOriginFrame();
+    avatarOriginPosition = Vec3.sum(avatarOriginPosition, { x: 0.0, y: 1.0, z: 0.0 });
+    
     var zoneRedPosition   = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
     var zoneBluePosition  = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
     var zoneGreenPosition = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
@@ -85,11 +86,11 @@ nitpick.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "se
             lifetime: LIFETIME,
             type: "Sphere",
             name: "sphere",
-            position: Vec3.sum(MyAvatar.position, SPHERE_OFFSET),
+            position: Vec3.sum(avatarOriginPosition, SPHERE_OFFSET),
             dimensions: { x: 0.4, y: 0.4, z: 0.4 },
-            "color": {"red":255,"green":255,"blue":255},
+            color: { red:255, green: 255, blue: 255 },
             visible: true,
-            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
+            userData: JSON.stringify({ grabbableKey: { grabbable: false }})
         };
         sphere = Entities.addEntity(sphereProperties);
     });
