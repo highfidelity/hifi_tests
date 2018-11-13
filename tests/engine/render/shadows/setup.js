@@ -32,7 +32,8 @@ setup = function (altitude, azimuth, originFrame) {
     var BRIGHT_SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
-        name: "Zone",
+        name: "Zone for Shadow Tests",
+        lifetime: LIFETIME,
 
         position: originFrame,
         dimensions: { x: 1000.0, y: 1000.0, z: 1000.0},
