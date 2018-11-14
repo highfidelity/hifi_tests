@@ -47,7 +47,7 @@ autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "primary", funct
 
     autoTester.addStep("Change position", function () {
         Camera.mode = "first person";
-        MyAvatar.goToLocation({ x: MyAvatar.position.x - 0.8,  y: MyAvatar.position.y, z: MyAvatar.position.z + 1.0 }, false);
+        MyAvatar.goToLocation({ x: position.x - 0.8,  y: position.y + 1.0, z: position.z + 1.0 }, false);
     });
     autoTester.addStepSnapshot("Position has moved back and left");
 
