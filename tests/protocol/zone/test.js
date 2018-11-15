@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
     
@@ -76,20 +76,20 @@ autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath(
         userData: "{ \"latitude\": 47.0, \"longitude\": 122.0, \"year\": 2018, \"month\": 6, \"day\": 13, \"hour\": 20, \"minute\": 0 }"
     };
 
-    autoTester.addStep("Create a zone", function () {
+    nitpick.addStep("Create a zone", function () {
         object = Entities.addEntity(setProperties);
     });
     
-    autoTester.addStep("Test zone", function () {
+    nitpick.addStep("Test zone", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(setProperties, getProperties));
     });
-    autoTester.addStepSnapshot("Show result");
+    nitpick.addStepSnapshot("Show result");
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         teardown();
         Entities.deleteEntity(object);
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

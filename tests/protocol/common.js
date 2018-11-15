@@ -1,6 +1,6 @@
 LIFETIME = 120;
-originPosition = autoTester.getOriginFrame();
-assetsRootPath = autoTester.getAssetsRootPath();
+originPosition = nitpick.getOriginFrame();
+assetsRootPath = nitpick.getAssetsRootPath();
 
 box = 0;
 
@@ -36,7 +36,7 @@ setup = function() {
         return line;
     }
 
-    autoTester.addStep("Create a background zone", function () {
+    nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {
             lifetime: LIFETIME,
             type: "Zone",
@@ -66,7 +66,7 @@ setup = function() {
         backgroundZone = Entities.addEntity(zoneProperties);
     });
     
-    autoTester.addStep("Prepare result box, green if passed, red if failed", function () {
+    nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
         var boxProperties = {
             type: "Box",
             name: "box",
@@ -78,7 +78,7 @@ setup = function() {
         };
         box = Entities.addEntity(boxProperties);
     });
-    autoTester.addStepSnapshot("Check that box is white (testing the tester...)");
+    nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 }
 
 compareObjects = function(object1, object2, result, index) {

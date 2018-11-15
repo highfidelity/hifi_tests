@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+var nitpick = createNitpick(Script.resolvePath("."));
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
-Script.include(Script.resolvePath(autoTester.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
+Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
-autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Test capsule CollisionPick on server", Script.resolvePath("."), "secondary", function(testType) {
     var createdEntities = [];
     var createdPicks = [];
     var createdOverlays = [];
@@ -280,18 +280,18 @@ autoTester.perform("Test capsule CollisionPick on server", Script.resolvePath(".
     
     Script.scriptEnding.connect(cleanup);
     
-    autoTester.addStep("Visualize pick without collision points", function () {
+    nitpick.addStep("Visualize pick without collision points", function () {
         visualizeCapsulePick(false);
     });
     
-    autoTester.addStep("Visualize pick with collision points", function () {
+    nitpick.addStep("Visualize pick with collision points", function () {
         cleanup();
         visualizeCapsulePick(true);
     });
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         cleanup();
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

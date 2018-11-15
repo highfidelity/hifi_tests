@@ -15,7 +15,7 @@ var TILE_DIM = { x: TILE_UNIT, y: TILE_UNIT, z: TILE_UNIT};
 
 var GRID_TILE_OFFSET = Vec3.multiply(0.5, TILE_DIM);
 
-var assetsRootPath = autoTester.getAssetsRootPath();
+var assetsRootPath = nitpick.getAssetsRootPath();
 
 function getTileColor(a, b, c) {
     var offset = (Math.abs(a) + ((Math.abs(b) + (Math.abs(c) % 2)) %  2)) % 2;

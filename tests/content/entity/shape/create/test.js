@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Shape create", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Shape create", Script.resolvePath("."), "secondary", function(testType) {
     var entityIds = [];
 
     var LIFETIME = 60; // 1 min
@@ -96,11 +96,11 @@ autoTester.perform("Shape create", Script.resolvePath("."), "secondary", functio
 
     var SHAPE_DIMENSIONS = { x: 0.4, y: 0.4, z: 0.4 };
 
-    autoTester.addStep("Rotate secondary camera", function () {
+    nitpick.addStep("Rotate secondary camera", function () {
         validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
     });
 
-    autoTester.addStep("Build a grid of shapes in front of avatar", function () {
+    nitpick.addStep("Build a grid of shapes in front of avatar", function () {
         var shapeCount = 0;
         for (var i = 0; i < numRows && shapeCount < numShapes; ++i) {
             var yOffset = (i - 0.5 * (numRows - 1)) * gridStep;
@@ -129,13 +129,13 @@ autoTester.perform("Shape create", Script.resolvePath("."), "secondary", functio
         }
     });
 
-    autoTester.addStepSnapshot("Take snapshot of all the shapes");
+    nitpick.addStepSnapshot("Take snapshot of all the shapes");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i in entityIds) {
             Entities.deleteEntity(entityIds[i]);
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

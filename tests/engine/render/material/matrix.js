@@ -12,9 +12,9 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js")
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js")
 
-var assetsRootPath = autoTester.getAssetsRootPath();
+var assetsRootPath = nitpick.getAssetsRootPath();
 var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 var MODEL_NAME_SUFFIX = ".fbx?raw=true";
 var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
@@ -31,7 +31,7 @@ function addTestBackdropLocal(name, position, orientation, hasZone, hasLocalLigh
             hasAmbientLight: hasZone,
             hasLocalLights: hasLocalLights
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var backdrop = setupStage(initData);
 

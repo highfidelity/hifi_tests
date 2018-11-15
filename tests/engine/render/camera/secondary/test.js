@@ -1,22 +1,22 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", function(testType) {
     var LIFETIME = 120;
 	var createdEntities = [];
-    var position = autoTester.getOriginFrame();
+    var position = nitpick.getOriginFrame();
 	
     secondaryCamera = Render.getConfig("SecondaryCamera");
 
-    autoTester.addStep("Create zone and model", function () {
-        var assetsRootPath = autoTester.getAssetsRootPath();
+    nitpick.addStep("Create zone and model", function () {
+        var assetsRootPath = nitpick.getAssetsRootPath();
      
         createdEntities.push(Entities.addEntity({
             lifetime: LIFETIME,
             type: "Zone",
             name: "zone",
-            position: autoTester.getOriginFrame(),
+            position: nitpick.getOriginFrame(),
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
@@ -45,33 +45,33 @@ autoTester.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", fun
             userData: JSON.stringify({ grabbableKey: { grabbable: false } })
         }));
     });
-    autoTester.addStepSnapshot("Snapshot - 1920x1080, 45 degrees");
+    nitpick.addStepSnapshot("Snapshot - 1920x1080, 45 degrees");
 
-    autoTester.addStep("Change position", function () {
+    nitpick.addStep("Change position", function () {
         secondaryCamera.position = { x: secondaryCamera.position.x - 0.8,  y: secondaryCamera.position.y, z: secondaryCamera.position.z + 1.0 }; 
     });
-    autoTester.addStepSnapshot("Camera has moved back and left");
+    nitpick.addStepSnapshot("Camera has moved back and left");
 
-    autoTester.addStep("Change orientation", function () {
+    nitpick.addStep("Change orientation", function () {
         secondaryCamera.orientation = Quat.fromPitchYawRollDegrees(5.0, -25.0, 0.0);
     });
-    autoTester.addStepSnapshot("Camera has tilted up and yawed right");
+    nitpick.addStepSnapshot("Camera has tilted up and yawed right");
 
-    autoTester.addStep("Change field of view", function () {
+    nitpick.addStep("Change field of view", function () {
         secondaryCamera.vFoV = 25.0;
     });
-    autoTester.addStepSnapshot("Field of view has decreased");
+    nitpick.addStepSnapshot("Field of view has decreased");
 
-    autoTester.addStep("Change image size", function () {
+    nitpick.addStep("Change image size", function () {
         secondaryCamera.resetSizeSpectatorCamera(1200, 600);
     });
-    autoTester.addStepSnapshot("Image size has been reduced");
+    nitpick.addStepSnapshot("Image size has been reduced");
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
 
-    autoTester.runTest(testType);
+    nitpick.runTest(testType);
 });

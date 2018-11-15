@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Size of laser end increases with distance", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Size of laser end increases with distance", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -34,28 +34,28 @@ autoTester.perform("Size of laser end increases with distance", Script.resolvePa
         position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.5, Vec3.UP))
     });
 
-    autoTester.addStep("Move back to see the objects", function () {
+    nitpick.addStep("Move back to see the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 1.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
 
-    autoTester.addStepSnapshot("Minimum distance", function () {
+    nitpick.addStepSnapshot("Minimum distance", function () {
         Entities.editEntity(entities[0], { 
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.0, Vec3.UP))
         });
     });
 
-    autoTester.addStepSnapshot("Mid distance", function () {
+    nitpick.addStepSnapshot("Mid distance", function () {
         Entities.editEntity(entities[0], { 
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(-0.5, Vec3.UP))
         });
     });
 
-    autoTester.addStepSnapshot("Maximum distance", function () {
+    nitpick.addStepSnapshot("Maximum distance", function () {
     });
 
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
@@ -66,5 +66,5 @@ autoTester.perform("Size of laser end increases with distance", Script.resolvePa
         entities = [];
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

@@ -1,15 +1,15 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+var nitpick = createNitpick(Script.resolvePath("."));
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
-Script.include(Script.resolvePath(autoTester.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
+Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
 // A test model with joints
-var jointModelPath = Script.resolvePath(autoTester.getAssetsRootPath() + "/models/geometry/avatars/claire/Claire.fbx");
+var jointModelPath = Script.resolvePath(nitpick.getAssetsRootPath() + "/models/geometry/avatars/claire/Claire.fbx");
 var testModelJointName = "LeftToeBase";
 
-autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Test pick parenting on server", Script.resolvePath("."), "secondary", function(testType) {
     var createdEntities = [];
     var createdPicks = [];
     var createdOverlays = [];
@@ -292,45 +292,45 @@ autoTester.perform("Test pick parenting on server", Script.resolvePath("."), "se
     
     Script.scriptEnding.connect(cleanup);
     
-    autoTester.addStep("Please use Desktop", function () {
+    nitpick.addStep("Please use Desktop", function () {
         cleanup();
     });
     
-    autoTester.addStep("Visualize capsule pick parented to the mouse (with contact points)", function () {
+    nitpick.addStep("Visualize capsule pick parented to the mouse (with contact points)", function () {
         cleanup();
         visualizeMouseCapsulePick(true, createdPicks, createdOverlays, scriptIntervals);
     });
     
-    autoTester.addStep("Please use HMD", function () {
+    nitpick.addStep("Please use HMD", function () {
         cleanup();
     });
     
-    autoTester.addStep("Visualize box pick parented to the dominant hand (with contact points)", function () {
+    nitpick.addStep("Visualize box pick parented to the dominant hand (with contact points)", function () {
         cleanup();
         visualizeHandBoxPick(true, createdPicks, createdOverlays, scriptIntervals);
     });
     
-    autoTester.addStep("Desktop mode recommended", function () {
+    nitpick.addStep("Desktop mode recommended", function () {
         cleanup();
     });
     
-    autoTester.addStep("Visualize cylinder pick parented to model joint (with contact points)", function () {
+    nitpick.addStep("Visualize cylinder pick parented to model joint (with contact points)", function () {
         cleanup();
         visualizeModelJointPick(true, createdPicks, createdOverlays, scriptIntervals);
     });
     
-    autoTester.addStep("Please use HMD", function () {
+    nitpick.addStep("Please use HMD", function () {
         cleanup();
     });
     
-    autoTester.addStep("Visualize capsule pick parented to joint ray pick (with contact points)", function () {
+    nitpick.addStep("Visualize capsule pick parented to joint ray pick (with contact points)", function () {
         cleanup();
         visualizeRayParentedPick(true, createdPicks, createdOverlays, scriptIntervals);
     });
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         cleanup();
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

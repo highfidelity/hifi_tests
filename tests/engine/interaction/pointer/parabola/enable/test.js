@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Parabola - enabling and disabling", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Parabola - enabling and disabling", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../parabolaPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var pointers = [];
     pointers.push(Pointers.createPointer(PickType.Parabola, {
@@ -36,24 +36,24 @@ autoTester.perform("Parabola - enabling and disabling", Script.resolvePath("."),
     Pointers.disablePointer(pointers[0]);
     Pointers.enablePointer(pointers[1]);
 
-    autoTester.addStep("Move back to see the objects", function () {
+    nitpick.addStep("Move back to see the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
 
-    autoTester.addStepSnapshot("Enabled right pick", function () {
+    nitpick.addStepSnapshot("Enabled right pick", function () {
         Pointers.disablePointer(pointers[1]);
         Pointers.enablePointer(pointers[0]);
     });
 
-    autoTester.addStepSnapshot("Enabled left pick");
+    nitpick.addStepSnapshot("Enabled left pick");
 
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < pointers.length; i++) {
             Pointers.removePointer(pointers[i]);
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

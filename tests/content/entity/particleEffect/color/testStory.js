@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("ParticleEffect color", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("ParticleEffect color", Script.resolvePath("."), "secondary", function(testType) {
     var LIFETIME = 200;
 
     var createdEntities = [];
@@ -13,7 +13,7 @@ autoTester.perform("ParticleEffect color", Script.resolvePath("."), "secondary",
                                                     Vec3.multiply(z, Quat.getForward(MyAvatar.orientation)))));
     }
 
-    autoTester.addStep("Move back to see all the objects", function () {
+    nitpick.addStep("Move back to see all the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
@@ -32,7 +32,7 @@ autoTester.perform("ParticleEffect color", Script.resolvePath("."), "secondary",
         Camera.setOrientation(q0);
     });
 
-    autoTester.addStep("Create particles", function () {
+    nitpick.addStep("Create particles", function () {
         createdEntities.push(Entities.addEntity({
             type: "ParticleEffect",
             position: getPos(-2, -1, 5),
@@ -144,7 +144,7 @@ autoTester.perform("ParticleEffect color", Script.resolvePath("."), "secondary",
         }));
     });
 
-    autoTester.addStepSnapshot("Take snapshot of all the particles");
+    nitpick.addStepSnapshot("Take snapshot of all the particles");
 
     function cleanup() {
         for (var i in createdEntities) {
@@ -152,11 +152,11 @@ autoTester.perform("ParticleEffect color", Script.resolvePath("."), "secondary",
         }
     }
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         cleanup()
     });
 
     Script.scriptEnding.connect(cleanup);
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

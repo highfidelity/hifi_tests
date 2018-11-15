@@ -6,9 +6,9 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js")
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js")
 
-var assetsRootPath = autoTester.getAssetsRootPath();
+var assetsRootPath = nitpick.getAssetsRootPath();
 
 var LIFETIME = 300;
 var SHADER_URL = assetsRootPath + "shaders/texture.fs";
@@ -32,7 +32,7 @@ setup = function (originFrame) {
             hasKeyLight: false,
             hasAmbientLight: false
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     return setupStage(initData);
 }
