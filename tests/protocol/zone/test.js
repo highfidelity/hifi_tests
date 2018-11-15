@@ -29,14 +29,14 @@ nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     entityProperties = {
         skybox: {
             color: { red: 12, green: 93, blue: 233 },
-            url: assetsRootPath + 'skymaps/YellowCube.jpg'
+            url: 'https://skymaps/YellowCube.jpg'
         }
     };
                     
     entityProperties = { ambientLightMode: "disabled" };
     entityProperties = { 
         ambientLight: {
-            ambientURL: assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json'
+            ambientURL: 'http://skymaps/Sky_Day-Sun-Mid-photo.texmeta.json'
         }
     };
         

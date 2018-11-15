@@ -5,12 +5,11 @@ var nitpick = createNitpick(Script.resolvePath("."));
 nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
+    Script.include('../entityProperties.js');
     
     var object;
   
     var setProperties = {
-        include('../entityProperties.js');
-        
         type: "Light",
         
         isSpotlight: true,
