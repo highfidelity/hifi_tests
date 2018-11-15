@@ -9,7 +9,7 @@ autoTester.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolv
     var object;
   
     var setProperties = {
-        Script.include('../entityProperties.js');
+        include('../entityProperties.js');
         
         type: "Light",
         
