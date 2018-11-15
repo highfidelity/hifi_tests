@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -40,24 +40,24 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "se
 
     Pointers.setLockEndUUID(lasers[0], entities[0], false);
 
-    autoTester.addStep("Move back to see the objects", function () {
+    nitpick.addStep("Move back to see the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 1.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
-    autoTester.addStepSnapshot("Attached to left:");
+    nitpick.addStepSnapshot("Attached to left:");
     
-    autoTester.addStep("Attach to right", function() {
+    nitpick.addStep("Attach to right", function() {
         Pointers.setLockEndUUID(lasers[0], overlays[0], true);
     });
-    autoTester.addStepSnapshot("Attached to right:");
+    nitpick.addStepSnapshot("Attached to right:");
     
-    autoTester.addStep("Disconnect", function() {
+    nitpick.addStep("Disconnect", function() {
         Pointers.setLockEndUUID(lasers[0], null, false);
     });
-    autoTester.addStepSnapshot("Not attached:");
+    nitpick.addStepSnapshot("Not attached:");
 
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
@@ -72,5 +72,5 @@ autoTester.perform("LaserPointer lockEndUUID test", Script.resolvePath("."), "se
         overlays = [];
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

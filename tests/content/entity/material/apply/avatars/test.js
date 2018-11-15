@@ -1,16 +1,16 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "primary", function(testType) {
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "primary", function(testType) {
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
     var initData = {
         flags : { 
             hasAmbientLight: false
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var createdEntities = setupStage(initData);
 
@@ -37,7 +37,7 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
     var previousScale;
     var previousAvatarVisibility;
 
-    autoTester.addStep("Setup avatar", function () {
+    nitpick.addStep("Setup avatar", function () {
         // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
         previousSkeletonURL = MyAvatar.skeletonModelURL;
         MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
@@ -56,16 +56,16 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         validationCamera_translate({ x: 0.0, y: -0.25, z: 0.4 });
     });
 
-    autoTester.addStep("Set T-Pose", function () {
+    nitpick.addStep("Set T-Pose", function () {
         // Set Avatar to T-pose
         for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
     });    
 
-    autoTester.addStepSnapshot("Avatar without material");
+    nitpick.addStepSnapshot("Avatar without material");
     
-    autoTester.addStep("Add material to avatar", function () {
+    nitpick.addStep("Add material to avatar", function () {
         createdEntities.push(Entities.addEntity({
             type: "Material",
             materialURL: "materialData",
@@ -81,9 +81,9 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         );    
     });
     
-    autoTester.addStepSnapshot("Display material on avatar");
+    nitpick.addStepSnapshot("Display material on avatar");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
@@ -96,5 +96,5 @@ autoTester.perform("Apply Material Entities to Avatars", Script.resolvePath(".")
         MyAvatar.setEnableMeshVisible(previousAvatarVisibility);
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

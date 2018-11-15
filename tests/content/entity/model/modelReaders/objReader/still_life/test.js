@@ -1,13 +1,13 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Read still life OBJ model", Script.resolvePath("."), "secondary", function(testType) {
-    var assetsRootPath = autoTester.getAssetsRootPath();
+nitpick.perform("Read still life OBJ model", Script.resolvePath("."), "secondary", function(testType) {
+    var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = MyAvatar.position;
     var createdEntities = [];
-    var assetsRootPath = autoTester.getAssetsRootPath();
+    var assetsRootPath = nitpick.getAssetsRootPath();
     
     createdEntities.push(Entities.addEntity({
         lifetime: LIFETIME,
@@ -47,14 +47,14 @@ autoTester.perform("Read still life OBJ model", Script.resolvePath("."), "second
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     }));
 
-    autoTester.addDelay(4);
-    autoTester.addStepSnapshot("Still life OBJ model");
+    nitpick.addDelay(4);
+    nitpick.addStepSnapshot("Still life OBJ model");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

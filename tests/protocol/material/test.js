@@ -5,12 +5,11 @@ var autoTester = createAutoTester(Script.resolvePath("."));
 autoTester.perform("material protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
+    Script.include('../entityProperties.js');
     
     var object;
   
     var setProperties = {
-        Script.include('../entityProperties.js');
-        
         type: "Material",
         
         dimensions: { x: 0.1, y: 0.1, z: 0.1 },

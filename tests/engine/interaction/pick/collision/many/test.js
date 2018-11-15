@@ -1,16 +1,16 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+var nitpick = createNitpick(Script.resolvePath("."));
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
-Script.include(Script.resolvePath(autoTester.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
+Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
-autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath("."), "secondary", function(testType) {
-    var initData = { originFrame: autoTester.getOriginFrame() };
+nitpick.perform("Test CollisionPick with many cubes", Script.resolvePath("."), "secondary", function(testType) {
+    var initData = { originFrame: nitpick.getOriginFrame() };
     var createdEntities = setupStage(initData);
     var createdPicks = [];
     
-    autoTester.addStep("Create test box and 5 cubic collision picks", function () {
+    nitpick.addStep("Create test box and 5 cubic collision picks", function () {
         var extents = Vec3.subtract(
             getStagePosOriAt(3.25, 4.25, 0.25).pos,
             getStagePosOriAt(2.75, -4.25, -0.25).pos
@@ -42,7 +42,7 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
         }
     });
     
-    autoTester.addStep("Show pick collision results", function () {
+    nitpick.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection
         // Boxes also have y-offset for better visualization
         var pickIntersects = [];
@@ -71,7 +71,7 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
         }
     });
     
-    autoTester.addStepSnapshot("Collision pick results are visible");
+    nitpick.addStepSnapshot("Collision pick results are visible");
     
     function cleanup() {
         clearEntities(createdEntities);
@@ -80,9 +80,9 @@ autoTester.perform("Test CollisionPick with many cubes", Script.resolvePath(".")
     
     Script.scriptEnding.connect(cleanup);
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         cleanup();
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

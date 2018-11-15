@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Shadow control", Script.resolvePath("."), "primary", function(testType) {
+nitpick.perform("Shadow control", Script.resolvePath("."), "primary", function(testType) {
     var LIFETIME = 120;
     var zone;
     var terrain;
@@ -10,13 +10,13 @@ autoTester.perform("Shadow control", Script.resolvePath("."), "primary", functio
 	
     var renderShadowsFlag;
     
-    autoTester.addStep("Create zone and add objects", function () {
-        var assetsRootPath = autoTester.getAssetsRootPath();
+    nitpick.addStep("Create zone and add objects", function () {
+        var assetsRootPath = nitpick.getAssetsRootPath();
         zone = Entities.addEntity({
             lifetime: LIFETIME,
             type: "Zone",
             name: "zone",
-            position: autoTester.getOriginFrame(),
+            position: nitpick.getOriginFrame(),
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
@@ -39,7 +39,7 @@ autoTester.perform("Shadow control", Script.resolvePath("."), "primary", functio
             lifetime: LIFETIME,
             type: "Box",
             name: "terrain",
-            position: Vec3.sum(autoTester.getOriginFrame(), { x: 0.0, y: 0.0, z: -4.0 }),
+            position: Vec3.sum(nitpick.getOriginFrame(), { x: 0.0, y: 0.0, z: -4.0 }),
             dimensions: { x: 12.0, y: 0.1, z: 40.0 },
             color: { red: 200, green: 200 , blue: 200 },
             visible: true,
@@ -50,7 +50,7 @@ autoTester.perform("Shadow control", Script.resolvePath("."), "primary", functio
             lifetime: LIFETIME,
             type: "Sphere",
             name: "sphere",
-            position: Vec3.sum(autoTester.getOriginFrame(), { x: 0.0, y: 2.2, z: -10.0 }),
+            position: Vec3.sum(nitpick.getOriginFrame(), { x: 0.0, y: 2.2, z: -10.0 }),
             dimensions: { x: 5.0, y: 1.6, z: 16.0 },
             color: { red: 255, green: 0 , blue: 0 },
             visible: true,
@@ -61,31 +61,31 @@ autoTester.perform("Shadow control", Script.resolvePath("."), "primary", functio
         renderShadowsFlag = Menu.isOptionChecked("Shadows");
         Menu.setIsOptionChecked("Shadows", true);
     });
-    autoTester.addStepSnapshot("No shadows");
+    nitpick.addStepSnapshot("No shadows");
     
 
-    autoTester.addStep("Let zone show shadows", function () {
+    nitpick.addStep("Let zone show shadows", function () {
         Entities.editEntity(zone, { keyLight: { castShadows: true }});  
     });
-    autoTester.addStepSnapshot("Shadow is visible");
+    nitpick.addStepSnapshot("Shadow is visible");
 
-    autoTester.addStep("Disable casting of shadow by sphere", function () {
+    nitpick.addStep("Disable casting of shadow by sphere", function () {
         Entities.editEntity(sphere, { canCastShadow: false });  
     });
-    autoTester.addStepSnapshot("Shadow is not visible");
+    nitpick.addStepSnapshot("Shadow is not visible");
 
-    autoTester.addStep("Disable casting of shadows by renderer", function () {
+    nitpick.addStep("Disable casting of shadows by renderer", function () {
         Entities.editEntity(sphere, { canCastShadow: true });
         Menu.setIsOptionChecked("Shadows", false);
     });
-    autoTester.addStepSnapshot("Shadow is not visible");
+    nitpick.addStepSnapshot("Shadow is not visible");
 
-    autoTester.addStep("Re-enable casting of shadows by renderer", function () {
+    nitpick.addStep("Re-enable casting of shadows by renderer", function () {
         Menu.setIsOptionChecked("Shadows", true);
     });
-    autoTester.addStepSnapshot("Shadow is visible");
+    nitpick.addStepSnapshot("Shadow is visible");
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         Menu.setIsOptionChecked("Shadows", renderShadowsFlag);
 
         Entities.deleteEntity(sphere);
@@ -93,5 +93,5 @@ autoTester.perform("Shadow control", Script.resolvePath("."), "primary", functio
         Entities.deleteEntity(zone);
     });
 
-    autoTester.runTest(testType);
+    nitpick.runTest(testType);
 });

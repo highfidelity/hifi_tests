@@ -14,8 +14,8 @@ getRepositoryPath = function (executionPath) {
     return repositoryPath;
 }
 
-// Returns the `autoTester.js` version on the branch we are executing from
-createAutoTester = function (executionPath) {
+// Returns the `nitpick.js` version on the branch we are executing from
+createNitpick = function (executionPath) {
     // Default values
     var user = "highfidelity";;
     var branch = "master";
@@ -49,8 +49,8 @@ createAutoTester = function (executionPath) {
 
     var repositoryPath = getRepositoryPath(rawExecutionPath);
 
-    var autoTester =  Script.require(repositoryPath + "tests/utils/autoTester.js");
-    autoTester.setRepositoryInfo(repositoryPath);
+    var nitpick =  Script.require(repositoryPath + "tests/utils/nitpick.js");
+    nitpick.setRepositoryInfo(repositoryPath);
 
-    return autoTester;
+    return nitpick;
 }

@@ -1,21 +1,19 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
+    Script.include('../entityProperties.js');
     
     var object;
     
-    var setProperties = {
-        Script.include('../entityProperties.js');
-        
-        type: "Zone",
+    entityProperties = { type: "Zone"};
+    entityProperties = { dimensions: { x: 20.0, y: 3.0, z: 9.75 }};
 
-        dimensions: { x: 20.0, y: 3.0, z: 9.75 },
-
-        keyLightMode: "enabled",
+    entityProperties = { keyLightMode: "enabled" };
+    entityProperties = {
         keyLight:{
             color: { "red": 34, "green": 73, "blue": 88 },
             intensity: 0.125,
@@ -24,20 +22,26 @@ autoTester.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolve
                 "y": 1.0,
                 "z": 0.0
             }
-        },
+        }
+    }
 
-        skyboxMode: "enabled",
+    entityProperties = { skyboxMode: "enabled" };
+    entityProperties = {
         skybox: {
             color: { red: 12, green: 93, blue: 233 },
             url: assetsRootPath + 'skymaps/YellowCube.jpg'
-        },
+        }
+    };
                     
-        ambientLightMode: "disabled",
+    entityProperties = { ambientLightMode: "disabled" };
+    entityProperties = { 
         ambientLight: {
             ambientURL: assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json'
-        },
+        }
+    };
         
-        hazeMode: 'enabled',
+    entityProperties = { hazeMode: 'enabled'};
+    entityProperties = {
         haze: {
             hazeRange: 502.5,
             hazeColor: { red: 153, green: 107, blue: 47 },
@@ -51,37 +55,37 @@ autoTester.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolve
             hazeAttenuateKeyLight: false,
             hazeKeyLightRange: 1000.0,
             hazeKeyLightAltitude: 2343.0
-        },
+        }
+    };
 
-        bloomMode: "disabled",
+    entityProperties = { bloomMode: "disabled" };
+    entityProperties = {
         bloom: {
             bloomIntensity: 1.0,
             bloomThreshold: 0.875
-        },
-
-        flyingAllowed: true,
-        ghostingAllowed: false,
-        
-        filterURL: "http://Filter URL",
-        compoundShapeURL: "https://Compound shape URL",
-
-        shapeType: "box",
+        }
     };
 
-    autoTester.addStep("Create a zone", function () {
-        object = Entities.addEntity(setProperties);
+    entityProperties = { flyingAllowed: true };
+    entityProperties = { ghostingAllowed: false };
+    entityProperties = { filterURL: "http://Filter URL" };
+    entityProperties = { compoundShapeURL: "https://Compound shape URL" };
+    entityProperties = { shapeType: "box" };
+
+    nitpick.addStep("Create a zone", function () {
+        object = Entities.addEntity(entityProperties);
     });
     
-    autoTester.addStep("Test zone", function () {
+    nitpick.addStep("Test zone", function () {
         var getProperties = Entities.getEntityProperties(object);
-        showResults(compareObjects(setProperties, getProperties));
+        showResults(compareObjects(entityProperties, getProperties));
     });
-    autoTester.addStepSnapshot("Show result");
+    nitpick.addStepSnapshot("Show result");
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         teardown();
         Entities.deleteEntity(object);
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

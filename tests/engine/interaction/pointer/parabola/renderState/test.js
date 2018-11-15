@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Parabola renderState test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Parabola renderState test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../parabolaPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var parabolas = [];
     parabolas.push(Pointers.createPointer(PickType.Parabola, {
@@ -36,34 +36,34 @@ autoTester.perform("Parabola renderState test", Script.resolvePath("."), "second
 
     Pointers.setRenderState(parabolas[0], states[0]);
 
-    autoTester.addStepSnapshot("Not attached");
+    nitpick.addStepSnapshot("Not attached");
 
-    autoTester.addStep("Set to state 1 (red)", function() {
+    nitpick.addStep("Set to state 1 (red)", function() {
         Pointers.setRenderState(parabolas[0], states[1]);
     });
-    autoTester.addStepSnapshot("Attached red:");
+    nitpick.addStepSnapshot("Attached red:");
 
-    autoTester.addStep("Set to state 2 (green)", function() {
+    nitpick.addStep("Set to state 2 (green)", function() {
         Pointers.setRenderState(parabolas[0], states[2]);
     });
-    autoTester.addStepSnapshot("Attached green:");
+    nitpick.addStepSnapshot("Attached green:");
 
-    autoTester.addStep("Set to state 3 (blue)", function() {
+    nitpick.addStep("Set to state 3 (blue)", function() {
         Pointers.setRenderState(parabolas[0], states[3]);
     });
-    autoTester.addStepSnapshot("Attached blue:");
+    nitpick.addStepSnapshot("Attached blue:");
 
-    autoTester.addStep("Set to state 4 (cyan)", function() {
+    nitpick.addStep("Set to state 4 (cyan)", function() {
         Pointers.setRenderState(parabolas[0], states[4]);
     });
-    autoTester.addStepSnapshot("Attached cyan:");
+    nitpick.addStepSnapshot("Attached cyan:");
 
-    autoTester.addStep("Set to state 5 (red)", function() {
+    nitpick.addStep("Set to state 5 (red)", function() {
         Pointers.setRenderState(parabolas[0], states[5]);
     });
-    autoTester.addStepSnapshot("Attached red:");
+    nitpick.addStepSnapshot("Attached red:");
 
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < parabolas.length; i++) {
             Pointers.removePointer(parabolas[i]);
         }
@@ -74,5 +74,5 @@ autoTester.perform("Parabola renderState test", Script.resolvePath("."), "second
         entities = [];
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

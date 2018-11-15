@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("LaserPointer ignore test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -56,7 +56,7 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
         overlays.push(Overlays.addOverlay("cube", properties));
     }
 
-    autoTester.addStep("Move back to see all the objects", function () {
+    nitpick.addStep("Move back to see all the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
@@ -74,9 +74,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
 
         Camera.setOrientation(q0);
     });
-    autoTester.addStepSnapshot("Initial position");
+    nitpick.addStepSnapshot("Initial position");
 
-    autoTester.addStep("1st position", function () {
+    nitpick.addStep("1st position", function () {
         var ignore = [];
         var step = 1;
         var even = true;
@@ -107,9 +107,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("1st position");
+    nitpick.addStepSnapshot("1st position");
 
-    autoTester.addStep("Move to 2nd position", function () {
+    nitpick.addStep("Move to 2nd position", function () {
         var ignore = [];
         var step = 2;
         var even = true;
@@ -140,9 +140,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("2nd position");
+    nitpick.addStepSnapshot("2nd position");
 
-    autoTester.addStep("Move to 3rd position", function () {
+    nitpick.addStep("Move to 3rd position", function () {
         var ignore = [];
         var step = 3;
         var even = true;
@@ -173,9 +173,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("3rd position");
+    nitpick.addStepSnapshot("3rd position");
 
-    autoTester.addStep("Move to 4th position", function () {
+    nitpick.addStep("Move to 4th position", function () {
         var ignore = [];
         var step = 4;
         var even = true;
@@ -206,9 +206,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("4th position");
+    nitpick.addStepSnapshot("4th position");
 
-    autoTester.addStep("Move to 5th position", function () {
+    nitpick.addStep("Move to 5th position", function () {
         var ignore = [];
         var step = 5;
         var even = true;
@@ -239,9 +239,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("5th position");
+    nitpick.addStepSnapshot("5th position");
 
-    autoTester.addStep("Move to 6th position", function () {
+    nitpick.addStep("Move to 6th position", function () {
         var ignore = [];
         var step = 6;
         var even = true;
@@ -272,9 +272,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("6th position");
+    nitpick.addStepSnapshot("6th position");
 
-    autoTester.addStep("Move to 7th position", function () {
+    nitpick.addStep("Move to 7th position", function () {
         var ignore = [];
         var step = 7;
         var even = true;
@@ -305,9 +305,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("7th position");
+    nitpick.addStepSnapshot("7th position");
 
-    autoTester.addStep("Move to 8th position", function () {
+    nitpick.addStep("Move to 8th position", function () {
         var ignore = [];
         var step = 8;
         var even = true;
@@ -338,9 +338,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("8th position");
+    nitpick.addStepSnapshot("8th position");
 
-    autoTester.addStep("Move to 9th position", function () {
+    nitpick.addStep("Move to 9th position", function () {
         var ignore = [];
         var step = 9;
         var even = true;
@@ -371,9 +371,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("9th position");
+    nitpick.addStepSnapshot("9th position");
 
-    autoTester.addStep("Move to 10th position", function () {
+    nitpick.addStep("Move to 10th position", function () {
         var ignore = [];
         var step = 10;
         var even = true;
@@ -404,9 +404,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("10th position");
+    nitpick.addStepSnapshot("10th position");
 
-    autoTester.addStep("Move to 11th position", function () {
+    nitpick.addStep("Move to 11th position", function () {
         var ignore = [];
         var step = 11;
         var even = true;
@@ -437,9 +437,9 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
             even = !even;
         }
     });
-    autoTester.addStepSnapshot("11th position");
+    nitpick.addStepSnapshot("11th position");
     
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
@@ -454,5 +454,5 @@ autoTester.perform("LaserPointer ignore test", Script.resolvePath("."), "seconda
         overlays = [];
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

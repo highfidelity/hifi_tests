@@ -1,8 +1,8 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
     Script.include("../material/matrix.js?raw=true")
 
@@ -21,18 +21,18 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", f
     var createdEntities = [];
     var createdOverlays = [];
 
-    autoTester.addStep("Set up test case", function () {
-        createdEntities = addCases(TEST_CASES, true, autoTester.getOriginFrame());
-        createdOverlays = addOverlayCases(TEST_OVERLAYS, autoTester.getOriginFrame());
+    nitpick.addStep("Set up test case", function () {
+        createdEntities = addCases(TEST_CASES, true, nitpick.getOriginFrame());
+        createdOverlays = addOverlayCases(TEST_OVERLAYS, nitpick.getOriginFrame());
 
         var offset = { x: 0.0, y: -0.4, z: 0.45 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
 
-    autoTester.addStepSnapshot("Show anti-aliasing effects");
+    nitpick.addStepSnapshot("Show anti-aliasing effects");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
@@ -41,5 +41,5 @@ autoTester.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", f
         }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });
