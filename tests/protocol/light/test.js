@@ -2,16 +2,17 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
     
     var object;
   
     var setProperties = {
-        lifetime: LIFETIME,  
-        name: "Name of light entity",
+        Script.include('../entityProperties.js');
+        
         type: "Light",
+        
         isSpotlight: true,
         color: { red: 11, green: 33, blue: 55 },
         intensity: 2.0,

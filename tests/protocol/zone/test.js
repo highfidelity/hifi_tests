@@ -2,20 +2,17 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var autoTester = createAutoTester(Script.resolvePath("."));
 
-autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+autoTester.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
     
     var object;
     
     var setProperties = {
-        lifetime: LIFETIME,
-        description: "Description",
-        type: "Zone",
-        name: "Name of zone entity",
-        position: Vec3.sum(originPosition, { x: 0.0, y: 1.6, z: 3000 }),
-        rotation: Quat.fromPitchYawRollDegrees(1.0, 7.0, 43.0 ),
+        Script.include('../entityProperties.js');
         
+        type: "Zone",
+
         dimensions: { x: 20.0, y: 3.0, z: 9.75 },
 
         keyLightMode: "enabled",
@@ -62,18 +59,13 @@ autoTester.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath(
             bloomThreshold: 0.875
         },
 
-        visible: true,
-        canCastShadow: false,
         flyingAllowed: true,
         ghostingAllowed: false,
         
         filterURL: "http://Filter URL",
-        collisionSoundURL: "http://Collision sound URL",
         compoundShapeURL: "https://Compound shape URL",
 
         shapeType: "box",
-        
-        userData: "{ \"latitude\": 47.0, \"longitude\": 122.0, \"year\": 2018, \"month\": 6, \"day\": 13, \"hour\": 20, \"minute\": 0 }"
     };
 
     autoTester.addStep("Create a zone", function () {
