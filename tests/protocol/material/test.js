@@ -2,35 +2,33 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("material protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Material protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
-    Script.include('../entityProperties.js');
+    ////Script.include('../entityProperties.js');
     
     var object;
-  
-    entityProperties = { type: "Sphere" };
-    entityProperties = { dimensions: { x: 0.1, y: 0.1, z: 0.1 }};
-    entityProperties = { registrationPoint: { x: 0.2, y: 0.4, z: 0.0444 }};
-    entityProperties = { materialURL: "materialURL" };
-    entityProperties = { materialMappingMode: "uv" };
-    entityProperties = { priority: 3 };
-    entityProperties = { parentMaterialName: "parent" };
-    entityProperties = { materialMappingPos: { x: 0.4, y: 0.7 }};
-    entityProperties = { materialMappingScale: { x: 0.7, y: 0.3 }};
-    entityProperties = { materialMappingRot: 0.02 };
     
-    entityProperties = {
-        materialData: JSON.stringify({ 
-            "materials": { 
-                "albedo": [0.5, 0.1, 0.2], 
-                "roughness": 0.2 
-            }
-        })
-    };
+    var entityProperties = {};
+    entityProperties.type ="Material";
+    entityProperties.dimensions = { x: 0.1, y: 0.1, z: 0.1 };
+    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
+    entityProperties.materialURL = "materialURL";
+    entityProperties.materialMappingMode = "uv";
+    entityProperties.priority = 3;
+    entityProperties.parentMaterialName = "parent";
+    entityProperties.materialMappingPos = { x: 0.4, y: 0.7 };
+    entityProperties.materialMappingScale = { x: 0.7, y: 0.3 };
+    entityProperties.materialMappingRot = 0.02;
     
-    entityProperties = { originalTextures: {}};
-    entityProperties = { owningAvatarID: "{87654321-1234-6666-4444-123412349876}" };
+    entityProperties.materialData = JSON.stringify({ 
+        "materials": { 
+            "albedo": [0.5, 0.1, 0.2], 
+            "roughness": 0.2 
+        }
+    });
+    
+    entityProperties.originalTextures = {};
 
     nitpick.addStep("Set up material", function () {
         object = Entities.addEntity(entityProperties);

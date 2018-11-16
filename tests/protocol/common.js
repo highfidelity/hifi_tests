@@ -7,35 +7,6 @@ box = 0;
 var backgroundZone;
 
 setup = function() {
-    // returns green if value is 0, else red 
-    resultsColour = function(value) {
-        if (value == 0) {
-            return { red:   0, green: 255, blue: 0 };
-        } else {
-            return { red: 255, green:   0, blue: 0 };
-        }
-    }
-    
-    convertResultToLines = function(result) {
-        intResult = Math.floor(result); // just to be safe
-        var line = "";
-        var i = 1;
-        while (intResult > 0) {
-            if (intResult % 2) {
-                if (line !== "") {
-                    line = line + ', ';
-                }
-                line = line + i.toString();
-                intResult -= 1;
-            }
-            
-            intResult /= 2;
-            i += 1;
-        }
-        
-        return line;
-    }
-
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {
             lifetime: LIFETIME,
@@ -81,45 +52,81 @@ setup = function() {
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 }
 
-compareFloats = function(x, y) {
-    return (Math.abs(x - y) < 0.0001);
-}
-
-var index;
-var line;
-compareObjects = function(object1, object2, result) {
-    if (typeof result === 'undefined') {
-        result = 0;
-        index  = 1;
-        line   = 1;
-    }
-    
-    for (var key in object1) {
-        var nextObject = object1[key];
-        if (typeof nextObject === 'object') {
-            console.warn("------ ", key, ":");
-            compareObjects(nextObject, object2[key], result);
-        } else {
-            if (typeof object1[key] === 'number') {
-                result += compareFloats(object1[key], object2[key]) ? 0 : index;
-                console.warn(line, ": ", key, object1[key], object2[key], compareFloats(object1[key], object2[key]));
-            } else {
-                result += (object1[key] == object2[key]) ? 0 : index;
-                console.warn(line, ": ", key, object1[key], object2[key], (object1[key] == object2[key]));
-            }
-            index *= 2;
-            line  += 1;
+allPassed = function(failures) {
+    var noneFailed = true;
+    for (var i = 0; i < failures.length; ++i) {
+        if (failures[i]) {
+            noneFailed = false;
+            break;
         }
     }
 
-    return result;
+    return noneFailed;
 }
 
-showResults = function(result) {
-    Entities.editEntity(box, { color: resultsColour(result) });
+// returns green if value is 0, else red 
+resultsColour = function(failures) {
+    if (allPassed(failures)) {
+        return { red:   0, green: 255, blue: 0 };
+    } else {
+        return { red: 255, green:   0, blue: 0 };
+    }
+}
+
+convertFailuresToLineNumbers = function(failures) {
+    var line = "";
+    for (var i = 0; i < failures.length; ++i) {
+        if (failures[i]) {
+            if (line !== "") {
+                line = line + ', ';
+            }
+            line = line + (i + 1).toString();
+        }
+    }
+    
+    return line;
+}
+
+areNumbersDifferent = function(x, y) {
+    return (Math.abs(x - y) > 0.0001);
+}
+
+var line
+compareObjects = function(object1, object2, failures) {
+    if (typeof failures === 'undefined') {
+        line   = 0;
+        failures = [];
+    }
+    
+    for (var key in object1) {
+        line  += 1;
+        var nextObject = object1[key];
+        if (typeof nextObject === 'object') {
+            console.warn(line, "------ ", key, ":");
+            failures.push(false); // This is to keep line numbers relevant (objects have a line number, but of course no value)
+            compareObjects(nextObject, object2[key], failures);
+        } else {
+            var failure;
+            if (typeof object1[key] === 'number') {
+                failure = areNumbersDifferent(object1[key], object2[key]);
+            } else {
+                failure = (object1[key] !== object2[key]);
+            }
+            failures.push(failure); // false will be pushed for tests that have passed
+            console.warn(line, ": ", key, object1[key], object2[key], failure ? "fail" : "pass");
+        }
+    }
+
+    return failures;
+}
+
+showResults = function(failures) {
+    Entities.editEntity(box, { color: resultsColour(failures) });
         
-    if (result != 0) {
-        console.warn("mismatch values at line(s): " + convertResultToLines(result));
+    if (allPassed(failures)) {
+        console.warn("all tests passed");
+    } else {
+        console.warn("mismatch values at line(s): " + convertFailuresToLineNumbers(failures));
     }
 }
 

@@ -6,7 +6,6 @@ entityProperties = {
     locked: true,
     visible: false,
     canCastShadow: false,
-    ////isVisibleInSecondaryCamera: true,
     position: { x: 1.2, y: 3.4, z: 5.6 },
     rotation: Quat.fromPitchYawRollDegrees(1.2, 34.0, 154.0),
     registrationPoint: { x: 0.2, y: 0.4, z: 0.0444 },

@@ -2,30 +2,20 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
-    ////Script.include('../entityProperties.js');
+    Script.include('../entityProperties.js');
     
     var object;
   
-    var entityProperties = {}
-    entityProperties.type = "Light";
-    entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
-    entityProperties.dimensions = { x: 1.1, y: 3.3, z: 5.5 };
-    entityProperties.color =  { red: 11, green: 33, blue: 55 };
-    entityProperties.intensity =  2.0;
-    entityProperties.falloffRadius = 6.0;
-    entityProperties.isSpotlight = true;
-    entityProperties.exponent = 0.25;
-    entityProperties.cutoff = 45.0;
-    entityProperties.isVisibleInSecondaryCamera = true;
+    entityProperties.type = "Box";
 
-    nitpick.addStep("Set up light", function () {
+    nitpick.addStep("Set up box", function () {
         object = Entities.addEntity(entityProperties);
     });
     
-    nitpick.addStep("Test light", function () {
+    nitpick.addStep("Test box", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });
