@@ -9,25 +9,22 @@ nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePa
     
     var object;
   
-    var setProperties = {
-        type: "Light",
-        
-        dimensions: { x: 1.1, y: 3.3, z: 5.5 },
-        color: { red: 11, green: 33, blue: 55 },
-        intensity: 2.0,
-        falloffRadius: 6.0,
-        isSpotlight: true,
-        exponent: 0.25,
-        cutoff: 45.0
-    };
+    entityProperties.type = "Light";
+    entityProperties.dimensions = { x: 1.1, y: 3.3, z: 5.5 };
+    entityProperties.color =  { red: 11, green: 33, blue: 55 };
+    entityProperties.intensity =  2.0;
+    entityProperties.falloffRadius = 6.0;
+    entityProperties.isSpotlight = true;
+    entityProperties.exponent = 0.25;
+    entityProperties.cutoff = 45.0;
 
     nitpick.addStep("Set up light", function () {
-        object = Entities.addEntity(setProperties);
+        object = Entities.addEntity(entityProperties);
     });
     
     nitpick.addStep("Test light", function () {
         var getProperties = Entities.getEntityProperties(object);
-        showResults(compareObjects(setProperties, getProperties));
+        showResults(compareObjects(entityProperties, getProperties));
     });
     nitpick.addStepSnapshot("Show result");
     

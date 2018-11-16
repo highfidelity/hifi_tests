@@ -85,23 +85,30 @@ compareFloats = function(x, y) {
     return (Math.abs(x - y) < 0.0001);
 }
 
-compareObjects = function(object1, object2, result, index) {
-    if (typeof result === 'undefined') result = 0;
-    if (typeof index  === 'undefined') index  = 1;
+var index;
+var line;
+compareObjects = function(object1, object2, result) {
+    if (typeof result === 'undefined') {
+        result = 0;
+        index  = 1;
+        line   = 1;
+    }
     
     for (var key in object1) {
         var nextObject = object1[key];
         if (typeof nextObject === 'object') {
-            compareObjects(nextObject, object2[key], result, index);
+            console.warn("------ ", key, ":");
+            compareObjects(nextObject, object2[key], result);
         } else {
             if (typeof object1[key] === 'number') {
                 result += compareFloats(object1[key], object2[key]) ? 0 : index;
-                console.warn(key, object1[key], object2[key], compareFloats(object1[key], object2[key]));
+                console.warn(line, ": ", key, object1[key], object2[key], compareFloats(object1[key], object2[key]));
             } else {
                 result += (object1[key] == object2[key]) ? 0 : index;
-                console.warn(key, object1[key], object2[key], (object1[key] == object2[key]));
+                console.warn(line, ": ", key, object1[key], object2[key], (object1[key] == object2[key]));
             }
             index *= 2;
+            line  += 1;
         }
     }
 

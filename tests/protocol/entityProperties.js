@@ -1,4 +1,4 @@
-var entityProperties = {
+entityProperties = {
     name: "Name of entity",
     clientOnly: false,
     owningAvatarID: "{87654321-1234-6666-4444-123412349876}",
@@ -6,7 +6,7 @@ var entityProperties = {
     locked: true,
     visible: false,
     canCastShadow: false,
-    isVisibleInSecondaryCamera: true,
+    ////isVisibleInSecondaryCamera: true,
     position: { x: 1.2, y: 3.4, z: 5.6 },
     rotation: Quat.fromPitchYawRollDegrees(1.2, 34.0, 154.0),
     registrationPoint: { x: 0.2, y: 0.4, z: 0.0444 },
@@ -19,14 +19,14 @@ var entityProperties = {
     restitution: 0.4,
     friction: 4.3,
     density: 400,
-    collisionless: false,
+    collisionless: true,
     ignoreForCollisions: true,
     collisionMask: 7,
     collidesWith: "static,dynamic,kinematic,",
     collisionSoundURL: "collisionSoundURL",
     dynamic: false,
     collisionsWillMove: false,
-    href: "http://dummyhref",
+    href: false,
     description: "description",
 
     userData: "{ \"latitude\": 47.0, \"longitude\": 122.0, \"year\": 2018, \"month\": 6, \"day\": 13, \"hour\": 20, \"minute\": 0 }",
