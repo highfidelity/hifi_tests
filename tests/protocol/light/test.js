@@ -12,10 +12,11 @@ nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePa
     var setProperties = {
         type: "Light",
         
-        isSpotlight: true,
+        dimensions: { x: 1.1, y: 3.3, z: 5.5 },
         color: { red: 11, green: 33, blue: 55 },
         intensity: 2.0,
         falloffRadius: 6.0,
+        isSpotlight: true,
         exponent: 0.25,
         cutoff: 45.0
     };
