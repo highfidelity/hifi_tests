@@ -6,6 +6,9 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function
     var LIFETIME = 120;
 	var createdEntities = [];
     var position = nitpick.getOriginFrame();
+    
+    var previousSkeletonURL;
+    var previousScale;
 	
     nitpick.addStep("Create zone and model", function () {
         var assetsRootPath = nitpick.getAssetsRootPath();
@@ -42,7 +45,22 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function
             visible: true,
             userData: JSON.stringify({ grabbableKey: { grabbable: false } })
         }));
-    });
+ 
+        nitpick.addStep("Setup avatar", function () {
+            // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
+            previousSkeletonURL = MyAvatar.skeletonModelURL;
+            MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
+
+            previousScale = MyAvatar.scale;
+            MyAvatar.scale = 1.0;
+            MyAvatar.setEnableMeshVisible(true);
+
+            // Wait for skeleton to load (for now - only in test mode)
+            if (typeof Test !== 'undefined') {
+                Test.waitIdle();
+            }
+        });
+   });
     nitpick.addStepSnapshot("Snapshot - 1920x1036, 45 degrees");
 
     nitpick.addStep("Change position", function () {
@@ -60,6 +78,9 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
+
+        MyAvatar.skeletonModelURL = previousSkeletonURL;
+        MyAvatar.scale = previousScale;
     });
 
     nitpick.runTest(testType);
