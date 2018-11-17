@@ -14,7 +14,7 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function
             lifetime: LIFETIME,
             type: "Zone",
             name: "zone",
-            position: nitpick.getOriginFrame(),
+            position: position,
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
             
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
