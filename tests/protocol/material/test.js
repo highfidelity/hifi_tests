@@ -5,7 +5,6 @@ var nitpick = createNitpick(Script.resolvePath("."));
 nitpick.perform("Material protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
-    ////Script.include('../entityProperties.js');
     
     var object;
     
