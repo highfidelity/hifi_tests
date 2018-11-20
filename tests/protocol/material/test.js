@@ -11,6 +11,21 @@ nitpick.perform("Material protocol sanity - TEST REQUIRES SERVER", Script.resolv
 
     entityProperties.type ="Material";
     
+    entityProperties.materialURL = "materialURL";
+    entityProperties.priority = 3;
+    entityProperties.parentMaterialName = "parent";
+    entityProperties.materialMappingMode = "uv";
+    entityProperties.materialMappingPos = { x: 0.4, y: 0.7 };
+    entityProperties.materialMappingScale = { x: 0.7, y: 0.3 };
+    entityProperties.materialMappingRot = 0.02;
+    
+    entityProperties.materialData = JSON.stringify({ 
+        "materials": { 
+            "albedo": [0.5, 0.1, 0.2], 
+            "roughness": 0.2 
+        }
+    });
+    
     entityProperties.boundingBox = {
         brn: { x: 1.0663206577, y: 3.33795213699, z: 5.55088996887 },
         tfl: { x:  1.235045075416, y: 3.490031242370, z:  5.69143104553222 },
@@ -22,20 +37,6 @@ nitpick.perform("Material protocol sanity - TEST REQUIRES SERVER", Script.resolv
     
     entityProperties.dimensions = { x: 0.1, y: 0.1, z: 0.1 };
     entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
-    entityProperties.materialURL = "materialURL";
-    entityProperties.materialMappingMode = "uv";
-    entityProperties.priority = 3;
-    entityProperties.parentMaterialName = "parent";
-    entityProperties.materialMappingPos = { x: 0.4, y: 0.7 };
-    entityProperties.materialMappingScale = { x: 0.7, y: 0.3 };
-    entityProperties.materialMappingRot = 0.02;
-    
-    entityProperties.materialData = JSON.stringify({ 
-        "materials": { 
-            "albedo": [0.5, 0.1, 0.2], 
-            "roughness": 0.2 
-        }
-    });
     
     entityProperties.originalTextures = {};
 

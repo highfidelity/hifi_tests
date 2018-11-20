@@ -108,7 +108,11 @@ compareObjects = function(object1, object2, failures) {
         } else {
             var failure;
             if (typeof object1[key] === 'number') {
-                failure = areNumbersDifferent(object1[key], object2[key]);
+                if (typeof object2 === 'undefined') {
+                    console.warn(key, "IS NOT DEFINED");
+                } else {
+                    failure = areNumbersDifferent(object1[key], object2[key]);
+                }
             } else {
                 failure = (object1[key] !== object2[key]);
             }
@@ -176,7 +180,6 @@ setCommonEntityProperties = function() {
     entityProperties.cloneLimit = 1;
     entityProperties.cloneDynamic = true;
     entityProperties.cloneAvatarEntity = false;
-    entityProperties.cloneOriginID = "{12345678-4321-5555-7777-123412349876}";
     entityProperties.itemName = "item name";
     entityProperties.itemDescription = "item description";
     entityProperties.itemCategories = "item categories";
