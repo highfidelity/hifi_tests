@@ -7,18 +7,34 @@ nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePa
     setup();
     
     var object;
-  
-    var entityProperties = {}
+    var entityProperties = setCommonEntityProperties();
+
     entityProperties.type = "Light";
+
+    entityProperties.cloneable = false;
+    entityProperties.cloneLifetime = 200;
+    entityProperties.cloneLimit = 1;
+    entityProperties.cloneDynamic = true;
+    entityProperties.cloneAvatarEntity = false;
+    entityProperties.cloneOriginID = "{12345678-4321-5555-7777-123412349876}";
+    entityProperties.itemName = "item name";
+    entityProperties.itemDescription = "item description";
+    entityProperties.itemCategories = "item categories";
+    entityProperties.itemArtist = "item artist";
+    entityProperties.itemLicense = "item license";
+    entityProperties.limitedRun = 123456;
+    entityProperties.editionNumber = 876;
+    entityProperties.entityInstanceNumber = 345;
+    entityProperties.marketplaceID = "market place ID";
+    entityProperties.staticCertificateVersion = 2;
+    
     entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
-    entityProperties.dimensions = { x: 1.1, y: 3.3, z: 5.5 };
     entityProperties.color =  { red: 11, green: 33, blue: 55 };
     entityProperties.intensity =  2.0;
     entityProperties.falloffRadius = 6.0;
     entityProperties.isSpotlight = true;
     entityProperties.exponent = 0.25;
     entityProperties.cutoff = 45.0;
-    entityProperties.isVisibleInSecondaryCamera = true;
 
     nitpick.addStep("Set up light", function () {
         object = Entities.addEntity(entityProperties);

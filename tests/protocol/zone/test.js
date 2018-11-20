@@ -7,9 +7,10 @@ nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     setup();
     
     var object;
-    
-    var entityProperties = {}
+    var entityProperties = setCommonEntityProperties();
+
     entityProperties.type = "Zone";
+
     entityProperties.dimensions = { x: 20.0, y: 3.0, z: 9.75 };
 
     entityProperties.keyLightMode = "enabled";
