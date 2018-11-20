@@ -4,9 +4,9 @@ var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
-    setup();
     
     var object;
+    var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
     entityProperties.type = "Line";
@@ -53,6 +53,50 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     entityProperties.lineWidth = 123.5;
     entityProperties.color = { red: 85, green: 170, blue: 151 };
 
+    nitpick.addStep("Create a background zone", function () {
+        var zoneProperties = {
+            lifetime: LIFETIME,
+            type: "Zone",
+            name: "background",
+            position: originPosition,
+            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
+            
+            dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
+
+            keyLightMode: "enabled",
+            keyLight:{
+                color: { "red": 255, "green": 255, "blue": 255 },
+                intensity: 0.8,
+                direction: {
+                    "x": 0.0,
+                    "y": -0.70710678118,
+                    "z": -0.70710678118
+                }
+            },
+
+            skyboxMode: "enabled",
+            skybox: {
+                color: { red: 255, green: 255, blue: 255 },
+                url: assetsRootPath + 'skymaps/YellowCube.jpg'
+            }
+        };
+        backgroundZone = Entities.addEntity(zoneProperties);
+    });
+    
+    nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
+        var boxProperties = {
+            type: "Box",
+            name: "box",
+            lifetime: LIFETIME,
+            color: { red: 255, green: 255, blue: 255 },
+            position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
+            dimensions: { x: 1.0, y: 1.0, z: 1.0 },
+            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
+        };
+        box = Entities.addEntity(boxProperties);
+    });
+    nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
+
     nitpick.addStep("Set up line", function () {
         object = Entities.addEntity(entityProperties);
     });
@@ -65,6 +109,7 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     
     nitpick.addStep("Clean up after test", function () {
         teardown();
+        Entities.deleteEntity(backgroundZone);
         Entities.deleteEntity(object);
     });
     
