@@ -2,39 +2,56 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
-    entityProperties.type = "Light";
-
-    entityProperties.cloneable = false;
-    entityProperties.cloneLifetime = 200;
-    entityProperties.cloneLimit = 1;
-    entityProperties.cloneDynamic = true;
-    entityProperties.cloneAvatarEntity = false;
-    entityProperties.cloneOriginID = "{12345678-4321-5555-7777-123412349876}";
-    entityProperties.itemName = "item name";
-    entityProperties.itemDescription = "item description";
-    entityProperties.itemCategories = "item categories";
-    entityProperties.itemArtist = "item artist";
-    entityProperties.itemLicense = "item license";
-    entityProperties.limitedRun = 123456;
-    entityProperties.editionNumber = 876;
-    entityProperties.entityInstanceNumber = 345;
-    entityProperties.marketplaceID = "market place ID";
-    entityProperties.staticCertificateVersion = 2;
-    
-    entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
-    entityProperties.color =  { red: 11, green: 33, blue: 55 };
-    entityProperties.intensity =  2.0;
-    entityProperties.falloffRadius = 6.0;
-    entityProperties.isSpotlight = true;
-    entityProperties.exponent = 0.25;
-    entityProperties.cutoff = 45.0;
+    entityProperties.type = "Line";
+        
+    entityProperties.dimensions = { x: 2000, y: 4000, z: 8888 };
+    entityProperties.linePoints = [
+        { x: 510.4, y: 37.25, z:  100 },
+        { x: 510.4, y: 37.25, z:  101 },
+        { x: 510.4, y: 37.25, z:  102 },
+        { x: 510.4, y: 37.25, z:  103 },
+        { x: 510.4, y: 37.25, z:  104 },
+        { x: 510.4, y: 37.25, z:  105 },
+        { x: 510.4, y: 37.25, z:  106 },
+        { x: 510.4, y: 37.25, z:  107 },
+        { x: 510.4, y: 37.25, z:  108 },
+        { x: 510.4, y: 37.25, z:  109 },
+        { x: 510.4, y: 37.25, z:  110 },
+        { x: 510.4, y: 37.25, z:  111 },
+        { x: 510.4, y: 37.25, z:  112 },
+        { x: 510.4, y: 37.25, z:  113 },
+        { x: 510.4, y: 37.25, z:  114 },
+        { x: 510.4, y: 37.25, z:  115 },
+        { x: 510.4, y: 37.25, z:  116 },
+        { x: 510.4, y: 37.25, z:  117 },
+        { x: 510.4, y: 37.25, z:  118 },
+        { x: 510.4, y: 37.25, z:  119 },
+        { x: 510.4, y: 37.25, z:  120 },
+        { x: 510.4, y: 37.25, z:  121 },
+        { x: 510.4, y: 37.25, z:  122 },
+        { x: 510.4, y: 37.25, z:  123 },
+        { x: 510.4, y: 37.25, z:  124 },
+        { x: 510.4, y: 37.25, z:  125 },
+        { x: 510.4, y: 37.25, z:  126 },
+        { x: 510.4, y: 37.25, z:  127 },
+        { x: 510.4, y: 37.25, z:  128 },
+        { x: 510.4, y: 37.25, z:  129 },
+        { x: 510.4, y: 37.25, z:  130 },
+        { x: 510.4, y: 37.25, z:  131 },
+        { x: 510.4, y: 37.25, z:  132 },
+        { x: 510.4, y: 37.25, z:  133 },
+        { x: 510.4, y: 37.25, z:  134 },
+        { x: 510.4, y: 37.25, z:  135 }
+    ];
+    entityProperties.lineWidth = 123.5;
+    entityProperties.color = { red: 85, green: 170, blue: 151 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {
@@ -80,11 +97,11 @@ nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePa
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
-    nitpick.addStep("Set up light", function () {
+    nitpick.addStep("Set up line", function () {
         object = Entities.addEntity(entityProperties);
     });
     
-    nitpick.addStep("Test light", function () {
+    nitpick.addStep("Test line", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });

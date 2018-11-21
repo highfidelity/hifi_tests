@@ -4,54 +4,6 @@ assetsRootPath = nitpick.getAssetsRootPath();
 
 box = 0;
 
-var backgroundZone;
-
-setup = function() {
-    nitpick.addStep("Create a background zone", function () {
-        var zoneProperties = {
-            lifetime: LIFETIME,
-            type: "Zone",
-            name: "background",
-            position: originPosition,
-            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
-            
-            dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
-
-            keyLightMode: "enabled",
-            keyLight:{
-                color: { "red": 255, "green": 255, "blue": 255 },
-                intensity: 0.8,
-                direction: {
-                    "x": 0.0,
-                    "y": -0.70710678118,
-                    "z": -0.70710678118
-                }
-            },
-
-            skyboxMode: "enabled",
-            skybox: {
-                color: { red: 255, green: 255, blue: 255 },
-                url: assetsRootPath + 'skymaps/YellowCube.jpg'
-            }
-        };
-        backgroundZone = Entities.addEntity(zoneProperties);
-    });
-    
-    nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
-        var boxProperties = {
-            type: "Box",
-            name: "box",
-            lifetime: LIFETIME,
-            color: { red: 255, green: 255, blue: 255 },
-            position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
-            dimensions: { x: 1.0, y: 1.0, z: 1.0 },
-            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
-        };
-        box = Entities.addEntity(boxProperties);
-    });
-    nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
-}
-
 allPassed = function(failures) {
     var noneFailed = true;
     for (var i = 0; i < failures.length; ++i) {
@@ -108,7 +60,11 @@ compareObjects = function(object1, object2, failures) {
         } else {
             var failure;
             if (typeof object1[key] === 'number') {
-                failure = areNumbersDifferent(object1[key], object2[key]);
+                if (typeof object2 === 'undefined') {
+                    console.warn(key, "IS NOT DEFINED");
+                } else {
+                    failure = areNumbersDifferent(object1[key], object2[key]);
+                }
             } else {
                 failure = (object1[key] !== object2[key]);
             }
@@ -131,7 +87,6 @@ showResults = function(failures) {
 }
 
 teardown = function() {
-    Entities.deleteEntity(backgroundZone);
     Entities.deleteEntity(box);
 }
 
@@ -176,7 +131,6 @@ setCommonEntityProperties = function() {
     entityProperties.cloneLimit = 1;
     entityProperties.cloneDynamic = true;
     entityProperties.cloneAvatarEntity = false;
-    entityProperties.cloneOriginID = "{12345678-4321-5555-7777-123412349876}";
     entityProperties.itemName = "item name";
     entityProperties.itemDescription = "item description";
     entityProperties.itemCategories = "item categories";
