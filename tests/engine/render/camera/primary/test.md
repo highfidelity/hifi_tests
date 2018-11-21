@@ -10,17 +10,19 @@ Press 'n' key to advance step by step
 ### Step 1
 - Create zone and model
 ### Step 2
+- Setup avatar
+### Step 3
 - Snapshot - 1920x1036, 45 degrees
 - ![](./ExpectedImage_00000.png)
-### Step 3
-- Change position
 ### Step 4
+- Change position
+### Step 5
 - Position has moved back and left
 - ![](./ExpectedImage_00001.png)
-### Step 5
-- Change orientation
 ### Step 6
+- Change orientation
+### Step 7
 - Orientation tilted up and yawed right
 - ![](./ExpectedImage_00002.png)
-### Step 7
+### Step 8
 - Clean up after test
