@@ -2,31 +2,47 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     setup();
     
     var object;
-  
-    var setProperties = {
-        lifetime: LIFETIME,  
-        name: "Name of light entity",
-        type: "Light",
-        isSpotlight: true,
-        color: { red: 11, green: 33, blue: 55 },
-        intensity: 2.0,
-        falloffRadius: 6.0,
-        exponent: 0.25,
-        cutoff: 45.0
-    };
+    var entityProperties = setCommonEntityProperties();
+
+    entityProperties.type = "Light";
+
+    entityProperties.cloneable = false;
+    entityProperties.cloneLifetime = 200;
+    entityProperties.cloneLimit = 1;
+    entityProperties.cloneDynamic = true;
+    entityProperties.cloneAvatarEntity = false;
+    entityProperties.cloneOriginID = "{12345678-4321-5555-7777-123412349876}";
+    entityProperties.itemName = "item name";
+    entityProperties.itemDescription = "item description";
+    entityProperties.itemCategories = "item categories";
+    entityProperties.itemArtist = "item artist";
+    entityProperties.itemLicense = "item license";
+    entityProperties.limitedRun = 123456;
+    entityProperties.editionNumber = 876;
+    entityProperties.entityInstanceNumber = 345;
+    entityProperties.marketplaceID = "market place ID";
+    entityProperties.staticCertificateVersion = 2;
+    
+    entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
+    entityProperties.color =  { red: 11, green: 33, blue: 55 };
+    entityProperties.intensity =  2.0;
+    entityProperties.falloffRadius = 6.0;
+    entityProperties.isSpotlight = true;
+    entityProperties.exponent = 0.25;
+    entityProperties.cutoff = 45.0;
 
     nitpick.addStep("Set up light", function () {
-        object = Entities.addEntity(setProperties);
+        object = Entities.addEntity(entityProperties);
     });
     
     nitpick.addStep("Test light", function () {
         var getProperties = Entities.getEntityProperties(object);
-        showResults(compareObjects(setProperties, getProperties));
+        showResults(compareObjects(entityProperties, getProperties));
     });
     nitpick.addStepSnapshot("Show result");
     
