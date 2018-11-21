@@ -13,6 +13,9 @@ nitpick.enableRecursive();
 nitpick.enableAuto();
 
 Script.include(testsRootPath + "protocol/zone/test.js");
+Script.include(testsRootPath + "protocol/material/test.js");
+Script.include(testsRootPath + "protocol/line/test.js");
 Script.include(testsRootPath + "protocol/light/test.js");
+Script.include(testsRootPath + "protocol/box/test.js");
 
 nitpick.runRecursive();

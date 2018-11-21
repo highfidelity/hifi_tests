@@ -2,39 +2,23 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
-    entityProperties.type = "Light";
+    entityProperties.type = "Box";
+        
+    entityProperties.boundingBox = {
+        brn: { x: 1.0663206577, y: 3.33795213699, z: 5.55088996887 },
+        tfl: { x:  1.235045075416, y: 3.490031242370, z:  5.69143104553222 },
+        center: { x: 1.1506829261779785, y: 3.413991689682, z:  5.6211605072 },
+        dimensions: { x: 0.1687244176864624, y: 0.15207910537719727, z:  0.14054107666015625 }
+    };
 
-    entityProperties.cloneable = false;
-    entityProperties.cloneLifetime = 200;
-    entityProperties.cloneLimit = 1;
-    entityProperties.cloneDynamic = true;
-    entityProperties.cloneAvatarEntity = false;
-    entityProperties.cloneOriginID = "{12345678-4321-5555-7777-123412349876}";
-    entityProperties.itemName = "item name";
-    entityProperties.itemDescription = "item description";
-    entityProperties.itemCategories = "item categories";
-    entityProperties.itemArtist = "item artist";
-    entityProperties.itemLicense = "item license";
-    entityProperties.limitedRun = 123456;
-    entityProperties.editionNumber = 876;
-    entityProperties.entityInstanceNumber = 345;
-    entityProperties.marketplaceID = "market place ID";
-    entityProperties.staticCertificateVersion = 2;
-    
-    entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
-    entityProperties.color =  { red: 11, green: 33, blue: 55 };
-    entityProperties.intensity =  2.0;
-    entityProperties.falloffRadius = 6.0;
-    entityProperties.isSpotlight = true;
-    entityProperties.exponent = 0.25;
-    entityProperties.cutoff = 45.0;
+    entityProperties.queryAACube = { x: 1.0616825819015503, y: 3.2616827487945557, z: 5.461682319641113, scale: 0.27663490176200867 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {
@@ -80,11 +64,11 @@ nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePa
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
-    nitpick.addStep("Set up light", function () {
+    nitpick.addStep("Set up box", function () {
         object = Entities.addEntity(entityProperties);
     });
     
-    nitpick.addStep("Test light", function () {
+    nitpick.addStep("Test box", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });

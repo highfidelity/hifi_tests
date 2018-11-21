@@ -144,5 +144,7 @@ Directories with an appended (*) have an automatic test
     - [manualTrace](./performance/manualTrace?raw=true)  [(test description)](./performance/manualTrace/test.md)
     - [sceneLoad](./performance/sceneLoad?raw=true)  [(test description)](./performance/sceneLoad/test.md)
   - [protocol](./protocol?raw=true)
+    - [box](./protocol/box?raw=true) (*)
     - [light](./protocol/light?raw=true)  [(test description)](./protocol/light/test.md) (*)
+    - [material](./protocol/material?raw=true)  [(test description)](./protocol/material/test.md) (*)
     - [zone](./protocol/zone?raw=true)  [(test description)](./protocol/zone/test.md) (*)
