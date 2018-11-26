@@ -48,7 +48,8 @@ var LOCATIONS_ARRAY = [{ min_x: 20, max_x: 21, y: 0.5, min_z: 20, max_z: 21}];
 
 var LOCATION_PARAMS = LOCATIONS_ARRAY[Math.floor(Math.random() * LOCATIONS_ARRAY.length)];
 
-var LOCATION = { x: randFloat(LOCATION_PARAMS.min_x, LOCATION_PARAMS.max_x), y: LOCATION_PARAMS.y, z: randFloat(LOCATION_PARAMS.min_z, LOCATION_PARAMS.max_z) };
+var LOCATION_ORIGIN = {"x":-72.,"y":-21.,"z":74.};
+var LOCATION = { x: LOCATION_ORIGIN.x + randFloat(LOCATION_PARAMS.min_x, LOCATION_PARAMS.max_x), y: LOCATION_ORIGIN.y + LOCATION_PARAMS.y, z: LOCATION_ORIGIN.z + randFloat(LOCATION_PARAMS.min_z, LOCATION_PARAMS.max_z) };
 
 Vec3.print("RANDOM LOCATION SELECTED:", LOCATION);
 
