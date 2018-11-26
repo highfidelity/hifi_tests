@@ -1,10 +1,10 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Spot light", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
     var initData = {
@@ -12,7 +12,7 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
             hasKeyLight: false,
             hasAmbientLight: false
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var createdEntities = setupStage(initData);
 
@@ -22,7 +22,6 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
     // Define zone properties
     var properties = {
         lifetime: 120,  
-        type: "light",  
         name: "test create spot light",
         position: posOri.pos,
         rotation: lightOri,
@@ -46,7 +45,6 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
 
     properties = {
         lifetime: 120,  
-        type: "light",  
         name: "test create spot light",
         position: posOri2.pos,
         rotation: lightOri2,
@@ -70,15 +68,15 @@ autoTester.perform("Spot light", Script.resolvePath("."), "secondary", function(
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-    autoTester.addStep("Wait for entities to load");
-    autoTester.addStepSnapshot("Display the 2 spotlights");
+    nitpick.addStep("Wait for entities to load");
+    nitpick.addStepSnapshot("Display the 2 spotlights");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });
 

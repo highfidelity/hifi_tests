@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Parabola ignore test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Parabola ignore test", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../parabolaPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var NUM = 10;
     var origin = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(10, Vec3.FRONT)), Vec3.multiply(-NUM / 2, Vec3.RIGHT));
@@ -46,7 +46,7 @@ autoTester.perform("Parabola ignore test", Script.resolvePath("."), "secondary",
         overlays.push(Overlays.addOverlay("cube", properties));
     }
 
-    autoTester.addStep("Move back to see all the objects", function () {
+    nitpick.addStep("Move back to see all the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
@@ -64,13 +64,13 @@ autoTester.perform("Parabola ignore test", Script.resolvePath("."), "secondary",
 
         Camera.setOrientation(q0);
     });
-    autoTester.addStepSnapshot("Initial position");
+    nitpick.addStepSnapshot("Initial position");
 
     var ignore = [];
     var even = true;
     var index = -1;
     for (var i = 0; i < NUM; i++) {
-        autoTester.addStep("Position " + i, function () {
+        nitpick.addStep("Position " + i, function () {
             index++;
             if (even) {
                 ignore.push(entities[index / 2]);
@@ -81,10 +81,10 @@ autoTester.perform("Parabola ignore test", Script.resolvePath("."), "secondary",
             print(JSON.stringify(ignore) + " " + index);
             Pointers.setIgnoreItems(parabola, ignore);
         });
-        autoTester.addStepSnapshot("Position " + i);
+        nitpick.addStepSnapshot("Position " + i);
     }
 
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         Pointers.removePointer(parabola);
         for (i = 0; i < entities.length; i++) {
             Entities.deleteEntity(entities[i]);
@@ -96,5 +96,5 @@ autoTester.perform("Parabola ignore test", Script.resolvePath("."), "secondary",
         overlays = [];
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

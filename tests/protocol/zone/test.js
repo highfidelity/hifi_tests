@@ -1,0 +1,127 @@
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+var nitpick = createNitpick(Script.resolvePath("."));
+
+nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+    Script.include('../common.js');
+    
+    var object;
+    var backgroundZone;
+    var entityProperties = setCommonEntityProperties();
+
+    entityProperties.type = "Zone";
+
+    entityProperties.dimensions = { x: 20.0, y: 3.0, z: 9.75 };
+
+    entityProperties.keyLightMode = "enabled";
+    entityProperties.keyLight = {
+        color: { "red": 34, "green": 73, "blue": 88 },
+        intensity: 0.125,
+        direction: {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+        }
+    };
+
+    entityProperties.skyboxMode = "enabled";
+    entityProperties.skybox = {
+        color: { red: 12, green: 93, blue: 233 },
+        url: 'https://skymaps/YellowCube.jpg'
+    };
+                    
+    entityProperties.ambientLightMode = "disabled";
+    entityProperties.ambientLight = {
+        ambientURL: 'http://skymaps/Sky_Day-Sun-Mid-photo.texmeta.json'
+    };
+        
+    entityProperties.hazeMode = 'enabled';
+    entityProperties.haze = {
+        hazeRange: 502.5,
+        hazeColor: { red: 153, green: 107, blue: 47 },
+        hazeGlareColor: { red: 53, green: 64, blue: 128 },
+        hazeEnableGlare: true,
+        hazeGlareAngle: 64.5,
+        hazeAltitudeEffect: true,
+        hazeCeiling: 5432.0,
+        hazeBaseRef: 1423.0,
+        hazeBackgroundBlend: 0.375,
+        hazeAttenuateKeyLight: false,
+        hazeKeyLightRange: 1000.0,
+        hazeKeyLightAltitude: 2343.0
+    };
+
+    entityProperties.bloomMode = "disabled" ;
+    entityProperties.bloom = {
+        bloomIntensity: 1.0,
+        bloomThreshold: 0.875
+    };
+
+    entityProperties.flyingAllowed = true;
+    entityProperties.ghostingAllowed = false
+    entityProperties.filterURL = "http://Filter URL";
+    entityProperties.compoundShapeURL = "https://Compound shape URL";
+    entityProperties.shapeType = "box";
+
+    nitpick.addStep("Create a background zone", function () {
+        var zoneProperties = {
+            lifetime: LIFETIME,
+            type: "Zone",
+            name: "background",
+            position: originPosition,
+            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
+            
+            dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
+
+            keyLightMode: "enabled",
+            keyLight:{
+                color: { "red": 255, "green": 255, "blue": 255 },
+                intensity: 0.8,
+                direction: {
+                    "x": 0.0,
+                    "y": -0.70710678118,
+                    "z": -0.70710678118
+                }
+            },
+
+            skyboxMode: "enabled",
+            skybox: {
+                color: { red: 255, green: 255, blue: 255 },
+                url: assetsRootPath + 'skymaps/YellowCube.jpg'
+            }
+        };
+        backgroundZone = Entities.addEntity(zoneProperties);
+    });
+    
+    nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
+        var boxProperties = {
+            type: "Box",
+            name: "box",
+            lifetime: LIFETIME,
+            color: { red: 255, green: 255, blue: 255 },
+            position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
+            dimensions: { x: 1.0, y: 1.0, z: 1.0 },
+            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
+        };
+        box = Entities.addEntity(boxProperties);
+    });
+    nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
+
+    nitpick.addStep("Create a zone", function () {
+        object = Entities.addEntity(entityProperties);
+    });
+    
+    nitpick.addStep("Test zone", function () {
+        var getProperties = Entities.getEntityProperties(object);
+        showResults(compareObjects(entityProperties, getProperties));
+    });
+    nitpick.addStepSnapshot("Show result");
+    
+    nitpick.addStep("Clean up after test", function () {
+        teardown();
+        Entities.deleteEntity(backgroundZone);
+        Entities.deleteEntity(object);
+    });
+    
+    var result = nitpick.runTest(testType);
+});

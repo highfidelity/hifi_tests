@@ -1,0 +1,117 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 06.07.2014 18:14:17
+
+newmtl Nectarine2
+	Ns 50.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Nectarine-2.jpg
+	map_Kd Nectarine-2.jpg
+	map_bump Nectarine-glossy.jpg
+	bump Nectarine-glossy.jpg
+	map_refl Mask_Mask.tga
+
+newmtl Material__2126310377
+	Ns 43.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_refl Raytrace_Raytrace.tga
+
+newmtl Peach
+	Ns 16.5000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.7098 0.7098 0.7098
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Peach.jpg
+	map_Kd Peach.jpg
+	map_bump Peach-bump.jpg
+	bump Peach-bump.jpg
+	map_refl Map__2070297661_Falloff.tga
+
+newmtl Bowl_for_figsw
+	Ns 50.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.3451 0.2471 0.0784
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka bowl.jpg
+	map_Kd bowl.jpg
+	map_bump bowl_bump.jpg
+	bump bowl_bump.jpg
+	map_refl Mask_Mask.tga
+
+newmtl Nectarine
+	Ns 50.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Nectarines.jpg
+	map_Kd Nectarines.jpg
+	map_bump Nectarine-glossy.jpg
+	bump Nectarine-glossy.jpg
+	map_refl Mask_Mask.tga
+
+newmtl Peach2
+	Ns 16.5000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.7098 0.7098 0.7098
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Peach2.jpg
+	map_Kd Peach2.jpg
+	map_bump Peach-bump.jpg
+	bump Peach-bump.jpg
+	map_refl Map__2070297661_Falloff.tga
+
+newmtl Wood_bowl
+	Ns 50.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5451 0.5451 0.5451
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Wood-bowl.jpg
+	map_Kd Wood-bowl.jpg
+	map_bump Wood-bowl b.jpg
+	bump Wood-bowl b.jpg
+	map_refl Raytrace_Raytrace.tga

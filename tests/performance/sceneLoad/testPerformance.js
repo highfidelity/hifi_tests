@@ -1,17 +1,17 @@
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Scene load performance", Script.resolvePath("."), "secondary", function(testType) {
-    autoTester.addStep("Clear cache", function () {
+nitpick.perform("Scene load performance", Script.resolvePath("."), "secondary", function(testType) {
+    nitpick.addStep("Clear cache", function () {
         Test.clearCaches();
     });
     
-    autoTester.addStep("Wait till idle", function () {
+    nitpick.addStep("Wait till idle", function () {
         Test.waitIdle();
     });
     
-    autoTester.addStep("Run test", function () {
+    nitpick.addStep("Run test", function () {
         Window.location = "hifi://dev-AvatarIsland.highfidelity.io/20.3,-8.1,-9.8/";
         MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0, 79.8, 0);
         
@@ -34,5 +34,5 @@ autoTester.perform("Scene load performance", Script.resolvePath("."), "secondary
         Test.saveObject(results, "results.txt");
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

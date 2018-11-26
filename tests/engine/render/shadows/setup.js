@@ -7,9 +7,9 @@
 // The models are loaded from the "MODEL_DIR_URL" located on github where we store all our test models
 
 // Test material matrix
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
-var assetsRootPath = autoTester.getAssetsRootPath();
+var assetsRootPath = nitpick.getAssetsRootPath();
 var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
@@ -24,7 +24,7 @@ setup = function (altitude, azimuth, originFrame) {
             hasKeyLight: false,
             hasAmbientLight: false
         },
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var entities = setupStage(initData);
 
@@ -32,7 +32,8 @@ setup = function (altitude, azimuth, originFrame) {
     var BRIGHT_SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
     entities.push(Entities.addEntity({
         type: "Zone",
-        name: "Zone",
+        name: "Zone for Shadow Tests",
+        lifetime: LIFETIME,
 
         position: originFrame,
         dimensions: { x: 1000.0, y: 1000.0, z: 1000.0},

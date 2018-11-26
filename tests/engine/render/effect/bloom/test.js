@@ -1,11 +1,12 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", function(testType) {
-    var pos =  MyAvatar.position;
-
-    var assetsRootPath = autoTester.getAssetsRootPath();
+nitpick.perform("effect - bloom", Script.resolvePath("."), "secondary", function(testType) {
+    var pos =  nitpick.getOriginFrame();
+    pos.y += 1.0;
+    
+    var assetsRootPath = nitpick.getAssetsRootPath();
     var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
     var MODEL_NAME_SUFFIX = ".fbx";
 
@@ -85,16 +86,16 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
         }
     });
 
-    autoTester.addStepSnapshot("Bloom is off - no bloom should be visible");
+    nitpick.addStepSnapshot("Bloom is off - no bloom should be visible");
         
-    autoTester.addStep("Enable bloom", function () {
+    nitpick.addStep("Enable bloom", function () {
         Entities.editEntity(sky, {
             bloomMode: "enabled"
         })
     });
-    autoTester.addStepSnapshot("Bloom enabled");
+    nitpick.addStepSnapshot("Bloom enabled");
 
-    autoTester.addStep("Clean up",
+    nitpick.addStep("Clean up",
         function () {
             Entities.deleteEntity(terrain);
             Entities.deleteEntity(object);
@@ -104,5 +105,5 @@ autoTester.perform("effect - bloom", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

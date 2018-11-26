@@ -1,12 +1,12 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function(testType) {
     var createdEntities = [];
     var createdOverlays = [];
 
-    var assetsRootPath = autoTester.getAssetsRootPath();
+    var assetsRootPath = nitpick.getAssetsRootPath();
 
     // all objects will have a finite lifetime
     var LIFETIME = 300; // 5 min
@@ -19,7 +19,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         Quat.angleAxis(0, { x: 0, y: 1, z: 0 }),
         true
     );
-    position = autoTester.getOriginFrame();
+    position = nitpick.getOriginFrame();
     position.z = position.z + 1.0;
 
     validationCamera_translate({ x: 0.0, y: -0.75, z: 5.8 });
@@ -283,12 +283,12 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
     createdEntities.push(hifi);
     createdEntities.push(terrain);
 
-    autoTester.addStep("Position secondary camera", function() {
+    nitpick.addStep("Position secondary camera", function() {
         validationCamera_translate({ x: 0.0, y: 0.0, z: -8.0 });
         validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
     });
 
-    autoTester.addStepSnapshot("Step 1",
+    nitpick.addStepSnapshot("Step 1",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
@@ -309,13 +309,13 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 2",
+    nitpick.addStepSnapshot("Step 2",
         function() {
              Selection.addToSelectedItemsList("TestHifi1", "entity", hifi)
         }
     );
     
-    autoTester.addStepSnapshot("Step 3",
+    nitpick.addStepSnapshot("Step 3",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
@@ -335,7 +335,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 4",
+    nitpick.addStepSnapshot("Step 4",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 255, green: 0, blue: 0 },
@@ -356,7 +356,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 5",
+    nitpick.addStepSnapshot("Step 5",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 244, blue: 255 },
@@ -377,7 +377,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 6",   
+    nitpick.addStepSnapshot("Step 6",   
        function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 255, blue: 0 },
@@ -398,13 +398,13 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 7",    
+    nitpick.addStepSnapshot("Step 7",    
         function() {
             Selection.addToSelectedItemsList("TestHifi3", "entity", terrain)
         }
     );
 
-    autoTester.addStepSnapshot("Step 8",
+    nitpick.addStepSnapshot("Step 8",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 128, green: 255, blue: 250 },
@@ -424,13 +424,13 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 9",
+    nitpick.addStepSnapshot("Step 9",
         function () {
             Selection.disableListHighlight("TestHifi2");
         }
     );
 
-    autoTester.addStepSnapshot("Step 10",
+    nitpick.addStepSnapshot("Step 10",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 250, green: 255, blue: 0 },
@@ -450,7 +450,7 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Step 11",
+    nitpick.addStepSnapshot("Step 11",
         function () {
             Selection.disableListHighlight("TestHifi1");
             Selection.disableListHighlight("TestHifi2");
@@ -458,9 +458,9 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Clean up after test", 
+    nitpick.addStep("Clean up after test", 
         function () {
             Selection.disableListHighlight("TestHifi1");
             Selection.disableListHighlight("TestHifi2"); 
@@ -477,5 +477,5 @@ autoTester.perform("Highlight Test", Script.resolvePath("."), "secondary", funct
         }
     );
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

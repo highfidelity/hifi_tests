@@ -18,7 +18,7 @@ Press 'n' key to advance step by step
 ### Step 4
 - Add yaw zone 90 degrees clockwise
 ### Step 5
-- :ight should come from left, 45 degrees above horizon
+- Light should come from left, 45 degrees above horizon
 - ![](./ExpectedImage_00002.png)
 ### Step 6
 - Add roll zone 45 degrees clockwise

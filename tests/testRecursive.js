@@ -1,18 +1,22 @@
 // This is an automatically generated file, created by auto-tester
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-var testsRootPath = autoTester.getTestsRootPath();
+var testsRootPath = nitpick.getTestsRootPath();
 
 if (typeof Test !== 'undefined') {
     Test.wait(10000);
 };
 
-autoTester.enableRecursive();
-autoTester.enableAuto();
+nitpick.enableRecursive();
+nitpick.enableAuto();
 
-Script.include(testsRootPath + "engine/render/textures/procedural/test.js");
+Script.include(testsRootPath + "protocol/zone/test.js");
+Script.include(testsRootPath + "protocol/material/test.js");
+Script.include(testsRootPath + "protocol/line/test.js");
+Script.include(testsRootPath + "protocol/light/test.js");
+Script.include(testsRootPath + "protocol/box/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/normal/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/grazing/test.js");
 Script.include(testsRootPath + "engine/render/shadows/primaryCamera/front/test.js");
@@ -41,7 +45,8 @@ Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
-Script.include(testsRootPath + "engine/render/antialiasing/test.js");
+Script.include(testsRootPath + "engine/render/camera/secondary/test.js");
+Script.include(testsRootPath + "engine/render/camera/primary/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");
@@ -67,11 +72,16 @@ Script.include(testsRootPath + "content/overlay/layer/drawInFront/alpha/test.js"
 Script.include(testsRootPath + "content/overlay/layer/drawHUDLayer/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneOrientation/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneEffects/test.js");
+Script.include(testsRootPath + "content/entity/zone/shadowControl/test.js");
 Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
 Script.include(testsRootPath + "content/entity/shape/create/test.js");
 Script.include(testsRootPath + "content/entity/procedural/test.js");
-Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/still_life/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/simple/test.js");
 Script.include(testsRootPath + "content/entity/material/create/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/overlays/model/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/shape/test.js");
@@ -80,4 +90,4 @@ Script.include(testsRootPath + "content/entity/material/apply/avatars/test.js");
 Script.include(testsRootPath + "content/entity/light/spot/create/test.js");
 Script.include(testsRootPath + "content/entity/light/point/create/test.js");
 
-autoTester.runRecursive();
+nitpick.runRecursive();

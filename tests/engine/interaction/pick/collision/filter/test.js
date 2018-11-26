@@ -1,17 +1,17 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
-Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+var nitpick = createNitpick(Script.resolvePath("."));
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
-Script.include(Script.resolvePath(autoTester.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
+Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
-autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."), "secondary", function(testType) {
-    var initData = { originFrame: autoTester.getOriginFrame() };
+nitpick.perform("Test CollisionPick pick filtering", Script.resolvePath("."), "secondary", function(testType) {
+    var initData = { originFrame: nitpick.getOriginFrame() };
     var createdEntities = setupStage(initData);
     var createdPicks = [];
     var filteredEntity;
     
-    autoTester.addStep("Create test box and collision picks with different filters", function () {
+    nitpick.addStep("Create test box and collision picks with different filters", function () {
         createdEntities.push(Entities.addEntity({
             color: COLOR_NEUTRAL,
             lifetime: ENTITY_LIFETIME,
@@ -44,7 +44,7 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
         Picks.setIncludeItems(createdPicks[2], [filteredEntity]);
     });
     
-    autoTester.addStep("Show pick collision results", function () {
+    nitpick.addStep("Show pick collision results", function () {
         // Create boxes where the picks are. Color indicates whether the pick registered an intersection
         var pickIntersects = [];
         for (var i = 0; i < createdPicks.length; i++) {
@@ -73,7 +73,7 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
         }
     });
     
-    autoTester.addStepSnapshot("Collision pick results are visible");
+    nitpick.addStepSnapshot("Collision pick results are visible");
     
     function cleanup() {
         clearEntities(createdEntities);
@@ -82,9 +82,9 @@ autoTester.perform("Test CollisionPick pick filtering", Script.resolvePath("."),
     
     Script.scriptEnding.connect(cleanup);
     
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         cleanup();
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

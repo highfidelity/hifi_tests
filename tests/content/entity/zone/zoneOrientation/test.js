@@ -1,14 +1,14 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Zone - effects of orientation", Script.resolvePath("."), "secondary", function(testType) {
     var avatarOriginPosition = MyAvatar.position;
 
     var zonePosition = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };
     var zoneDimensions = { x: 200.0, y: 200.0, z: 200.0};
 
-    var assetsRootPath = autoTester.getAssetsRootPath();
+    var assetsRootPath = nitpick.getAssetsRootPath();
 
     var LIFETIME = 60.0;
 
@@ -91,49 +91,49 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "se
 
     // An array of tests is created.  These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
-    autoTester.addStepSnapshot("Zone not rotated - keylight at zenith");
+    nitpick.addStepSnapshot("Zone not rotated - keylight at zenith");
 
     // Keylight tests (keylight is straight up)
-    autoTester.addStep("Pitch zone 45 degrees up", function () {
+    nitpick.addStep("Pitch zone 45 degrees up", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, 0.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Light should come from behind, 45 degrees above horizon");
+    nitpick.addStepSnapshot("Light should come from behind, 45 degrees above horizon");
 
-    autoTester.addStep("Add yaw zone 90 degrees clockwise", function () {
+    nitpick.addStep("Add yaw zone 90 degrees clockwise", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 0.0)});  
     });
-    autoTester.addStepSnapshot(":ight should come from left, 45 degrees above horizon");
+    nitpick.addStepSnapshot("Light should come from left, 45 degrees above horizon");
 
-    autoTester.addStep("Add roll zone 45 degrees clockwise", function () {
+    nitpick.addStep("Add roll zone 45 degrees clockwise", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(45.0, -90.0, 45.0 )});  
     });
-    autoTester.addStepSnapshot("Light should come from left");
+    nitpick.addStepSnapshot("Light should come from left");
 
     // Skybox tests
-    autoTester.addStep("Clear zone rotation", function () {
+    nitpick.addStep("Clear zone rotation", function () {
         Entities.editEntity(sphere, {visible: false });  
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 )});  
         Entities.editEntity(zone, {keyLightMode: "disabled", skyboxMode: "enabled"});  
     });
-    autoTester.addStepSnapshot("Sun straight ahead on purple background (sphere is hidden)");
+    nitpick.addStepSnapshot("Sun straight ahead on purple background (sphere is hidden)");
 
-    autoTester.addStep("Yaw zone 15 degrees right", function () {
+    nitpick.addStep("Yaw zone 15 degrees right", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, -15.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Sun should move right");
+    nitpick.addStepSnapshot("Sun should move right");
 
-    autoTester.addStep("Pitch zone 15 degrees up and yaw zone 15 degrees right", function () {
+    nitpick.addStep("Pitch zone 15 degrees up and yaw zone 15 degrees right", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(15.0, -15.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Sun should move right and up");
+    nitpick.addStepSnapshot("Sun should move right and up");
 
-    autoTester.addStep("Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees", function () {
+    nitpick.addStep("Pitch zone 15 degrees up, yaw zone 15 degrees right and roll 45 degrees", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(15.0, -15.0, 45.0)});  
     });
-    autoTester.addStepSnapshot("Sun should move straight up");
+    nitpick.addStepSnapshot("Sun should move straight up");
         
     // Ambient light tests
-    autoTester.addStep("Zone not rotated", function () {
+    nitpick.addStep("Zone not rotated", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
 
         // Add metallic object and show sphere
@@ -142,39 +142,39 @@ autoTester.perform("Zone - effects of orientation", Script.resolvePath("."), "se
 
         Entities.editEntity(zone, {ambientLightMode: "enabled"});  
     });
-    autoTester.addStepSnapshot("Diffuse sphere and metallic object visible (skybox still enabled as a visual aid)");
+    nitpick.addStepSnapshot("Diffuse sphere and metallic object visible (skybox still enabled as a visual aid)");
 
-    autoTester.addStep("Yaw to 90 degrees", function () {
+    nitpick.addStep("Yaw to 90 degrees", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 90.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Blue is now behind");
+    nitpick.addStepSnapshot("Blue is now behind");
 
-    autoTester.addStep("Yaw to 180 degrees", function () {
+    nitpick.addStep("Yaw to 180 degrees", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 180.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Purple is now behind");
+    nitpick.addStepSnapshot("Purple is now behind");
 
-    autoTester.addStep("Yaw to 270 degrees", function () {
+    nitpick.addStep("Yaw to 270 degrees", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 270.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Red is now behind");
+    nitpick.addStepSnapshot("Red is now behind");
 
-    autoTester.addStep("Pitch 90", function () {
+    nitpick.addStep("Pitch 90", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(90.0, 0.0, 0.0)});  
     });
-    autoTester.addStepSnapshot("Green is now behind");
+    nitpick.addStepSnapshot("Green is now behind");
 
-    autoTester.addStep("Roll 45 degrees", function () {
+    nitpick.addStep("Roll 45 degrees", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 45.0)});  
     });
-    autoTester.addStepSnapshot("Green top-left, red top-right, yellow bottom-right, blue bottom-left");
+    nitpick.addStepSnapshot("Green top-left, red top-right, yellow bottom-right, blue bottom-left");
 
-    autoTester.addStep("Cleanup", function () {
+    nitpick.addStep("Cleanup", function () {
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0)});  
         Entities.deleteEntity(zone);
         Entities.deleteEntity(sphere);
         Entities.deleteEntity(object);
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

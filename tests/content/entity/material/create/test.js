@@ -1,9 +1,9 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
-    Script.include(autoTester.getUtilsRootPath() + "test_stage.js");
+nitpick.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 
     // Add the test Cases
@@ -13,7 +13,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
             hasAmbientLight: false
         },
         lifetime: 200,
-        originFrame: autoTester.getOriginFrame()
+        originFrame: nitpick.getOriginFrame()
     };
     var createdEntities = setupStage(initData);
 
@@ -36,7 +36,7 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
     //Add test steps, These may be called via the timing mechanism for auto-testing,
     // or stepped through with the space bar
 
-    autoTester.addStep("Start in non-debug mode", function() {
+    nitpick.addStep("Start in non-debug mode", function() {
         setDebugMode(0);
 
         for (var i = 0; i <= NUM_ROWS; i++) {
@@ -163,49 +163,52 @@ autoTester.perform("Material Entities", Script.resolvePath("."), "primary", func
             }));
         }
     });
-    autoTester.addStepSnapshot("Take snapshot when not in Debug mode");
+        
+    nitpick.addDelay(10);
 
-    autoTester.addStep("Debug Emissive", function () {
+    nitpick.addStepSnapshot("Take snapshot when not in Debug mode");
+
+    nitpick.addStep("Debug Emissive", function () {
         setDebugMode(6);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Debug Albedo", function () {
+    nitpick.addStep("Debug Albedo", function () {
         setDebugMode(2);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Debug Metallic", function () {
+    nitpick.addStep("Debug Metallic", function () {
         setDebugMode(5);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Debug Roughness", function () {
+    nitpick.addStep("Debug Roughness", function () {
         setDebugMode(4);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Debug Normal", function () {
+    nitpick.addStep("Debug Normal", function () {
         setDebugMode(3);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Debug Occlusion", function () {
+    nitpick.addStep("Debug Occlusion", function () {
         setDebugMode(8);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Debug Scattering", function () {
+    nitpick.addStep("Debug Scattering", function () {
         setDebugMode(10);
     });
-    autoTester.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("Take snapshot");
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         setDebugMode(0);
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
         }
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

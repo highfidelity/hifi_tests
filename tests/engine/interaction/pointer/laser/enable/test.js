@@ -1,11 +1,11 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Laser - enabling and disabling", Script.resolvePath("."), "secondary", function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
-    initializeTestData(autoTester.getOriginFrame());
+    initializeTestData(nitpick.getOriginFrame());
 
     var lasers = [];
     lasers.push(Pointers.createPointer(PickType.Ray, {
@@ -32,24 +32,24 @@ autoTester.perform("Laser - enabling and disabling", Script.resolvePath("."), "s
     Pointers.disablePointer(lasers[0]);
     Pointers.enablePointer(lasers[1]);
 
-    autoTester.addStep("Move back to see the objects", function () {
+    nitpick.addStep("Move back to see the objects", function () {
         var offset = { x: 0.0, y: 0.0, z: 2.0 };
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
 
-    autoTester.addStepSnapshot("Enabled right laser", function () {
+    nitpick.addStepSnapshot("Enabled right laser", function () {
         Pointers.disablePointer(lasers[1]);
         Pointers.enablePointer(lasers[0]);
     });
 
-    autoTester.addStepSnapshot("Enabled left laser");
+    nitpick.addStepSnapshot("Enabled left laser");
     
-    autoTester.addStep("Clean up", function () {
+    nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {
             Pointers.removePointer(lasers[i]);
         }
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

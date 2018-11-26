@@ -1,6 +1,6 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
 var testFiles = [
     { image: "uncompressed_color.ktx", resolution: [2048, 2048] },
@@ -10,55 +10,42 @@ var testFiles = [
 
 var testState = {};
 
-autoTester.perform("Texture Rendering", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Texture Rendering", Script.resolvePath("."), "secondary", function(testType) {
     // Test Texture Procedural
     Script.include("../setup.js?raw=true")
 
     var stageEntities;
-    autoTester.addStep("Set up scene", function() {
-        stageEntities = setup(autoTester.getOriginFrame());
-    });
-
-    var fxaaWasOn;
-
-    autoTester.addStep("Turn off TAA for this test", function () {
-        fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
-        Render.getConfig("RenderMainView.JitterCam").none();
-        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
+    nitpick.addStep("Set up scene", function() {
+        stageEntities = setup(nitpick.getOriginFrame());
     });
 
     testFiles.forEach(function(props) {
         var maxMip = getMaxMip(props);
 
-        autoTester.addStep("Texture " + props.image, function() {
+        nitpick.addStep("Texture " + props.image, function() {
             testState.textureEntity = createTexture(props);
         });
 
-        autoTester.addStepSnapshot("Full Resolution");
+        nitpick.addStepSnapshot("Full Resolution");
         for (var mip = maxMip; mip > 0; --mip) {
             (function(mip) {
-                autoTester.addStep("Update Mip " + mip, function () {
+                nitpick.addStep("Update Mip " + mip, function () {
                     updateTextureMip(testState.textureEntity, mip); 
                 });
-                autoTester.addStepSnapshot("Mip " + mip);
+                nitpick.addStepSnapshot("Mip " + mip);
             })(mip);
         }
 
-        autoTester.addStep("Cleanup Texture", function () {
+        nitpick.addStep("Cleanup Texture", function () {
             Entities.deleteEntity(testState.textureEntity);
         });
     });
 
-    autoTester.addStep("Clean up after test", function () {
+    nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < stageEntities.length; i++) {
             Entities.deleteEntity(stageEntities[i]);
         }
-
-        if (!fxaaWasOn) {
-            Render.getConfig("RenderMainView.JitterCam").play();
-            Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
-        }
     });
 
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });

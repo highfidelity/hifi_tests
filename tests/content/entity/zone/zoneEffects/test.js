@@ -1,13 +1,13 @@
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", function(testType) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
     var avatarOriginPosition = MyAvatar.position;
 
-    var assetsRootPath = autoTester.getAssetsRootPath();
+    var assetsRootPath = nitpick.getAssetsRootPath();
 
     var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
     var MODEL_SCALE = 0.75;
@@ -53,7 +53,7 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar
-    autoTester.addStep("Setup object, zones and markers", function () {
+    nitpick.addStep("Setup object, zones and markers", function () {
         var zone1properties = {
             lifetime: LIFETIME,
             type: "Zone",
@@ -193,45 +193,45 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
         };
         marker3 = Entities.addEntity(marker3properties);
     });
-    autoTester.addStepSnapshot("Verify no skybox");
+    nitpick.addStepSnapshot("Verify no skybox");
     
-    autoTester.addStep("Move forward", function () {
+    nitpick.addStep("Move forward", function () {
         var position = { x: 0.0, y: 0.0, z: -7.5 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
         
         Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
-    autoTester.addStepSnapshot("Verify bright sky");
+    nitpick.addStepSnapshot("Verify bright sky");
      
-    autoTester.addStep("Move forward again", function () {
+    nitpick.addStep("Move forward again", function () {
         var position = { x: 0.0, y: 0.0, z: -12.5 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
 
         Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
-    autoTester.addStepSnapshot("Verify night");
+    nitpick.addStepSnapshot("Verify night");
         
-    autoTester.addStep("Moving forward and right", function () {
+    nitpick.addStep("Moving forward and right", function () {
         var position = { x: 3.0, y: 0.0, z: -17.5 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
 
         Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
-    autoTester.addStepSnapshot("Verify in cloudy zone");
+    nitpick.addStepSnapshot("Verify in cloudy zone");
         
-    autoTester.addStep("Move left", function () {
+    nitpick.addStep("Move left", function () {
         var position = { x: 0.0, y: 0.0, z: -17.5 };
         MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
         validationCamera_setTranslation(position);
         
         Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
-    autoTester.addStepSnapshot("Verify in dark zone");
+    nitpick.addStepSnapshot("Verify in dark zone");
         
-    autoTester.addStep("Cleanup", function () {
+    nitpick.addStep("Cleanup", function () {
         Entities.deleteEntity(object);
         Entities.deleteEntity(zone1);
         Entities.deleteEntity(zone2);
@@ -241,5 +241,5 @@ autoTester.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolve
         Entities.deleteEntity(marker3);
     });
     
-    var result = autoTester.runTest(testType);
+    var result = nitpick.runTest(testType);
 });
