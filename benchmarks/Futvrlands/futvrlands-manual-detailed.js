@@ -96,5 +96,5 @@ print("QQQ trace script! done init");
 
 TestScript.locationLoader("engine-dev.highfidelity.io",
 							true,
-							{ x: -19, y: -10, z: 7 },
-							{ "x":0,"y":0.9652830362319946,"z":0,"w":-0.2612062096595764 })()
+							{"x":-72.,"y":-21.,"z":74.},
+							{"x":0,"y":0.9442451596260071,"z":0,"w":0.3292432129383087})()
