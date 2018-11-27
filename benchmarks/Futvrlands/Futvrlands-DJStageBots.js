@@ -50,22 +50,48 @@ var LOCATION_PARAMS = LOCATIONS_ARRAY[Math.floor(Math.random() * LOCATIONS_ARRAY
 
 var LOCATION = { x: randFloat(LOCATION_PARAMS.min_x, LOCATION_PARAMS.max_x) - 72.0, y: LOCATION_PARAMS.y - 22.0, z: randFloat(LOCATION_PARAMS.min_z, LOCATION_PARAMS.max_z) + 74.0 };
 
-var LOCATION_ORIGIN = {x:-80.0, y:-22.0, z:83.0};
-var LOCATION_POLAR = { min_yaw: 90, max_yaw: 180, min_radius: 5.0, max_radius: 10.0 }
 
-function genLocation() {
-    var seed = Math.random();
-    var yaw = LOCATION_POLAR.min_yaw + seed * (LOCATION_POLAR.max_yaw - LOCATION_POLAR.min_yaw);
-    var radiusShape = (1.0 - Math.abs(2 * seed - 1.0))
+var LOCATION_ORIGIN = {x:-80.5, y:-22.0, z:83.5};
+var LOCATION_POLAR = { min_yaw: 60, max_yaw: 200, min_radius: 6.0, max_radius: 13.0 }
 
-    var radius = randFloat(LOCATION_POLAR.min_radius, LOCATION_POLAR.min_radius + (LOCATION_POLAR.max_radius - LOCATION_POLAR.min_radius) *  radiusShape)
 
-    var polar = { x: 0, y: yaw * Math.PI / 180, z: randFloat(LOCATION_POLAR.min_radius, LOCATION_POLAR.max_radius) };
+randFloat = function(low, high) {
+    return low + Math.random() * (high - low);
+}
+
+clamp = function(x, lower, upper) {
+    return Math.max(lower, Math.min(upper, x));
+}
+
+smoothstep = function(edge0, edge1, x) {
+    var t = clamp( (x - edge0) / (edge1 - edge0), 0, 1);
+    return t * t * (3.0 - 2.0 * t);
+} 
+
+function genLocation(seed) {
+    var sign = (seed >= 0.5 ? 1.0 : -1.0);
+    var absSeed = 2.0 * Math.abs((seed - 0.5));
+    //var param = smoothstep(1.0, 0.0, absSeed);
+    var param = (1.0 - absSeed) * (1.0 - absSeed);
+    var yawCoord = 0.5 + sign * 0.5 * param
+    var yaw = LOCATION_POLAR.min_yaw + yawCoord * (LOCATION_POLAR.max_yaw - LOCATION_POLAR.min_yaw);
+
+    var radiusCoord = (1.0 - Math.abs(2 * yawCoord - 1.0) * Math.abs(2 * yawCoord - 1.0))
+   // var radiusCoord = Math.cos(Math.abs(2 * yawCoord - 1.0))
+    var radiusNoise = Math.random()
+    //var radiusNoise = 1.0
+    radiusCoord = radiusCoord * radiusNoise;
+
+    var radius = LOCATION_POLAR.min_radius + (LOCATION_POLAR.max_radius - LOCATION_POLAR.min_radius) *  radiusCoord;
+
+    var polar = { x: 0, y: yaw * Math.PI / 180, z: radius };
     var p = Vec3.fromPolar(polar);
 
-    return Vec3.sum(LOCATION_ORIGIN, p);
+    var pos = Vec3.sum(LOCATION_ORIGIN, p);
+    print(JSON.stringify(pos))
+    return pos;
 }
-LOCATION = genLocation();
+LOCATION = genLocation(Math.random());
 
 Vec3.print("RANDOM LOCATION SELECTED:", LOCATION);
 
