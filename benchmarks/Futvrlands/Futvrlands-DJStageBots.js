@@ -1,9 +1,8 @@
 //
-// BetterClientSimulationBotFromRecording.js
-//  examples
+// Futvrelands-DJStageBots.js
 //
 //  Created by Sam Gateau building on many others (November 2018).
-//  Copyright 2017 High Fidelity, Inc.
+//  Copyright 2018 High Fidelity, Inc.
 //
 //  Distributed under the Apache License, Version 2.0.
 //  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
@@ -116,7 +115,7 @@ Recording.loadRecording(RECORDING_URL, function(success) {
     }
 });
 
-var CHANCE_OF_SOUND = 0.05;
+var CHANCE_OF_SOUND = 0.0;
 
 var sounds = [];
 loadSounds();
@@ -146,18 +145,122 @@ function playRandomSound() {
   }
 }
 
-count = 300; // Randomly wait some period of time before starting the recording
+var entityJSON = {
+    "properties": {
+      "acceleration": { "x": 0, "y": 0, "z": 0 },
+      "actionData": "",
+      "age": 8,
+      "ageAsText": "0 hours 0 minutes 8 seconds",
+      "angularDamping": 0.39,
+      "angularVelocity": { "x": 0, "y": 0, "z": 0 },
+      "animation": {
+        "allowTranslation": true,
+        "currentFrame": 0,
+        "firstFrame": 0,
+        "fps": 30,
+        "hold": false,
+        "lastFrame": 100000,
+        "loop": true,
+        "running": false,
+        "url": ""
+      },
+      "boundingBox": {
+        "brn": { "x": -0.1, "y": 0.9, "z": -1.1},
+        "center": { "x": 0, "y": 1, "z": -1 },
+        "dimensions": { "x": 0.2, "y": 0.2, "z": 0.2},
+        "tfl": { "x": 0.1, "y": 1.1, "z": -0.9}
+      },
+      "canCastShadow": true,
+      "certificateID": "",
+      "clientOnly": true,
+      "cloneAvatarEntity": false,
+      "cloneDynamic": false,
+      "cloneLifetime": 300,
+      "cloneLimit": 0,
+      "cloneOriginID": "{00000000-0000-0000-0000-000000000000}",
+      "cloneable": false,
+      "collidesWith": "static,dynamic,kinematic,myAvatar,otherAvatar,",
+      "collisionMask": 31,
+      "collisionSoundURL": "",
+      "collisionless": false,
+      "collisionsWillMove": false,
+      "compoundShapeURL": "",
+      "created": "2018-07-26T21:58:48Z",
+      "damping": 0.39,
+      "density": 1000,
+      "description": "",
+      "dimensions": { "x": 0.2, "y": 0.2, "z": 0.2 },
+      "dynamic": false,
+      "editionNumber": 0,
+      "entityInstanceNumber": 0,
+      "friction": 0.5,
+      "gravity": { "x": 0, "y": 0, "z": 0 },
+      "href": "",
+      "id": "{05162d5d-5e65-4837-ad50-57041c8be427}",
+      "ignoreForCollisions": false,
+      "itemArtist": "",
+      "itemCategories": "",
+      "itemDescription": "",
+      "itemLicense": "",
+      "itemName": "",
+      "lifetime": 3600,
+      "limitedRun": 4294967295,
+      "localPosition": { "x": 0, "y": 1, "z": -1 },
+      "localRotation": { "w": 1, "x": 0, "y": 0, "z": 0 },
+      "locked": false,
+      "marketplaceID": "",
+      "modelURL": "http://www.capondesign.com/EXternal/models/ironman/TonyV2.fst",
+      "name": "FloofEntity",
+      "naturalDimensions": { "x": 1.94, "y": 1.812, "z": 0.375 },
+      "naturalPosition": { "x": 0, "y": 0.9, "z": 0.02 },
+      "originalTextures": "{\n    \"Tony_Stark_Beard_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Beard_Diffuse.png\",\n    \"Tony_Stark_Beard_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Beard_Gloss.png\",\n    \"Tony_Stark_Beard_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Beard_Normal.png\",\n    \"Tony_Stark_Beard_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Beard_Specular.png\",\n    \"Tony_Stark_Body_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Body_Diffuse.png\",\n    \"Tony_Stark_Body_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Body_Gloss.png\",\n    \"Tony_Stark_Body_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Body_Normal.png\",\n    \"Tony_Stark_Body_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Body_Specular.png\",\n    \"Tony_Stark_Bottom_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Bottom_Diffuse.png\",\n    \"Tony_Stark_Bottom_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Bottom_Gloss.png\",\n    \"Tony_Stark_Bottom_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Bottom_Normal.png\",\n    \"Tony_Stark_Bottom_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Bottom_Specular.png\",\n    \"Tony_Stark_Eyewear_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Eyewear_Diffuse.png\",\n    \"Tony_Stark_Eyewear_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Eyewear_Gloss.png\",\n    \"Tony_Stark_Eyewear_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Eyewear_Normal.png\",\n    \"Tony_Stark_Eyewear_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Eyewear_Specular.png\",\n    \"Tony_Stark_Hair_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Hair_Diffuse.png\",\n    \"Tony_Stark_Hair_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Hair_Gloss.png\",\n    \"Tony_Stark_Hair_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Hair_Normal.png\",\n    \"Tony_Stark_Hair_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Hair_Specular.png\",\n    \"Tony_Stark_Moustache_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Moustache_Diffuse.png\",\n    \"Tony_Stark_Moustache_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Moustache_Gloss.png\",\n    \"Tony_Stark_Moustache_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Moustache_Normal.png\",\n    \"Tony_Stark_Moustache_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Moustache_Specular.png\",\n    \"Tony_Stark_Shoes_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Shoes_Diffuse.png\",\n    \"Tony_Stark_Shoes_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Shoes_Gloss.png\",\n    \"Tony_Stark_Shoes_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Shoes_Normal.png\",\n    \"Tony_Stark_Shoes_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Shoes_Specular.png\",\n    \"Tony_Stark_Top_Diffuse\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Top_Diffuse.png\",\n    \"Tony_Stark_Top_Gloss\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Top_Gloss.png\",\n    \"Tony_Stark_Top_Normal\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Top_Normal.png\",\n    \"Tony_Stark_Top_Specular\": \"http://www.capondesign.com/EXternal/models/ironman/TonyV2/textures/Tony_Stark_Top_Specular.png\"\n}\n",
+      "owningAvatarID": "{b5229825-2c0b-4ef5-bcfc-913858ebe7b3}",
+      "parentID": "{b5229825-2c0b-4ef5-bcfc-913858ebe7b3}",
+      "parentJointIndex": 65535,
+      "position": { "x": 0, "y": 1, "z": -1 },
+      "queryAACube": { "scale": 1.04, "x": 8.59, "y": 0.94, "z": -29.11 },
+      "registrationPoint": { "x": 0.5, "y": 0.5, "z": 0.5 },
+      "relayParentJoints": true,
+      "renderInfo": {
+        "drawCalls": 9,
+        "hasTransparent": false,
+        "texturesCount": 27,
+        "texturesSize": 27525120,
+        "verticesCount": 25745
+      },
+      "restitution": 0.5,
+      "rotation": { "w": 1, "x": 0, "y": 0, "z": 0 },
+      "script": "",
+      "scriptTimestamp": 0,
+      "serverScripts": "",
+      "shapeType": "none",
+      "staticCertificateVersion": 0,
+      "textures": "",
+      "type": "Model",
+      "userData": "",
+      "velocity": { "x": 0, "y": 0, "z": 0 },
+      "visible": true
+    }
+  };
+
+var count = 0;
+var playCount = 300;
 function update(event) {
-    if (count > 0) {
-        count--;
+    count++;
+    if (count < playCount) {
         return;
     }
-    if (count == 0) {
+    if (count == playCount) {
         Recording.setPlayFromCurrentLocation(true);
         Recording.setPlayerLoop(true);
         Recording.startPlaying();
         Vec3.print("Playing from ", Avatar.position);
-        count--;
+    }
+
+    if (0 == (count % 2)) {
+        // send a bogus change to an imaginary AvatarEntity
+        entityJSON["name"] = randFloat(LOCATION_PARAMS.min_x, LOCATION_PARAMS.max_x);
+        Avatar.setAvatarEntityData({ "ff898dea-cb9a-4952-9639-3cb7dfe884df" : entityJSON });
     }
 
     EntityViewer.setPosition(Avatar.position);
@@ -165,7 +268,7 @@ function update(event) {
     EntityViewer.queryOctree();
 
     if (Math.random() < CHANCE_OF_SOUND) {
- //     playRandomSound();
+        playRandomSound();
     }
 
     if (!Recording.isPlaying()) {
