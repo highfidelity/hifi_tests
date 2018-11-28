@@ -149,4 +149,5 @@ Directories with an appended (*) have an automatic test
     - [line](./protocol/line?raw=true)  [(test description)](./protocol/line/test.md) (*)
     - [material](./protocol/material?raw=true)  [(test description)](./protocol/material/test.md) (*)
     - [particleEffect](./protocol/particleEffect?raw=true)  [(test description)](./protocol/particleEffect/test.md) (*)
+    - [polyline](./protocol/polyline?raw=true)  [(test description)](./protocol/polyline/test.md) (*)
     - [zone](./protocol/zone?raw=true)  [(test description)](./protocol/zone/test.md) (*)
