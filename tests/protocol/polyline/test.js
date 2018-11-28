@@ -9,9 +9,8 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
-    entityProperties.type = "Line";
+    entityProperties.type = "PolyLine";
         
-    entityProperties.dimensions = { x: 2000, y: 4000, z: 8888 };
     entityProperties.linePoints = [
         { x: 510.4, y: 37.25, z:  100 },
         { x: 510.4, y: 37.25, z:  101 },
@@ -50,9 +49,91 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
         { x: 510.4, y: 37.25, z:  134 },
         { x: 510.4, y: 37.25, z:  135 }
     ];
+	
+    entityProperties.normals = [
+        { x: 0.4, y: 0.25, z:  0.001 },
+        { x: 0.4, y: 0.25, z:  0.002 },
+        { x: 0.4, y: 0.25, z:  0.003 },
+        { x: 0.4, y: 0.25, z:  0.004 },
+        { x: 0.4, y: 0.25, z:  0.005 },
+        { x: 0.4, y: 0.25, z:  0.006 },
+        { x: 0.4, y: 0.25, z:  0.007 },
+        { x: 0.4, y: 0.25, z:  0.008 },
+        { x: 0.4, y: 0.25, z:  0.009 },
+        { x: 0.4, y: 0.25, z:  0.010 },
+        { x: 0.4, y: 0.25, z:  0.011 },
+        { x: 0.4, y: 0.25, z:  0.012 },
+        { x: 0.4, y: 0.25, z:  0.013 },
+        { x: 0.4, y: 0.25, z:  0.014 },
+        { x: 0.4, y: 0.25, z:  0.015 },
+        { x: 0.4, y: 0.25, z:  0.016 },
+        { x: 0.4, y: 0.25, z:  0.017 },
+        { x: 0.4, y: 0.25, z:  0.018 },
+        { x: 0.4, y: 0.25, z:  0.019 },
+        { x: 0.4, y: 0.25, z:  0.020 },
+        { x: 0.4, y: 0.25, z:  0.021 },
+        { x: 0.4, y: 0.25, z:  0.022 },
+        { x: 0.4, y: 0.25, z:  0.023 },
+        { x: 0.4, y: 0.25, z:  0.024 },
+        { x: 0.4, y: 0.25, z:  0.025 },
+        { x: 0.4, y: 0.25, z:  0.026 },
+        { x: 0.4, y: 0.25, z:  0.027 },
+        { x: 0.4, y: 0.25, z:  0.028 },
+        { x: 0.4, y: 0.25, z:  0.029 },
+        { x: 0.4, y: 0.25, z:  0.030 },
+        { x: 0.4, y: 0.25, z:  0.031 },
+        { x: 0.4, y: 0.25, z:  0.032 },
+        { x: 0.4, y: 0.25, z:  0.033 },
+        { x: 0.4, y: 0.25, z:  0.034 },
+        { x: 0.4, y: 0.25, z:  0.035 },
+        { x: 0.4, y: 0.25, z:  0.036 }
+    ];
+	
+    entityProperties.strokeWidths = [
+        0.001,
+        0.002,
+        0.003,
+        0.004,
+        0.005,
+        0.006,
+        0.007,
+        0.008,
+        0.009,
+        0.010,
+        0.011,
+        0.012,
+        0.013,
+        0.014,
+        0.015,
+        0.016,
+        0.017,
+        0.018,
+        0.019,
+        0.020,
+        0.021,
+        0.022,
+        0.023,
+        0.024,
+        0.025,
+        0.026,
+        0.027,
+        0.028,
+        0.029,
+        0.030,
+        0.031,
+        0.032,
+        0.033,
+        0.034,
+        0.035,
+        0.036
+    ];
+
     entityProperties.lineWidth = 123.5;
+	
     entityProperties.color = { red: 85, green: 170, blue: 151 };
-    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
+    entityProperties.textures = "http://textureURL";
+    entityProperties.isUVModeStretch = false;
+    entityProperties.registrationPoint = { x: 0.9999, y: 0.9989, z: 0.7406 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {

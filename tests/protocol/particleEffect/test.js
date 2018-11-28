@@ -52,6 +52,7 @@ nitpick.perform("Particle effect protocol sanity - TEST REQUIRES SERVER", Script
     entityProperties.spinSpread = 0.12;
 
     entityProperties.rotateWithEntity = false;
+    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {

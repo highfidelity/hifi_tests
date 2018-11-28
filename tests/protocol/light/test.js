@@ -35,6 +35,7 @@ nitpick.perform("Light protocol sanity - TEST REQUIRES SERVER", Script.resolvePa
     entityProperties.isSpotlight = true;
     entityProperties.exponent = 0.25;
     entityProperties.cutoff = 45.0;
+    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {

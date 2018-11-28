@@ -62,6 +62,7 @@ nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     entityProperties.filterURL = "http://Filter URL";
     entityProperties.compoundShapeURL = "https://Compound shape URL";
     entityProperties.shapeType = "box";
+    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {

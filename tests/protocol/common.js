@@ -103,7 +103,6 @@ setCommonEntityProperties = function() {
     entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
     entityProperties.rotation = Quat.fromPitchYawRollDegrees(1.2, 34.0, 154.0);
     entityProperties.dynamic = false;
-    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
     entityProperties.velocity = { x: 0, y: 0, z: 0 };
     entityProperties.damping = 0.4329;
     entityProperties.angularVelocity = { x: 0.0, y: 0.0, z: 0.0 };
