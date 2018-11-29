@@ -1,4 +1,4 @@
-# Line protocol sanity - TEST REQUIRES SERVER
+# Polyline protocol sanity - TEST REQUIRES SERVER
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -15,9 +15,9 @@ Press 'n' key to advance step by step
 - Check that box is white (testing the tester...)
 - ![](./ExpectedImage_00000.png)
 ### Step 4
-- Set up line
+- Set up polyline
 ### Step 5
-- Test line
+- Test polyline
 ### Step 6
 - Show result
 - ![](./ExpectedImage_00001.png)

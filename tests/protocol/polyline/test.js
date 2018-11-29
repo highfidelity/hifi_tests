@@ -2,14 +2,14 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("PolyLine protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
 
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
-    entityProperties.type = "PolyLine";
+    entityProperties.type = "Polyline";
 
     entityProperties.linePoints = [
         { x: 510.4, y: 37.25, z:  100 },
@@ -170,11 +170,11 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
-    nitpick.addStep("Set up line", function () {
+    nitpick.addStep("Set up polyline", function () {
         object = Entities.addEntity(entityProperties);
     });
 
-    nitpick.addStep("Test line", function () {
+    nitpick.addStep("Test polyline", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });
