@@ -41,6 +41,10 @@ convertFailuresToLineNumbers = function(failures) {
 }
 
 areNumbersDifferent = function(x, y) {
+    if (typeof x === 'undefined' || typeof y === 'undefined') {
+        return true;
+    }
+
     return (Math.abs(x - y) > 0.0001);
 }
 
