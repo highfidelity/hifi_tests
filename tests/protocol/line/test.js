@@ -4,13 +4,13 @@ var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
-    
+
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
     entityProperties.type = "Line";
-        
+
     entityProperties.dimensions = { x: 2000, y: 4000, z: 8888 };
     entityProperties.linePoints = [
         { x: 510.4, y: 37.25, z:  100 },
@@ -61,7 +61,7 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
             name: "background",
             position: originPosition,
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
-            
+
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
 
             keyLightMode: "enabled",
@@ -83,18 +83,9 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
         };
         backgroundZone = Entities.addEntity(zoneProperties);
     });
-    
+
     nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
-        var boxProperties = {
-            type: "Box",
-            name: "box",
-            lifetime: LIFETIME,
-            color: { red: 255, green: 255, blue: 255 },
-            position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
-            dimensions: { x: 1.0, y: 1.0, z: 1.0 },
-            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
-        };
-        box = Entities.addEntity(boxProperties);
+        setup();
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
@@ -107,12 +98,12 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
         showResults(compareObjects(entityProperties, getProperties));
     });
     nitpick.addStepSnapshot("Show result");
-    
+
     nitpick.addStep("Clean up after test", function () {
         teardown();
         Entities.deleteEntity(backgroundZone);
         Entities.deleteEntity(object);
     });
-    
+
     var result = nitpick.runTest(testType);
 });
