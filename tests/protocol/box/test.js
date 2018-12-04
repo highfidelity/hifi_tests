@@ -19,6 +19,7 @@ nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath
     };
 
     entityProperties.queryAACube = { x: 1.0616825819015503, y: 3.2616827487945557, z: 5.461682319641113, scale: 0.27663490176200867 };
+    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
 
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {

@@ -2,66 +2,56 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Particle effect protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
     
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
-    entityProperties.type = "Zone";
+    entityProperties.type = "ParticleEffect";
 
-    entityProperties.dimensions = { x: 20.0, y: 3.0, z: 9.75 };
+    entityProperties.isEmitting = false;
+    entityProperties.maxParticles = 2002;
+    entityProperties.lifespan = 14;
+    entityProperties.emitRate = 27;
+    entityProperties.emitSpeed = 3;
+    entityProperties.emitAcceleration = { x: 0.4, y: 26.9, z: 99 };
+    entityProperties.accelerationSpread = { x: 33, y: 17, z: 7.3 };
+    entityProperties.emitterShouldTrail = true;
+    entityProperties.emitOrientation = Quat.fromPitchYawRollDegrees(30.3, 40.04, 72 )
+    entityProperties.emitDimensions = { x: 3.3, y: 26.9, z: 17.3 };
+    entityProperties.emitRadiusStart = 0.8;
+	
+    entityProperties.polarStart = 0.55;
+    entityProperties.polarFinish = 0.72;
+	
+    entityProperties.azimuthStart = 1.1;
+    entityProperties.azimuthFinish = 2.2;
 
-    entityProperties.keyLightMode = "enabled";
-    entityProperties.keyLight = {
-        color: { "red": 34, "green": 73, "blue": 88 },
-        intensity: 0.125,
-        direction: {
-            "x": 0.0,
-            "y": 1.0,
-            "z": 0.0
-        }
-    };
+    entityProperties.textures = "http://textureURL";
+	
+    entityProperties.particleRadius =  0.11;
+    entityProperties.radiusStart =  0.08;
+    entityProperties.radiusFinish = 0.80;
+    entityProperties.radiusSpread = 0.04;
+	
+    entityProperties.color = { red: 12, green: 255, blue: 2 };
+    entityProperties.colorStart = { red: 102, green: 25, blue: 98 };
+    entityProperties.colorFinish = { red: 140, green: 250, blue: 123 };
+    entityProperties.colorSpread = { red: 3, green: 5, blue: 2 };
+	
+    entityProperties.alpha = 0.80;
+    entityProperties.alphaStart = 0.63;
+    entityProperties.alphaFinish = 0.97;
+    entityProperties.alphaSpread = 0.02;
+	
+    entityProperties.particleSpin = 0.18;
+    entityProperties.spinStart = 0.33;
+    entityProperties.spinFinish = 0.67;
+    entityProperties.spinSpread = 0.12;
 
-    entityProperties.skyboxMode = "enabled";
-    entityProperties.skybox = {
-        color: { red: 12, green: 93, blue: 233 },
-        url: 'https://skymaps/YellowCube.jpg'
-    };
-                    
-    entityProperties.ambientLightMode = "disabled";
-    entityProperties.ambientLight = {
-        ambientURL: 'http://skymaps/Sky_Day-Sun-Mid-photo.texmeta.json'
-    };
-        
-    entityProperties.hazeMode = 'enabled';
-    entityProperties.haze = {
-        hazeRange: 502.5,
-        hazeColor: { red: 153, green: 107, blue: 47 },
-        hazeGlareColor: { red: 53, green: 64, blue: 128 },
-        hazeEnableGlare: true,
-        hazeGlareAngle: 64.5,
-        hazeAltitudeEffect: true,
-        hazeCeiling: 5432.0,
-        hazeBaseRef: 1423.0,
-        hazeBackgroundBlend: 0.375,
-        hazeAttenuateKeyLight: false,
-        hazeKeyLightRange: 1000.0,
-        hazeKeyLightAltitude: 2343.0
-    };
-
-    entityProperties.bloomMode = "disabled" ;
-    entityProperties.bloom = {
-        bloomIntensity: 1.0,
-        bloomThreshold: 0.875
-    };
-
-    entityProperties.flyingAllowed = true;
-    entityProperties.ghostingAllowed = false
-    entityProperties.filterURL = "http://Filter URL";
-    entityProperties.compoundShapeURL = "https://Compound shape URL";
-    entityProperties.shapeType = "box";
+    entityProperties.rotateWithEntity = false;
     entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
 
     nitpick.addStep("Create a background zone", function () {
@@ -76,7 +66,7 @@ nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
 
             keyLightMode: "enabled",
             keyLight:{
-                color: { "red": 255, "green": 255, "blue": 255 },
+                color: { red: 255, green: 255, blue: 255 },
                 intensity: 0.8,
                 direction: {
                     "x": 0.0,
@@ -108,11 +98,11 @@ nitpick.perform("Zone protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
-    nitpick.addStep("Create a zone", function () {
+    nitpick.addStep("Set up particle effect", function () {
         object = Entities.addEntity(entityProperties);
     });
     
-    nitpick.addStep("Test zone", function () {
+    nitpick.addStep("Test particle effect", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });
