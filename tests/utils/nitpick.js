@@ -252,7 +252,6 @@ setUpTest = function(testCase) {
             LODManager.setAutomaticLODAdjust(false);
             LODManager.setOctreeSizeScale(8000000);
         }
-        }
     }
 
     if (!isManualMode()) {
