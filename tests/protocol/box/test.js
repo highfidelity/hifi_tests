@@ -4,13 +4,13 @@ var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
-    
+
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
     entityProperties.type = "Box";
-        
+
     entityProperties.boundingBox = {
         brn: { x: 1.0663206577, y: 3.33795213699, z: 5.55088996887 },
         tfl: { x:  1.235045075416, y: 3.490031242370, z:  5.69143104553222 },
@@ -52,34 +52,25 @@ nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath
     });
     
     nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
-        var boxProperties = {
-            type: "Box",
-            name: "box",
-            lifetime: LIFETIME,
-            color: { red: 255, green: 255, blue: 255 },
-            position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
-            dimensions: { x: 1.0, y: 1.0, z: 1.0 },
-            userData: JSON.stringify({ grabbableKey: { grabbable: false } })
-        };
-        box = Entities.addEntity(boxProperties);
+        setup();
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
     nitpick.addStep("Set up box", function () {
         object = Entities.addEntity(entityProperties);
     });
-    
+
     nitpick.addStep("Test box", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });
     nitpick.addStepSnapshot("Show result");
-    
+
     nitpick.addStep("Clean up after test", function () {
         teardown();
         Entities.deleteEntity(backgroundZone);
         Entities.deleteEntity(object);
     });
-    
+
     var result = nitpick.runTest(testType);
 });
