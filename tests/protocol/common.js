@@ -3,6 +3,7 @@ originPosition = nitpick.getOriginFrame();
 assetsRootPath = nitpick.getAssetsRootPath();
 
 box = 0;
+results = {};
 
 allPassed = function(failures) {
     var noneFailed = true;
@@ -40,35 +41,48 @@ convertFailuresToLineNumbers = function(failures) {
 }
 
 areNumbersDifferent = function(x, y) {
+    if (typeof x === 'undefined' || typeof y === 'undefined') {
+        return true;
+    }
+
     return (Math.abs(x - y) > 0.0001);
 }
 
-var line
-compareObjects = function(object1, object2, failures) {
+var line;
+compareObjects = function(object1, object2, failures, elementName) {
     if (typeof failures === 'undefined') {
         line   = 0;
         failures = [];
+        elementName = "";
     }
     
     for (var key in object1) {
         line  += 1;
         var nextObject = object1[key];
         if (typeof nextObject === 'object') {
+            // Recurse
             console.warn(line, "------ ", key, ":");
-            failures.push(false); // This is to keep line numbers relevant (objects have a line number, but of course no value)
-            compareObjects(nextObject, object2[key], failures);
+            failures.push(false); // This is to keep line numbers relevant (objects have a line number, but no value)
+            if (elementName === "") {
+                elementName = key;
+            } else {
+                elementName = elementName + "_" + key;
+            }
+            compareObjects(nextObject, object2[key], failures, elementName);
+            elementName = elementName.substring(0, elementName.length - key.length - 1);
         } else {
             var failure;
-            if (typeof object1[key] === 'number') {
-                if (typeof object2 === 'undefined') {
-                    console.warn(key, "IS NOT DEFINED");
-                } else {
-                    failure = areNumbersDifferent(object1[key], object2[key]);
-                }
+            if (typeof object2 === 'undefined') {
+                results[elementName + "_" + key] = "IS NOT DEFINED";
+                console.warn(key, "IS NOT DEFINED");
+                return;
+            } else if (typeof object1[key] === 'number') {
+                failure = areNumbersDifferent(object1[key], object2[key]);
             } else {
                 failure = (object1[key] !== object2[key]);
             }
             failures.push(failure); // false will be pushed for tests that have passed
+            results[(elementName === "") ? key : elementName + "_" + key] = { expected: object1[key], actual: object2[key], result: failure ? "fail" : "pass" };
             console.warn(line, ": ", key, object1[key], object2[key], failure ? "fail" : "pass");
         }
     }
@@ -84,6 +98,21 @@ showResults = function(failures) {
     } else {
         console.warn("mismatch values at line(s): " + convertFailuresToLineNumbers(failures));
     }
+
+    nitpick.saveResults(results);
+}
+
+setup = function() {
+    var boxProperties = {
+        type: "Box",
+        name: "box",
+        lifetime: LIFETIME,
+        color: { red: 255, green: 255, blue: 255 },
+        position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
+        dimensions: { x: 1.0, y: 1.0, z: 1.0 },
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
+    };
+    box = Entities.addEntity(boxProperties);
 }
 
 teardown = function() {
@@ -92,7 +121,7 @@ teardown = function() {
 
 setCommonEntityProperties = function() {
     var entityProperties = {};
-    
+
     entityProperties.name = "Name of entity";
     entityProperties.clientOnly = false;
     entityProperties.owningAvatarID = "{87654321-1234-6666-4444-123412349876}";
@@ -103,7 +132,6 @@ setCommonEntityProperties = function() {
     entityProperties.position = { x: 1.2, y: 3.4, z: 5.6 };
     entityProperties.rotation = Quat.fromPitchYawRollDegrees(1.2, 34.0, 154.0);
     entityProperties.dynamic = false;
-    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
     entityProperties.velocity = { x: 0, y: 0, z: 0 };
     entityProperties.damping = 0.4329;
     entityProperties.angularVelocity = { x: 0.0, y: 0.0, z: 0.0 };
@@ -141,6 +169,6 @@ setCommonEntityProperties = function() {
     entityProperties.entityInstanceNumber = 345;
     entityProperties.marketplaceID = "market place ID";
     entityProperties.staticCertificateVersion = 2;
-    
+
     return entityProperties;
 }

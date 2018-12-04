@@ -2,25 +2,32 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Polyvox protocol sanity - TEST REQUIRES SERVER", Script.resolvePath("."), "secondary", function(testType) {
     Script.include('../common.js');
 
     var object;
     var backgroundZone;
     var entityProperties = setCommonEntityProperties();
 
-    entityProperties.type = "Box";
+    entityProperties.type = "PolyVox";
 
-    entityProperties.boundingBox = {
-        brn: { x: 1.0663206577, y: 3.33795213699, z: 5.55088996887 },
-        tfl: { x:  1.235045075416, y: 3.490031242370, z:  5.69143104553222 },
-        center: { x: 1.1506829261779785, y: 3.413991689682, z:  5.6211605072 },
-        dimensions: { x: 0.1687244176864624, y: 0.15207910537719727, z:  0.14054107666015625 }
-    };
+    entityProperties.dimensions = { x: 2000.0, y: 2000.0, z: 2000.0 };
+    entityProperties.voxelVolumeSize = { x:23, y: 29, z: 31 };
+    entityProperties.voxelData="ads23SGResLiIUYoh987fTREdgdgDGdgdgDSDLLIJklj65edrcgddQ7Y"
+    entityProperties.PolyVoxSurfaceStyle = 3;
 
-    entityProperties.queryAACube = { x: 1.0616825819015503, y: 3.2616827487945557, z: 5.461682319641113, scale: 0.27663490176200867 };
-    entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
+    entityProperties.xTextureURL = "http://xTextureURL";
+    entityProperties.yTextureURL = "http://yTextureURL";
+    entityProperties.zTextureURL = "http://zTextureURL";
 
+    entityProperties.xNNeighborID = "{24454321-1434-6655-4344-123565649876}"
+    entityProperties.yNNeighborID = "{12234311-1134-6346-4455-123565653876}"
+    entityProperties.zNNeighborID = "{85533546-3444-4456-6448-345345654335}"
+ 
+    entityProperties.xPNeighborID = "{87654321-1234-6666-4444-123412349876}"
+    entityProperties.yPNeighborID = "{12312311-1134-6346-4455-123434553876}"
+    entityProperties.zPNeighborID = "{85423546-3434-4566-6388-345345654335}"
+    
     nitpick.addStep("Create a background zone", function () {
         var zoneProperties = {
             lifetime: LIFETIME,
@@ -28,7 +35,7 @@ nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath
             name: "background",
             position: originPosition,
             rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
-            
+
             dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
 
             keyLightMode: "enabled",
@@ -50,17 +57,17 @@ nitpick.perform("Box protocol sanity - TEST REQUIRES SERVER", Script.resolvePath
         };
         backgroundZone = Entities.addEntity(zoneProperties);
     });
-    
+
     nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
         setup();
     });
     nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
-    nitpick.addStep("Set up box", function () {
+    nitpick.addStep("Set up polyvox", function () {
         object = Entities.addEntity(entityProperties);
     });
 
-    nitpick.addStep("Test box", function () {
+    nitpick.addStep("Test polyvox", function () {
         var getProperties = Entities.getEntityProperties(object);
         showResults(compareObjects(entityProperties, getProperties));
     });

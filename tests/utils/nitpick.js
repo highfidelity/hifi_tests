@@ -489,3 +489,15 @@ module.exports.getUtilsRootPath = function () {
 module.exports.getAssetsRootPath = function () {
     return _repositoryPath + "assets/";
 }
+
+module.exports.saveResults = function(passed, resultsObject) {
+    if (typeof Test !== 'undefined') {
+        filename = snapshotPrefix;
+        if (passed) {
+            filename = filename + "passed.txt";
+        } else {
+            filename = filename + "failed.txt";
+        }
+        Test.saveObject(results, filename);
+    }
+}
