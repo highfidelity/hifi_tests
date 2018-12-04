@@ -232,8 +232,9 @@ setUpTest = function(testCase) {
         spectatorCameraConfig.resetSizeSpectatorCamera(1920, 1080);
         spectatorCameraConfig.vFoV = 45;
         Render.getConfig("SecondaryCameraJob.ToneMapping").curve = 0;
-        Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
-
+        // Not needed ?
+        //Render.getConfig("SecondaryCameraJob.DrawHighlight").enabled = false;
+       
         spectatorCameraConfig.orientation = q0;
         spectatorCameraConfig.position = p0;
     }
