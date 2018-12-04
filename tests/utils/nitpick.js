@@ -247,6 +247,11 @@ setUpTest = function(testCase) {
         // This is not used on Mac (an AppleScript is used for that)
         if (Test.getOperatingSystemType() === 'WINDOWS') {
             Test.showMaximized();
+        } else if (Test.getOperatingSystemType() === 'MACOS') {
+            // Mitigate Mac LOD issues
+            LODManager.setAutomaticLODAdjust(false);
+            LODManager.setOctreeSizeScale(8000000);
+        }
         }
     }
 
