@@ -10,6 +10,7 @@ var runningRecursive = false;
 
 var snapshotPrefix = "";
 var snapshotIndex = 0;
+var textIndex = 0;
 
 var advanceKey = "n";
 var pathSeparator = ".";
@@ -21,6 +22,8 @@ var previousThrottleFPS;
 
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
+
+const NUM_DIGITS = 5;
 
 // This will be set when each test case begins
 var originFrame;
@@ -80,7 +83,6 @@ var runOneStep = function (stepFunctor, stepIndex) {
         
         // Image numbers are padded to 5 digits
         // Changing this number requires changing the nitpick C++ code!
-        var NUM_DIGITS = 5;
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
         currentTestCase.usePrimaryCamera 
@@ -201,8 +203,10 @@ setUpTest = function(testCase) {
         snapshotPrefix += pathSeparator + pathParts[i];
     }
 
+	// Reset result counters
     snapshotIndex = 0;
-
+	textIndex = 0;
+	
     // Setup validation camera
     var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
@@ -491,12 +495,14 @@ module.exports.getAssetsRootPath = function () {
 
 module.exports.saveResults = function(passed, resultsObject) {
     if (typeof Test !== 'undefined') {
-        filename = snapshotPrefix;
+        filename = snapshotPrefix + pad(textIndex, NUM_DIGITS, '0');
         if (passed) {
-            filename = filename + "passed.txt";
+            filename = filename + ".passed.txt";
         } else {
-            filename = filename + "failed.txt";
+            filename = filename + ".failed.txt";
         }
         Test.saveObject(results, filename);
+		
+		++textIndex;
     }
 }
