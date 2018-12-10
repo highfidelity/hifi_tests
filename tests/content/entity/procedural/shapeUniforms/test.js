@@ -70,11 +70,12 @@ nitpick.perform("Procedural create", Script.resolvePath("."), "secondary", funct
                 "z": 1.0
             },
             "intensity": 1.0
-        },        skyboxMode: "enabled",
+        },
+        skyboxMode: "enabled",
         lifetime: LIFETIME,
         userData: JSON.stringify({
             "ProceduralEntity": {
-                "shaderUrl": assetsRootPath + "shaders/proceduralZoneTest.fs",
+                "shaderUrl": assetsRootPath + "shaders/proceduralZoneTestNormal.fs",
                 "version": 2
             }
         })

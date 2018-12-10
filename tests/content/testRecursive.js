@@ -23,7 +23,7 @@ Script.include(testsRootPath + "content/entity/zone/shadowControl/test.js");
 Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
 Script.include(testsRootPath + "content/entity/shape/create/test.js");
-Script.include(testsRootPath + "content/entity/procedural/test.js");
+Script.include(testsRootPath + "content/entity/procedural/shapeUniforms/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");
