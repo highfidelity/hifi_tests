@@ -17,41 +17,6 @@ nitpick.perform("Text protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
     entityProperties.textColor = { red: 43, green: 56, blue: 91 };
     entityProperties.backgroundColor = { red: 12, green: 200, blue: 211 };
     entityProperties.faceCamera = true;
-    
-    nitpick.addStep("Create a background zone", function () {
-        var zoneProperties = {
-            lifetime: LIFETIME,
-            type: "Zone",
-            name: "background",
-            position: originPosition,
-            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
-            
-            dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
-
-            keyLightMode: "enabled",
-            keyLight:{
-                color: { red: 255, green: 255, blue: 255 },
-                intensity: 0.8,
-                direction: {
-                    x: 0.0,
-                    y: -0.70710678118,
-                    z: -0.70710678118
-                }
-            },
-
-            skyboxMode: "enabled",
-            skybox: {
-                color: { red: 255, green: 255, blue: 255 },
-                url: assetsRootPath + 'skymaps/YellowCube.jpg'
-            }
-        };
-        backgroundZone = Entities.addEntity(zoneProperties);
-    });
-    
-    nitpick.addStep("Prepare result box, green if passed, red if failed", function () {
-        setup();
-    });
-    nitpick.addStepSnapshot("Check that box is white (testing the tester...)");
 
     nitpick.addStep("Set up text", function () {
         object = Entities.addEntity(entityProperties);
@@ -59,12 +24,10 @@ nitpick.perform("Text protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
 
     nitpick.addStep("Test text", function () {
         var getProperties = Entities.getEntityProperties(object);
-        showResults(compareObjects(entityProperties, getProperties));
+        saveResults(compareObjects(entityProperties, getProperties));
     });
-    nitpick.addStepSnapshot("Show result");
 
     nitpick.addStep("Clean up after test", function () {
-        teardown();
         Entities.deleteEntity(backgroundZone);
         Entities.deleteEntity(object);
     });
