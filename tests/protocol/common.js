@@ -5,15 +5,13 @@ assetsRootPath = nitpick.getAssetsRootPath();
 results = {};
 
 allPassed = function(failures) {
-    var noneFailed = true;
     for (var i = 0; i < failures.length; ++i) {
         if (failures[i]) {
-            noneFailed = false;
-            break;
+            return false;
         }
     }
 
-    return noneFailed;
+    return true;
 }
 
 convertFailuresToLineNumbers = function(failures) {
@@ -81,13 +79,14 @@ compareObjects = function(object1, object2, failures, elementName) {
 }
 
 saveResults = function(failures) {
-    if (allPassed(failures)) {
+	allPassedFlag = allPassed(failures);
+    if (allPassedFlag) {
         console.warn("all tests passed");
     } else {
         console.warn("mismatch values at line(s): " + convertFailuresToLineNumbers(failures));
     }
 
-    nitpick.saveResults(results);
+    nitpick.saveResults(allPassedFlag, results);
 }
 
 setCommonEntityProperties = function() {
