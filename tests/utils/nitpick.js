@@ -281,7 +281,16 @@ setUpTest = function(testCase) {
     // This is needed to enable valid tests when Interface does not have focus
     // The problem is that models aren't rendered when there is no focus
     previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
-    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false)
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false);
+	
+	// Remove all entities in the test neighbourhood, unless in manual mode
+    if (!isManualMode()) {
+        const TEST_RADIUS = 1000;
+        var entitiesToDelete = Entities.findEntities(originFrame, TEST_RADIUS);
+        for (var i = 0; i < entitiesToDelete.length; ++i) {
+            Entities.deleteEntity(entitiesToDelete[i]);
+        }
+    }
 }
 
 tearDownTest = function() {
