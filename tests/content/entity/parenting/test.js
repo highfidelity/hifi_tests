@@ -4,13 +4,13 @@ var nitpick = createNitpick(Script.resolvePath('.'));
 
 nitpick.perform('Entity parenting', Script.resolvePath('.'), 'secondary', function(testType) {
     var LIFETIME = 120;
-	var zone;
+    var zone;
     var parent;
     var child;
     var grandchild;
     
     var position = nitpick.getOriginFrame();
-	
+
     nitpick.addStep('Create zone and entities', function () {
         var assetsRootPath = nitpick.getAssetsRootPath();
      
