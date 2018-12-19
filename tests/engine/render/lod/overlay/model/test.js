@@ -12,13 +12,13 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     var octreeSizeScale;
 
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-    
+
     var pos = nitpick.getOriginFrame();
     var ori = MyAvatar.orientation;
 
     validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
     validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
-    
+
     // Create line of models
     var assetsRootPath = nitpick.getAssetsRootPath();
     var URL = Script.resolvePath(assetsRootPath + "models/geometry/avatars/kaya/Kaya.fbx");
