@@ -9,7 +9,7 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     var DIM = {x: 1.0, y: 1.2, z: 0.28};
 
     var previousLODAdjust;
-    var octreeSizeScale;
+    var previousOctreeSizeScale;
 
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
@@ -45,7 +45,7 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     previousLODAdjust = LODManager.getAutomaticLODAdjust();
     LODManager.setAutomaticLODAdjust(false);
 
-    octreeSizeScale = LODManager.getOctreeSizeScale();
+    previousOctreeSizeScale = LODManager.getOctreeSizeScale();
     LODManager.setOctreeSizeScale(32768 * 400);
 
     nitpick.addStepSnapshot("Both models visible");
@@ -71,7 +71,7 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
             Overlays.deleteOverlay(createdOverlays[i]);
         }
 
-        LODManager.setOctreeSizeScale(octreeSizeScale);
+        LODManager.setOctreeSizeScale(previousOctreeSizeScale);
         LODManager.setAutomaticLODAdjust(previousLODAdjust);
     });
 
