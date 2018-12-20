@@ -14,7 +14,7 @@ nitpick.perform("Polyvox protocol sanity - TEST REQUIRES SERVER", Script.resolve
     entityProperties.dimensions = { x: 2000.0, y: 2000.0, z: 2000.0 };
     entityProperties.voxelVolumeSize = { x:23, y: 29, z: 31 };
     entityProperties.voxelData="ads23SGResLiIUYoh987fTREdgdgDGdgdgDSDLLIJklj65edrcgddQ7Y"
-    entityProperties.PolyVoxSurfaceStyle = 3;
+    entityProperties.voxelSurfaceStyle = 3;
 
     entityProperties.xTextureURL = "http://xTextureURL";
     entityProperties.yTextureURL = "http://yTextureURL";
