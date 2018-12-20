@@ -79,7 +79,7 @@ compareObjects = function(object1, object2, failures, elementName) {
 }
 
 saveResults = function(failures) {
-	allPassedFlag = allPassed(failures);
+    allPassedFlag = allPassed(failures);
     if (allPassedFlag) {
         console.warn("all tests passed");
     } else {
