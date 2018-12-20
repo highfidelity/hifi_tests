@@ -2,28 +2,16 @@ LIFETIME = 120;
 originPosition = nitpick.getOriginFrame();
 assetsRootPath = nitpick.getAssetsRootPath();
 
-box = 0;
 results = {};
 
 allPassed = function(failures) {
-    var noneFailed = true;
     for (var i = 0; i < failures.length; ++i) {
         if (failures[i]) {
-            noneFailed = false;
-            break;
+            return false;
         }
     }
 
-    return noneFailed;
-}
-
-// returns green if value is 0, else red 
-resultsColour = function(failures) {
-    if (allPassed(failures)) {
-        return { red:   0, green: 255, blue: 0 };
-    } else {
-        return { red: 255, green:   0, blue: 0 };
-    }
+    return true;
 }
 
 convertFailuresToLineNumbers = function(failures) {
@@ -90,33 +78,15 @@ compareObjects = function(object1, object2, failures, elementName) {
     return failures;
 }
 
-showResults = function(failures) {
-    Entities.editEntity(box, { color: resultsColour(failures) });
-        
-    if (allPassed(failures)) {
+saveResults = function(failures) {
+    allPassedFlag = allPassed(failures);
+    if (allPassedFlag) {
         console.warn("all tests passed");
     } else {
         console.warn("mismatch values at line(s): " + convertFailuresToLineNumbers(failures));
     }
 
-    nitpick.saveResults(results);
-}
-
-setup = function() {
-    var boxProperties = {
-        type: "Box",
-        name: "box",
-        lifetime: LIFETIME,
-        color: { red: 255, green: 255, blue: 255 },
-        position: Vec3.sum(originPosition, { x: 0.0, y: 1.7, z: -2.0 }),
-        dimensions: { x: 1.0, y: 1.0, z: 1.0 },
-        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
-    };
-    box = Entities.addEntity(boxProperties);
-}
-
-teardown = function() {
-    Entities.deleteEntity(box);
+    nitpick.saveResults(allPassedFlag, results);
 }
 
 setCommonEntityProperties = function() {

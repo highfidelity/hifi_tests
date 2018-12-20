@@ -10,9 +10,7 @@ Press 'n' key to advance step by step
 ### Step 1
 - Set up test case
 ### Step 2
-- Turn off TAA for this test
-### Step 3
 - Take snapshot of the effects
 - ![](./ExpectedImage_00000.png)
-### Step 4
+### Step 3
 - Clean up after test
