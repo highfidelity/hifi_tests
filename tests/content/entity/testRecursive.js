@@ -32,5 +32,11 @@ Script.include(testsRootPath + "content/entity/material/apply/entities/model/tes
 Script.include(testsRootPath + "content/entity/material/apply/avatars/test.js");
 Script.include(testsRootPath + "content/entity/light/spot/create/test.js");
 Script.include(testsRootPath + "content/entity/light/point/create/test.js");
+Script.include(testsRootPath + "content/entity/image/subImage/test.js");
+Script.include(testsRootPath + "content/entity/image/keepAspectRatio/test.js");
+Script.include(testsRootPath + "content/entity/image/emissive/test.js");
+Script.include(testsRootPath + "content/entity/image/color/test.js");
+Script.include(testsRootPath + "content/entity/image/billboardMode/test.js");
+Script.include(testsRootPath + "content/entity/image/alpha/test.js");
 
 nitpick.runRecursive();
