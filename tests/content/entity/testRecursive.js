@@ -19,6 +19,7 @@ Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
 Script.include(testsRootPath + "content/entity/shape/create/test.js");
 Script.include(testsRootPath + "content/entity/procedural/shapeUniforms/test.js");
+Script.include(testsRootPath + "content/entity/parenting/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");
@@ -31,5 +32,11 @@ Script.include(testsRootPath + "content/entity/material/apply/entities/model/tes
 Script.include(testsRootPath + "content/entity/material/apply/avatars/test.js");
 Script.include(testsRootPath + "content/entity/light/spot/create/test.js");
 Script.include(testsRootPath + "content/entity/light/point/create/test.js");
+Script.include(testsRootPath + "content/entity/image/subImage/test.js");
+Script.include(testsRootPath + "content/entity/image/keepAspectRatio/test.js");
+Script.include(testsRootPath + "content/entity/image/emissive/test.js");
+Script.include(testsRootPath + "content/entity/image/color/test.js");
+Script.include(testsRootPath + "content/entity/image/billboardMode/test.js");
+Script.include(testsRootPath + "content/entity/image/alpha/test.js");
 
 nitpick.runRecursive();
