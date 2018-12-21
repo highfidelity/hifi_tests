@@ -42,7 +42,7 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
         isVisibleInSecondaryCamera: true
     }));
     
-    previousLODAdjust = LODManager.getAutomaticLODAdjust();
+    previousLODAdjust =  LODManager.getAutomaticLODAdjust();
     LODManager.setAutomaticLODAdjust(false);
 
     previousOctreeSizeScale = LODManager.getOctreeSizeScale();
