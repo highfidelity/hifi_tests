@@ -1,23 +1,26 @@
 # General
 This document describes the philosophy behind the testing infrastructure and then details the requirements for writing test scripts.
 `nitpick` is a stand-alone tool, and is a component of the High Fidelity project; it is documented in that project.
-# Running on Multiple Platforms
+# Multiple Platforms create multiple results
 `nitpick` supports the High Fidelity capability of running on multiple platforms, as well as on mobile devices and stand-alone headsets.
+A test can generate different results (or simply  not run) depending on the platform and the type of user experience offered.
+We describe the type of experience and features offered from the Interface client as a combination of the following criteria
+- device: vr-pc (high/mid end gamer rig pc) / pc-book (laptop mac or intel gpu pc) / mobile (android phone or tablet or standalone vr)
+- display: mono / hmd (/ stereo)
+- input: mouse&keyboard / hands / touch
 
-These are grouped as follows:
-	High end desktop
-	Low end desktop
-	High end stereo desktop
-	Android phone
-	High end HMD
-	Low end HMD
-	Stand-alone headset
-	
+Here is the list of _Client Profiles_ supported:
+- "VR-High": vr-pc + hmd + hands
+- "Desktop-High": vr-pc + mono + mouse&keyboards
+- "Desktop-Low": pc-book + mono + mouse&keyboards 
+- "Mobile-Touch": mobile + mono + touch 
+- "VR-Standalone": mobile + hmd + hands 
+
 The OS (Windows/macOS/Linux/Android) and CPU (I5/I7) and graphics card (AMD/NVidia) can be detected automatically by by both `nitpick` and the test scripts.
 The display device will be selected by a command line parameter to Interface; this parameter can then be accessed  by the test scripst as needed.
 
-The selected platform defines both the set of test scripts that are run, and the set of expected images.  
-Each test script will query Interface for the selected platform and will either exit gracefully or run;  if running, it may include internal branches based on the platform.
+The selected _CLient Profiles_ define both the set of test scripts that are run, and the set of expected images.  
+Each test script will query Interface for the selected profiles and will either exit gracefully or run;  if running, it may include internal branches based on the platform.
 The expected images are divided into 2 sets.  The first set includes those images which are identical for all platforms.
 The second set includes subsets for each platform, each subset including those images that are unique for each platform.
 
