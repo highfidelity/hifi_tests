@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "primary", function(testType) {
+nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "secondary", function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
