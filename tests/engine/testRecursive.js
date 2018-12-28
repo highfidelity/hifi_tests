@@ -12,9 +12,9 @@ if (typeof Test !== 'undefined') {
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
-Script.include(testsRootPath + "engine/render/shadows/primaryCamera/normal/test.js");
-Script.include(testsRootPath + "engine/render/shadows/primaryCamera/grazing/test.js");
-Script.include(testsRootPath + "engine/render/shadows/primaryCamera/front/test.js");
+Script.include(testsRootPath + "engine/render/shadows/normal/test.js");
+Script.include(testsRootPath + "engine/render/shadows/grazing/test.js");
+Script.include(testsRootPath + "engine/render/shadows/front/test.js");
 Script.include(testsRootPath + "engine/render/mesh/MyAvatar/visibility/test.js");
 Script.include(testsRootPath + "engine/render/mesh/MyAvatar/scale/test.js");
 Script.include(testsRootPath + "engine/render/material/roughness_map/test.js");
