@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Shadow control", Script.resolvePath("."), "primary", function(testType) {
+nitpick.perform("Shadow control", Script.resolvePath("."), "secondary", function(testType) {
     var LIFETIME = 120;
     var zone;
     var terrain;
