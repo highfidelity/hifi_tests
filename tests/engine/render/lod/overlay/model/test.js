@@ -8,14 +8,17 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     var LIFETIME = 120;
     var DIM = {x: 1.0, y: 1.2, z: 0.28};
 
+    var previousLODAdjust;
+    var previousOctreeSizeScale;
+
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-    
+
     var pos = nitpick.getOriginFrame();
     var ori = MyAvatar.orientation;
 
     validationCamera_setRotation({ x: 0.0, y: 0.0, z: 0.0 });
     validationCamera_setTranslation({ x: 0.0, y: 0.0, z: 0.0 });
-    
+
     // Create line of models
     var assetsRootPath = nitpick.getAssetsRootPath();
     var URL = Script.resolvePath(assetsRootPath + "models/geometry/avatars/kaya/Kaya.fbx");
@@ -39,7 +42,10 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
         isVisibleInSecondaryCamera: true
     }));
     
+    previousLODAdjust =  LODManager.getAutomaticLODAdjust();
     LODManager.setAutomaticLODAdjust(false);
+
+    previousOctreeSizeScale = LODManager.getOctreeSizeScale();
     LODManager.setOctreeSizeScale(32768 * 400);
 
     nitpick.addStepSnapshot("Both models visible");
@@ -65,8 +71,8 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
             Overlays.deleteOverlay(createdOverlays[i]);
         }
 
-        LODManager.setOctreeSizeScale(32768 * 400);
-        LODManager.setAutomaticLODAdjust(true);
+        LODManager.setOctreeSizeScale(previousOctreeSizeScale);
+        LODManager.setAutomaticLODAdjust(previousLODAdjust);
     });
 
     nitpick.runTest(testType);
