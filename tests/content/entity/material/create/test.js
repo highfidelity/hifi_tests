@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Material Entities", Script.resolvePath("."), "primary", function(testType) {
+nitpick.perform("Material Entities", Script.resolvePath("."), "secondary", function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 
@@ -26,7 +26,7 @@ nitpick.perform("Material Entities", Script.resolvePath("."), "primary", functio
         return Vec3.sum(Vec3.sum(center, Vec3.multiply(Quat.getRight(MyAvatar.orientation), col * 0.2)), Vec3.multiply(Quat.getUp(MyAvatar.orientation), -(row - NUM_ROWS) * 0.2));
     }
 
-    var debugDeferredBuffer = Render.getConfig("RenderMainView").getConfig("DebugDeferredBuffer")
+    var debugDeferredBuffer = Render.getConfig("SecondaryCameraJob").getConfig("DebugDeferredBuffer")
 
     function setDebugMode(mode) {
         debugDeferredBuffer.enabled = (mode != 0);
