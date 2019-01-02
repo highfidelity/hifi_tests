@@ -45,7 +45,6 @@ Script.include(testsRootPath + "content/entity/light/point/create/test.js");
 Script.include(testsRootPath + "content/entity/image/subImage/test.js");
 Script.include(testsRootPath + "content/entity/image/keepAspectRatio/test.js");
 Script.include(testsRootPath + "content/entity/image/emissive/test.js");
-Script.include(testsRootPath + "content/entity/image/billboardMode/test.js");
 Script.include(testsRootPath + "content/entity/image/color/test.js");
 Script.include(testsRootPath + "content/entity/image/billboardMode/test.js");
 Script.include(testsRootPath + "content/entity/image/alpha/test.js");
