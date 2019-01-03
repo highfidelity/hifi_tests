@@ -50,7 +50,6 @@ nitpick.perform("Line protocol sanity - TEST REQUIRES SERVER", Script.resolvePat
         { x: 510.4, y: 37.25, z:  134 },
         { x: 510.4, y: 37.25, z:  135 }
     ];
-    entityProperties.lineWidth = 123.5;
     entityProperties.color = { red: 85, green: 170, blue: 151 };
     entityProperties.registrationPoint = { x: 0.2, y: 0.4, z: 0.0444 };
 
