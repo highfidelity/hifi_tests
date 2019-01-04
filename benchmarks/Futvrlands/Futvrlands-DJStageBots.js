@@ -240,7 +240,7 @@ function update(event) {
 
     // set thrashAvatarEntityData accordingly
     var thrashAvatarEntityData = true;
-    if (thrashAvatarEntityData && 0 == (count % 45)) {
+    if (thrashAvatarEntityData && 0 == (count % 2)) {
         // send a trivial change to an AvatarEntity
         entityJSON["name"] = "entity" + count;
         Avatar.setAvatarEntityData({ "ff898dea-cb9a-4952-9639-3cb7dfe884df" : entityJSON });
