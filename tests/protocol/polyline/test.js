@@ -128,8 +128,6 @@ nitpick.perform("PolyLine protocol sanity - TEST REQUIRES SERVER", Script.resolv
         0.036
     ];
 
-    entityProperties.lineWidth = 123.5;
-
     entityProperties.color = { red: 85, green: 170, blue: 151 };
     entityProperties.textures = "http://textureURL";
     entityProperties.isUVModeStretch = false;
