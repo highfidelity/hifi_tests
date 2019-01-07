@@ -1,19 +1,19 @@
 # General
-This document describes the philosophy behind the testing infrastructure and then details the requirements for writing test scripts.
+This document describes the philosophy behind the testing infrastructure and then details the requirements for writing test scripts.  
 `nitpick` is a stand-alone tool, and is a component of the High Fidelity project; it is documented in that project.
 # Multiple Platforms create multiple results
 `nitpick` supports the High Fidelity capability of running on multiple platforms, as well as on mobile devices and stand-alone headsets.
-A test can generate different results (or simply  not run) depending on the platform and the type of user experience offered.
+A test can generate different results (or simply  not run) depending on the platform and the type of user experience offered.  
 We describe the type of experience and features offered from the Interface client as a combination of the following criteria
-- device: vr-pc (high/mid end gamer rig pc) / pc-book (laptop mac or intel gpu pc) / mobile (android phone or tablet or standalone vr)
+- device: VR-PC (high/mid end gamer rig PC) / PC-book (laptop mac or intel gpu PC) / mobile (android phone or tablet or standalone VR)
 - display: mono / hmd (/ stereo)
 - input: mouse&keyboard / hands / touch
 
-Here is the list of _Client Profiles_ supported:
-- "VR-High": vr-pc + hmd + hands
-- "Desktop-High": vr-pc + mono + mouse&keyboards
-- "Desktop-Low": pc-book + mono + mouse&keyboards 
-- "Mobile-Touch": mobile + mono + touch 
+Here is the list of _Client Profiles_ supported:  
+- "VR-High": VR-PC + hmd + hands  
+- "Desktop-High": VR-PC + mono + mouse&keyboard  
+- "Desktop-Low": PC-book + mono + mouse&keyboard  
+- "Mobile-Touch": mobile + mono + touch  
 - "VR-Standalone": mobile + hmd + hands 
 
 The OS (Windows/macOS/Linux/Android) and CPU (I5/I7) and graphics card (AMD/NVidia) can be detected automatically by by both `nitpick` and the test scripts.
