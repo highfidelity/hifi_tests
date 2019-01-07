@@ -35,6 +35,14 @@ const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 1.76, z: 0.0 };
 
 var spectatorCameraConfig;
 
+// Variables for Client Profile capabilities
+var graphicsCardType
+var graphicsCardVendor;
+var graphicsCardModelNumber;
+var CPUBrand;
+var operatingSystemType;
+var isHMDInUse;
+
 TestCase = function (name, path, func, usePrimaryCamera) {
     this.name = name;
     this.path = path;
@@ -281,7 +289,46 @@ setUpTest = function(testCase) {
     // This is needed to enable valid tests when Interface does not have focus
     // The problem is that models aren't rendered when there is no focus
     previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
-    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false)
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false);
+    
+    //Setup variables for Client Profile capabilities
+    graphicsCardType = PlatformInfo.getGraphicsCardType().toLowerCase();
+    
+    graphicsCardVendor = "Unknown";
+    if (graphicsCardType.search("nvidia") !== -1) {
+        graphicsCardVendor = "nvidia";
+    } else if (graphicsCardType.search("radeon") !== -1) {
+        graphicsCardVendor = "radeon";
+    }
+
+    // Extract the graphics card model from the type
+    // This uses a regex, and assumes the model is the first integer following a space
+    // Examples: "NVIDIA GeForce GTX 1070 with Max-Q Design"  => " 1070"
+    //           "Radeon Pro 560"                             => " 560"
+    var regex = / [0-9]+/;
+    graphicsCardModelNumber = parseInt(graphicsCardType.match(regex)); // The parseInt command safely ignores the initial blank
+
+    CPUBrand = PlatformInfo.getCPUBrand();
+    operatingSystemType = PlatformInfo.getOperatingSystemType();
+    isHMDInUse = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
+
+    console.warn("graphics card vendor: ", graphicsCardVendor);
+    console.warn("graphics card model number: ", graphicsCardModelNumber);
+    console.warn("CPU brand: ", CPUBrand);
+    console.warn("operating system type: ", operatingSystemType);
+    console.warn("HMD in use: ", isHMDInUse);
+    
+    var clientPlatform = {
+       graphicsCardVendor: graphicsCardVendor,
+       graphicsCardModelNumber: graphicsCardModelNumber,
+       CPUBrand: CPUBrand,
+       operatingSystemType: operatingSystemType,
+       isHMDInUse: isHMDInUse
+    }
+
+    if (typeof Test !== 'undefined') {
+        Test.saveObject(clientPlatform, "clientPlatform.txt");
+    };
 }
 
 tearDownTest = function() {
@@ -507,34 +554,6 @@ module.exports.saveResults = function(passed, resultsObject) {
 }
 
 module.exports.verifyClientProfile = function() {
-    var graphicsCardType = PlatformInfo.getGraphicsCardType().toLowerCase();
-    
-    var graphicsCardVendor = "Unknown";
-    if (graphicsCardType.search("nvidia") !== -1) {
-        graphicsCardVendor = "nvidia";
-    } else if (graphicsCardType.search("radeon") !== -1) {
-        graphicsCardVendor = "radeon";
-    }
-    
-    // Extract the graphics card model from the type
-    // This uses a regex, and assumes the model is the first integer following a space
-    // Examples: "NVIDIA GeForce GTX 1070 with Max-Q Design"  => " 1070"
-    //           "Radeon Pro 560"                             => " 560"
-    //
-    // The parseInt command safely ignores the initial blan
-    var regex = / [0-9]+/;
-    var graphicsCardModelNumber = parseInt(graphicsCardType.match(regex));
-    
-    var CPUBrand = PlatformInfo.getCPUBrand();
-    var operatingSystemType = PlatformInfo.getOperatingSystemType();
-    var isHMDAvailable = HMD.isHMDAvailable();
-
-    console.warn("graphics card vendor: ", graphicsCardVendor);
-    console.warn("graphics card model number: ", graphicsCardModelNumber);
-    console.warn("CPU brand: ", CPUBrand);
-    console.warn("operating system type: ", operatingSystemType);
-    console.warn("HMD available: ", isHMDAvailable);
-    
     for (var i = 0; i < arguments.length; ++i) {
         if (arguments[i] == "Any") {
             console.warn("Running on 'Any platform'");
@@ -552,7 +571,7 @@ module.exports.verifyClientProfile = function() {
             const MEMORY_MINIMUM_MB = 8000;
             var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
-            if (isCPUOK && isOperatingSystemOK && isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+            if (isCPUOK && isOperatingSystemOK && isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'VR-High'");
                 return true;
             }
@@ -569,7 +588,7 @@ module.exports.verifyClientProfile = function() {
             const MEMORY_MINIMUM_MB = 8000;
             var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
-            if (isCPUOK && isOperatingSystemOK && !isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+            if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'Desktop-High'");
                 return true;
             }
@@ -578,7 +597,7 @@ module.exports.verifyClientProfile = function() {
             // Same as Desktop-High, but i5 CPU
             var isCPUOK = (CPUBrand.search("i5") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            var isHMDAvailable = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
+            var isHMDInUse = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
             
             const NVIDIA_VR_MINIMUM = 970;
             const RADEON_VR_MINIMUM = 290;
@@ -587,7 +606,7 @@ module.exports.verifyClientProfile = function() {
             const MEMORY_MINIMUM_MB = 8000;
             var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
-            if (isCPUOK && isOperatingSystemOK && !isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+            if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'Desktop-Low'");
                 return true;
             }
