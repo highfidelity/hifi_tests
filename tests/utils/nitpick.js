@@ -39,7 +39,9 @@ var spectatorCameraConfig;
 var graphicsCardType
 var graphicsCardVendor;
 var graphicsCardModelNumber;
+var isGraphicsCardOK;
 var CPUBrand;
+var isMemoryOK;
 var operatingSystemType;
 var isHMDInUse;
 
@@ -312,18 +314,24 @@ setUpTest = function(testCase) {
     operatingSystemType = PlatformInfo.getOperatingSystemType();
     isHMDInUse = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
 
-    console.warn("graphics card vendor: ", graphicsCardVendor);
-    console.warn("graphics card model number: ", graphicsCardModelNumber);
-    console.warn("CPU brand: ", CPUBrand);
-    console.warn("operating system type: ", operatingSystemType);
-    console.warn("HMD in use: ", isHMDInUse);
+            
+    const MEMORY_MINIMUM_MB = 8000;
+    isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
+            
+    const NVIDIA_VR_MINIMUM = 970;
+    const RADEON_VR_MINIMUM = 290;
+    isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
     
     var clientPlatform = {
-       graphicsCardVendor: graphicsCardVendor,
-       graphicsCardModelNumber: graphicsCardModelNumber,
-       CPUBrand: CPUBrand,
-       operatingSystemType: operatingSystemType,
-       isHMDInUse: isHMDInUse
+        graphicsCardType: graphicsCardType,
+        graphicsCardVendor: graphicsCardVendor,
+        graphicsCardModelNumber: graphicsCardModelNumber,
+        isGraphicsCardOK: isGraphicsCardOK,
+        CPUBrand: CPUBrand,
+        operatingSystemType: operatingSystemType,
+        totalSystemMemoryMB: getTotalSystemMemoryMB(),
+        isMemoryOK: isMemoryOK,
+        isHMDInUse: isHMDInUse
     }
 
     if (typeof Test !== 'undefined') {
@@ -564,13 +572,6 @@ module.exports.verifyClientProfile = function() {
             var isCPUOK = (CPUBrand.search("i7") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
             
-            const NVIDIA_VR_MINIMUM = 970;
-            const RADEON_VR_MINIMUM = 290;
-            var isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
-            
-            const MEMORY_MINIMUM_MB = 8000;
-            var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
-            
             if (isCPUOK && isOperatingSystemOK && isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'VR-High'");
                 return true;
@@ -580,13 +581,6 @@ module.exports.verifyClientProfile = function() {
             // Same as VR-High, but no HMD
             var isCPUOK = (CPUBrand.search("i7") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            
-            const NVIDIA_VR_MINIMUM = 970;
-            const RADEON_VR_MINIMUM = 290;
-            var isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
-            
-            const MEMORY_MINIMUM_MB = 8000;
-            var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
             if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'Desktop-High'");
@@ -598,13 +592,6 @@ module.exports.verifyClientProfile = function() {
             var isCPUOK = (CPUBrand.search("i5") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
             var isHMDInUse = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
-            
-            const NVIDIA_VR_MINIMUM = 970;
-            const RADEON_VR_MINIMUM = 290;
-            var isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
-            
-            const MEMORY_MINIMUM_MB = 8000;
-            var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
             if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'Desktop-Low'");
