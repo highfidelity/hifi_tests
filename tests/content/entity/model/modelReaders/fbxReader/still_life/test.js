@@ -47,8 +47,8 @@ nitpick.perform("Read still life FBX model", Script.resolvePath("."), "secondary
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     }));
 
-    nitpick.addDelay(4);
-    nitpick.addStepSnapshot("Still life OBJ model");
+    nitpick.addDelay(8);
+    nitpick.addStepSnapshot("Still life FBX model");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
