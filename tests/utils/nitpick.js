@@ -537,8 +537,10 @@ module.exports.verifyClientProfile = function() {
     
     for (var i = 0; i < arguments.length; ++i) {
         if (arguments[i] == "Any") {
+            console.warn("Running on 'Any platform'");
             return true;
         } else if (arguments[i] == "VR-High") {
+            console.warn("Requested to run on 'VR-High'");
             // Needs Windows + I7 + HMD + sufficient graphics card + sufficient memory
             var isCPUOK = (CPUBrand.search("i7") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
@@ -551,9 +553,11 @@ module.exports.verifyClientProfile = function() {
             var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
             if (isCPUOK && isOperatingSystemOK && isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+                console.warn("Running on 'VR-High'");
                 return true;
             }
         } else if (arguments[i] == "Desktop-High") {
+            console.warn("Requested to run on 'Desktop-High'");
             // Same as VR-High, but no HMD
             var isCPUOK = (CPUBrand.search("i7") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
@@ -566,9 +570,11 @@ module.exports.verifyClientProfile = function() {
             var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
             if (isCPUOK && isOperatingSystemOK && !isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+                console.warn("Running on 'Desktop-High'");
                 return true;
             }
         } else if (arguments[i] == "Desktop-Low") {
+            console.warn("Requested to run on 'Desktop-Low'");
             // Same as Desktop-High, but i5 CPU
             var isCPUOK = (CPUBrand.search("i5") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
@@ -582,12 +588,15 @@ module.exports.verifyClientProfile = function() {
             var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
             
             if (isCPUOK && isOperatingSystemOK && !isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+                console.warn("Running on 'Desktop-Low'");
                 return true;
             }
         } else if (arguments[i]== "Mobile-Touch") {
+            console.warn("Requested to run on 'Mobile-Touch'");
             //Not implemented yet
             return false;
         } else if (arguments[i] == "VR-Standalone") {
+            console.warn("Requested to run on 'VR-Standalone'");
             //Not implemented yet
             return false;
         } else {
