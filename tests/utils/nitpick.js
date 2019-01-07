@@ -505,3 +505,22 @@ module.exports.saveResults = function(passed, resultsObject) {
 		++textIndex;
     }
 }
+
+module.exports.assertClientProfile = function() {
+    var GPU = PlatformInfo.getGraphicsCardType();
+    for (var i = 0; i < arguments.length; ++i) {
+        if (arguments[i] = "Any") {
+            return true;
+        } else if (arguments[i] = "VR-High") {
+            
+            if (PlatformInfo.getOperatingSystemType() === "WINDOWS" && PlatformInfo.getCPUBrand().contains("i7")) {
+            }
+        } else if (arguments[i] = "Desktop-High") {
+        } else if (arguments[i] = "Desktop-Low") {
+        } else if (arguments[i] = "Mobile-Touch") {
+        } else if (arguments[i] = "VR-Standalone") {
+        }
+    }
+    
+    return false;
+}
