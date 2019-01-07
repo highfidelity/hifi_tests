@@ -1,5 +1,29 @@
 # General
-This document describes the philosophy behind the testing infrastructure and then details the requirements for writing test scripts.
+This document describes the philosophy behind the testing infrastructure and then details the requirements for writing test scripts.  
+`nitpick` is a stand-alone tool, and is a component of the High Fidelity project; it is documented in that project.
+# Multiple Platforms create multiple results
+`nitpick` supports the High Fidelity capability of running on multiple platforms, as well as on mobile devices and stand-alone headsets.
+A test can generate different results (or simply  not run) depending on the platform and the type of user experience offered.  
+We describe the type of experience and features offered from the Interface client as a combination of the following criteria
+- device: VR-PC (high/mid end gamer rig PC) / PC-book (laptop mac or intel gpu PC) / mobile (android phone or tablet or standalone VR)
+- display: mono / hmd (/ stereo)
+- input: mouse&keyboard / hands / touch
+
+Here is the list of _Client Profiles_ supported:  
+- "VR-High": VR-PC + hmd + hands  
+- "Desktop-High": VR-PC + mono + mouse&keyboard  
+- "Desktop-Low": PC-book + mono + mouse&keyboard  
+- "Mobile-Touch": mobile + mono + touch  
+- "VR-Standalone": mobile + hmd + hands 
+
+The OS (Windows/macOS/Linux/Android) and CPU (I5/I7) and graphics card (AMD/NVidia) can be detected automatically by by both `nitpick` and the test scripts.
+The display device will be selected by a command line parameter to Interface; this parameter can then be accessed  by the test scripst as needed.
+
+The selected _CLient Profiles_ define both the set of test scripts that are run, and the set of expected images.  
+Each test script will query Interface for the selected profiles and will either exit gracefully or run;  if running, it may include internal branches based on the platform.
+The expected images are divided into 2 sets.  The first set includes those images which are identical for all platforms.
+The second set includes subsets for each platform, each subset including those images that are unique for each platform.
+
 # Engine Test Plan
 
 This repository folder is the root of the master database of test cases for the core engine features of High Fidelity platform.
@@ -115,45 +139,44 @@ For example: [Entity Shape Create](./content/entity/shape/create)
 Each test is in a separate folder, which should contain the following files:
 1. test.js - a module containing the test.  The contents are described in detail below.
 2. runAuto.js - runs the test.js script automatically, creating a set of snapshots.
-3. test.md - this is created by auto-tester.
-4. Expected_Image_xxxx - these are created by running the script and then using auto-tester.
-5. In addition - **auto-tester** is used to create recursive scripts.  These are all named **testRecursive.js** and will run every applicable test (i.e., those named *test.js*) in all subfolders below this script.  This allows running **ALL** the tests, by running the *testRecursive.js* script located in the **tests** root folder.
+3. test.md - this is created by `nitpick`.
+4. Expected_Image_xxxx - these are created by running the script and then using `nitpick`.
+5. In addition - `nitpick` is used to create recursive scripts.  These are all named **testRecursive.js** and will run every applicable test (i.e., those named *test.js*) in all subfolders below this script.  This allows running **ALL** the tests, by running the *testRecursive.js* script located in the **tests** root folder.
 # Test Script Structure
-A test script has the following structure:
+A test script has the following structure:  
 ```
 if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 
-var autoTester = createAutoTester(Script.resolvePath("."));
+var nitpick = createNitpick(Script.resolvePath("."));
 
-autoTester.perform("Test Description", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Test Description", Script.resolvePath("."), "secondary", function(testType) {
 
    <list of steps>
   
-   autoTester.runTest(testType);
+   nitpick.runTest(testType);
 });
-
-```
+```  
 The first line verifies that *PATH_TO_THE_REPO_PATH_UTILS_FILE* points to a script named **branchUtils.js**.  This script will always be available in the master branch of the hifi_tests branch of the highfidelity user.  This is used to enable running tests from the repository of a different user for testing purposes.
 
 The second line includes can then include **branchUtils.js**.
 
-The third line creates the autoTester object, which stores the test steps, and then initiates the test (via *runTest*).
+The third line creates the nitpick object, which stores the test steps, and then initiates the test (via *runTest*).
 
 Tests are not run immediately. Instead all steps of all tests are first stored on a stack.  This is required because of the vagaries of the JavaScript language.
 ## Test Steps
 A test step is a function that can also create a snapshot (the function is not compulsory, see below).  Loading entities and setting state take finite time, so the recommended procedure is to write pairs of steps, as follows:
 ```
-    autoTester.addStep("Clear zone rotation", function () {
+    nitpick.addStep("Clear zone rotation", function () {
         Entities.editEntity(sphere, {visible: false });  
         Entities.editEntity(zone, {rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 )});  
         Entities.editEntity(zone, {keyLightMode: "disabled", skyboxMode: "enabled"});  
     });
-    autoTester.addStepSnapshot("Sun straight ahead on purple background (sphere is hidden)");
+    nitpick.addStepSnapshot("Sun straight ahead on purple background (sphere is hidden)");
 ```
 The first step edits an entity, while the second step just takes a snapshot (note that it has no function).
 
-The first parameter is a string describing the step.  This string is also used by auto-tester when creating the MD file.
+The first parameter is a string describing the step.  This string is also used by `nitpick` when creating the MD file.
 
 The final step in a test should delete all entities created by the test, and restore Interface to its state prior to the test (i.e. - restore shadows, point of view and avatar visibility).
