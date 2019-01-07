@@ -329,7 +329,7 @@ setUpTest = function(testCase) {
         isGraphicsCardOK: isGraphicsCardOK,
         CPUBrand: CPUBrand,
         operatingSystemType: operatingSystemType,
-        totalSystemMemoryMB: getTotalSystemMemoryMB(),
+        totalSystemMemoryMB: PlatformInfo.getTotalSystemMemoryMB(),
         isMemoryOK: isMemoryOK,
         isHMDInUse: isHMDInUse
     }
