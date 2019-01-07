@@ -316,25 +316,26 @@ setUpTest = function(testCase) {
 
             
     const MEMORY_MINIMUM_MB = 8000;
-    isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
+    totalSystemMemoryMB = PlatformInfo.getTotalSystemMemoryMB();
+    isMemoryOK = totalSystemMemoryMB > MEMORY_MINIMUM_MB;
             
     const NVIDIA_VR_MINIMUM = 970;
     const RADEON_VR_MINIMUM = 290;
     isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
     
-    var clientPlatform = {
-        graphicsCardType: graphicsCardType,
-        graphicsCardVendor: graphicsCardVendor,
-        graphicsCardModelNumber: graphicsCardModelNumber,
-        isGraphicsCardOK: isGraphicsCardOK,
-        CPUBrand: CPUBrand,
-        operatingSystemType: operatingSystemType,
-        totalSystemMemoryMB: PlatformInfo.getTotalSystemMemoryMB(),
-        isMemoryOK: isMemoryOK,
-        isHMDInUse: isHMDInUse
-    }
-
     if (typeof Test !== 'undefined') {
+        var clientPlatform = {
+            graphicsCardType: graphicsCardType,
+            graphicsCardVendor: graphicsCardVendor,
+            graphicsCardModelNumber: graphicsCardModelNumber,
+            isGraphicsCardOK: isGraphicsCardOK,
+            CPUBrand: CPUBrand,
+            operatingSystemType: operatingSystemType,
+            totalSystemMemoryMB: totalSystemMemoryMB,
+            isMemoryOK: isMemoryOK,
+            isHMDInUse: isHMDInUse
+        }
+
         Test.saveObject(clientPlatform, "clientPlatform.txt");
     };
 }
