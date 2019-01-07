@@ -506,19 +506,92 @@ module.exports.saveResults = function(passed, resultsObject) {
     }
 }
 
-module.exports.assertClientProfile = function() {
-    var GPU = PlatformInfo.getGraphicsCardType();
+module.exports.verifyClientProfile = function() {
+    var graphicsCardType = PlatformInfo.getGraphicsCardType().toLowerCase();
+    
+    var graphicsCardVendor = "Unknown";
+    if (graphicsCardType.search("nvidia") !== -1) {
+        graphicsCardVendor = "nvidia";
+    } else if (graphicsCardType.search("radeon") !== -1) {
+        graphicsCardVendor = "radeon";
+    }
+    
+    // Extract the graphics card model from the type
+    // This uses a regex, and assumes the model is the first integer following a space
+    // Examples: "NVIDIA GeForce GTX 1070 with Max-Q Design"  => " 1070"
+    //           "Radeon Pro 560"                             => " 560"
+    //
+    // The parseInt command safely ignores the initial blan
+    var regex = / [0-9]+/;
+    var graphicsCardModelNumber = parseInt(graphicsCardType.match(regex));
+    
+    var CPUBrand = PlatformInfo.getCPUBrand();
+    var operatingSystemType = PlatformInfo.getOperatingSystemType();
+    var isHMDAvailable = HMD.isHMDAvailable();
+
+    console.warn("graphics card vendor: ", graphicsCardVendor);
+    console.warn("graphics card model number: ", graphicsCardModelNumber);
+    console.warn("CPU brand: ", CPUBrand);
+    console.warn("operating system type: ", operatingSystemType);
+    console.warn("HMD available: ", isHMDAvailable);
+    
     for (var i = 0; i < arguments.length; ++i) {
-        if (arguments[i] = "Any") {
+        if (arguments[i] == "Any") {
             return true;
-        } else if (arguments[i] = "VR-High") {
+        } else if (arguments[i] == "VR-High") {
+            // Needs Windows + I7 + HMD + sufficient graphics card + sufficient memory
+            var isCPUOK = (CPUBrand.search("i7") != -1)
+            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
             
-            if (PlatformInfo.getOperatingSystemType() === "WINDOWS" && PlatformInfo.getCPUBrand().contains("i7")) {
+            const NVIDIA_VR_MINIMUM = 970;
+            const RADEON_VR_MINIMUM = 290;
+            var isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
+            
+            const MEMORY_MINIMUM_MB = 8000;
+            var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
+            
+            if (isCPUOK && isOperatingSystemOK && isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+                return true;
             }
-        } else if (arguments[i] = "Desktop-High") {
-        } else if (arguments[i] = "Desktop-Low") {
-        } else if (arguments[i] = "Mobile-Touch") {
-        } else if (arguments[i] = "VR-Standalone") {
+        } else if (arguments[i] == "Desktop-High") {
+            // Same as VR-High, but no HMD
+            var isCPUOK = (CPUBrand.search("i7") != -1)
+            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
+            
+            const NVIDIA_VR_MINIMUM = 970;
+            const RADEON_VR_MINIMUM = 290;
+            var isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
+            
+            const MEMORY_MINIMUM_MB = 8000;
+            var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
+            
+            if (isCPUOK && isOperatingSystemOK && !isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+                return true;
+            }
+        } else if (arguments[i] == "Desktop-Low") {
+            // Same as Desktop-High, but i5 CPU
+            var isCPUOK = (CPUBrand.search("i5") != -1)
+            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
+            var isHMDAvailable = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
+            
+            const NVIDIA_VR_MINIMUM = 970;
+            const RADEON_VR_MINIMUM = 290;
+            var isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
+            
+            const MEMORY_MINIMUM_MB = 8000;
+            var isMemoryOK = PlatformInfo.getTotalSystemMemoryMB() > MEMORY_MINIMUM_MB;
+            
+            if (isCPUOK && isOperatingSystemOK && !isHMDAvailable && isGraphicsCardOK && isMemoryOK) {
+                return true;
+            }
+        } else if (arguments[i]== "Mobile-Touch") {
+            //Not implemented yet
+            return false;
+        } else if (arguments[i] == "VR-Standalone") {
+            //Not implemented yet
+            return false;
+        } else {
+            return false;
         }
     }
     
