@@ -13,10 +13,6 @@ nitpick.enableRecursive();
 nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/overlay/material/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawInFront/shape/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawInFront/model/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawInFront/alpha/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawHUDLayer/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneOrientation/test.js");
 Script.include(testsRootPath + "content/entity/zone/zoneEffects/test.js");
 Script.include(testsRootPath + "content/entity/zone/shadowControl/test.js");
