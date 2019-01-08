@@ -43,6 +43,8 @@ var isGraphicsCardOK;
 var CPUBrand;
 var isMemoryOK;
 var operatingSystemType;
+var isRiftInUse;
+var isViveInUse;
 var isHMDInUse;
 
 TestCase = function (name, path, func, usePrimaryCamera) {
@@ -312,8 +314,9 @@ setUpTest = function(testCase) {
 
     CPUBrand = PlatformInfo.getCPUBrand();
     operatingSystemType = PlatformInfo.getOperatingSystemType();
-    isHMDInUse = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
-
+    isRiftInUse = PlatformInfo.hasRiftControllers();
+    isViveInUse = PlatformInfo.hasViveControllers();
+    isHMDInUse = (isRiftInUse || isViveInUse);
             
     const MEMORY_MINIMUM_MB = 8000;
     totalSystemMemoryMB = PlatformInfo.getTotalSystemMemoryMB();
@@ -333,6 +336,8 @@ setUpTest = function(testCase) {
             operatingSystemType: operatingSystemType,
             totalSystemMemoryMB: totalSystemMemoryMB,
             isMemoryOK: isMemoryOK,
+            isRiftInUse: isRiftInUse,
+            isViveInUse: isViveInUse,
             isHMDInUse: isHMDInUse
         }
 
@@ -567,14 +572,34 @@ module.exports.verifyClientProfile = function() {
         if (arguments[i] == "Any") {
             console.warn("Running on 'Any platform'");
             return true;
-        } else if (arguments[i] == "VR-High") {
-            console.warn("Requested to run on 'VR-High'");
+        } else if (arguments[i] == "VR-Windows-High") {
+            console.warn("Requested to run on 'VR-Windows-High'");
             // Needs Windows + I7 + HMD + sufficient graphics card + sufficient memory
             var isCPUOK = (CPUBrand.search("i7") != -1)
             var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
             
             if (isCPUOK && isOperatingSystemOK && isHMDInUse && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'VR-High'");
+                console.warn("Running on 'VR-Windows-High'");
+                return true;
+            }
+        } else if (arguments[i] == "Rift-Windows-High") {
+            console.warn("Requested to run on 'Rift-Windows-High'");
+            // Needs Windows + I7 + Rift + sufficient graphics card + sufficient memory
+            var isCPUOK = (CPUBrand.search("i7") != -1)
+            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
+            
+            if (isCPUOK && isOperatingSystemOK && isRiftInUse && isGraphicsCardOK && isMemoryOK) {
+                console.warn("Running on 'Rift-Windows-High'");
+                return true;
+            }
+        } else if (arguments[i] == "Vive-Windows-High") {
+            console.warn("Requested to run on 'Vive-Windows-High'");
+            // Needs Windows + I7 + HMD + sufficient graphics card + sufficient memory
+            var isCPUOK = (CPUBrand.search("i7") != -1)
+            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
+            
+            if (isCPUOK && isOperatingSystemOK && isViveInUse && isGraphicsCardOK && isMemoryOK) {
+                console.warn("Running on 'Vive-Windows-High'");
                 return true;
             }
         } else if (arguments[i] == "Desktop-High") {
@@ -596,6 +621,14 @@ module.exports.verifyClientProfile = function() {
             
             if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
                 console.warn("Running on 'Desktop-Low'");
+                return true;
+            }
+        } else if (arguments[i] == "Desktop-Mac") {
+            console.warn("Requested to run on 'Desktop-Mac'");
+            var isOperatingSystemOK = (operatingSystemType == "MACOS");
+            
+            if (isOperatingSystemOK && isGraphicsCardOK && isMemoryOK) {
+                console.warn("Running on 'Desktop-Mac'");
                 return true;
             }
         } else if (arguments[i]== "Mobile-Touch") {
