@@ -3,8 +3,6 @@
 
 ## Preconditions
 - In an empty region of a domain with editing rights.
-- Physics engine is loaded.
-- Tester's avatar is not moving.
 
 ## Steps
 Press 'n' key to advance step by step
