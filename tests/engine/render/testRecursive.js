@@ -24,7 +24,7 @@ Script.include(testsRootPath + "engine/render/material/normal_map/test.js");
 Script.include(testsRootPath + "engine/render/material/emissive/test.js");
 Script.include(testsRootPath + "engine/render/material/base/test.js");
 Script.include(testsRootPath + "engine/render/material/albedo/test.js");
-Script.include(testsRootPath + "engine/render/lod/overlay/model/test.js");
+Script.include(testsRootPath + "engine/render/lod/entity/model/test.js");
 Script.include(testsRootPath + "engine/render/lighting/ponctual/onTransparent/test.js");
 Script.include(testsRootPath + "engine/render/geometry/invalidURL/test.js");
 Script.include(testsRootPath + "engine/render/effect/highlight/coverage/test.js");

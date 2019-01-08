@@ -14,6 +14,5 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/shape/renderLayer/front/test.js");
 Script.include(testsRootPath + "content/entity/shape/renderLayer/alpha/test.js");
-Script.include(testsRootPath + "content/entity/shape/create/test.js");
 
 nitpick.runRecursive();
