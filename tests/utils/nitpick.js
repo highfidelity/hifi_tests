@@ -45,7 +45,7 @@ var isMemoryOK;
 var operatingSystemType;
 var isRiftInUse;
 var isViveInUse;
-var isHMDInUse;
+var isHMDInUse; // false indicates Desktop
 
 TestCase = function (name, path, func, usePrimaryCamera) {
     this.name = name;
@@ -314,10 +314,10 @@ setUpTest = function(testCase) {
 
     CPUBrand = PlatformInfo.getCPUBrand();
     operatingSystemType = PlatformInfo.getOperatingSystemType();
-    isRiftInUse = PlatformInfo.hasRiftControllers();
-    isViveInUse = PlatformInfo.hasViveControllers();
-    isHMDInUse = (isRiftInUse || isViveInUse);
-            
+    isHMDInUse = HMD.mounted;
+    isRiftInUse = (isHMDInUse && PlatformInfo.hasRiftControllers());
+    isViveInUse = (isHMDInUse && PlatformInfo.hasViveControllers());
+
     const MEMORY_MINIMUM_MB = 8000;
     totalSystemMemoryMB = PlatformInfo.getTotalSystemMemoryMB();
     isMemoryOK = totalSystemMemoryMB > MEMORY_MINIMUM_MB;
@@ -343,6 +343,18 @@ setUpTest = function(testCase) {
 
         Test.saveObject(clientPlatform, "clientPlatform.txt");
     };
+    
+    console.warn("We running on " + operatingSystemType + "," + CPUBrand + " CPU with " + totalSystemMemoryMB + "MB of memory");
+    console.warn("Graphics card is " + graphicsCardType);
+    if (isRiftInUse) {
+        console.warn("Displaying on Rift");
+    } else if (isViveInUse) {
+        console.warn("Displaying on Vive");
+    } else if (!isHMDInUse) {
+        console.warn("Displaying on Desktop");
+    } else {
+        console.warn("Displaying on unknown device!!!");
+    }
 }
 
 tearDownTest = function() {
@@ -568,81 +580,65 @@ module.exports.saveResults = function(passed, resultsObject) {
 }
 
 module.exports.verifyClientProfile = function() {
+    // 'arguments' is a list of objects
+    // The following are valid properties and values of each object:
+    //      display:            "VR", "Rift", "Vive", "Desktop"
+    //      operatingSystem:    "Windows", "Mac"
+    //      CPULevel:           "i7", i5"
+    //
+    // An undefined property implies that all values are valid.
+    //
+    // Returns true if the current client platform matches any of the arguments
+    //
+    // Example of use:
+    //    requiredClientProfile1 = {
+    //        display:            "Desktop",
+    //        operatingSystem:    "Windows",
+    //        CPULevel:           "i7"
+    //    };
+    //    requiredClientProfile2 = {
+    //        display:            "VR",
+    //        operatingSystem:    "Windows",
+    //        CPULevel:           "i7"
+    //    };
+    //    if (!nitpick.verifyClientProfile(requiredClientProfile1, requiredClientProfile2)) {
+    //        return false;
+    //    }
+
     for (var i = 0; i < arguments.length; ++i) {
-        if (arguments[i] == "Any") {
-            console.warn("Running on 'Any platform'");
+        clientPlatform = arguments[i];
+        
+        console.warn("Test is asking if we running on " + clientPlatform.display + ":" + clientPlatform.operatingSystem + ":" + clientPlatform.CPULevel + "?");
+        var isDisplayOK;
+        if (typeof clientPlatform.display !== 'undefined') {
+            isDisplayOK = (
+                (clientPlatform.display === "Desktop" && !isHMDInUse) ||
+                (clientPlatform.display === "VR"      && isHMDInUse)  ||
+                (clientPlatform.display === "Rift"    && isRiftInUse) ||
+                (clientPlatform.display === "Vive"    && isViveInUse)
+            );
+        }
+
+        var isOperatingSystemOK;
+        if (typeof clientPlatform.operatingSystem !== 'undefined') {
+             isOperatingSystemOK = (clientPlatform.operatingSystem.toUpperCase() == operatingSystemType);
+        }
+
+        var isCPULevelOK;
+        if (typeof clientPlatform.CPULevel !== 'undefined') {
+             isCPULevelOK = (CPUBrand.search(clientPlatform.CPULevel.toLowerCase()) != -1);
+        }
+        
+        // Is everything OK?
+        if (isDisplayOK && isOperatingSystemOK && isCPULevelOK) {
+            console.warn("Yes - we are");
             return true;
-        } else if (arguments[i] == "VR-Windows-High") {
-            console.warn("Requested to run on 'VR-Windows-High'");
-            // Needs Windows + I7 + HMD + sufficient graphics card + sufficient memory
-            var isCPUOK = (CPUBrand.search("i7") != -1)
-            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            
-            if (isCPUOK && isOperatingSystemOK && isHMDInUse && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'VR-Windows-High'");
-                return true;
-            }
-        } else if (arguments[i] == "Rift-Windows-High") {
-            console.warn("Requested to run on 'Rift-Windows-High'");
-            // Needs Windows + I7 + Rift + sufficient graphics card + sufficient memory
-            var isCPUOK = (CPUBrand.search("i7") != -1)
-            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            
-            if (isCPUOK && isOperatingSystemOK && isRiftInUse && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'Rift-Windows-High'");
-                return true;
-            }
-        } else if (arguments[i] == "Vive-Windows-High") {
-            console.warn("Requested to run on 'Vive-Windows-High'");
-            // Needs Windows + I7 + HMD + sufficient graphics card + sufficient memory
-            var isCPUOK = (CPUBrand.search("i7") != -1)
-            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            
-            if (isCPUOK && isOperatingSystemOK && isViveInUse && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'Vive-Windows-High'");
-                return true;
-            }
-        } else if (arguments[i] == "Desktop-High") {
-            console.warn("Requested to run on 'Desktop-High'");
-            // Same as VR-High, but no HMD
-            var isCPUOK = (CPUBrand.search("i7") != -1)
-            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            
-            if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'Desktop-High'");
-                return true;
-            }
-        } else if (arguments[i] == "Desktop-Low") {
-            console.warn("Requested to run on 'Desktop-Low'");
-            // Same as Desktop-High, but i5 CPU
-            var isCPUOK = (CPUBrand.search("i5") != -1)
-            var isOperatingSystemOK = (operatingSystemType == "WINDOWS");
-            var isHMDInUse = (PlatformInfo.hasRiftControllers() || PlatformInfo.hasViveControllers());
-            
-            if (isCPUOK && isOperatingSystemOK && !isHMDInUse && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'Desktop-Low'");
-                return true;
-            }
-        } else if (arguments[i] == "Desktop-Mac") {
-            console.warn("Requested to run on 'Desktop-Mac'");
-            var isOperatingSystemOK = (operatingSystemType == "MACOS");
-            
-            if (isOperatingSystemOK && isGraphicsCardOK && isMemoryOK) {
-                console.warn("Running on 'Desktop-Mac'");
-                return true;
-            }
-        } else if (arguments[i]== "Mobile-Touch") {
-            console.warn("Requested to run on 'Mobile-Touch'");
-            //Not implemented yet
-            return false;
-        } else if (arguments[i] == "VR-Standalone") {
-            console.warn("Requested to run on 'VR-Standalone'");
-            //Not implemented yet
-            return false;
         } else {
-            return false;
+            console.warn("No - we aren't");
         }
     }
     
+    // Nothing was OK
+    console.warn("We are not running on any of the requested client profiles");
     return false;
 }
