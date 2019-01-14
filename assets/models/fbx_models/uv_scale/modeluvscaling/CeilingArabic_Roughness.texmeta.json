@@ -1,0 +1,8 @@
+{
+    "compressed": {
+        "COMPRESSED_R11_EAC": "../CeilingArabic_Roughness_COMPRESSED_R11_EAC.ktx",
+        "COMPRESSED_RED_RGTC1": "../CeilingArabic_Roughness_COMPRESSED_RED_RGTC1.ktx"
+    },
+    "original": "../CeilingArabic_Roughness.png",
+    "uncompressed": ""
+}
