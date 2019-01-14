@@ -35,6 +35,18 @@ const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 1.76, z: 0.0 };
 
 var spectatorCameraConfig;
 
+// Variables for Client Profile capabilities
+var graphicsCardType
+var graphicsCardVendor;
+var graphicsCardModelNumber;
+var isGraphicsCardOK;
+var CPUBrand;
+var isMemoryOK;
+var operatingSystemType;
+var isRiftInUse;
+var isViveInUse;
+var isHMDInUse; // false indicates Desktop
+
 TestCase = function (name, path, func, usePrimaryCamera) {
     this.name = name;
     this.path = path;
@@ -281,7 +293,68 @@ setUpTest = function(testCase) {
     // This is needed to enable valid tests when Interface does not have focus
     // The problem is that models aren't rendered when there is no focus
     previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
-    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false)
+    Menu.setIsOptionChecked("Throttle FPS If Not Focus", false);
+    
+    //Setup variables for Client Profile capabilities
+    graphicsCardType = PlatformInfo.getGraphicsCardType().toLowerCase();
+    
+    graphicsCardVendor = "Unknown";
+    if (graphicsCardType.search("nvidia") !== -1) {
+        graphicsCardVendor = "nvidia";
+    } else if (graphicsCardType.search("radeon") !== -1) {
+        graphicsCardVendor = "radeon";
+    }
+
+    // Extract the graphics card model from the type
+    // This uses a regex, and assumes the model is the first integer following a space
+    // Examples: "NVIDIA GeForce GTX 1070 with Max-Q Design"  => " 1070"
+    //           "Radeon Pro 560"                             => " 560"
+    var regex = / [0-9]+/;
+    graphicsCardModelNumber = parseInt(graphicsCardType.match(regex)); // The parseInt command safely ignores the initial blank
+
+    CPUBrand = PlatformInfo.getCPUBrand();
+    operatingSystemType = PlatformInfo.getOperatingSystemType();
+    isHMDInUse = HMD.mounted;
+    isRiftInUse = (isHMDInUse && PlatformInfo.hasRiftControllers());
+    isViveInUse = (isHMDInUse && PlatformInfo.hasViveControllers());
+
+    const MEMORY_MINIMUM_MB = 8000;
+    totalSystemMemoryMB = PlatformInfo.getTotalSystemMemoryMB();
+    isMemoryOK = totalSystemMemoryMB > MEMORY_MINIMUM_MB;
+            
+    const NVIDIA_VR_MINIMUM = 970;
+    const RADEON_VR_MINIMUM = 290;
+    isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
+    
+    if (typeof Test !== 'undefined') {
+        var clientPlatform = {
+            graphicsCardType: graphicsCardType,
+            graphicsCardVendor: graphicsCardVendor,
+            graphicsCardModelNumber: graphicsCardModelNumber,
+            isGraphicsCardOK: isGraphicsCardOK,
+            CPUBrand: CPUBrand,
+            operatingSystemType: operatingSystemType,
+            totalSystemMemoryMB: totalSystemMemoryMB,
+            isMemoryOK: isMemoryOK,
+            isRiftInUse: isRiftInUse,
+            isViveInUse: isViveInUse,
+            isHMDInUse: isHMDInUse
+        }
+
+        Test.saveObject(clientPlatform, "clientPlatform.txt");
+    };
+    
+    console.warn("Running on " + operatingSystemType + "," + CPUBrand + " CPU with " + totalSystemMemoryMB + "MB of memory");
+    console.warn("Graphics card is " + graphicsCardType);
+    if (isRiftInUse) {
+        console.warn("Displaying on Rift");
+    } else if (isViveInUse) {
+        console.warn("Displaying on Vive");
+    } else if (!isHMDInUse) {
+        console.warn("Displaying on Desktop");
+    } else {
+        console.warn("Displaying on unknown device!!!");
+    }
 }
 
 tearDownTest = function() {
@@ -504,4 +577,68 @@ module.exports.saveResults = function(passed, resultsObject) {
 		
 		++textIndex;
     }
+}
+
+module.exports.verifyClientProfile = function() {
+    // 'arguments' is a list of objects
+    // The following are valid properties and values of each object:
+    //      display:            "VR", "Rift", "Vive", "Desktop"
+    //      operatingSystem:    "Windows", "Mac"
+    //      CPULevel:           "i7", i5"
+    //
+    // An undefined property implies that all values are valid.
+    //
+    // Returns true if the current client platform matches any of the arguments
+    //
+    // Example of use:
+    //    requiredClientProfile1 = {
+    //        display:            "Desktop",
+    //        operatingSystem:    "Windows",
+    //        CPULevel:           "i7"
+    //    };
+    //    requiredClientProfile2 = {
+    //        display:            "VR",
+    //        operatingSystem:    "Windows",
+    //        CPULevel:           "i7"
+    //    };
+    //    if (!nitpick.verifyClientProfile(requiredClientProfile1, requiredClientProfile2)) {
+    //        return false;
+    //    }
+
+    for (var i = 0; i < arguments.length; ++i) {
+        clientPlatform = arguments[i];
+        
+        console.warn("Test is asking if we running on " + clientPlatform.display + ":" + clientPlatform.operatingSystem + ":" + clientPlatform.CPULevel + "?");
+        var isDisplayOK;
+        if (typeof clientPlatform.display !== 'undefined') {
+            isDisplayOK = (
+                (clientPlatform.display === "Desktop" && !isHMDInUse) ||
+                (clientPlatform.display === "VR"      && isHMDInUse)  ||
+                (clientPlatform.display === "Rift"    && isRiftInUse) ||
+                (clientPlatform.display === "Vive"    && isViveInUse)
+            );
+        }
+
+        var isOperatingSystemOK;
+        if (typeof clientPlatform.operatingSystem !== 'undefined') {
+             isOperatingSystemOK = (clientPlatform.operatingSystem.toUpperCase() == operatingSystemType);
+        }
+
+        var isCPULevelOK;
+        if (typeof clientPlatform.CPULevel !== 'undefined') {
+             isCPULevelOK = (CPUBrand.search(clientPlatform.CPULevel.toLowerCase()) != -1);
+        }
+        
+        // Is everything OK?
+        if (isDisplayOK && isOperatingSystemOK && isCPULevelOK) {
+            console.warn("Yes - we are");
+            return true;
+        } else {
+            console.warn("No - we aren't");
+        }
+    }
+    
+    // Nothing was OK
+    console.warn("We are not running on any of the requested client profiles");
+    return false;
 }
