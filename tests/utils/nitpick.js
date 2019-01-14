@@ -344,7 +344,7 @@ setUpTest = function(testCase) {
         Test.saveObject(clientPlatform, "clientPlatform.txt");
     };
     
-    console.warn("We running on " + operatingSystemType + "," + CPUBrand + " CPU with " + totalSystemMemoryMB + "MB of memory");
+    console.warn("Running on " + operatingSystemType + "," + CPUBrand + " CPU with " + totalSystemMemoryMB + "MB of memory");
     console.warn("Graphics card is " + graphicsCardType);
     if (isRiftInUse) {
         console.warn("Displaying on Rift");
