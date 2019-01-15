@@ -94,7 +94,6 @@ setCommonEntityProperties = function() {
 
     entityProperties.name = "Name of entity";
     entityProperties.clientOnly = false;
-    entityProperties.owningAvatarID = "{87654321-1234-6666-4444-123412349876}";
     entityProperties.lifetime = 278;  
     entityProperties.locked = true;
     entityProperties.visible = false;
