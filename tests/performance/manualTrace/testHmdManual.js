@@ -2,20 +2,6 @@ DEFAULT_TRACING_RULES = "" +
     "trace.*=true\n" +
     "*.detail=true\n" +
     "";
-var count=1;
-var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
-var buttonStart = tablet.addButton({
-    text: "Start Trace"
-});
-
-buttonStart.clicked.connect(function () {
-	Window.displayAnnouncement("Starting test - please wait");
-	Test.startTracing(DEFAULT_TRACING_RULES);
-});
-
-var buttonStop = tablet.addButton({
-    text: "Stop Trace"
-});
 
 // Creates a string of length 'size' from the number 'num'
 // the resulting string is left-padded as needed with '0'
@@ -36,10 +22,35 @@ function formatDate(date) {
     pad(date.getHours(), 2) + pad(date.getMinutes(), 2) + pad(date.getSeconds(), 2);
 }
 
-buttonStop.clicked.connect(function ()
- {
-    Window.displayAnnouncement("Stop test - please wait ");
-    var dateString =count++;
-    var traceFile = "/sdcard/traces/trace_" + dateString;
-	Test.stopTracing(traceFile);
-});
+var count=0;
+(function(){
+	var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
+	
+	var buttonStart = tablet.addButton({
+    text: "Start Trace"});
+
+	var buttonStop = tablet.addButton({
+    text: "Stop Trace"});
+	
+	buttonStart.clicked.connect(function () {
+		Window.displayAnnouncement("Starting test - please wait");
+		Test.startTracing(DEFAULT_TRACING_RULES);
+	});
+
+	buttonStop.clicked.connect(function (){
+		Window.displayAnnouncement("Stop test - please wait ");
+		var dateString = formatDate();
+		var traceFile = "/sdcard/traces/trace_" + dateString +"_" + count++;
+		Test.stopTracing(traceFile);
+	});
+	
+	Script.scriptEnding.connect(function () {
+        tablet.removeButton(buttonStart);
+	    tablet.removeButton(buttonStop);
+		
+    });
+}());
+
+
+
+ 
