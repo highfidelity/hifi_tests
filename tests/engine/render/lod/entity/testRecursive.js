@@ -12,9 +12,6 @@ if (typeof Test !== 'undefined') {
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
-Script.include(testsRootPath + "content/overlay/layer/drawInFront/shape/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawInFront/model/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawInFront/alpha/test.js");
-Script.include(testsRootPath + "content/overlay/layer/drawHUDLayer/test.js");
+Script.include(testsRootPath + "engine/render/lod/entity/model/test.js");
 
 nitpick.runRecursive();

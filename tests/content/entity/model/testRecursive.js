@@ -12,6 +12,8 @@ if (typeof Test !== 'undefined') {
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+Script.include(testsRootPath + "content/entity/model/renderLayer/hud/test.js");
+Script.include(testsRootPath + "content/entity/model/renderLayer/front/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/test.js");

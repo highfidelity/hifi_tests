@@ -3,7 +3,6 @@
 
 ## Preconditions
 - In an empty region of a domain with editing rights.
-- Physics engine is loaded.
 
 ## Steps
 Press 'n' key to advance step by step
