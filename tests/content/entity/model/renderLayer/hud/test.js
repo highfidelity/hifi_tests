@@ -5,7 +5,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Model Entity renderLayer hud", Script.resolvePath("."), "secondary", function(testType) {
 
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
@@ -14,7 +14,6 @@ nitpick.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "second
         hasAmbientLight: true
     };
     var createdEntities = setupStage(flags, 200);
-    var createdOverlays = [];
 
     var posOri = nitpick.getOriginFrame();
     posOri.y += 1.0;
@@ -68,23 +67,23 @@ nitpick.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "second
         var MODEL_Y_OFFSET = -0.1;
         var MODEL_SCALE = 0.3;
 
-        function addTestOverlay(name, position, orientation) {
-          var newOverlay = Overlays.addOverlay("model", {
-              url: MODEL_DIR_URL + name + MODEL_NAME_SUFFIX,
+        function addTestEntity(name, position, orientation) {
+          var newEntity = Entities.addEntity({
+              type: "Model",
+              modelURL: MODEL_DIR_URL + name + MODEL_NAME_SUFFIX,
               position: position,
               rotation: orientation,
               dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
-              drawHUDLayer: true,
-              isVisibleInSecondaryCamera: true
+              renderLayer: "hud"
           });
-          return newOverlay;
+          return newEntity;
         }
 
         function addTestCase(test, origin, orientation) {
             var unit = MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z);
             var center = Vec3.sum(origin, Vec3.multiply(test.a * unit, Quat.getRight(orientation)));
             center = Vec3.sum(center, Vec3.multiply(test.b * unit, Quat.getUp(orientation)));
-            createdOverlays.push(addTestOverlay(test.name, center, orientation));
+            createdEntities.push(addTestEntity(test.name, center, orientation));
         }
 
         function addCases(origin, orientation) {
@@ -119,10 +118,6 @@ nitpick.perform("Model Overlay Draw HUD Layer", Script.resolvePath("."), "second
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
-        }
-        
-        for (var i = 0; i < createdOverlays.length; i++) {
-            Overlays.deleteOverlay(createdOverlays[i]);
         }
     });
 

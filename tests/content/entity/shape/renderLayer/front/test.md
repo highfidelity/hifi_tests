@@ -1,4 +1,4 @@
-# Shape Overlay Draw in Front
+# Shape Entity renderLayer front
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Create drawInFront shape overlays
+- Create renderLayer front shape entitiess
 ### Step 2
 - Take snapshot of all the models
 - ![](./ExpectedImage_00000.png)

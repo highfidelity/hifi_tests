@@ -8,18 +8,8 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Create a background zone
-### Step 2
-- Prepare result box, green if passed, red if failed
-### Step 3
-- Check that box is white (testing the tester...)
-- ![](./ExpectedImage_00000.png)
-### Step 4
 - Set up line
-### Step 5
+### Step 2
 - Test line
-### Step 6
-- Show result
-- ![](./ExpectedImage_00001.png)
-### Step 7
+### Step 3
 - Clean up after test

@@ -3,7 +3,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testType) {
-    var createdOverlays = [];
+    var createdEntities = [];
 
     var LIFETIME = 120;
     var DIM = {x: 1.0, y: 1.2, z: 0.28};
@@ -22,24 +22,24 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     // Create line of models
     var assetsRootPath = nitpick.getAssetsRootPath();
     var URL = Script.resolvePath(assetsRootPath + "models/geometry/avatars/kaya/Kaya.fbx");
-    createdOverlays.push(Overlays.addOverlay("model", {
+    createdEntities.push(Entities.addEntity({
+        type: "Model",
         position: Vec3.sum(Vec3.sum(Vec3.sum(pos, Vec3.multiply(1.6, Quat.getUp(ori))), Vec3.multiply(-0.5, Quat.getRight(ori))), Vec3.multiply(2.8, Quat.getForward(ori))),
         lifetime: LIFETIME,
-        url: URL,
+        modelURL: URL,
         dimensions: DIM,
-        orientation: ori,
-        isGroupCulled: false,
-        isVisibleInSecondaryCamera: true
+        rotation: ori,
+        groupCulled: false
     }));
 
-    createdOverlays.push(Overlays.addOverlay("model", {
+    createdEntities.push(Entities.addEntity({
+        type: "Model",
         position: Vec3.sum(Vec3.sum(Vec3.sum(pos, Vec3.multiply(1.6, Quat.getUp(ori))), Vec3.multiply(0.5, Quat.getRight(ori))), Vec3.multiply(2.8, Quat.getForward(ori))),
         lifetime: LIFETIME,
-        url: URL,
+        modelURL: URL,
         dimensions: DIM,
-        orientation: ori,
-        isGroupCulled: true,
-        isVisibleInSecondaryCamera: true
+        rotation: ori,
+        groupCulled: true
     }));
     
     previousLODAdjust =  LODManager.getAutomaticLODAdjust();
@@ -67,8 +67,8 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     nitpick.addStepSnapshot("No models are visible");
 
     nitpick.addStep("Clean up", function () {
-        for (var i = 0; i < createdOverlays.length; i++) {
-            Overlays.deleteOverlay(createdOverlays[i]);
+        for (var i = 0; i < createdEntities.length; i++) {
+            Entities.deleteEntity(createdEntities[i]);
         }
 
         LODManager.setOctreeSizeScale(previousOctreeSizeScale);

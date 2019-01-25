@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Shape Entity renderLayer front", Script.resolvePath("."), "secondary", function(testType) {
 
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
@@ -12,59 +12,58 @@ nitpick.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seconda
         hasAmbientLight: true
     };
     var createdEntities = setupStage(flags, LIFETIME);
-    var createdOverlays = [];
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
-    nitpick.addStep("Create drawInFront shape overlays", function () {
+    nitpick.addStep("Create renderLayer front shape entitiess", function () {
         var NUM = 5.0;
         for (var i = 0; i < NUM; i++) {
-            createdOverlays.push(Overlays.addOverlay("cube", {
+            createdEntities.push(Entities.addEntity({
+                type: "Box",
                 position: Vec3.sum(posOri.pos, Vec3.sum(Vec3.multiply(i * DIM.z, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(-1.5 * DIM.x, Quat.getRight(MyAvatar.orientation)))),
                 orientation: MyAvatar.orientation,
                 visible: true,
                 color: { red: 255 * i / NUM, green: 0, blue: 255 * (1 - i / NUM) },
-                isSolid: true,
+                primitiveMode: "solid",
                 alpha: 1,
-                drawInFront: true,
-                dimensions: DIM,
-                isVisibleInSecondaryCamera: true
+                renderLayer: "front",
+                dimensions: DIM
             }));
 
-            createdOverlays.push(Overlays.addOverlay("cube", {
+            createdEntities.push(Entities.addEntity({
+                type: "Box",
                 position: Vec3.sum(posOri.pos, Vec3.sum(Vec3.multiply(i * DIM.z, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(-0.5 * DIM.x, Quat.getRight(MyAvatar.orientation)))),
                 orientation: MyAvatar.orientation,
                 visible: true,
                 color: { red: 255 * i / NUM, green: 0, blue: 255 * (1 - i / NUM) },
-                isSolid: true,
+                primitiveMode: "solid",
                 alpha: 0.5,
-                drawInFront: true,
-                dimensions: DIM,
-                isVisibleInSecondaryCamera: true
+                renderLayer: "front",
+                dimensions: DIM
             }));
 
-            createdOverlays.push(Overlays.addOverlay("cube", {
+            createdEntities.push(Entities.addEntity({
+                type: "Box",
                 position: Vec3.sum(posOri.pos, Vec3.sum(Vec3.multiply(i * DIM.z, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(0.5 * DIM.x, Quat.getRight(MyAvatar.orientation)))),
                 orientation: MyAvatar.orientation,
                 visible: true,
                 color: { red: 255 * i / NUM, green: 0, blue: 255 * (1 - i / NUM) },
-                isSolid: false,
+                primitiveMode: "lines",
                 alpha: 1,
-                drawInFront: true,
-                dimensions: DIM,
-                isVisibleInSecondaryCamera: true
+                renderLayer: "front",
+                dimensions: DIM
             }));
 
-            createdOverlays.push(Overlays.addOverlay("cube", {
+            createdEntities.push(Entities.addEntity({
+                type: "Box",
                 position: Vec3.sum(posOri.pos, Vec3.sum(Vec3.multiply(i * DIM.z, Quat.getFront(MyAvatar.orientation)), Vec3.multiply(1.5 * DIM.x, Quat.getRight(MyAvatar.orientation)))),
                 orientation: MyAvatar.orientation,
                 visible: true,
                 color: { red: 255 * i / NUM, green: 0, blue: 255 * (1 - i / NUM) },
-                isSolid: false,
+                primitiveMode: "lines",
                 alpha: 0.5,
-                drawInFront: true,
-                dimensions: DIM,
-                isVisibleInSecondaryCamera: true
+                renderLayer: "front",
+                dimensions: DIM
             }));
         }
 
@@ -83,10 +82,6 @@ nitpick.perform("Shape Overlay Draw in Front", Script.resolvePath("."), "seconda
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
             Entities.deleteEntity(createdEntities[i]);
-        }
-        
-        for (var i = 0; i < createdOverlays.length; i++) {
-            Overlays.deleteOverlay(createdOverlays[i]);
         }
     });
 

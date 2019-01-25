@@ -1,4 +1,4 @@
-# Test CollisionPick with cubes
+# Model Entity renderLayer front
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,11 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Create test box and cubic collision picks
+- Build the material matrix
 ### Step 2
-- Show pick collision results
-### Step 3
-- Collision pick results are visible
+- Take snapshot of all the models
 - ![](./ExpectedImage_00000.png)
-### Step 4
+### Step 3
 - Clean up after test
