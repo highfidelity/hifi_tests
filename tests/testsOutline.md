@@ -27,7 +27,7 @@ Directories with an appended (*) have an automatic test
           - [fbxReader](./content/entity/model/modelReaders/fbxReader?raw=true)
             - [simple](./content/entity/model/modelReaders/fbxReader/simple?raw=true)  [(test description)](./content/entity/model/modelReaders/fbxReader/simple/test.md) (*)
             - [still_life](./content/entity/model/modelReaders/fbxReader/still_life?raw=true)  [(test description)](./content/entity/model/modelReaders/fbxReader/still_life/test.md) (*)
-          - [gltfReader](./content/entity/model/modelReaders/gltfReader?raw=true)  [(test description)](./content/entity/model/modelReaders/gltfReader/test.md) (*)
+          - [gltfReader](./content/entity/model/modelReaders/gltfReader?raw=true)  [(test description)](./content/entity/model/modelReaders/gltfReader/gltfTestSuite/boomBox/test.md) (*)
           - [objReader](./content/entity/model/modelReaders/objReader?raw=true)
             - [still_life](./content/entity/model/modelReaders/objReader/still_life?raw=true)  [(test description)](./content/entity/model/modelReaders/objReader/still_life/test.md) (*)
             - [transparent](./content/entity/model/modelReaders/objReader/transparent?raw=true)  [(test description)](./content/entity/model/modelReaders/objReader/transparent/test.md) (*)

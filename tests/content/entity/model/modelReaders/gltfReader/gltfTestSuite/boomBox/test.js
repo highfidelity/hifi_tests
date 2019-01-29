@@ -6,30 +6,30 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = nitpick.getOriginFrame();
-	
+
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     var initData = {
-        flags : { 
+        flags : {
             hasKeyLight: true,
             hasAmbientLight: true
         },
         originFrame: nitpick.getOriginFrame()
     };
     var createdEntities = setupStage(initData);
-    
+
     var testEntity = Entities.addEntity({
         lifetime: LIFETIME,
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/BoomBox
-        modelURL: assetsRootPath + 'models/gltf_models/BoomBox.gltf',
+        modelURL: assetsRootPath + 'models/gltf_models/boomBox/BoomBox.gltf',
         position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.2 }),
         dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
         rotation: Quat.fromPitchYawRollDegrees(45.0, -25.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
-    
+
     createdEntities.push(testEntity);
 
     nitpick.addStepSnapshot("Model is visible");
@@ -39,6 +39,6 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = nitpick.runTest(testType);
 });
