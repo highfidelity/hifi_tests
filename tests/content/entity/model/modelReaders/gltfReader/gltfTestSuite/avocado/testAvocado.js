@@ -12,7 +12,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     var initData = {
         flags : {
             hasKeyLight: true,
-            hasAmbientLight: true
+            hasKeyShadow: true,
+            hasAmbientLight: true,
+            ambientLightIntensity: 0.5,
         },
         originFrame: nitpick.getOriginFrame()
     };
