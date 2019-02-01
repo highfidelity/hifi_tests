@@ -14,6 +14,7 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/material/fallthrough/test.js");
 Script.include(testsRootPath + "content/entity/material/create/test.js");
+Script.include(testsRootPath + "content/entity/material/apply/targeting/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/overlays/model/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/shape/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/model/test.js");

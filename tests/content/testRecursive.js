@@ -50,6 +50,7 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/stil
 Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/simple/test.js");
 Script.include(testsRootPath + "content/entity/material/fallthrough/test.js");
 Script.include(testsRootPath + "content/entity/material/create/test.js");
+Script.include(testsRootPath + "content/entity/material/apply/targeting/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/overlays/model/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/shape/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/model/test.js");
@@ -62,9 +63,5 @@ Script.include(testsRootPath + "content/entity/image/emissive/test.js");
 Script.include(testsRootPath + "content/entity/image/color/test.js");
 Script.include(testsRootPath + "content/entity/image/billboardMode/test.js");
 Script.include(testsRootPath + "content/entity/image/alpha/test.js");
-Script.include(testsRootPath + "content/entity/grid/gridEvery/test.js");
-Script.include(testsRootPath + "content/entity/grid/followCamera/test.js");
-Script.include(testsRootPath + "content/entity/grid/color/test.js");
-Script.include(testsRootPath + "content/entity/grid/alpha/test.js");
 
 nitpick.runRecursive();
