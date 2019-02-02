@@ -31,10 +31,10 @@ nitpick.perform("Reticle control", Script.resolvePath("."), "primary", function(
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
             },
 
-            ambientLightMode = "disabled",
-            hazeMode = "disabled",
-            bloomMode = "disabled",
-            shapeType = "box"
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         };
         zone = Entities.addEntity(zoneProperties);
 

@@ -55,9 +55,9 @@ nitpick.perform("Read FBX model", Script.resolvePath("."), "secondary", function
             ambientURL: assetsRootPath + 'skymaps/RedCube.jpg'
         },
 
-        hazeMode = "disabled",
-        bloomMode = "disabled",
-        shapeType = "box"    
+        hazeMode: "disabled",
+        bloomMode: "disabled",
+        shapeType: "box"
     }));
 
     nitpick.addStepSnapshot("Model is visible");

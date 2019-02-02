@@ -35,10 +35,10 @@ nitpick.perform('Entity parenting', Script.resolvePath('.'), 'secondary', functi
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
             },
 
-            ambientLightMode = "disabled",
-            hazeMode = "disabled",
-            bloomMode = "disabled",
-            shapeType = "box"
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         });
 
         parent = Entities.addEntity({

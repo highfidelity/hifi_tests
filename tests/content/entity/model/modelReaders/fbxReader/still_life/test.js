@@ -35,10 +35,10 @@ nitpick.perform("Read still life FBX model", Script.resolvePath("."), "secondary
             url: assetsRootPath + 'skymaps/YellowCube.jpg'
         },
 
-        ambientLightMode = "disabled",
-        hazeMode = "disabled",
-        bloomMode = "disabled",
-        shapeType = "box"
+        ambientLightMode: "disabled",
+        hazeMode: "disabled",
+        bloomMode: "disabled",
+        shapeType: "box"
     }));
 
     createdEntities.push(Entities.addEntity({

@@ -34,10 +34,10 @@ nitpick.perform("Shadow control", Script.resolvePath("."), "secondary", function
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
             },
 
-            ambientLightMode = "disabled",
-            hazeMode = "disabled",
-            bloomMode = "disabled",
-            shapeType = "box"
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         });
         
         terrain = Entities.addEntity({

@@ -34,10 +34,10 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", functi
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
             },
 
-            ambientLightMode = "disabled",
-            hazeMode = "disabled",
-            bloomMode = "disabled",
-            shapeType = "box"
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         }));
 
         createdEntities.push(Entities.addEntity({

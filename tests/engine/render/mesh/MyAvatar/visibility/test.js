@@ -39,10 +39,10 @@ nitpick.perform("Control MyAvatar mesh visibility", Script.resolvePath("."), "se
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
             },
 
-            ambientLightMode = "disabled",
-            hazeMode = "disabled",
-            bloomMode = "disabled",
-            shapeType = "box"
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         };
         zone = Entities.addEntity(zoneProperties);
     });
