@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Model is visible
-- ![](./tests.content.entity.model.modelReaders.gltfReader.gltfTestSuite.box.00000.png)
+- Box.gltf Model is visible
+- ![](./ExpectedImage_00000.png)
 ### Step 2
 - Clean up after test
