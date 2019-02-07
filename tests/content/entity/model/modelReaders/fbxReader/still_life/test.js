@@ -5,17 +5,20 @@ var nitpick = createNitpick(Script.resolvePath("."));
 nitpick.perform("Read still life FBX model", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
-    var position = MyAvatar.position;
+
+    var position = nitpick.getOriginFrame();
+    position = Vec3.sum(position, { x: 0.0, y: 1.0, z: 0.0 });
+
     var createdEntities = [];
     var assetsRootPath = nitpick.getAssetsRootPath();
-    
+
     createdEntities.push(Entities.addEntity({
         lifetime: LIFETIME,
         type: "Zone",
         name: "zone",
         position: position,
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0 ),
-        
+    
         dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 },
 
         keyLightMode: "enabled",
@@ -60,6 +63,6 @@ nitpick.perform("Read still life FBX model", Script.resolvePath("."), "secondary
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+
     var result = nitpick.runTest(testType);
 });

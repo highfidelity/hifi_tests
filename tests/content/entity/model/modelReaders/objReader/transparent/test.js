@@ -5,8 +5,10 @@ var nitpick = createNitpick(Script.resolvePath("."));
 nitpick.perform("Read OBJ model with transparency", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
-    var position = MyAvatar.position;
-	
+
+    var position = nitpick.getOriginFrame();
+    position = Vec3.sum(position, { x: 0.0, y: 1.0, z: 0.0 });
+
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
@@ -19,7 +21,7 @@ nitpick.perform("Read OBJ model with transparency", Script.resolvePath("."), "se
     };
     var createdEntities = setupStage(initData);
 
-	// model
+    // model
     createdEntities.push(Entities.addEntity({
         lifetime: LIFETIME,
         type: "Model",
@@ -37,6 +39,6 @@ nitpick.perform("Read OBJ model with transparency", Script.resolvePath("."), "se
             Entities.deleteEntity(createdEntities[i]);
         }
     });
-    
+  
     var result = nitpick.runTest(testType);
 });
