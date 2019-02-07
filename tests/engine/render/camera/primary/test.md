@@ -12,17 +12,19 @@ Press 'n' key to advance step by step
 ### Step 2
 - Setup avatar
 ### Step 3
+- Set T-Pose
+### Step 4
 - Snapshot - 1920x1036, 45 degrees
 - ![](./ExpectedImage_00000.png)
-### Step 4
-- Change position
 ### Step 5
+- Change position
+### Step 6
 - Position has moved back and left
 - ![](./ExpectedImage_00001.png)
-### Step 6
-- Change orientation
 ### Step 7
+- Change orientation
+### Step 8
 - Orientation tilted up and yawed right
 - ![](./ExpectedImage_00002.png)
-### Step 8
+### Step 9
 - Clean up after test
