@@ -8,8 +8,8 @@ nitpick.perform("Show effects of normal maps", Script.resolvePath("."), "seconda
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-        {name:"hifi_normalM_albedoV_ao",  a:0, b:0, c:-0.5},
-        {name:"hifi_normalM_metallicV_albedoV_ao",  a:0, b:0, c:0.5},  
+        {name:"hifi_normalM_albedoV_ao",  a:0, b:-0.5, c:0},
+        {name:"hifi_normalM_metallicV_albedoV_ao",  a:0, b:0.5, c:0},  
     ];
 
     // Add the test Cases
