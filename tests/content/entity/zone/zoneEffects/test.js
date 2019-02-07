@@ -5,7 +5,8 @@ var nitpick = createNitpick(Script.resolvePath("."));
 nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", function(testType) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
-    var avatarOriginPosition = MyAvatar.position;
+    var avatarOriginPosition = nitpick.getOriginFrame();
+    avatarOriginPosition = Vec3.sum(avatarOriginPosition, { x: 0.0, y: 1.0, z: 0.0 });
 
     var assetsRootPath = nitpick.getAssetsRootPath();
 
@@ -30,7 +31,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
         type: "Model",
         modelURL: assetsRootPath + 'models/material_matrix_models/fbx/blender/' + objectName + '.fbx',
         name: objectName,
-        position: Vec3.sum(MyAvatar.position, MODEL_OFFSET),    
+        position: Vec3.sum(avatarOriginPosition, MODEL_OFFSET),    
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         dimensions: Vec3.multiply(MODEL_SCALE, MODEL_DIMS),
         visible: true,
