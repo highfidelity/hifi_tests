@@ -8,11 +8,9 @@ nitpick.perform("Show effects of normal maps", Script.resolvePath("."), "seconda
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [
-       // {name:"hifi_normalM_albedoV_ao",  a:-1.5, b:-0.5, c:0},
-      //  {name:"hifi_normalM_metallicV_albedoV_ao",  a:-1.5, b:0.5, c:0},  
-       // {name:"hifi_albedoV_ao",  a:-1.5, b:-0.5, c:0},  
-        {name:"hifi_metallicV_albedoV_ao",  a:-1.5, b:0.5, c:0},  
-     ];
+        {name:"hifi_normalM_albedoV_ao",  a:-1.5, b:-0.5, c:0},
+        {name:"hifi_normalM_metallicV_albedoV_ao",  a:-1.5, b:0.5, c:0},  
+    ];
     
     // Add the test Cases
     var OFFSET = { x: 0.0, y: -1.0, z: -0.1 };
@@ -23,7 +21,7 @@ nitpick.perform("Show effects of normal maps", Script.resolvePath("."), "seconda
     });
 
     nitpick.addDelay(6);
-    nitpick.addStepSnapshot("Take snapshot of the effects");
+    nitpick.addStepSnapshot("Take snapshot of the effects: Material Map");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
