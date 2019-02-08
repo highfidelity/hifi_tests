@@ -9,6 +9,7 @@ Press 'n' key to advance step by step
 
 ### Step 1
 - VertexColorTest.gltf Model is visible
+
 - ![](./ExpectedImage_00000.png)
 ### Step 2
 - Clean up after test
