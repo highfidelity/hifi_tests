@@ -21,7 +21,7 @@ nitpick.perform("Show effects of normal maps", Script.resolvePath("."), "seconda
     });
 
     nitpick.addDelay(6);
-    nitpick.addStepSnapshot("Take snapshot of the effects: Material Map");
+    nitpick.addStepSnapshot("Take snapshot of the effects: Material Normal Map");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
