@@ -33,7 +33,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     createdEntities.push(testEntity);
 
-    nitpick.addStepSnapshot("VertexColorTest.gltf is visible");
+    nitpick.addStepSnapshot("VertexColorTest.gltf Model is visible");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
