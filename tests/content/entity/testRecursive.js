@@ -20,4 +20,8 @@ Script.include(testsRootPath + "content/entity/light/testRecursive.js");
 Script.include(testsRootPath + "content/entity/image/testRecursive.js");
 Script.include(testsRootPath + "content/entity/grid/testRecursive.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

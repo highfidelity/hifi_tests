@@ -10,4 +10,8 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "engine/controller/reticle/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

@@ -16,4 +16,8 @@ Script.include(testsRootPath + "engine/render/material/emissive/test.js");
 Script.include(testsRootPath + "engine/render/material/base/test.js");
 Script.include(testsRootPath + "engine/render/material/albedo/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

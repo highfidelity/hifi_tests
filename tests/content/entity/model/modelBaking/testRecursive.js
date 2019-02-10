@@ -10,4 +10,8 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/model/modelBaking/normal_texture/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

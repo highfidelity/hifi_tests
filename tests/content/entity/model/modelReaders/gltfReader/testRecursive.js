@@ -10,4 +10,8 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/testRecursive.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

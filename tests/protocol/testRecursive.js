@@ -20,4 +20,8 @@ Script.include(testsRootPath + "protocol/line/test.js");
 Script.include(testsRootPath + "protocol/light/test.js");
 Script.include(testsRootPath + "protocol/box/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

@@ -19,4 +19,8 @@ Script.include(testsRootPath + "content/entity/text/billboardMode/test.js");
 Script.include(testsRootPath + "content/entity/text/backgroundColor/test.js");
 Script.include(testsRootPath + "content/entity/text/backgroundAlpha/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

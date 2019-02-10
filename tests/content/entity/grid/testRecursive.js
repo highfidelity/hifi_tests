@@ -13,4 +13,8 @@ Script.include(testsRootPath + "content/entity/grid/followCamera/test.js");
 Script.include(testsRootPath + "content/entity/grid/color/test.js");
 Script.include(testsRootPath + "content/entity/grid/alpha/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

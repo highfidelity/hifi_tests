@@ -12,4 +12,8 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/uv_s
 Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/still_life/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/simple/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

@@ -11,4 +11,8 @@ nitpick.enableAuto();
 Script.include(testsRootPath + "engine/render/camera/secondary/test.js");
 Script.include(testsRootPath + "engine/render/camera/primary/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

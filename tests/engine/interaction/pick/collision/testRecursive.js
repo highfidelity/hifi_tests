@@ -14,4 +14,8 @@ Script.include(testsRootPath + "engine/interaction/pick/collision/identical/test
 Script.include(testsRootPath + "engine/interaction/pick/collision/filter/test.js");
 Script.include(testsRootPath + "engine/interaction/pick/collision/cube/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

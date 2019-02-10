@@ -11,4 +11,8 @@ nitpick.enableAuto();
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/testRecursive.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/testRecursive.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+

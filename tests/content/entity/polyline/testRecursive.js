@@ -17,4 +17,8 @@ Script.include(testsRootPath + "content/entity/polyline/glow/test.js");
 Script.include(testsRootPath + "content/entity/polyline/faceCamera/test.js");
 Script.include(testsRootPath + "content/entity/polyline/color/test.js");
 
-nitpick.runRecursive();
+if (typeof runningRecursive === 'undefined') {
+   runningRecursive = true;
+   nitpick.runRecursive();
+}
+
