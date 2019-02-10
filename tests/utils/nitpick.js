@@ -485,14 +485,17 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default mode is manual
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
-    testMode = "auto";
-
-    console.warn("TEST MODE AUTO SELECTED");
+    if (testMode !== "auto") {
+        testMode = "auto";
+        console.warn("TEST MODE AUTO HAS IS SELECTED");
+    }
 }
 
 module.exports.enableRecursive = function () {
-    isRecursive = true;
-    console.warn("TEST MODE RECURSIVE SELECTED");
+    if (!isRecursive) {
+        isRecursive = true;
+        console.warn("RECURSIVE MODE HAS BEEN SET");
+    }
 }
 
 // Steps is an array of functions; each function being a test step
