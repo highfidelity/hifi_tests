@@ -6,7 +6,10 @@ Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 nitpick.perform("Read FBX models with UV scale properties", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
-    var position = MyAvatar.position;
+
+    var position = nitpick.getOriginFrame();
+    position = Vec3.sum(position, { x: 0.0, y: 1.0, z: 0.0 });
+
     var createdEntities = [];
     var assetsRootPath = nitpick.getAssetsRootPath();
     
