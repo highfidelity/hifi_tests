@@ -14,7 +14,6 @@ Script.include(testsRootPath + "content/entity/shape/testRecursive.js");
 Script.include(testsRootPath + "content/entity/procedural/testRecursive.js");
 Script.include(testsRootPath + "content/entity/polyline/testRecursive.js");
 Script.include(testsRootPath + "content/entity/parenting/test.js");
-
 Script.include(testsRootPath + "content/entity/model/testRecursive.js");
 Script.include(testsRootPath + "content/entity/material/testRecursive.js");
 Script.include(testsRootPath + "content/entity/light/testRecursive.js");
@@ -25,3 +24,4 @@ if (typeof runningRecursive === 'undefined') {
    runningRecursive = true;
    nitpick.runRecursive();
 }
+
