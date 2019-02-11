@@ -15,4 +15,3 @@ if (typeof runningRecursive === 'undefined') {
    runningRecursive = true;
    nitpick.runRecursive();
 }
-
