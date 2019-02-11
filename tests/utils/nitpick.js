@@ -470,7 +470,7 @@ module.exports.addDelay = function (delaySeconds) {
     // Ignore this function in manual mode
     if (!isManualMode()) {
         var timeStepSeconds = autoTimeStep / 1000;
-        var numDelays = 1 + delaySeconds / timeStepSeconds;
+        var numDelays = delaySeconds / timeStepSeconds;
         for (var i = 0; i < numDelays; ++i) {
             doAddStep(String(timeStepSeconds) + " seconds delay");
         }
