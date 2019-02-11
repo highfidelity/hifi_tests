@@ -32,7 +32,12 @@ nitpick.perform("Shadow control", Script.resolvePath("."), "secondary", function
             skybox: {
                 color: { red: 255, green: 255, blue: 255 },
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
-            }
+            },
+
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         });
         
         terrain = Entities.addEntity({

@@ -33,7 +33,12 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function
             skybox: {
                 color: { red: 255, green: 255, blue: 255 },
                 url: assetsRootPath + 'skymaps/YellowCube.jpg'
-            }
+            },
+
+            ambientLightMode: "disabled",
+            hazeMode: "disabled",
+            bloomMode: "disabled",
+            shapeType: "box"
         }));
 
         createdEntities.push(Entities.addEntity({
@@ -61,16 +66,25 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", function
             Test.waitIdle();
         }
     });
+
+    nitpick.addStep("Set T-Pose", function () {
+        // Set Avatar to T-pose
+        for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
+            MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
+        }
+
+        // Set orientation to 0
+        MyAvatar.orientation = Quat.fromVec3Degrees({x: 0.0, y: 0.0, z: 0.0 });        
+    });    
     nitpick.addStepSnapshot("Snapshot - 1920x1036, 45 degrees");
 
     nitpick.addStep("Change position", function () {
-        Camera.mode = "first person";
-        MyAvatar.goToLocation({ x: position.x - 0.8,  y: position.y + 1.0, z: position.z + 1.0 }, false);
+        Camera.setPosition({ x: position.x - 0.8,  y: position.y + 1.0, z: position.z + 1.0 }, false);
     });
     nitpick.addStepSnapshot("Position has moved back and left");
 
     nitpick.addStep("Change orientation", function () {
-        MyAvatar.goToLocation(MyAvatar.position, true, Quat.fromPitchYawRollDegrees(5.0, -25.0, 0.0));
+        Camera.setOrientation(Quat.fromPitchYawRollDegrees(5.0, -30.0, 30.0));
     });
     nitpick.addStepSnapshot("Orientation tilted up and yawed right");
     
