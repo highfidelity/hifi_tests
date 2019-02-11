@@ -8,10 +8,7 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
-Script.include(testsRootPath + "content/entity/grid/gridEvery/test.js");
 Script.include(testsRootPath + "content/entity/grid/followCamera/test.js");
-Script.include(testsRootPath + "content/entity/grid/color/test.js");
-Script.include(testsRootPath + "content/entity/grid/alpha/test.js");
 
 if (typeof runningRecursive === 'undefined') {
    runningRecursive = true;
