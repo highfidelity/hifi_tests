@@ -9,9 +9,9 @@ nitpick.enableRecursive();
 nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/testRecursive.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/testRecursive.js");
 
 if (typeof runningRecursive === 'undefined') {
    runningRecursive = true;
    nitpick.runRecursive();
 }
-
