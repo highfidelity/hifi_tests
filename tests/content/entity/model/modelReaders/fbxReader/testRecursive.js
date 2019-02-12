@@ -9,7 +9,6 @@ nitpick.enableRecursive();
 nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/uv_scale/test.js");
-Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/still_life/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/fbxReader/simple/test.js");
 
 if (typeof runningRecursive === 'undefined') {

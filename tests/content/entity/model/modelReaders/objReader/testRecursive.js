@@ -9,7 +9,6 @@ nitpick.enableRecursive();
 nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/transparent/test.js");
-Script.include(testsRootPath + "content/entity/model/modelReaders/objReader/still_life/test.js");
 
 if (typeof runningRecursive === 'undefined') {
    runningRecursive = true;
