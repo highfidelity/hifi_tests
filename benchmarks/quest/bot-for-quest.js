@@ -41,7 +41,7 @@ print("RANDOM RECORDING SELECTED:" + RECORDING_URL);
 
 // not quite what I want...
 var LOCATIONS_ARRAY = [
-  { min_x: -30, max_x: -10.1, y: 1, min_z: 10, max_z: 30}
+  { min_x: -30, max_x: -10.1, y: 0.5, min_z: 10, max_z: 30}
 
 ];
 
