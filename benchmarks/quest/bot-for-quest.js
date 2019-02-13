@@ -41,7 +41,7 @@ print("RANDOM RECORDING SELECTED:" + RECORDING_URL);
 
 // not quite what I want...
 var LOCATIONS_ARRAY = [
-  { min_x: -30, max_x: -10.1, y: 0.5, min_z: 10, max_z: 30}
+  { min_x: -29, max_x: -11, y: 0.5, min_z: 11, max_z: 29}
 
 ];
 
@@ -59,7 +59,7 @@ Users.disableIgnoreRadius();
 
 // Set position here if playFromCurrentLocation is true
 Avatar.position = LOCATION;
-Avatar.orientation = Quat.fromPitchYawRollDegrees(0, 0, 0);
+Avatar.orientation = Quat.fromPitchYawRollDegrees(0, Math.floor(Math.random() * 360), 0);
 Avatar.scale = 1.0;
 Agent.isAvatar = true;
 
@@ -67,7 +67,7 @@ Agent.isAvatar = true;
 // but if you switch to a non-recording bot, you will need this, so we can leave this.
 Agent.isListeningToAudioStream = true;
 Avatar.skeletonModelURL = AVATAR_URL; // FIXME - currently setting an avatar while playing a recording doesn't work it will be ignored
-
+/*
 Recording.loadRecording(RECORDING_URL, function(success) {
     if (success) {
         Script.update.connect(update);
@@ -75,7 +75,7 @@ Recording.loadRecording(RECORDING_URL, function(success) {
         print("Failed to load recording from " + RECORDING_URL);
     }
 });
-
+*/
 count = 300; // This is necessary to wait for the audio mixer to connect
 function update(event) {
     if (count > 0) {
@@ -83,14 +83,14 @@ function update(event) {
         return;
     }
     if (count == 0) {
-        Recording.setPlayFromCurrentLocation(playFromCurrentLocation);
+     /*   Recording.setPlayFromCurrentLocation(playFromCurrentLocation);
         Recording.setPlayerLoop(loop);
         Recording.setPlayerUseDisplayName(true);
         Recording.setPlayerUseAttachments(true);
         Recording.setPlayerUseHeadModel(false);
         Recording.setPlayerUseSkeletonModel(false); // FIXME - this would allow you to override the recording avatar, but that's not currently working
         Recording.startPlaying();
-        Vec3.print("Playing from ", Avatar.position);
+       */ Vec3.print("Playing from ", Avatar.position);
         count--;
     } else if (WANT_DEBUGGING) {
         count = 100;
