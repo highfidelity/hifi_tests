@@ -56,7 +56,7 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     nitpick.addStepSnapshot("Eyes of left model cannot be seen");
 
     nitpick.addStep("Set LOD to 10", function () {
-        LODManager.setOctreeSizeScale(32768 * 10);
+        LODManager.setOctreeSizeScale(32768 * 12);
     });
     nitpick.addStepSnapshot("Only right model visible, including eyes");
 
