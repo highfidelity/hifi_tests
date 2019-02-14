@@ -486,7 +486,6 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
     testMode = "auto";
-
     console.warn("TEST MODE AUTO SELECTED");
 }
 
