@@ -5,7 +5,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 if (typeof depth === 'undefined') {
    depth = 0;
    nitpick = createNitpick(Script.resolvePath("."));
-   nitpick.getTestsRootPath();
+   testsRootPath = nitpick.getTestsRootPath();
 
    nitpick.enableRecursive();
    nitpick.enableAuto();
