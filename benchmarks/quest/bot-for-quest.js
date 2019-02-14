@@ -17,9 +17,13 @@ randFloat = function(low, high) {
 }
 
 var AVATARS_ARRAY = [
-    "https://highfidelity.com/api/v1/commerce/entity_edition/c5b680a0-7351-4dff-a966-8b1a1fda5976.fst?certificate_id=MEYCIQDfnnjxEeo08lZZPh2OqQ5XBDCBzze8485eW20sXkAPbwIhAN2Zkzg9TMWxDxZ8lewMl0HAyRH8iZlM7OlLNqn27jEq",
+    "https://highfidelity.com/api/v1/commerce/entity_edition/e8de625c-8566-40c0-a93a-9e759f2c3df0.fst?certificate_id=MEUCIDR4op6lrc5hQPM1A%2FNVD8HEp9Nf0gz03cbZg4%2BouL%2B2AiEA2bDgwVfMmD2p6EgMt3F17rnnpKauRZG6AeCr%2BM77iww%3D",
+    "https://highfidelity.com/api/v1/commerce/entity_edition/c5b680a0-7351-4dff-a966-8b1a1fda5976.fst?certificate_id=MEYCIQCqfbVzBqQm22uWFsJ%2BVop%2Bg3BBqGb1dGKtxhrHRA%2FN2gIhAOuG8y1Ov2W%2ByUeoX4t4fFo4kamo4MzPkCJIXh1bFdKC",
     "https://highfidelity.com/api/v1/commerce/entity_edition/0e84da75-2a59-4389-9356-a07d67482fb8.fst?certificate_id=MEUCIQD%2F4oJ%2FT7KEeTkOsZy2BJiRlXQ5aludVjgs%2FyXR9OwRHwIgFMTasXXRjz5bK7mh74LMQwJ8%2BfjkGj6ikGMBdh%2BNSUU%3D",
-    "https://highfidelity.com/api/v1/commerce/entity_edition/e8de625c-8566-40c0-a93a-9e759f2c3df0.fst?certificate_id=MEUCIDR4op6lrc5hQPM1A%2FNVD8HEp9Nf0gz03cbZg4%2BouL%2B2AiEA2bDgwVfMmD2p6EgMt3F17rnnpKauRZG6AeCr%2BM77iww%3D" 
+    "https://highfidelity.com/api/v1/commerce/entity_edition/deec8919-9f31-4d78-ac15-e3bd205f2c0e.fst?certificate_id=MEQCIDUde3IV8kCipf5kX7XOf5Fx%2BqOltqrJUDO1b7yAQUe6AiBbuovA1luCUP44w0wfBZRp1KOWzSoZWDnoFBxN%2BaVivw%3D%3D",
+    "https://highfidelity.com/api/v1/commerce/entity_edition/ff63b4be-ceee-4eba-a101-c479f5b234f5.fst?certificate_id=MEQCIEZEt4QFxsIzBDwlNe%2FAv1gI2Aw%2BTnWm7%2BKUID7w7x61AiB2NEPwaU90mvODcC7D%2B5hzyk63uy%2BjqBwbIJnnO8TamQ%3D%3D",
+    "https://highfidelity.com/api/v1/commerce/entity_edition/b68f32ba-f6e3-420b-801c-93dcf01d9e35.fst?certificate_id=MEQCICKVxhjUAPIl2WoGuQyd%2BUjdCc%2FwIbA%2Btc%2B3yOxpXitxAiACPozdPZbvLTtaj9ozqV32ZmMovW5pOCJpvWeGa526Ng%3D%3D",
+    "https://highfidelity.com/api/v1/commerce/entity_edition/85684b19-ff83-4fc3-abd8-ae5f9c5420c7.fst?certificate_id=MEUCIQDBUXEwgVjaf1DRNMyO8zlVtW2rtVmZc2bzo2Azh6zjXQIgcpckQW%2BA6mQ6oCYDHwkcsuWQTLTjFNcOkp69s2bKM1A%3D"
  ];
 
 
