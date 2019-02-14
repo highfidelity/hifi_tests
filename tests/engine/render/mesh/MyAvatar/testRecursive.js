@@ -10,9 +10,3 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "engine/render/mesh/MyAvatar/visibility/test.js");
 Script.include(testsRootPath + "engine/render/mesh/MyAvatar/scale/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

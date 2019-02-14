@@ -12,9 +12,3 @@ Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/enable/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

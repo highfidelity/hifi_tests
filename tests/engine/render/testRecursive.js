@@ -16,9 +16,3 @@ Script.include(testsRootPath + "engine/render/lighting/testRecursive.js");
 Script.include(testsRootPath + "engine/render/geometry/testRecursive.js");
 Script.include(testsRootPath + "engine/render/effect/testRecursive.js");
 Script.include(testsRootPath + "engine/render/camera/testRecursive.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

@@ -10,9 +10,3 @@ nitpick.enableAuto();
 
 Script.include(testsRootPath + "content/entity/material/apply/entities/shape/test.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/model/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

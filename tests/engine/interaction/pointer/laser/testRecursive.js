@@ -16,9 +16,3 @@ Script.include(testsRootPath + "engine/interaction/pointer/laser/faceAvatar/test
 Script.include(testsRootPath + "engine/interaction/pointer/laser/enable/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/distanceScaleEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/centerEndY/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

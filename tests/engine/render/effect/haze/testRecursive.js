@@ -19,9 +19,3 @@ Script.include(testsRootPath + "engine/render/effect/haze/high_range/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

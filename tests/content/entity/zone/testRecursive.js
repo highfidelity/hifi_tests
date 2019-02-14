@@ -13,9 +13,3 @@ Script.include(testsRootPath + "content/entity/zone/zoneEffects/test.js");
 Script.include(testsRootPath + "content/entity/zone/shadowControl/test.js");
 Script.include(testsRootPath + "content/entity/zone/create/test.js");
 Script.include(testsRootPath + "content/entity/zone/ambientLightInheritance/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

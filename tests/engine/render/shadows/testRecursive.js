@@ -11,9 +11,3 @@ nitpick.enableAuto();
 Script.include(testsRootPath + "engine/render/shadows/normal/test.js");
 Script.include(testsRootPath + "engine/render/shadows/grazing/test.js");
 Script.include(testsRootPath + "engine/render/shadows/front/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

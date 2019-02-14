@@ -12,9 +12,3 @@ Script.include(testsRootPath + "content/entity/material/apply/targeting/test.js"
 Script.include(testsRootPath + "content/entity/material/apply/overlays/testRecursive.js");
 Script.include(testsRootPath + "content/entity/material/apply/entities/testRecursive.js");
 Script.include(testsRootPath + "content/entity/material/apply/avatars/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

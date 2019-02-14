@@ -37,9 +37,3 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glb
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boomBox/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/avocado/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/alphaBlend/test.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-

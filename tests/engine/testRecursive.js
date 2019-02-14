@@ -11,9 +11,3 @@ nitpick.enableAuto();
 Script.include(testsRootPath + "engine/render/testRecursive.js");
 Script.include(testsRootPath + "engine/interaction/testRecursive.js");
 Script.include(testsRootPath + "engine/controller/testRecursive.js");
-
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
-   nitpick.runRecursive();
-}
-
