@@ -8,12 +8,19 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "protocol/testRecursive.js");
 Script.include(testsRootPath + "engine/testRecursive.js");
 Script.include(testsRootPath + "content/testRecursive.js");
 
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
+if (depth > 0) {
+   depth--;
+} else {
    nitpick.runRecursive();
 }
 

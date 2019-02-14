@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "content/entity/polyline/textures/test.js");
 Script.include(testsRootPath + "content/entity/polyline/strokeColors/test.js");
 Script.include(testsRootPath + "content/entity/polyline/normals/test.js");
@@ -16,3 +22,10 @@ Script.include(testsRootPath + "content/entity/polyline/isUVModeStretch/test.js"
 Script.include(testsRootPath + "content/entity/polyline/glow/test.js");
 Script.include(testsRootPath + "content/entity/polyline/faceCamera/test.js");
 Script.include(testsRootPath + "content/entity/polyline/color/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

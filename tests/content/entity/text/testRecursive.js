@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "content/entity/text/topMargin/test.js");
 Script.include(testsRootPath + "content/entity/text/textColor/test.js");
 Script.include(testsRootPath + "content/entity/text/textAlpha/test.js");
@@ -18,3 +24,10 @@ Script.include(testsRootPath + "content/entity/text/bottomMargin/test.js");
 Script.include(testsRootPath + "content/entity/text/billboardMode/test.js");
 Script.include(testsRootPath + "content/entity/text/backgroundColor/test.js");
 Script.include(testsRootPath + "content/entity/text/backgroundAlpha/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "protocol/zone/test.js");
 Script.include(testsRootPath + "protocol/text/test.js");
 Script.include(testsRootPath + "protocol/sphere/test.js");
@@ -19,3 +25,10 @@ Script.include(testsRootPath + "protocol/material/test.js");
 Script.include(testsRootPath + "protocol/line/test.js");
 Script.include(testsRootPath + "protocol/light/test.js");
 Script.include(testsRootPath + "protocol/box/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

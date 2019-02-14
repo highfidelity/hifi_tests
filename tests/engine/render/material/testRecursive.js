@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "engine/render/material/roughness_map/test.js");
 Script.include(testsRootPath + "engine/render/material/roughness/test.js");
 Script.include(testsRootPath + "engine/render/material/opacity/test.js");
@@ -15,3 +21,10 @@ Script.include(testsRootPath + "engine/render/material/normal_map/test.js");
 Script.include(testsRootPath + "engine/render/material/emissive/test.js");
 Script.include(testsRootPath + "engine/render/material/base/test.js");
 Script.include(testsRootPath + "engine/render/material/albedo/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

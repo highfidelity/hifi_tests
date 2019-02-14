@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/waterBottle/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/vertexColor/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/unlit/test.js");
@@ -37,3 +43,10 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glb
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boomBox/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/avocado/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/alphaBlend/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

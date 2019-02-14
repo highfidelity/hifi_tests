@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "engine/interaction/pointer/laser/renderState/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/lockEndUUID/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/lockEnd/test.js");
@@ -16,3 +22,10 @@ Script.include(testsRootPath + "engine/interaction/pointer/laser/faceAvatar/test
 Script.include(testsRootPath + "engine/interaction/pointer/laser/enable/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/distanceScaleEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/laser/centerEndY/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

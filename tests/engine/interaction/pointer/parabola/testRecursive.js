@@ -8,7 +8,20 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/renderState/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/lockEnd/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/ignore/test.js");
 Script.include(testsRootPath + "engine/interaction/pointer/parabola/enable/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

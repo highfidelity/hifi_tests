@@ -8,8 +8,21 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "engine/interaction/pick/collision/myavatar/test.js");
 Script.include(testsRootPath + "engine/interaction/pick/collision/many/test.js");
 Script.include(testsRootPath + "engine/interaction/pick/collision/identical/test.js");
 Script.include(testsRootPath + "engine/interaction/pick/collision/filter/test.js");
 Script.include(testsRootPath + "engine/interaction/pick/collision/cube/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+

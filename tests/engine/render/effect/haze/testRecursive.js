@@ -8,6 +8,12 @@ if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPa
 nitpick.enableRecursive();
 nitpick.enableAuto();
 
+if (typeof depth === 'undefined') {
+   depth = 0;
+} else {
+   depth++
+}
+
 Script.include(testsRootPath + "engine/render/effect/haze/visible_sky/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/partial_sky/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/none/test.js");
@@ -19,3 +25,10 @@ Script.include(testsRootPath + "engine/render/effect/haze/high_range/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_small/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/glare_large/test.js");
 Script.include(testsRootPath + "engine/render/effect/haze/color/test.js");
+
+if (depth > 0) {
+   depth--;
+} else {
+   nitpick.runRecursive();
+}
+
