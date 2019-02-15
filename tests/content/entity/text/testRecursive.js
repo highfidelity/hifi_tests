@@ -2,11 +2,16 @@
 PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 
-if (typeof nitpick === 'undefined') nitpick = createNitpick(Script.resolvePath("."));
-if (typeof testsRootPath === 'undefined') testsRootPath = nitpick.getTestsRootPath();
+if (typeof depth === 'undefined') {
+   depth = 0;
+   nitpick = createNitpick(Script.resolvePath("."));
+   testsRootPath = nitpick.getTestsRootPath();
 
-nitpick.enableRecursive();
-nitpick.enableAuto();
+   nitpick.enableRecursive();
+   nitpick.enableAuto();
+} else {
+   depth++
+}
 
 Script.include(testsRootPath + "content/entity/text/topMargin/test.js");
 Script.include(testsRootPath + "content/entity/text/textColor/test.js");
@@ -19,8 +24,9 @@ Script.include(testsRootPath + "content/entity/text/billboardMode/test.js");
 Script.include(testsRootPath + "content/entity/text/backgroundColor/test.js");
 Script.include(testsRootPath + "content/entity/text/backgroundAlpha/test.js");
 
-if (typeof runningRecursive === 'undefined') {
-   runningRecursive = true;
+if (depth > 0) {
+   depth--;
+} else {
    nitpick.runRecursive();
 }
 

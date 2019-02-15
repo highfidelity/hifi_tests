@@ -77,7 +77,7 @@ addZone = function (flags, lifetime) {
 
         keyLight:{
             intensity: 0.8,
-            castShadows: (flags === undefined || flags.hasKeyLightShadow === undefined || !flags.hasKeyLightShadow) ? "disabled" : "enabled",
+            castShadows: (flags === undefined || flags.hasKeyLightShadow === undefined || !flags.hasKeyLightShadow) ? false : true,
             direction: {
                 "x": 0.037007175385951996,
                 "y": -0.7071067690849304,
