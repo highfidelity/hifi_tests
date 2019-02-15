@@ -10,40 +10,37 @@ Press 'n' key to advance step by step
 ### Step 1
 - Position secondary camera
 ### Step 2
-- Step 1
+- Highlight box
 - ![](./ExpectedImage_00000.png)
 ### Step 3
-- Step 2
+- Highlight Model Entity
 - ![](./ExpectedImage_00001.png)
 ### Step 4
-- Step 3
+- Highlight Sphere Entity
 - ![](./ExpectedImage_00002.png)
 ### Step 5
-- Step 4
+- Highlight Avatar
 - ![](./ExpectedImage_00003.png)
 ### Step 6
-- Step 5
+- Highlight Model Overlay
 - ![](./ExpectedImage_00004.png)
 ### Step 7
-- Step 6
+- Highlight Polyvox Entity
 - ![](./ExpectedImage_00005.png)
 ### Step 8
-- Step 7
+- Edit Highlight Style
 - ![](./ExpectedImage_00006.png)
 ### Step 9
-- Step 8
+- Disable Highlight Style
 - ![](./ExpectedImage_00007.png)
 ### Step 10
-- Step 9
+- Highlight Sphere Entity With Different Style
 - ![](./ExpectedImage_00008.png)
 ### Step 11
-- Step 10
+- Disable All Highlights
 - ![](./ExpectedImage_00009.png)
 ### Step 12
-- Step 11
+- No Highlights
 - ![](./ExpectedImage_00010.png)
 ### Step 13
-- Take snapshot
-- ![](./ExpectedImage_00011.png)
-### Step 14
 - Clean up after test

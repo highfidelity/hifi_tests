@@ -271,10 +271,10 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
         name: "overlayModel",
         position: { x: position.x + 2.0, y: position.y, z: position.z + 3.0 },
         dimensions: { x: 2, y: 2, z: 2 },
-        userData: JSON.stringify({ grabbableKey: { grabbable: false } })
+        userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
+        lifetime: LIFETIME
     }
     var overlayModel = Overlays.addOverlay("model", overlayProperties);
-
     createdOverlays.push(overlayModel);
 
     createdEntities.push(blueBox);
@@ -283,12 +283,14 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
     createdEntities.push(hifi);
     createdEntities.push(terrain);
 
+    nitpick.addDelay(4);
+
     nitpick.addStep("Position secondary camera", function() {
         validationCamera_translate({ x: 0.0, y: 0.0, z: -8.0 });
         validationCamera_setRotation({ x: 0.0, y: 180.0, z: 0.0 });
     });
 
-    nitpick.addStepSnapshot("Step 1",
+    nitpick.addStepSnapshot("Highlight box",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
@@ -309,33 +311,13 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
         }
     );
 
-    nitpick.addStepSnapshot("Step 2",
+    nitpick.addStepSnapshot("Highlight Model Entity",
         function() {
              Selection.addToSelectedItemsList("TestHifi1", "entity", hifi)
         }
     );
-    
-    nitpick.addStepSnapshot("Step 3",
-        function() {
-            var style = {        
-                outlineUnoccludedColor: { red: 0, green: 255, blue: 250 },
-                outlineOccludedColor: { red: 0, green: 255, blue: 250 },
-                fillUnoccludedColor: { red: 255, green: 0, blue: 0 },
-                fillOccludedColor: { red: 255, green: 0, blue: 0 },
 
-                outlineUnoccludedAlpha: 0.7,
-                outlineOccludedAlpha: 1.0,
-                fillUnoccludedAlpha: 0.0,
-                fillOccludedAlpha: 0.5,
-                
-                outlineWidth: 2,
-                isOutlineSmooth: true
-            }
-            Selection.enableListHighlight("TestHifi1", style)
-        }
-    );
-
-    nitpick.addStepSnapshot("Step 4",
+    nitpick.addStepSnapshot("Highlight Sphere Entity",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 255, green: 0, blue: 0 },
@@ -356,7 +338,7 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
         }
     );
 
-    nitpick.addStepSnapshot("Step 5",
+    nitpick.addStepSnapshot("Highlight Avatar",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 244, blue: 255 },
@@ -372,12 +354,13 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
                 outlineWidth: 5,
                 isOutlineSmooth: false
             }
-            Selection.enableListHighlight("TestHifi4", style)
-            Selection.addToSelectedItemsList("TestHifi4", "avatar", MyAvatar.sessionUUID)
+            // FIXME: test disables avatar rendering so this does nothing
+            Selection.enableListHighlight("TestHifi3", style)
+            Selection.addToSelectedItemsList("TestHifi3", "avatar", MyAvatar.sessionUUID)
         }
     );
 
-    nitpick.addStepSnapshot("Step 6",   
+    nitpick.addStepSnapshot("Highlight Model Overlay",   
        function() {
             var style = {        
                 outlineUnoccludedColor: { red: 0, green: 255, blue: 0 },
@@ -393,18 +376,18 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
                 outlineWidth: 2,
                 isOutlineSmooth: false
             }
-            Selection.enableListHighlight("TestHifi3", style)
-            Selection.addToSelectedItemsList("TestHifi3", "overlay", overlayModel)
+            Selection.enableListHighlight("TestHifi4", style)
+            Selection.addToSelectedItemsList("TestHifi4", "overlay", overlayModel)
         }
     );
 
-    nitpick.addStepSnapshot("Step 7",    
+    nitpick.addStepSnapshot("Highlight Polyvox Entity",    
         function() {
-            Selection.addToSelectedItemsList("TestHifi3", "entity", terrain)
+            Selection.addToSelectedItemsList("TestHifi4", "entity", terrain)
         }
     );
 
-    nitpick.addStepSnapshot("Step 8",
+    nitpick.addStepSnapshot("Edit Highlight Style",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 128, green: 255, blue: 250 },
@@ -424,13 +407,13 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
         }
     );
 
-    nitpick.addStepSnapshot("Step 9",
+    nitpick.addStepSnapshot("Disable Highlight Style",
         function () {
             Selection.disableListHighlight("TestHifi2");
         }
     );
 
-    nitpick.addStepSnapshot("Step 10",
+    nitpick.addStepSnapshot("Highlight Sphere Entity With Different Style",
         function() {
             var style = {        
                 outlineUnoccludedColor: { red: 250, green: 255, blue: 0 },
@@ -450,23 +433,19 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
         }
     );
 
-    nitpick.addStepSnapshot("Step 11",
+    nitpick.addStepSnapshot("Disable All Highlights",
         function () {
             Selection.disableListHighlight("TestHifi1");
             Selection.disableListHighlight("TestHifi2");
             Selection.disableListHighlight("TestHifi3");
+            Selection.disableListHighlight("TestHifi4");
         }
     );
 
-    nitpick.addStepSnapshot("Take snapshot");
+    nitpick.addStepSnapshot("No Highlights");
 
     nitpick.addStep("Clean up after test", 
         function () {
-            Selection.disableListHighlight("TestHifi1");
-            Selection.disableListHighlight("TestHifi2"); 
-            Selection.disableListHighlight("TestHifi3"); 
-            Selection.disableListHighlight("TestHifi4"); 
-            
             for (var i = 0; i < createdEntities.length; i++) {
                 Entities.deleteEntity(createdEntities[i]);
             }

@@ -22,4 +22,3 @@ if (depth > 0) {
 } else {
    nitpick.runRecursive();
 }
-
