@@ -13,7 +13,6 @@ var assetsRootPath = nitpick.getAssetsRootPath();
 var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
 
 var MODEL_NAME_SUFFIX = ".fbx";
-var MODEL_SCALE = 1.0;
 var LIFETIME = 100;
 
 setup = function (altitude, azimuth, originFrame) {
@@ -56,7 +55,6 @@ setup = function (altitude, azimuth, originFrame) {
         modelURL: modelUrl,
         name: "Opaque",
         position: { x: originFrame.x - 2.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
-        dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
     }));
@@ -66,7 +64,6 @@ setup = function (altitude, azimuth, originFrame) {
         modelURL: modelUrl,
         name: "Opaque",
         position: { x: originFrame.x - 1.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
-        dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
     }));
@@ -76,7 +73,6 @@ setup = function (altitude, azimuth, originFrame) {
         modelURL: modelUrl,
         name: "On Floor",
         position: { x: originFrame.x, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
-        dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
     }));
@@ -86,7 +82,6 @@ setup = function (altitude, azimuth, originFrame) {
         modelURL: modelUrl,
         name: "Behind",
         position: { x: originFrame.x + 1.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
-        dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: true
     }));
@@ -97,7 +92,6 @@ setup = function (altitude, azimuth, originFrame) {
         modelURL: modelUrl,
         name: "No Cast",
         position: { x: originFrame.x + 2.0, y: originFrame.y + 1.25, z: originFrame.z - 5.0},    
-        dimensions: {x: MODEL_SCALE, y: MODEL_SCALE, z: MODEL_SCALE},
         lifetime: LIFETIME,
         canCastShadow: false
     }));
