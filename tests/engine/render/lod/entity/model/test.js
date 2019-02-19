@@ -6,7 +6,6 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     var createdEntities = [];
 
     var LIFETIME = 120;
-    var DIM = {x: 1.0, y: 1.2, z: 0.28};
 
     var previousLODAdjust;
     var previousOctreeSizeScale;
@@ -27,7 +26,6 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
         position: Vec3.sum(Vec3.sum(Vec3.sum(pos, Vec3.multiply(1.6, Quat.getUp(ori))), Vec3.multiply(-0.5, Quat.getRight(ori))), Vec3.multiply(2.8, Quat.getForward(ori))),
         lifetime: LIFETIME,
         modelURL: URL,
-        dimensions: DIM,
         rotation: ori,
         groupCulled: false
     }));
@@ -37,7 +35,6 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
         position: Vec3.sum(Vec3.sum(Vec3.sum(pos, Vec3.multiply(1.6, Quat.getUp(ori))), Vec3.multiply(0.5, Quat.getRight(ori))), Vec3.multiply(2.8, Quat.getForward(ori))),
         lifetime: LIFETIME,
         modelURL: URL,
-        dimensions: DIM,
         rotation: ori,
         groupCulled: true
     }));
@@ -51,18 +48,18 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
     nitpick.addStepSnapshot("Both models visible");
 
     nitpick.addStep("Set LOD to 60", function () {
-        LODManager.setOctreeSizeScale(32768 * 60);
+        LODManager.setOctreeSizeScale(32768 * 24);
     });
     nitpick.addStepSnapshot("Eyes of left model cannot be seen");
 
     nitpick.addStep("Set LOD to 10", function () {
-        LODManager.setOctreeSizeScale(32768 * 12);
+        LODManager.setOctreeSizeScale(32768 * 6);
     });
-    nitpick.addStepSnapshot("Only right model visible, including eyes");
+    nitpick.addStepSnapshot("Only left model visible");
 
 
     nitpick.addStep("Set LOD to 4", function () {
-        LODManager.setOctreeSizeScale(32768 * 4);
+        LODManager.setOctreeSizeScale(32768 * 3);
     });
     nitpick.addStepSnapshot("No models are visible");
 

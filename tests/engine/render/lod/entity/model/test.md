@@ -18,7 +18,7 @@ Press 'n' key to advance step by step
 ### Step 4
 - Set LOD to 10
 ### Step 5
-- Only right model visible, including eyes
+- Only left model visible
 - ![](./ExpectedImage_00002.png)
 ### Step 6
 - Set LOD to 4
