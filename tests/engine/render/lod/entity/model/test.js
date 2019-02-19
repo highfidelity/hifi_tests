@@ -47,18 +47,18 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
 
     nitpick.addStepSnapshot("Both models visible");
 
-    nitpick.addStep("Set LOD to 60", function () {
+    nitpick.addStep("Set LOD to 24", function () {
         LODManager.setOctreeSizeScale(32768 * 24);
     });
     nitpick.addStepSnapshot("Eyes of left model cannot be seen");
 
-    nitpick.addStep("Set LOD to 10", function () {
+    nitpick.addStep("Set LOD to 6", function () {
         LODManager.setOctreeSizeScale(32768 * 6);
     });
     nitpick.addStepSnapshot("Only left model visible");
 
 
-    nitpick.addStep("Set LOD to 4", function () {
+    nitpick.addStep("Set LOD to 3", function () {
         LODManager.setOctreeSizeScale(32768 * 3);
     });
     nitpick.addStepSnapshot("No models are visible");
@@ -74,3 +74,4 @@ nitpick.perform("LOD test", Script.resolvePath("."), "secondary", function(testT
 
     nitpick.runTest(testType);
 });
+24
