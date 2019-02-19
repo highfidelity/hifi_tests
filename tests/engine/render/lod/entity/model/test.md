@@ -11,17 +11,17 @@ Press 'n' key to advance step by step
 - Both models visible
 - ![](./ExpectedImage_00000.png)
 ### Step 2
-- Set LOD to 60
+- Set LOD to 24
 ### Step 3
 - Eyes of left model cannot be seen
 - ![](./ExpectedImage_00001.png)
 ### Step 4
-- Set LOD to 10
+- Set LOD to 6
 ### Step 5
-- Only right model visible, including eyes
+- Only left model visible
 - ![](./ExpectedImage_00002.png)
 ### Step 6
-- Set LOD to 4
+- Set LOD to 3
 ### Step 7
 - No models are visible
 - ![](./ExpectedImage_00003.png)
