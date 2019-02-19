@@ -25,8 +25,7 @@ nitpick.perform("effect - bloom", Script.resolvePath("."), "secondary", function
         type: "Model",
         modelURL: MODEL_DIR_URL + "hifi_metallicV_albedoV_ao" + MODEL_NAME_SUFFIX,
         name: "Shiny Object",
-        position: { x: pos.x, y: pos.y + 0.5, z: pos.z - 2.5},      
-        dimensions:{ x: 1.0, y: 1.0, z: 1.0 },
+        position: { x: pos.x, y: pos.y + 0.5, z: pos.z - 2.5}
       });
 
       var inFrontOverlay = Overlays.addOverlay("sphere", {
