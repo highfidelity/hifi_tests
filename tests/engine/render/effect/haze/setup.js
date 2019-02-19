@@ -53,7 +53,6 @@ setup = function (hazeDef, originFrame) {
         modelURL: url,
         name: "Opaque",
         position: { x: originFrame.x + 1.0, y: originFrame.y + 1.0, z: originFrame.z - 3.0},    
-        dimensions: {x:MODEL_SCALE, y:MODEL_SCALE, z:MODEL_SCALE},
         lifetime: LIFETIME,
     }) );
     url = MODEL_DIR_URL + "hifi_opacityV_albedoM_ao" + MODEL_NAME_SUFFIX;
