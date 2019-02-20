@@ -11,9 +11,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     var initData = {
         flags : {
-          hasKeyLight: true,
-          hasAmbientLight: true,
-          hasKeyLightShadow: true,
+            hasKeyLight: true,
+            hasAmbientLight: true,
+            hasKeyLightShadow: true,
         },
         originFrame: nitpick.getOriginFrame()
     };
@@ -24,7 +24,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/RiggedSimple
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/RiggedSimple/glTF/RiggedSimple.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -4.8 }),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -1.8 }),
         rotation: Quat.fromPitchYawRollDegrees(-90.0, 0.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
@@ -32,6 +32,15 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     createdEntities.push(testEntity);
 
+    nitpick.addStep("Scale to 1m", function () {
+        var properties = Entities.getEntityProperties(testEntity);
+        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
+
+        if (scale > 0) {
+            Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });
+        }
+    });
+    
     nitpick.addStepSnapshot("RiggedSimple.gltf Model is visible");
 
     nitpick.addStep("Clean up after test", function () {
