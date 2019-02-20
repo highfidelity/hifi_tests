@@ -24,9 +24,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/BarramundiFish
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BarramundiFish/glTF/BarramundiFish.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -3.2 }),
-        dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
-        rotation: Quat.fromPitchYawRollDegrees(0.0, -30.0, 0.0),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.8 }),
+        dimensions: { x: 0.5, y: 1.0, z: 2.0 },
+        rotation: Quat.fromPitchYawRollDegrees(0.0, -60.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
