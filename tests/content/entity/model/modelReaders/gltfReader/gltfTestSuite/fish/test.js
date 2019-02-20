@@ -24,14 +24,22 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/BarramundiFish
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BarramundiFish/glTF/BarramundiFish.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.8 }),
-        dimensions: { x: 0.5, y: 1.0, z: 2.0 },
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -1.2 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, -60.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     createdEntities.push(testEntity);
+
+    nitpick.addStep("Scale to 1m", function () {
+        var properties = Entities.getEntityProperties(testEntity);
+        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
+        
+        if (scale > 0) {
+            Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });
+        }
+    });
 
     nitpick.addStepSnapshot("BarramundiFish.gltf Model is visible");
 
