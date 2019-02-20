@@ -24,8 +24,8 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Monster
         modelURL: assetsRootPath + 'models/gltf_models/glb/Monster.glb',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -3.2 }),
-        dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
+        position: Vec3.sum(position, {x: 0.0, y: 1.0, z: -2.3 }),
+        dimensions: { x: 1.0, y: 2.0, z: 1.0 },
         rotation: Quat.fromPitchYawRollDegrees(-50.0, -50.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })

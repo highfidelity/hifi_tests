@@ -24,8 +24,8 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/VC
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/VC/glTF-Embedded/VC.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -5.0 }),
-        dimensions: Vec3.multiply(100.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.4 }),
+        dimensions: { x: 1.0, y: 1.0, z: 1.0 },
         rotation: Quat.fromPitchYawRollDegrees(0.0, -15.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
