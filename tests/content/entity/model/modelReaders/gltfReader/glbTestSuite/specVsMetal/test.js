@@ -4,7 +4,7 @@ var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
-    var LIFETIME = 60.0;
+    var LIFETIME = 6000.0;
     var position = nitpick.getOriginFrame();
 
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
@@ -25,7 +25,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/SpecGlossVsMetalRough
         modelURL: assetsRootPath + 'models/gltf_models/glb/SpecGlossVsMetalRough.glb',
         position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -3.2 }),
-        dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
+        dimensions: { x: 1.0, y: 1.7, z: 1.0 },
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
