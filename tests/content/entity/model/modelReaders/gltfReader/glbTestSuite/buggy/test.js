@@ -24,9 +24,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Buggy
         modelURL: assetsRootPath + 'models/gltf_models/glb/Buggy.glb',
-        position: Vec3.sum(position, {x: 0.65, y: 1.0, z: -3.5 }),
-        dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
-        rotation: Quat.fromPitchYawRollDegrees(-90.0, -25.0, 0.0),
+        position: Vec3.sum(position, {x: 0.25, y: 0.75, z: -1.8 }),
+        dimensions: { x: 1.0, y: 0.5, z: 1.0 },
+        rotation: Quat.fromPitchYawRollDegrees(-90.0, -10.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
