@@ -4,7 +4,7 @@ var nitpick = createNitpick(Script.resolvePath("."));
 
 nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
-    var LIFETIME = 6000.0;
+    var LIFETIME = 60.0;
     var position = nitpick.getOriginFrame();
 
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
