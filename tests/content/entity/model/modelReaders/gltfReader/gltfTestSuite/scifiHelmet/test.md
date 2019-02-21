@@ -8,7 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- RiggedSimple.gltf Model is visible
-- ![](./ExpectedImage_00000.png)
+- Scale to 1m
 ### Step 2
+- SciFiHelmet.gltf Model is visible
+- ![](./ExpectedImage_00000.png)
+### Step 3
 - Clean up after test

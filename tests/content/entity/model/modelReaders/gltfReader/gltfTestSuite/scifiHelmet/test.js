@@ -11,9 +11,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     var initData = {
         flags : {
-          hasKeyLight: true,
-          hasAmbientLight: true,
-          hasKeyLightShadow: true,
+            hasKeyLight: true,
+            hasAmbientLight: true,
+            hasKeyLightShadow: true,
         },
         originFrame: nitpick.getOriginFrame()
     };
@@ -24,8 +24,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/SciFiHelmet
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/SciFiHelmet/glTF/SciFiHelmet.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -4.8 }),
-        dimensions: Vec3.multiply(50.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.2 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, -20.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
@@ -33,7 +32,16 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     createdEntities.push(testEntity);
 
-    nitpick.addStepSnapshot("RiggedSimple.gltf Model is visible");
+    nitpick.addStep("Scale to 1m", function () {
+        var properties = Entities.getEntityProperties(testEntity);
+        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
+
+        if (scale > 0) {
+            Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });
+        }
+    });
+
+    nitpick.addStepSnapshot("SciFiHelmet.gltf Model is visible");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
