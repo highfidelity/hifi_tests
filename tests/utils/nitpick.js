@@ -35,6 +35,8 @@ const VALIDATION_CAMERA_OFFSET = { x: 0.0, y: 1.76, z: 0.0 };
 
 var spectatorCameraConfig;
 
+var clientPlatformUnknown = true;
+
 // Variables for Client Profile capabilities
 var graphicsCardType
 var graphicsCardVendor;
@@ -294,67 +296,70 @@ setUpTest = function(testCase) {
     // The problem is that models aren't rendered when there is no focus
     previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
     Menu.setIsOptionChecked("Throttle FPS If Not Focus", false);
-    
-    //Setup variables for Client Profile capabilities
-    graphicsCardType = PlatformInfo.getGraphicsCardType().toLowerCase();
-    
-    graphicsCardVendor = "Unknown";
-    if (graphicsCardType.search("nvidia") !== -1) {
-        graphicsCardVendor = "nvidia";
-    } else if (graphicsCardType.search("radeon") !== -1) {
-        graphicsCardVendor = "radeon";
-    }
 
-    // Extract the graphics card model from the type
-    // This uses a regex, and assumes the model is the first integer following a space
-    // Examples: "NVIDIA GeForce GTX 1070 with Max-Q Design"  => " 1070"
-    //           "Radeon Pro 560"                             => " 560"
-    var regex = / [0-9]+/;
-    graphicsCardModelNumber = parseInt(graphicsCardType.match(regex)); // The parseInt command safely ignores the initial blank
+    if (clientPlatformUnknown) {
+        //Setup variables for Client Profile capabilities
+        graphicsCardType = PlatformInfo.getGraphicsCardType().toLowerCase();
 
-    CPUBrand = PlatformInfo.getCPUBrand();
-    operatingSystemType = PlatformInfo.getOperatingSystemType();
-    isHMDInUse = HMD.mounted;
-    isRiftInUse = (isHMDInUse && PlatformInfo.hasRiftControllers());
-    isViveInUse = (isHMDInUse && PlatformInfo.hasViveControllers());
-
-    const MEMORY_MINIMUM_MB = 8000;
-    totalSystemMemoryMB = PlatformInfo.getTotalSystemMemoryMB();
-    isMemoryOK = totalSystemMemoryMB > MEMORY_MINIMUM_MB;
-            
-    const NVIDIA_VR_MINIMUM = 970;
-    const RADEON_VR_MINIMUM = 290;
-    isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
-    
-    if (typeof Test !== 'undefined') {
-        var clientPlatform = {
-            graphicsCardType: graphicsCardType,
-            graphicsCardVendor: graphicsCardVendor,
-            graphicsCardModelNumber: graphicsCardModelNumber,
-            isGraphicsCardOK: isGraphicsCardOK,
-            CPUBrand: CPUBrand,
-            operatingSystemType: operatingSystemType,
-            totalSystemMemoryMB: totalSystemMemoryMB,
-            isMemoryOK: isMemoryOK,
-            isRiftInUse: isRiftInUse,
-            isViveInUse: isViveInUse,
-            isHMDInUse: isHMDInUse
+        graphicsCardVendor = "Unknown";
+        if (graphicsCardType.search("nvidia") !== -1) {
+            graphicsCardVendor = "nvidia";
+        } else if (graphicsCardType.search("radeon") !== -1) {
+            graphicsCardVendor = "radeon";
         }
 
-        Test.saveObject(clientPlatform, "clientPlatform.txt");
+        // Extract the graphics card model from the type
+        // This uses a regex, and assumes the model is the first integer following a space
+        // Examples: "NVIDIA GeForce GTX 1070 with Max-Q Design"  => " 1070"
+        //           "Radeon Pro 560"                             => " 560"
+        var regex = / [0-9]+/;
+        graphicsCardModelNumber = parseInt(graphicsCardType.match(regex)); // The parseInt command safely ignores the initial blank
+
+        CPUBrand = PlatformInfo.getCPUBrand();
+        operatingSystemType = PlatformInfo.getOperatingSystemType();
+        isHMDInUse = HMD.mounted;
+        isRiftInUse = (isHMDInUse && PlatformInfo.hasRiftControllers());
+        isViveInUse = (isHMDInUse && PlatformInfo.hasViveControllers());
+
+        const MEMORY_MINIMUM_MB = 8000;
+        totalSystemMemoryMB = PlatformInfo.getTotalSystemMemoryMB();
+        isMemoryOK = totalSystemMemoryMB > MEMORY_MINIMUM_MB;
+                
+        const NVIDIA_VR_MINIMUM = 970;
+        const RADEON_VR_MINIMUM = 290;
+        isGraphicsCardOK =  (graphicsCardVendor === "nvidia" && graphicsCardModelNumber > NVIDIA_VR_MINIMUM) || (graphicsCardVendor === "radeon" && graphicsCardModelNumber > RADEON_VR_MINIMUM);
+
+        if (typeof Test !== 'undefined') {
+            var clientPlatform = {
+                graphicsCardType: graphicsCardType,
+                graphicsCardVendor: graphicsCardVendor,
+                graphicsCardModelNumber: graphicsCardModelNumber,
+                isGraphicsCardOK: isGraphicsCardOK,
+                CPUBrand: CPUBrand,
+                operatingSystemType: operatingSystemType,
+                totalSystemMemoryMB: totalSystemMemoryMB,
+                isMemoryOK: isMemoryOK,
+                isRiftInUse: isRiftInUse,
+                isViveInUse: isViveInUse,
+                isHMDInUse: isHMDInUse
+            }
+
+            Test.saveObject(clientPlatform, "clientPlatform.txt");
+        };
+
+        console.warn("Running on " + operatingSystemType + "," + CPUBrand + " CPU with " + totalSystemMemoryMB + "MB of memory");
+        console.warn("Graphics card is " + graphicsCardType);
+        if (isRiftInUse) {
+            console.warn("Displaying on Rift");
+        } else if (isViveInUse) {
+            console.warn("Displaying on Vive");
+        } else if (!isHMDInUse) {
+            console.warn("Displaying on Desktop");
+        } else {
+            console.warn("Displaying on unknown device!!!");
+        }
+        clientPlatformUnknown = false;
     };
-    
-    console.warn("Running on " + operatingSystemType + "," + CPUBrand + " CPU with " + totalSystemMemoryMB + "MB of memory");
-    console.warn("Graphics card is " + graphicsCardType);
-    if (isRiftInUse) {
-        console.warn("Displaying on Rift");
-    } else if (isViveInUse) {
-        console.warn("Displaying on Vive");
-    } else if (!isHMDInUse) {
-        console.warn("Displaying on Desktop");
-    } else {
-        console.warn("Displaying on unknown device!!!");
-    }
 }
 
 tearDownTest = function() {
@@ -486,7 +491,6 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
     testMode = "auto";
-
     console.warn("TEST MODE AUTO SELECTED");
 }
 

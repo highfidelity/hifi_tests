@@ -62,7 +62,7 @@ setup = function (hazeDef, originFrame) {
         type: "Model",
         modelURL: url,
         name: "Transparent",
-        position: { x: originFrame.x - 10.0, y: originFrame.y, z: originFrame.z - 50.0},    
+        position: { x: originFrame.x - 10.0, y: originFrame.y, z: originFrame.z - 50.0},
         dimensions: {x:MEDIUM_MODEL_SCALE, y:MEDIUM_MODEL_SCALE, z:MEDIUM_MODEL_SCALE},
         lifetime: LIFETIME,
     }) );

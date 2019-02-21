@@ -24,14 +24,22 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/VC
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/VC/glTF/VC.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -5.0 }),
-        dimensions: Vec3.multiply(100.0, {x: 0.0198, y: 0.0195, z: 0.0202}),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.4 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, -15.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
 
     createdEntities.push(testEntity);
+
+    nitpick.addStep("Scale to 1m", function () {
+        var properties = Entities.getEntityProperties(testEntity);
+        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
+        
+        if (scale > 0) {
+            Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });
+        }
+    });
 
     nitpick.addStepSnapshot("VC.gltf Model is visible");
 
