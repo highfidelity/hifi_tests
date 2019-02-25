@@ -24,7 +24,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/NormalTangentMirrorTest
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/NormalTangentMirrorTest/glTF/NormalTangentMirrorTest.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.4 }),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -1.2 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
