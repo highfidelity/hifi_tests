@@ -24,7 +24,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/UnlitTest
         modelURL: assetsRootPath + 'models/gltf_models/glb/UnlitTest.glb',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -3.2 }),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -3.8 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
