@@ -26,6 +26,7 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glb
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/normalTangent/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/monster/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/milkTruck/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/metalRoughSpheres/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/lantern/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/fish/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/engine/test.js");

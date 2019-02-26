@@ -17,7 +17,9 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glt
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/vertexColor/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/unlit/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/textureCoordinate/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/suzanne/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/specVsMetal/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/scifiHelmet/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/riggedSimple/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/riggedFigure/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/orientation/test.js");
@@ -26,6 +28,7 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glt
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/normalTangent/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/monster/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/milkTruck/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/metalRoughSpheres/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/lantern/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/fish/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/engine/test.js");
