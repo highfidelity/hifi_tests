@@ -59,9 +59,6 @@ TestCase = function (name, path, func, usePrimaryCamera) {
 var currentTestCase = null;
 var currentRecursiveTestCompleted = false;
 
-// TAA will be disabled for each test.  A test may enable as desired
-var fxaaWasOn;
-
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
     ch = ch || '0';  // default is '0'
@@ -287,11 +284,10 @@ setUpTest = function(testCase) {
         Menu.setIsOptionChecked("Desktop", true);
     }
 
-    // Disable TAA
-    fxaaWasOn = Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff;
+    // Set jitter to none on both cameras
     Render.getConfig("RenderMainView.JitterCam").none();
-    Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = true;
-    
+    Render.getConfig("SecondaryCameraJob.JitterCam").none();
+
     // This is needed to enable valid tests when Interface does not have focus
     // The problem is that models aren't rendered when there is no focus
     previousThrottleFPS = Menu.isOptionChecked("Throttle FPS If Not Focus");
@@ -402,11 +398,9 @@ tearDownTest = function() {
     // Disconnect callback
     AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
     
-    // Enable TAA as required
-    if (!fxaaWasOn) {
-        Render.getConfig("RenderMainView.JitterCam").play();
-        Render.getConfig("RenderMainView.Antialiasing").fxaaOnOff = false;
-    }
+    // Restore TAA
+    Render.getConfig("RenderMainView.JitterCam").play();
+    Render.getConfig("SecondaryCameraJob.JitterCam").play();
     
     // Restore as required
     Menu.setIsOptionChecked("Throttle FPS If Not Focus", previousThrottleFPS)
