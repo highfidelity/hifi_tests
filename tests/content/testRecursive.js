@@ -9,6 +9,10 @@ if (typeof depth === 'undefined') {
 
    nitpick.enableRecursive();
    nitpick.enableAuto();
+
+   if (typeof TestCreator !== 'undefined') {
+       TestCreator.wait(10000);
+   }
 } else {
    depth++
 }
@@ -21,3 +25,4 @@ if (depth > 0) {
 } else {
    nitpick.runRecursive();
 }
+
