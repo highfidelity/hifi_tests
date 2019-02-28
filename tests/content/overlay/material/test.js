@@ -96,7 +96,7 @@ nitpick.perform("Model Overlay Material create", Script.resolvePath("."), "secon
         orientation = Quat.safeEulerAngles(orientation);
         orientation.x = 0;
         orientation = Quat.fromVec3Degrees(orientation);
-        var root = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(5, Quat.getForward(orientation))),
+        var root = Vec3.sum(Vec3.sum(posOri, Vec3.multiply(5, Quat.getForward(orientation))),
             Vec3.multiply(-5.5 * MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z), Quat.getRight(orientation)));
         root = Vec3.sum(root, Vec3.multiply(MODEL_Y_OFFSET, Quat.getUp(orientation)));
 
