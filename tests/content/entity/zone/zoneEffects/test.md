@@ -10,27 +10,29 @@ Press 'n' key to advance step by step
 ### Step 1
 - Setup object, zones and markers
 ### Step 2
+- Setup avatar
+### Step 3
 - Verify no skybox
 - ![](./ExpectedImage_00000.png)
-### Step 3
-- Move forward
 ### Step 4
+- Move forward
+### Step 5
 - Verify bright sky
 - ![](./ExpectedImage_00001.png)
-### Step 5
-- Move forward again
 ### Step 6
+- Move forward again
+### Step 7
 - Verify night
 - ![](./ExpectedImage_00002.png)
-### Step 7
-- Moving forward and right
 ### Step 8
+- Moving forward and right
+### Step 9
 - Verify in cloudy zone
 - ![](./ExpectedImage_00003.png)
-### Step 9
-- Move left
 ### Step 10
+- Move left
+### Step 11
 - Verify in dark zone
 - ![](./ExpectedImage_00004.png)
-### Step 11
+### Step 12
 - Cleanup

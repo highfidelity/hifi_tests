@@ -96,7 +96,7 @@ nitpick.perform("Model Entity renderLayer hud", Script.resolvePath("."), "second
         orientation = Quat.safeEulerAngles(orientation);
         orientation.x = 0;
         orientation = Quat.fromVec3Degrees(orientation);
-        var root = Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(5, Quat.getForward(orientation))),
+        var root = Vec3.sum(Vec3.sum(posOri, Vec3.multiply(5, Quat.getForward(orientation))),
             Vec3.multiply(-5.5 * MODEL_SCALE * (MODEL_DIMS.x + MODEL_DIMS.z), Quat.getRight(orientation)));
         root = Vec3.sum(root, Vec3.multiply(MODEL_Y_OFFSET, Quat.getUp(orientation)));
 
@@ -104,7 +104,7 @@ nitpick.perform("Model Entity renderLayer hud", Script.resolvePath("."), "second
 
         createdEntities.push(Entities.addEntity({
                 type: "Box",
-                position: Vec3.sum(Vec3.sum(MyAvatar.position, Vec3.multiply(3, Quat.getFront(orientation))), Vec3.multiply(0.5, Vec3.UP)),
+                position: Vec3.sum(Vec3.sum(posOri, Vec3.multiply(3, Quat.getFront(orientation))), Vec3.multiply(0.5, Vec3.UP)),
                 visible: true,
                 alpha: 1,
                 orientation: orientation,

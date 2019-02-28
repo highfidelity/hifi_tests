@@ -118,6 +118,7 @@ nitpick.perform("Model Entity renderLayer front", Script.resolvePath("."), "seco
         }));
     });
 
+    nitpick.addDelay(10);
     nitpick.addStepSnapshot("Take snapshot of all the models");
 
     nitpick.addStep("Clean up after test", function () {
