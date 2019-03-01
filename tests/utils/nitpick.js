@@ -490,6 +490,11 @@ module.exports.enableAuto = function () {
 
 module.exports.enableRecursive = function () {
     isRecursive = true;
+
+    if (typeof Test !== 'undefined') {
+       Test.wait(10000);
+    }
+
     console.warn("TEST MODE RECURSIVE SELECTED");
 }
 
