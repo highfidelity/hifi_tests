@@ -25,7 +25,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/OrientationTest
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/OrientationTest/glTF-Embedded/OrientationTest.gltf',
         position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.0 }),
-        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
+        rotation: Quat.fromPitchYawRollDegrees(-50.0, -30.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
