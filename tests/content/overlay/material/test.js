@@ -17,7 +17,8 @@ nitpick.perform("Model Overlay Material create", Script.resolvePath("."), "secon
     var createdOverlays = [];
 
     var posOri = nitpick.getOriginFrame();
-    posOri.y += 1.0;
+    posOri.y += 0.82;
+    posOri.z += 1.0;
     
     nitpick.addStep("Build the material matrix", function () {
         // List here all the entries of the Material Matrix
@@ -66,7 +67,7 @@ nitpick.perform("Model Overlay Material create", Script.resolvePath("."), "secon
         var MODEL_NAME_SUFFIX = ".fbx";
         var MODEL_DIMS = {"x":0.809423565864563,"y":0.9995689988136292,"z":0.8092837929725647};
         var MODEL_Y_OFFSET = -0.1;
-        var MODEL_SCALE = 0.3;
+        var MODEL_SCALE = 0.38;
 
         function addTestOverlay(name, position, orientation) {
           var newOverlay = Overlays.addOverlay("model", {
