@@ -104,7 +104,7 @@ nitpick.perform("Model Overlay Material create", Script.resolvePath("."), "secon
         addCases(root, orientation);
     });
 
-    nitpick.addDelay(8);
+    nitpick.addDelay(12);
     nitpick.addStepSnapshot("Take snapshot of all the models");
 
     nitpick.addStep("Clean up after test", function () {
