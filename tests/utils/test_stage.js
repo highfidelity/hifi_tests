@@ -84,6 +84,12 @@ addZone = function (flags, lifetime) {
                 "z": -0.7061376571655273
             },
         },
+                
+        skybox: {
+            color: { red: 255, green: 255, blue: 255 },
+            url: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json"
+        },
+
         ambientLight: {
             ambientIntensity: 1.0,
             ambientURL: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json",
