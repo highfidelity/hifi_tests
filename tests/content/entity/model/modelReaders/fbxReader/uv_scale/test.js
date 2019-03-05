@@ -13,16 +13,6 @@ nitpick.perform("Read FBX models with UV scale properties", Script.resolvePath("
     var initData = { originFrame: nitpick.getOriginFrame() };
     var createdEntities = setupStage(initData);
     
-    createdEntities.push(Entities.addEntity({
-        lifetime: LIFETIME,
-        type: "Zone",
-        name: "zone",
-        position: position,
-        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
-        
-        dimensions: { x: 2000.0, y: 2000.0, z: 2000.0 }
-    }));
-    
     function addEntityWithOffset(createdEntities, assetPath, relativePosition) {
         createdEntities.push(Entities.addEntity({
             lifetime: LIFETIME,
