@@ -84,11 +84,6 @@ addZone = function (flags, lifetime) {
                 "z": -0.7061376571655273
             },
         },
-                
-        skybox: {
-            color: { red: 255, green: 255, blue: 255 },
-            url: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json"
-        },
 
         ambientLight: {
             ambientIntensity: 1.0,
@@ -96,9 +91,11 @@ addZone = function (flags, lifetime) {
         },
 
         hazeMode: (flags !== undefined && flags.hasHaze !== undefined && flags.hasHaze) ? "enabled" : "disabled",
+        bloomMode: (flags !== undefined && flags.hasBloom !== undefined && flags.hasBloom) ? "enabled" : "disabled",
         backgroundMode: "skybox",
         skybox:{
-            color: {"red":2,"green":2,"blue":2}, // Dark grey background
+            color: {"red":2,"green":2,"blue":2},
+            url: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json"
         }
     }));
 }
