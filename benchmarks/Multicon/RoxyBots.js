@@ -1,6 +1,4 @@
 //
-// Multicon-traittest.js bots script
-// building on...
 // BetterClientSimulationBotFromRecording.js
 //  examples
 //
@@ -37,7 +35,7 @@ var RECORDING_URL = RECORDINGS_ARRAY[0];
 // not quite what I want...
 // For the 'OpenWorld' content:
 var LOCATIONS_ARRAY = [
-  { min_x: 5.0, max_x: 10.0, y:-13.0, min_z: -57.0, max_z: -59.0   }
+  { min_x: -15, max_x: 25, y:-1.0, min_z: -20, max_z: +20   }
 ];
 
 var LOCATION_PARAMS = LOCATIONS_ARRAY[Math.floor(Math.random() * LOCATIONS_ARRAY.length)];
