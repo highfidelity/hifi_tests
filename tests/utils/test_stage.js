@@ -38,7 +38,8 @@ function addTile(a, b, c, lifetime) {
         dimensions: TILE_DIM,
         canCastShadow: false,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
-        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime
+        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
+        ignoreForCollisions: true
     }));
 }
 
@@ -91,11 +92,9 @@ addZone = function (flags, lifetime) {
         },
 
         hazeMode: (flags !== undefined && flags.hasHaze !== undefined && flags.hasHaze) ? "enabled" : "disabled",
-        bloomMode: (flags !== undefined && flags.hasBloom !== undefined && flags.hasBloom) ? "enabled" : "disabled",
         backgroundMode: "skybox",
         skybox:{
-            color: {"red":2,"green":2,"blue":2},
-            url: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json"
+            color: {"red":2,"green":2,"blue":2}, // Dark grey background
         }
     }));
 }
