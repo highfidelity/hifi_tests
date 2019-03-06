@@ -17,7 +17,7 @@ nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath(
     var posOri = getStagePosOriAt(1, 0, 0);
 
     var NUM_ROWS = 2;
-    var LIFETIME = 1200;
+    var LIFETIME = 200;
 
     var DIM = {x: 0.7, y: 0.8, z: 0.14};
 
