@@ -37,13 +37,13 @@ nitpick.perform("Laser - enabling and disabling", Script.resolvePath("."), "seco
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
-
-    nitpick.addStepSnapshot("Enabled right laser", function () {
+    nitpick.addStepSnapshot("Right laser enabled");
+    
+    nitpick.addStep("Enable left laser", function () {
         Pointers.disablePointer(lasers[1]);
         Pointers.enablePointer(lasers[0]);
     });
-
-    nitpick.addStepSnapshot("Enabled left laser");
+    nitpick.addStepSnapshot("Left laser enabled");
     
     nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {

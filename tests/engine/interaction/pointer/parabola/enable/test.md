@@ -10,10 +10,12 @@ Press 'n' key to advance step by step
 ### Step 1
 - Move back to see the objects
 ### Step 2
-- Enabled right pick
+- Right pick enabled
 - ![](./ExpectedImage_00000.png)
 ### Step 3
-- Enabled left pick
-- ![](./ExpectedImage_00001.png)
+- Enable left pick
 ### Step 4
+- Left pick enabled
+- ![](./ExpectedImage_00001.png)
+### Step 5
 - Clean up
