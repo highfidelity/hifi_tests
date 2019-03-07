@@ -183,6 +183,11 @@ runOneTestCase = function(testCase, testType) {
 }
 
 setUpTest = function(testCase) {
+    if (typeof Test !== 'undefined') {
+        // This is to increase test robustness when running automated tests
+        MyAvatar.position = { x: 0.0, y: 1.0, z: 0.0 };
+    }
+
     // Setup origin
     originFrame = Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET);
 
@@ -222,6 +227,12 @@ setUpTest = function(testCase) {
     var p0 = Vec3.sum(VALIDATION_CAMERA_OFFSET, Vec3.sum(MyAvatar.position, ORIGIN_FRAME_OFFSET));
     var q0 = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
+    // The avatar is pointed down the Z axis, so the test can be seen on-screen
+    MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    MyAvatar.headYaw =   0.0;
+    MyAvatar.headPitch = 0.0;
+    MyAvatar.headRoll =  0.0;
+
     if (testCase.usePrimaryCamera) {
         // Set the camera mode to independent
         previousCameraMode = Camera.mode;
@@ -229,12 +240,6 @@ setUpTest = function(testCase) {
         
         Camera.setOrientation(q0);
         Camera.setPosition(p0);
-
-        // The avatar is also pointed down the Z axis, so the test can be seen on-screen
-        MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
-        MyAvatar.headYaw =   0.0;
-        MyAvatar.headPitch = 0.0;
-        MyAvatar.headRoll =  0.0;
     } else {
         spectatorCameraConfig = Render.getConfig("SecondaryCamera");
 

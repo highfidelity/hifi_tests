@@ -38,7 +38,8 @@ function addTile(a, b, c, lifetime) {
         dimensions: TILE_DIM,
         canCastShadow: false,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
-        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime
+        lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
+        ignoreForCollisions: true
     }));
 }
 
@@ -84,6 +85,7 @@ addZone = function (flags, lifetime) {
                 "z": -0.7061376571655273
             },
         },
+
         ambientLight: {
             ambientIntensity: 1.0,
             ambientURL: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json",

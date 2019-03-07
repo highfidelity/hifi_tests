@@ -9,12 +9,17 @@ if (typeof depth === 'undefined') {
 
    nitpick.enableRecursive();
    nitpick.enableAuto();
+
+   if (typeof Test !== 'undefined') {
+       Test.wait(10000);
+   }
 } else {
    depth++
 }
 
 Script.include(testsRootPath + "content/entity/zone/testRecursive.js");
 Script.include(testsRootPath + "content/entity/text/testRecursive.js");
+Script.include(testsRootPath + "content/entity/stage/test.js");
 Script.include(testsRootPath + "content/entity/shape/testRecursive.js");
 Script.include(testsRootPath + "content/entity/procedural/testRecursive.js");
 Script.include(testsRootPath + "content/entity/polyline/testRecursive.js");
