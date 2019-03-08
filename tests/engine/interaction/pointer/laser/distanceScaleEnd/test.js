@@ -39,21 +39,21 @@ nitpick.perform("Size of laser end increases with distance", Script.resolvePath(
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
+    nitpick.addStepSnapshot("Minimum distance");
 
-    nitpick.addStepSnapshot("Minimum distance", function () {
+    nitpick.addStep("Move to distance", function () {
         Entities.editEntity(entities[0], { 
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(0.0, Vec3.UP))
         });
     });
+    nitpick.addStepSnapshot("Mid distance");
 
-    nitpick.addStepSnapshot("Mid distance", function () {
+    nitpick.addStep("Move to maximum distance", function () {
         Entities.editEntity(entities[0], { 
             position: Vec3.sum(Vec3.sum(pos, {x:0, y:0, z:0}), Vec3.multiply(-0.5, Vec3.UP))
         });
     });
-
-    nitpick.addStepSnapshot("Maximum distance", function () {
-    });
+    nitpick.addStepSnapshot("Maximum distance");
 
     nitpick.addStep("Clean up", function () {
         for (i = 0; i < lasers.length; i++) {

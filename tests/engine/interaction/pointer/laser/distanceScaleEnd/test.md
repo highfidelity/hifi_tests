@@ -13,10 +13,14 @@ Press 'n' key to advance step by step
 - Minimum distance
 - ![](./ExpectedImage_00000.png)
 ### Step 3
+- Move to distance
+### Step 4
 - Mid distance
 - ![](./ExpectedImage_00001.png)
-### Step 4
+### Step 5
+- Move to maximum distance
+### Step 6
 - Maximum distance
 - ![](./ExpectedImage_00002.png)
-### Step 5
+### Step 7
 - Clean up
