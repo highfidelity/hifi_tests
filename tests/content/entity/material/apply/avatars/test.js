@@ -16,14 +16,12 @@ nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
-    MyAvatar.orientation = Quat.fromVec3Degrees({x:0, y:180, z:0});
-
     var LIFETIME = 120;
 
     createdEntities.push(Entities.addEntity({
         type: "Material",
         materialURL: "materialData",
-        position: MyAvatar.position,
+        position: posOri,
         materialData: JSON.stringify({ "materials": {
             "albedo": [0, 0, 1]
         }}),
