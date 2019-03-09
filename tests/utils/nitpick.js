@@ -59,6 +59,12 @@ TestCase = function (name, path, func, usePrimaryCamera) {
 var currentTestCase = null;
 var currentRecursiveTestCompleted = false;
 
+var waitingForSnapshot = false;
+
+function onStillSnapshotTaken(path, notify) {
+    waitingForSnapshot = false;
+}
+
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
     ch = ch || '0';  // default is '0'
@@ -96,6 +102,8 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Changing this number requires changing the nitpick C++ code!
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
+        waitingForSnapshot = true;
+        
         currentTestCase.usePrimaryCamera 
             ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
             : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
@@ -120,8 +128,11 @@ var autoTimeStep = 2000;
 var onRunAutoNext = function() {
     var timeStep = autoTimeStep;
 
-    // If not downloading then run the next step...
-    if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
+    // If not waiting for snapshot and not downloading then run the next step...
+    if (waitingForSnapshot) {
+        console.warn("WAITING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+    if (!waitingForSnapshot && !downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
         if (!runNextStep()) {
             tearDownTest();
@@ -136,7 +147,7 @@ var onRunAutoNext = function() {
         console.warn("Waiting for download to complete");
     }
 
-    // and call itself after next timer
+    // and call self after next timer
     Script.setTimeout(
         onRunAutoNext,
         timeStep
@@ -520,6 +531,8 @@ module.exports.runTest = function (testType) {
 module.exports.runRecursive = function () {
     console.warn("Starting recursive tests");
     runningRecursive = true;
+
+    Window.stillSnapshotTaken.connect(onStillSnapshotTaken);
 
     currentRecursiveTestCompleted = true;
     Script.setInterval(
