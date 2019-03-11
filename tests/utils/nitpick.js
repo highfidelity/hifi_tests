@@ -128,8 +128,9 @@ var autoTimeStep = 2000;
 var onRunAutoNext = function() {
     var timeStep = autoTimeStep;
 
-    // If not waiting for snapshot and not downloading then run the next step...
-    if (!waitingForSnapshot && !downloadInProgress  && !loadingContentIsStillDisplayed) {
+    if (waitingForSnapshot) {
+        console.warn("Waiting for Snapshot");
+    } else if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
         if (!runNextStep()) {
             tearDownTest();
