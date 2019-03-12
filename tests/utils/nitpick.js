@@ -13,6 +13,11 @@ var snapshotIndex = 0;
 var textIndex = 0;
 
 var advanceKey = "n";
+
+// Request to quit after current test completes
+var quitKey = "q";
+var quitRequested = false;
+
 var pathSeparator = ".";
 
 var previousCameraMode;
@@ -59,6 +64,12 @@ TestCase = function (name, path, func, usePrimaryCamera) {
 var currentTestCase = null;
 var currentRecursiveTestCompleted = false;
 
+var waitingForSnapshot = false;
+
+function onStillSnapshotTaken(path, notify) {
+    waitingForSnapshot = false;
+}
+
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
     ch = ch || '0';  // default is '0'
@@ -96,6 +107,8 @@ var runOneStep = function (stepFunctor, stepIndex) {
         // Changing this number requires changing the nitpick C++ code!
         var currentSnapshotName = snapshotPrefix + pad(snapshotIndex, NUM_DIGITS, '0') + ".png";
 
+        waitingForSnapshot = true;
+        
         currentTestCase.usePrimaryCamera 
             ? Window.takeSnapshot(isManualMode(), false, 0.0, currentSnapshotName) 
             : Window.takeSecondaryCameraSnapshot(isManualMode(), currentSnapshotName);
@@ -120,8 +133,9 @@ var autoTimeStep = 2000;
 var onRunAutoNext = function() {
     var timeStep = autoTimeStep;
 
-    // If not downloading then run the next step...
-    if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
+    if (waitingForSnapshot) {
+        console.warn("Waiting for Snapshot");
+    } else if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
         if (!runNextStep()) {
             tearDownTest();
@@ -136,7 +150,7 @@ var onRunAutoNext = function() {
         console.warn("Waiting for download to complete");
     }
 
-    // and call itself after next timer
+    // and call self after next timer
     Script.setTimeout(
         onRunAutoNext,
         timeStep
@@ -149,13 +163,18 @@ var onKeyPressEventNextStep = function (event) {
             tearDownTest();
         }
     }
+
+    if (String.fromCharCode(event.key) == quitKey.toUpperCase()) {
+        console.warn("Quit requested");
+        quitRequested = true;
+    }
 }
 
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
-         
+
     Controller.keyPressEvent.connect(onKeyPressEventNextStep);
 }
 
@@ -164,6 +183,8 @@ function isManualMode() {
 }
 
 var onRunAuto = function() {  
+    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
+
     // run the next step after next timer
     Script.setTimeout(
         onRunAutoNext,
@@ -264,9 +285,9 @@ setUpTest = function(testCase) {
         // In command line mode, maximize window size 
         // so that primary camera snapshots will have the correct size
         // This is not used on Mac (an AppleScript is used for that)
-        if (Test.getOperatingSystemType() === 'WINDOWS') {
+        if (PlatformInfo.getOperatingSystemType() === 'WINDOWS') {
             Test.showMaximized();
-        } else if (Test.getOperatingSystemType() === 'MACOS') {
+        } else if (PlatformInfo.getOperatingSystemType() === 'MACOS') {
             // Mitigate Mac LOD issues
             LODManager.setAutomaticLODAdjust(false);
             LODManager.setOctreeSizeScale(8000000);
@@ -490,6 +511,7 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
     testMode = "auto";
+    Window.stillSnapshotTaken.connect(onStillSnapshotTaken);
     console.warn("TEST MODE AUTO SELECTED");
 }
 
@@ -526,8 +548,17 @@ module.exports.runRecursive = function () {
         function () {
             if (currentRecursiveTestCompleted) {
                 currentRecursiveTestCompleted = false;
+
+                // Quit if requested
+                if (quitRequested) {
+                    console.warn("Quitting due to request");
+                    Script.stop();
+                    return;
+                }
+
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
+
                     runOneTestCase(currentTestCase, testMode);
                 } else {
                     console.warn("Recursive tests complete");

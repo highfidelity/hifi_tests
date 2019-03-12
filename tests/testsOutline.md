@@ -150,7 +150,7 @@ Directories with an appended (*) have an automatic test
         - [renderLayer](./content/entity/shape/renderLayer?raw=true)
           - [alpha](./content/entity/shape/renderLayer/alpha?raw=true)  [(test description)](./content/entity/shape/renderLayer/alpha/test.md) (*)
           - [front](./content/entity/shape/renderLayer/front?raw=true)  [(test description)](./content/entity/shape/renderLayer/front/test.md) (*)
-      - [stage](./content/entity/stage?raw=true) (*)
+      - [stage](./content/entity/stage?raw=true)  [(test description)](./content/entity/stage/test.md) (*)
       - [text](./content/entity/text?raw=true)
         - [backgroundAlpha](./content/entity/text/backgroundAlpha?raw=true)  [(test description)](./content/entity/text/backgroundAlpha/test.md) (*)
         - [backgroundColor](./content/entity/text/backgroundColor?raw=true)  [(test description)](./content/entity/text/backgroundColor/test.md) (*)

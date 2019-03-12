@@ -1,6 +1,8 @@
-if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
-Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var nitpick = createNitpick(Script.resolvePath("."));
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+    Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+    nitpick = createNitpick(Script.resolvePath("."));
+}
 
 nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "secondary", function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
@@ -16,14 +18,12 @@ nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "
 
     var posOri = getStagePosOriAt(0, 0, 0);
 
-    MyAvatar.orientation = Quat.fromVec3Degrees({x:0, y:180, z:0});
-
     var LIFETIME = 120;
 
     createdEntities.push(Entities.addEntity({
         type: "Material",
         materialURL: "materialData",
-        position: MyAvatar.position,
+        position: posOri,
         materialData: JSON.stringify({ "materials": {
             "albedo": [0, 0, 1]
         }}),

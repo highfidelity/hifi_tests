@@ -1,6 +1,8 @@
-if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
-Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var nitpick = createNitpick(Script.resolvePath("."));
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+    Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+    nitpick = createNitpick(Script.resolvePath("."));
+}
 
 nitpick.perform("Show base effects on various materials", Script.resolvePath("."), "secondary", function(testType) {
     // Test material matrix
