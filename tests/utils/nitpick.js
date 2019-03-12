@@ -511,6 +511,7 @@ module.exports.addStepSnapshot = function (name, stepFunction) {
 // The default time between test steps may be modified through these methods
 module.exports.enableAuto = function () {
     testMode = "auto";
+    Window.stillSnapshotTaken.connect(onStillSnapshotTaken);
     console.warn("TEST MODE AUTO SELECTED");
 }
 
@@ -541,8 +542,6 @@ module.exports.runTest = function (testType) {
 module.exports.runRecursive = function () {
     console.warn("Starting recursive tests");
     runningRecursive = true;
-
-    Window.stillSnapshotTaken.connect(onStillSnapshotTaken);
 
     currentRecursiveTestCompleted = true;
     Script.setInterval(
