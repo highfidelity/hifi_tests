@@ -13,6 +13,11 @@ var snapshotIndex = 0;
 var textIndex = 0;
 
 var advanceKey = "n";
+
+// Request to quit after current test completes
+var quitKey = "q";
+var quitRequested = false;
+
 var pathSeparator = ".";
 
 var previousCameraMode;
@@ -158,13 +163,18 @@ var onKeyPressEventNextStep = function (event) {
             tearDownTest();
         }
     }
+
+    if (String.fromCharCode(event.key) == quitKey.toUpperCase()) {
+        console.warn("Quit requested");
+        quitRequested = true;
+    }
 }
 
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
-         
+
     Controller.keyPressEvent.connect(onKeyPressEventNextStep);
 }
 
@@ -173,6 +183,8 @@ function isManualMode() {
 }
 
 var onRunAuto = function() {  
+    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
+
     // run the next step after next timer
     Script.setTimeout(
         onRunAutoNext,
@@ -537,9 +549,19 @@ module.exports.runRecursive = function () {
         function () {
             if (currentRecursiveTestCompleted) {
                 currentRecursiveTestCompleted = false;
+
+                // Quit if requested
+                if (quitRequested) {
+                    console.warn("Quitting due to request");
+                    Script.stop();
+                }
+
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
-                    runOneTestCase(currentTestCase, testMode);
+
+                    if (!quitRequested) {
+                        runOneTestCase(currentTestCase, testMode);
+                    }
                 } else {
                     console.warn("Recursive tests complete");
 
