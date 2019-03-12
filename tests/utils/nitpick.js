@@ -273,9 +273,9 @@ setUpTest = function(testCase) {
         // In command line mode, maximize window size 
         // so that primary camera snapshots will have the correct size
         // This is not used on Mac (an AppleScript is used for that)
-        if (Test.getOperatingSystemType() === 'WINDOWS') {
+        if (PlatformInfo.getOperatingSystemType() === 'WINDOWS') {
             Test.showMaximized();
-        } else if (Test.getOperatingSystemType() === 'MACOS') {
+        } else if (PlatformInfo.getOperatingSystemType() === 'MACOS') {
             // Mitigate Mac LOD issues
             LODManager.setAutomaticLODAdjust(false);
             LODManager.setOctreeSizeScale(8000000);
