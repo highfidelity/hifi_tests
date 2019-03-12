@@ -553,14 +553,13 @@ module.exports.runRecursive = function () {
                 if (quitRequested) {
                     console.warn("Quitting due to request");
                     Script.stop();
+                    return;
                 }
 
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
 
-                    if (!quitRequested) {
-                        runOneTestCase(currentTestCase, testMode);
-                    }
+                    runOneTestCase(currentTestCase, testMode);
                 } else {
                     console.warn("Recursive tests complete");
 
