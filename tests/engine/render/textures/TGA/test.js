@@ -21,7 +21,7 @@ nitpick.perform("TGA texture rendering", Script.resolvePath("."), "secondary", f
 
     var testImage = Entities.addEntity({
         type: "Image",
-        imageURL: assetsRootPath + "textures/marbles.tga",
+        imageURL: assetsRootPath + "textures/tga-test-24bit-norle-opaque.tga",
         position: Vec3.sum(position, {x: 0.0, y: 0.72, z: -1.4 }),
         dimensions: { x: 1.419, y: 1.001, z: 0.01 },
         keepAspectRatio: false,
@@ -33,14 +33,46 @@ nitpick.perform("TGA texture rendering", Script.resolvePath("."), "secondary", f
     nitpick.addStepSnapshot("First texture");
 
     nitpick.addStep("Change texture", function () {
-        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/xing_b32.tga" });
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-24bit-rle-opaque.tga" });
     });
+    nitpick.addDelay(2);
     nitpick.addStepSnapshot("Second texture");
 
     nitpick.addStep("Change texture", function () {
-        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/xing_t32.tga" });
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-norle-halfalpha.tga" });
     });
+    nitpick.addDelay(2);
     nitpick.addStepSnapshot("Third texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-norle-opaque.tga" });
+    });
+    nitpick.addDelay(2);
+    nitpick.addStepSnapshot("Fourth texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-norle-opaque-reversey.tga" });
+    });
+    nitpick.addDelay(2);
+    nitpick.addStepSnapshot("Fifth texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-rle-halfalpha" });
+    });
+    nitpick.addDelay(2);
+    nitpick.addStepSnapshot("Sixth texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-rle-opaque.tga" });
+    });
+    nitpick.addDelay(2);
+    nitpick.addStepSnapshot("Seventh texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-rle-opaque-reversey.tga" });
+    nitpick.addDelay(2);
+    });
+    nitpick.addStepSnapshot("Eight texture");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
