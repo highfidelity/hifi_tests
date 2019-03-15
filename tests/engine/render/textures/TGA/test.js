@@ -53,7 +53,7 @@ nitpick.perform("TGA texture rendering", Script.resolvePath("."), "secondary", f
     nitpick.addStepSnapshot("Fifth texture");
 
     nitpick.addStep("Change texture", function () {
-        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-rle-halfalpha" });
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/tga-test-32bit-rle-halfalpha.tga" });
     });
     nitpick.addStepSnapshot("Sixth texture");
 
