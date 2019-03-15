@@ -3,9 +3,9 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
 var testFiles = [
-    ////{ image: "uncompressed_color.ktx", resolution: [2048, 2048] },
-    ////{ image: "compressed_color.ktx", resolution: [2048, 2048] },
-    { image: "jpeg.jpg", resolution: [8192, 4096] },
+    { image: "uncompressed_color.ktx", resolution: [2048, 2048] },
+    { image: "compressed_color.ktx", resolution: [2048, 2048] },
+    { image: "jpeg.jpg", resolution: [8192, 4096] }
 ];
 
 var testState = {};
