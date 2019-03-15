@@ -4,7 +4,6 @@ var nitpick = createNitpick(Script.resolvePath("."));
 
 var testFiles = [
     { image: "uncompressed_color.ktx", resolution: [2048, 2048] },
-    { image: "compressed_color.ktx", resolution: [2048, 2048] },
     { image: "jpeg.jpg", resolution: [8192, 4096] }
 ];
 
