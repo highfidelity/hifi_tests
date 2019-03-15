@@ -1,0 +1,52 @@
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+    Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+    nitpick = createNitpick(Script.resolvePath("."));
+}
+Script.include(nitpick.getUtilsRootPath() + "test_stage.js")
+
+var assetsRootPath = nitpick.getAssetsRootPath();
+
+nitpick.perform("TGA texture rendering", Script.resolvePath("."), "secondary", function(testType) {
+    Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
+    var position = nitpick.getOriginFrame();
+
+    var initData = {
+        flags : { 
+            hasAmbientLight: false
+        },
+        originFrame: nitpick.getOriginFrame()
+    };
+    var createdEntities = setupStage(initData);
+
+    var testImage = Entities.addEntity({
+        type: "Image",
+        imageURL: assetsRootPath + "textures/marbles.tga",
+        position: Vec3.sum(position, {x: 0.0, y: 0.72, z: -1.4 }),
+        dimensions: { x: 1.419, y: 1.001, z: 0.01 },
+        keepAspectRatio: false,
+        color: "white",
+        lifetime: 200
+    });
+    createdEntities.push(testImage);
+
+    nitpick.addStepSnapshot("First texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/xing_b32.tga" });
+    });
+    nitpick.addStepSnapshot("Second texture");
+
+    nitpick.addStep("Change texture", function () {
+        Entities.editEntity(testImage, {imageURL: assetsRootPath + "textures/xing_t32.tga" });
+    });
+    nitpick.addStepSnapshot("Third texture");
+
+    nitpick.addStep("Clean up after test", function () {
+        for (var i = 0; i < createdEntities.length; i++) {
+            Entities.deleteEntity(createdEntities[i]);
+        }
+    });
+
+    nitpick.runTest(testType);
+});

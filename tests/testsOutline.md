@@ -251,6 +251,7 @@ Directories with an appended (*) have an automatic test
         - [normal](./engine/render/shadows/normal?raw=true)  [(test description)](./engine/render/shadows/normal/test.md) (*)
       - [textures](./engine/render/textures?raw=true)
         - [procedural](./engine/render/textures/procedural?raw=true)  [(test description)](./engine/render/textures/procedural/testStory.md)
+        - [TGA](./engine/render/textures/TGA?raw=true) (*)
   - [performance](./performance?raw=true)
     - [graphics](./performance/graphics?raw=true)
       - [triangles](./performance/graphics/triangles?raw=true)  [(test description)](./performance/graphics/triangles/testStory.md)
