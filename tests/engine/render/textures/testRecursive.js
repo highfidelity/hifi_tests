@@ -14,6 +14,7 @@ if (typeof depth === 'undefined') {
 }
 
 Script.include(testsRootPath + "engine/render/textures/TGA/test.js");
+Script.include(testsRootPath + "engine/render/textures/procedural/test.js");
 
 if (depth > 0) {
    depth--;
