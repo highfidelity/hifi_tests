@@ -13,6 +13,7 @@ if (typeof depth === 'undefined') {
    depth++
 }
 
+Script.include(testsRootPath + "engine/render/textures/testRecursive.js");
 Script.include(testsRootPath + "engine/render/shadows/testRecursive.js");
 Script.include(testsRootPath + "engine/render/mesh/testRecursive.js");
 Script.include(testsRootPath + "engine/render/material/testRecursive.js");
