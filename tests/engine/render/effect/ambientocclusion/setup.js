@@ -23,6 +23,9 @@ var obscuranceEnabled_sc;
 var originalParameters = {};
 var originalParameters_sc = {};
 
+var previousSkeletonURL;
+var previousScale;
+
 configureAO = function(parameter, value) {
     if (originalParameters[parameter] == null) {
         originalParameters[parameter] = aoConfig[parameter];
@@ -47,11 +50,27 @@ setup = function (originFrame) {
 
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js")
 
-    MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
+    // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
+    previousSkeletonURL = MyAvatar.skeletonModelURL;
+    MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
+
+    previousScale = MyAvatar.scale;
+    MyAvatar.scale = 1.0;
+    MyAvatar.setEnableMeshVisible(true);
+    
+    // Wait for skeleton to load (for now - only in test mode)
+    if (typeof Test !== 'undefined') {
+        Test.waitIdle();
+    }
+
+    // Set Avatar to T-pose
+    for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
+        MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
+    }
+
+    // Set orientation to 0
+    MyAvatar.orientation = Quat.fromVec3Degrees({x: 0.0, y: 0.0, z: 0.0 });        
     var orientation = MyAvatar.orientation;
-    orientation = Quat.safeEulerAngles(orientation);
-    orientation.x = 0;
-    orientation = Quat.fromVec3Degrees(orientation);
 
     var initData = {
         flags : {
@@ -133,6 +152,9 @@ setup = function (originFrame) {
 }
 
 finalize = function() {
+    MyAvatar.skeletonModelURL = previousSkeletonURL;
+    MyAvatar.scale = previousScale;
+
     for(var parameter in Object.keys(originalParameters)){
         aoConfig[parameter] = originalParameters[parameter];
     }
