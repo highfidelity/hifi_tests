@@ -73,7 +73,7 @@ createTexture = function(props) {
     }
 
 ////    var imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image + "?raw=true");
-    var imageUrl = Script.resolvePath("https://github.com/NissimHadar/hifi_tests/blob/TEST/assets/textures/uncompressed_color.ktx");
+    var imageUrl = "https://hifi-qa.s3.amazonaws.com/hackathon/uncompressed_color.ktx";
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({
