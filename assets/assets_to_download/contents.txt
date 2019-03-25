@@ -1,2 +1,0 @@
-jpeg.jpg
-uncompressed_color.txt
