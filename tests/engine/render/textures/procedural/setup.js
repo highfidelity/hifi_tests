@@ -72,10 +72,16 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl = 'file:///' + Snapshot.getSnapshotsLocation() + '/downloaded_assets/' + props.image;
-    //var imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image);
+    var imageUrl;
+    if (typeof Test !== 'undefined') {
+        imageUrl = 'file:///' + Test.getTestResultsLocation() + '/downloaded_assets/' + props.image;
+    } else {
+        imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image);
+    }
+
 console.warn("=========================================================");
 console.warn(Snapshot.getSnapshotsLocation());
+console.warn(Test.getTestResultsLocation());
 console.warn(props.image);
 console.warn(imageUrl);
 console.warn("=========================================================");
