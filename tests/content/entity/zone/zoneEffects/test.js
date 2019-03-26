@@ -39,14 +39,16 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
     };
     object = Entities.addEntity(objectProperties);
 
-    // Setup 3 zones
+    // Setup 4 zones
     var zone1Dimensions = { x: 10.0, y: 10.0, z: 40.0};
     var zone2Dimensions = { x:  8.0, y: 10.0, z: 20.0};
     var zone3Dimensions = { x:  4.0, y: 10.0, z: 30.0};
+    var zone4Dimensions = { x:  2.0, y: 10.0, z: 10.0};
 
     var BRIGHT_SKY_URL = assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json';
     var CLOUDY_SKY_URL = assetsRootPath + 'skymaps/ThickCloudsWater2.jpg';
     var NIGHT_SKY_URL = assetsRootPath + 'skymaps/FullMoon1024Compressed.jpg';
+    var HDR_SKY_URL = assetsRootPath + 'skymaps/grace.exr';
 
     //Add test steps, These may be called via the timing mechanism for auto-testing,  
     // or stepped through with the space bar
@@ -149,6 +151,40 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
             }
         };
         zone3 = Entities.addEntity(zone3properties);
+
+        var zone4properties = {
+            lifetime: LIFETIME,
+            type: "Zone",
+            name: "Zone 4",
+
+            position: {x: MyAvatar.position.x, y: MyAvatar.position.y - 2.0, z: MyAvatar.position.z - 25.0},
+            rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
+            dimensions: zone4Dimensions,
+
+            keyLightMode: "enabled",
+            keyLight:{
+                color: {"red":255,"green":255,"blue":255},
+                direction: {
+                    "x": 0.0,
+                    "y": -1.0,
+                    "z": 0.0
+                },
+                intensity: 0.8
+            },
+
+            skyboxMode: "enabled",
+            skybox:{
+                color: {"red":255,"green":255,"blue":255},
+                url: HDR_SKY_URL
+            },
+            
+            ambientLightMode: "enabled",
+            ambientLight: {
+                ambientURL: HDR_SKY_URL,
+                ambientIntensity: 1.0
+            }
+        };
+        zone4 = Entities.addEntity(zone4properties);
     });
 
     nitpick.addStep("Setup avatar", function () {
@@ -204,6 +240,15 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
     });
     nitpick.addStepSnapshot("Verify in dark zone");
         
+    nitpick.addStep("Move center", function () {
+        var position = { x: 0.0, y: 0.0, z: -25.0 };
+        MyAvatar.position  = Vec3.sum(avatarOriginPosition, position);
+        validationCamera_setTranslation(position);
+        
+        Entities.editEntity(object, { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
+    });
+    nitpick.addStepSnapshot("Verify in high dynamic zone");
+        
     nitpick.addStep("Cleanup", function () {
         MyAvatar.skeletonModelURL = previousSkeletonURL;
         MyAvatar.scale = previousScale;
@@ -213,6 +258,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
         Entities.deleteEntity(zone1);
         Entities.deleteEntity(zone2);
         Entities.deleteEntity(zone3);
+        Entities.deleteEntity(zone4);
     });
     
     var result = nitpick.runTest(testType);
