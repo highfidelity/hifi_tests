@@ -35,4 +35,9 @@ Press 'n' key to advance step by step
 - Verify in dark zone
 - ![](./ExpectedImage_00004.png)
 ### Step 12
+- Move to center
+### Step 13
+- Verify in high dynamic zone
+- ![](./ExpectedImage_00005.png)
+### Step 14
 - Cleanup
