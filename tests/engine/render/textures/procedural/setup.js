@@ -73,7 +73,12 @@ createTexture = function(props) {
     }
 
     var imageUrl = 'file:///' + Snapshot.getSnapshotsLocation() + '/downloaded_assets/' + props.image;
-console.warn("======== " + imageUrl);
+    //var imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image);
+console.warn("=========================================================");
+console.warn(Snapshot.getSnapshotsLocation());
+console.warn(props.image);
+console.warn(imageUrl);
+console.warn("=========================================================");
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({
