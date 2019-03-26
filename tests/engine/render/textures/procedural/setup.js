@@ -72,7 +72,7 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl = Script.resolvePath(Snapshot.getSnapshotsLocation() + "/downloaded_assets/" + props.image);
+    var imageUrl = 'file:///' + Snapshot.getSnapshotsLocation() + '/downloaded_assets/' + props.image;
 console.warn("======== " + imageUrl);
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
