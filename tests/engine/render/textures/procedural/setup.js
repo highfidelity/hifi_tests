@@ -73,7 +73,6 @@ createTexture = function(props) {
     }
 
     var imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image + "?raw=true");
-
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
     return Entities.addEntity({
