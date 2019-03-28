@@ -72,12 +72,7 @@ createTexture = function(props) {
         dimensions.x *= aspect;
     }
 
-    var imageUrl;
-    if (typeof Test !== 'undefined') {
-        imageUrl = 'file:///' + Test.getTestResultsLocation() + '/downloaded_assets/' + props.image;
-    } else {
-        imageUrl = Script.resolvePath(assetsRootPath + "textures/" + props.image);
-    }
+    var imageUrl= Script.resolvePath(assetsRootPath + "textures/" + props.image);
 
     USER_DATA.ProceduralEntity.channels = [ imageUrl ];
 
