@@ -1,9 +1,12 @@
-if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
-Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-var nitpick = createNitpick(Script.resolvePath("."));
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+    Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+    nitpick = createNitpick(Script.resolvePath("."));
+}
 
 var testFiles = [
-    { image: "uncompressed_color.ktx", resolution: [2048, 2048] },
+    ////{ image: "uncompressed_color.ktx", resolution: [2048, 2048] },
+    ////{ image: "compressed_color.ktx", resolution: [2048, 2048] },
     { image: "jpeg.jpg", resolution: [8192, 4096] }
 ];
 
@@ -11,7 +14,7 @@ var testState = {};
 
 nitpick.perform("Texture Rendering", Script.resolvePath("."), "secondary", function(testType) {
     // Test Texture Procedural
-    Script.include("../setup.js?raw=true")
+    Script.include("setup.js?raw=true")
 
     var stageEntities;
     nitpick.addStep("Set up scene", function() {
