@@ -78,18 +78,20 @@ function areEntitiesLoading() {
     }
     
     // Check if all textures are loaded
-    if (!Entities.isTextureLoadingComplete()) {
+    if (!Test.isTextureLoadingComplete()) {
+        console.warn("Waiting for texture load");
         return true;
     }
     
     // Check if we are waiting on any entities to load
     for (var i in arrayOfLoadingEntities) {
         if (!Entities.isLoaded(arrayOfLoadingEntities[i])) {
+            console.warn("Waiting for entity " + i);
             entitiesStillLoading = true;
             return true;
         } else {
-            console.warn("Entity " + i + " removed + , " + Entities.length + " waiting to load");
-            Entities = Entities.splice(i, 1);
+            console.warn("Entity " + i + " loaded + , " + arrayOfLoadingEntities.length + " waiting to load");
+            arrayOfLoadingEntities = arrayOfLoadingEntities.splice(i, 1);
         }
     }
     
