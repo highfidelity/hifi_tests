@@ -33,6 +33,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     });
 
     createdEntities.push(testEntity);
+    nitpick.waitForEntityLoad(createdEntities);
 
     nitpick.addStepSnapshot("BrainStem.gltf Model is visible");
 
