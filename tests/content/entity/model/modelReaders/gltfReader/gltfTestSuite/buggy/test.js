@@ -27,7 +27,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Buggy
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Buggy/glTF/Buggy.gltf',
         position: Vec3.sum(position, {x: 0.25, y: 0.8, z: -1.6 }),
-        rotation: Quat.fromPitchYawRollDegrees(-90.0, -10.0, 0.0),
+        rotation: Quat.fromPitchYawRollDegrees(0.0, -20.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
@@ -37,7 +37,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     nitpick.addStep("Scale to 1m", function () {
         var properties = Entities.getEntityProperties(testEntity);
         var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
-        
+
         if (scale > 0) {
             Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });
         }

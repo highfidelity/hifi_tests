@@ -15,7 +15,6 @@ if (typeof depth === 'undefined') {
 
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/waterBottle/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/vertexColor/test.js");
-Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/unlit/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/textureCoordinate/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/specVsMetal/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/riggedSimple/test.js");
@@ -37,7 +36,6 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glb
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/brainstem/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boxTexture/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boxNPOT/test.js");
-Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boxInterleaved/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boxColor/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/box/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glbTestSuite/boomBox/test.js");
@@ -49,4 +47,3 @@ if (depth > 0) {
 } else {
    nitpick.runRecursive();
 }
-
