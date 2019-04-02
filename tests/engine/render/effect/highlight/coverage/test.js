@@ -285,7 +285,7 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
     createdEntities.push(hifi);
     createdEntities.push(terrain);
 
-    nitpick.addDelay(4);
+    nitpick.waitForEntityLoad(createdEntities);
 
     nitpick.addStep("Position secondary camera", function() {
         validationCamera_translate({ x: 0.0, y: 0.0, z: -8.0 });

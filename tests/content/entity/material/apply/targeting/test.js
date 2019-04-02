@@ -65,8 +65,7 @@ nitpick.perform("Material targeting", Script.resolvePath("."), "secondary", func
           }
       }
 
-    nitpick.addDelay(6);
-
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Display materials on multiple models");
 
     nitpick.addStep("Clean up after test", function () {

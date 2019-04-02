@@ -166,8 +166,7 @@ nitpick.perform("Material Entities", Script.resolvePath("."), "secondary", funct
         }
     });
         
-    nitpick.addDelay(10);
-
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Take snapshot when not in Debug mode");
 
     nitpick.addStep("Debug Emissive", function () {

@@ -113,8 +113,8 @@ nitpick.perform("Model Entity renderLayer hud", Script.resolvePath("."), "second
                 dimensions: { x: 4, y: 2, z: 0.5},
         }));
     });
-    nitpick.addDelay(8);
 
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Take snapshot of all the models");
 
     nitpick.addStep("Clean up after test", function () {

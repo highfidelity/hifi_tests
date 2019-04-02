@@ -717,6 +717,6 @@ module.exports.verifyClientProfile = function() {
 
 module.exports.waitForEntityLoad = function(arrayOfLoadingEntitiesParameter) {
     if (typeof Test !== 'undefined') {
-        arrayOfLoadingEntities = arrayOfLoadingEntitiesParameter;
+        arrayOfLoadingEntities = arrayOfLoadingEntitiesParameter.slice();
     }
 }

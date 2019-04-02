@@ -25,7 +25,7 @@ nitpick.perform("Show effects of opacity", Script.resolvePath("."), "secondary",
         validationCamera_translate(OFFSET);
     });
 
-    nitpick.addDelay(6);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Take snapshot of the effects");
 
     nitpick.addStep("Clean up after test", function () {
