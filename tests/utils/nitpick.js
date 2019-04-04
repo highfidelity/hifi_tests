@@ -25,6 +25,10 @@ var secondaryCameraHasBeenEnabled = false;
 
 var previousThrottleFPS;
 
+var previousAutomaticLODAdjust;
+var previousOctreeSizeScale;
+    
+
 var downloadInProgress = false;
 var loadingContentIsStillDisplayed = false;
 
@@ -287,12 +291,15 @@ setUpTest = function(testCase) {
         // This is not used on Mac (an AppleScript is used for that)
         if (PlatformInfo.getOperatingSystemType() === 'WINDOWS') {
             Test.showMaximized();
-        } else if (PlatformInfo.getOperatingSystemType() === 'MACOS') {
-            // Mitigate Mac LOD issues
-            LODManager.setAutomaticLODAdjust(false);
-            LODManager.setOctreeSizeScale(8000000);
         }
     }
+
+    // Set LOD to max for tests
+    previousAutomaticLODAdjust = LODManager.getAutomaticLODAdjust();
+    previousOctreeSizeScale = LODManager.getOctreeSizeScale();
+
+    LODManager.setAutomaticLODAdjust(false);
+    LODManager.setOctreeSizeScale(8000000);
 
     if (!isManualMode()) {
         // Also, remove 2D overlays and mouse from the window, so that they won't appear in snapshots
@@ -423,11 +430,16 @@ tearDownTest = function() {
 
     // Disconnect callback
     AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
-    
+
     // Restore TAA
     Render.getConfig("RenderMainView.JitterCam").play();
     Render.getConfig("SecondaryCameraJob.JitterCam").play();
-    
+
+    // Restore LOD
+    LODManager.setAutomaticLODAdjust(previousAutomaticLODAdjust);
+    LODManager.setOctreeSizeScale(previousOctreeSizeScale);
+
+
     // Restore as required
     Menu.setIsOptionChecked("Throttle FPS If Not Focus", previousThrottleFPS)
 }
