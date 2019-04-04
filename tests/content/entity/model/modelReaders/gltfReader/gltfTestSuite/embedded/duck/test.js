@@ -26,7 +26,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Duck
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF-Embedded/Duck.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.0 }),
+        position: Vec3.sum(position, {x: 13.5, y: 87.0, z: -2.0 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, -30.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
@@ -34,15 +34,6 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     createdEntities.push(testEntity);
 
-    nitpick.addStep("Scale to 1m", function () {
-        var properties = Entities.getEntityProperties(testEntity);
-        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
-
-        if (scale > 0) {
-            Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });
-        }
-    });
-    
     nitpick.addStepSnapshot("Duck.gltf Model is visible");
 
     nitpick.addStep("Clean up after test", function () {
