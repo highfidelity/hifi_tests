@@ -1,8 +1,6 @@
 {
     "compressed": {
-        "COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT": "Sky_Day-Sun-Mid-photo-ambient_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT.ktx",
-        "COMPRESSED_SRGB8_ETC2": "Sky_Day-Sun-Mid-photo-ambient_COMPRESSED_SRGB8_ETC2.ktx"
+        "COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT": "Sky_Day-Sun-Mid-photo-ambient_bcn.ktx"
     },
-    "original": "Sky_Day-Sun-Mid-photo-ambient.jpg",
-    "uncompressed": "Sky_Day-Sun-Mid-photo-ambient.ktx"
+    "original": "Sky_Day-Sun-Mid-photo.jpg"
 }
