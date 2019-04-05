@@ -26,8 +26,8 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/VC
         modelURL: assetsRootPath + 'models/gltf_models/glb/VC.glb',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.4 }),
-        rotation: Quat.fromPitchYawRollDegrees(-70.0, -5.0, 0.0),
+        position: Vec3.sum(position, {x: 0.0, y: 0.6, z: -0.65 }),
+        rotation: Quat.fromPitchYawRollDegrees(0.0, -5.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
@@ -36,7 +36,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     nitpick.addStep("Scale to 1m", function () {
         var properties = Entities.getEntityProperties(testEntity);
-        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z);
+        var scale = Math.max(properties.dimensions.x, properties.dimensions.y, properties.dimensions.z) / 15;
 
         if (scale > 0) {
             Entities.editEntity(testEntity, { dimensions: { x: properties.dimensions.x / scale, y: properties.dimensions.y / scale, z: properties.dimensions.z / scale} });

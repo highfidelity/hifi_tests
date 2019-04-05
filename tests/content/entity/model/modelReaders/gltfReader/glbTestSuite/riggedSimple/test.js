@@ -27,7 +27,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/RiggedSimple
         modelURL: assetsRootPath + 'models/gltf_models/glb/RiggedSimple.glb',
         position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -1.8 }),
-        rotation: Quat.fromPitchYawRollDegrees(-90.0, -20.0, 0.0),
+        rotation: Quat.fromPitchYawRollDegrees(0.0, -20.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
