@@ -88,7 +88,7 @@ addZone = function (flags, lifetime) {
 
         ambientLight: {
             ambientIntensity: 1.0,
-            ambientURL: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo.texmeta.json",
+            ambientURL: assetsRootPath + "skymaps/Sky_Day-Sun-Mid-photo-ambient.texmeta.json",
         },
 
         hazeMode: (flags !== undefined && flags.hasHaze !== undefined && flags.hasHaze) ? "enabled" : "disabled",
