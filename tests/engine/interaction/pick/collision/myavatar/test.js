@@ -21,7 +21,8 @@ nitpick.perform("Test CollisionPick against MyAvatar", Script.resolvePath("."), 
                 shapeType: "box",
                 dimensions: { x: 1, y: 1, z: 1 }
             },
-            position: MyAvatar.getEyePosition()
+            position: MyAvatar.getEyePosition(),
+            collisionGroup: 8 | 16 // MyAvatar and Other Avatars (MyAvatar collision group can't collide with itself)
         });
     });
     
