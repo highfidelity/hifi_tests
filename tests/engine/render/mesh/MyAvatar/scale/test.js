@@ -10,9 +10,9 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", functi
     var previousSkeletonURL;
     var previousScale;
 	var zone;
-	
+    var assetsRootPath = nitpick.getAssetsRootPath();
+
     nitpick.addStep("Create zone", function () {
-        var assetsRootPath = nitpick.getAssetsRootPath();
         var zoneProperties = {
             lifetime: LIFETIME,
             type: "Zone",
@@ -46,7 +46,7 @@ nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "secondary", functi
     nitpick.addStep("Setup avatar", function () {
         // Use a specific avatar.  This is needed because we want the avatar's height to be fixed.
         previousSkeletonURL = MyAvatar.skeletonModelURL;
-        MyAvatar.skeletonModelURL = "https://highfidelity.com/api/v1/commerce/entity_edition/813addb9-b985-49c8-9912-36fdbb57e04a.fst?certificate_id=MEUCIQDgYR2%2BOrCh5HXeHCm%2BkR0a2JniEO%2BY4y9tbApxCAPo4wIgXZEQdI4cQc%2FstAcr9tFT9k4k%2Fbuj3ufB1aB4W0tjIJc%3D";
+        MyAvatar.skeletonModelURL = assetsRootPath + 'models/testAvatar/testAvatar.fst';
 
         previousScale = MyAvatar.scale;
         MyAvatar.scale = 1.0;
