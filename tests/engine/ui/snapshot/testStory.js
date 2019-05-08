@@ -30,7 +30,7 @@ nitpick.perform("Test snapshot with no snap directory set", Script.resolvePath("
     
     nitpick.addStep("Primary Camera Snapshot and GIF", function () {
         clearSnapshotsLocation();
-        Window.takeSnapshot(false, true);
+        Window.takeSnapshot(true, true);
     });
     
     nitpick.addStep("Secondary Camera Snapshot", function () {
