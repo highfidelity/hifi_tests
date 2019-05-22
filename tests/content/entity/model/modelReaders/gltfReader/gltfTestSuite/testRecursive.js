@@ -18,6 +18,7 @@ Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/glt
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/textureCoordinate/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/suzanne/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/specVsMetal/test.js");
+Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/simpleSparse/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/scifiHelmet/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/riggedSimple/test.js");
 Script.include(testsRootPath + "content/entity/model/modelReaders/gltfReader/gltfTestSuite/riggedFigure/test.js");

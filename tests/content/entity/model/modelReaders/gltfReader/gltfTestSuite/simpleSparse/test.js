@@ -24,9 +24,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     var testEntity = Entities.addEntity({
         lifetime: LIFETIME,
         type: "Model",
-        // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/BrainStem
-        modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BrainStem/glTF/BrainStem.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 1.0, z: -4.5 }),
+        // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/SimpleSparseAccessor
+        modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/SimpleSparseAccessor/glTF/SimpleSparseAccessor.gltf',
+        position: Vec3.sum(position, {x: 0.0, y: 0.8, z: -5.0 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
@@ -34,7 +34,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     createdEntities.push(testEntity);
 
-    nitpick.addStepSnapshot("BrainStem.gltf Model is visible");
+    nitpick.addStepSnapshot("SimpleSparseAccessor.gltf Model is visible");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
