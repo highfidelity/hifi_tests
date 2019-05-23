@@ -383,11 +383,11 @@ nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function
         }
     );
 
-    nitpick.addStepSnapshot("Highlight Polyvox Entity",    
-        function() {
-            Selection.addToSelectedItemsList("TestHifi4", "entity", terrain)
-        }
-    );
+    nitpick.addStep("Highlight Polyvox Entity", function() {
+        Selection.addToSelectedItemsList("TestHifi4", "entity", terrain)
+    });
+
+    nitpick.addStepSnapshot("Polyvox highlighted");
 
     nitpick.addStepSnapshot("Edit Highlight Style",
         function() {
