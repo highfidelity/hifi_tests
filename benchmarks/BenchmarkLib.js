@@ -85,29 +85,95 @@ TestScript.locationSteps = function(steps) {
     return function () {
         print("TEST locationSteps : " + JSON.stringify(steps))
         var len = steps.length;
-        var i = 0
-        for (; i < len; i++) {
-            var step = steps[i]
-            var dt = 0.0
+        for (var i = 0; i < len; i++) {
+            var step = steps[i];
             if (step.dt !== undefined) {
-                dt = step.dt
-                var nextPos = MyAvatar.position
+                var dt = step.dt;
+                var nextPos = MyAvatar.position;
                 if (step.pos !== undefined) {
                     nextPos = step.pos;
                 }
 
-                var nextOri = MyAvatar.orientation
+                var nextOri = MyAvatar.orientation;
                 if (step.ori !== undefined) {
-                    nextOri = parseOrientation(step.ori, MyAvatar.orientation)
+                    nextOri = parseOrientation(step.ori, MyAvatar.orientation);
                 }
 
 
                 Test.wait(dt * 1000.0)
-                MyAvatar.position = nextPos
-                MyAvatar.orientation = nextOri
+                MyAvatar.position = nextPos;
+                MyAvatar.orientation = nextOri;
             }
         }
 
+    }
+}
+
+var MOUSE_POS;
+Controller.mouseMoveEvent.connect(function(event) {
+    MOUSE_POS = { x: event.x, y: event.y }
+});
+
+TestScript.measureTimingSteps = function(steps) {
+    return function () {
+        print("TEST measureTimingSteps : " + JSON.stringify(steps))
+
+        var output = [];
+
+        var len = steps.length;
+        for (var i = 0; i < len; i++) {
+            var step = steps[i];
+            if (step.time !== undefined && step.step !== undefined) {
+                var TOTAL_TIME = step.time;
+                var TIME_STEP = step.step;
+                var KEEP_ACTIVE = step.keepActive;
+
+                var nextPos = MyAvatar.position;
+                if (step.pos !== undefined) {
+                    nextPos = step.pos;
+                }
+
+                var nextOri = MyAvatar.orientation;
+                if (step.ori !== undefined) {
+                    nextOri = parseOrientation(step.ori, MyAvatar.orientation);
+                }
+                MyAvatar.position = nextPos;
+                MyAvatar.orientation = nextOri;
+
+                var t = 0;
+                var totalSamples = TOTAL_TIME / TIME_STEP;
+
+                MOUSE_POS = Reticle.position;
+                var measuredTimes = [ 0, 0, 0, 0, 0, 0 ];
+                var numSamples = 0;
+
+                while (t < TOTAL_TIME) {
+                    measuredTimes[0] += Rates.simulation;
+                    measuredTimes[1] += Rates.render;
+                    measuredTimes[2] += Rates.present;
+                    measuredTimes[3] += LODManager.engineRunTime;
+                    measuredTimes[4] += LODManager.gpuTime;
+                    measuredTimes[5] += LODManager.batchTime;
+
+                    if (KEEP_ACTIVE) {
+                         Reticle.position = { x: MOUSE_POS.x + (numSamples % 2 == 0 ? -1 : 1), y: MOUSE_POS.y + (numSamples % 2 == 0 ? -1 : 1) };
+                    }
+
+                    t += TIME_STEP;
+                    print("Took sample " + ++numSamples + "/" + totalSamples);
+                    Test.wait(TIME_STEP * 1000.0)
+                }
+                for (var ii = 0; ii < measuredTimes.length; ++ii) {
+                    measuredTimes[ii] /= numSamples;
+                }
+
+                output.push(measuredTimes);
+            }
+        }
+
+        if (len > 0) {
+            Test.saveObject(output, "timing_" + formatDate() + ".txt");
+        }
     }
 }
 
@@ -149,20 +215,21 @@ TestScript.prototype = {
         Test.startTracing(this.currentTest.tracingRules || DEFAULT_TRACING_RULES);
         
         // Schedule the end
-        Script.setTimeout(function () {
-            that.endTest();
-        }, durationSeconds * 1000);
-
-        if (this.currentTest.traceActions) {
+        if (!this.currentTest.traceActions) {
+            Script.setTimeout(function () {
+                that.endTest();
+            }, durationSeconds * 1000);
+        } else {
             print("QQQ Trace started, executing trace actions: " + that.testName);
             this.currentTest.traceActions();
+            this.endTest();
         }
     },
     endTest: function () {
         print("QQQ ending test " + this.testName);
         if (this.currentTest.traceCompletion) {
             print("QQQ Trace finishing, executing trace completion : " + this.testName);
-            this.currentTest.traceCompletion()
+            this.currentTest.traceCompletion();
         }
         Test.stopTracing(this.traceFile);
         this.nextTest();
@@ -173,6 +240,7 @@ TestScript.prototype = {
             if (this.quitWhenDone) {
                 print("QQQ no more tests... exiting");
                 Test.quit();
+                return;
             } else {
                 print("QQQ no more tests... keep running");
                 return;

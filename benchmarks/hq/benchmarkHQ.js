@@ -8,8 +8,8 @@ var TRACING_RULES = "" +
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
-    name: "benchmarkDevAvatarIsland",
-    loader: TestScript.locationLoader({ url: "hifi://hq", waitIdle: true }),
+    name: "benchmarkHQ",
+    loader: TestScript.locationLoader("hifi://hq", true),
     tracingRules: TRACING_RULES,
     traceActions: TestScript.locationSteps([
         { dt: 5, pos: { x:   29.2, y: -8.3, z: -26.2 }, ori:{ yaw:  127.1 } }, // landing point
