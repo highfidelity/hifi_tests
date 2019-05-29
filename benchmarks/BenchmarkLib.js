@@ -118,7 +118,7 @@ TestScript.measureTimingSteps = function(steps) {
     return function () {
         print("TEST measureTimingSteps : " + JSON.stringify(steps))
 
-        var output = [];
+        var output = [ [ "Game (fps)", "Render (fps)", "Present (fps)", "Engine (ms)", "GPU (ms)", "Batch (ms)" ] ];
 
         var len = steps.length;
         for (var i = 0; i < len; i++) {
