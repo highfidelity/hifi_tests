@@ -62,7 +62,9 @@ nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "
         for (var i = 0; i < MyAvatar.getJointNames().length; ++i) {
             MyAvatar.setJointData(i, MyAvatar.getDefaultJointRotation(i), MyAvatar.getDefaultJointTranslation(i));
         }
-    });    
+    });
+
+    nitpick.addDelay(5);
 
     nitpick.addStepSnapshot("Avatar without material");
     
@@ -72,7 +74,7 @@ nitpick.perform("Apply Material Entities to Avatars", Script.resolvePath("."), "
             materialURL: "materialData",
             position: MyAvatar.position,
             materialData: JSON.stringify({ "materials": {
-            "albedo": [0, 0, 1]
+                "albedo": [0, 0, 1]
             }}),
             lifetime: LIFETIME,
             priority: 1,

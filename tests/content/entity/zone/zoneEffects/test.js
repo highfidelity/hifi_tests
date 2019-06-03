@@ -190,6 +190,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
         
         Entities.editEntity(createdEntities[0], { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
+    nitpick.addDelay(3);
     nitpick.addStepSnapshot("Verify bright sky");
      
     nitpick.addStep("Move forward again", function () {
@@ -199,6 +200,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
 
         Entities.editEntity(createdEntities[0], { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
+    nitpick.addDelay(3);
     nitpick.addStepSnapshot("Verify night");
         
     nitpick.addStep("Moving forward and right", function () {
@@ -208,6 +210,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
 
         Entities.editEntity(createdEntities[0], { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
+    nitpick.addDelay(3);
     nitpick.addStepSnapshot("Verify in cloudy zone");
         
     nitpick.addStep("Move left", function () {
@@ -217,6 +220,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
         
         Entities.editEntity(createdEntities[0], { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
+    nitpick.addDelay(3);
     nitpick.addStepSnapshot("Verify in dark zone");
         
     nitpick.addStep("Move center", function () {
@@ -226,6 +230,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
         
         Entities.editEntity(createdEntities[0], { position: Vec3.sum(MyAvatar.position, MODEL_OFFSET) });
     });
+    nitpick.addDelay(3);
     nitpick.addStepSnapshot("Verify in high dynamic zone");
         
     nitpick.addStep("Cleanup", function () {
