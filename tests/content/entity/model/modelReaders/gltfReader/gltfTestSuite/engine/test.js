@@ -26,7 +26,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/2CylinderEngine
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/2CylinderEngine/glTF/2CylinderEngine.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -2.0 }),
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -1.0 }),
         rotation: Quat.fromPitchYawRollDegrees(0.0, -180.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })

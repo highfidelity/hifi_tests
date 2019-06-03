@@ -13,9 +13,9 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
 
     var initData = {
         flags : {
-            hasKeyLight: true,
-            hasAmbientLight: true,
-            hasKeyLightShadow: true,
+          hasKeyLight: true,
+          hasAmbientLight: true,
+          hasKeyLightShadow: true,
         },
         originFrame: nitpick.getOriginFrame()
     };
@@ -24,10 +24,10 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     var testEntity = Entities.addEntity({
         lifetime: LIFETIME,
         type: "Model",
-        // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Lantern
-        modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF/Lantern.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.8, z: -1.75 }),
-        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
+        // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Sponza
+        modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Sponza/glTF/Sponza.gltf',
+        position: Vec3.sum(position, {x: 0.0, y: 0.75, z: -1.25 }),
+        rotation: Quat.fromPitchYawRollDegrees(75.0, 40.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
@@ -43,7 +43,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         }
     });
 
-    nitpick.addStepSnapshot("Lantern.gltf Model is visible");
+    nitpick.addStepSnapshot("Sponza.gltf Model is visible");
 
     nitpick.addStep("Clean up after test", function () {
         for (var i = 0; i < createdEntities.length; i++) {
