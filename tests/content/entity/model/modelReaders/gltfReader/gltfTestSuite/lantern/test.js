@@ -26,8 +26,8 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
         type: "Model",
         // https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/Lantern
         modelURL: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF/Lantern.gltf',
-        position: Vec3.sum(position, {x: 0.0, y: 0.2, z: -1.6 }),
-        rotation: Quat.fromPitchYawRollDegrees(0.0, -180.0, 0.0),
+        position: Vec3.sum(position, {x: 0.0, y: 0.8, z: -1.75 }),
+        rotation: Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0),
         visible: true,
         userData: JSON.stringify({ grabbableKey: { grabbable: false } })
     });
