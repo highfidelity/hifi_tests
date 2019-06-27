@@ -15,7 +15,7 @@ nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePat
     var MODEL_SCALE = 0.75;
     var MODEL_OFFSET = { x: 0.0, y: 0.65, z: -2.0};
 
-    var LIFETIME = 60.0;
+    var LIFETIME = 200.0;
 
     var createdEntities = [];
 
