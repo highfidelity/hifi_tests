@@ -14,11 +14,12 @@ Press 'n' key to advance step by step
 ### Step 3
 - Modify max distance
 ### Step 4
-- Modify bias
-### Step 5
-- Zone size: 10m, Max distance: 1m
-- ![](./ExpectedImage_00000.png)
+- Change position
+### Step
+- Change position
 ### Step 6
-- Clean up after test
+- Change position
 ### Step 7
+- Clean up after test
+### Step 8
 - Change position back
