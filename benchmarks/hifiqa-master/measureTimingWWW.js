@@ -8,7 +8,7 @@ var TRACING_RULES = "" +
 Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
-    name: "measureTimingHifiqa-master",
+    name: "measureTimingWWW",
     loader: TestScript.locationLoader("hifi://www", true),
     tracingRules: TRACING_RULES,
     traceActions: TestScript.measureTimingSteps([
