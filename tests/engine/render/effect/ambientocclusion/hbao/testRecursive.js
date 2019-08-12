@@ -13,10 +13,8 @@ if (typeof depth === 'undefined') {
    depth++
 }
 
-Script.include(testsRootPath + "engine/render/effect/highlight/testRecursive.js");
-Script.include(testsRootPath + "engine/render/effect/haze/testRecursive.js");
-Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
-Script.include(testsRootPath + "engine/render/effect/ambientocclusion/testRecursive.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/hbao/high/test.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/hbao/default/test.js");
 
 if (depth > 0) {
    depth--;

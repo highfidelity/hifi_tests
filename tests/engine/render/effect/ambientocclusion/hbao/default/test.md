@@ -1,4 +1,4 @@
-# Read GLTF model
+# HBAO - default
 ## Run this script URL: [Manual](./test.js?raw=true)   [Auto](./testAuto.js?raw=true)(from menu/Edit/Open and Run scripts from URL...).
 
 ## Preconditions
@@ -8,9 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Scale to 1m
+- Setup
 ### Step 2
-- AntiqueCamera.gltf Model is visible
+- Show default HBAO effect
 - ![](./ExpectedImage_00000.png)
 ### Step 3
 - Clean up after test
