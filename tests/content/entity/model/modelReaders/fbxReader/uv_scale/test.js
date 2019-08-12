@@ -37,7 +37,7 @@ nitpick.perform("Read FBX models with UV scale properties", Script.resolvePath("
     // A cube with the FBX material (not to be confused with the texture) scaled automatically using Maya|uv_scale so it looks the same as the unscaled cube
     addEntityWithOffset(createdEntities, 'models/fbx_models/uv_scale/maya_material/MayaUVScaleCube.fbx', { x: 1.5, y: 0.75, z: -4.0 });
 
-    nitpick.addDelay(8);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("FBX cube model texture scale comparison");
 
     nitpick.addStep("Clean up after test", function () {

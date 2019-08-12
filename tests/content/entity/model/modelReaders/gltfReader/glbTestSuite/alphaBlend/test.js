@@ -33,7 +33,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     });
 
     createdEntities.push(testEntity);
-    nitpick.addDelay(4);
+    nitpick.waitForEntityLoad(createdEntities);
 
     nitpick.addStepSnapshot("AlphaBlendModeTest.glb Model is visible");
 

@@ -14,7 +14,7 @@ nitpick.perform("Shadow - light in front", Script.resolvePath("."), "secondary",
         createdEntities = setup(20.0, 180.0, nitpick.getOriginFrame());
     });
 
-    nitpick.addDelay(3);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Light source altitude: 20.0, azimuth: 180.0");
 
     nitpick.addStep("Clean up after test", function () {

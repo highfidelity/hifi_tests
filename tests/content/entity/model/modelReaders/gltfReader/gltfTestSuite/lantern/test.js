@@ -33,6 +33,7 @@ nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", functio
     });
 
     createdEntities.push(testEntity);
+    nitpick.waitForEntityLoad(createdEntities);
 
     nitpick.addStep("Scale to 1m", function () {
         var properties = Entities.getEntityProperties(testEntity);

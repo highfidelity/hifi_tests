@@ -64,8 +64,7 @@ nitpick.perform("Apply Material Entities to Model Overlays", Script.resolvePath(
         }
     }
 
-    nitpick.addDelay(6);
-    
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Display materials on multiple model overlays");
 
     nitpick.addStep("Clean up after test", function () {

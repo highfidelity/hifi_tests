@@ -74,6 +74,36 @@ function onStillSnapshotTaken(path, notify) {
     waitingForSnapshot = false;
 }
 
+var arrayOfLoadingEntities = [];
+function areEntitiesLoading() {
+    // Return immediately if no entities in array
+    if (!arrayOfLoadingEntities.length) {
+        return false;
+    }
+    
+    // Check if all textures are loaded
+    if (!Test.isTextureLoadingComplete()) {
+        console.warn("Waiting for texture load");
+        return true;
+    }
+    
+    // Check if we are waiting on any entities to load
+    for (var i in arrayOfLoadingEntities) {
+        if (!Entities.isLoaded(arrayOfLoadingEntities[i])) {
+            console.warn("Waiting for entity " + i);
+            entitiesStillLoading = true;
+            return true;
+        } else {
+            console.warn("Entity " + i + " loaded + , " + arrayOfLoadingEntities.length + " waiting to load");
+            arrayOfLoadingEntities = arrayOfLoadingEntities.splice(i, 1);
+        }
+    }
+    
+    // All good
+    arrayOfLoadingEntities = [];
+    return false;
+}
+
 //returns n as a string, padded to length characters with the character ch
 function pad(n, length, ch) {
     ch = ch || '0';  // default is '0'
@@ -139,6 +169,8 @@ var onRunAutoNext = function() {
 
     if (waitingForSnapshot) {
         console.warn("Waiting for Snapshot");
+    } else if (areEntitiesLoading()) {
+        console.warn("Waiting for entities to load");
     } else if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
         if (!runNextStep()) {
@@ -691,4 +723,11 @@ module.exports.verifyClientProfile = function() {
     // Nothing was OK
     console.warn("We are not running on any of the requested client profiles");
     return false;
+}
+
+
+module.exports.waitForEntityLoad = function(arrayOfLoadingEntitiesParameter) {
+    if (typeof Test !== 'undefined') {
+        arrayOfLoadingEntities = arrayOfLoadingEntitiesParameter.slice();
+    }
 }

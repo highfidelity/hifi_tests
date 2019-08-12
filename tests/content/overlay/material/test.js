@@ -106,7 +106,7 @@ nitpick.perform("Model Overlay Material create", Script.resolvePath("."), "secon
         addCases(root, orientation);
     });
 
-    nitpick.addDelay(12);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Take snapshot of all the models");
 
     nitpick.addStep("Clean up after test", function () {

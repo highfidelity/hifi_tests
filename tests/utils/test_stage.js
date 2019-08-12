@@ -213,7 +213,9 @@ setupStage = function (initData) {
     stageRoot = Vec3.sum(stageRoot, Vec3.multiply(ROOT_Y_OFFSET, Quat.getUp(orientation)));
     stageTileRoot = Vec3.sum(stageRoot, GRID_TILE_OFFSET);
 
-    return addTestBackdrop("Light_stage_backdrop", initData.flags, initData.lifetime);
+    entities  = addTestBackdrop("Light_stage_backdrop", initData.flags, initData.lifetime);
+    nitpick.waitForEntityLoad(entities);
+    return entities;
 }
 
 getStagePosOriAt = function (a, b, c) {
