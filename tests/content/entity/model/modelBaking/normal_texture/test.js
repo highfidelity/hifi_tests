@@ -5,7 +5,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
 }
 Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
-nitpick.perform("Read FBX model with normal texture", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Read FBX model with normal texture", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = MyAvatar.position;

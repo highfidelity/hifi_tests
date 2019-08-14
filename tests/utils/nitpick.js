@@ -3,6 +3,7 @@ var currentSteps = [];
 var currentStepIndex = 0;
 
 var testCases = [];
+var testsSkipped = 0;
 
 var testMode = "manual";      // can be "auto"
 var isRecursive = false;
@@ -58,11 +59,21 @@ var isRiftInUse;
 var isViveInUse;
 var isHMDInUse; // false indicates Desktop
 
-TestCase = function (name, path, func, usePrimaryCamera) {
+// TODO: Make use of TestCase.getRelevantProperties for snapshots
+TestCase = function (name, path, func, usePrimaryCamera, shouldRun, getRelevantProperties) {
     this.name = name;
     this.path = path;
     this.func = func;
     this.usePrimaryCamera = usePrimaryCamera;
+    this.shouldRun = shouldRun;
+    if (this.shouldRun === undefined) {
+        this.shouldRun = this.shouldRunDefault;
+    }
+    this.getRelevantProperties = getRelevantProperties;
+}
+
+TestCase.prototype.shouldRunDefault = function(testProfile) {
+    return true;
 }
 
 var currentTestCase = null;
@@ -142,7 +153,7 @@ var onRunAutoNext = function() {
     } else if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
         if (!runNextStep()) {
-            tearDownTest();
+            tearDownTest(true);
             return;
         }
     } else if (!downloadInProgress) {
@@ -161,25 +172,35 @@ var onRunAutoNext = function() {
     );
 }
 
-var onKeyPressEventNextStep = function (event) {
-    if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
-        if (!runNextStep()) {
-            tearDownTest();
-        }
-    }
-
+var onKeyPressQuitRequested = function(event) {
     if (String.fromCharCode(event.key) == quitKey.toUpperCase()) {
         console.warn("Quit requested");
         quitRequested = true;
     }
 }
 
+Controller.keyPressEvent.connect(onKeyPressQuitRequested);
+Script.scriptEnding.connect(function() {
+    Controller.keyPressEvent.disconnect(onKeyPressQuitRequested);
+});
+
+var onKeyPressEventNextStep = function(event) {
+    if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
+        if (currentTestCase !== null && isManualMode() && !runNextStep()) {
+            tearDownTest(true);
+        }
+    }
+}
+
+Controller.keyPressEvent.connect(onKeyPressEventNextStep);
+Script.scriptEnding.connect(function() {
+    Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
+});
+
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
-
-    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
 }
 
 function isManualMode() {
@@ -187,8 +208,6 @@ function isManualMode() {
 }
 
 var onRunAuto = function() {  
-    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
-
     // run the next step after next timer
     Script.setTimeout(
         onRunAutoNext,
@@ -203,8 +222,35 @@ var doAddStep = function (name, stepFunction, snapshot) {
 }
 
 runOneTestCase = function(testCase, testType) {
-    setUpTest(testCase);
-    testCase.func(testType);
+    var testProfile = getTestProfile();
+    if (testCase.shouldRun(testProfile)) {
+        setUpTest(testCase);
+        testCase.func(testType);
+    } else {
+        if (testType == "manual") {
+            Window.displayAnnouncement(
+                "Skipping test '" + testCase.name + "'\n" +
+                "It does not match the current test profile\n" +
+                "Press " + "'" + advanceKey + "'" + " to continue");
+            var testName = testCase.name;
+            currentTestCase = null; // Prevents onKeyPressEventNextStep from triggering
+            var onKeyPressEventSkipTest = function(event) {
+                if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
+                    Controller.keyPressEvent.disconnect(onKeyPressEventSkipTest);
+                    Window.displayAnnouncement("Test '" + testName + "' has been skipped");
+                    tearDownTest(false);
+                }
+            }
+            Controller.keyPressEvent.connect(onKeyPressEventSkipTest);
+        } else {
+            if (!isRecursive) {
+                Window.displayAnnouncement(
+                    "Could not run the test '" + testCase.name + "'\n" +
+                    "because it does not match the current test profile");
+            }
+            tearDownTest(false);
+        }
+    }
 }
 
 setUpTest = function(testCase) {
@@ -390,7 +436,7 @@ setUpTest = function(testCase) {
     };
 }
 
-tearDownTest = function() {
+tearDownTest = function(testCompleted) {
     // Clear the test case steps
     currentSteps = [];
 
@@ -399,10 +445,8 @@ tearDownTest = function() {
         Camera.mode = previousCameraMode;
     }
 
-    if (isManualMode()) {
-        // Disconnect key event
-        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+    if (isManualMode() && testCompleted) {
+        Window.displayAnnouncement("Test '" + currentTestCase.name + "' has been completed");
     }
 
     if (!isManualMode()) {
@@ -471,6 +515,15 @@ validationCamera_setRotation = function (rotation) {
     }
 }
 
+getTestProfile = function() {
+    var testProfile = {
+        "tier": Performance.getPerformancePreset(),
+        "os": JSON.parse(PlatformInfo.getComputer()).OS.toLowerCase(),
+        "gpu": JSON.parse(PlatformInfo.getGPU(PlatformInfo.getMasterGPU())).vendor.toLowerCase()
+    };
+    return testProfile;
+}
+
 // The following are exported methods, accessible to test scripts
 
 // Perform is the main method of a test
@@ -480,9 +533,9 @@ validationCamera_setRotation = function (rotation) {
 //
 // The method creates a test case in currentTestCase.
 // If the test mode is manual or auto then its execution is started
-module.exports.perform = function (testName, testPath, validationCamera, testMain) {
+module.exports.perform = function (testName, testPath, validationCamera, shouldRun, getRelevantProperties, testMain) {
     var usePrimaryCamera = (validationCamera === "primary");
-    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera);
+    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera, shouldRun, getRelevantProperties);
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
@@ -550,6 +603,24 @@ module.exports.runTest = function (testType) {
     }
 }
 
+var completeRecursiveTestsAndStopScript = function() {
+    console.warn("Recursive tests complete");
+
+    // Create "finished" file so nitpick knows tests ran to completion
+    //    note that the contents are not important
+    if (typeof Test !== 'undefined') {
+        Test.saveObject({ complete: true }, "tests_completed.txt");
+    };
+    
+    if (testsSkipped > 0) {
+        Window.displayAnnouncement(
+            testsSkipped + (testsSkipped !== 1 ? " tests were skipped " : " test was skipped ") +
+            "due to not matching the current test profile");
+    }
+
+    Script.stop();
+}
+
 module.exports.runRecursive = function () {
     console.warn("Starting recursive tests");
     runningRecursive = true;
@@ -570,17 +641,23 @@ module.exports.runRecursive = function () {
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
 
+                    // Short-circuit time delays for skipping over multiple tests that do not want to run
+                    if (testMode == "auto") {
+                        var testProfile = getTestProfile();
+                        while (testCases.length > 0 && !currentTestCase.shouldRun(testProfile)) {
+                            ++testsSkipped;
+                            currentTestCase = testCases.pop();
+                        }
+                        if (testCases.length == 0 && !currentTestCase.shouldRun(testProfile)) {
+                            ++testsSkipped;
+                            completeRecursiveTestsAndStopScript();
+                            return;
+                        }
+                    }
+
                     runOneTestCase(currentTestCase, testMode);
                 } else {
-                    console.warn("Recursive tests complete");
-
-                    // Create "finished" file so nitpick knows tests ran to completion
-                    //    note that the contents are not important
-                    if (typeof Test !== 'undefined') {
-                        Test.saveObject({ complete: true }, "tests_completed.txt");
-                    };
-
-                    Script.stop();
+                    completeRecursiveTestsAndStopScript();
                 }
             }
         },

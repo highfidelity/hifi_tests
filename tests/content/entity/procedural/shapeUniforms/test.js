@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Procedural create", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Procedural create", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     var entityIds = [];
 
     var LIFETIME = 60; // 1 min

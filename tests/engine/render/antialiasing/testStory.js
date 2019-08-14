@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Anti-aliasing test", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     // Test material matrix
     Script.include("../material/matrix.js?raw=true")
 

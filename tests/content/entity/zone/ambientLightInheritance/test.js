@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Zone - Ambient Light Inheritance", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     var avatarOriginPosition = nitpick.getOriginFrame();
     avatarOriginPosition = Vec3.sum(avatarOriginPosition, { x: 0.0, y: 1.0, z: 0.0 });
     

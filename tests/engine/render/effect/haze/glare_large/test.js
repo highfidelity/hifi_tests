@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Haze - large glare", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Haze - large glare", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     // Test material matrix
     Script.include("../setup.js?raw=true")
 

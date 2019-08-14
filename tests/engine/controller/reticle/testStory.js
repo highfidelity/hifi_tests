@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Reticle control", Script.resolvePath("."), "primary", function(testType) {
+nitpick.perform("Reticle control", Script.resolvePath("."), "primary", undefined, undefined, function(testType) {
     var zone;
     var previousReticleScale;
     var LIFETIME = 120;

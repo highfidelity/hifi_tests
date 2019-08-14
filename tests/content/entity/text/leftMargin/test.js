@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Text Entity leftMargin", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Text Entity leftMargin", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 

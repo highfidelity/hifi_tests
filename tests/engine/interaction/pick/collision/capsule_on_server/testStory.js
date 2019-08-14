@@ -5,7 +5,7 @@ Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
 Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
-nitpick.perform("Test capsule CollisionPick on server", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Test capsule CollisionPick on server", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     var createdEntities = [];
     var createdPicks = [];
     var createdOverlays = [];
