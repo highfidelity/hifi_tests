@@ -39,7 +39,7 @@ A test case consists of initialization code followed by a series of steps. In ge
 
 It is suggested to set the following properties for all entities:
 * lifetime: 60,
-* position: Vec3.sum(MyAvatar.position, *some offset*),
+* position: Vec3.sum(MyAvatar.position, some offset*),
 * userData: JSON.stringify({ grabbableKey: { grabbable: false } })
 
 ### Origin Frame
@@ -83,9 +83,15 @@ Each test folder has (at least) 3 scripts and a number of images.
 The expected images themselves are created in 2 stages:  running the test and then running `nitpick.exe` to create the images from the test results.
 
 ### Boilerplate
-The first 2 lines define the GitHub repository.  This allows changing the repository for testing purposes.
+The boilerplate code is enclosed in an if statement to ensure it is only called once.
 ```
-if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    // Boilerplate code
+}
+```
+The first 2 lines of the boilerplate code define the GitHub repository.  This allows changing the repository for testing purposes.
+```
+PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 ```
 The next line loads the nitpick script (the script contains a module)
@@ -94,7 +100,7 @@ var nitpick = createAutoTester(Script.resolvePath("."));
 ```
 The test itself is written in the perform method:
 ```
-nitpick.perform("<test description string>", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("<test description string>", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
     // set up zones, objects and other entities 
     
     // create steps
@@ -103,6 +109,16 @@ nitpick.perform("<test description string>", Script.resolvePath("."), "secondary
 });    
 ```
 Note that "secondary" may be replaced by "primary".  This is needed for tests that require the primary camera.
+
+The first parameter that is marked `undefined` can optionally be replaced with a function `shouldRun` that takes a `TestProfile` object and returns `true` if the test should be allowed to run. The `TestProfile` object provides these parameters: `tier`, `os`, and `gpu`. Consider, as an example, this `shouldRun` function from a shadow test, which cannot run when shadows are disabled:
+```
+function(testProfile) {
+    // Only run on mid tier or higher, which uses deferred rendering and therefore supports shadows.
+    return testProfile.tier > 1;
+}
+```
+
+The second `undefined` parameter is reserved for future use.
 
 The **`nitpick.runTest(testType);`** call is the line that requests the execution of the steps.  
 As described above, steps usually come in pairs.  
