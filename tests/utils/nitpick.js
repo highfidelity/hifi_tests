@@ -63,6 +63,7 @@ var isHMDInUse; // false indicates Desktop
 TestCase = function (name, path, func, usePrimaryCamera, shouldRun, getRelevantProperties) {
     this.name = name;
     this.path = path;
+    this.aborted = false;
     this.func = func;
     this.usePrimaryCamera = usePrimaryCamera;
     this.shouldRun = shouldRun;
@@ -153,7 +154,7 @@ var onRunAutoNext = function() {
     } else if (!downloadInProgress  && !loadingContentIsStillDisplayed) {
         // Only run next step if current step is complete
         if (!runNextStep()) {
-            tearDownTest(true);
+            tearDownTest();
             return;
         }
     } else if (!downloadInProgress) {
@@ -186,8 +187,8 @@ Script.scriptEnding.connect(function() {
 
 var onKeyPressEventNextStep = function(event) {
     if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
-        if (currentTestCase !== null && isManualMode() && !runNextStep()) {
-            tearDownTest(true);
+        if (isManualMode() && !runNextStep()) {
+            tearDownTest();
         }
     }
 }
@@ -233,12 +234,12 @@ runOneTestCase = function(testCase, testType) {
                 "It does not match the current test profile\n" +
                 "Press " + "'" + advanceKey + "'" + " to continue");
             var testName = testCase.name;
-            currentTestCase = null; // Prevents onKeyPressEventNextStep from triggering
+            currentTestCase.aborted = true;
             var onKeyPressEventSkipTest = function(event) {
                 if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
                     Controller.keyPressEvent.disconnect(onKeyPressEventSkipTest);
                     Window.displayAnnouncement("Test '" + testName + "' has been skipped");
-                    tearDownTest(false);
+                    tearDownTest();
                 }
             }
             Controller.keyPressEvent.connect(onKeyPressEventSkipTest);
@@ -248,7 +249,8 @@ runOneTestCase = function(testCase, testType) {
                     "Could not run the test '" + testCase.name + "'\n" +
                     "because it does not match the current test profile");
             }
-            tearDownTest(false);
+            currentTestCase.aborted = true;
+            tearDownTest();
         }
     }
 }
@@ -436,7 +438,7 @@ setUpTest = function(testCase) {
     };
 }
 
-tearDownTest = function(testCompleted) {
+tearDownTest = function() {
     // Clear the test case steps
     currentSteps = [];
 
@@ -445,7 +447,7 @@ tearDownTest = function(testCompleted) {
         Camera.mode = previousCameraMode;
     }
 
-    if (isManualMode() && testCompleted) {
+    if (isManualMode() && !currentTestCase.aborted) {
         Window.displayAnnouncement("Test '" + currentTestCase.name + "' has been completed");
     }
 
