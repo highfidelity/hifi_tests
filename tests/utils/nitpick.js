@@ -59,22 +59,129 @@ var isRiftInUse;
 var isViveInUse;
 var isHMDInUse; // false indicates Desktop
 
-// TODO: Make use of TestCase.getRelevantProperties for snapshots
-TestCase = function (name, path, func, usePrimaryCamera, shouldRun, getRelevantProperties) {
+var PROFILE_PROPERTIES = {
+    tier: ["low", "mid", "high"],
+    os: ["windows", "mac", "linux", "android"],
+    gpu: ["amd", "nvidia", "intel"]
+};
+
+var PROPERTY_TO_PROFILE_CATEGORY = function(){
+    var toReturn = {};
+    
+    var categories = Object.keys(PROFILE_PROPERTIES);
+    for (var i = 0; i < categories.length; i++) {
+        var category = categories[i];
+        var properties = PROFILE_PROPERTIES[category];
+        for (var j = 0; j < properties.length; j++) {
+            var property = properties[j];
+            toReturn[property] = category;
+        }
+    }
+    
+    return toReturn;
+}();
+
+function logAndNotify(message) {
+    console.log(message);
+    Window.displayAnnouncement(message);
+}
+
+RunFilter = function (allowedPerProperty) {
+    this.allowedPerProperty = allowedPerProperty;
+}
+
+RunFilter.createGlobalBlacklistFilter = function() {
+    return new RunFilter({"os":[]});
+}
+
+// Returns undefined if there is an unrecognized property
+RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
+    var allowedPerProperty = {};
+    var whitelistString = runFilterArgs[0];
+    var whitelistPerProperty = whitelistString.split(".");
+    for (var j = 0; j < whitelistPerProperty.length; j++) {
+        var propertyWhitelistString = whitelistPerProperty[j];
+        var whitelistedOptionsPerProperty = propertyWhitelistString.split(",");
+        var profileCategory = undefined;
+        var previousProfileCategory = undefined;
+        // Check all properties. Complain if one is not correct.
+        for (var k = 0; k < whitelistedOptionsPerProperty.length; k++) {
+            var whitelistedPropertyOption = whitelistedOptionsPerProperty[k];
+            profileCategory = PROPERTY_TO_PROFILE_CATEGORY[whitelistedPropertyOption];
+            if (profileCategory === undefined) {
+                logAndNotify("Unrecognized test profile property '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
+                return RunFilter.createGlobalBlacklistFilter();
+            }
+            if (previousProfileCategory !== undefined && profileCategory !== previousProfileCategory) {
+                logAndNotify("Inconsistent test profile property options '" + whitelistedOptionsPerProperty[k-1] + "' and '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'. The former is of type '" + previousProfileCategory + "' and the latter is of type '" + profileCategory + "'");
+                return RunFilter.createGlobalBlacklistFilter();
+            }
+            previousProfileCategory = profileCategory;
+        }
+        // All properties are valid!
+        allowedPerProperty[profileCategory] = whitelistedOptionsPerProperty;
+    }
+    
+    // An empty allowedPerProperty is allowed and acts as a global wildcard
+    // This will be useful later when we implement image naming based on what profile properties matter to a test
+    // TODO: Implement image naming based on what profile properties matter to a test
+    return new RunFilter(allowedPerProperty);
+}
+
+RunFilter.prototype.matches = function(profile) {
+    // This is a "lazy" profile whitelist. If a list of allowed values isn't defined for a given profile property, all values are assumed allowed for that property.
+    var profileKeys = Object.keys(profile);
+    for (var i = 0; i < profileKeys.length; i++) {
+        var profilePropertyName = profileKeys[i];
+        var profileValue = profile[profilePropertyName];
+        var allowedValues = this.allowedPerProperty[profilePropertyName];
+        if (allowedValues !== undefined) {
+            var matched = false;
+            for (var j = 0; j < allowedValues.length; j++) {
+                if (allowedValues[j] === profileValue) {
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+TestCase = function (name, path, func, usePrimaryCamera, runFiltersRaw) {
     this.name = name;
     this.path = path;
     this.aborted = false;
     this.func = func;
     this.usePrimaryCamera = usePrimaryCamera;
-    this.shouldRun = shouldRun;
-    if (this.shouldRun === undefined) {
-        this.shouldRun = this.shouldRunDefault;
+    
+    this.runFilters = [];
+    if (runFiltersRaw !== undefined) {
+        for (var i = 0; i < runFiltersRaw.length; i++) {
+            var runFilterArgs = runFiltersRaw[i];
+            var runFilter = RunFilter.createRunFilter(name, runFilterArgs);
+            if (runFilter !== undefined) {
+                this.runFilters.push(runFilter);
+            }
+        }
     }
-    this.getRelevantProperties = getRelevantProperties;
 }
 
-TestCase.prototype.shouldRunDefault = function(testProfile) {
-    return true;
+TestCase.prototype.shouldRun = function(testProfile) {
+    if (this.runFilters.length === 0) {
+        return true;
+    }
+    
+    for (var i = 0; i < this.runFilters.length; i++) {
+        var runFilter = this.runFilters[i];
+        if (runFilter.matches(testProfile)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 var currentTestCase = null;
@@ -518,9 +625,28 @@ validationCamera_setRotation = function (rotation) {
 }
 
 getTestProfile = function() {
+    var tier;
+    switch (Performance.getPerformancePreset()) {
+    case 1:
+        tier = "low";
+    break;
+    case 2:
+        tier = "mid";
+    break;
+    case 3:
+    default:
+        tier = "high";
+    break;
+    }
+    
+    var os = JSON.parse(PlatformInfo.getComputer()).OS.toLowerCase();
+    if (os == "macos") {
+        os = "mac";
+    }
+    
     var testProfile = {
-        "tier": Performance.getPerformancePreset(),
-        "os": JSON.parse(PlatformInfo.getComputer()).OS.toLowerCase(),
+        "tier": tier,
+        "os": os,
         "gpu": JSON.parse(PlatformInfo.getGPU(PlatformInfo.getMasterGPU())).vendor.toLowerCase()
     };
     return testProfile;
@@ -535,9 +661,9 @@ getTestProfile = function() {
 //
 // The method creates a test case in currentTestCase.
 // If the test mode is manual or auto then its execution is started
-module.exports.perform = function (testName, testPath, validationCamera, shouldRun, getRelevantProperties, testMain) {
+module.exports.perform = function (testName, testPath, validationCamera, runFiltersRaw, unused, testMain) {
     var usePrimaryCamera = (validationCamera === "primary");
-    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera, shouldRun, getRelevantProperties);
+    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera, runFiltersRaw);
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
