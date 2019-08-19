@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Point light", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Point light", Script.resolvePath("."), "secondary", undefined, function(testType) {
     // Test material matrix
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 

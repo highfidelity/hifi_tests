@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Shadow - light in front", Script.resolvePath("."), "secondary", [["mid,high"]], undefined, function(testType) {
+nitpick.perform("Shadow - light in front", Script.resolvePath("."), "secondary", [["mid,high"]], function(testType) {
     // Test material matrix
     Script.include("../setup.js?raw=true")
 

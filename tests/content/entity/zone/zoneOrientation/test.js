@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Zone - effects of orientation", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Zone - effects of orientation", Script.resolvePath("."), "secondary", undefined, function(testType) {
     var avatarOriginPosition = MyAvatar.position;
 
     var zonePosition = { x: avatarOriginPosition.x, y: avatarOriginPosition.y - 4.0, z: avatarOriginPosition.z - 17.5 };

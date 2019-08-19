@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Grid Entity followCamera", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Grid Entity followCamera", Script.resolvePath("."), "secondary", undefined, function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;
 

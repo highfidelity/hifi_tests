@@ -9,7 +9,7 @@ Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interact
 var jointModelPath = Script.resolvePath(nitpick.getAssetsRootPath() + "/models/geometry/avatars/claire/Claire.fbx");
 var testModelJointName = "LeftToeBase";
 
-nitpick.perform("Test pick parenting on server", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Test pick parenting on server", Script.resolvePath("."), "secondary", undefined, function(testType) {
     var createdEntities = [];
     var createdPicks = [];
     var createdOverlays = [];

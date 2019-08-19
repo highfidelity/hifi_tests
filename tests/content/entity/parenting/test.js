@@ -3,7 +3,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
     nitpick = createNitpick(Script.resolvePath('.'));
 
-nitpick.perform("Entity parenting", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Entity parenting", Script.resolvePath("."), "secondary", undefined, function(testType) {
     var LIFETIME = 120;
     var zone;
     var parent;

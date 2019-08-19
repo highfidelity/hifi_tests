@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Laser - enabling and disabling", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Laser - enabling and disabling", Script.resolvePath("."), "secondary", undefined, function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(nitpick.getOriginFrame());

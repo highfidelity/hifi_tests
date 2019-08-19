@@ -2,7 +2,7 @@ PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfideli
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("Scene load performance", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Scene load performance", Script.resolvePath("."), "secondary", undefined, function(testType) {
     nitpick.addStep("Clear cache", function () {
         Test.clearCaches();
     });

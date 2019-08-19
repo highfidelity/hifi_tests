@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Read FBX model", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Read FBX model", Script.resolvePath("."), "secondary", undefined, function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = nitpick.getOriginFrame();

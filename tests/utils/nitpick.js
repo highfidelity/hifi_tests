@@ -661,7 +661,7 @@ getTestProfile = function() {
 //
 // The method creates a test case in currentTestCase.
 // If the test mode is manual or auto then its execution is started
-module.exports.perform = function (testName, testPath, validationCamera, runFiltersRaw, unused, testMain) {
+module.exports.perform = function (testName, testPath, validationCamera, runFiltersRaw, testMain) {
     var usePrimaryCamera = (validationCamera === "primary");
     currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera, runFiltersRaw);
 

@@ -7,7 +7,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
 // Create the material test model matrix
 // Based on: https://raw.githubusercontent.com/highfidelity/hifi_tests/master/assets/models/material_matrix_models/material_matrix.js
 
-nitpick.perform("Model Entity renderLayer front", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Model Entity renderLayer front", Script.resolvePath("."), "secondary", undefined, function(testType) {
 
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var LIFETIME = 200;

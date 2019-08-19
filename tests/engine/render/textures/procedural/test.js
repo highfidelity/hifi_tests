@@ -12,7 +12,7 @@ var testFiles = [
 
 var testState = {};
 
-nitpick.perform("Texture Rendering", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Texture Rendering", Script.resolvePath("."), "secondary", undefined, function(testType) {
     // Test Texture Procedural
     Script.include("setup.js?raw=true")
 
