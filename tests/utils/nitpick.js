@@ -90,14 +90,10 @@ RunFilter = function (allowedPerProperty) {
     this.allowedPerProperty = allowedPerProperty;
 }
 
-RunFilter.createGlobalBlacklistFilter = function() {
-    return new RunFilter({"os":[]});
-}
+RunFilter.GLOBAL_BLACKLIST_PER_PROPERTY = {"os":[]};
 
-// Returns undefined if there is an unrecognized property
-RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
+RunFilter.parseWhitelistString = function(testCaseName, whitelistString) {
     var allowedPerProperty = {};
-    var whitelistString = runFilterArgs[0];
     var whitelistPerProperty = whitelistString.split(".");
     for (var j = 0; j < whitelistPerProperty.length; j++) {
         var propertyWhitelistString = whitelistPerProperty[j];
@@ -119,11 +115,11 @@ RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
             profileCategory = PROPERTY_TO_PROFILE_CATEGORY[whitelistedPropertyOption];
             if (profileCategory === undefined) {
                 logAndNotify("Unrecognized test profile property '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
-                return RunFilter.createGlobalBlacklistFilter();
+                return RunFilter.GLOBAL_BLACKLIST_PER_PROPERTY;
             }
             if (previousProfileCategory !== undefined && profileCategory !== previousProfileCategory) {
                 logAndNotify("Inconsistent test profile property options '" + whitelistedOptionsPerProperty[k-1] + "' and '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'. The former is of type '" + previousProfileCategory + "' and the latter is of type '" + profileCategory + "'");
-                return RunFilter.createGlobalBlacklistFilter();
+                return RunFilter.GLOBAL_BLACKLIST_PER_PROPERTY;
             }
             previousProfileCategory = profileCategory;
             validWhitelistedOptionsPerProperty.push(whitelistedPropertyOption);
@@ -134,9 +130,17 @@ RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
         }
     }
     
-    // An empty allowedPerProperty is allowed and acts as a global wildcard
+    return allowedPerProperty;
+}
+
+// Returns undefined if there is an unrecognized property
+RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
+    // An empty whitelistString is allowed and acts as a global wildcard (allowedPerProperty is an empty object in that case)
     // This will be useful later when we implement image naming based on what profile properties matter to a test
     // TODO: Implement image naming based on what profile properties matter to a test
+    var whitelistString = runFilterArgs[0];
+    var allowedPerProperty = RunFilter.parseWhitelistString(testCaseName, whitelistString);
+    
     return new RunFilter(allowedPerProperty);
 }
 
