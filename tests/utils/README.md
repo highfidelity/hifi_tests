@@ -100,7 +100,7 @@ var nitpick = createAutoTester(Script.resolvePath("."));
 ```
 The test itself is written in the perform method:
 ```
-nitpick.perform("<test description string>", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("<test description string>", Script.resolvePath("."), "secondary", undefined, function(testType) {
     // set up zones, objects and other entities 
     
     // create steps
@@ -110,15 +110,7 @@ nitpick.perform("<test description string>", Script.resolvePath("."), "secondary
 ```
 Note that "secondary" may be replaced by "primary".  This is needed for tests that require the primary camera.
 
-The first parameter that is marked `undefined` can optionally be replaced with a function `shouldRun` that takes a `TestProfile` object and returns `true` if the test should be allowed to run. The `TestProfile` object provides these parameters: `tier`, `os`, and `gpu`. Consider, as an example, this `shouldRun` function from a shadow test, which cannot run when shadows are disabled:
-```
-function(testProfile) {
-    // Only run on mid tier or higher, which uses deferred rendering and therefore supports shadows.
-    return testProfile.tier > 1;
-}
-```
-
-The second `undefined` parameter is reserved for future use.
+The next parameter that is marked `undefined` can optionally be replaced with a list of one or more filters, indicating when the test should run. This uses a special syntax which is explained in a later section.
 
 The **`nitpick.runTest(testType);`** call is the line that requests the execution of the steps.  
 As described above, steps usually come in pairs.  
@@ -135,6 +127,29 @@ The following is an example showing the idea:
     nitpick.addStepSnapshot("Blue zone, dark ambient light");
 ```
 The first step moves forward 10 metres (the avatar is looking *down* the Z axis).
+
+### Test Filtering
+
+As previously mentioned, the test boilerplate contains an `undefined` parameter after the "secondary"/"primary" camera option. This allows the test creator to determine when the test is run. For example, the parameter could be replaced by `[["high"]]` to indicate that the test should only run when the current performance tier for Interface is set to High.
+
+Some more examples are included below:
+```
+[["mac"]] /* Run only on Mac */
+[["mac.amd"]] /* Run only on Mac with an AMD GPU */
+[["mid,high"]] /* Run only on the mid/high performance tier */
+[["windows,mac,linux.amd,nvidia"]] /* Run only on Windows/Mac/Linux AND run only when AMD or Nvidia GPU present */
+[["low,mid.windows"], ["android"], ["mac.intel"]] /* Run on either: 1) Windows in low/mid performance tier, 2) Android, or 3) A Mac with Intel GPU */
+```
+The filter syntax works as follows:
+- Each inner pair of square brackets is a filter. If the current test profile (combination of tier, OS, and GPU) matches at least one of the filters, then the test will be run.
+- Multiple filters are separated by commas per standard javascript list syntax
+- Each filter consists of a filter string (additional parameters may be added later)
+- The filter string can contain one or more restrictions, separated by periods (`.`). All restrictions must match for the filter to match the test profile. Possible restrictions are:
+  - For tier: `low`, `mid`, `high`
+  - For OS: `windows`, `mac`, `linux`, `android`
+  - For GPU: `amd`, `nvidia`, `intel`
+- Each restriction can optionally be made broader. Rather than specifying only one tier/OS/GPU, multiple valid options can be separated by commas (`,`).
+
 ### `nitpick.js` function documentation
 #### `perform` method
 `nitpick.js` provides the **`perform`** method, used in all tests.  This method accepts 4 parameters:

@@ -151,7 +151,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     var nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Test Description", Script.resolvePath("."), "secondary", undefined, undefined, function(testType) {
+nitpick.perform("Test Description", Script.resolvePath("."), "secondary", undefined, function(testType) {
     // set up zones, objects and other entities 
     
     // create steps
