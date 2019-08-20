@@ -86,11 +86,34 @@ function logAndNotify(message) {
     Window.displayAnnouncement(message);
 }
 
-RunFilter = function (allowedPerProperty) {
-    this.allowedPerProperty = allowedPerProperty;
+RunFilter = function (allowedPerProperty, propertiesToDisplay) {
+    this.allowedPerProperty = RunFilter.getAllowedPerPropertySorted(allowedPerProperty);
+    this.propertiesToDisplay = propertiesToDisplay;
 }
 
 RunFilter.GLOBAL_BLACKLIST_PER_PROPERTY = {"os":[]};
+
+// Sorts the allowed options to be in the order they appear in PROFILE_PROPERTIES
+RunFilter.getAllowedPerPropertySorted = function(allowedPerProperty) {
+    var allowedPerPropertySorted = {};
+    var properties = Object.keys(allowedPerProperty);
+    for (var i = 0; i < properties.length; i++) {
+        var property = properties[i];
+        var allowed = allowedPerProperty[property];
+        
+        var allowedSorted = [];
+        var allValues = PROFILE_PROPERTIES[property];
+        for (var j = 0; j < allValues.length; j++) {
+            var value = allValues[j];
+            if (allowed.indexOf(value) != -1) {
+                allowedSorted.push(value);
+            }
+        }
+        
+        allowedPerPropertySorted[property] = allowedSorted;
+    }
+    return allowedPerPropertySorted;
+}
 
 RunFilter.parseWhitelistString = function(testCaseName, whitelistString) {
     var allowedPerProperty = {};
@@ -133,15 +156,38 @@ RunFilter.parseWhitelistString = function(testCaseName, whitelistString) {
     return allowedPerProperty;
 }
 
+RunFilter.parsePropertyDisplayString = function(testCaseName, allowedPerProperty, propertyDisplayString) {
+    var propertiesToDisplay = [];
+    
+    if (propertyDisplayString !== "") {
+        var knownProperties = Object.keys(PROFILE_PROPERTIES);
+        propertiesToDisplay = propertyDisplayString.split(".");
+        for (var i = 0; i < propertiesToDisplay.length; i++) {
+            var propertyToDisplay = propertiesToDisplay[i];
+            if (knownProperties.indexOf(propertyToDisplay) == -1) {
+                logAndNotify("Unrecognized test profile image label '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
+                return [];
+            }
+        }
+    }
+    
+    return propertiesToDisplay;
+}
+
 // Returns undefined if there is an unrecognized property
 RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
     // An empty whitelistString is allowed and acts as a global wildcard (allowedPerProperty is an empty object in that case)
-    // This will be useful later when we implement image naming based on what profile properties matter to a test
-    // TODO: Implement image naming based on what profile properties matter to a test
+    // This is useful when you want a test to always run, but still want image naming based on what profile properties matter to a test
     var whitelistString = runFilterArgs[0];
     var allowedPerProperty = RunFilter.parseWhitelistString(testCaseName, whitelistString);
     
-    return new RunFilter(allowedPerProperty);
+    var propertiesToDisplay = [];
+    if (runFilterArgs.length >= 2) {
+        var propertyDisplayString = runFilterArgs[1];
+        propertiesToDisplay = RunFilter.parsePropertyDisplayString(testCaseName, allowedPerProperty, propertyDisplayString);
+    }
+    
+    return new RunFilter(allowedPerProperty, propertiesToDisplay);
 }
 
 RunFilter.prototype.matches = function(profile) {
@@ -165,6 +211,25 @@ RunFilter.prototype.matches = function(profile) {
         }
     }
     return true;
+}
+
+RunFilter.prototype.getImageProfileDescriptor = function(profile) {
+    var components = [];
+    
+    for (var i = 0; i < this.propertiesToDisplay.length; i++) {
+        var propertyToDisplay = this.propertiesToDisplay[i];
+        var allValues = PROFILE_PROPERTIES[propertyToDisplay];
+        // Already sorted to match the order the property options appear in PROFILE_PROPERTIES
+        var allowedValues = this.allowedPerProperty[propertyToDisplay];
+        if (allowedValues !== undefined) {
+            // Assume the profile matches this filter
+            components.push(allowedValues.join("-"));
+        } else {
+            components.push(profile[propertyToDisplay]);
+        }
+    }
+    
+    return components.join("_");
 }
 
 TestCase = function (name, path, func, usePrimaryCamera, runFiltersRaw) {
@@ -198,6 +263,20 @@ TestCase.prototype.shouldRun = function(testProfile) {
         }
     }
     return false;
+}
+
+TestCase.prototype.getImageProfileDescriptor = function(testProfile) {
+    if (this.runFilters.length === 0) {
+        return "";
+    }
+    
+    for (var i = 0; i < this.runFilters.length; i++) {
+        var runFilter = this.runFilters[i];
+        if (runFilter.matches(testProfile)) {
+            return runFilter.getImageProfileDescriptor(testProfile);
+        }
+    }
+    return "";
 }
 
 var currentTestCase = null;
@@ -413,6 +492,11 @@ setUpTest = function(testCase) {
     snapshotPrefix = pathParts[testsIndex];
     for (var i = testsIndex + 1; i < pathParts.length; ++i) {
         snapshotPrefix += pathSeparator + pathParts[i];
+    }
+    var testProfile = getTestProfile();
+    var imageProfileDescriptor = testCase.getImageProfileDescriptor(testProfile);
+    if (imageProfileDescriptor !== "") {
+        snapshotPrefix += imageProfileDescriptor + "_";
     }
 
 	// Reset result counters
