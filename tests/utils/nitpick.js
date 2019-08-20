@@ -101,12 +101,21 @@ RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
     var whitelistPerProperty = whitelistString.split(".");
     for (var j = 0; j < whitelistPerProperty.length; j++) {
         var propertyWhitelistString = whitelistPerProperty[j];
+        if (propertyWhitelistString === "") {
+            continue;
+        }
+        
         var whitelistedOptionsPerProperty = propertyWhitelistString.split(",");
+        var validWhitelistedOptionsPerProperty = [];
         var profileCategory = undefined;
         var previousProfileCategory = undefined;
         // Check all properties. Complain if one is not correct.
         for (var k = 0; k < whitelistedOptionsPerProperty.length; k++) {
             var whitelistedPropertyOption = whitelistedOptionsPerProperty[k];
+            if (whitelistedPropertyOption === "") {
+                continue;
+            }
+            
             profileCategory = PROPERTY_TO_PROFILE_CATEGORY[whitelistedPropertyOption];
             if (profileCategory === undefined) {
                 logAndNotify("Unrecognized test profile property '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
@@ -117,9 +126,12 @@ RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
                 return RunFilter.createGlobalBlacklistFilter();
             }
             previousProfileCategory = profileCategory;
+            validWhitelistedOptionsPerProperty.push(whitelistedPropertyOption);
         }
         // All properties are valid!
-        allowedPerProperty[profileCategory] = whitelistedOptionsPerProperty;
+        if (profileCategory !== undefined) {
+            allowedPerProperty[profileCategory] = validWhitelistedOptionsPerProperty;
+        }
     }
     
     // An empty allowedPerProperty is allowed and acts as a global wildcard
