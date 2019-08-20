@@ -2,7 +2,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PA
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 
-nitpick.perform("ParticleEffect isEmitting", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("ParticleEffect isEmitting", Script.resolvePath("."), "secondary", undefined, function(testType) {
     var LIFETIME = 200;
 
     var createdEntities = [];

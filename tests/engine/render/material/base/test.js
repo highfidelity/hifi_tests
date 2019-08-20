@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Show base effects on various materials", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Show base effects on various materials", Script.resolvePath("."), "secondary", undefined, function(testType) {
     // Test material matrix
     Script.include("../matrix.js?raw=true")
 

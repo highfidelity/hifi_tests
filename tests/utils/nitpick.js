@@ -3,6 +3,7 @@ var currentSteps = [];
 var currentStepIndex = 0;
 
 var testCases = [];
+var testsSkipped = 0;
 
 var testMode = "manual";      // can be "auto"
 var isRecursive = false;
@@ -58,11 +59,141 @@ var isRiftInUse;
 var isViveInUse;
 var isHMDInUse; // false indicates Desktop
 
-TestCase = function (name, path, func, usePrimaryCamera) {
+var PROFILE_PROPERTIES = {
+    tier: ["low", "mid", "high"],
+    os: ["windows", "mac", "linux", "android"],
+    gpu: ["amd", "nvidia", "intel"]
+};
+
+var PROPERTY_TO_PROFILE_CATEGORY = function(){
+    var toReturn = {};
+    
+    var categories = Object.keys(PROFILE_PROPERTIES);
+    for (var i = 0; i < categories.length; i++) {
+        var category = categories[i];
+        var properties = PROFILE_PROPERTIES[category];
+        for (var j = 0; j < properties.length; j++) {
+            var property = properties[j];
+            toReturn[property] = category;
+        }
+    }
+    
+    return toReturn;
+}();
+
+function logAndNotify(message) {
+    console.log(message);
+    Window.displayAnnouncement(message);
+}
+
+RunFilter = function (allowedPerProperty) {
+    this.allowedPerProperty = allowedPerProperty;
+}
+
+RunFilter.createGlobalBlacklistFilter = function() {
+    return new RunFilter({"os":[]});
+}
+
+// Returns undefined if there is an unrecognized property
+RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
+    var allowedPerProperty = {};
+    var whitelistString = runFilterArgs[0];
+    var whitelistPerProperty = whitelistString.split(".");
+    for (var j = 0; j < whitelistPerProperty.length; j++) {
+        var propertyWhitelistString = whitelistPerProperty[j];
+        if (propertyWhitelistString === "") {
+            continue;
+        }
+        
+        var whitelistedOptionsPerProperty = propertyWhitelistString.split(",");
+        var validWhitelistedOptionsPerProperty = [];
+        var profileCategory = undefined;
+        var previousProfileCategory = undefined;
+        // Check all properties. Complain if one is not correct.
+        for (var k = 0; k < whitelistedOptionsPerProperty.length; k++) {
+            var whitelistedPropertyOption = whitelistedOptionsPerProperty[k];
+            if (whitelistedPropertyOption === "") {
+                continue;
+            }
+            
+            profileCategory = PROPERTY_TO_PROFILE_CATEGORY[whitelistedPropertyOption];
+            if (profileCategory === undefined) {
+                logAndNotify("Unrecognized test profile property '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
+                return RunFilter.createGlobalBlacklistFilter();
+            }
+            if (previousProfileCategory !== undefined && profileCategory !== previousProfileCategory) {
+                logAndNotify("Inconsistent test profile property options '" + whitelistedOptionsPerProperty[k-1] + "' and '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'. The former is of type '" + previousProfileCategory + "' and the latter is of type '" + profileCategory + "'");
+                return RunFilter.createGlobalBlacklistFilter();
+            }
+            previousProfileCategory = profileCategory;
+            validWhitelistedOptionsPerProperty.push(whitelistedPropertyOption);
+        }
+        // All properties are valid!
+        if (profileCategory !== undefined) {
+            allowedPerProperty[profileCategory] = validWhitelistedOptionsPerProperty;
+        }
+    }
+    
+    // An empty allowedPerProperty is allowed and acts as a global wildcard
+    // This will be useful later when we implement image naming based on what profile properties matter to a test
+    // TODO: Implement image naming based on what profile properties matter to a test
+    return new RunFilter(allowedPerProperty);
+}
+
+RunFilter.prototype.matches = function(profile) {
+    // This is a "lazy" profile whitelist. If a list of allowed values isn't defined for a given profile property, all values are assumed allowed for that property.
+    var profileKeys = Object.keys(profile);
+    for (var i = 0; i < profileKeys.length; i++) {
+        var profilePropertyName = profileKeys[i];
+        var profileValue = profile[profilePropertyName];
+        var allowedValues = this.allowedPerProperty[profilePropertyName];
+        if (allowedValues !== undefined) {
+            var matched = false;
+            for (var j = 0; j < allowedValues.length; j++) {
+                if (allowedValues[j] === profileValue) {
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+TestCase = function (name, path, func, usePrimaryCamera, runFiltersRaw) {
     this.name = name;
     this.path = path;
+    this.aborted = false;
     this.func = func;
     this.usePrimaryCamera = usePrimaryCamera;
+    
+    this.runFilters = [];
+    if (runFiltersRaw !== undefined) {
+        for (var i = 0; i < runFiltersRaw.length; i++) {
+            var runFilterArgs = runFiltersRaw[i];
+            var runFilter = RunFilter.createRunFilter(name, runFilterArgs);
+            if (runFilter !== undefined) {
+                this.runFilters.push(runFilter);
+            }
+        }
+    }
+}
+
+TestCase.prototype.shouldRun = function(testProfile) {
+    if (this.runFilters.length === 0) {
+        return true;
+    }
+    
+    for (var i = 0; i < this.runFilters.length; i++) {
+        var runFilter = this.runFilters[i];
+        if (runFilter.matches(testProfile)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 var currentTestCase = null;
@@ -161,25 +292,35 @@ var onRunAutoNext = function() {
     );
 }
 
-var onKeyPressEventNextStep = function (event) {
-    if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
-        if (!runNextStep()) {
-            tearDownTest();
-        }
-    }
-
+var onKeyPressQuitRequested = function(event) {
     if (String.fromCharCode(event.key) == quitKey.toUpperCase()) {
         console.warn("Quit requested");
         quitRequested = true;
     }
 }
 
+Controller.keyPressEvent.connect(onKeyPressQuitRequested);
+Script.scriptEnding.connect(function() {
+    Controller.keyPressEvent.disconnect(onKeyPressQuitRequested);
+});
+
+var onKeyPressEventNextStep = function(event) {
+    if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
+        if (isManualMode() && !runNextStep()) {
+            tearDownTest();
+        }
+    }
+}
+
+Controller.keyPressEvent.connect(onKeyPressEventNextStep);
+Script.scriptEnding.connect(function() {
+    Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
+});
+
 var onRunManual = function() {
     Window.displayAnnouncement(
         "Ready to run test " + currentTestName + "\n" +
         currentSteps.length + " steps\nPress " + "'" + advanceKey + "'" + " for next steps");
-
-    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
 }
 
 function isManualMode() {
@@ -187,8 +328,6 @@ function isManualMode() {
 }
 
 var onRunAuto = function() {  
-    Controller.keyPressEvent.connect(onKeyPressEventNextStep);
-
     // run the next step after next timer
     Script.setTimeout(
         onRunAutoNext,
@@ -203,8 +342,36 @@ var doAddStep = function (name, stepFunction, snapshot) {
 }
 
 runOneTestCase = function(testCase, testType) {
-    setUpTest(testCase);
-    testCase.func(testType);
+    var testProfile = getTestProfile();
+    if (testCase.shouldRun(testProfile)) {
+        setUpTest(testCase);
+        testCase.func(testType);
+    } else {
+        if (testType == "manual") {
+            Window.displayAnnouncement(
+                "Skipping test '" + testCase.name + "'\n" +
+                "It does not match the current test profile\n" +
+                "Press " + "'" + advanceKey + "'" + " to continue");
+            var testName = testCase.name;
+            currentTestCase.aborted = true;
+            var onKeyPressEventSkipTest = function(event) {
+                if (String.fromCharCode(event.key) == advanceKey.toUpperCase()) {
+                    Controller.keyPressEvent.disconnect(onKeyPressEventSkipTest);
+                    Window.displayAnnouncement("Test '" + testName + "' has been skipped");
+                    tearDownTest();
+                }
+            }
+            Controller.keyPressEvent.connect(onKeyPressEventSkipTest);
+        } else {
+            if (!isRecursive) {
+                Window.displayAnnouncement(
+                    "Could not run the test '" + testCase.name + "'\n" +
+                    "because it does not match the current test profile");
+            }
+            currentTestCase.aborted = true;
+            tearDownTest();
+        }
+    }
 }
 
 setUpTest = function(testCase) {
@@ -399,10 +566,8 @@ tearDownTest = function() {
         Camera.mode = previousCameraMode;
     }
 
-    if (isManualMode()) {
-        // Disconnect key event
-        Controller.keyPressEvent.disconnect(onKeyPressEventNextStep);
-        Window.displayAnnouncement("Test " + currentTestName + " have been completed");
+    if (isManualMode() && !currentTestCase.aborted) {
+        Window.displayAnnouncement("Test '" + currentTestCase.name + "' has been completed");
     }
 
     if (!isManualMode()) {
@@ -471,6 +636,34 @@ validationCamera_setRotation = function (rotation) {
     }
 }
 
+getTestProfile = function() {
+    var tier;
+    switch (Performance.getPerformancePreset()) {
+    case 1:
+        tier = "low";
+    break;
+    case 2:
+        tier = "mid";
+    break;
+    case 3:
+    default:
+        tier = "high";
+    break;
+    }
+    
+    var os = JSON.parse(PlatformInfo.getComputer()).OS.toLowerCase();
+    if (os == "macos") {
+        os = "mac";
+    }
+    
+    var testProfile = {
+        "tier": tier,
+        "os": os,
+        "gpu": JSON.parse(PlatformInfo.getGPU(PlatformInfo.getMasterGPU())).vendor.toLowerCase()
+    };
+    return testProfile;
+}
+
 // The following are exported methods, accessible to test scripts
 
 // Perform is the main method of a test
@@ -480,9 +673,9 @@ validationCamera_setRotation = function (rotation) {
 //
 // The method creates a test case in currentTestCase.
 // If the test mode is manual or auto then its execution is started
-module.exports.perform = function (testName, testPath, validationCamera, testMain) {
+module.exports.perform = function (testName, testPath, validationCamera, runFiltersRaw, testMain) {
     var usePrimaryCamera = (validationCamera === "primary");
-    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera);
+    currentTestCase = new TestCase(testName, testPath, testMain, usePrimaryCamera, runFiltersRaw);
 
     // Manual and auto tests are run immediately, recursive tests are stored in a queue
     if (isRecursive) {
@@ -550,6 +743,24 @@ module.exports.runTest = function (testType) {
     }
 }
 
+var completeRecursiveTestsAndStopScript = function() {
+    console.warn("Recursive tests complete");
+
+    // Create "finished" file so nitpick knows tests ran to completion
+    //    note that the contents are not important
+    if (typeof Test !== 'undefined') {
+        Test.saveObject({ complete: true }, "tests_completed.txt");
+    };
+    
+    if (testsSkipped > 0) {
+        Window.displayAnnouncement(
+            testsSkipped + (testsSkipped !== 1 ? " tests were skipped " : " test was skipped ") +
+            "due to not matching the current test profile");
+    }
+
+    Script.stop();
+}
+
 module.exports.runRecursive = function () {
     console.warn("Starting recursive tests");
     runningRecursive = true;
@@ -570,17 +781,23 @@ module.exports.runRecursive = function () {
                 if (testCases.length > 0) {
                     currentTestCase = testCases.pop();
 
+                    // Short-circuit time delays for skipping over multiple tests that do not want to run
+                    if (testMode == "auto") {
+                        var testProfile = getTestProfile();
+                        while (testCases.length > 0 && !currentTestCase.shouldRun(testProfile)) {
+                            ++testsSkipped;
+                            currentTestCase = testCases.pop();
+                        }
+                        if (testCases.length == 0 && !currentTestCase.shouldRun(testProfile)) {
+                            ++testsSkipped;
+                            completeRecursiveTestsAndStopScript();
+                            return;
+                        }
+                    }
+
                     runOneTestCase(currentTestCase, testMode);
                 } else {
-                    console.warn("Recursive tests complete");
-
-                    // Create "finished" file so nitpick knows tests ran to completion
-                    //    note that the contents are not important
-                    if (typeof Test !== 'undefined') {
-                        Test.saveObject({ complete: true }, "tests_completed.txt");
-                    };
-
-                    Script.stop();
+                    completeRecursiveTestsAndStopScript();
                 }
             }
         },

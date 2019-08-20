@@ -39,7 +39,7 @@ A test case consists of initialization code followed by a series of steps. In ge
 
 It is suggested to set the following properties for all entities:
 * lifetime: 60,
-* position: Vec3.sum(MyAvatar.position, *some offset*),
+* position: Vec3.sum(MyAvatar.position, some offset*),
 * userData: JSON.stringify({ grabbableKey: { grabbable: false } })
 
 ### Origin Frame
@@ -83,9 +83,15 @@ Each test folder has (at least) 3 scripts and a number of images.
 The expected images themselves are created in 2 stages:  running the test and then running `nitpick.exe` to create the images from the test results.
 
 ### Boilerplate
-The first 2 lines define the GitHub repository.  This allows changing the repository for testing purposes.
+The boilerplate code is enclosed in an if statement to ensure it is only called once.
 ```
-if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    // Boilerplate code
+}
+```
+The first 2 lines of the boilerplate code define the GitHub repository.  This allows changing the repository for testing purposes.
+```
+PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
 Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 ```
 The next line loads the nitpick script (the script contains a module)
@@ -94,7 +100,7 @@ var nitpick = createAutoTester(Script.resolvePath("."));
 ```
 The test itself is written in the perform method:
 ```
-nitpick.perform("<test description string>", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("<test description string>", Script.resolvePath("."), "secondary", undefined, function(testType) {
     // set up zones, objects and other entities 
     
     // create steps
@@ -103,6 +109,8 @@ nitpick.perform("<test description string>", Script.resolvePath("."), "secondary
 });    
 ```
 Note that "secondary" may be replaced by "primary".  This is needed for tests that require the primary camera.
+
+The next parameter that is marked `undefined` can optionally be replaced with a list of one or more filters, indicating when the test should run. This uses a special syntax which is explained in a later section.
 
 The **`nitpick.runTest(testType);`** call is the line that requests the execution of the steps.  
 As described above, steps usually come in pairs.  
@@ -119,6 +127,29 @@ The following is an example showing the idea:
     nitpick.addStepSnapshot("Blue zone, dark ambient light");
 ```
 The first step moves forward 10 metres (the avatar is looking *down* the Z axis).
+
+### Test Filtering
+
+As previously mentioned, the test boilerplate contains an `undefined` parameter after the "secondary"/"primary" camera option. This allows the test creator to determine when the test is run. For example, the parameter could be replaced by `[["high"]]` to indicate that the test should only run when the current performance tier for Interface is set to High.
+
+Some more examples are included below:
+```
+[["mac"]] /* Run only on Mac */
+[["mac.amd"]] /* Run only on Mac with an AMD GPU */
+[["mid,high"]] /* Run only on the mid/high performance tier */
+[["windows,mac,linux.amd,nvidia"]] /* Run only on Windows/Mac/Linux AND run only when AMD or Nvidia GPU present */
+[["low,mid.windows"], ["android"], ["mac.intel"]] /* Run on either: 1) Windows in low/mid performance tier, 2) Android, or 3) A Mac with Intel GPU */
+```
+The filter syntax works as follows:
+- Each inner pair of square brackets is a filter. If the current test profile (combination of tier, OS, and GPU) matches at least one of the filters, then the test will be run.
+- Multiple filters are separated by commas per standard javascript list syntax
+- Each filter consists of a filter string (additional parameters may be added later)
+- The filter string can contain one or more restrictions, separated by periods (`.`). All restrictions must match for the filter to match the test profile. Possible restrictions are:
+  - For tier: `low`, `mid`, `high`
+  - For OS: `windows`, `mac`, `linux`, `android`
+  - For GPU: `amd`, `nvidia`, `intel`
+- Each restriction can optionally be made broader. Rather than specifying only one tier/OS/GPU, multiple valid options can be separated by commas (`,`).
+
 ### `nitpick.js` function documentation
 #### `perform` method
 `nitpick.js` provides the **`perform`** method, used in all tests.  This method accepts 4 parameters:

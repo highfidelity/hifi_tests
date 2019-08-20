@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Highlight Test", Script.resolvePath("."), "secondary", undefined, function(testType) {
     var createdEntities = [];
     var createdOverlays = [];
 

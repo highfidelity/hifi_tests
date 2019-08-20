@@ -143,17 +143,18 @@ Each test is in a separate folder, which should contain the following files:
 4. Expected_Image_xxxx - these are created by running the script and then using `nitpick`.
 5. In addition - `nitpick` is used to create recursive scripts.  These are all named **testRecursive.js** and will run every applicable test (i.e., those named *test.js*) in all subfolders below this script.  This allows running **ALL** the tests, by running the *testRecursive.js* script located in the **tests** root folder.
 # Test Script Structure
-A test script has the following structure:  
+A test script has the following structure:
 ```
-if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
+    PATH_TO_THE_REPO_PATH_UTILS_FILE = "https://raw.githubusercontent.com/highfidelity/hifi_tests/master/tests/utils/branchUtils.js";
+    Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
+    var nitpick = createNitpick(Script.resolvePath("."));
+}
 
-Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
-
-var nitpick = createNitpick(Script.resolvePath("."));
-
-nitpick.perform("Test Description", Script.resolvePath("."), "secondary", function(testType) {
-
-   <list of steps>
+nitpick.perform("Test Description", Script.resolvePath("."), "secondary", undefined, function(testType) {
+    // set up zones, objects and other entities 
+    
+    // create steps
   
    nitpick.runTest(testType);
 });

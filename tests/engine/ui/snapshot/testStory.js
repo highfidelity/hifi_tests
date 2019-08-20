@@ -3,7 +3,7 @@ Script.include(PATH_TO_THE_REPO_PATH_UTILS_FILE);
 var nitpick = createNitpick(Script.resolvePath("."));
 Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
-nitpick.perform("Test snapshot with no snap directory set", Script.resolvePath("."), "secondary", function(testType) {
+nitpick.perform("Test snapshot with no snap directory set", Script.resolvePath("."), "secondary", undefined, function(testType) {
     
     var oldSnapshotsLocation;
     
