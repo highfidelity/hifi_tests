@@ -110,7 +110,7 @@ nitpick.perform("<test description string>", Script.resolvePath("."), "secondary
 ```
 Note that "secondary" may be replaced by "primary".  This is needed for tests that require the primary camera.
 
-The next parameter that is marked `undefined` can optionally be replaced with a list of one or more filters, indicating when the test should run. This uses a special syntax which is explained in a later section.
+The next parameter that is marked `undefined` can optionally be replaced with a list of one or more filters, indicating when the test should run and/or what images it should produce on each platform. This uses a special syntax which is explained in a later section.
 
 The **`nitpick.runTest(testType);`** call is the line that requests the execution of the steps.  
 As described above, steps usually come in pairs.  
@@ -130,25 +130,33 @@ The first step moves forward 10 metres (the avatar is looking *down* the Z axis)
 
 ### Test Filtering
 
-As previously mentioned, the test boilerplate contains an `undefined` parameter after the "secondary"/"primary" camera option. This allows the test creator to determine when the test is run. For example, the parameter could be replaced by `[["high"]]` to indicate that the test should only run when the current performance tier for Interface is set to High.
+As previously mentioned, the test boilerplate contains an `undefined` parameter after the "secondary"/"primary" camera option. This allows the test creator to determine when the test is run, and/or how the test result images are labeled. For example, the parameter could be replaced by `[["high"]]` to indicate that the test should only run when the current performance tier for Interface is set to High. Or alternatively, the parameter could become `[["", "tier"]]` to indicate that the result images should include the performance tier during testing in the image name.
 
 Some more examples are included below:
 ```
+[[""]] /* Run on all profiles (equivalent to undefined) */
 [["mac"]] /* Run only on Mac */
 [["mac.amd"]] /* Run only on Mac with an AMD GPU */
 [["mid,high"]] /* Run only on the mid/high performance tier */
 [["windows,mac,linux.amd,nvidia"]] /* Run only on Windows/Mac/Linux AND run only when AMD or Nvidia GPU present */
 [["low,mid.windows"], ["android"], ["mac.intel"]] /* Run on either: 1) Windows in low/mid performance tier, 2) Android, or 3) A Mac with Intel GPU */
+
+[["", "tier.os.gpu"]] /* Run on all profiles. Include the tier, OS, and GPU detected during the test in the image name. */
+[["android", "os"], ["windows,mac,linux", "tier.gpu"]] /* Run on Android and include the OS in the image name. Or, run on Windows/Mac/Linux and include the tier and GPU in the image name. */
 ```
 The filter syntax works as follows:
 - Each inner pair of square brackets is a filter. If the current test profile (combination of tier, OS, and GPU) matches at least one of the filters, then the test will be run.
-- Multiple filters are separated by commas per standard javascript list syntax
-- Each filter consists of a filter string (additional parameters may be added later)
-- The filter string can contain one or more restrictions, separated by periods (`.`). All restrictions must match for the filter to match the test profile. Possible restrictions are:
+- Multiple filters are separated by commas per standard javascript list syntax.
+- Each filter consists of a filter string, and optionally an image name string.
+- The filter string contains zero or more restrictions, separated by periods (`.`). All restrictions must match for the filter to match the test profile. Possible restrictions are:
   - For tier: `low`, `mid`, `high`
   - For OS: `windows`, `mac`, `linux`, `android`
   - For GPU: `amd`, `nvidia`, `intel`
 - Each restriction can optionally be made broader. Rather than specifying only one tier/OS/GPU, multiple valid options can be separated by commas (`,`).
+- The image name string contains zero or more of: `tier`, `os`, or `gpu`, in that order, separated by periods (`.`). Here are some examples of filters and what reference images they correspond to:
+  - `[[/*Any filter string*/, ""]]` - `ExpectedImage_00000.png` (default behavior)
+  - `[["low,high", "tier"]]` - `ExpectedImage_low-high_00000.png` (test does not run on mid tier)
+  - `[["", "tier.os.gpu"]]` - Many images, for example `ExpectedImage_low_windows_intel_00000.png`
 
 ### `nitpick.js` function documentation
 #### `perform` method
