@@ -101,12 +101,22 @@ RunFilter.parsePropertyDisplayString = function(testCaseName, allowedPerProperty
     if (propertyDisplayString !== "") {
         var knownProperties = Object.keys(PROFILE_PROPERTIES);
         propertiesToDisplay = propertyDisplayString.split(".");
+        // Validate propertiesToDisplay
+        // Check for invalid and empty properties
+        // Enforce property ordering (tier.os.gpu is allowed; os.tier.gpu is not)
+        var lastPropertyIndex = -1;
         for (var i = 0; i < propertiesToDisplay.length; i++) {
             var propertyToDisplay = propertiesToDisplay[i];
-            if (knownProperties.indexOf(propertyToDisplay) == -1) {
-                logAndNotify("Unrecognized test profile image label '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
+            var propertyIndex = knownProperties.indexOf(propertyToDisplay);
+            if (propertyIndex == -1) {
+                logAndNotify("Unrecognized test profile image label '" + propertyToDisplay + "' when creating test '" + testCaseName + "'");
                 return [];
+            } else if (propertyIndex === lastPropertyIndex) {
+                logAndNotify("Wrong ordering of test profile image label: '" + knownProperties[propertyIndex] + "' appeared twice in a row");
+            } else if (propertyIndex < lastPropertyIndex) {
+                logAndNotify("Wrong ordering of test profile image label: '" + knownProperties[propertyIndex] + "' appeared after '" + knownProperties[lastPropertyIndex] + "'");
             }
+            lastPropertyIndex = propertyIndex;
         }
     }
     
