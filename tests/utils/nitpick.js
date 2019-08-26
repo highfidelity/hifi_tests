@@ -1,3 +1,5 @@
+Script.include("testCase.js");
+
 var currentTestName = "";
 var currentSteps = [];
 var currentStepIndex = 0;
@@ -58,143 +60,6 @@ var operatingSystemType;
 var isRiftInUse;
 var isViveInUse;
 var isHMDInUse; // false indicates Desktop
-
-var PROFILE_PROPERTIES = {
-    tier: ["low", "mid", "high"],
-    os: ["windows", "mac", "linux", "android"],
-    gpu: ["amd", "nvidia", "intel"]
-};
-
-var PROPERTY_TO_PROFILE_CATEGORY = function(){
-    var toReturn = {};
-    
-    var categories = Object.keys(PROFILE_PROPERTIES);
-    for (var i = 0; i < categories.length; i++) {
-        var category = categories[i];
-        var properties = PROFILE_PROPERTIES[category];
-        for (var j = 0; j < properties.length; j++) {
-            var property = properties[j];
-            toReturn[property] = category;
-        }
-    }
-    
-    return toReturn;
-}();
-
-function logAndNotify(message) {
-    console.log(message);
-    Window.displayAnnouncement(message);
-}
-
-RunFilter = function (allowedPerProperty) {
-    this.allowedPerProperty = allowedPerProperty;
-}
-
-RunFilter.createGlobalBlacklistFilter = function() {
-    return new RunFilter({"os":[]});
-}
-
-// Returns undefined if there is an unrecognized property
-RunFilter.createRunFilter = function(testCaseName, runFilterArgs) {
-    var allowedPerProperty = {};
-    var whitelistString = runFilterArgs[0];
-    var whitelistPerProperty = whitelistString.split(".");
-    for (var j = 0; j < whitelistPerProperty.length; j++) {
-        var propertyWhitelistString = whitelistPerProperty[j];
-        if (propertyWhitelistString === "") {
-            continue;
-        }
-        
-        var whitelistedOptionsPerProperty = propertyWhitelistString.split(",");
-        var validWhitelistedOptionsPerProperty = [];
-        var profileCategory = undefined;
-        var previousProfileCategory = undefined;
-        // Check all properties. Complain if one is not correct.
-        for (var k = 0; k < whitelistedOptionsPerProperty.length; k++) {
-            var whitelistedPropertyOption = whitelistedOptionsPerProperty[k];
-            if (whitelistedPropertyOption === "") {
-                continue;
-            }
-            
-            profileCategory = PROPERTY_TO_PROFILE_CATEGORY[whitelistedPropertyOption];
-            if (profileCategory === undefined) {
-                logAndNotify("Unrecognized test profile property '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'");
-                return RunFilter.createGlobalBlacklistFilter();
-            }
-            if (previousProfileCategory !== undefined && profileCategory !== previousProfileCategory) {
-                logAndNotify("Inconsistent test profile property options '" + whitelistedOptionsPerProperty[k-1] + "' and '" + whitelistedPropertyOption + "' when creating test '" + testCaseName + "'. The former is of type '" + previousProfileCategory + "' and the latter is of type '" + profileCategory + "'");
-                return RunFilter.createGlobalBlacklistFilter();
-            }
-            previousProfileCategory = profileCategory;
-            validWhitelistedOptionsPerProperty.push(whitelistedPropertyOption);
-        }
-        // All properties are valid!
-        if (profileCategory !== undefined) {
-            allowedPerProperty[profileCategory] = validWhitelistedOptionsPerProperty;
-        }
-    }
-    
-    // An empty allowedPerProperty is allowed and acts as a global wildcard
-    // This will be useful later when we implement image naming based on what profile properties matter to a test
-    // TODO: Implement image naming based on what profile properties matter to a test
-    return new RunFilter(allowedPerProperty);
-}
-
-RunFilter.prototype.matches = function(profile) {
-    // This is a "lazy" profile whitelist. If a list of allowed values isn't defined for a given profile property, all values are assumed allowed for that property.
-    var profileKeys = Object.keys(profile);
-    for (var i = 0; i < profileKeys.length; i++) {
-        var profilePropertyName = profileKeys[i];
-        var profileValue = profile[profilePropertyName];
-        var allowedValues = this.allowedPerProperty[profilePropertyName];
-        if (allowedValues !== undefined) {
-            var matched = false;
-            for (var j = 0; j < allowedValues.length; j++) {
-                if (allowedValues[j] === profileValue) {
-                    matched = true;
-                    break;
-                }
-            }
-            if (!matched) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-TestCase = function (name, path, func, usePrimaryCamera, runFiltersRaw) {
-    this.name = name;
-    this.path = path;
-    this.aborted = false;
-    this.func = func;
-    this.usePrimaryCamera = usePrimaryCamera;
-    
-    this.runFilters = [];
-    if (runFiltersRaw !== undefined) {
-        for (var i = 0; i < runFiltersRaw.length; i++) {
-            var runFilterArgs = runFiltersRaw[i];
-            var runFilter = RunFilter.createRunFilter(name, runFilterArgs);
-            if (runFilter !== undefined) {
-                this.runFilters.push(runFilter);
-            }
-        }
-    }
-}
-
-TestCase.prototype.shouldRun = function(testProfile) {
-    if (this.runFilters.length === 0) {
-        return true;
-    }
-    
-    for (var i = 0; i < this.runFilters.length; i++) {
-        var runFilter = this.runFilters[i];
-        if (runFilter.matches(testProfile)) {
-            return true;
-        }
-    }
-    return false;
-}
 
 var currentTestCase = null;
 var currentRecursiveTestCompleted = false;
@@ -409,6 +274,11 @@ setUpTest = function(testCase) {
     snapshotPrefix = pathParts[testsIndex];
     for (var i = testsIndex + 1; i < pathParts.length; ++i) {
         snapshotPrefix += pathSeparator + pathParts[i];
+    }
+    var testProfile = getTestProfile();
+    var imageProfileDescriptor = testCase.getImageProfileDescriptor(testProfile);
+    if (imageProfileDescriptor !== "") {
+        snapshotPrefix += imageProfileDescriptor + "_";
     }
 
 	// Reset result counters
