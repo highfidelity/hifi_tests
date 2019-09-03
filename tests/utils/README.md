@@ -1,4 +1,4 @@
-# Utility Scripts Documentation
+# NITPICK Utility Scripts Documentation
 This file describes the utility functions and also provides details and tips for writing test scripts.
 ## branchUtils.js
 Tests can be run locally (from a cloned repository) or directly from GitHub.  To facilitate testing tests, a script may define the repository to be used, instead of the default - the `master` branch of the `hifi_tests` repository.  This script provides the suppor for this functionality.
