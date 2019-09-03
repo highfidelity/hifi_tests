@@ -31,7 +31,7 @@ The avatar's position is defined as the hip position - therefore:  the test posi
    1. In manual mode, pressing the `n` key will advance to the next step 
    1. In automatic mode, steps are advanced every 2 seconds.  The test may modify this value during setup.
 
-1. **"Expected Images"** are created by running the test, and then using the `nitpick` tool (documented [here](../../tools/nitpick/README.md)).
+1. **"Expected Images"** are created by running the test, and then using the `nitpick` tool (documented [here](https://github.com/highfidelity/hifi/blob/master/tools/nitpick/README.md)).
   
 A test case consists of initialization code followed by a series of steps. In general, the steps are in pairs:
 * Create the image and position the camera
