@@ -64,8 +64,6 @@ addZone = function (flags, lifetime) {
 
     var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(stageOrientation)), Vec3.multiply(-1, Quat.getRight(stageOrientation))))
 
-    print(JSON.stringify(flags))
-
     return (Entities.addEntity({
         type: "Zone",
         name: "Backdrop zone",
@@ -194,6 +192,7 @@ stageAxisC = Vec3.multiply(TILE_UNIT, Quat.getUp(stageOrientation));
 //           hasLocalLights  - default is off
 //           hasSkybox       - default is on
 //           hasHaze         - default is off
+//           hasBloom        - default is off
 //      lifetime - default is 200
 //      originFrame - the coordinate system origin
 setupStage = function (initData) {
