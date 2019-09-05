@@ -17,13 +17,14 @@ var GRID_TILE_OFFSET = Vec3.multiply(0.5, TILE_DIM);
 
 var assetsRootPath = nitpick.getAssetsRootPath();
 
-function getTileColor(a, b, c) {
+function getTileColor(a, b, c, dimmer) {
     var offset = (Math.abs(a) + ((Math.abs(b) + (Math.abs(c) % 2)) %  2)) % 2;
-    var intensity = (1 - offset) * 128 + offset * 255;
+    var localDimmer = (dimmer === undefined ? false : dimmer);
+    var intensity = (1 - offset) * 128 + (localDimmer ? offset * 12 : offset * 255);
     return { red: intensity, green: intensity, blue: intensity };
 }
 
-function addTile(a, b, c, lifetime) {
+function addTile(a, b, c, lifetime, dimmer) {
     var center = Vec3.sum(stageTileRoot, Vec3.multiply(a, stageAxisA));
     center = Vec3.sum(center, Vec3.multiply(b, stageAxisB));
     center = Vec3.sum(center, Vec3.multiply(c, stageAxisC));
@@ -32,27 +33,27 @@ function addTile(a, b, c, lifetime) {
         type: "Shape",
         shape: "Cube",
         name: "Backdrop",
-        color: getTileColor(a, b, c),
+        color: getTileColor(a, b, c, dimmer),
         position: center,
         rotation: stageOrientation,
         dimensions: TILE_DIM,
         canCastShadow: false,
-        userData: JSON.stringify({ grabbableKey: { grabbable: false } }),
+        grab: { grabbable: false },
         lifetime: (lifetime === undefined) ? DEFAULT_LIFETIME : lifetime,
         ignoreForCollisions: true
     }));
 }
 
-function addBackdropGrid(backdrop, lifetime) {
+function addBackdropGrid(backdrop, lifetime, dimmer) {
     for (i = BACKDROP_HALFSIZE; i > -BACKDROP_HALFSIZE; i--) {
         for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
-            backdrop.push(addTile(i, j, BACKDROP_MIN_C, lifetime));
+            backdrop.push(addTile(i, j, BACKDROP_MIN_C, lifetime, dimmer));
         }
     }
 
     for (i = -1; i < BACKDROP_HALFSIZE; i++) {
          for (j = -BACKDROP_HALFSIZE; j < BACKDROP_HALFSIZE; j++) {
-            backdrop.push(addTile(BACKDROP_HALFSIZE, j, i, lifetime));
+            backdrop.push(addTile(BACKDROP_HALFSIZE, j, i, lifetime, dimmer));
         }
     }
 }
@@ -62,6 +63,8 @@ addZone = function (flags, lifetime) {
     var center = getStagePosOriAt(0, 0, 0).pos;
 
     var lightDir = Vec3.normalize(Vec3.sum(Vec3.multiply(-1, Quat.getUp(stageOrientation)), Vec3.multiply(-1, Quat.getRight(stageOrientation))))
+
+    print(JSON.stringify(flags))
 
     return (Entities.addEntity({
         type: "Zone",
@@ -95,7 +98,12 @@ addZone = function (flags, lifetime) {
         backgroundMode: "skybox",
         skybox:{
             color: {"red":2,"green":2,"blue":2}, // Dark grey background
-        }
+        },
+
+        bloomMode: (flags !== undefined && flags.hasBloom !== undefined && flags.hasBloom) ? "enabled" : "disabled",
+        /*bloom: {
+            bloomIntensity: 1.0
+        }*/
     }));
 }
 
@@ -148,11 +156,12 @@ function addSpotLight(pos, rotation, color, intensity, lifetime) {
 function addTestBackdrop(name, flags, lifetime) {
     var backdrop = [];
 
-    addBackdropGrid(backdrop, lifetime);
-
     if (flags === undefined || flags.hasZone === undefined || flags.hasZone) {
         backdrop.push(addZone(flags, lifetime));
     }
+
+    var dimmer = (flags !== undefined && flags.darkStage !== undefined ? flags.darkStage : false)
+    addBackdropGrid(backdrop, lifetime, dimmer);
 
     if (flags !== undefined && flags.hasLocalLights  !== undefined && flags.hasLocalLights) {
         var basePosition = Vec3.sum(stageRoot, Vec3.multiply(1.5, stageAxisC));
