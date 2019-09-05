@@ -4,105 +4,58 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("effect - bloom", Script.resolvePath("."), "secondary", undefined, function(testType) {
-    var pos =  nitpick.getOriginFrame();
-    pos.y += 1.0;
+nitpick.perform("effect - bloom", Script.resolvePath("."), "secondary", [["mid,high"]], function(testType) {
+
+    // standard test stage and model loaders
+    Script.include(nitpick.getUtilsRootPath() + "test_stageAndModels.js?raw=true")
+
+    // List here all the entries of the Material Matrix tested in this test
+    var TEST_CASES = [
+        {name:"hifi_metallicV_albedoV_ao",  a:-1.5, b:0.0, c:0.9},  
+    ];
     
-    var assetsRootPath = nitpick.getAssetsRootPath();
-    var MODEL_DIR_URL = assetsRootPath + "models/material_matrix_models/fbx/blender/";
-    var MODEL_NAME_SUFFIX = ".fbx";
-
-    var terrain = Entities.addEntity({
-        type: 'Box',
-        name: 'Terrain',
-        shape: 'Cube',
-        dimensions: { x: 1000.0, y: 0.2, z: 1000.0 },
-        position: { x: pos.x, y: pos.y - 3.0, z: pos.z },
-        color: { "blue": 200, "green": 200, "red": 200
-        }
-    });
-
-    // A shiny object to catch the highlights
-    var object = Entities.addEntity({
-        type: "Model",
-        modelURL: MODEL_DIR_URL + "hifi_metallicV_albedoV_ao" + MODEL_NAME_SUFFIX,
-        name: "Shiny Object",
-        position: { x: pos.x, y: pos.y + 0.5, z: pos.z - 2.5}
-      });
-
-      var inFrontOverlay = Overlays.addOverlay("sphere", {
-        position: { x: pos.x-1.0, y: pos.y + 0.5, z: pos.z - 2.5},
-        size: 1.0,
-        color: { red: 0, green: 0, blue: 255},
-        alpha: 1,
-        solid: true,
-        drawInFront: false,
-        isVisibleInSecondaryCamera: true
-    });
-
-    var normalOverlay = Overlays.addOverlay("sphere", {
-        position: { x: pos.x+1.0, y: pos.y + 0.5, z: pos.z - 2.5},
-        size: 1.0,
-        color: { red: 255, green: 0, blue: 0},
-        alpha: 1,
-        solid: true,
-        drawInFront: true,
-        isVisibleInSecondaryCamera: true
-    });
-
-    var SKY_URL = Script.resolvePath(assetsRootPath + 'skymaps/Sky_Day-Sun-Mid-photo.texmeta.json');
-    var sky = Entities.addEntity({
-        type: "Zone",
-        name: "Sky",
-
-        position: {x: pos.x, y: pos.y - 2.0, z: pos.z + 25.0},
-        rotation: MyAvatar.orientation,    
-        dimensions: { x: 10000.0, y: 600.0, z: 10000.0 },
-
-        keyLightMode: "enabled",
-        keyLight:{
-            color: {"red":255, "green":255, "blue":255},
-            direction: {
-                x:  0.26317591071128845,
-                y: -0.6420201241970062,
-                z:  0.2254165291786194
-            },
-            intensity: 0.8
+    // Add the test Cases
+    var OFFSET = { x: 0.0, y: 0.0, z: -0.1 };
+    var createdEntities = [];
+    // Add the test Cases
+    var initData = {
+        flags : { 
+            hasZone: true,
+            hasKeyLight: true,
+            hasKeyLightShadow: true,
+            hasAmbientLight: true,
+            hasBloom: false,
+            darkStage: true,
         },
+        originFrame: nitpick.getOriginFrame()
+    };
 
-        skyboxMode: "enabled",
-        skybox: {
-            color: {"red":255,"green":255,"blue":255},
-            url: SKY_URL
-        },
-        
-        ambientLightMode: "enabled",
-        ambientLight: {
-            ambientURL: SKY_URL
-        },
-
-        bloomMode: "disabled",
-        bloom: {
-            bloomIntensity: 1.0
-        }
+    // First step, setup scene
+    nitpick.addStep("Set up test case", function () {
+        createdEntities = addCases(TEST_CASES, initData);
+        validationCamera_translate(OFFSET);
     });
 
     nitpick.addStepSnapshot("Bloom is off - no bloom should be visible");
         
     nitpick.addStep("Enable bloom", function () {
-        Entities.editEntity(sky, {
-            bloomMode: "enabled"
+        print(JSON.stringify(Entities.getEntityProperties(createdEntities[0], ["bloom"])));
+        Entities.editEntity(createdEntities[0], {
+            bloomMode: "enabled",
+            bloom: {
+                bloomIntensity: 1.,
+                bloomThreshold: 0.5,
+                bloomSize: 1.0,
+            }
         })
     });
     nitpick.addStepSnapshot("Bloom enabled");
 
     nitpick.addStep("Clean up",
         function () {
-            Entities.deleteEntity(terrain);
-            Entities.deleteEntity(object);
-            Entities.deleteEntity(sky);
-            Overlays.deleteOverlay(normalOverlay);
-            Overlays.deleteOverlay(inFrontOverlay);
+            for (var i = 0; i < createdEntities.length; i++) {
+                Entities.deleteEntity(createdEntities[i]);
+            }
         }
     );
 
