@@ -20,7 +20,7 @@ var assetsRootPath = nitpick.getAssetsRootPath();
 function getTileColor(a, b, c, dimmer) {
     var offset = (Math.abs(a) + ((Math.abs(b) + (Math.abs(c) % 2)) %  2)) % 2;
     var localDimmer = (dimmer === undefined ? false : dimmer);
-    var intensity = (1 - offset) * 128 + (localDimmer ? offset * 12 : offset * 255);
+    var intensity = (1 - offset) * 128 + (localDimmer ? 25 : 255) * offset;
     return { red: intensity, green: intensity, blue: intensity };
 }
 
@@ -86,7 +86,7 @@ addZone = function (flags, lifetime) {
                 "x": 0.037007175385951996,
                 "y": -0.7071067690849304,
                 "z": -0.7061376571655273
-            },
+            }, // could be expressed ALMOST as: direction: Vec3.multiply(Quat.getForward(Quat.fromPitchYawRollDegrees(45.0, 177.0, 0.0)), -1.0),
         },
 
         ambientLight: {
@@ -101,9 +101,6 @@ addZone = function (flags, lifetime) {
         },
 
         bloomMode: (flags !== undefined && flags.hasBloom !== undefined && flags.hasBloom) ? "enabled" : "disabled",
-        /*bloom: {
-            bloomIntensity: 1.0
-        }*/
     }));
 }
 
