@@ -9,7 +9,7 @@ Resources.overrideUrlPrefix(TEST_ROOT, Script.resolvePath(".."));
 var testScript = new TestScript();
 testScript.addTest({
     name: "measureTimingHifiqa-19Q4-staging1",
-    loader: TestScript.locationLoader("hifi://staging2", true),
+    loader: TestScript.locationLoader("hifi://staging1", true),
     tracingRules: TRACING_RULES,
     traceActions: TestScript.measureTimingSteps([
         { time: 5, step: 0.1, keepActive: true, pos: { x:   81.5, y: -97.2, z: -312.8 }, ori:{ yaw:  -45.6 } }, 
