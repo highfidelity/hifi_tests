@@ -16,7 +16,7 @@ testScript.addTest({
         { time: 5, step: 0.1, keepActive: true, pos: { x:   154.8, y: -97.7, z: -395.6 }, ori:{ yaw:   167.5 } }, 
         { time: 5, step: 0.1, keepActive: true, pos: { x:  159.6, y: -96.8, z:  -325.6 }, ori:{ yaw: 32.5 } }, 
         { time: 5, step: 0.1, keepActive: true, pos: { x:  127.3, y: -91.8, z: -336.2 }, ori:{ yaw:  15.7 } }, 
-        { time: 5, step: 0.1, keepActive: true, pos: { x: 119.0, y: -93.9, z:  -401.8 }, ori:{ yaw:   131.5 } }, 
+        { time: 5, step: 0.1, keepActive: true, pos: { x: 118.8, y: -93.9, z:  -401.9 }, ori:{ yaw:   -155.4 } }, 
     ]),
     duration: 30
 });
