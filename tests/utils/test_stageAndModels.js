@@ -48,7 +48,7 @@ function addTestModel(name, position, orientation) {
 
 function addTestCase(test, origin, orientation) {    
     var center = getStagePosOriAt(test.a, test.b, test.c).pos;
-    return addTestModel(test.name, center, orientation);
+    return addTestModel(test.name, center, (test.yaw !== undefined ? Quat.multiply(orientation, Quat.angleAxis(test.yaw, Vec3.UNIT_Y)) : orientation));
 }
 
 function addTestOverlay(name, infront, position, orientation) {
