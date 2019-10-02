@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid.mac.amd", "tier.os.gpu"], ["low.intel", "tier.os.gpu"]], function(testType) {
+nitpick.perform("Read GLTF model", Script.resolvePath("."), "secondary", [["high.win.amd", "tier.os.gpu"], ["high.win.nvidia", "tier.os.gpu"], ["mid.mac.amd", "tier.os.gpu"], ["low.intel", "tier.os.gpu"]], function(testType) {
     var assetsRootPath = nitpick.getAssetsRootPath();
     var LIFETIME = 60.0;
     var position = nitpick.getOriginFrame();
