@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("LaserPointer renderState test", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("LaserPointer renderState test", Script.resolvePath("."), "secondary", [["high.win.amd", "tier.os.gpu"], ["high.win.nvidia", "tier.os.gpu"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     Script.include("../laserPointerUtils.js?raw=true");
 
     initializeTestData(nitpick.getOriginFrame());
