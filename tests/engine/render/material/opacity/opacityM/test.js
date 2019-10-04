@@ -11,8 +11,8 @@ nitpick.perform("Show opacity masked model", Script.resolvePath("."), "secondary
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [ 
        // {name:"hifi_albedoM_ao",  a:-1.5, b:-0.5, c:0},
-        {name:"hifi_opacityM_albedoV_ao",  a:-1.5, b:-0.5, c:0},
-        {name:"hifi_opacityM_albedoM_ao",  a:-1.5, b:0.5, c:0}, 
+        {name:"hifi_opacityM_albedoV",  a:-1.5, b:-0.5, c:0},
+        {name:"hifi_opacityM_albedoM",  a:-1.5, b:0.5, c:0}, 
     ];
     
     // Add the test Cases

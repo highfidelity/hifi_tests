@@ -4,15 +4,14 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Show opacity blend map model", Script.resolvePath("."), "secondary", undefined, function(testType) {   
+nitpick.perform("Show opacity value model", Script.resolvePath("."), "secondary", undefined, function(testType) {   
     // standard test stage and model loaders
     Script.include(nitpick.getUtilsRootPath() + "test_stageAndModels.js?raw=true")
 
     // List here all the entries of the Material Matrix tested in this test
     var TEST_CASES = [ 
-       // {name:"hifi_albedoM_ao",  a:-1.5, b:-0.5, c:0},
-        {name:"hifi_opacityA_albedoM_ao",  a:-1.5, b:-0.5, c:0},
-        {name:"hifi_opacityA_albedoM_ao",  a:-1.5, b:0.5, c:0}, 
+        {name:"hifi_opacityV_albedoV",  a:-1.5, b:-0.5, c:0},
+        {name:"hifi_opacityV_albedoM",  a:-1.5, b:0.5, c:0},
     ];
     
     // Add the test Cases
