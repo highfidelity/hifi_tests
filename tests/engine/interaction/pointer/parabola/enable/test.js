@@ -43,7 +43,7 @@ nitpick.perform("Parabola - enabling and disabling", Script.resolvePath("."), "s
         MyAvatar.position = Vec3.sum(MyAvatar.position, offset);
         validationCamera_translate(offset);
     });
-    nitpick.addStepSnapshot("Right pick enabled", function () {
+    nitpick.addStepSnapshot("Right pick enabled");
 
     nitpick.addStep("Enable left pick", function () {
         Pointers.disablePointer(pointers[1]);
