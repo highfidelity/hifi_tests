@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("effect - bloom", Script.resolvePath("."), "secondary", [["mid,high"]], function(testType) {
+nitpick.perform("effect - bloom", Script.resolvePath("."), "secondary", [["high.win.amd", "tier.os.gpu"], ["high.win.nvidia", "tier.os.gpu"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
 
     // standard test stage and model loaders
     Script.include(nitpick.getUtilsRootPath() + "test_stageAndModels.js?raw=true")
