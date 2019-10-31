@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Parabola - enabling and disabling", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("Parabola - enabling and disabling", Script.resolvePath("."), "secondary", [["high.windows.amd", "tier.os.gpu"], ["high.windows.nvidia", "tier.os.gpu"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     Script.include("../parabolaPointerUtils.js?raw=true");
 
     initializeTestData(nitpick.getOriginFrame());
