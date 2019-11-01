@@ -5,20 +5,34 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
 }
 
 nitpick.perform("Show base effects on various materials", Script.resolvePath("."), "secondary", undefined, function(testType) {
-    // Test material matrix
-    Script.include("../matrix.js?raw=true")
+    // standard test stage and model loaders
+    Script.include(nitpick.getUtilsRootPath() + "test_stageAndModels.js?raw=true")
 
     // List here all the entries of the Material Matrix tested in this test
-    var TEST_CASES = [
-        {name:"hifi",     a:0, b:0, c:-0.5},
-        {name:"hifi-ao",  a:0, b:0, c:0.5},
+    var TEST_CASES = [ 
+        {name:"hifi",  a:-1.5, b:-0.5, c:0},
+        {name:"hifi-ao",  a:-1.5, b:0.5, c:0}, 
     ];
-
+    
     // Add the test Cases
-    var OFFSET = { x: 0.0, y: -1.0, z: -0.1 };
+    var OFFSET = { x: 0.0, y: -0.8, z: -0.1 };
     var createdEntities = [];
+    // Add the test Cases
+    var initData = {
+        flags : { 
+            hasZone: true,
+            hasKeyLight: true,
+            hasKeyLightShadow: false,
+            hasAmbientLight: true,
+            hasLocalLights: true,
+            hasBloom: false,
+            darkStage: true,
+        },
+        originFrame: nitpick.getOriginFrame()
+    };
+
     nitpick.addStep("Set up test case", function () {
-        createdEntities = addCases(TEST_CASES, true, true, nitpick.getOriginFrame());
+        createdEntities = addCases(TEST_CASES, initData);
         validationCamera_translate(OFFSET);
     });
 
