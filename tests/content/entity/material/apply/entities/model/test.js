@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
+nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", Needs own fix - trying this for now - [["high.windows.amd", "tier.os.gpu"], ["high.windows.nvidia", "tier.os.gpu"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases
