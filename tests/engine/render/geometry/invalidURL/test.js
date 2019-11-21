@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("Attempt to access invalid URL", Script.resolvePath("."), "secondary", [["high.windows.amd", "tier.os.gpu"], ["high.windows.nvidia", "tier.os.gpu"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     // Test material matrix
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 

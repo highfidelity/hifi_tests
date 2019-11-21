@@ -8,7 +8,7 @@ Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 // Shared script code for collision pick tests
 Script.include(Script.resolvePath(nitpick.getTestsRootPath() + "/engine/interaction/pick/collision/shared.js"));
 
-nitpick.perform("Test CollisionPick with identical cube picks", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("Test CollisionPick with identical cube picks", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     var initData = { originFrame: nitpick.getOriginFrame() };
     var createdEntities = setupStage(initData);
     var createdPicks = [];

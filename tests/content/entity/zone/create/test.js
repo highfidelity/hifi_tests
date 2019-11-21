@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Zone create", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("Zone create", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     // Create the zone centered at the avatar position
     var pos = MyAvatar.position;
 

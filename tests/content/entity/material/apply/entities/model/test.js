@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
 
     // Add the test Cases

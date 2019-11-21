@@ -7,7 +7,7 @@ Script.include(nitpick.getUtilsRootPath() + "test_stage.js")
 
 var assetsRootPath = nitpick.getAssetsRootPath();
 
-nitpick.perform("TGA texture rendering", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("TGA texture rendering", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     Script.include(nitpick.getUtilsRootPath() + "test_stage.js");
     var position = nitpick.getOriginFrame();
 

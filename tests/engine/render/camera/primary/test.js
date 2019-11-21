@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", undefined, function(testType) {
+nitpick.perform("MyAvatar scaling", Script.resolvePath("."), "primary", [["high.windows.amd", "tier.os.gpu"], ["high.windows.nvidia", "tier.os.gpu"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     var LIFETIME = 120;
 	var createdEntities = [];
     var position = nitpick.getOriginFrame();

@@ -4,7 +4,7 @@ if (typeof PATH_TO_THE_REPO_PATH_UTILS_FILE === 'undefined') {
     nitpick = createNitpick(Script.resolvePath("."));
 }
 
-nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", undefined, function(testType) {
+nitpick.perform("Zone - Effects on Ambient Lights and Skybox", Script.resolvePath("."), "secondary", [["high", "tier"], ["mid", "tier"], ["low.intel", "tier.os.gpu"]], function(testType) {
     MyAvatar.orientation = Quat.fromPitchYawRollDegrees(0.0, 0.0, 0.0);
 
     var origin = Vec3.sum(nitpick.getOriginFrame(), { x: 0.0, y: 1.0, z: 0.0 });
