@@ -317,8 +317,8 @@ setUpTest = function(testCase) {
     }
 
     // Set jitter to none on both cameras
-    Render.getConfig("RenderMainView.JitterCam").none();
-    Render.getConfig("SecondaryCameraJob.JitterCam").none();
+    Render.getConfig("RenderMainView.AntialiasingSetup").none();
+    Render.getConfig("SecondaryCameraJob.AntialiasingSetup").none();
 
     // This is needed to enable valid tests when Interface does not have focus
     // The problem is that models aren't rendered when there is no focus
@@ -431,8 +431,8 @@ tearDownTest = function() {
     AccountServices.downloadInfoChanged.disconnect(onDownloadInfoChanged);
 
     // Restore TAA
-    Render.getConfig("RenderMainView.JitterCam").play();
-    Render.getConfig("SecondaryCameraJob.JitterCam").play();
+    Render.getConfig("RenderMainView.AntialiasingSetup").play();
+    Render.getConfig("SecondaryCameraJob.AntialiasingSetup").play();
 
     // Restore LOD
     LODManager.setAutomaticLODAdjust(previousAutomaticLODAdjust);
