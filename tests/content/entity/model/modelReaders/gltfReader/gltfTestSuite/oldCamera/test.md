@@ -8,7 +8,9 @@
 Press 'n' key to advance step by step
 
 ### Step 1
+- Scale to 1m
+### Step 2
 - AntiqueCamera.gltf Model is visible
 - ![](./ExpectedImage_00000.png)
-### Step 2
+### Step 3
 - Clean up after test

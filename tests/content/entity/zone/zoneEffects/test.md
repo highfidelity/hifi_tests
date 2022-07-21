@@ -8,7 +8,7 @@
 Press 'n' key to advance step by step
 
 ### Step 1
-- Setup object, zones and markers
+- Setup object and zones
 ### Step 2
 - Setup avatar
 ### Step 3

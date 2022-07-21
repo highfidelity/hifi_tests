@@ -16,6 +16,7 @@ if (typeof depth === 'undefined') {
 Script.include(testsRootPath + "engine/render/effect/highlight/testRecursive.js");
 Script.include(testsRootPath + "engine/render/effect/haze/testRecursive.js");
 Script.include(testsRootPath + "engine/render/effect/bloom/test.js");
+Script.include(testsRootPath + "engine/render/effect/ambientocclusion/testRecursive.js");
 
 if (depth > 0) {
    depth--;
