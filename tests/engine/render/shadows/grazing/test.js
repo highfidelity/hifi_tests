@@ -14,7 +14,7 @@ nitpick.perform("Shadow - light at grazing angle from left", Script.resolvePath(
         createdEntities = setup(5.0, 90.0, nitpick.getOriginFrame());
     });
 
-    nitpick.addDelay(3);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Light source altitude: 5.0, azimuth: 90.0");
 
     nitpick.addStep("Clean up after test", function () {

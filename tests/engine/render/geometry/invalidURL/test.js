@@ -27,8 +27,7 @@ nitpick.perform("Attempt to access invalid URL", Script.resolvePath("."), "secon
         }
     );
 
-    nitpick.addDelay(6);
-
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Result of invalid URL load");
 
     nitpick.addStep("Load model with valid URL", function () {

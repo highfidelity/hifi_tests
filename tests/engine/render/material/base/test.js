@@ -22,7 +22,7 @@ nitpick.perform("Show base effects on various materials", Script.resolvePath("."
         validationCamera_translate(OFFSET);
     });
 
-    nitpick.addDelay(6);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Take snapshot of the effects");
 
     nitpick.addStep("Clean up after test", function () {

@@ -62,8 +62,7 @@ nitpick.perform("Apply Material Entities to Model Entities", Script.resolvePath(
         }
     }
 
-    nitpick.addDelay(6);
-
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("Display materials on multiple models");
 
     nitpick.addStep("Clean up after test", function () {

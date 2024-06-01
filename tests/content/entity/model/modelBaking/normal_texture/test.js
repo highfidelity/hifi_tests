@@ -40,7 +40,7 @@ nitpick.perform("Read FBX model with normal texture", Script.resolvePath("."), "
     // Show a cube with just a normal texture
     addEntityWithOffset(createdEntities, 'models/model_baking/normal_texture/ModelUVScalingCube.baked.fbx', { x: 0.0, y: 0.75, z: -2.0 });
 
-    nitpick.addDelay(8);
+    nitpick.waitForEntityLoad(createdEntities);
     nitpick.addStepSnapshot("FBX normal texture should be visible on an otherwise white model");
 
     nitpick.addStep("Clean up after test", function () {
